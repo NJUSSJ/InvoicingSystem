@@ -2,6 +2,7 @@ package Client.businesslogicservice.saleblservice;
 
 import Client.vo.CommodityVO;
 import Client.vo.MemberVO;
+import Client.vo.PromotionVO;
 
 public interface SaleBLService {
 	public void import_();
