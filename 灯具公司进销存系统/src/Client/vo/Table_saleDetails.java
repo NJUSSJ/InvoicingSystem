@@ -2,15 +2,15 @@ package Client.vo;
 
 import java.sql.Time;
 
-public class table_saleDetails {
+public class Table_saleDetails {
 	Time t;
-	commodityVO commodity;
+	CommodityVO commodity;
 	String memberName;
 	String userName;
 	String warehouseName;
 	int total_num;
 	
-	public table_saleDetails(Time t,commodityVO commodity,String memberName,String userName,String warehouseName,int total_num) {
+	public Table_saleDetails(Time t,CommodityVO commodity,String memberName,String userName,String warehouseName,int total_num) {
 		this.commodity=commodity;
 		this.t=t;
 		this.memberName=memberName;

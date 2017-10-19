@@ -1,5 +1,5 @@
 package Client.vo;
 
-public class billVO {
+public class LogVO {
 
 }

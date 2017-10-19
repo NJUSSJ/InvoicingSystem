@@ -1,5 +1,5 @@
 package Client.businesslogicservice.saleblservice;
 
 public interface SaleBLService {
-	public saleVO import_();
+	public void import_();
 }
