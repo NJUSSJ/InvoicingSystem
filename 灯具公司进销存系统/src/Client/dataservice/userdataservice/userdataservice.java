@@ -2,6 +2,8 @@ package Client.dataservice.userdataservice;
 
 import java.rmi.RemoteException;
 
+import Client.po.UserPO;
+
 public interface userdataservice {
 	public UserPO find(long id) throws RemoteException;
 	public UserPO find(String name) throws RemoteException;

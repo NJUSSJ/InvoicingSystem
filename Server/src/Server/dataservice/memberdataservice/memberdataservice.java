@@ -1,5 +1,5 @@
 package Server.dataservice.memberdataservice;
 
-public class memberdataservice {
+public interface memberdataservice {
 
 }
