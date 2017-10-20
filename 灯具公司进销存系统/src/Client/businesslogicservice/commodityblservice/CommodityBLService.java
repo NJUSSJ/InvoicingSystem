@@ -6,6 +6,8 @@ import Client.vo.CategoryVO;
 import Client.vo.CommodityVO;
 
 
+
+
 public interface CommodityBLService {
 
 	public ArrayList<CommodityVO> getCommodityList(String field);

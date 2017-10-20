@@ -2,7 +2,7 @@ package Client.vo;
 
 import java.sql.Time;
 
-public class Table_saleDetails {
+public class Table_saleDetailsVO {
 	Time t;
 	CommodityVO commodity;
 	String memberName;
@@ -10,7 +10,7 @@ public class Table_saleDetails {
 	String warehouseName;
 	int total_num;
 	
-	public Table_saleDetails(Time t,CommodityVO commodity,String memberName,String userName,String warehouseName,int total_num) {
+	public Table_saleDetailsVO(Time t,CommodityVO commodity,String memberName,String userName,String warehouseName,int total_num) {
 		this.commodity=commodity;
 		this.t=t;
 		this.memberName=memberName;
