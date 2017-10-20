@@ -2,7 +2,6 @@ package Client.businesslogicservice.tableblservice;
 
 import java.util.ArrayList;
 
-import Client.businesslogicservice.billblservice.BillBLService;
 import Client.vo.BillVO;
 import Client.vo.Table_operateConditionVO;
 import Client.vo.Table_saleDetailsVO;
