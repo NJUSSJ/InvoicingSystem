@@ -1,5 +1,6 @@
 package Client.dataservice.saledataservice;
 
-public interface saledataservice {
+import java.rmi.RemoteException;
 
+public interface saledataservice {
 }
