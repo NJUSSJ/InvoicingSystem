@@ -6,13 +6,13 @@ public class MemberVO {
 	String phoneNum;
 	int rank;
 	String address;
-	int PostCode;
+	int postCode;
 	String e_mail;
 	int should_pay;
 	int should_get;
 	UserVO default_operator;
 	
-	public MemberVO(String name,String category,String phoneNum,int rank,String address,int PostCode,String e_mail,
+	public MemberVO(String name,String category,String phoneNum,int rank,String address,int postCode,String e_mail,
 			int should_pay,int should_get,
 	UserVO default_operator) {
 		this.address=address;
@@ -21,7 +21,7 @@ public class MemberVO {
 		this.e_mail=e_mail;
 		this.name=name;
 		this.phoneNum=phoneNum;
-		this.PostCode=PostCode;
+		this.postCode=postCode;
 		this.rank=rank;
 		this.should_get=should_get;
 		this.should_pay=should_pay;

@@ -5,7 +5,7 @@ import java.sql.Time;
 public class CommodityVO {
 	String name;
 	int ID;
-	int Stock_num;
+	int stock_num;
 	int price;
 	int batch;//Åú´Î
 	int batch_num;
@@ -13,14 +13,14 @@ public class CommodityVO {
 	
 	public CommodityVO(String name,
 	int ID,
-	int Stock_num,
+	int stock_num,
 	int price,
 	int batch,
 	int batch_num,
 	Time produce_time) {
 		// TODO Auto-generated constructor stub
 		this.ID=ID;
-		this.Stock_num=Stock_num;
+		this.stock_num=stock_num;
 		this.batch=batch;
 		this.batch_num=batch_num;
 		this.name=name;
