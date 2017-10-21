@@ -7,7 +7,7 @@ public class CommodityVO {
 	int ID;
 	int Stock_num;
 	int price;
-	int batch;
+	int batch;//Åú´Î
 	int batch_num;
 	Time produce_time;
 	
