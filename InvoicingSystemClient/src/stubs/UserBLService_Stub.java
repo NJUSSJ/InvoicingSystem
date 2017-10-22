@@ -10,13 +10,13 @@ public class UserBLService_Stub implements UserBLService{
 	@Override
 	public String addUser(UserVO a) {
 		// TODO 自动生成的方法存根
-		return "添加成功";
+		return "add success";
 	}
 
 	@Override
 	public String deleteUser(UserVO a) {
 		// TODO 自动生成的方法存根
-		return "删除成功";
+		return "delete success";
 	}
 
 	@Override
@@ -28,7 +28,7 @@ public class UserBLService_Stub implements UserBLService{
 	@Override
 	public String updateUser(UserVO a) {
 		// TODO 自动生成的方法存根
-		return "修改成功";
+		return "update success";
 	}
 
 }

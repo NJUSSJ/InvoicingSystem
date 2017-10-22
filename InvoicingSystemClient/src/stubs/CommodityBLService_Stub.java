@@ -57,37 +57,37 @@ public class CommodityBLService_Stub implements CommodityBLService{
 	@Override
 	public String addCommodity(CommodityVO c) {
 		// TODO 自动生成的方法存根
-		return "添加商品成功";
+		return "add commodity success";
 	}
 
 	@Override
 	public String addCategory(CategoryVO c) {
 		// TODO 自动生成的方法存根
-		return "添加分类成功";
+		return "add category success";
 	}
 
 	@Override
 	public String deleteCommodity(CommodityVO c) {
 		// TODO 自动生成的方法存根
-		return "删除商品成功";
+		return "delete commodity success";
 	}
 
 	@Override
 	public String deleteCategory(CategoryVO c) {
 		// TODO 自动生成的方法存根
-		return "删除分类成功";
+		return "delete category success";
 	}
 
 	@Override
 	public String modifyCommodity(CommodityVO c) {
 		// TODO 自动生成的方法存根
-		return "修改商品成功";
+		return "modify commodity success";
 	}
 
 	@Override
 	public String modifyCategory(CategoryVO c) {
 		// TODO 自动生成的方法存根
-		return "修改分类成功";
+		return "modify category success";
 	}
 
 }

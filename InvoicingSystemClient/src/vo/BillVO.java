@@ -11,4 +11,8 @@ public class BillVO {
 		this.Note=Note;
 		this.id=id;
 	}
+
+	public BillVO() {
+		// TODO 自动生成的构造函数存根
+	}
 }

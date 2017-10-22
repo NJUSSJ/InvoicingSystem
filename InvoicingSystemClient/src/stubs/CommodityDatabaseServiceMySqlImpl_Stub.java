@@ -7,6 +7,7 @@ import dataservice.commoditydataservice.CommodityDataService;
 import po.CommodityPO;
 
 public class CommodityDatabaseServiceMySqlImpl_Stub implements CommodityDataService{
+	
 	public CommodityPO find(long id){
 		return new CommodityPO();
 		

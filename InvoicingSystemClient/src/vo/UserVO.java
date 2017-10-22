@@ -10,4 +10,8 @@ public class UserVO {
 		this.name=name;
 		this.rank=rank;
 	}
+
+	public UserVO() {
+		// TODO 自动生成的构造函数存根
+	}
 }

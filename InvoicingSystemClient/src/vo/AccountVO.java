@@ -14,4 +14,8 @@ public class AccountVO {
 		this.Bank=Bank;
 		this.deposit=deposit;
 	}
+
+	public AccountVO() {
+		// TODO 自动生成的构造函数存根
+	}
 }
