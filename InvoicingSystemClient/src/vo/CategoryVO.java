@@ -15,4 +15,5 @@ public class CategoryVO {
 		this.sub_category=sub_category;
 		this.sub_commodity=sub_commodity;
 	}
+	
 }

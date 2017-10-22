@@ -46,14 +46,17 @@ public class MemberBLService_Stub {
 	}
 	
 	public MemberVO getMember(String number){
+		System.out.println("Get Member Succeed");
 		return null;
 	}
 	
 	public ArrayList<MemberVO> getMemberList(String category) {
+		System.out.println("Get MemberList Succeed");
 		return null;
 	}
 
 	public String modifyCategory(CategoryVO c) {
+		System.out.println("Modify Category Succeed");
 		return null;
 	}
 

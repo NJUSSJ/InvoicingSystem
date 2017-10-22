@@ -42,14 +42,18 @@ public class TableBLService_Stub implements TableBLService {
 	
 	public Table_saleDetailsVO getSaleDetails(String field){
 		tao=new Table_saleDetailsVO(t,commoditylist,total_num);
+		System.out.println("Get SaleDetails Succeed");
 		return tao;
 	};
 	public Table_operateConditionVO getOprateCondition(String field){
 	 tov=new Table_operateConditionVO(profit,in_sale,discount_sale,in_commodity,discount_commodity,out_sale,out_commodity);
-		return tov;
+	 System.out.println("Get OprateCondition Succeed");	
+	 return tov;
 	};
 	public ArrayList<BillVO> getOperateCourse(String field){
+	    System.out.println("Get OperateCourse Succeed");
 	    return billlist;
+	    
 	};
 	public void Red(String id,String Note){
 		System.out.println("新账单建立");

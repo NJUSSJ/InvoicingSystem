@@ -21,6 +21,7 @@ public class TableDatabaseServiceMySqlImpl_Stub implements TableDataService {
     }
     public BillPO getbill(){
     	BillPO bp=new BillPO();
+    	System.out.println("Get Succeed");
     	return bp;
     }
 

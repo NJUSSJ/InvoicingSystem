@@ -26,4 +26,7 @@ public class MemberVO {
 		this.should_get=should_get;
 		this.should_pay=should_pay;
 	}
+	public MemberVO() {
+		// TODO Auto-generated constructor stub
+	}
 }

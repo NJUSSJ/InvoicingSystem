@@ -14,5 +14,8 @@ public class Table_saleDetailsVO {
 		this.commoditylist=commoditylist;
 		this.total_num=total_num;
 	}
+	public Table_saleDetailsVO() {
+		// TODO Auto-generated constructor stub
+	}
 }
 

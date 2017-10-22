@@ -10,4 +10,7 @@ public class UserVO {
 		this.name=name;
 		this.rank=rank;
 	}
+	public UserVO() {
+		// TODO Auto-generated constructor stub
+	}
 }

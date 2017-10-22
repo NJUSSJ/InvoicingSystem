@@ -18,4 +18,7 @@ public class Table_operateConditionVO {
 		this.out_commodity=out_commodity;
 		this.out_sale=out_sale;
 	}
+	public Table_operateConditionVO() {
+		// TODO Auto-generated constructor stub
+	}
 }

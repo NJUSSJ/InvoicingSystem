@@ -38,7 +38,7 @@ public class PromotionBLService_Stub implements PromotionBLService {
    public PromotionVO getPromotinoList(){
 	   PromotionVO pv=new PromotionVO(promotion_type, gifts, memberrank, totalprice, voucher, discount, commodity_group, discount_TotalPrice);
 			   
-	
+	   System.out.println("Get PromotionList Succeed");
 	   return pv;
    }
 		   }
