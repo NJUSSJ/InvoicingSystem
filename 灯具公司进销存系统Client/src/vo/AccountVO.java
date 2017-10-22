@@ -2,11 +2,11 @@ package vo;
 
 public class AccountVO {
 	long ID;
-	int deposit;
+	double deposit;
 	String Bank;
 	
 	public AccountVO(long ID,
-	int deposit,
+	double deposit,
 	String Bank
 	) {
 		// TODO Auto-generated constructor stub
