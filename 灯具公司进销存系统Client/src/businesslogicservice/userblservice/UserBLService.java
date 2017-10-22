@@ -3,8 +3,8 @@ package businesslogicservice.userblservice;
 import vo.UserVO;
 
 public interface UserBLService {
-public UserVO addUser(UserVO a);
-public UserVO deleteUser(UserVO a);
+public String addUser(UserVO a);
+public String deleteUser(UserVO a);
 public UserVO findUser (UserVO a);
-public UserVO updateUser (UserVO a);
+public String updateUser (UserVO a);
 }
