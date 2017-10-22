@@ -23,10 +23,10 @@ public class BillBLService_Stub implements BillBLService {
 	}
 
 	@Override
-	public BillVO makeImpor_Returntbill(BillVO bill) {
+	public BillVO makeImport_Returnbill(BillVO bill){
 		// TODO Auto-generated method stub
 		System.out.println("制定进货退货单据");
-		return null;
+		return new BillVO();
 	}
 
 	@Override
@@ -79,7 +79,7 @@ public class BillBLService_Stub implements BillBLService {
 	}
 
 	@Override
-	public BillVO makeWaringbill(BillVO bill) {
+	public BillVO makeWarningbill(BillVO bill) {
 		// TODO Auto-generated method stub
 		System.out.println("制定库存报警单");
 		return new BillVO(ID, Note);

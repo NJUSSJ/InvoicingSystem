@@ -27,4 +27,8 @@ public class CommodityVO {
 		this.price=price;
 		this.produce_time=produce_time;
 	}
+
+	public CommodityVO() {
+		// TODO 自动生成的构造函数存根
+	}
 }

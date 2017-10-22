@@ -5,7 +5,7 @@ import java.rmi.RemoteException;
 import dataservice.billdataservice.BillDatasService;
 import po.BillPO;
 
-public class BillDatabaseServiceMysalImpl_Stub implements BillDatasService{
+public class BillDatabaseServiceMySqlImpl_Stub implements BillDatasService{
 
 	@Override
 	public BillPO importBill(BillPO ib) throws RemoteException {
