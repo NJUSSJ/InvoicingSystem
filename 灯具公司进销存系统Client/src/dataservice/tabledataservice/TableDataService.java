@@ -3,7 +3,7 @@ package dataservice.tabledataservice;
 import po.BillPO;
 import po.*;
 
-public interface tabledataservice {
+public interface TableDataService {
 
 	public String find(String field);
     public BillPO clone(BillPO po);

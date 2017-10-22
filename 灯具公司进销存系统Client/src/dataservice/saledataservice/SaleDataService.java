@@ -1,6 +1,6 @@
 package dataservice.saledataservice;
 
-public interface saledataservice {
+public interface SaleDataService {
 	
 	
 }

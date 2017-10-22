@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 
 import po.MemberPO;
 
-public interface memberdataservice {
+public interface MemberDataService {
 
 	public MemberPO find(String name) throws RemoteException;
 	public void insert(MemberPO po) throws RemoteException;
