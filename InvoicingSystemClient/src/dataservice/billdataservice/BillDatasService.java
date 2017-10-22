@@ -16,7 +16,7 @@ public interface BillDatasService {
 	public BillPO overBill(BillPO ob) throws RemoteException;
 	public BillPO damageBill(BillPO db) throws RemoteException;
 	public BillPO warnBill(BillPO wb) throws RemoteException;
-	public BillPO delete(BillPO b) throws RemoteException;
+	public void delete(BillPO b) throws RemoteException;
 	public BillPO find(int id) throws RemoteException;
 	public void init() throws RemoteException;
 	public void finish() throws RemoteException;
