@@ -3,7 +3,6 @@ package stubs;
 import java.sql.Time;
 import java.util.ArrayList;
 
-import businesslogicservice.promotionblservice.PromotionBLService;
 import businesslogicservice.tableblservice.TableBLService;
 import vo.BillVO;
 import vo.CommodityVO;

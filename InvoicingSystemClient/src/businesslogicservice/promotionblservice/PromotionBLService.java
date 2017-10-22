@@ -3,7 +3,7 @@ package businesslogicservice.promotionblservice;
 import vo.PromotionVO;
 
 public interface PromotionBLService {
-	public String addPromotion();
-	public String deletePromotion();
+	public void addPromotion();
+	public void deletePromotion();
 	public PromotionVO getPromotinoList();
 }
