@@ -1,9 +1,9 @@
 package businesslogicservice.promotionblservice;
 
-import businesslogic.promotionbl.Promotion;
+import vo.PromotionVO;
 
 public interface PromotionBLService {
 	public String addPromotion();
 	public String deletePromotion();
-	public Promotion getPromotinoList();
+	public PromotionVO getPromotinoList();
 }

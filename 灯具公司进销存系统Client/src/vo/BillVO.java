@@ -1,14 +1,14 @@
 package vo;
 
 public class BillVO {
-	String ID;
+	String id;
 	String Note;
 	
-	public BillVO(String ID,
+	public BillVO(String id,
 	String Note
 	) {
 		// TODO Auto-generated constructor stub
 		this.Note=Note;
-		this.ID=ID;
+		this.id=id;
 	}
 }

@@ -10,11 +10,14 @@ import vo.PromotionVO;
 import vo.UserVO;
 
 public class SaleBLService_Stub implements SaleBLService {
-	double pvdiscount;
-	double pvdiscount_TotalPrice;
-	ArrayList<CommodityVO> pvCombinationPack;
-	int pvMemberRank;
-	
+	String pvPromotion_type;
+	ArrayList<CommodityVO> pvGifts;
+	int pvMemberrank;
+	double pvTotalprice;
+	double[][] pvVoucher;//总价，代金券（总价，用户）
+	double pvDiscount;//折扣(用户）
+	ArrayList<CommodityVO> pvCommodity_group;
+	double pvDiscount_TotalPrice;//组合包中使用
 	String mvName;
 	String mvCategory;
 	String mvPhoneNum;
@@ -34,13 +37,19 @@ public class SaleBLService_Stub implements SaleBLService {
 	int cvBatch_num;
 	Time cvProduce_time;
 	
-	public SaleBLService_Stub(double pvdiscount,double pvdiscount_TotalPrice,
-	int pvMemberRank,String mvName,String mvCategory,String mvPhoneNum,int mvRank,String mvAddress,
+	public SaleBLService_Stub(String pvPromotion_type,ArrayList<CommodityVO> pvGifts,int pvMemberrank,
+	double pvTotalprice,double[][] pvVoucher,double pvDiscount,ArrayList<CommodityVO> pvCommodity_group,
+	double pvDiscount_TotalPrice,String mvName,String mvCategory,String mvPhoneNum,int mvRank,String mvAddress,
 	int mvPostCode,String mvE_mail,int mvShould_pay,int mvShould_get,String cvName,int cvID,
 	int cvStock_num,int cvPrice,int cvBatch,int cvBatch_num,Time cvProduce_time){
-		this.pvdiscount=pvdiscount;
-		this.pvdiscount_TotalPrice=pvdiscount_TotalPrice;
-		this.pvMemberRank=pvMemberRank;
+		this.pvPromotion_type=pvPromotion_type;
+		this.pvGifts=pvGifts;
+		this.pvMemberrank=pvMemberrank;
+		this.pvTotalprice=pvTotalprice;
+		this.pvVoucher=pvVoucher;//总价，代金券（总价，用户）
+		this.pvDiscount=pvDiscount;//折扣(用户）
+		this.pvCommodity_group=pvCommodity_group;
+		this.pvDiscount_TotalPrice=pvDiscount_TotalPrice;//组合包中使用
 		this.mvName=mvName;
 		this.mvCategory=mvCategory;
 		this.mvPhoneNum=mvPhoneNum;
@@ -60,34 +69,34 @@ public class SaleBLService_Stub implements SaleBLService {
 	}
 	
 	@Override
-	public void import_() {
+	public String import_() {
 		// TODO Auto-generated method stub
-		System.out.println("Import Succeed");
+		return "Import Succeed";
 	}
 
 	@Override
-	public void importReturn() {
+	public String importReturn() {
 		// TODO Auto-generated method stub
-		System.out.println("Import_Return Succeed");
+		return "Import_Return Succeed";
 	}
 
 	@Override
-	public void sell() {
+	public String sell() {
 		// TODO Auto-generated method stub
-		System.out.println("Sell Succeed");
+		return "Sell Succeed";
 	}
 
 	@Override
-	public void sellReturn() {
+	public String sellReturn() {
 		// TODO Auto-generated method stub
-		System.out.println("Sell_Return Succeed");
+		return "Sell_Return Succeed";
 	}
 
 	@Override
 	public PromotionVO getPromotion() {
 		System.out.println("成功获取促销信息");
-		pvCombinationPack=new ArrayList<CommodityVO>();
-		return new PromotionVO(pvdiscount,pvdiscount_TotalPrice,pvCombinationPack,pvMemberRank);
+		return new PromotionVO(pvPromotion_type,pvGifts,pvMemberrank,pvTotalprice,
+		pvVoucher,pvDiscount,pvCommodity_group,pvDiscount_TotalPrice);
 	}
 
 	@Override

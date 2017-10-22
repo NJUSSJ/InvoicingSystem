@@ -5,13 +5,13 @@ import vo.MemberVO;
 import vo.PromotionVO;
 
 public interface SaleBLService {
-	public void import_();
+	public String import_();
 	
-	public void importReturn();
+	public String importReturn();
 	
-	public void sell();
+	public String sell();
 	
-	public void sellReturn();
+	public String sellReturn();
 	
 	public PromotionVO getPromotion();
 	
