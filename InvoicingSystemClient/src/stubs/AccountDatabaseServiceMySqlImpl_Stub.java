@@ -5,7 +5,7 @@ import java.rmi.RemoteException;
 import dataservice.accountdataservice.AccountDataService;
 import po.AccountPO;
 
-public class AccountDataService_Stub implements AccountDataService {
+public class AccountDatabaseServiceMySqlImpl_Stub implements AccountDataService {
 
 	@Override
 	public AccountPO find(long id) throws RemoteException {
