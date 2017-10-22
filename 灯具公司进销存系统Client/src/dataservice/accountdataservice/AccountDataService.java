@@ -6,7 +6,7 @@ import po.AccountPO;
 
 
 
-public interface accountdataservice {
+public interface AccountDataService {
 	public AccountPO find(long id) throws RemoteException;
 	public void insert(AccountPO po) throws RemoteException;
 	public void delete(AccountPO po) throws RemoteException;
