@@ -11,7 +11,7 @@ public interface CommodityDataService {
 	public void insert(CommodityPO po) throws RemoteException;
 	public void delete(CommodityPO po) throws RemoteException;
 	public void update(CommodityPO po) throws RemoteException;
-	public CommodityPO init() throws RemoteException;
+	public void init() throws RemoteException;
 	public void finish() throws RemoteException;
 
 }

@@ -1,10 +1,14 @@
 package dataservice.promotiondataservice;
 
+import java.util.ArrayList;
+
 import po.PromotionPO;
 
 public interface PromotionDataService {
 	
-	public PromotionPO insert(PromotionPO po);
+	public void insert(PromotionPO po);
 
-	public PromotionPO delete(PromotionPO p);
+	public void delete(PromotionPO p);
+	
+	public ArrayList<PromotionPO> find();
 }

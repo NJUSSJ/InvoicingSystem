@@ -12,5 +12,4 @@ public interface UserDataService {
 	public void update(UserPO po) throws RemoteException;
 	public void init() throws RemoteException;
 	public void finish() throws RemoteException;
-
 }
