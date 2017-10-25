@@ -1,13 +1,4 @@
-<<<<<<< HEAD
-/stubs/
-/dataservice/
-=======
-/businesslogic/
-/businesslogicservice/
-/dataservice/
-/po/
 /presentation/
-/stubs/
 /vo/
->>>>>>> 4f1a398b427fe367370aed0ffbe8a7e078c3bfdf
-/driver/
+/CategoryUI.fxml
+/FianceMainUI.fxml
