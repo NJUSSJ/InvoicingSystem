@@ -1,4 +1,8 @@
+/businesslogic/
+/businesslogicservice/
+/dataservice/
+/driver/
+/po/
 /presentation/
+/stubs/
 /vo/
-/CategoryUI.fxml
-/FianceMainUI.fxml
