@@ -8,7 +8,7 @@ public interface BillBLService {
 	public BillVO makeSalebill(BillVO bill);
 	public BillVO makeSale_Returnbill(BillVO bill);
 	public BillVO makePaybill(BillVO bill);
-	public BillVO makeGetbill(BillVO bill);
+	public BillVO makeReceivebill(BillVO bill);
 	public BillVO makeGiftbill(BillVO bill);
 	public BillVO makeOverbill(BillVO bill);
 	public BillVO makeDamagebill(BillVO bill);

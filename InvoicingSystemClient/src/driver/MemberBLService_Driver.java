@@ -10,7 +10,6 @@ public class MemberBLService_Driver {
 		memberblservice.addmember(new MemberVO());
 		memberblservice.getMember("1234");
 		memberblservice.getMemberList("1234");
-		memberblservice.modifyCategory(new CategoryVO());
 		memberblservice.modifymember(new MemberVO());
 		
 	}
