@@ -27,18 +27,25 @@ public class PromotionBLService_Stub implements PromotionBLService {
 	   this.discount_TotalPrice=discount_TotalPrice;
    }
    @Override
-   public void addPromotion(){
+   public void addPromotion(PromotionVO vo){
 	   System.out.println("create Promotion Strategy successed");
    }
    @Override
-   public void deletePromotion(){
+   public void deletePromotion(long id){
 	   System.out.println("delete Promotion Strategy successed");
    }
    @Override
-   public PromotionVO getPromotinoList(){
+   public PromotionVO getPromotinoList(String field,long id){
 	   PromotionVO pv=new PromotionVO(promotion_type, gifts, memberrank, totalprice, voucher, discount, commodity_group, discount_TotalPrice);
 			   
 	   System.out.println("Get PromotionList Succeed");
 	   return pv;
    }
+@Override
+public void getPromotion(long id) {
+	// TODO Auto-generated method stub
+	
+}
+
+
 		   }

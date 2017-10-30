@@ -50,12 +50,7 @@ public class BillBLService_Stub implements BillBLService {
 		return new BillVO(ID, Note);
 	}
 
-	@Override
-	public BillVO makeGetbill(BillVO bill) {
-		// TODO Auto-generated method stub
-		System.out.println("制定收款单");
-		return new BillVO(ID, Note);
-	}
+	
 
 	@Override
 	public BillVO makeGiftbill(BillVO bill) {
@@ -104,6 +99,12 @@ public class BillBLService_Stub implements BillBLService {
 		// TODO Auto-generated method stub
 		System.out.println("审批单据");
 		return "Succeed";
+	}
+	@Override
+	public BillVO makeReceivebill(BillVO bill) {
+		// TODO Auto-generated method stub
+		System.out.println("制定收款单");
+		return new BillVO(ID, Note);
 	}
 
 }

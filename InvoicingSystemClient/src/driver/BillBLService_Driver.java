@@ -20,7 +20,7 @@ public void drive(BillBLService_Stub stub){
 	if(stub.makePaybill(new BillVO())!=null){
 		System.out.println("makePayBill success");
 	}
-	if(stub.makeGetbill(new BillVO())!=null){
+	if(stub.makeReceivebill(new BillVO())!=null){
 		System.out.println("makeGetBill success");
 	}
 	if(stub.makeGiftbill(new BillVO())!=null){
