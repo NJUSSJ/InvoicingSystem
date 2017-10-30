@@ -10,8 +10,6 @@ import vo.CommodityVO;
 
 public interface CommodityBLService {
 
-	public ArrayList<CommodityVO> getCommodityList(String field);
-
 	public CommodityVO getCommodity(String field);
 	
 	public ArrayList<CategoryVO> getCategory();

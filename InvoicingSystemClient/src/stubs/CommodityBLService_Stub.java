@@ -32,13 +32,6 @@ public class CommodityBLService_Stub implements CommodityBLService{
 		this.cgvName=cgvName;
 	}
 	
-	@Override
-	public ArrayList<CommodityVO> getCommodityList(String field) {
-		// TODO 自动生成的方法存根
-		ArrayList<CommodityVO> cl=new ArrayList<CommodityVO>();
-		cl.add(new CommodityVO(cvName,cvID,cvStock_num,cvPrice,cvBatch,cvBatch_num,cvProduce_time));
-		return cl;
-	}
 
 	@Override
 	public CommodityVO getCommodity(String field) {
