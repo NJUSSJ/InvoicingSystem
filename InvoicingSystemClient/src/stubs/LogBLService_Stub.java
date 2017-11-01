@@ -2,10 +2,11 @@ package stubs;
 
 import java.sql.Time;
 
+import businesslogicservice.logblservice.LogBLService;
 import vo.LogVO;
 import vo.UserVO;
 
-public class LogBLService_Stub {
+public class LogBLService_Stub implements LogBLService{
 	Time operate_time;
 	String operate_type;
 	UserVO operator;
@@ -16,13 +17,15 @@ public class LogBLService_Stub {
 		this.operator=operator;
 	}
 	
-	public LogVO getLogInformation(){
+	public void checkRecord(){
 		LogVO lv=new LogVO(operate_time,operate_type,operator);
-		return lv;
+		System.out.print("check log");
 	}
 	
-	public void addNewLog(Time operate_time,String operate_type,UserVO operator){
+
+	@Override
+	public void addRecord(LogVO vo) {
+		// TODO 自动生成的方法存根
 		
-		System.out.println("Add successfully!");
 	}
 }
