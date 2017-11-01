@@ -6,9 +6,6 @@ import vo.CommodityVO;
 
 public class CommodityBLService_Driver {
 public void drive(CommodityBLService_Stub stub){
-	if(stub.getCommodityList("1189")!=null){
-		System.out.println("getCommodityList success!");
-	}
 	if(stub.getCommodity("1189")!=null){
 		System.out.println("getCommodity success!");
 	}
