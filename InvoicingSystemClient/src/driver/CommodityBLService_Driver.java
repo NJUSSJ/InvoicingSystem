@@ -9,7 +9,7 @@ public void drive(CommodityBLService_Stub stub){
 	if(stub.getCommodity("1189")!=null){
 		System.out.println("getCommodity success!");
 	}
-	if(stub.getCategory()!=null){
+	if(stub.getCategory("")!=null){
 		System.out.println("getCategory success!");
 	}
 	if((stub.addCommodity(new CommodityVO())).equals("add commodity success")){
