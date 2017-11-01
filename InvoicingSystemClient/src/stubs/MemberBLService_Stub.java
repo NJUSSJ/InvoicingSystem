@@ -36,28 +36,28 @@ public class MemberBLService_Stub implements MemberBLService{
 	
 	
 	@Override
-	public MemberVO addmember(MemberVO a) {
+	public MemberVO addMember(MemberVO a) {
 		// TODO Auto-generated method stub
 		System.out.println("add member");
 		return null;
 	}
 
 	@Override
-	public MemberVO deletemember(MemberVO a) {
+	public MemberVO deleteMember(MemberVO a) {
 		// TODO Auto-generated method stub
 		System.out.println("delete member");
 		return null;
 	}
 
 	@Override
-	public MemberVO findmember(String name) {
+	public MemberVO findMember(String name) {
 		// TODO Auto-generated method stub
 		System.out.println("find member");
 		return null;
 	}
 
 	@Override
-	public MemberVO updatemember(MemberVO a) {
+	public MemberVO updateMember(MemberVO a) {
 		// TODO Auto-generated method stub
 		System.out.println("update member");
 		return null;

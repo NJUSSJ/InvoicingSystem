@@ -6,9 +6,10 @@ import vo.MemberVO;
 
 public interface MemberBLService {
 
-	public MemberVO addmember(MemberVO a);
-	public MemberVO deletemember(MemberVO a);
-	public MemberVO findmember(String name);
-	public MemberVO updatemember(MemberVO a);
-	public ArrayList<MemberVO> findMembers(String field);
+	public MemberVO addMember(MemberVO a);
+	public MemberVO deleteMember(MemberVO a);
+	public MemberVO findMember(String name);
+	public MemberVO updateMember(MemberVO a);//设计参照update
+	public ArrayList<MemberVO> findMembers(String field);//设计参照find
+	
 }
