@@ -14,8 +14,7 @@ import stubs.MemberBLService_Stub;
 import stubs.MemberDatabaseServiceMySqlImpl_Stub;
 import stubs.PromotionBLService_Stub;
 import stubs.PromotionDataServiceMySqlImpl_Stub;
-import stubs.SaleBLService_Stub;
-import stubs.SaleDatabaseServiceMySqlImpl_Stub;
+
 import stubs.TableBLService_Stub;
 import stubs.TableDatabaseServiceMySqlImpl_Stub;
 import stubs.UserBLService_Stub;
@@ -56,10 +55,9 @@ public static void main(String[] args){
 	ubldriver.drive(new UserBLService_Stub());
 	UserDataService_Driver uddriver=new UserDataService_Driver();
 	uddriver.drive(new UserDatabaseServiceMySqlImpl_Stub());
-	SaleBLService_Driver sbldriver=new SaleBLService_Driver();
-	sbldriver.drive(new SaleBLService_Stub(null, null, 0, 0, null, 0, null, 0, null, null, null, 0, null, 0, null, 0, 0, null, 0, 0, 0, 0, 0, null));
-	SaleDataService_Driver sddriver=new SaleDataService_Driver();
-	sddriver.drive(new SaleDatabaseServiceMySqlImpl_Stub());
+
+	
+	
 	TableBLService_Driver tbldriver=new TableBLService_Driver();
 	tbldriver.drive(new TableBLService_Stub(null, null, 0, 0, 0, 0, 0, 0, 0, null, null, 0, null));
 	TableDataService_Driver tddriver=new TableDataService_Driver();

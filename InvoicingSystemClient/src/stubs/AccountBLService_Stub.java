@@ -48,12 +48,6 @@ public class AccountBLService_Stub implements AccountBLService {
 		return "Succeed";
 	}
 
-	@Override
-	public ArrayList<AccountVO> getAccountList(String field, long id) {
-		// TODO Auto-generated method stub
-		System.out.println("获得账户列表");
-		
-		return accountList ;
-	}
+	
 
 }

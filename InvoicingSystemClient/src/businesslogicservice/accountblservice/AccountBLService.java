@@ -10,5 +10,4 @@ public interface AccountBLService {
 	public String addAccount(AccountVO account);
 	public String deleteAccount(AccountVO account);
 	public String modifyAccount(long id);
-	public ArrayList<AccountVO> getAccountList(String field,long id);
 }

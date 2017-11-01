@@ -20,8 +20,6 @@ public class AccountBLService_Driver {
 		if((stub.modifyAccount(8009280).equals("Succeed"))){
 			System.out.println("modify pass");
 		}
-		if(stub.getAccountList("yes", 90090)!=null){
-			System.out.println("accountList existed!");
-		}
+		
 	}
 }
