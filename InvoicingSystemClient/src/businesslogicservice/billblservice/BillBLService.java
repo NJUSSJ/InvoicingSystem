@@ -11,7 +11,7 @@ public interface BillBLService {
 	public BillVO makeReceivebill(BillVO bill);
 	public BillVO makeGiftbill(BillVO bill);
 	public BillVO makeOverbill(BillVO bill);
-	public BillVO makeDamagebill(BillVO bill);
+	public BillVO makeLossbill(BillVO bill);
 	public BillVO makeWarningbill(BillVO bill);
 	public BillVO makeCashbill(BillVO bill);
 	public String conveyBill(BillVO bill);

@@ -1,5 +1,5 @@
 package businesslogicservice.billblservice;
 
-public interface DamageBillBLService {
+public interface LossBillBLService {
 
 }

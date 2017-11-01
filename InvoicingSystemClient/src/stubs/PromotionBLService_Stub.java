@@ -35,11 +35,10 @@ public class PromotionBLService_Stub implements PromotionBLService {
 	   System.out.println("delete Promotion Strategy successed");
    }
    @Override
-   public PromotionVO getPromotinoList(String field,long id){
-	   PromotionVO pv=new PromotionVO(promotion_type, gifts, memberrank, totalprice, voucher, discount, commodity_group, discount_TotalPrice);
-			   
+   public ArrayList<PromotionVO> getPromotinoList(String field,long id){
+	   
 	   System.out.println("Get PromotionList Succeed");
-	   return pv;
+	   return null;
    }
 @Override
 public void getPromotion(long id) {

@@ -1,5 +1,7 @@
 package businesslogicservice.billblservice;
 
-public interface SaleBillBLService {
+import vo.BillVO;
 
+public interface SaleBillBLService {
+	public BillVO makeSalebill(BillVO bill);
 }

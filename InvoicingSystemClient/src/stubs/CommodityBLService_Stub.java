@@ -40,7 +40,7 @@ public class CommodityBLService_Stub implements CommodityBLService{
 	}
 
 	@Override
-	public ArrayList<CategoryVO> getCategory() {
+	public ArrayList<CategoryVO> getCategoryList(String field) {
 		// TODO 自动生成的方法存根
 		ArrayList<CategoryVO> cgl=new ArrayList<CategoryVO>();
 		cgl.add(new CategoryVO(cgvName,cgvSub_category,cgvSub_commodity));
@@ -81,6 +81,22 @@ public class CommodityBLService_Stub implements CommodityBLService{
 	public String modifyCategory(CategoryVO c) {
 		// TODO 自动生成的方法存根
 		return "modify category success";
+	}
+
+
+	@Override
+	public ArrayList<CommodityVO> getCommodityList(String field) {
+		// TODO Auto-generated method stub
+		System.out.println("success");
+		return null;
+	}
+
+
+	@Override
+	public CategoryVO getCategory(String name) {
+		// TODO Auto-generated method stub
+		System.out.println("success");
+		return null;
 	}
 
 }

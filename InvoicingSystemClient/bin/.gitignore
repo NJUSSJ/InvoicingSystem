@@ -1,17 +1,4 @@
-<<<<<<< HEAD
-/businesslogicservice/
-/businesslogic/
-/stubs/
-=======
-/businesslogic/
-/businesslogicservice/
-/dataservice/
 /driver/
-/po/
-/presentation/
-<<<<<<< HEAD
 /stubs/
-/vo/
-=======
->>>>>>> 4e5a36e46533e107188e3952b7bb4b02b8e91929
->>>>>>> fd367db6a8bd04a1c83bfa58e112ac906e70b0d1
+/businesslogicservice/
+/presentation/

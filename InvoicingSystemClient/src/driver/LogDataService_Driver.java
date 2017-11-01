@@ -2,9 +2,7 @@ package driver;
 
 import java.rmi.RemoteException;
 
-import po.AccountPO;
 import po.LogPO;
-import stubs.AccountDatabaseServiceMySqlImpl_Stub;
 import stubs.LogDatabaseServiceMySqlImpl_Stub;
 
 public class LogDataService_Driver {

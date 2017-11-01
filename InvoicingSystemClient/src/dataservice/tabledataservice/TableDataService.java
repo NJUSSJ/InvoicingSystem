@@ -1,7 +1,6 @@
 package dataservice.tabledataservice;
 
 import po.BillPO;
-import po.*;
 
 public interface TableDataService {
 

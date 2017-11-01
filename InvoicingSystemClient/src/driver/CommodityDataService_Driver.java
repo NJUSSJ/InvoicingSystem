@@ -1,10 +1,6 @@
 package driver;
 
-import java.rmi.RemoteException;
-
-import po.AccountPO;
 import po.CommodityPO;
-import stubs.AccountDatabaseServiceMySqlImpl_Stub;
 import stubs.CommodityDatabaseServiceMySqlImpl_Stub;
 
 public class CommodityDataService_Driver {

@@ -1,5 +1,7 @@
 package businesslogicservice.billblservice;
 
-public interface WarningBillBLService {
+import vo.BillVO;
 
+public interface WarningBillBLService {
+	public BillVO makeWarningbill(BillVO bill);
 }

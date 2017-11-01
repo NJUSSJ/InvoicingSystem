@@ -2,8 +2,6 @@ package stubs;
 
 import dataservice.tabledataservice.TableDataService;
 import po.BillPO;
-import po.Table_operateConditionPO;
-import po.Table_saleDetailsPO;
 
 public class TableDatabaseServiceMySqlImpl_Stub implements TableDataService {
 	public BillPO find(String field){

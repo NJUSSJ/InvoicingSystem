@@ -3,9 +3,7 @@ package driver;
 import java.rmi.RemoteException;
 
 import po.AccountPO;
-import stubs.AccountBLService_Stub;
 import stubs.AccountDatabaseServiceMySqlImpl_Stub;
-import vo.AccountVO;
 
 public class AccountDataService_Driver {
 

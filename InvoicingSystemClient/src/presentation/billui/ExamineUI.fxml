@@ -12,27 +12,27 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.shape.Circle?>
 
-<AnchorPane prefHeight="398.0" prefWidth="711.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+<AnchorPane prefHeight="500.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
   <children>
-    <SplitPane dividerPositions="0.2736248236953456" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <SplitPane dividerPositions="0.20040080160320642" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <items>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="142.0">
           <children>
             <Label text="ID：" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="220.0" />
             <Label text="Rank：" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="250.0" />
             <Button mnemonicParsing="false" text="登出" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="10.0" />
-            <Circle fill="#a0a4a8" radius="47.0" stroke="#f8f7f7" strokeType="INSIDE" AnchorPane.leftAnchor="49.0" AnchorPane.topAnchor="63.0" />
+            <Circle fill="#a0a4a8" radius="47.0" stroke="#f8f7f7" strokeType="INSIDE" AnchorPane.leftAnchor="52.0" AnchorPane.topAnchor="63.0" />
           </children>
         </AnchorPane>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
           <children>
-            <SplitPane dividerPositions="0.7352941176470589" prefHeight="398.0" prefWidth="417.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <SplitPane dividerPositions="0.6506935687263556" prefHeight="398.0" prefWidth="417.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                   <children>
                     <ScrollPane prefHeight="396.0" prefWidth="344.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                       <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="393.0" prefWidth="399.0">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="604.0" prefWidth="513.0">
                           <children>
                             <ListView prefHeight="394.0" prefWidth="371.9998779296875" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="-1.0" />
                           </children>

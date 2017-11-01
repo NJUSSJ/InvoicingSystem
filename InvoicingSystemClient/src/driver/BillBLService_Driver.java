@@ -29,7 +29,7 @@ public void drive(BillBLService_Stub stub){
 	if(stub.makeOverbill(new BillVO())!=null){
 		System.out.println("makeOverBill success");
 	}
-	if(stub.makeDamagebill(new BillVO())!=null){
+	if(stub.makeLossbill(new BillVO())!=null){
 		System.out.println("makeDamageBill success");
 	}
 	if(stub.makeWarningbill(new BillVO())!=null){

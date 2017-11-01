@@ -1,6 +1,5 @@
 package stubs;
 
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import dataservice.commoditydataservice.CommodityDataService;

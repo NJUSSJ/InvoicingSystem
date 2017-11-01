@@ -67,7 +67,7 @@ public class BillBLService_Stub implements BillBLService {
 	}
 
 	@Override
-	public BillVO makeDamagebill(BillVO bill) {
+	public BillVO makeLossbill(BillVO bill) {
 		// TODO Auto-generated method stub
 		System.out.println("制定报溢单");
 		return new BillVO(ID, Note);
@@ -106,5 +106,6 @@ public class BillBLService_Stub implements BillBLService {
 		System.out.println("制定收款单");
 		return new BillVO(ID, Note);
 	}
-
+	
+	
 }

@@ -2,9 +2,7 @@ package driver;
 
 import java.rmi.RemoteException;
 
-import po.AccountPO;
 import po.BillPO;
-import stubs.AccountDatabaseServiceMySqlImpl_Stub;
 import stubs.BillDatabaseServiceMySqlImpl_Stub;
 
 public class BillDataService_Driver {

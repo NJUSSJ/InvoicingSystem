@@ -2,11 +2,12 @@ package stubs;
 
 import java.util.ArrayList;
 
+import businesslogicservice.memberblservice.MemberBLService;
 import vo.CategoryVO;
 import vo.MemberVO;
 import vo.UserVO;
 
-public class MemberBLService_Stub {
+public class MemberBLService_Stub implements MemberBLService{
 	MemberVO mv;
 	String number;
 	String name;
@@ -33,30 +34,43 @@ public class MemberBLService_Stub {
 		this.should_get=should_get;
 	}
 	
-	public void addmember(MemberVO a){
-		System.out.println("Add successfully");
-	}
 	
-	public void deletemember(MemberVO a){
-		System.out.println("Delete successfully");
-	}
-	
-	public void modifymember(MemberVO a){
-		System.out.println("Modify successfully");
-	}
-	
-	public MemberVO getMember(String number){
-		System.out.println("Get Member Succeed");
-		return null;
-	}
-	
-	public ArrayList<MemberVO> getMemberList(String category) {
-		System.out.println("Get MemberList Succeed");
+	@Override
+	public MemberVO addmember(MemberVO a) {
+		// TODO Auto-generated method stub
+		System.out.println("add member");
 		return null;
 	}
 
-	public String modifyCategory(CategoryVO c) {
-		System.out.println("Modify Category Succeed");
+	@Override
+	public MemberVO deletemember(MemberVO a) {
+		// TODO Auto-generated method stub
+		System.out.println("delete member");
+		return null;
+	}
+
+	@Override
+	public MemberVO findmember(String name) {
+		// TODO Auto-generated method stub
+		System.out.println("find member");
+		return null;
+	}
+
+	@Override
+	public MemberVO updatemember(MemberVO a) {
+		// TODO Auto-generated method stub
+		System.out.println("update member");
+		return null;
+	}
+
+
+	
+
+
+	@Override
+	public ArrayList<MemberVO> findMembers(String field) {
+		// TODO Auto-generated method stub
+		System.out.println("find members");
 		return null;
 	}
 

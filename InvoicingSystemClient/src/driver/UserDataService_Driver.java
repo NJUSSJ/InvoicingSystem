@@ -2,9 +2,7 @@ package driver;
 
 import java.rmi.RemoteException;
 
-import po.LogPO;
 import po.UserPO;
-import stubs.LogDatabaseServiceMySqlImpl_Stub;
 import stubs.UserDatabaseServiceMySqlImpl_Stub;
 
 public class UserDataService_Driver {

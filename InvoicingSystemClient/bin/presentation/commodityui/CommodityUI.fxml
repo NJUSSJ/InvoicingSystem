@@ -14,25 +14,25 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.shape.Circle?>
 
-<AnchorPane prefHeight="497.0" prefWidth="884.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+<AnchorPane prefHeight="500.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
   <children>
-    <SplitPane dividerPositions="0.14965986394557823" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <SplitPane dividerPositions="0.1903807615230461" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <items>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="447.0" prefWidth="190.0">
           <children>
             <Label text="ID：" AnchorPane.bottomAnchor="163.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="220.0" />
             <Label text="Rank：" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="250.0" />
-            <Button mnemonicParsing="false" prefWidth="68.0" text="登出" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="51.0" AnchorPane.rightAnchor="10.0" />
-            <Circle fill="#b7b9bc" radius="42.0" stroke="#f8f1f1" strokeType="INSIDE" AnchorPane.leftAnchor="22.5" AnchorPane.rightAnchor="31.5" AnchorPane.topAnchor="100.0" />
+            <Button minHeight="20.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="75.99990000000253" text="登出" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="101.0" AnchorPane.rightAnchor="10.0" />
+            <Circle fill="#b7b9bc" radius="42.0" stroke="#f8f1f1" strokeType="INSIDE" AnchorPane.leftAnchor="51.5" AnchorPane.rightAnchor="2.5" AnchorPane.topAnchor="100.0" />
           </children>
         </AnchorPane>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
           <children>
-            <SplitPane dividerPositions="0.8" prefHeight="398.0" prefWidth="624.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <SplitPane dividerPositions="0.7783312577833126" prefHeight="398.0" prefWidth="624.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="396.0" prefWidth="269.0">
                   <children>
-                    <SplitPane dividerPositions="0.09775967413441955" orientation="VERTICAL" prefHeight="396.0" prefWidth="527.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <SplitPane dividerPositions="0.09919028340080972" orientation="VERTICAL" prefHeight="396.0" prefWidth="527.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                       <items>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                           <children>
