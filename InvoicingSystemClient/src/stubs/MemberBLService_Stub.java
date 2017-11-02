@@ -3,7 +3,6 @@ package stubs;
 import java.util.ArrayList;
 
 import businesslogicservice.memberblservice.MemberBLService;
-import vo.CategoryVO;
 import vo.MemberVO;
 import vo.UserVO;
 

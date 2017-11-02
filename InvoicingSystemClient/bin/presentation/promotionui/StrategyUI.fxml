@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.ComboBox?>
@@ -7,86 +9,93 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <SplitPane dividerPositions="0.23411371237458195" layoutX="71.0" layoutY="94.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-               <children>
-                  <Label layoutX="38.0" layoutY="255.0" text="ID：" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="220.0" />
-                  <Label layoutX="31.0" layoutY="293.0" text="Rank：" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="250.0" />
-                  <Circle fill="#adb8c3" layoutX="62.0" layoutY="157.0" radius="49.0" stroke="#e8dfdf" strokeType="INSIDE" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="100.0" />
-                  <Button layoutX="76.0" layoutY="361.0" mnemonicParsing="false" text="登出" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="10.0" />
-               </children>
-            </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-               <children>
-                  <SplitPane dividerPositions="0.39141414141414144" layoutX="22.0" layoutY="29.0" orientation="VERTICAL" prefHeight="398.0" prefWidth="455.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <items>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                           <children>
-                              <Label layoutX="6.0" layoutY="7.0" text="争对用户" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
-                              <Label layoutX="14.0" layoutY="29.0" text="用户级别：" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="25.0" />
-                              <Label layoutX="14.0" layoutY="55.0" text="折让：" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="48.0" />
-                              <Label layoutX="14.0" layoutY="84.0" text="代金券：" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="70.0" />
-                              <Button layoutX="418.0" layoutY="100.0" mnemonicParsing="false" text="确认" AnchorPane.rightAnchor="5.0" />
-                              <Button layoutX="398.0" layoutY="127.0" mnemonicParsing="false" text="保存" AnchorPane.rightAnchor="5.0" />
-                              <Label layoutX="17.0" layoutY="104.0" text="赠品：" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="95.0" />
-                              <ChoiceBox layoutX="77.0" layoutY="21.0" prefWidth="150.0" AnchorPane.topAnchor="15.0" />
-                              <TextField layoutX="77.0" layoutY="41.0" AnchorPane.leftAnchor="77.0" AnchorPane.rightAnchor="226.0" AnchorPane.topAnchor="40.0" />
-                              <ChoiceBox layoutX="77.0" layoutY="65.0" prefWidth="150.0" AnchorPane.leftAnchor="77.0" AnchorPane.rightAnchor="226.0" />
-                              <ComboBox layoutX="77.0" layoutY="91.0" prefWidth="150.0" />
-                              <ListView layoutX="252.0" layoutY="12.0" prefHeight="131.0" prefWidth="137.0" />
-                              <Button layoutX="187.0" layoutY="127.0" mnemonicParsing="false" text="Add" AnchorPane.topAnchor="120.0" />
-                              <Button layoutX="401.0" layoutY="74.0" mnemonicParsing="false" text="打开" AnchorPane.rightAnchor="5.0" />
-                           </children>
+<AnchorPane prefHeight="500.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+  <children>
+    <SplitPane dividerPositions="0.15030060120240482" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
+      <items>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <children>
+            <Label text="ID：" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="220.0" />
+            <Label text="Rank：" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="250.0" />
+            <Circle fill="#adb8c3" radius="49.0" stroke="#e8dfdf" strokeType="INSIDE" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="73.0" />
+            <Button mnemonicParsing="false" text="登出" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="10.0" />
+          </children>
+        </AnchorPane>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <children>
+            <SplitPane dividerPositions="0.41330645161290325" orientation="VERTICAL" prefHeight="398.0" prefWidth="455.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                  <children>
+                    <Label text="针对用户" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
+                      <font>
+                        <Font name="System Bold" size="15.0" fx:id="x1" />
+                      </font>
+                    </Label>
+                    <Label text="用户级别：" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="45.0" />
+                    <Label text="折让：" AnchorPane.leftAnchor="32.0" AnchorPane.topAnchor="73.0" />
+                    <Label text="代金券：" AnchorPane.leftAnchor="17.0" AnchorPane.topAnchor="104.0" />
+                    <Button layoutY="60.0" mnemonicParsing="false" text="确认" AnchorPane.rightAnchor="33.0" />
+                    <Button layoutY="106.0" mnemonicParsing="false" text="保存" AnchorPane.rightAnchor="33.0" />
+                    <Label text="赠品：" AnchorPane.leftAnchor="32.0" AnchorPane.topAnchor="133.0" />
+                    <ChoiceBox layoutX="86.0" prefWidth="150.0" AnchorPane.topAnchor="38.0" />
+                    <TextField prefHeight="26.0" prefWidth="150.00009999999747" AnchorPane.leftAnchor="86.0" AnchorPane.rightAnchor="607.0" AnchorPane.topAnchor="69.0" />
+                    <ChoiceBox layoutY="101.0" minHeight="19.999900000002526" prefHeight="27.0" prefWidth="147.0" AnchorPane.leftAnchor="86.0" AnchorPane.rightAnchor="610.0" />
+                    <ComboBox layoutX="86.0" layoutY="131.0" prefWidth="150.0" />
+                    <ListView layoutX="353.0" layoutY="9.0" prefHeight="179.0" prefWidth="392.0" />
+                    <Button layoutX="245.0" mnemonicParsing="false" text="Add" AnchorPane.topAnchor="161.0" />
+                    <Button layoutY="12.0" mnemonicParsing="false" text="打开" AnchorPane.rightAnchor="33.0" />
+                  </children>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                  <children>
+                    <SplitPane dividerPositions="0.5559440559440559" orientation="VERTICAL" prefHeight="265.0" prefWidth="453.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                      <items>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                          <children>
+                            <Label font="$x1" text="针对总价" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
+                            <Label text="总价：" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="47.0" />
+                            <Button mnemonicParsing="false" text="确认" AnchorPane.bottomAnchor="28.5" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="100.5" />
+                            <Button layoutX="759.0" layoutY="57.0" mnemonicParsing="false" text="保存" />
+                            <Label text="代金券：" AnchorPane.leftAnchor="3.0" AnchorPane.topAnchor="82.0" />
+                            <Label text="赠品：" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="118.0" />
+                            <ChoiceBox layoutX="73.0" layoutY="41.0" prefWidth="150.0" />
+                            <ChoiceBox layoutX="73.0" prefWidth="150.0" AnchorPane.topAnchor="75.0" />
+                            <ChoiceBox layoutX="73.0" prefWidth="150.0" AnchorPane.topAnchor="114.0" />
+                            <ListView layoutY="10.0" prefHeight="142.0" prefWidth="392.0" AnchorPane.rightAnchor="97.0" />
+                            <Button layoutX="244.0" layoutY="120.0" mnemonicParsing="false" text="Add" />
+                            <Button layoutY="15.0" mnemonicParsing="false" text="打开" AnchorPane.rightAnchor="26.0" />
+                          </children>
                         </AnchorPane>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                           <children>
-                              <SplitPane dividerPositions="0.5677966101694916" layoutX="50.0" orientation="VERTICAL" prefHeight="265.0" prefWidth="453.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                <items>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                                       <children>
-                                          <Label layoutX="21.0" layoutY="14.0" text="针对总价" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
-                                          <Label layoutX="21.0" layoutY="37.0" text="总价：" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="25.0" />
-                                          <Button layoutX="411.0" layoutY="105.0" mnemonicParsing="false" text="确认" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="105.0" />
-                                          <Button layoutX="406.0" layoutY="79.0" mnemonicParsing="false" text="保存" />
-                                          <Label layoutX="18.0" layoutY="62.0" text="代金券：" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="48.0" />
-                                          <Label layoutX="21.0" layoutY="90.0" text="赠品：" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="70.0" />
-                                          <ChoiceBox layoutX="65.0" layoutY="14.0" prefWidth="150.0" />
-                                          <ChoiceBox layoutX="65.0" layoutY="44.0" prefWidth="150.0" AnchorPane.topAnchor="40.0" />
-                                          <ChoiceBox layoutX="65.0" layoutY="74.0" prefWidth="150.0" AnchorPane.topAnchor="67.0" />
-                                          <ListView layoutX="253.0" layoutY="7.0" prefHeight="117.0" prefWidth="137.0" AnchorPane.rightAnchor="61.0" />
-                                          <Button layoutX="175.0" layoutY="94.0" mnemonicParsing="false" text="Add" />
-                                          <Button layoutX="399.0" layoutY="54.0" mnemonicParsing="false" text="打开" AnchorPane.rightAnchor="5.0" />
-                                       </children>
-                                    </AnchorPane>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="105.0" prefWidth="451.0">
-                                       <children>
-                                          <Label layoutX="23.0" layoutY="7.0" text="特价包" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
-                                          <Label layoutX="5.0" layoutY="20.0" text="商品：" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="25.0" />
-                                          <Label layoutX="23.0" layoutY="56.0" text="价格：" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="48.0" />
-                                          <Button layoutX="397.0" layoutY="71.0" mnemonicParsing="false" text="确认" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
-                                          <Button layoutX="406.0" layoutY="52.0" mnemonicParsing="false" text="保存" AnchorPane.bottomAnchor="31.0" />
-                                          <ChoiceBox layoutX="67.0" layoutY="21.0" prefWidth="150.0" AnchorPane.leftAnchor="67.0" AnchorPane.rightAnchor="234.0" AnchorPane.topAnchor="18.0" />
-                                          <TextField layoutX="61.0" layoutY="45.0" AnchorPane.leftAnchor="67.0" AnchorPane.rightAnchor="234.0" />
-                                          <ListView layoutX="257.0" layoutY="15.0" prefHeight="66.0" prefWidth="137.0" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="61.0" AnchorPane.topAnchor="8.0" />
-                                          <Button layoutX="177.0" layoutY="71.0" mnemonicParsing="false" text="Add" />
-                                          <Button layoutX="399.0" layoutY="21.0" mnemonicParsing="false" text="打开" AnchorPane.rightAnchor="5.0" />
-                                       </children>
-                                    </AnchorPane>
-                                </items>
-                              </SplitPane>
-                           </children>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="105.0" prefWidth="451.0">
+                          <children>
+                            <Label font="$x1" text="特价包" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
+                            <Label text="商品：" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="25.0" />
+                            <Label text="价格：" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="66.0" />
+                            <Button mnemonicParsing="false" text="确认" AnchorPane.bottomAnchor="6.0" AnchorPane.rightAnchor="22.0" />
+                            <Button layoutX="763.0" mnemonicParsing="false" text="保存" AnchorPane.bottomAnchor="45.0" />
+                            <ChoiceBox prefWidth="147.0" AnchorPane.leftAnchor="67.0" AnchorPane.rightAnchor="627.0" AnchorPane.topAnchor="21.0" />
+                            <TextField layoutY="60.0" prefHeight="31.0" prefWidth="150.0" AnchorPane.leftAnchor="67.0" AnchorPane.rightAnchor="624.0" />
+                            <ListView prefHeight="109.0" prefWidth="392.0" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="97.0" AnchorPane.topAnchor="11.0" />
+                            <Button layoutX="244.0" layoutY="92.0" mnemonicParsing="false" prefWidth="56.0" text="Add" />
+                            <Button layoutY="15.0" mnemonicParsing="false" text="打开" AnchorPane.rightAnchor="22.0" />
+                          </children>
                         </AnchorPane>
-                    </items>
-                  </SplitPane>
-               </children>
-            </AnchorPane>
-        </items>
-      </SplitPane>
-   </children>
+                      </items>
+                    </SplitPane>
+                  </children>
+                </AnchorPane>
+              </items>
+            </SplitPane>
+          </children>
+        </AnchorPane>
+      </items>
+    </SplitPane>
+  </children>
 </AnchorPane>
