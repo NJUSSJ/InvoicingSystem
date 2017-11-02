@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -7,72 +9,73 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.shape.Circle?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141">
-   <children>
-      <SplitPane dividerPositions="0.23076923076923078" layoutX="40.0" layoutY="84.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-               <children>
-                  <Button layoutX="68.0" layoutY="321.0" mnemonicParsing="false" text="登出" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="10.0" />
-                  <Label layoutX="68.0" layoutY="220.0" text="ID：" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="220.0" />
-                  <Label layoutX="52.0" layoutY="254.0" text="Rank：" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="250.0" />
-                  <Circle fill="#8a8d90" layoutX="60.0" layoutY="121.0" radius="43.0" stroke="#e4e0e0" strokeType="INSIDE" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="100.0" />
-               </children>
-            </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-               <children>
-                  <SplitPane dividerPositions="0.8712121212121212" layoutX="49.0" layoutY="60.0" orientation="VERTICAL" prefHeight="398.0" prefWidth="457.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <items>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                           <children>
-                              <ScrollPane layoutX="45.0" layoutY="90.0" prefHeight="304.0" prefWidth="455.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                <content>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="302.0" prefWidth="633.0">
-                                       <children>
-                                          <TableView layoutY="-1.0" prefHeight="304.0" prefWidth="814.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-181.0" AnchorPane.topAnchor="0.0">
-                                            <columns>
-                                              <TableColumn prefWidth="75.0" text="编号" />
-                                              <TableColumn prefWidth="75.0" text="分类" />
-                                                <TableColumn prefWidth="75.0" text="级别" />
-                                                <TableColumn prefWidth="75.0" text="姓名" />
-                                                <TableColumn prefWidth="75.0" text="电话" />
-                                                <TableColumn prefWidth="75.0" text="地址" />
-                                                <TableColumn prefWidth="75.0" text="邮编" />
-                                                <TableColumn prefWidth="75.0" text="电子邮箱" />
-                                                <TableColumn prefWidth="75.0" text="应收额度" />
-                                                <TableColumn prefWidth="75.0" text="应收" />
-                                                <TableColumn prefWidth="75.0" text="应付" />
-                                                <TableColumn prefWidth="75.0" text="默认业务员" />
-                                            </columns>
-                                             <columnResizePolicy>
-                                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                                             </columnResizePolicy>
-                                          </TableView>
-                                       </children>
-                                    </AnchorPane>
-                                </content>
-                              </ScrollPane>
-                           </children>
+<AnchorPane prefHeight="500.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+  <children>
+    <SplitPane dividerPositions="0.20040080160320642" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <items>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <children>
+            <Button mnemonicParsing="false" text="登出" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="10.0" />
+            <Label text="ID：" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="220.0" />
+            <Label text="Rank：" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="250.0" />
+            <Circle fill="#8a8d90" radius="43.0" stroke="#e4e0e0" strokeType="INSIDE" AnchorPane.leftAnchor="56.0" AnchorPane.topAnchor="87.0" />
+          </children>
+        </AnchorPane>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <children>
+            <SplitPane dividerPositions="0.7963709677419355" orientation="VERTICAL" prefHeight="398.0" prefWidth="457.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                  <children>
+                    <ScrollPane prefHeight="304.0" prefWidth="455.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                      <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="415.0" prefWidth="907.0">
+                          <children>
+                            <TableView prefHeight="302.0" prefWidth="633.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <columnResizePolicy>
+                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                              </columnResizePolicy>
+                              <columns>
+                                <TableColumn prefWidth="75.0" text="编号" />
+                                <TableColumn prefWidth="75.0" text="分类" />
+                                <TableColumn prefWidth="75.0" text="级别" />
+                                <TableColumn prefWidth="75.0" text="姓名" />
+                                <TableColumn prefWidth="75.0" text="电话" />
+                                <TableColumn prefWidth="75.0" text="地址" />
+                                <TableColumn prefWidth="75.0" text="邮编" />
+                                <TableColumn prefWidth="75.0" text="电子邮箱" />
+                                <TableColumn prefWidth="75.0" text="应收额度" />
+                                <TableColumn prefWidth="75.0" text="应收" />
+                                <TableColumn prefWidth="75.0" text="应付" />
+                                <TableColumn prefWidth="75.0" text="默认业务员" />
+                              </columns>
+                            </TableView>
+                          </children>
                         </AnchorPane>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                           <children>
-                              <Button layoutX="55.0" layoutY="14.0" mnemonicParsing="false" text="删除" />
-                              <Button layoutY="14.0" mnemonicParsing="false" text="新增" AnchorPane.leftAnchor="5.0" />
-                              <Button layoutX="110.0" layoutY="14.0" mnemonicParsing="false" text="编辑" AnchorPane.leftAnchor="105.0" />
-                              <Button layoutX="386.0" layoutY="14.0" mnemonicParsing="false" text="确认" />
-                              <Label layoutX="172.0" layoutY="18.0" text="查询：" />
-                              <TextField layoutX="212.0" layoutY="14.0" />
-                           </children>
-                        </AnchorPane>
-                    </items>
-                  </SplitPane>
-               </children>
-            </AnchorPane>
-        </items>
-      </SplitPane>
-   </children>
+                      </content>
+                    </ScrollPane>
+                  </children>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                  <children>
+                    <Button layoutX="68.0" layoutY="13.0" mnemonicParsing="false" text="删除" />
+                    <Button layoutY="14.0" mnemonicParsing="false" text="新增" AnchorPane.leftAnchor="5.0" />
+                    <Button layoutY="14.0" mnemonicParsing="false" text="编辑" AnchorPane.leftAnchor="135.0" />
+                    <Button layoutX="691.0" layoutY="57.0" mnemonicParsing="false" text="确认" />
+                    <Label layoutX="483.0" layoutY="20.0" text="查询：" />
+                    <TextField layoutX="553.0" layoutY="14.0" />
+                  </children>
+                </AnchorPane>
+              </items>
+            </SplitPane>
+          </children>
+        </AnchorPane>
+      </items>
+    </SplitPane>
+  </children>
 </AnchorPane>

@@ -18,7 +18,7 @@ public class LogBLService_Stub implements LogBLService{
 	}
 	
 	public void checkRecord(){
-		LogVO lv=new LogVO(operate_time,operate_type,operator);
+		
 		System.out.print("check log");
 	}
 	

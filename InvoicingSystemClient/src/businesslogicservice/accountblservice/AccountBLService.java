@@ -1,7 +1,5 @@
 package businesslogicservice.accountblservice;
 
-import java.util.ArrayList;
-
 import vo.AccountVO;
 
 public interface AccountBLService {
