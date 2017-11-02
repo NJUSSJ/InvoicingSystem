@@ -6,5 +6,7 @@ package vo;
  *
  */
 public class WarningBillVO {
-
+	long id;
+	UserVO user;
+	String[][] commoditys;
 }

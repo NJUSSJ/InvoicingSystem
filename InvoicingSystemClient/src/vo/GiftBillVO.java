@@ -10,6 +10,6 @@ import java.util.ArrayList;
 public class GiftBillVO {
 	long id;
 	UserVO user;
-	ArrayList<CommodityVO> accountList;
+	String[][] commoditys;
 	
 }
