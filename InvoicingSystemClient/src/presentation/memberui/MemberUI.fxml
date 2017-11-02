@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -9,26 +7,24 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.*?>
 <?import javafx.scene.shape.Circle?>
 
-<AnchorPane prefHeight="500.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+<AnchorPane prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <SplitPane dividerPositions="0.20040080160320642" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <items>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
           <children>
-            <Button mnemonicParsing="false" text="登出" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="10.0" />
-            <Label text="ID：" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="220.0" />
-            <Label text="Rank：" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="250.0" />
-            <Circle fill="#8a8d90" radius="43.0" stroke="#e4e0e0" strokeType="INSIDE" AnchorPane.leftAnchor="56.0" AnchorPane.topAnchor="87.0" />
+            <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="58.0" text="登出" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="10.0" />
+            <Label layoutX="14.0" layoutY="228.0" text="ID：" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="228.0" />
+            <Label layoutX="12.0" layoutY="261.0" prefHeight="23.0" prefWidth="47.0" text="Rank：" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="261.0" />
+            <Circle fill="#8a8d90" layoutX="90.0" layoutY="121.0" radius="52.0" stroke="#e4e0e0" strokeType="INSIDE" AnchorPane.leftAnchor="38.0" AnchorPane.topAnchor="69.0" />
           </children>
         </AnchorPane>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
           <children>
-            <SplitPane dividerPositions="0.7963709677419355" orientation="VERTICAL" prefHeight="398.0" prefWidth="457.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <SplitPane dividerPositions="0.8528225806451613" orientation="VERTICAL" prefHeight="398.0" prefWidth="457.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                   <children>
@@ -61,14 +57,16 @@
                     </ScrollPane>
                   </children>
                 </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="73.0" prefWidth="793.0">
                   <children>
-                    <Button layoutX="68.0" layoutY="13.0" mnemonicParsing="false" text="删除" />
-                    <Button layoutY="14.0" mnemonicParsing="false" text="新增" AnchorPane.leftAnchor="5.0" />
-                    <Button layoutY="14.0" mnemonicParsing="false" text="编辑" AnchorPane.leftAnchor="135.0" />
-                    <Button layoutX="691.0" layoutY="57.0" mnemonicParsing="false" text="确认" />
-                    <Label layoutX="483.0" layoutY="20.0" text="查询：" />
-                    <TextField layoutX="553.0" layoutY="14.0" />
+                    <Button layoutX="96.0" layoutY="19.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="58.0" text="删除" />
+                    <Button layoutX="14.0" layoutY="19.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="58.0" text="新增" AnchorPane.leftAnchor="14.0" />
+                    <Button layoutX="178.0" layoutY="19.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="58.0" text="编辑" AnchorPane.leftAnchor="178.0" />
+                    <Button layoutX="732.0" layoutY="37.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="47.0" text="确认" />
+                    <Label layoutX="485.0" layoutY="44.0" text="查询：" />
+                    <TextField layoutX="542.0" layoutY="8.0" />
+                              <Label layoutX="485.0" layoutY="12.0" text="领域：" />
+                              <TextField layoutX="542.0" layoutY="40.0" />
                   </children>
                 </AnchorPane>
               </items>
