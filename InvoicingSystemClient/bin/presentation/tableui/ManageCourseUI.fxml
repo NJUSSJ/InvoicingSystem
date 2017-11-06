@@ -54,6 +54,7 @@
                               <Label layoutX="420.0" layoutY="22.0" text="年" />
                               <Label layoutX="499.0" layoutY="22.0" text="月" />
                               <Label layoutX="577.0" layoutY="22.0" text="日" AnchorPane.leftAnchor="575.0" />
+                              <Button layoutX="732.0" layoutY="26.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="65.0" text="导出" />
                            </children>
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">

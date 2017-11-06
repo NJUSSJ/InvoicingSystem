@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.*?>
 <?import javafx.scene.shape.Circle?>
 
-<AnchorPane prefHeight="500.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+<AnchorPane prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <SplitPane dividerPositions="0.20040080160320642" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <items>
@@ -31,7 +27,7 @@
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                   <children>
                     <Button mnemonicParsing="false" text="新增" AnchorPane.bottomAnchor="11.0" AnchorPane.rightAnchor="22.0" />
-                    <Button mnemonicParsing="false" text="导入" AnchorPane.bottomAnchor="11.0" AnchorPane.rightAnchor="105.0" />
+                    <Button layoutX="682.0" layoutY="147.0" mnemonicParsing="false" text="导入" AnchorPane.bottomAnchor="11.0" AnchorPane.rightAnchor="71.0" />
                     <Label text="名称" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="34.0" />
                     <Label text="类别" AnchorPane.leftAnchor="262.0" AnchorPane.topAnchor="34.0" />
                     <Label text="型号" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="64.0" />
@@ -44,7 +40,7 @@
                     <TextField layoutX="71.0" layoutY="63.0" prefHeight="23.0" prefWidth="124.0" />
                     <TextField layoutX="71.0" layoutY="93.0" prefHeight="23.0" prefWidth="124.0" />
                     <TextField layoutX="71.0" layoutY="126.0" prefHeight="23.0" prefWidth="124.0" />
-                    <ChoiceBox layoutX="355.0" layoutY="25.0" prefHeight="23.0" prefWidth="136.0" />
+                    <ChoiceBox layoutX="355.0" layoutY="32.0" prefHeight="23.0" prefWidth="136.0" />
                     <TextField layoutX="355.0" layoutY="101.0" prefHeight="23.0" prefWidth="136.0" />
                     <TextField layoutX="355.0" layoutY="68.0" prefHeight="23.0" prefWidth="136.0" />
                   </children>
@@ -56,7 +52,7 @@
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                           <children>
                             <Button mnemonicParsing="false" text="新增" AnchorPane.bottomAnchor="11.0" AnchorPane.rightAnchor="14.0" />
-                            <Button mnemonicParsing="false" text="导入" AnchorPane.bottomAnchor="11.0" AnchorPane.rightAnchor="100.0" />
+                            <Button layoutX="687.0" layoutY="117.0" mnemonicParsing="false" text="导入" AnchorPane.bottomAnchor="11.0" AnchorPane.rightAnchor="64.0" />
                             <Label text="客户信息" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="5.0" />
                             <Label text="名称" AnchorPane.leftAnchor="13.0" AnchorPane.topAnchor="40.0" />
                             <Label text="类别" AnchorPane.leftAnchor="263.0" AnchorPane.topAnchor="27.0" />
@@ -72,8 +68,8 @@
                         </AnchorPane>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                           <children>
-                            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="56.0" text="导入" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="97.0" />
-                            <Button mnemonicParsing="false" text="新增" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="5.0" />
+                            <Button layoutX="689.0" layoutY="116.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="40.0" text="导入" AnchorPane.bottomAnchor="11.0" AnchorPane.rightAnchor="62.0" />
+                            <Button layoutX="737.0" layoutY="116.0" mnemonicParsing="false" text="新增" AnchorPane.bottomAnchor="11.0" AnchorPane.rightAnchor="14.0" />
                             <Label text="账户信息" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="5.0" />
                             <Label text="名称" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="44.0" />
                             <Label text="余额" AnchorPane.leftAnchor="267.0" AnchorPane.topAnchor="49.0" />
