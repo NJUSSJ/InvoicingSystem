@@ -3,13 +3,14 @@ package vo;
 import java.sql.Time;
 
 public class CommodityVO {
-	String name;
-	int ID;
-	int stock_num;
-	int price;
-	int batch;//批次
-	int batch_num;
-	Time produce_time;
+	
+	 String name;
+	 int ID;
+	 int stock_num;
+	 int price;
+	 int batch;//批次
+	 int batch_num;
+	 Time produce_time;
 	
 	public CommodityVO(String name,
 	int ID,
@@ -30,5 +31,13 @@ public class CommodityVO {
 
 	public CommodityVO() {
 		// TODO 自动生成的构造函数存根
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public int getPrice() {
+		return price;
 	}
 }
