@@ -41,9 +41,9 @@ public class PromotionBLService_Stub implements PromotionBLService {
 	   return null;
    }
 @Override
-public void getPromotion(long id) {
+public PromotionVO getPromotion(long id) {
 	// TODO Auto-generated method stub
-	
+	return null;
 }
 
 
