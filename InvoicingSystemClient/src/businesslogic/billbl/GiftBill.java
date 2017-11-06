@@ -1,5 +1,10 @@
 package businesslogic.billbl;
 
-public class GiftBill extends Bill {
+import po.GiftBillPO;
+import vo.GiftBillVO;
 
+public class GiftBill extends Bill {
+	public GiftBillPO makeGiftBill(GiftBillVO vo){
+		return null;
+	}
 }

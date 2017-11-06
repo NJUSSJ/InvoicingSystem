@@ -1,5 +1,10 @@
 package businesslogic.billbl;
 
-public class PayBill extends Bill {
+import po.PayBillPO;
+import vo.PayBillVO;
 
+public class PayBill extends Bill {
+	public PayBillPO makePaybill(PayBillVO vo){
+		return null;
+	}
 }

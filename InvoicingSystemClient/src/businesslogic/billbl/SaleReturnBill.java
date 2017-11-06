@@ -1,5 +1,10 @@
 package businesslogic.billbl;
 
-public class SaleReturnBill extends Bill {
+import po.SaleReturnBillPO;
+import vo.SaleReturnBillVO;
 
+public class SaleReturnBill extends Bill {
+	public SaleReturnBillPO makeSale_Returnbill(SaleReturnBillVO vo){
+		return null;
+	}
 }
