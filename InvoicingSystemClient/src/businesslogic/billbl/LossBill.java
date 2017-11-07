@@ -1,12 +1,28 @@
 package businesslogic.billbl;
 
 import businesslogicservice.billblservice.LossBillBLService;
-import po.LossBillPO;
 import vo.LossBillVO;
 
-public class LossBill extends Bill implements LossBillBLService {
-	CommodityList list;
-	public LossBillPO makeLossBill(LossBillVO vo){
+public class LossBill  implements LossBillBLService {
+	CommodityList lossList;
+	LossBillVO lossbill;
+	
+	@Override
+	public String conveyBill(LossBillVO lossbill) {
+		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public LossBillVO checkBill(LossBillVO lossbill) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public LossBillVO toBillVO(long id, String user, String member, CommodityList list,int time) {
+		// TODO Auto-generated method stub
+		lossbill=new LossBillVO(id, user, list, time);
+		return lossbill;
+	}
+	
+	
 }

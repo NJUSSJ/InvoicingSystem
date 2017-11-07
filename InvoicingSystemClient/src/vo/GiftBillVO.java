@@ -1,6 +1,6 @@
 package vo;
 
-import java.util.ArrayList;
+import businesslogic.billbl.CommodityList;
 
 /**
  * 
@@ -9,7 +9,16 @@ import java.util.ArrayList;
  */
 public class GiftBillVO {
 	long id;
-	UserVO user;
-	String[][] commoditys;
+	String user;
+	CommodityList list;
+	int time;
+	Boolean state=false;
+	public GiftBillVO(long id,String user,CommodityList list,int time) {
+		// TODO Auto-generated constructor stub
+		this.id=id;
+		this.user=user;
+		this.list=list;
+		this.time=time;
+	}
 	
 }

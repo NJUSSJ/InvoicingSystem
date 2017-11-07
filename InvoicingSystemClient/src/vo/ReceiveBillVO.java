@@ -1,7 +1,5 @@
 package vo;
 
-import java.util.ArrayList;
-
 /**
  * 
  * @author yrz
@@ -9,8 +7,16 @@ import java.util.ArrayList;
  */
 public class ReceiveBillVO {
 	long id;
-	UserVO user;
-	MemberVO member;
-	ArrayList<AccountVO> accountList;
-	String[][] items;
+	String user;
+	String member;
+	int sum;
+	int time;
+	
+	public ReceiveBillVO(long id ,String user,String member,int sum,int time) {
+		this.id=id;
+		this.sum=sum;
+		this.member=member;
+		this.user=user;
+		this.time=time;
+	}
 }

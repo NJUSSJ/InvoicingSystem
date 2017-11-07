@@ -1,7 +1,9 @@
 package businesslogicservice.billblservice;
 
-import vo.BillVO;
+import vo.ReceiveBillVO;
 
 public interface ReceiveBillBLService {
-	public BillVO makeReceivebill(BillVO bill);
+	public ReceiveBillVO toBillVO(long id, String user,String member,int sum ,int time);
+	public String conveyBill(ReceiveBillVO paybill);
+	public ReceiveBillVO checkBill(ReceiveBillVO paybill);
 }

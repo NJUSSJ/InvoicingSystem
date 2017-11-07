@@ -1,7 +1,10 @@
 package businesslogicservice.billblservice;
 
-import vo.BillVO;
+import businesslogic.billbl.CommodityList;
+import vo.WarningBillVO;
 
 public interface WarningBillBLService {
-	public BillVO makeWarningbill(BillVO bill);
+	public WarningBillVO toiBillVO(long id, String user,CommodityList list,int time);
+	public String conveyBill(WarningBillVO warningbill);
+	public WarningBillVO checkBill(WarningBillVO warninbill);
 }

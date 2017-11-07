@@ -4,7 +4,6 @@ import java.rmi.RemoteException;
 
 import stubs.AccountBLService_Stub;
 import stubs.AccountDatabaseServiceMySqlImpl_Stub;
-import stubs.BillBLService_Stub;
 import stubs.BillDatabaseServiceMySqlImpl_Stub;
 import stubs.CommodityBLService_Stub;
 import stubs.CommodityDatabaseServiceMySqlImpl_Stub;
@@ -26,8 +25,7 @@ public static void main(String[] args){
 	abldriver.drive(new AccountBLService_Stub(0, null, 0, null));
 	AccountDataService_Driver addriver=new AccountDataService_Driver();
 	addriver.drive(new AccountDatabaseServiceMySqlImpl_Stub());
-	BillBLService_Driver bbldriver=new BillBLService_Driver();
-	bbldriver.drive(new BillBLService_Stub(null, null, null));
+	
 	BillDataService_Driver bddriver=new BillDataService_Driver();
 	bddriver.drive(new BillDatabaseServiceMySqlImpl_Stub());
 	CommodityBLService_Driver cbldriver=new CommodityBLService_Driver();

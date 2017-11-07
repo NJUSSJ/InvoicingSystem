@@ -1,7 +1,10 @@
 package businesslogicservice.billblservice;
 
-import vo.BillVO;
+import businesslogic.billbl.CommodityList;
+import vo.OverBillVO;
 
 public interface OverBillBLService {
-	public BillVO makeOverbill(BillVO bill);
+	public OverBillVO toBillVO(long id,String user,String member,CommodityList list,int time);
+	public String conveyBill(OverBillVO overbill);
+	public OverBillVO checkBill(OverBillVO overbill);
 }

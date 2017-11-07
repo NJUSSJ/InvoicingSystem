@@ -1,4 +1,7 @@
 package vo;
+
+import businesslogic.billbl.CommodityList;
+
 /**
  * 
  * @author yrz
@@ -7,6 +10,13 @@ package vo;
  */
 public class LossBillVO {
 	long id;
-	UserVO user;
-	String[][] commoditys;
+	String user;
+	CommodityList commoditys;
+	int time;
+	public LossBillVO(long id,String user,CommodityList list, int time) {
+		// TODO Auto-generated constructor stub
+		this.id=id;
+		this.commoditys=list;
+		this.user=user;
+	}
 }

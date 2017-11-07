@@ -1,8 +1,18 @@
 package businesslogicservice.billblservice;
 
-import vo.BillVO;
+import java.util.ArrayList;
+
+import businesslogic.billbl.CommodityLineItem;
+import businesslogic.billbl.CommodityList;
+import vo.SaleBillVO;
 
 public interface SaleBillBLService {
-	public BillVO makeSalebill(BillVO bill);
-	//要记得添加get方法
+	public ArrayList<CommodityLineItem> getCommoditys(String field);
+	public void addCommodityItem(CommodityLineItem item);
+	public void deleteCommodityItem(CommodityLineItem item);
+	public void setPromotion();
+	public int getTotal();
+	public SaleBillVO toBillVO(long id,String user,String member,int sum,CommodityList list,int time);
+	public String conveyBill(SaleBillVO salebill);
+	public SaleBillVO checkBill(SaleBillVO salebill);
 }

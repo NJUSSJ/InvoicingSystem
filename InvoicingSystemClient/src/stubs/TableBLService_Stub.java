@@ -57,7 +57,7 @@ public class TableBLService_Stub implements TableBLService {
 	};
 	public void Red(String id,String Note){
 		System.out.println("新账单建立");
-		bv=new BillVO(id,Note);
+		bv=new BillVO();
 	};
 }
 
