@@ -1,68 +1,74 @@
 package businesslogic.billbl;
 
-import po.CashBillPO;
-import po.GiftBillPO;
-import po.ImportBillPO;
-import po.ImportReturnBillPO;
-import po.LossBillPO;
-import po.OverBillPO;
-import po.PayBillPO;
-import po.ReceiveBillPO;
-import po.SaleBillPO;
-import po.SaleReturnBillPO;
-import po.WarningBillPO;
-import vo.BillVO;
-import vo.CashBillVO;
-import vo.GiftBillVO;
-import vo.ImportBillVO;
-import vo.ImportReturnBillVO;
-import vo.LossBillVO;
-import vo.OverBillVO;
-import vo.PayBillVO;
-import vo.ReceiveBillVO;
-import vo.SaleBillVO;
-import vo.SaleReturnBillVO;
-import vo.WarningBillVO;
+import businesslogicservice.billblservice.BillBLService;
 
-public class BillController {
-	public ImportBillPO makeImportbill(ImportBillVO vo){
-		return null;
+public class BillController implements BillBLService {
+
+	@Override
+	public void makeCashBill() {
+		// TODO Auto-generated method stub
+		
 	}
-	public ImportReturnBillPO makeImportReturnbill(ImportReturnBillVO vo){
-		return null;
+
+	@Override
+	public void makeGiftBill() {
+		// TODO Auto-generated method stub
+		
 	}
-	public SaleBillPO makeSaleBill(SaleBillVO vo){
-		return null;
+
+	@Override
+	public void makeImportBill() {
+		// TODO Auto-generated method stub
+		
 	}
-	public SaleReturnBillPO makeSaleReturnBill(SaleReturnBillVO vo){
-		return null;
+
+	@Override
+	public void makeImportReturnBill() {
+		// TODO Auto-generated method stub
+		
 	}
-	public PayBillPO makePayBill(PayBillVO vo){
-		return null;
+
+	@Override
+	public void makeSaleBill() {
+		// TODO Auto-generated method stub
+		
 	}
-	public ReceiveBillPO makeReceiveBill(ReceiveBillVO vo){
-		return null;
+
+	@Override
+	public void makeSaleReturnBill() {
+		// TODO Auto-generated method stub
+		
 	}
-	public GiftBillPO makeGiftBill(GiftBillVO vo){
-		return null;
+
+	@Override
+	public void makeLossBill() {
+		// TODO Auto-generated method stub
+		
 	}
-	public OverBillPO makeOverBill(OverBillVO vo){
-		return null;
+
+	@Override
+	public void makeOverBill() {
+		// TODO Auto-generated method stub
+		
 	}
-	public WarningBillPO makeWarningBill(WarningBillVO vo){
-		return null;
+
+	@Override
+	public void makePayBill() {
+		// TODO Auto-generated method stub
+		
 	}
-	public CashBillPO makeCashBill(CashBillVO vo){
-		return null;
+
+	@Override
+	public void makeReceiveBill() {
+		// TODO Auto-generated method stub
+		
 	}
-	public LossBillPO makeLossBill(LossBillVO vo){
-		return null;
+
+	@Override
+	public void makeWarningBill() {
+		// TODO Auto-generated method stub
+		
 	}
-	public String conveyBill(BillVO vo){
-		return null;
-	}
-	public String checkBill(BillVO vo){
-		return null;
-	}
+	
 
 }

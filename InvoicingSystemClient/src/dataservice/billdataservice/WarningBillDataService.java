@@ -1,8 +1,6 @@
 package dataservice.billdataservice;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
-
 import po.WarningBillPO;
 
 public interface WarningBillDataService {
