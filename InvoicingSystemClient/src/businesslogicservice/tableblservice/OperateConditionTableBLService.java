@@ -1,8 +1,7 @@
 package businesslogicservice.tableblservice;
 
 import java.util.ArrayList;
-
-import businesslogic.tablebl.TradeBillItem;
+import businesslogic.tablebl.FinanceBillItem;
 import vo.OperateConditionTableVO;
 
 /**
@@ -11,10 +10,10 @@ import vo.OperateConditionTableVO;
  */
 public interface OperateConditionTableBLService {
 	public void setTime(int begin,int end);
-	public void addTradeBillItem(TradeBillItem item);
-	public void deleteTradeBillItem(TradeBillItem item);
-	public double calculateIncome(ArrayList<TradeBillItem> list);
-	public double calculateExpense(ArrayList<TradeBillItem> list);
-	public double calculateProfit();
+	public void addFinanceBillItem(FinanceBillItem item);
+	public void deleteFinanceBillItem(FinanceBillItem item);
+	public double getIncome();
+	public double getExpense();
+	public double getProfit();
 	public OperateConditionTableVO toOperateConditionTableVO();
 }

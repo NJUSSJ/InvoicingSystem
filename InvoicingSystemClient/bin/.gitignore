@@ -1,9 +1,9 @@
-/businesslogic/
-/businesslogicservice/
-/data/
 /dataservice/
 /driver/
 /po/
-/presentation/
 /stubs/
 /vo/
+/businesslogic/
+/businesslogicservice/
+/data/
+/presentation/

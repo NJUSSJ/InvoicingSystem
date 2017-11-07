@@ -3,6 +3,7 @@ package businesslogic.tablebl;
 import java.util.ArrayList;
 
 import businesslogicservice.tableblservice.SaleDetailsTableBLService;
+import vo.SaleDetailsTableVO;
 
 /**
  * 
@@ -33,6 +34,12 @@ public class SaleDetailsTable implements SaleDetailsTableBLService{
 
 	@Override
 	public ArrayList<BillItem> checkBillItem(String field) {
+		// TODO 自动生成的方法存根
+		return null;
+	}
+
+	@Override
+	public SaleDetailsTableVO toSalesDetailsTableVO() {
 		// TODO 自动生成的方法存根
 		return null;
 	}

@@ -12,7 +12,8 @@ import vo.OperateConditionTableVO;
 public class OperateConditionTable  implements OperateConditionTableBLService{
 	int  beginTime;
 	int  endTime;
-	ArrayList<TradeBillItem> list;
+	ArrayList<FinanceBillItem> inlist=new ArrayList<FinanceBillItem>();
+	ArrayList<FinanceBillItem> outlist=new ArrayList<FinanceBillItem>();
 	double profit;
 	double income;
 	double expense;
@@ -24,33 +25,45 @@ public class OperateConditionTable  implements OperateConditionTableBLService{
 	}
 
 	@Override
-	public void addTradeBillItem(TradeBillItem item) {
+	public void addFinanceBillItem(FinanceBillItem item) {
+		// TODO 自动生成的方法存根
+		if(item.money<0){
+			outlist.add(item);
+		}else{
+			inlist.add(item);
+		}
+	}
+
+	@Override
+	public void deleteFinanceBillItem(FinanceBillItem item) {
 		// TODO 自动生成的方法存根
 		
 	}
 
 	@Override
-	public void deleteTradeBillItem(TradeBillItem item) {
+	public double getIncome() {
 		// TODO 自动生成的方法存根
-		
+		double sum=0;
+		for(int i=0;i<inlist.size();i++){
+			sum=sum+((MockFinanceBillItem)inlist.get(i)).getMoney();
+		}
+		return sum;
 	}
 
 	@Override
-	public double calculateIncome(ArrayList<TradeBillItem> list) {
+	public double getExpense() {
 		// TODO 自动生成的方法存根
-		return 0;
+		double sum=0;
+		for(int i=0;i<outlist.size();i++){
+			sum+=((MockFinanceBillItem)outlist.get(i)).getMoney();
+		}
+		return sum;
 	}
 
 	@Override
-	public double calculateExpense(ArrayList<TradeBillItem> list) {
+	public double getProfit() {
 		// TODO 自动生成的方法存根
-		return 0;
-	}
-
-	@Override
-	public double calculateProfit() {
-		// TODO 自动生成的方法存根
-		return 0;
+		return getIncome()+getExpense();
 	}
 
 	@Override
@@ -58,5 +71,6 @@ public class OperateConditionTable  implements OperateConditionTableBLService{
 		// TODO 自动生成的方法存根
 		return null;
 	}
+
 
 }
