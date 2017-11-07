@@ -34,7 +34,7 @@ public class GiftBill  implements GiftBillBLService {
 	@Override
 	public GiftBillVO toBillVO(CommodityList list, long id, String user, String member, int time) {
 		// TODO Auto-generated method stub
-		giftbill=new GiftBillVO(id, user, list, time);
+		giftbill=new GiftBillVO(id, user,member, list, time);
 		return giftbill;
 	}
 
