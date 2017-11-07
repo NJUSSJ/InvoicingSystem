@@ -13,9 +13,12 @@ public class ImportBill implements ImportBillBLService {
 	String User;
 	String Member;
 	
+	
+	
 	public ImportBill(long id,String user,String member) {
 		// TODO Auto-generated constructor stub
 		this.id=id;this.User=user;this.Member=member;
+		list=new CommodityList();
 	}
 	
 	@Override
@@ -26,12 +29,13 @@ public class ImportBill implements ImportBillBLService {
 	@Override
 	public void addCommodityItem(CommodityLineItem item) {
 		// TODO Auto-generated method stub
+		list.addCommodity(item);
 		
 	}
 	@Override
 	public void deleteCommodityItem(CommodityLineItem item) {
 		// TODO Auto-generated method stub
-		
+		list.deleteCommodity(item);
 	}
 	
 	public CommodityList getList() {

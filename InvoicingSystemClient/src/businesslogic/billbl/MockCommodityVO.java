@@ -1,8 +1,10 @@
-package vo;
+package businesslogic.billbl;
 
 import java.sql.Time;
 
-public class CommodityVO {
+import vo.CommodityVO;
+
+public class MockCommodityVO extends CommodityVO {
 	
 	 String name;
 	 int ID;
@@ -12,10 +14,10 @@ public class CommodityVO {
 	 int batch_num;
 	 Time produce_time;
 	
-	public CommodityVO(String name,
+	public MockCommodityVO(String name,
 	int ID,
 	int stock_num,
-	double price,
+	int price,
 	int batch,
 	int batch_num,
 	Time produce_time) {
@@ -28,9 +30,12 @@ public class CommodityVO {
 		this.price=price;
 		this.produce_time=produce_time;
 	}
+	
 
-	public CommodityVO() {
+
+	public MockCommodityVO(int price) {
 		// TODO 自动生成的构造函数存根
+		this.price=price;
 	}
 	
 	public String getName() {

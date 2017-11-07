@@ -5,7 +5,7 @@ import vo.CommodityVO;
 public class CommodityLineItem {
 	int num;
 	String name;
-	int price;
+	double price;
 	public CommodityLineItem(CommodityVO commodity,int num) {
 		// TODO Auto-generated constructor stub
 		this.num=num;

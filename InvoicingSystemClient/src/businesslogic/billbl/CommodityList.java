@@ -3,6 +3,7 @@ package businesslogic.billbl;
 import java.util.ArrayList;
 
 public class CommodityList {
+	
 	ArrayList<CommodityLineItem> list;
 	
 	public CommodityList() {
@@ -15,7 +16,11 @@ public class CommodityList {
 	}
 	
 	public void deleteCommodity(CommodityLineItem item) {
-		list.remove(item);
+		for(int i=0;i<list.size();i++) {
+			if(list.get(i).equals(item)) {
+				list.remove(i);
+			}
+		}
 	}
 	
 	public int getTotal() {
