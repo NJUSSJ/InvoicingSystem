@@ -17,7 +17,7 @@ public class TableBLService_Stub implements TableBLService {
 	int profit;
     int in_sale;
 	int discount_sale;
-	int in_commodity;
+	int in_commodity; 
 	int discount_commodity;
 	int out_sale;
 	int out_commodity;
