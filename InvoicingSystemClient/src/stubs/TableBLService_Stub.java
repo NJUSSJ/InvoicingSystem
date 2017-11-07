@@ -6,14 +6,14 @@ import java.util.ArrayList;
 import businesslogicservice.tableblservice.TableBLService;
 import vo.BillVO;
 import vo.CommodityVO;
-import vo.Table_operateConditionVO;
-import vo.Table_saleDetailsVO;
+import vo.OperateConditionTableVO;
+import vo.SaleDetailsTableVO;
 
 public class TableBLService_Stub implements TableBLService {
 	BillVO bv;
 	String id;
 	String Note;
-	Table_operateConditionVO tov;
+	OperateConditionTableVO tov;
 	int profit;
     int in_sale;
 	int discount_sale;
@@ -21,7 +21,7 @@ public class TableBLService_Stub implements TableBLService {
 	int discount_commodity;
 	int out_sale;
 	int out_commodity;
-	Table_saleDetailsVO tao;
+	SaleDetailsTableVO tao;
 	Time t;
 	ArrayList<BillVO> billlist=new ArrayList<BillVO>();
 	ArrayList<CommodityVO> commoditylist=new ArrayList<CommodityVO>();
@@ -40,13 +40,13 @@ public class TableBLService_Stub implements TableBLService {
 		this.billlist=billlist;
 	}
 	
-	public Table_saleDetailsVO getSaleDetails(String field){
-		tao=new Table_saleDetailsVO(t,commoditylist,total_num);
+	public SaleDetailsTableVO getSaleDetails(String field){
+		tao=new SaleDetailsTableVO(t,commoditylist,total_num);
 		System.out.println("Get SaleDetails Succeed");
 		return tao;
 	};
-	public Table_operateConditionVO getOprateCondition(String field){
-	 tov=new Table_operateConditionVO(profit,in_sale,discount_sale,in_commodity,discount_commodity,out_sale,out_commodity);
+	public OperateConditionTableVO getOprateCondition(String field){
+	 tov=new OperateConditionTableVO(profit,in_sale,discount_sale,in_commodity,discount_commodity,out_sale,out_commodity);
 	 System.out.println("Get OprateCondition Succeed");	
 	 return tov;
 	};
