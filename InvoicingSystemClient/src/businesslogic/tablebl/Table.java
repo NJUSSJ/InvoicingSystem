@@ -4,19 +4,19 @@ import java.util.ArrayList;
 
 import businesslogicservice.tableblservice.TableBLService;
 import vo.BillVO;
-import vo.Table_operateConditionVO;
-import vo.Table_saleDetailsVO;
+import vo.OperateConditionTableVO;
+import vo.SaleDetailsTableVO;
 
 public class Table implements TableBLService{
 
 	@Override
-	public Table_saleDetailsVO getSaleDetails(String field) {
+	public SaleDetailsTableVO getSaleDetails(String field) {
 		// TODO 自动生成的方法存根
 		return null;
 	}
 
 	@Override
-	public Table_operateConditionVO getOprateCondition(String field) {
+	public OperateConditionTableVO getOprateCondition(String field) {
 		// TODO 自动生成的方法存根
 		return null;
 	}

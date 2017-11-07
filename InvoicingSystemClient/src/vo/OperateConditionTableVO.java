@@ -1,6 +1,6 @@
 package vo;
 
-public class Table_operateConditionVO {
+public class OperateConditionTableVO {
 	int profit;
 	int in_sale;
 	int discount_sale;
@@ -9,7 +9,7 @@ public class Table_operateConditionVO {
 	int out_sale;
 	int out_commodity;
 	
-	public Table_operateConditionVO(int profit,int in_sale,int discount_sale,int in_commodity,int discount_commodity,int out_sale,int out_commodity) {
+	public OperateConditionTableVO(int profit,int in_sale,int discount_sale,int in_commodity,int discount_commodity,int out_sale,int out_commodity) {
 		this.profit=profit;
 		this.in_sale=in_sale;
 		this.in_commodity=discount_commodity;
@@ -18,7 +18,7 @@ public class Table_operateConditionVO {
 		this.out_commodity=out_commodity;
 		this.out_sale=out_sale;
 	}
-	public Table_operateConditionVO() {
+	public OperateConditionTableVO() {
 		// TODO Auto-generated constructor stub
 	}
 }

@@ -3,12 +3,12 @@ package businesslogicservice.tableblservice;
 import java.util.ArrayList;
 
 import vo.BillVO;
-import vo.Table_operateConditionVO;
-import vo.Table_saleDetailsVO;
+import vo.OperateConditionTableVO;
+import vo.SaleDetailsTableVO;
 
 public interface TableBLService {
-	public Table_saleDetailsVO getSaleDetails(String field);
-	public Table_operateConditionVO getOprateCondition(String field);
+	public SaleDetailsTableVO getSaleDetails(String field);
+	public OperateConditionTableVO getOprateCondition(String field);
 	public ArrayList<BillVO> getOperateCourse(String field);
 	public void Red(String id,String Note);
 }

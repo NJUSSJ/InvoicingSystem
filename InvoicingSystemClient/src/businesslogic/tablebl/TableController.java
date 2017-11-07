@@ -3,14 +3,14 @@ package businesslogic.tablebl;
 import java.util.ArrayList;
 
 import vo.BillVO;
-import vo.Table_operateConditionVO;
-import vo.Table_saleDetailsVO;
+import vo.OperateConditionTableVO;
+import vo.SaleDetailsTableVO;
 
 public class TableController {
-	public Table_saleDetailsVO getSaleDetails(String field){
+	public SaleDetailsTableVO getSaleDetails(String field){
 		return null;
 	}
-	public Table_operateConditionVO getOperateCondirtion(String field){
+	public OperateConditionTableVO getOperateCondirtion(String field){
 		return null;
 	}
 	public ArrayList<BillVO> getOperateCourse(String field){
