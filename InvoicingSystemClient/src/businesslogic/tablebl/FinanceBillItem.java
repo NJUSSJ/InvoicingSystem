@@ -5,5 +5,11 @@ package businesslogic.tablebl;
  *
  */
 public class FinanceBillItem extends BillItem{
-
+	double money;
+	public FinanceBillItem(double money){
+		this.money=money;
+	}
+	public double getMoney(){
+		return money;
+	}
 }

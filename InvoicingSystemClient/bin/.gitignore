@@ -1,10 +1,13 @@
-/businesslogic/
-/businesslogicservice/
-/data/
 /dataservice/
 /driver/
 /po/
-/presentation/
 /stubs/
 /vo/
+<<<<<<< HEAD
+/businesslogic/
+/businesslogicservice/
+/data/
+/presentation/
+=======
 /MockGiftBillVO.class
+>>>>>>> f1dc5fe968084f250c94fd3138f41e9889e84a58

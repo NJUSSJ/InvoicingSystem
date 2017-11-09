@@ -3,6 +3,7 @@ package businesslogicservice.tableblservice;
 import java.util.ArrayList;
 
 import businesslogic.tablebl.BillItem;
+import vo.OperateCourseTableVO;
 
 /**
  * 
@@ -16,4 +17,5 @@ public interface OperateCourseTableBLService {
 	public ArrayList<BillItem> checkBillItem(String field);
 	public BillItem reverseBillItem(BillItem item);
 	public BillItem reverseBillItemPlus(BillItem item);
+	public OperateCourseTableVO toOperateCourseTable();
 }
