@@ -24,13 +24,22 @@ public class StockCheck {
 	ArrayList<SaleBillVO> array3;
 	ArrayList<SaleReturnBillVO> array4;
 	
-	public StockCheck() {
-		
-	}
-	
-	public void getBill(int start,int end) {
+	public StockCheck(int start,int end) {
 		start_time=start;
 		end_time=end;
+	}
+	
+	public void addBill(ImportBillVO p,int t) {
+		array1.add(p);
+	}
+	public void addBill(ImportReturnBillVO p,int t) {
+		array2.add(p);
+	}
+	public void addBill(SaleBillVO p,int t) {
+		array3.add(p);
+	}
+	public void addBill(SaleReturnBillVO p,int t) {
+		array4.add(p);
 	}
 	
 	public void clearAll() {
