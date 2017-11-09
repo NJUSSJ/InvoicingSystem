@@ -5,7 +5,7 @@ import businesslogic.billbl.CommodityList;
 /**
  * 
  * @author yrz
- *	½ø»õµ¥
+ *	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  */
 public class ImportBillVO {
 	long id;
@@ -15,6 +15,7 @@ public class ImportBillVO {
 	int sum;
 	Boolean state=false;
 	int time;
+	int num;
 	
 	public ImportBillVO(long id,String user,String member,CommodityList list,int sum,int time) {
 		// TODO Auto-generated constructor stub
@@ -24,6 +25,7 @@ public class ImportBillVO {
 		this.user=user;
 		this.sum=sum;	
 		this.time=time;
+		int num=this.commodityList.getNum();
 	}
 	
 	public long getID() {
@@ -52,5 +54,8 @@ public class ImportBillVO {
 	
 	public int getsum() {
 		return sum;
+	}
+	public int getnum(){
+		return num;
 	}
 }
