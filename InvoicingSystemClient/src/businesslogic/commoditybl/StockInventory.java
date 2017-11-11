@@ -7,7 +7,7 @@ public class StockInventory {
 	int time;
 	
 	public StockInventory(){
-		//读入当天时间
+		//
 	}
 	
 	public CommodityList getList(int time){

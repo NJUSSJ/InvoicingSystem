@@ -1,7 +1,5 @@
 package vo;
 
-import java.sql.Time;
-
 public class CommodityVO {
 	
 	 String name;
@@ -10,10 +8,10 @@ public class CommodityVO {
 	 double price;
 	 int batch;//Åú´Î
 	 int batch_num;
-	 Time produce_time;
+	 int  produce_time;
 	 double averagePrice;
 	 	
-	public CommodityVO(String name, int ID, int stock_num, double price, int batch, int batch_num, Time produce_time) {
+	public CommodityVO(String name, int ID, int stock_num, double price, int batch, int batch_num, int produce_time) {
 		// TODO Auto-generated constructor stub
 		this.ID=ID;
 		this.stock_num=stock_num;
@@ -56,7 +54,7 @@ public class CommodityVO {
 		return averagePrice;
 	}
 	
-	public Time getProduceTime() {
+	public int getProduceTime() {
 		return produce_time;
 	}
 }

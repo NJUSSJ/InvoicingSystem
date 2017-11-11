@@ -44,4 +44,7 @@ public class PayBill  implements PayBillBLService{
 		return mockmember;
 	}
 	
+	public void updateAccount() {
+		
+	}
 }
