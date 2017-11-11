@@ -1,4 +1,4 @@
-package businesslogic.billbl;
+ package businesslogic.billbl;
 
 import java.util.ArrayList;
 
@@ -53,7 +53,7 @@ public class SaleBill implements SaleBillBLService {
 	@Override
 	public SaleBillVO toBillVO(long id, String user, String member, int sum, CommodityList list, int time) {
 		// TODO Auto-generated method stub
-		salebill=new SaleBillVO(id, user, member, list, sum, time);
+		this.salebill=new SaleBillVO(id, user, member, list, sum, time);
 		return salebill;
 	}
 	@Override
@@ -66,6 +66,32 @@ public class SaleBill implements SaleBillBLService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public void setMemberPromotion(MemberPromotionVO memberpromotion) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void setPackagePromotion(PackagePromotionVO packagepromotion) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public PricePromotionVO getPricePromotoin(int sum) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public MemberPromotionVO getMemberPromotion(String member) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public PackagePromotionVO getPackagePromotion(CommodityList list) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	
 	
 }

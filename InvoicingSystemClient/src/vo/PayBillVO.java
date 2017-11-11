@@ -12,6 +12,10 @@ public class PayBillVO {
 	int sum;
 	int time;
 	
+	
+	public PayBillVO() {
+		// TODO Auto-generated constructor stub
+	}
 	public PayBillVO(long id ,String user,String member,int sum,int time) {
 		this.id=id;
 		this.sum=sum;
@@ -19,4 +23,6 @@ public class PayBillVO {
 		this.user=user;
 		this.time=time;
 	}
+	
+	
 }

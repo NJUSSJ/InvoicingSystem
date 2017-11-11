@@ -5,12 +5,20 @@ import vo.PayBillVO;
 
 public class PayBill  implements PayBillBLService{
 
-	PayBillVO paybill;
+	MockPayBillVO paybill;
+	MockMemberVO mockmember;
+	
+	
+	public PayBill(long id, String user, String member, int sum, int time) {
+		// TODO Auto-generated constructor stub
+		
+		this.paybill=new MockPayBillVO(member, sum);
+     	mockmember=new MockMemberVO(member, 1000);
+	}
 
 	@Override
-	public PayBillVO toBillVO(long id, String user, String member, int sum, int time) {
+	public MockPayBillVO toBillVO(long id, String user, String member, int sum, int time) {
 		// TODO Auto-generated method stub
-		paybill=new PayBillVO(id, user, member, sum, time);
 		return paybill;
 	}
 
@@ -21,10 +29,19 @@ public class PayBill  implements PayBillBLService{
 	}
 
 	@Override
-	public PayBillVO checkBill(PayBillVO paybill) {
+	public PayBillVO checkBill() {
 		// TODO Auto-generated method stub
-		return null;
+		paybill.setState(true);
+		updateMember();
+		return paybill;
 	}
 	
+	public void updateMember() {
+		mockmember=new MockMemberVO(paybill.getMember(), 1000);
+		mockmember.setShouldPay(1000-paybill.getSum());
+	}
+	public MockMemberVO getMember() {
+		return mockmember;
+	}
 	
 }
