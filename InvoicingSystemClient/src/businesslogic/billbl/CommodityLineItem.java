@@ -5,11 +5,11 @@ import java.sql.Time;
 import vo.CommodityVO;
 
 public class CommodityLineItem {
-	double num;
+	int num;
 	String name;
 	double price;
 	double stock_num;
-	 int batch;//æ‰¹æ¬¡
+	 int batch;//Åú´Î
 	 int batch_num;
 	 Time produce_time;
 	 double averagePrice;
@@ -23,13 +23,5 @@ public class CommodityLineItem {
 		this.batch_num=commodity.getBatchNum();
 		this.produce_time=commodity.getProduceTime();
 		this.averagePrice=commodity.getAveragePrice();
-	}
-	
-	public String getCommodity() {
-		return name;
-	}
-	
-	public double getPrice() {
-		return num;
 	}
 }
