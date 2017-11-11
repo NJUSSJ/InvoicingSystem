@@ -30,4 +30,14 @@ public class CommodityList {
 		}
 		return total;
 	}
+	
+	public int getNum() {
+		int num=0;
+		for(int i=0;i<list.size();i++) {
+			num+=list.get(i).num;
+		}
+		return num;
+		
+	}
+
 }
