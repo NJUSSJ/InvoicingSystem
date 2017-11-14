@@ -1,8 +1,10 @@
 package businesslogic.billbl;
 
-import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Test;
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
 
 import vo.PricePromotionVO;
 
@@ -16,7 +18,7 @@ class SaleBillTest {
 		salebill.addCommodityItem(new CommodityLineItem(new MockCommodityVO(20), 10));
 		salebill.setPricePromotion(pricepromotion);
 		double total=salebill.getTotal();
-		assertEquals(160, total);
+		assertEquals(160, total,1.0);
 	}
 
 }

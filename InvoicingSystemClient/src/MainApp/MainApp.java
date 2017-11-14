@@ -3,9 +3,9 @@ package MainApp;
 import java.io.IOException;
 
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -24,6 +24,7 @@ public class MainApp extends Application {
 		// TODO Auto-generated method stub
 		this.primarystage=primarystage;
 		this.primarystage.setTitle("灯具公司进销存系统");
+		this.primarystage.getIcons().add(new Image("file:resources/light_bulb_310px_1204967_easyicon.net.png"));
 		initRootLayout();
 		showLoginUI();
 	}
