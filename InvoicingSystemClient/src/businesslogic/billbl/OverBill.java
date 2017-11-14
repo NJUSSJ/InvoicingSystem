@@ -23,5 +23,11 @@ public class OverBill  implements OverBillBLService {
 		return null;
 	}
 
+	public void updateMember() {
+		
+	}
 	
+	public void updateAccount() {
+		
+	}
 }

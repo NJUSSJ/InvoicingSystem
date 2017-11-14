@@ -1,23 +1,24 @@
 package businesslogic.billbl;
 
 import businesslogicservice.billblservice.PayBillBLService;
+import vo.MemberVO;
 import vo.PayBillVO;
 
 public class PayBill  implements PayBillBLService{
 
-	MockPayBillVO paybill;
-	MockMemberVO mockmember;
+	PayBillVO paybill;
+	MemberVO member;
 	
 	
 	public PayBill(long id, String user, String member, int sum, int time) {
 		// TODO Auto-generated constructor stub
 		
 		this.paybill=new MockPayBillVO(member, sum);
-     	mockmember=new MockMemberVO(member, 1000);
+     	this.member=new MockMemberVO(member, 1000);
 	}
 
 	@Override
-	public MockPayBillVO toBillVO(long id, String user, String member, int sum, int time) {
+	public PayBillVO toBillVO(long id, String user, String member, int sum, int time) {
 		// TODO Auto-generated method stub
 		return paybill;
 	}
@@ -37,11 +38,14 @@ public class PayBill  implements PayBillBLService{
 	}
 	
 	public void updateMember() {
-		mockmember=new MockMemberVO(paybill.getMember(), 1000);
-		mockmember.setShouldPay(1000-paybill.getSum());
+		member=new MockMemberVO(paybill.getMember(), 1000);
+		member.setShouldPay(1000-paybill.getSum());
 	}
-	public MockMemberVO getMember() {
-		return mockmember;
+	public MemberVO getMember() {
+		return member;
 	}
 	
+	public void updateAccount() {
+		
+	}
 }

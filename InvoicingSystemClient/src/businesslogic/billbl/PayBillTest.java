@@ -11,7 +11,7 @@ class PayBillTest {
 	void testCheckBill() {
 		//fail("Not yet implemented");
 		paybill.checkBill();
-		assertEquals(900, paybill.getMember().should_pay,0);
+		assertEquals(900, paybill.getMember().getShouldPay(),0);
 	}
 
 }

@@ -8,8 +8,8 @@ public class MemberVO {
 	String address;
 	int postCode;
 	String e_mail;
-	int should_pay;
-	int should_get;
+	double should_pay;
+	double should_get;
 	UserVO default_operator;
 	
 	public MemberVO(String name,String category,String phoneNum,int rank,String address,int postCode,String e_mail,
@@ -28,5 +28,19 @@ public class MemberVO {
 	}
 	public MemberVO() {
 		// TODO Auto-generated constructor stub
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name=name;
+	}
+	
+	public double getShouldPay() {
+		return should_pay;
+	}
+	
+	public void setShouldPay(double shouldPay) {
+		this.should_pay=shouldPay;
 	}
 }

@@ -36,7 +36,7 @@ public class CommodityBLService_Stub implements CommodityBLService{
 	@Override
 	public CommodityVO getCommodity(String field) {
 		// TODO 自动生成的方法存根
-		return new CommodityVO(cvName,cvID,cvStock_num,cvPrice,cvBatch,cvBatch_num,cvProduce_time);
+		return new CommodityVO();
 	}
 
 	@Override

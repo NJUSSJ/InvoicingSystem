@@ -22,7 +22,7 @@ public class ImportReturnBillVO {
 		this.commodityList=list;
 		this.sum=sum;
 		this.time=time;
-		int num=this.commodityList.getNum();
+		num=this.commodityList.getNum();
 	}
 	
 	public long getID() {

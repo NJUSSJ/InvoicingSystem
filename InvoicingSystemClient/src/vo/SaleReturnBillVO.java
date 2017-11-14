@@ -23,7 +23,7 @@ public class SaleReturnBillVO {
 		this.member=member;
 		this.user=user;
 		this.sum=sum;	
-		int num=this.commodityList.getNum();
+		num=this.commodityList.getNum();
 	}
 	
 	public long getID() {
