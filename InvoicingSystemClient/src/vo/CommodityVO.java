@@ -50,9 +50,6 @@ public class CommodityVO {
 		return batch_num;
 	}
 	
-	public double getAveragePrice() {
-		return averagePrice;
-	}
 	
 	public int getProduceTime() {
 		return produce_time;
