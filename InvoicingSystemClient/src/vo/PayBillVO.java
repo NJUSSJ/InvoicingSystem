@@ -9,8 +9,9 @@ public class PayBillVO {
 	long id;
 	String  user;
 	String member;
-	int sum;
+	double sum;
 	int time;
+	Boolean state=false;
 	
 	
 	public PayBillVO() {
@@ -22,6 +23,26 @@ public class PayBillVO {
 		this.member=member;
 		this.user=user;
 		this.time=time;
+	}
+	
+	public double getSum() {
+		return sum;
+	}
+	
+	public void setSum(double sum) {
+		this.sum=sum;
+	}
+	
+	public String getMember() {
+		return member;
+	}
+	
+	public void setMember(String member) {
+		this.member=member;
+	}
+	
+	public void setState(Boolean state) {
+		this.state=state;
 	}
 	
 	
