@@ -4,11 +4,11 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-class ImportBillTest {
+public class ImportBillTest {
 
 	ImportBill importbill=new ImportBill(1, "", "");
 	@Test
-	void testGetTotal() {
+	public void testGetTotal() {
 		//fail("Not yet implemented");
 		importbill.addCommodityItem(new CommodityLineItem(new MockCommodityVO(10), 20));
 		importbill.addCommodityItem(new CommodityLineItem(new MockCommodityVO(20), 20));
