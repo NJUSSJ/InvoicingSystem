@@ -19,16 +19,18 @@ public class UserBLService_Stub implements UserBLService{
 		return "delete success";
 	}
 
-	@Override
-	public UserVO findUser(UserVO a) {
-		// TODO 自动生成的方法存根
-		return new UserVO(ID,name,rank);
-	}
+	
 
 	@Override
 	public String updateUser(UserVO a) {
 		// TODO 自动生成的方法存根
 		return "update success";
+	}
+
+	@Override
+	public UserVO findUserbyName(String name) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

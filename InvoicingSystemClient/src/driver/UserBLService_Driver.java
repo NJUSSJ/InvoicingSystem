@@ -11,7 +11,7 @@ public void drive(UserBLService_Stub stub){
 	if(stub.deleteUser(new UserVO()).equals("delete success")){
 		System.out.println("delete pass");
 	}
-	if(stub.findUser(new UserVO())!=null){
+	if(stub.addUser(new UserVO())!=null){
 		System.out.println("find pass");
 	}
 	if(stub.updateUser(new UserVO()).equals("update success")){

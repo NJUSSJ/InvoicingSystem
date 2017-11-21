@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import runner.ClientRunner;
 
 /**
  * 
@@ -63,6 +64,7 @@ public class MainApp extends Application {
 	}
 	
 	public static void main(String[] args) {
+		new ClientRunner();
 		launch(args);
 	}
 
