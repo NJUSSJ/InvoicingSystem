@@ -21,8 +21,7 @@ public class UserController implements UserBLService {
 	@Override
 	public UserVO findUserbyName(String name) {
 		// TODO Auto-generated method stub
-		
-		return null;
+		return userImpl.findUserbyName(name);
 	}
 
 	@Override

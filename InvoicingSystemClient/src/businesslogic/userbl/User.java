@@ -1,5 +1,9 @@
 package businesslogic.userbl;
 
+import java.rmi.RemoteException;
+
+import po.UserPO;
+import rmi.RemoteHelper;
 import vo.UserVO;
 
 public class User {
@@ -18,7 +22,17 @@ public class User {
 
 	
 	public UserVO findUserbyName(String name) {
-		
+		try {
+			UserPO tmpUserPO=RemoteHelper.getInstance().getUserDataService().find(name);
+			//未找到相同用户名的用户
+			if(tmpUserPO==null) {
+				return null;
+			}
+			return new UserVO(tmpUserPO.getID(), tmpUserPO.getPassword(), tmpUserPO.getRank(), tmpUserPO.getName());
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 

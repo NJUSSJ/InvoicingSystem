@@ -27,7 +27,7 @@ public class RemoteHelper {
 		try {
 			dataRemoteObject=new DataRemoteObject();
 			LocateRegistry.createRegistry(8889);
-			String addressName="rmi://localhost:8889/BuldManagement";
+			String addressName="rmi://localhost:8889/BulbManagement";
 			Naming.bind(addressName, dataRemoteObject);
 			
 		}catch (MalformedURLException e) {

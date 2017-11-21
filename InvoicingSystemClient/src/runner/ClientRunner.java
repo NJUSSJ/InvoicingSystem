@@ -22,7 +22,7 @@ public class ClientRunner {
 		try {
 			remoteHelper=RemoteHelper.getInstance();
 			//ÉèÖÃ¶Ë¿Ú
-			remoteHelper.setRemote(Naming.lookup("rmi://localhost:8889/BuldManagement"));
+			remoteHelper.setRemote(Naming.lookup("rmi://localhost:8889/BulbManagement"));
 			System.out.println("linked");
 			
 		} catch (RemoteException e) {
