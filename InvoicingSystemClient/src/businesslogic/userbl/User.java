@@ -8,6 +8,18 @@ import vo.UserVO;
 
 public class User {
 
+	String name;
+	long id;
+	String password;
+	int rank;
+	
+	public User() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public User(String name) {
+		this.name=name;
+	}
 	
 	public String addUser(UserVO a) {
 		// TODO 自动生成的方法存根

@@ -1,35 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
   <children>
-    <SplitPane dividerPositions="0.20040080160320642" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
-      <items>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-          <children>
-            <Label layoutX="11.0" layoutY="249.0" text="ID：" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="249.0" />
-            <Label layoutX="10.0" layoutY="293.0" text="Rank：" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="293.0" />
-            <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="56.0" text="登出" AnchorPane.bottomAnchor="19.0" AnchorPane.rightAnchor="10.0" />
-            <Circle fill="#a6aeb5" layoutX="80.0" layoutY="139.0" radius="51.0" stroke="#f2ecec" strokeType="INSIDE" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="88.0" />
-          </children>
-        </AnchorPane>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-          <children>
-            <Button mnemonicParsing="false" prefHeight="126.00009999999747" prefWidth="131.0" text="账户管理" AnchorPane.leftAnchor="281.0" AnchorPane.rightAnchor="383.0" AnchorPane.topAnchor="22.0" />
-            <Button mnemonicParsing="false" prefHeight="126.0" prefWidth="131.0" text="销售明细表" AnchorPane.leftAnchor="281.0" AnchorPane.rightAnchor="383.0" AnchorPane.topAnchor="186.0" />
-            <Button mnemonicParsing="false" prefHeight="126.00009999999747" prefWidth="130.9998779296875" text="经营历程表" AnchorPane.leftAnchor="497.0" AnchorPane.rightAnchor="167.0" AnchorPane.topAnchor="21.0" />
-            <Button mnemonicParsing="false" prefHeight="126.0" prefWidth="130.9998779296875" text="经营情况表" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="604.0" AnchorPane.topAnchor="186.0" />
-            <Button mnemonicParsing="false" prefHeight="126.0" prefWidth="131.0" text="收/付款单" AnchorPane.leftAnchor="497.0" AnchorPane.rightAnchor="167.0" AnchorPane.topAnchor="186.0" />
-            <Button mnemonicParsing="false" prefHeight="126.0" prefWidth="131.0" text="期初建账" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="604.0" AnchorPane.topAnchor="22.0" />
-            <Button mnemonicParsing="false" prefHeight="126.0" prefWidth="131.0" text="查看日志" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="604.0" AnchorPane.topAnchor="351.0" />
-          </children>
-        </AnchorPane>
-      </items>
-    </SplitPane>
+    <Label layoutX="7.0" layoutY="30.0" text="财务人员主界面">
+      <font>
+        <Font size="65.0" />
+      </font>
+    </Label>
+    <Separator prefHeight="3.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="110.0" />
+    <Label layoutX="868.0" layoutY="14.0" text="ID：xxx">
+      <font>
+        <Font size="14.0" fx:id="x1" />
+      </font>
+    </Label>
+    <Label font="$x1" layoutX="932.0" layoutY="14.0" text="|| 登出" />
+    <Label layoutX="106.0" layoutY="366.0" text="期初建账" />
+    <Label layoutX="279.0" layoutY="366.0" text="银行账户管理" />
+    <Label layoutX="471.0" layoutY="366.0" text="查看经营历程表" />
+    <Label layoutX="667.0" layoutY="366.0" text="查看经营情况表" />
+    <Label layoutX="850.0" layoutY="366.0" text="查看销售明细表" />
+    <ImageView fitHeight="124.0" fitWidth="99.0" layoutX="74.0" layoutY="211.0">
+      <image>
+        <Image url="@../../../resources/notebook_585px_1209136_easyicon.net.png" />
+      </image>
+    </ImageView>
+    <ImageView fitHeight="124.0" fitWidth="120.0" layoutX="255.0" layoutY="207.0">
+      <image>
+        <Image url="@../../../resources/bank_1251px_1207308_easyicon.net.png" />
+      </image>
+    </ImageView>
+    <ImageView fitHeight="124.0" fitWidth="120.0" layoutX="453.0" layoutY="207.0">
+      <image>
+        <Image url="@../../../resources/tables_732px_1153607_easyicon.net.png" />
+      </image>
+    </ImageView>
+    <Label layoutX="112.0" layoutY="551.0" text="邮箱" />
+    <ImageView fitHeight="124.0" fitWidth="120.0" layoutX="649.0" layoutY="207.0">
+      <image>
+        <Image url="@../../../resources/tables_732px_1153607_easyicon.net.png" />
+      </image>
+    </ImageView>
+    <ImageView fitHeight="124.0" fitWidth="120.0" layoutX="832.0" layoutY="207.0">
+      <image>
+        <Image url="@../../../resources/tables_732px_1153607_easyicon.net.png" />
+      </image>
+    </ImageView>
+    <ImageView fitHeight="106.0" fitWidth="120.0" layoutX="70.0" layoutY="425.0">
+      <image>
+        <Image url="@../../../resources/Mail_Search_512px_1178165_easyicon.net.png" />
+      </image>
+    </ImageView>
+    <Label layoutX="285.0" layoutY="551.0" text="制定收款单" />
+    <Label layoutX="483.0" layoutY="551.0" text="制定付款单" />
+    <Label layoutX="685.0" layoutY="551.0" text="日志查看" />
+    <ImageView fitHeight="116.0" fitWidth="120.0" layoutX="667.0" layoutY="420.0">
+      <image>
+        <Image url="@../../../resources/diary_350px_1146911_easyicon.net.png" />
+      </image>
+    </ImageView>
+    <ImageView fitHeight="124.0" fitWidth="136.0" layoutX="247.0" layoutY="407.0">
+      <image>
+        <Image url="@../../../resources/cash_receiving_512px_1125250_easyicon.net.png" />
+      </image>
+    </ImageView>
+    <ImageView fitHeight="134.0" fitWidth="136.0" layoutX="453.0" layoutY="402.0">
+      <image>
+        <Image url="@../../../resources/payment_method_545px_1208153_easyicon.net.png" />
+      </image>
+    </ImageView>
   </children>
 </AnchorPane>
