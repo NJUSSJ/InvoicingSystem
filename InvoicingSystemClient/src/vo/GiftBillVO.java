@@ -1,5 +1,7 @@
 package vo;
 
+import java.sql.Date;
+
 import businesslogic.billbl.CommodityList;
 
 /**
@@ -9,18 +11,18 @@ import businesslogic.billbl.CommodityList;
  */
 public class GiftBillVO {
 	long id;
-	String user;
-	String member;
+	long userid;
+	long memberid;
 	CommodityList list;
-	int time;
+	Date time;
 	Boolean state=false;
-	public GiftBillVO(long id,String user,String member,CommodityList list,int time) {
+	public GiftBillVO(long id,long userid,long memberid,CommodityList list,Date time) {
 		// TODO Auto-generated constructor stub
 		this.id=id;
-		this.user=user;
+		this.userid=userid;
 		this.list=list;
 		this.time=time;
-		this.member=member;
+		this.memberid=memberid;
 	}
 	public long getID() {
 		return id;

@@ -3,7 +3,6 @@ package businesslogic.memberbl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import businesslogicservice.memberblservice.MemberBLService;
 import po.MemberPO;
 import rmi.RemoteHelper;
 import vo.MemberVO;
