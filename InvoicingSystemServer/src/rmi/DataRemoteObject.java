@@ -41,23 +41,7 @@ public class DataRemoteObject extends UnicastRemoteObject implements UserDataSer
 		return userService.find(name);
 	}
 
-	@Override
-	public void insert(UserPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void delete(UserPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void update(UserPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	@Override
 	public void init() throws RemoteException {
@@ -69,6 +53,24 @@ public class DataRemoteObject extends UnicastRemoteObject implements UserDataSer
 	public void finish() throws RemoteException {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public boolean insert(UserPO po) throws RemoteException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean delete(UserPO po) throws RemoteException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean update(UserPO po) throws RemoteException {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 }
