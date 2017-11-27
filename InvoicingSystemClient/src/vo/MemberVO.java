@@ -1,34 +1,45 @@
 package vo;
 
+import po.MemberPO;
+
 public class MemberVO {
-	String name;
-	String category;
-	String phoneNum;
+	int id;
 	int rank;
-	String address;
 	int postCode;
-	String e_mail;
-	double should_pay;
-	double should_get;
-	UserVO default_operator;
+	int category;
+	int defaultOperatorID;
+	String name;
+	String phoneNum;
+	String address;
+	String eMail;
+	double shouldPay;
+	double shouldGet;
+	double quota;//”¶ ’∂Ó∂»
 	
-	public MemberVO(String name,String category,String phoneNum,int rank,String address,int postCode,String e_mail,
-			int should_pay,int should_get,
-	UserVO default_operator) {
-		this.address=address;
+	public MemberVO(int id,int rank,int postCode,int category,String name,String phoneNum,
+	String address,String eMail,double shouldPay,double shouldGet,double quota,int defaultOperatorID){
+		this.id=id;
+		this.rank=rank;
+		this.postCode=postCode;
 		this.category=category;
-		this.default_operator=default_operator;
-		this.e_mail=e_mail;
 		this.name=name;
 		this.phoneNum=phoneNum;
-		this.postCode=postCode;
-		this.rank=rank;
-		this.should_get=should_get;
-		this.should_pay=should_pay;
+		this.address=address;
+		this.eMail=eMail;
+		this.shouldPay=shouldPay;
+		this.shouldGet=shouldGet;
+		this.quota=quota;
+		this.defaultOperatorID=defaultOperatorID;
 	}
+	
 	public MemberVO() {
 		// TODO Auto-generated constructor stub
 	}
+	public MemberPO toPO(){
+		return new MemberPO(id, rank, postCode, category, name, phoneNum,
+				address, eMail, shouldPay,shouldGet, quota, defaultOperatorID);
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -37,10 +48,10 @@ public class MemberVO {
 	}
 	
 	public double getShouldPay() {
-		return should_pay;
+		return shouldPay;
 	}
 	
 	public void setShouldPay(double shouldPay) {
-		this.should_pay=shouldPay;
+		this.shouldPay=shouldPay;
 	}
 }
