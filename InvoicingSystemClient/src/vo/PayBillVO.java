@@ -7,21 +7,21 @@ package vo;
  */
 public class PayBillVO {
 	long id;
-	String  user;
-	String member;
+	long userid;
+	long memberid;
 	double sum;
 	int time;
-	Boolean state=false;
+	boolean state=false;
 	
 	
 	public PayBillVO() {
 		// TODO Auto-generated constructor stub
 	}
-	public PayBillVO(long id ,String user,String member,int sum,int time) {
+	public PayBillVO(long id ,long user,long memberid,int sum,int time) {
 		this.id=id;
 		this.sum=sum;
-		this.member=member;
-		this.user=user;
+		this.memberid=memberid;
+		this.userid=userid;
 		this.time=time;
 	}
 	
@@ -33,12 +33,12 @@ public class PayBillVO {
 		this.sum=sum;
 	}
 	
-	public String getMember() {
-		return member;
+	public long getMemberID() {
+		return memberid;
 	}
 	
-	public void setMember(String member) {
-		this.member=member;
+	public void setMemberID(long memberid) {
+		this.memberid=memberid;
 	}
 	
 	public void setState(Boolean state) {

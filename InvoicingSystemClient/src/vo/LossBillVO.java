@@ -10,13 +10,14 @@ import businesslogic.billbl.CommodityList;
  */
 public class LossBillVO {
 	long id;
-	String user;
+	long userid;
 	CommodityList commoditys;
 	int time;
-	public LossBillVO(long id,String user,CommodityList list, int time) {
+	public LossBillVO(long id,long userid,CommodityList list, int time) {
 		// TODO Auto-generated constructor stub
 		this.id=id;
 		this.commoditys=list;
-		this.user=user;
+		this.userid=userid;
+		this.time=time;
 	}
 }

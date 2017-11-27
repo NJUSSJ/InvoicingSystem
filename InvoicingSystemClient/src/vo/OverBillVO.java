@@ -9,7 +9,7 @@ import businesslogic.billbl.CommodityList;
  */
 public class OverBillVO {
 	long id;
-	String user;
+	long userid;
 	CommodityList commoditys;
 	int time;
 	
@@ -17,6 +17,7 @@ public class OverBillVO {
 		// TODO Auto-generated constructor stub
 		this.id=id;
 		this.commoditys=list;
-		this.user=user;
+		this.userid=userid;
+		this.time=time;
 	}
 }

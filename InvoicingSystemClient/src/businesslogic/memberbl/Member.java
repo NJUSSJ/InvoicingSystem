@@ -24,16 +24,30 @@ public class Member{
 
 	public boolean deleteMember(MemberVO a) {
 		// TODO Auto-generated method stub
+		MemberPO tmpUserPO=a.toPO();
+		try {
+			return RemoteHelper.getInstance().getMemberDataService().delete(tmpUserPO);
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
 		return false;
 	}
 
 	public MemberVO findMember(String name) {
 		// TODO Auto-generated method stub
-		return null;
+		return RemoteHelper.getInstance().getMemberDataService().find(name);
 	}
 
 	public boolean updateMember(MemberVO a) {
 		// TODO Auto-generated method stub
+		MemberPO tmpMemberPO=a.toPO();
+		try {
+			return RemoteHelper.getInstance().getMemberDataService().update(tmpMemberPO);
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
 		return false;
 	}
 

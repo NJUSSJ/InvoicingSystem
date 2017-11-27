@@ -11,14 +11,14 @@ public class MemberDatabaseServiceMySqlImpl_Stub implements MemberDataService{
 		MemberPO mp=new MemberPO();
 		return mp;
 	}
-	public void insert(MemberPO po) throws RemoteException{
-		System.out.println("Insert succeed!");
+	public boolean insert(MemberPO po) throws RemoteException{
+		return true;
 	}
-	public void delete(MemberPO po) throws RemoteException{
-		System.out.println("Delete succeed!");
+	public boolean delete(MemberPO po) throws RemoteException{
+		return true;
 	}
-	public void update(MemberPO po) throws RemoteException{
-		System.out.println("Update succeed!");
+	public boolean update(MemberPO po) throws RemoteException{
+		return true;
 	}
 	public void init() throws RemoteException{
 		System.out.println("Init succeed!");

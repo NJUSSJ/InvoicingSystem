@@ -4,10 +4,11 @@ import java.util.ArrayList;
 
 public class CategoryVO {
 	String name;
+	String parent;
 	ArrayList<CategoryVO> sub_category;
 	ArrayList<CommodityVO> sub_commodity;
 	
-	public CategoryVO(String name,
+	public CategoryVO(String name,String parent,
 	ArrayList<CategoryVO> sub_category,
 	ArrayList<CommodityVO> sub_commodity) {
 		// TODO Auto-generated constructor stub

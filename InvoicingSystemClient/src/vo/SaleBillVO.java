@@ -9,17 +9,18 @@ import businesslogic.billbl.CommodityList;
  */
 public class SaleBillVO {
 	long id;
-	String user;
-	String member;
+	long userid;
+	long memberid;
 	CommodityList commodityList;
-	int sum;
+	double sum;
 	int time;
 	int num=0;
+	boolean state=false;
 	
 	public SaleBillVO() {
 		// TODO Auto-generated constructor stub
 	}
-	public SaleBillVO(long id,String user,String member,CommodityList list,int sum,int time) {
+	public SaleBillVO(long id,String user,String member,CommodityList list,double sum,int time) {
 		// TODO Auto-generated constructor stub
 		this.commodityList=list;
 		this.id=id;
