@@ -1,5 +1,7 @@
 package vo;
 
+import java.sql.Date;
+
 import businesslogic.billbl.CommodityList;
 
 /**
@@ -9,20 +11,20 @@ import businesslogic.billbl.CommodityList;
  */
 public class ImportBillVO {
 	long id;
-	String user;
-	String member;
+	long userid;
+	long memberid;
 	CommodityList commodityList;
 	int sum;
 	Boolean state=false;
-	int time;
+	Date time;
 	int num;
 	
-	public ImportBillVO(long id,String user,String member,CommodityList list,int sum,int time) {
+	public ImportBillVO(long id,long userid,long memberid,CommodityList list,int sum,Date time) {
 		// TODO Auto-generated constructor stub
 		this.commodityList=list;
 		this.id=id;
-		this.member=member;
-		this.user=user;
+		this.memberid=memberid;
+		this.userid=userid;
 		this.sum=sum;	
 		this.time=time;
 		 num=this.commodityList.getNum();
@@ -32,20 +34,20 @@ public class ImportBillVO {
 		return id;
 	}
 	
-	public String getUser() {
-		return user;
+	public long getUser() {
+		return userid;
 	}
 	
-	public void changeUser(String user) {
-		this.user=user;
+	public void changeUser(long userid) {
+		this.userid=userid;
 	}
 	
-	public String getMember() {
-		return member;
+	public long getMember() {
+		return memberid;
 	}
 	
-	public void changeMember(String member) {
-		this.member=member;
+	public void changeMember(long memberid) {
+		this.memberid=memberid;
 	}
 	
 	public CommodityList getList() {
