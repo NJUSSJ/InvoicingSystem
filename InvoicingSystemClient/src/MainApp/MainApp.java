@@ -17,15 +17,15 @@ import runner.ClientRunner;
  *
  */
 public class MainApp extends Application {
-	private Stage primarystage;
-	private BorderPane rootlayout;
+	private static Stage primarystage;
+	private static BorderPane rootlayout;
 	
 	@Override
 	public void start(Stage primarystage) throws Exception {
 		// TODO Auto-generated method stub
-		this.primarystage=primarystage;
-		this.primarystage.setTitle("灯具公司进销存系统");
-		this.primarystage.getIcons().add(new Image("file:resources/light_bulb_310px_1204967_easyicon.net.png"));
+		MainApp.primarystage=primarystage;
+		MainApp.primarystage.setTitle("灯具公司进销存系统");
+		MainApp.primarystage.getIcons().add(new Image("file:resources/light_bulb_310px_1204967_easyicon.net.png"));
 		initRootLayout();
 		showLoginUI();
 	}
@@ -50,14 +50,14 @@ public class MainApp extends Application {
 	/*
 	 * 显示登录界面
 	 */
-	public void showLoginUI() {
+	public static  void showLoginUI() {
 		try {
 			FXMLLoader loader=new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("/presentation/mainui/LoginPanel.fxml"));
 			
 			AnchorPane loginPanel=loader.load();
 			
-			rootlayout.setCenter(loginPanel);
+			MainApp.rootlayout.setCenter(loginPanel);
 		} catch (IOException e) {
 			// TODO: handle exception
 		}

@@ -1,5 +1,6 @@
 package data.memberdata;
 
+<<<<<<< HEAD
 import java.rmi.RemoteException;
 
 import dataservice.memberdataservice.MemberDataService;
@@ -43,4 +44,8 @@ public class MemberDataImpl implements MemberDataService{
 		
 	}
 	
+=======
+public class MemberDataImpl {
+
+>>>>>>> fd3b28b24749e7d7302484f1f7242e979e85e2f3
 }
