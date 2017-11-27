@@ -4,9 +4,9 @@ import vo.UserVO;
 
 public interface UserBLService {
 	
-public String addUser(UserVO a);
-public String deleteUser(UserVO a);
+public boolean addUser(UserVO a);
+public boolean deleteUser(UserVO a);
 public UserVO findUserbyName (String name);
-public String updateUser (UserVO a);
+public boolean updateUser (UserVO a);
 
 }

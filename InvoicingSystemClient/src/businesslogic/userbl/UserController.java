@@ -7,15 +7,15 @@ public class UserController implements UserBLService {
 
 	User userImpl=new User();
 	@Override
-	public String addUser(UserVO a) {
+	public boolean addUser(UserVO a) {
 		// TODO Auto-generated method stub
-		return null;
+		return userImpl.addUser(a);
 	}
 
 	@Override
-	public String deleteUser(UserVO a) {
+	public boolean deleteUser(UserVO a) {
 		// TODO Auto-generated method stub
-		return null;
+		return userImpl.deleteUser(a);
 	}
 
 	@Override
@@ -25,9 +25,9 @@ public class UserController implements UserBLService {
 	}
 
 	@Override
-	public String updateUser(UserVO a) {
+	public boolean updateUser(UserVO a) {
 		// TODO Auto-generated method stub
-		return null;
+		return userImpl.updateUser(a);
 	}
 
 	
