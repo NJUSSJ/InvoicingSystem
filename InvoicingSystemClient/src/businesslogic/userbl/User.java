@@ -7,29 +7,34 @@ import rmi.RemoteHelper;
 import vo.UserVO;
 
 public class User {
-
-	String name;
-	long id;
-	String password;
-	int rank;
 	
 	public User() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public User(String name) {
-		this.name=name;
-	}
-	
-	public String addUser(UserVO a) {
+	public boolean addUser(UserVO a) {
 		// TODO 自动生成的方法存根
-		return null;
+		UserPO tmpUserPO=new UserPO(a.getID(),a.getPassword(),a.getRank(),a.getUsername());
+		try {
+			return RemoteHelper.getInstance().getUserDataService().insert(tmpUserPO);	
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 	
-	public String deleteUser(UserVO a) {
+	public boolean deleteUser(UserVO a) {
 		// TODO 自动生成的方法存根
-		return null;
+		UserPO tmpUserPO=new UserPO(a.getID(),a.getPassword(),a.getRank(),a.getUsername());
+		try {
+			return RemoteHelper.getInstance().getUserDataService().delete(tmpUserPO);	
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 	
@@ -49,9 +54,16 @@ public class User {
 	}
 
 	
-	public String updateUser(UserVO a) {
+	public boolean updateUser(UserVO a) {
 		// TODO 自动生成的方法存根
-		return null;
+		UserPO tmpUserPO=new UserPO(a.getID(),a.getPassword(),a.getRank(),a.getUsername());
+		try {
+			return RemoteHelper.getInstance().getUserDataService().update(tmpUserPO);	
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return false;
 	}
 	
 

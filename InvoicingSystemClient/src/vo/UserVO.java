@@ -1,13 +1,13 @@
 package vo;
 
 public class UserVO {
-	long ID;
+	long id;
 	String password;
 	int  rank;
 	String username;
 	
-	public UserVO(long ID,String password,int  rank,String username ) {
-		this.ID=ID;
+	public UserVO(long id,String password,int rank,String username ) {
+		this.id=id;
 		this.password=password;
 		this.rank=rank;
 		this.username=username;
@@ -27,5 +27,9 @@ public class UserVO {
 	
 	public String getPassword() {
 		return password;
+	}
+	
+	public long getID(){
+		return id;
 	}
 }

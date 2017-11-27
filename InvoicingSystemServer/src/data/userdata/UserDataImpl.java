@@ -9,7 +9,9 @@ import dataservice.userdataservice.UserDataService;
 import po.UserPO;
 
 public class UserDataImpl implements UserDataService {
-
+	/**
+	 * 按员工id在数据库中查找
+	 */
 	@Override
 	public UserPO find(long id) throws RemoteException {
 		// TODO Auto-generated method stub
@@ -40,7 +42,9 @@ public class UserDataImpl implements UserDataService {
 		
 		return null;
 	}
-
+	/**
+	 * 按照员工姓名在数据库中查找
+	 */
 	@Override
 	public UserPO find(String name) throws RemoteException {
 		// TODO Auto-generated method stub
@@ -71,23 +75,59 @@ public class UserDataImpl implements UserDataService {
 		
 		return null;
 	}
-
+	/**
+	 * 插入一个员工持久化对象到数据库中
+	 */
 	@Override
-	public void insert(UserPO po) throws RemoteException {
+	public boolean insert(UserPO po) throws RemoteException {
 		// TODO Auto-generated method stub
-		
+		String sql="INSERT INTO users(id,username,password,rank) VALUES("+po.getID()
+		+",'"+po.getName()+"','"+po.getPassword()+"','"+po.getPassword()+"',"+po.getRank()+")";
+		try {
+			if(DataFactory.statement.execute(sql)){
+				return true;
+			}
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return false;
 	}
-
+	/**
+	 * 从数据库中删除一个员工持久化对象
+	 */
 	@Override
-	public void delete(UserPO po) throws RemoteException {
+	public boolean delete(UserPO po) throws RemoteException {
 		// TODO Auto-generated method stub
-		
+		String sql="DELETE FROM users WHERE id="+po.getID();
+		try {
+			if(DataFactory.statement.execute(sql)){
+				return true;
+			}
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return false;
 	}
-
+	/**
+	 * 在数据库中更新一个员工持久化对象,默认一个账号的id不会改变
+	 *
+	 */
 	@Override
-	public void update(UserPO po) throws RemoteException {
+	public boolean update(UserPO po) throws RemoteException {
 		// TODO Auto-generated method stub
-		
+		String sql="UPDATE users SET username='"+po.getName()+"',password='"
+				+po.getPassword()+"',rank="+po.getRank()+" WHERE id="+po.getID();
+		try {
+			if(DataFactory.statement.execute(sql)){
+				return true;
+			}
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 	@Override

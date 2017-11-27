@@ -20,21 +20,24 @@ public class UserDatabaseServiceMySqlImpl_Stub implements UserDataService{
 	}
 
 	@Override
-	public void insert(UserPO po) throws RemoteException {
+	public boolean insert(UserPO po) throws RemoteException {
 		// TODO 自动生成的方法存根
 		System.out.println("insert success");
+		return true;
 	}
 
 	@Override
-	public void delete(UserPO po) throws RemoteException {
+	public boolean delete(UserPO po) throws RemoteException {
 		// TODO 自动生成的方法存根
 		System.out.println("delete success");
+		return true;
 	}
 
 	@Override
-	public void update(UserPO po) throws RemoteException {
+	public boolean update(UserPO po) throws RemoteException {
 		// TODO 自动生成的方法存根
 		System.out.println("update success");
+		return true;
 	}
 
 	@Override

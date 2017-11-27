@@ -8,23 +8,23 @@ public class UserBLService_Stub implements UserBLService{
 	String name;
 	String rank;
 	@Override
-	public String addUser(UserVO a) {
+	public boolean addUser(UserVO a) {
 		// TODO 自动生成的方法存根
-		return "add success";
+		return true;
 	}
 
 	@Override
-	public String deleteUser(UserVO a) {
+	public boolean deleteUser(UserVO a) {
 		// TODO 自动生成的方法存根
-		return "delete success";
+		return true;
 	}
 
 	
 
 	@Override
-	public String updateUser(UserVO a) {
+	public boolean updateUser(UserVO a) {
 		// TODO 自动生成的方法存根
-		return "update success";
+		return true;
 	}
 
 	@Override
