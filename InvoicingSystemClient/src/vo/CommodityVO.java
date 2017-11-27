@@ -6,19 +6,19 @@ public class CommodityVO {
 	
 	 String name;
 	 long id;
-	 int stock_num;
+	 int stockNum;
 	 double price;
 	 int batch;//Åú´Î
-	 int batch_num;
+	 int batchNum;
 	 Date  produce_time;
 	 double averagePrice;
 	 	
 	public CommodityVO(String name, int id, int stock_num, double price, int batch, int batch_num, Date produce_time) {
 		// TODO Auto-generated constructor stub
 		this.id=id;
-		this.stock_num=stock_num;
+		this.stockNum=stock_num;
 		this.batch=batch;
-		this.batch_num=batch_num;
+		this.batchNum=batch_num;
 		this.name=name;
 		this.price=price;
 		this.produce_time=produce_time;
@@ -41,7 +41,7 @@ public class CommodityVO {
 	}
 	
 	public int getStockNum() {
-		return stock_num;
+		return stockNum;
 	}
 	
 	public int getBatch() {
@@ -49,7 +49,7 @@ public class CommodityVO {
 	}
 	
 	public int getBatchNum() {
-		return batch_num;
+		return batchNum;
 	}
 	
 	
