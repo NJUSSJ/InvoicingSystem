@@ -1,19 +1,21 @@
 package vo;
 
+import java.sql.Date;
+
 public class CommodityVO {
 	
 	 String name;
-	 int ID;
+	 long id;
 	 int stock_num;
 	 double price;
 	 int batch;//Åú´Î
 	 int batch_num;
-	 int  produce_time;
+	 Date  produce_time;
 	 double averagePrice;
 	 	
-	public CommodityVO(String name, int ID, int stock_num, double price, int batch, int batch_num, int produce_time) {
+	public CommodityVO(String name, int id, int stock_num, double price, int batch, int batch_num, Date produce_time) {
 		// TODO Auto-generated constructor stub
-		this.ID=ID;
+		this.id=id;
 		this.stock_num=stock_num;
 		this.batch=batch;
 		this.batch_num=batch_num;
@@ -34,8 +36,8 @@ public class CommodityVO {
 		return price;
 	}
 	
-	public int getID() {
-		return ID;
+	public long getID() {
+		return id;
 	}
 	
 	public int getStockNum() {
@@ -51,7 +53,7 @@ public class CommodityVO {
 	}
 	
 	
-	public int getProduceTime() {
+	public Date getProduceTime() {
 		return produce_time;
 	}
 }
