@@ -17,7 +17,7 @@ public class PayBillVO {
 	public PayBillVO() {
 		// TODO Auto-generated constructor stub
 	}
-	public PayBillVO(long id ,long user,long memberid,int sum,int time) {
+	public PayBillVO(long id ,long userid,long memberid,int sum,int time) {
 		this.id=id;
 		this.sum=sum;
 		this.memberid=memberid;

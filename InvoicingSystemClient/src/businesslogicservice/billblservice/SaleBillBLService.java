@@ -1,5 +1,6 @@
 package businesslogicservice.billblservice;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 import businesslogic.billbl.CommodityLineItem;
@@ -20,7 +21,7 @@ public interface SaleBillBLService {
 	public MemberPromotionVO getMemberPromotion(String member);
 	public PackagePromotionVO getPackagePromotion(CommodityList list);
 	public double getTotal();
-	public SaleBillVO toBillVO(long id,String user,String member,int sum,CommodityList list,int time);
+	public SaleBillVO toBillVO(long id,long userid,long memberid,int sum,CommodityList list,Date time);
 	public String conveyBill(SaleBillVO salebill);
 	public SaleBillVO checkBill(SaleBillVO salebill);
 }

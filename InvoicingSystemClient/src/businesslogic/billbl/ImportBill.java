@@ -1,5 +1,6 @@
 package businesslogic.billbl;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 import businesslogicservice.billblservice.ImportBillBLService;
@@ -48,9 +49,9 @@ public class ImportBill implements ImportBillBLService {
 
 
 	@Override
-	public ImportBillVO toBillVO(long id, String user, String member, int sum, CommodityList list,int time) {
+	public ImportBillVO toBillVO(long id, long userid, long memberid, int sum, CommodityList list,Date time) {
 		// TODO Auto-generated method stub
-		importbill=new ImportBillVO(id, user, member, list, sum, time);
+		importbill=new ImportBillVO(id, userid, memberid, list, sum, time);
 		return importbill;
 	}
 

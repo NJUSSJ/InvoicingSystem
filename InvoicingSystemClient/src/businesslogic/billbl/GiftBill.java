@@ -1,5 +1,6 @@
 package businesslogic.billbl;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 import businesslogicservice.billblservice.GiftBillBLService;
@@ -31,12 +32,6 @@ public class GiftBill  implements GiftBillBLService {
 	}
 
 
-	@Override
-	public GiftBillVO toBillVO(CommodityList list, long id, String user, String member, int time) {
-		// TODO Auto-generated method stub
-		giftbill=new GiftBillVO(id, user,member, list, time);
-		return giftbill;
-	}
 
 
 	@Override
@@ -58,5 +53,16 @@ public class GiftBill  implements GiftBillBLService {
 		// TODO Auto-generated method stub
 		
 	}
+
+
+	@Override
+	public GiftBillVO toBillVO(CommodityList list, long id, long userid, long memberid, Date time) {
+		// TODO Auto-generated method stub
+		GiftBillVO giftbill=new GiftBillVO(id, userid, memberid, list, time);
+		return giftbill;
+	}
+
+
+	
 	
 }

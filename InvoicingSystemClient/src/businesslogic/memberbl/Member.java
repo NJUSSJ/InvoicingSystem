@@ -35,7 +35,14 @@ public class Member{
 
 	public MemberVO findMember(String name) {
 		// TODO Auto-generated method stub
-		return RemoteHelper.getInstance().getMemberDataService().find(name);
+		try {
+			MemberPO tmpPO=RemoteHelper.getInstance().getMemberDataService().find(name);
+			return null;
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public boolean updateMember(MemberVO a) {
