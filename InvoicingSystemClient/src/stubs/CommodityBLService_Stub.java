@@ -43,7 +43,7 @@ public class CommodityBLService_Stub implements CommodityBLService{
 	public ArrayList<CategoryVO> getCategoryList(String field) {
 		// TODO 自动生成的方法存根
 		ArrayList<CategoryVO> cgl=new ArrayList<CategoryVO>();
-		cgl.add(new CategoryVO(cgvName,cgvSub_category,cgvSub_commodity));
+		cgl.add(new CategoryVO(cgvName,field, cgvSub_category,cgvSub_commodity));
 		return cgl;
 	}
 
