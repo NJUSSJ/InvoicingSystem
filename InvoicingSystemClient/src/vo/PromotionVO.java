@@ -22,7 +22,6 @@ public class PromotionVO {
 		   this.commodity_group=commodity_group;
 		   this.discount_TotalPrice=discount_TotalPrice;
 	   }
-	   
 	   public PromotionVO() {
 		// TODO Auto-generated constructor stub
 	}
