@@ -11,17 +11,18 @@ public class GiftBillPO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	long id;
 	long userid;
-	String member;
+	long memberid;
 	String list;
 	Date time;
-	Boolean state=false;
-	public GiftBillPO(long id,long userid,String member,String list,Date time) {
+	int state=0;
+	public GiftBillPO(long id,long userid,long memberid,String list,Date time,int state) {
 		// TODO Auto-generated constructor stub
 		this.id=id;
 		this.userid=userid;
 		this.list=list;
 		this.time=time;
-		this.member=member;
+		this.memberid=memberid;
+		this.state=state;
 	}
 	public long getID() {
 		return id;
@@ -31,8 +32,8 @@ public class GiftBillPO implements Serializable {
 		return userid;
 	}
 	
-	public String getMember() {
-		return member;
+	public long getMember() {
+		return memberid;
 	}
 	
 	public String getList() {
@@ -41,5 +42,11 @@ public class GiftBillPO implements Serializable {
 	
 	public Date getDate() {
 		return time;
+	}
+	public int getState() {
+		return state;
+	}
+	public void setState(int state) {
+		this.state=state;
 	}
 }

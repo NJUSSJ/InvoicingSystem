@@ -11,21 +11,22 @@ public class ImportBillPO implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	long id;
-	String user;
-	String member;
+	long userid;
+	long memberid;
 	String commodityList;
 	int sum;
-	Boolean state=false;
+	int state=0;
 	Date time;
 	int num;
 	
-	public ImportBillPO(long id,String user,String member,String list,int sum,Date time) {
+	public ImportBillPO(long id,long userid,long memberid,String list,int sum,Date time,int state) {
 		// TODO Auto-generated constructor stub
 		this.commodityList=list;
 		this.id=id;
-		this.member=member;
-		this.user=user;
+		this.memberid=memberid;
+		this.userid=userid;
 		this.sum=sum;	
+		this.state=state;
 		this.time=time;
 	}
 	
@@ -33,20 +34,20 @@ public class ImportBillPO implements Serializable {
 		return id;
 	}
 	
-	public String getUser() {
-		return user;
+	public long getUser() {
+		return userid;
 	}
 	
-	public void changeUser(String user) {
-		this.user=user;
+	public void changeUser(long userid) {
+		this.userid=userid;
 	}
 	
-	public String getMember() {
-		return member;
+	public long getMember() {
+		return memberid;
 	}
 	
-	public void changeMember(String member) {
-		this.member=member;
+	public void changeMember(long memberid) {
+		this.memberid=memberid;
 	}
 	
 	public String getList() {
@@ -60,6 +61,13 @@ public class ImportBillPO implements Serializable {
 		return num;
 	}
 	public Date getDate() {
+		return time;
+	}
+	public int getState() {
+		return state;
+	}
+	
+	public Date getTime() {
 		return time;
 	}
 }

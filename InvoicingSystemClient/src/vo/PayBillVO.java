@@ -6,7 +6,7 @@ package vo;
  *	¸¶¿îµ¥
  */
 public class PayBillVO {
-	long id;
+	String id;
 	long userid;
 	long memberid;
 	double sum;
@@ -17,7 +17,7 @@ public class PayBillVO {
 	public PayBillVO() {
 		// TODO Auto-generated constructor stub
 	}
-	public PayBillVO(long id ,long userid,long memberid,int sum,int time) {
+	public PayBillVO(String id ,long userid,long memberid,int sum,int time) {
 		this.id=id;
 		this.sum=sum;
 		this.memberid=memberid;
@@ -25,6 +25,9 @@ public class PayBillVO {
 		this.time=time;
 	}
 	
+	public String getID() {
+		return id;
+	}
 	public double getSum() {
 		return sum;
 	}

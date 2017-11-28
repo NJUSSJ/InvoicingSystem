@@ -10,7 +10,7 @@ import businesslogic.billbl.CommodityList;
  *	
  */
 public class SaleBillVO {
-	long id;
+	String id;
 	long userid;
 	long memberid;
 	CommodityList commodityList;
@@ -22,7 +22,7 @@ public class SaleBillVO {
 	public SaleBillVO() {
 		// TODO Auto-generated constructor stub
 	}
-	public SaleBillVO(long id,long userid,long memberid,CommodityList list,double sum,Date time) {
+	public SaleBillVO(String id,long userid,long memberid,CommodityList list,double sum,Date time) {
 		// TODO Auto-generated constructor stub
 		this.commodityList=list;
 		this.id=id;
@@ -31,7 +31,7 @@ public class SaleBillVO {
 		this.sum=sum;	
 	}
 	
-	public long getID() {
+	public String getID() {
 		return id;
 	}
 	
