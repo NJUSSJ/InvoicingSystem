@@ -5,10 +5,10 @@ import vo.MemberVO;
 public class MockMemberVO extends MemberVO{
 	String name;
 	double should_pay;
-	
-	public MockMemberVO(String name,double should_pay) {
+	long id;
+	public MockMemberVO(long id,double should_pay) {
 		// TODO Auto-generated constructor stub
-		this.name=name;
+		this.id=id;
 		this.should_pay=should_pay;
 	}
 	

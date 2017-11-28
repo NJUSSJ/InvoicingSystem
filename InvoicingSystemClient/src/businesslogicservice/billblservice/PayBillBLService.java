@@ -1,9 +1,11 @@
 package businesslogicservice.billblservice;
 
+import java.sql.Date;
+
 import vo.PayBillVO;
 
 public interface PayBillBLService {
-	public PayBillVO toBillVO(long id, String user,String member,int sum ,int time);
+	public PayBillVO toBillVO(String id, long user,long member,int sum ,Date time);
 	public String conveyBill(PayBillVO paybill);
 	public PayBillVO checkBill();
 }

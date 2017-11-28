@@ -1,5 +1,6 @@
 package businesslogic.billbl;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 import businesslogicservice.billblservice.SaleReturnBillBLService;
@@ -35,7 +36,7 @@ public class SaleReturnBill  implements SaleReturnBillBLService{
 		return 0;
 	}
 	@Override
-	public SaleReturnBillVO toBillVO(long id, String user, String member, int sum, CommodityList list, int time) {
+	public SaleReturnBillVO toBillVO(String id, long user, long member, int sum, CommodityList list, Date time) {
 		// TODO Auto-generated method stub
 		salereturnlist=new SaleReturnBillVO(id, user, member, list, sum, time);
 		return salereturnlist;

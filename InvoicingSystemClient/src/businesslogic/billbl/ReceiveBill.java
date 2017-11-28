@@ -1,5 +1,7 @@
 package businesslogic.billbl;
 
+import java.sql.Date;
+
 import businesslogicservice.billblservice.ReceiveBillBLService;
 import vo.ReceiveBillVO;
 
@@ -8,7 +10,7 @@ public class ReceiveBill  implements ReceiveBillBLService{
 	ReceiveBillVO receivebill;
 
 	@Override
-	public ReceiveBillVO toBillVO(long id, String user, String member, int sum, int time) {
+	public ReceiveBillVO toBillVO(String id, long user, long member, int sum, Date time) {
 		// TODO Auto-generated method stub
 		receivebill=new ReceiveBillVO(id, user, member, sum, time);
 		return receivebill;

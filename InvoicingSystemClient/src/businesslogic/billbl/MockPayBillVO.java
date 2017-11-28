@@ -4,13 +4,13 @@ import vo.PayBillVO;
 
 public class MockPayBillVO extends PayBillVO {
 	
-	long id;
-	String  user;
-	String member;
+	String id;
+	long  user;
+	long member;
 	double  sum;
 	int time;
 	Boolean state=false;
-	public MockPayBillVO(String member,double sum) {
+	public MockPayBillVO(long member,double sum) {
 		// TODO Auto-generated constructor stub
 		this.member=member;
 		this.sum=sum;
@@ -24,11 +24,11 @@ public class MockPayBillVO extends PayBillVO {
 		this.sum=sum;
 	}
 	
-	public String getMember() {
+	public long getMember() {
 		return member;
 	}
 	
-	public void setMember(String member) {
+	public void setMember(long member) {
 		this.member=member;
 	}
 	

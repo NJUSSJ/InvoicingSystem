@@ -52,7 +52,7 @@ public class SaleBill implements SaleBillBLService {
 		return total;
 	}
 	@Override
-	public SaleBillVO toBillVO(long id, long userid, long memberid, int sum, CommodityList list, Date time) {
+	public SaleBillVO toBillVO(String id, long userid, long memberid, int sum, CommodityList list, Date time) {
 		// TODO Auto-generated method stub
 		this.salebill=new SaleBillVO(id, userid, memberid, list, sum, time);
 		return salebill;

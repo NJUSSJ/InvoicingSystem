@@ -21,7 +21,7 @@ public interface SaleBillBLService {
 	public MemberPromotionVO getMemberPromotion(String member);
 	public PackagePromotionVO getPackagePromotion(CommodityList list);
 	public double getTotal();
-	public SaleBillVO toBillVO(long id,long userid,long memberid,int sum,CommodityList list,Date time);
+	public SaleBillVO toBillVO(String id,long userid,long memberid,int sum,CommodityList list,Date time);
 	public String conveyBill(SaleBillVO salebill);
 	public SaleBillVO checkBill(SaleBillVO salebill);
 }

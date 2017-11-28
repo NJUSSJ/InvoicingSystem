@@ -1,5 +1,7 @@
 package businesslogic.billbl;
 
+import java.sql.Date;
+
 import businesslogicservice.billblservice.PayBillBLService;
 import vo.MemberVO;
 import vo.PayBillVO;
@@ -10,7 +12,7 @@ public class PayBill  implements PayBillBLService{
 	MemberVO member;
 	
 	
-	public PayBill(long id, String user, String member, int sum, int time) {
+	public PayBill(String id,long user, long member, int sum, Date time) {
 		// TODO Auto-generated constructor stub
 		
 		this.paybill=new MockPayBillVO(member, sum);
@@ -18,7 +20,7 @@ public class PayBill  implements PayBillBLService{
 	}
 
 	@Override
-	public PayBillVO toBillVO(long id, String user, String member, int sum, int time) {
+	public PayBillVO toBillVO(String id, long user, long member, int sum, Date time) {
 		// TODO Auto-generated method stub
 		return paybill;
 	}
@@ -38,7 +40,7 @@ public class PayBill  implements PayBillBLService{
 	}
 	
 	public void updateMember() {
-		member=new MockMemberVO(paybill.getMember(), 1000);
+		member=new MockMemberVO(paybill.getMemberID(), 1000);
 		member.setShouldPay(1000-paybill.getSum());
 	}
 	public MemberVO getMember() {
