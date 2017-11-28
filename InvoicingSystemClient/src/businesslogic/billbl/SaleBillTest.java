@@ -8,12 +8,12 @@ import org.junit.Test;
 
 import vo.PricePromotionVO;
 
-public class SaleBillTest {
+class SaleBillTest {
 
 	SaleBill salebill=new SaleBill();
 	PricePromotionVO pricepromotion=new PricePromotionVO(20, 0.8);
 	@Test
-	public void testGetTotal() {
+	void testGetTotal() {
 		//fail("Not yet implemented");
 		salebill.addCommodityItem(new CommodityLineItem(new MockCommodityVO(20), 10));
 		salebill.setPricePromotion(pricepromotion);
