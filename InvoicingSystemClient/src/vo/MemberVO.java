@@ -3,21 +3,21 @@ package vo;
 import po.MemberPO;
 
 public class MemberVO {
-	int id;
+	long id;
 	int rank;
 	int postCode;
 	int category;
-	int defaultOperatorID;
+	long defaultOperatorID;
 	String name;
-	String phoneNum;
+	int phoneNum;
 	String address;
 	String eMail;
 	double shouldPay;
 	double shouldGet;
 	double quota;//”¶ ’∂Ó∂»
 	
-	public MemberVO(int id,int rank,int postCode,int category,String name,String phoneNum,
-	String address,String eMail,double shouldPay,double shouldGet,double quota,int defaultOperatorID){
+	public MemberVO(long id,int rank,int postCode,int category,String name,int phoneNum,
+	String address,String eMail,double shouldPay,double shouldGet,double quota,long defaultOperatorID){
 		this.id=id;
 		this.rank=rank;
 		this.postCode=postCode;
