@@ -19,7 +19,6 @@ public class LogPO implements Serializable{
 		this.type=type;
 		this.userid=userid;
 	}
-<<<<<<< HEAD
 	public long getID(){
 		return id;
 	}
@@ -31,10 +30,5 @@ public class LogPO implements Serializable{
 	}
 	public long getUserID(){
 		return userid;
-=======
-	
-	public LogPO toPO(){
-		return new LogPO(id,time,type,userid);
->>>>>>> 60a46b56caeb3220b33aabbbfcb52fbdf749b7c1
 	}
 }
