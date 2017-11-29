@@ -8,21 +8,10 @@ import vo.PayBillVO;
 
 public class PayBill  implements PayBillBLService{
 
-	PayBillVO paybill;
-	MemberVO member;
-	
-	
-	public PayBill(String id,long user, long member, int sum, Date time) {
-		// TODO Auto-generated constructor stub
-		
-		this.paybill=new MockPayBillVO(member, sum);
-     	this.member=new MockMemberVO(member, 1000);
-	}
-
 	@Override
-	public PayBillVO toBillVO(String id, long user, long member, int sum, Date time) {
+	public PayBillVO toBillVO(String id, long userid, long memberid, int sum, Date time,int state) {
 		// TODO Auto-generated method stub
-		return paybill;
+		return new PayBillVO(id,userid,memberid,sum,time,state);
 	}
 
 	@Override

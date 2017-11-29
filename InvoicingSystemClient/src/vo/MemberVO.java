@@ -32,9 +32,6 @@ public class MemberVO {
 		this.defaultOperatorID=defaultOperatorID;
 	}
 	
-	public MemberVO() {
-		// TODO Auto-generated constructor stub
-	}
 	public MemberPO toPO(){
 		return new MemberPO(id, rank, postCode, category, name, phoneNum,
 				address, eMail, shouldPay,shouldGet, quota, defaultOperatorID);
@@ -43,15 +40,37 @@ public class MemberVO {
 	public String getName() {
 		return name;
 	}
-	public void setName(String name) {
-		this.name=name;
+	public int getPhoneNum(){
+		return phoneNum;
 	}
-	
+	public String getAddress(){
+		return address;
+	}
+	public String getEmail(){
+		return eMail;
+	}
 	public double getShouldPay() {
 		return shouldPay;
 	}
-	
-	public void setShouldPay(double shouldPay) {
-		this.shouldPay=shouldPay;
+	public double getShouldGet(){
+		return shouldGet;
+	}
+	public double getQuota(){
+		return quota;
+	}
+	public long getID(){
+		return id;
+	}
+	public int getRank(){
+		return rank;
+	}
+	public int getPostCode(){
+		return postCode;
+	}
+	public int getCategory(){
+		return category;
+	}
+	public long getDefaultOperatorID(){
+		return defaultOperatorID;
 	}
 }
