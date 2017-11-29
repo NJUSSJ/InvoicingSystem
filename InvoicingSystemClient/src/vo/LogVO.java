@@ -2,18 +2,22 @@ package vo;
 
 import java.sql.Time;
 
+import po.LogPO;
+
 public class LogVO {
-	Time oprate_time;
-	String operate_type;
-	UserVO opeartor;
+	long id;
+	Time time;
+	String type;
+	long userid;
 	
-	public LogVO(Time oprate_time,
-	String operate_type,
-	UserVO opeartor) {
+	public LogVO(long id,Time time,String type,long userid) {
+		this.id=id;
+		this.time=time;
+		this.type=type;
+		this.userid=userid;
+	}
 	
-		this.opeartor=opeartor;
-		this.oprate_time=oprate_time;
-		this.operate_type=operate_type;
-		
+	public LogPO toPO(){
+		return new LogPO(id,time,type,userid);
 	}
 }

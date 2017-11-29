@@ -3,8 +3,9 @@ package businesslogic.logbl;
 import vo.LogVO;
 
 public class LogController {
-	public String addRecord(LogVO vo){
-		return null;
+	Log logImpl=new Log();
+	public boolean addRecord(LogVO vo){
+		return logImpl.addRecord(vo);
 	}
 	public String checkRecord(){
 		return null;
