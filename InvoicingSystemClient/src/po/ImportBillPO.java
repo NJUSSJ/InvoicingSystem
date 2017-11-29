@@ -37,7 +37,7 @@ public class ImportBillPO implements Serializable {
 		return id;
 	}
 	
-	public long getUser() {
+	public long getUserID() {
 		return userid;
 	}
 	

@@ -15,27 +15,30 @@ public class SaleBillVO {
 	long memberid;
 	CommodityList commodityList;
 	double sum;
+	int state;
 	Date time;
-	int num=0;
-	boolean state=false;
+	int num;
+	String remark;//±¸×¢
 	
-	public SaleBillVO() {
-		// TODO Auto-generated constructor stub
-	}
-	public SaleBillVO(String id,long userid,long memberid,CommodityList list,double sum,Date time) {
+	public SaleBillVO(String id,long userid,long memberid,CommodityList list,
+			double sum,int state,Date time,String remark) {
 		// TODO Auto-generated constructor stub
 		this.commodityList=list;
 		this.id=id;
 		this.memberid=memberid;
 		this.userid=userid;
 		this.sum=sum;	
+		this.time=time;
+		num=this.commodityList.getNum();
+		this.state=state;
+		this.remark=remark;
 	}
 	
 	public String getID() {
 		return id;
 	}
 	
-	public long getUser() {
+	public long getUserID() {
 		return userid;
 	}
 	
@@ -47,7 +50,7 @@ public class SaleBillVO {
 		return memberid;
 	}
 	
-	public void changeMember(long memberid) {
+	public void setMember(long memberid) {
 		this.memberid=memberid;
 	}
 	
@@ -59,6 +62,6 @@ public class SaleBillVO {
 		return sum;
 	}
 	public int getnum(){
-		return commodityList.getNum();
+		return num;
 	}
 }

@@ -3,6 +3,8 @@ package po;
 import java.io.Serializable;
 import java.sql.Date;
 
+import businesslogic.billbl.CommodityList;
+
 
 
 public class SaleBillPO implements Serializable {
@@ -15,27 +17,30 @@ public class SaleBillPO implements Serializable {
 	long memberid;
 	String commodityList;
 	double sum;
+	int state;
 	Date time;
-	int num=0;
-	boolean state=false;
+	int num;
+	String remark;//±¸×¢
 	
-	public SaleBillPO() {
+	public SaleBillPO(String id,long userid,long memberid,CommodityList commodityList,
+			double sum,int state,Date time,String remark) {
 		// TODO Auto-generated constructor stub
-	}
-	public SaleBillPO(String id,long userid,long memberid,String list,double sum,Date time) {
-		// TODO Auto-generated constructor stub
-		this.commodityList=list;
+		this.commodityList=commodityList.toString();
 		this.id=id;
 		this.memberid=memberid;
 		this.userid=userid;
 		this.sum=sum;	
+		this.time=time;
+		num=commodityList.getNum();
+		this.state=state;
+		this.remark=remark;
 	}
 	
 	public String getID() {
 		return id;
 	}
 	
-	public long getUser() {
+	public long getUserID() {
 		return userid;
 	}
 	
@@ -47,7 +52,7 @@ public class SaleBillPO implements Serializable {
 		return memberid;
 	}
 	
-	public void changeMember(long memberid) {
+	public void setMember(long memberid) {
 		this.memberid=memberid;
 	}
 	
@@ -57,5 +62,8 @@ public class SaleBillPO implements Serializable {
 	
 	public double getsum() {
 		return sum;
+	}
+	public int getnum(){
+		return num;
 	}
 }

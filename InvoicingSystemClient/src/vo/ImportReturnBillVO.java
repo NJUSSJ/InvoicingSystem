@@ -37,7 +37,7 @@ public class ImportReturnBillVO {
 		return id;
 	}
 	
-	public long getUser() {
+	public long getUserID() {
 		return userid;
 	}
 	

@@ -1,17 +1,27 @@
 package businesslogic.billbl;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 import businesslogicservice.billblservice.PayBillBLService;
-import vo.MemberVO;
+import po.PayBillPO;
 import vo.PayBillVO;
 
 public class PayBill  implements PayBillBLService{
 
 	@Override
-	public PayBillVO toBillVO(String id, long userid, long memberid,double sum, Date time,int state) {
+	public PayBillVO toPayBillVO(PayBillPO po) {
 		// TODO Auto-generated method stub
-		return new PayBillVO(id,userid,memberid,sum,time,state);
+		AccountList accountList=new AccountList();
+		String[] temp=po.getAccountList().split(" ");
+		for(int i=0;i<temp.length;i++){
+			String[] tempinfo=temp[i].split(",");
+			AccountLineItem item=new AccountLineItem(Long.parseLong(tempinfo[0]),
+					Double.parseDouble(tempinfo[1]),tempinfo[2]);
+			accountList.addAccount(item);
+		}
+		return new PayBillVO(po.getID(),po.getUserID(),po.getMemberID(),accountList,
+				po.getSum(),po.getTime(),po.getState());
 	}
 
 	@Override
@@ -22,21 +32,9 @@ public class PayBill  implements PayBillBLService{
 
 	@Override
 	public PayBillVO checkBill() {
-		// TODO Auto-generated method stub
-		paybill.setState(true);
-		updateMember();
-		return paybill;
+		// TODO 自动生成的方法存根
+		return null;
 	}
+
 	
-	public void updateMember() {
-		member=new MockMemberVO(paybill.getMemberID(), 1000);
-		member.setShouldPay(1000-paybill.getSum());
-	}
-	public MemberVO getMember() {
-		return member;
-	}
-	
-	public void updateAccount() {
-		
-	}
 }
