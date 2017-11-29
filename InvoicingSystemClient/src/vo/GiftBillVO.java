@@ -13,18 +13,34 @@ public class GiftBillVO {
 	long id;
 	long userid;
 	long memberid;
-	CommodityList list;
+	CommodityList giftList;
 	Date time;
-	Boolean state=false;
-	public GiftBillVO(long id,long userid,long memberid,CommodityList list,Date time) {
+	int state;
+	public GiftBillVO(long id,long userid,long memberid,CommodityList giftList,Date time,int state) {
 		// TODO Auto-generated constructor stub
 		this.id=id;
 		this.userid=userid;
-		this.list=list;
+		this.giftList=giftList;
 		this.time=time;
 		this.memberid=memberid;
+		this.state=state;
 	}
 	public long getID() {
 		return id;
+	}
+	public long getUserID(){
+		return userid;
+	}
+	public long getMemberID(){
+		return memberid;
+	}
+	public CommodityList getCommodityList(){
+		return giftList;
+	}
+	public Date getTime(){
+		return time;
+	}
+	public int getState(){
+		return state;
 	}
 }

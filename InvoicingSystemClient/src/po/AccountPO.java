@@ -8,29 +8,29 @@ public class AccountPO implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	long id;
-	String bank;
 	double deposit;
+	String bank;
 	
-	public AccountPO() {
-		// TODO Auto-generated constructor stub
-	}
-	
-	public AccountPO(long id, String bank,double deposit) {
+	public AccountPO(long id,double deposit,String bank){
+		this.id=id;
 		this.bank=bank;
 		this.deposit=deposit;
-		this.id=id;
 	}
-	
-	public double getDposit() {
+
+	public long getID(){
+		return id;
+	}
+	public double getDeposit(){
 		return deposit;
 	}
-	
-	public String getBank() {
+	public String getBank(){
 		return bank;
 	}
-	
-	public long getID() {
-		return id;
+	public void setDeposit(double deposit){
+		this.deposit=deposit;
+	}
+	public void setBank(String bank){
+		this.bank=bank;
 	}
 }
 

@@ -3,57 +3,29 @@ package businesslogic.billbl;
 import java.util.ArrayList;
 
 import businesslogicservice.billblservice.ImportReturnBillBLService;
+import po.ImportReturnBillPO;
+import vo.ImportBillVO;
 import vo.ImportReturnBillVO;
 
 public class ImportReturnBill implements ImportReturnBillBLService {
-	
-	CommodityList list;
-	ImportReturnBillVO importreturnbill;
-	long id;
-	String User;
-	String Member;
-	
-	public ImportReturnBill(long id,String user,String member) {
-		// TODO Auto-generated constructor stub
-		this.id=id;this.User=user;this.Member=member;
-	}
+
 	@Override
-	public ArrayList<CommodityLineItem> getCommoditys(String field) {
-		// TODO Auto-generated method stub
+	public ImportReturnBillVO toImportReturnBillVO(ImportReturnBillPO po) {
+		// TODO 自动生成的方法存根
 		return null;
 	}
+
 	@Override
-	public void addCommodityItem(CommodityLineItem item) {
-		// TODO Auto-generated method stub
-		
+	public boolean conveyBill(ImportBillVO importbill) {
+		// TODO 自动生成的方法存根
+		return false;
 	}
+
 	@Override
-	public void deleteCommodityItem(CommodityLineItem item) {
-		// TODO Auto-generated method stub
-		
+	public ImportReturnBillVO checkBill(ImportReturnBillVO importbill) {
+		// TODO 自动生成的方法存根
+		return null;
 	}
 	
-	public CommodityList getList() {
-		return list;
-	}
-	@Override
-	public int getTotal() {
-		// TODO Auto-generated method stub
-		return list.getTotal();
-	}
-	@Override
-	public ImportReturnBillVO toBillVO(long id, String user, String member, int sum, CommodityList list) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public String conveyBill(ImportReturnBillVO importreturnbill) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public ImportReturnBillVO checkBill(ImportReturnBillVO importreturnbill) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 }

@@ -9,7 +9,7 @@ import vo.PayBillVO;
 public class PayBill  implements PayBillBLService{
 
 	@Override
-	public PayBillVO toBillVO(String id, long userid, long memberid, int sum, Date time,int state) {
+	public PayBillVO toBillVO(String id, long userid, long memberid,double sum, Date time,int state) {
 		// TODO Auto-generated method stub
 		return new PayBillVO(id,userid,memberid,sum,time,state);
 	}

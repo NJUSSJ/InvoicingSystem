@@ -1,16 +1,15 @@
 package vo;
 
-import java.sql.Time;
-
+import java.sql.Date;
 import po.LogPO;
 
 public class LogVO {
 	long id;
-	Time time;
+	Date time;
 	String type;
 	long userid;
 	
-	public LogVO(long id,Time time,String type,long userid) {
+	public LogVO(long id,Date time,String type,long userid) {
 		this.id=id;
 		this.time=time;
 		this.type=type;

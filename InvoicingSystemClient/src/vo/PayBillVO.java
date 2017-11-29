@@ -1,5 +1,7 @@
 package vo;
 
+import java.sql.Date;
+
 /**
  * 
  * @author yrz
@@ -13,7 +15,7 @@ public class PayBillVO {
 	Date time;
 	int state;
 	
-	public PayBillVO(String id ,long userid,long memberid,int sum,Date time,int state) {
+	public PayBillVO(String id ,long userid,long memberid,double sum,Date time,int state) {
 		this.id=id;
 		this.sum=sum;
 		this.memberid=memberid;
@@ -48,7 +50,7 @@ public class PayBillVO {
 	public long getUserID(){
 		return userid;
 	}
-	public int getTime(){
+	public Date getTime(){
 		return time;
 	}
 	

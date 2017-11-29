@@ -3,6 +3,8 @@ package po;
 import java.io.Serializable;
 import java.sql.Date;
 
+import businesslogic.billbl.CommodityList;
+
 public class ImportReturnBillPO implements Serializable {
 	/**
 	 * 
@@ -12,17 +14,21 @@ public class ImportReturnBillPO implements Serializable {
 	long userid;
 	long memberid;
 	String commodityList;
-	int sum;
+	double sum;
+	int state;
 	Date time;
 	int num;
-	public ImportReturnBillPO(String id,long userid,long memberid,String list,int sum,Date time) {
+	String remark;
+	
+	public ImportReturnBillPO(String id,long userid,long memberid,CommodityList list,int sum,Date time,int state) {
 		// TODO Auto-generated constructor stub
-		this.id=id;this.userid=userid;
+		this.commodityList=list.toString();
+		this.id=id;
 		this.memberid=memberid;
-		this.commodityList=list;
-		this.sum=sum;
+		this.userid=userid;
+		this.sum=sum;	
+		this.state=state;
 		this.time=time;
-		
 	}
 	
 	public String getID() {
@@ -33,18 +39,36 @@ public class ImportReturnBillPO implements Serializable {
 		return userid;
 	}
 	
+	public void changeUser(long userid) {
+		this.userid=userid;
+	}
+	
 	public long getMember() {
 		return memberid;
 	}
 	
-	public Date getTime() {
-		return time;
+	public void changeMember(long memberid) {
+		this.memberid=memberid;
+	}
+	
+	public String getList() {
+		return commodityList;
+	}
+	
+	public double getsum() {
+		return sum;
 	}
 	public int getnum(){
 		return num;
 	}
-
-	public double getsum() {
-		return sum;
+	public Date getDate() {
+		return time;
+	}
+	public int getState() {
+		return state;
+	}
+	
+	public Date getTime() {
+		return time;
 	}
 }

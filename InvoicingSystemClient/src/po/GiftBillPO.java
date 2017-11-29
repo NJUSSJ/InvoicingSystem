@@ -3,6 +3,8 @@ package po;
 import java.io.Serializable;
 import java.sql.Date;
 
+import businesslogic.billbl.CommodityList;
+
 
 public class GiftBillPO implements Serializable {
 	/**
@@ -12,14 +14,14 @@ public class GiftBillPO implements Serializable {
 	long id;
 	long userid;
 	long memberid;
-	String list;
+	String giftList;
 	Date time;
-	int state=0;
-	public GiftBillPO(long id,long userid,long memberid,String list,Date time,int state) {
+	int state;
+	public GiftBillPO(long id,long userid,long memberid,CommodityList giftList,Date time,int state) {
 		// TODO Auto-generated constructor stub
 		this.id=id;
 		this.userid=userid;
-		this.list=list;
+		this.giftList=giftList.toString();
 		this.time=time;
 		this.memberid=memberid;
 		this.state=state;
@@ -27,26 +29,19 @@ public class GiftBillPO implements Serializable {
 	public long getID() {
 		return id;
 	}
-	
-	public long getUser() {
+	public long getUserID(){
 		return userid;
 	}
-	
-	public long getMember() {
+	public long getMemberID(){
 		return memberid;
 	}
-	
-	public String getList() {
-		return list;
+	public String getCommodityList(){
+		return giftList;
 	}
-	
-	public Date getDate() {
+	public Date getTime(){
 		return time;
 	}
-	public int getState() {
+	public int getState(){
 		return state;
-	}
-	public void setState(int state) {
-		this.state=state;
 	}
 }
