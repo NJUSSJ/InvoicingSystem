@@ -26,11 +26,5 @@ public class AccountPO implements Serializable {
 	public String getBank(){
 		return bank;
 	}
-	public void setDeposit(double deposit){
-		this.deposit=deposit;
-	}
-	public void setBank(String bank){
-		this.bank=bank;
-	}
 }
 

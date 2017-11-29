@@ -31,7 +31,6 @@ public class CashBillPO implements Serializable{
 			}
 		}
 	}
-	
 	public String getID(){
 		return id;
 	}
@@ -41,26 +40,16 @@ public class CashBillPO implements Serializable{
 	public long getAccountID(){
 		return accountid;
 	}
-	public Date getTime(){
-		return time;
+	public String getItems(){
+		return items;
 	}
 	public int getState(){
 		return state;
 	}
-	public String getItems(){
-		return items;
+	public Date getTime(){
+		return time;
 	}
-	public void setUserID(long userid){
-		this.userid=userid;
+	public double getSum(){
+		return sum;
 	}
-	public void setAccountID(long accountid){
-		this.accountid=accountid;
-	}
-	public void setState(int state){
-		this.state=state;
-	}
-	public void setTime(Date time){
-		this.time=time;
-	}
-	
 }

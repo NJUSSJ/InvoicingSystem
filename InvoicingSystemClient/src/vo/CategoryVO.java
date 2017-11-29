@@ -3,17 +3,19 @@ package vo;
 import java.util.ArrayList;
 
 public class CategoryVO {
+	long id;
 	String name;
 	String parent;
-	ArrayList<CategoryVO> subCategory;
-	ArrayList<CommodityVO> subCommodity;
+	ArrayList<Long> subCategoryID;
+	ArrayList<Long> subCommodityID;
 	
-	public CategoryVO(String name,String parent,ArrayList<CategoryVO> sub_category,
-			ArrayList<CommodityVO> sub_commodity) {
+	public CategoryVO(String name,String parent,ArrayList<Long> subCategoryID,
+			ArrayList<Long> subCommodityID) {
 		// TODO Auto-generated constructor stub
 		this.name=name;
-		this.subCategory=subCategory;
-		this.subCommodity=subCommodity;
+		this.parent=parent;
+		this.subCategoryID=subCategoryID;
+		this.subCommodityID=subCommodityID;
 	}
 	public String getName(){
 		return name;

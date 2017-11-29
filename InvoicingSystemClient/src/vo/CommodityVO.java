@@ -5,7 +5,6 @@ import java.sql.Date;
 import po.CommodityPO;
 
 public class CommodityVO {
-	
 	 String name;
 	 long id;
 	 String model;
@@ -38,14 +37,11 @@ public class CommodityVO {
 	public long getID() {
 		return id;
 	}
+	public String getModel(){
+		return model;
+	}
 	public int getStockNum() {
 		return stockNum;
-	}
-	public void setName(String name){
-		this.name=name;
-	}
-	public void setStockNum(int stockNum){
-		this.stockNum=stockNum;
 	}
 	public double getSalePrice(){
 		return salePrice;
@@ -53,5 +49,19 @@ public class CommodityVO {
 	public double getImportPrice(){
 		return importPrice;
 	}
-	
+	public double getLateSalePrice(){
+		return lateSalePrice;
+	}
+	public double getLateImportPrice(){
+		return lateImportPrice;
+	}
+	public String getParent(){
+		return parent;
+	}
+	public void setName(String name){
+		this.name=name;
+	}
+	public void setStockNum(int stockNum){
+		this.stockNum=stockNum;
+	}
 }
