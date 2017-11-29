@@ -11,9 +11,9 @@ public class CommodityDataService_Driver {
 		if(stub.finds(0,"90")!=null){
 			System.out.println("finds pass");
 		}
-		stub.insert(new CommodityPO());
-		stub.delete(new CommodityPO());
-		stub.update(new CommodityPO());
+		stub.insert(new CommodityPO(null, 0, null, 0, 0, 0, 0, 0, null));
+		stub.delete(new CommodityPO(null, 0, null, 0, 0, 0, 0, 0, null));
+		stub.update(new CommodityPO(null, 0, null, 0, 0, 0, 0, 0, null));
 		stub.init();
 		stub.finish();
 		

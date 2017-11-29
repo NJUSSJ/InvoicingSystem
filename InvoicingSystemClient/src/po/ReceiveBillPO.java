@@ -28,31 +28,23 @@ public class ReceiveBillPO {
 	public String getID() {
 		return id;
 	}
-	public double getSum() {
-		return sum;
-	}
-	
-	public void setSum(double sum) {
-		this.sum=sum;
-	}
-	
-	public long getMemberID() {
-		return memberid;
-	}
-	
-	public void setMemberID(long memberid) {
-		this.memberid=memberid;
-	}
-	
-	public void setState(int state) {
-		this.state=state;
-	}
-	
 	public long getUserID(){
 		return userid;
 	}
+	public long getMemberID() {
+		return memberid;
+	}
+	public String getAccountList(){
+		return accountList;
+	}
+	public double getSum() {
+		return sum;
+	}
 	public Date getTime(){
 		return time;
+	}
+	public int getState(){
+		return state;
 	}
 	
 }

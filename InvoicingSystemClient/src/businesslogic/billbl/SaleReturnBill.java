@@ -10,11 +10,7 @@ import vo.PricePromotionVO;
 import vo.SaleReturnBillVO;
 
 public class SaleReturnBill  implements SaleReturnBillBLService{
-	CommodityList list;
-	PricePromotionVO pricePromotion;
-	MemberPromotionVO memberPromotipn;
-	PackagePromotionVO packagePromotion;
-	SaleReturnBillVO salereturnlist;
+	
 	@Override
 	public ArrayList<CommodityLineItem> getCommoditys(String field) {
 		// TODO Auto-generated method stub
@@ -38,8 +34,7 @@ public class SaleReturnBill  implements SaleReturnBillBLService{
 	@Override
 	public SaleReturnBillVO toBillVO(String id, long user, long member, int sum, CommodityList list, Date time) {
 		// TODO Auto-generated method stub
-		salereturnlist=new SaleReturnBillVO(id, user, member, list, sum, time);
-		return salereturnlist;
+		return null;
 	}
 	@Override
 	public String conveyBill(SaleReturnBillVO salebill) {

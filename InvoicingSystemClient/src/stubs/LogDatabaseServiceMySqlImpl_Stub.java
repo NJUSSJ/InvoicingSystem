@@ -7,8 +7,9 @@ import po.LogPO;
 
 public class LogDatabaseServiceMySqlImpl_Stub implements LogDataService {
 
-	public void insert(LogPO po) throws RemoteException{
+	public boolean insert(LogPO po) throws RemoteException{
 		System.out.println("Insert successfully!");
+		return false;
 	}
 	public void delete(LogPO po) throws RemoteException{
 		System.out.println("Delete successfully!");

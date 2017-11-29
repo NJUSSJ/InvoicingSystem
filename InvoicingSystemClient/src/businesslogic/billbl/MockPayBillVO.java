@@ -1,38 +1,16 @@
 package businesslogic.billbl;
 
+import java.sql.Date;
+
 import vo.PayBillVO;
 
 public class MockPayBillVO extends PayBillVO {
-	
-	String id;
-	long  user;
-	long member;
-	double  sum;
-	int time;
-	Boolean state=false;
-	public MockPayBillVO(long member,double sum) {
-		// TODO Auto-generated constructor stub
-		this.member=member;
-		this.sum=sum;
+
+	public MockPayBillVO(String id, long userid, long memberid, AccountList accountList, double sum, Date time,
+			int state) {
+		super(id, userid, memberid, accountList, sum, time, state);
+		// TODO 自动生成的构造函数存根
 	}
 	
-	public double getSum() {
-		return sum;
-	}
 	
-	public void setSum(double sum) {
-		this.sum=sum;
-	}
-	
-	public long getMember() {
-		return member;
-	}
-	
-	public void setMember(long member) {
-		this.member=member;
-	}
-	
-	public void setState(Boolean state) {
-		this.state=state;
-	}
 }

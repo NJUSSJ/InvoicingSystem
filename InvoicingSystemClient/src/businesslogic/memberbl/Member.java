@@ -3,11 +3,12 @@ package businesslogic.memberbl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogicservice.memberblservice.MemberBLService;
 import po.MemberPO;
 import rmi.RemoteHelper;
 import vo.MemberVO;
 
-public class Member{
+public class Member implements MemberBLService{
 
 	public boolean addMember(MemberVO a) {
 		// TODO Auto-generated method stub
@@ -37,7 +38,7 @@ public class Member{
 		// TODO Auto-generated method stub
 		try {
 			MemberPO tmpPO=RemoteHelper.getInstance().getMemberDataService().find(name);
-			return new MemberVO();
+			return null;
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

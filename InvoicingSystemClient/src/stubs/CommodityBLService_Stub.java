@@ -36,7 +36,7 @@ public class CommodityBLService_Stub implements CommodityBLService{
 	@Override
 	public CommodityVO getCommodity(String field) {
 		// TODO 自动生成的方法存根
-		return new CommodityVO();
+		return new CommodityVO(field, cvBatch, field, cvBatch, cvBatch, cvBatch, cvBatch, cvBatch, field);
 	}
 
 	@Override
@@ -96,6 +96,14 @@ public class CommodityBLService_Stub implements CommodityBLService{
 	public CategoryVO getCategory(String name) {
 		// TODO Auto-generated method stub
 		System.out.println("success");
+		return null;
+	}
+
+
+	@Override
+	public CommodityVO toCommodityVO(String name, long id, String model, int stockNum, double importPrice,
+			double salePrice, double lateImportPrice, double lateSalePrice, String parent) {
+		// TODO 自动生成的方法存根
 		return null;
 	}
 

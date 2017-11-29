@@ -35,35 +35,31 @@ public class SaleBillPO implements Serializable {
 		this.state=state;
 		this.remark=remark;
 	}
-	
-	public String getID() {
+	public String getID(){
 		return id;
 	}
-	
-	public long getUserID() {
+	public long getUserID(){
 		return userid;
 	}
-	
-	public void changeUser(long userid) {
-		this.userid=userid;
-	}
-	
-	public long getMember() {
+	public long getMemeberID(){
 		return memberid;
 	}
-	
-	public void setMember(long memberid) {
-		this.memberid=memberid;
-	}
-	
-	public String getList() {
+	public String getCommodityList(){
 		return commodityList;
 	}
-	
-	public double getsum() {
+	public double getSum(){
 		return sum;
 	}
-	public int getnum(){
+	public int getState(){
+		return state;
+	}
+	public Date getTime(){
+		return time;
+	}
+	public int getNum(){
 		return num;
+	}
+	public String getRemark(){
+		return remark;
 	}
 }

@@ -33,31 +33,33 @@ public class ReceiveBillVO {
 	public String getID() {
 		return id;
 	}
-	public double getSum() {
-		return sum;
+	public long getUserID(){
+		return userid;
 	}
-	
-	public void setSum(double sum) {
-		this.sum=sum;
-	}
-	
 	public long getMemberID() {
 		return memberid;
 	}
-	
-	public void setMemberID(long memberid) {
-		this.memberid=memberid;
+	public AccountList getAccountList(){
+		return accountList;
 	}
-	
-	public void setState(int state) {
-		this.state=state;
-	}
-	
-	public long getUserID(){
-		return userid;
+	public double getSum() {
+		return accountList.getSum();
 	}
 	public Date getTime(){
 		return time;
 	}
+	public int getState(){
+		return state;
+	}
+	public void setSum(double sum) {
+		this.sum=accountList.getSum();
+	}
+	public void setMemberID(long memberid) {
+		this.memberid=memberid;
+	}
+	public void setState(int state) {
+		this.state=state;
+	}
+	
 	
 }

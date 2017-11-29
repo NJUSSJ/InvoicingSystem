@@ -11,10 +11,10 @@ public class AccountBLService_Driver {
 			System.out.println("account existed!");
 		}
 		
-		if((stub.addAccount(new AccountVO()).equals("Succeed"))){
+		if((stub.addAccount(new AccountVO(0, 0, null)).equals("Succeed"))){
 			System.out.println("add pass");
 		}
-		if((stub.deleteAccount(new AccountVO()).equals("Succeed"))){
+		if((stub.deleteAccount(new AccountVO(0, 0, null)).equals("Succeed"))){
 			System.out.println("delete pass");
 		}
 		if((stub.modifyAccount(8009280).equals("Succeed"))){

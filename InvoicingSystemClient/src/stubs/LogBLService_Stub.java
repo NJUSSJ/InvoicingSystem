@@ -24,8 +24,8 @@ public class LogBLService_Stub implements LogBLService{
 	
 
 	@Override
-	public void addRecord(LogVO vo) {
+	public boolean addRecord(LogVO vo) {
 		// TODO 自动生成的方法存根
-		
+		return false;
 	}
 }
