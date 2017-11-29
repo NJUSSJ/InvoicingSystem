@@ -8,9 +8,9 @@ import stubs.LogDatabaseServiceMySqlImpl_Stub;
 public class LogDataService_Driver {
 	public void drive(LogDatabaseServiceMySqlImpl_Stub stub){
 		try {
-			stub.insert(new LogPO());
-			stub.delete(new LogPO());
-			stub.update(new LogPO());
+			stub.insert(new LogPO(0, null, null, 0));
+			stub.delete(new LogPO(0, null, null, 0));
+			stub.update(new LogPO(0, null, null, 0));
 			stub.init();
 			stub.finish();
 			} catch (RemoteException e) {
