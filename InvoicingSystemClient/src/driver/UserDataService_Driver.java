@@ -14,9 +14,9 @@ public class UserDataService_Driver {
 				if(stub.find("980")!=null){
 					System.out.println("find(str) pass");
 				}
-				stub.insert(new UserPO());
-				stub.delete(new UserPO());
-				stub.update(new UserPO());
+				stub.insert(new UserPO(0, null, 0, null));
+				stub.delete(new UserPO(0, null, 0, null));
+				stub.update(new UserPO(0, null, 0, null));
 				stub.init();
 				stub.finish();
 				} catch (RemoteException e) {

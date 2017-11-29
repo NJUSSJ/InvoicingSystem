@@ -24,6 +24,6 @@ public class LossBillVO {
 		this.time=time;
 	}
 	public LossBillPO toLossBillPO(){
-		return new LossBillPO(id,userid,commodityList,time);
+		return new LossBillPO(id,userid,commodityList.toString(),time);
 	}
 }

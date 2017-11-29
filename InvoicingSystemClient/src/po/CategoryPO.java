@@ -1,11 +1,13 @@
 package po;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-import vo.CategoryVO;
-import vo.CommodityVO;
-
-public class CategoryPO {
+public class CategoryPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	long id;
 	String name;
 	String parent;

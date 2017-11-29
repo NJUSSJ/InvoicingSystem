@@ -24,6 +24,6 @@ public class OverBillVO {
 		this.time=time;
 	}
 	public OverBillPO toOverBillPO(){
-		return new OverBillPO(id,userid,commodityList,time);
+		return new OverBillPO(id,userid,commodityList.toString(),time);
 	}
 }

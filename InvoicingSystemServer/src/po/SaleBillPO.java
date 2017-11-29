@@ -5,6 +5,8 @@ import java.sql.Date;
 
 
 
+
+
 public class SaleBillPO implements Serializable {
 	/**
 	 * 
@@ -15,47 +17,49 @@ public class SaleBillPO implements Serializable {
 	long memberid;
 	String commodityList;
 	double sum;
+	int state;
 	Date time;
-	int num=0;
-	boolean state=false;
+	int num;
+	String remark;//±¸×¢
 	
-	public SaleBillPO() {
+	public SaleBillPO(String id,long userid,long memberid,String commodityList,
+			double sum,int state,Date time,int num,String remark) {
 		// TODO Auto-generated constructor stub
-	}
-	public SaleBillPO(String id,long userid,long memberid,String list,double sum,Date time) {
-		// TODO Auto-generated constructor stub
-		this.commodityList=list;
+		this.commodityList=commodityList;
 		this.id=id;
 		this.memberid=memberid;
 		this.userid=userid;
 		this.sum=sum;	
+		this.time=time;
+		this.num=num;
+		this.state=state;
+		this.remark=remark;
 	}
-	
-	public String getID() {
+	public String getID(){
 		return id;
 	}
-	
-	public long getUser() {
+	public long getUserID(){
 		return userid;
 	}
-	
-	public void changeUser(long userid) {
-		this.userid=userid;
-	}
-	
-	public long getMember() {
+	public long getMemeberID(){
 		return memberid;
 	}
-	
-	public void changeMember(long memberid) {
-		this.memberid=memberid;
-	}
-	
-	public String getList() {
+	public String getCommodityList(){
 		return commodityList;
 	}
-	
-	public double getsum() {
+	public double getSum(){
 		return sum;
+	}
+	public int getState(){
+		return state;
+	}
+	public Date getTime(){
+		return time;
+	}
+	public int getNum(){
+		return num;
+	}
+	public String getRemark(){
+		return remark;
 	}
 }

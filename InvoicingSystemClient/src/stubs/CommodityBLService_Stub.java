@@ -36,14 +36,14 @@ public class CommodityBLService_Stub implements CommodityBLService{
 	@Override
 	public CommodityVO getCommodity(String field) {
 		// TODO 自动生成的方法存根
-		return new CommodityVO(field, cvBatch, field, cvBatch, cvBatch, cvBatch, cvBatch, cvBatch, field);
+		return new CommodityVO(field, cvBatch, field, cvBatch, cvBatch, cvBatch, cvBatch, cvBatch, cvBatch);
 	}
 
 	@Override
 	public ArrayList<CategoryVO> getCategoryList(String field) {
 		// TODO 自动生成的方法存根
 		ArrayList<CategoryVO> cgl=new ArrayList<CategoryVO>();
-		cgl.add(new CategoryVO(field, field, null, null));
+		cgl.add(new CategoryVO(cvBatch, field, field, null, null));
 		return cgl;
 	}
 

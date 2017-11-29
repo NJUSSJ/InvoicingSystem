@@ -9,18 +9,18 @@ public class CommodityPO implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	 String name;
-	 long id;
-	 String model;
-	 int stockNum;
-	 double importPrice;
-	 double salePrice;
-	 double lateImportPrice;
-	 double lateSalePrice;
-	 String parent;
+	String name;
+	long id;
+	String model;
+	int stockNum;
+	double importPrice;
+	double salePrice;
+	double lateImportPrice;
+	double lateSalePrice;
+	long parentid;
 	 	
-	 public CommodityPO(String name,long id,String model, int stockNum, double importPrice, double salePrice,
-				double lateImportPrice, double lateSalePrice,String parent) {
+	public CommodityPO(String name,long id,String model, int stockNum, double importPrice, double salePrice,
+				double lateImportPrice, double lateSalePrice,long parentid) {
 			// TODO Auto-generated constructor stub
 			this.name=name;
 			this.id=id;
@@ -30,6 +30,7 @@ public class CommodityPO implements Serializable {
 			this.salePrice=salePrice;
 			this.lateImportPrice=lateImportPrice;
 			this.lateSalePrice=lateSalePrice;
+			this.parentid=parentid;
 		}
 	
 	public String getName() {
@@ -38,15 +39,26 @@ public class CommodityPO implements Serializable {
 	public long getID() {
 		return id;
 	}
-	public int getStockNum() {
+	public String getModel(){
+		return model;
+	}
+	public int getStockNum(){
 		return stockNum;
 	}
-	
-	public void setName(String name){
-		this.name=name;
+	public double getImportPrice(){
+		return importPrice;
 	}
-	public void setStockNum(int stockNum){
-		this.stockNum=stockNum;
+	public double getSalePrice(){
+		return salePrice;
+	}
+	public double getLateImportPrice(){
+		return lateImportPrice;
+	}
+	public double getLateSalePrice(){
+		return lateSalePrice;
+	}
+	public long getParentID(){
+		return parentid;
 	}
 }
 

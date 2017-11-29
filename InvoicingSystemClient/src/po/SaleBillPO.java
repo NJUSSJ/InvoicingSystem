@@ -3,7 +3,7 @@ package po;
 import java.io.Serializable;
 import java.sql.Date;
 
-import businesslogic.billbl.CommodityList;
+
 
 
 
@@ -22,16 +22,16 @@ public class SaleBillPO implements Serializable {
 	int num;
 	String remark;//±¸×¢
 	
-	public SaleBillPO(String id,long userid,long memberid,CommodityList commodityList,
-			double sum,int state,Date time,String remark) {
+	public SaleBillPO(String id,long userid,long memberid,String commodityList,
+			double sum,int state,Date time,int num,String remark) {
 		// TODO Auto-generated constructor stub
-		this.commodityList=commodityList.toString();
+		this.commodityList=commodityList;
 		this.id=id;
 		this.memberid=memberid;
 		this.userid=userid;
 		this.sum=sum;	
 		this.time=time;
-		num=commodityList.getNum();
+		this.num=num;
 		this.state=state;
 		this.remark=remark;
 	}

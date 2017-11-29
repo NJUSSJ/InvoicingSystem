@@ -35,7 +35,18 @@ public class MemberPO implements Serializable{
 		this.quota=quota;
 		this.defaultOperatorID=defaultOperatorID;
 	}
-	
+	public long getID(){
+		return id;
+	}
+	public int getRank(){
+		return rank;
+	}
+	public int getPostCode(){
+		return postCode;
+	}
+	public int getCategory(){
+		return category;
+	}
 	public String getName() {
 		return name;
 	}
@@ -56,18 +67,6 @@ public class MemberPO implements Serializable{
 	}
 	public double getQuota(){
 		return quota;
-	}
-	public long getID(){
-		return id;
-	}
-	public int getRank(){
-		return rank;
-	}
-	public int getPostCode(){
-		return postCode;
-	}
-	public int getCategory(){
-		return category;
 	}
 	public long getDefaultOperatorID(){
 		return defaultOperatorID;

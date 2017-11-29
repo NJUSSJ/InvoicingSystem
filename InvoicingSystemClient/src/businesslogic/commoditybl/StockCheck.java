@@ -41,7 +41,7 @@ public class StockCheck implements StockCheckBLService  {
 		// TODO Auto-generated method stub
 		ArrayList<SaleBillVO> list=new ArrayList<>();
 		CommodityList commoditylist=new CommodityList();
-		commoditylist.addCommodity(new CommodityLineItem(new CommodityVO(null, end_time, null, end_time, end_time, end_time, end_time, end_time, null), 100));
+		commoditylist.addCommodity(new CommodityLineItem(new CommodityVO(null, end_time, null, end_time, end_time, end_time, end_time, end_time, end_time), 100));
 		list.add(new MockSaleBillVO(null, end_time, end_time, commoditylist, end_time, end_time, null, null));
 		int num=0;
 		for(SaleBillVO s:list) {

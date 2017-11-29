@@ -2,8 +2,6 @@ package po;
 
 import java.sql.Date;
 
-import businesslogic.billbl.AccountList;
-
 public class ReceiveBillPO {
 	String id;
 	long userid;
@@ -14,7 +12,7 @@ public class ReceiveBillPO {
 	int state;
 	
 	public ReceiveBillPO(String id ,long userid,long memberid,
-			AccountList accountList,double sum,Date time,int state) {
+			String accountList,double sum,Date time,int state) {
 		this.id=id;
 		this.sum=sum;
 		this.memberid=memberid;
@@ -22,7 +20,7 @@ public class ReceiveBillPO {
 		this.time=time;
 		this.state=state;
 		this.accountList=accountList.toString();
-		this.sum=accountList.getSum();
+		this.sum=sum;
 	}
 	
 	public String getID() {

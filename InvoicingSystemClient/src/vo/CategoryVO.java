@@ -9,9 +9,10 @@ public class CategoryVO {
 	ArrayList<Long> subCategoryID;
 	ArrayList<Long> subCommodityID;
 	
-	public CategoryVO(String name,String parent,ArrayList<Long> subCategoryID,
+	public CategoryVO(long id,String name,String parent,ArrayList<Long> subCategoryID,
 			ArrayList<Long> subCommodityID) {
 		// TODO Auto-generated constructor stub
+		this.id=id;
 		this.name=name;
 		this.parent=parent;
 		this.subCategoryID=subCategoryID;

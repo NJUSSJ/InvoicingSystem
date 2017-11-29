@@ -35,69 +35,40 @@ public class MemberPO implements Serializable{
 		this.quota=quota;
 		this.defaultOperatorID=defaultOperatorID;
 	}
-	
-	public MemberPO() {
-		// TODO Auto-generated constructor stub
+	public long getID(){
+		return id;
+	}
+	public int getRank(){
+		return rank;
+	}
+	public int getPostCode(){
+		return postCode;
+	}
+	public int getCategory(){
+		return category;
 	}
 	public String getName() {
 		return name;
 	}
-	public void setName(String name) {
-		this.name=name;
+	public int getPhoneNum(){
+		return phoneNum;
 	}
-	
+	public String getAddress(){
+		return address;
+	}
+	public String getEmail(){
+		return eMail;
+	}
 	public double getShouldPay() {
 		return shouldPay;
 	}
-	
-	public void setShouldPay(double shouldPay) {
-		this.shouldPay=shouldPay;
-	}
-	
-	public long getID() {
-		return id;
-	}
-	
-	public int getRank() {
-		return rank;
-	}
-	
-	public int getPostcode() {
-		return postCode;
-	}
-	
-	public int getCategory() {
-		return category;
-	}
-	
-	public int getPhone() {
-		return phoneNum;
-	}
-	
-	public String getAddress() {
-		return address;
-	}
-	
-	public String getEmail() {
-		return eMail;
-	}
-	
-	public double getShoubleGet() {
+	public double getShouldGet(){
 		return shouldGet;
 	}
-	
-	public void setShouldGet(double get) {
-		this.shouldGet=get;
-	}
-			
-	public double getQuota() {
+	public double getQuota(){
 		return quota;
 	}
-	
-	public long getOperator() {
+	public long getDefaultOperatorID(){
 		return defaultOperatorID;
 	}
-	
-	
-	
 }

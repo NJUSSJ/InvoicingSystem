@@ -1,7 +1,5 @@
 package vo;
 
-import java.sql.Date;
-
 import po.CommodityPO;
 
 public class CommodityVO {
@@ -13,10 +11,10 @@ public class CommodityVO {
 	 double salePrice;
 	 double lateImportPrice;
 	 double lateSalePrice;
-	 String parent;
+	 long parentid;
 	 	
 	public CommodityVO(String name,long id,String model, int stockNum, double importPrice, double salePrice,
-			double lateImportPrice, double lateSalePrice,String parent) {
+			double lateImportPrice, double lateSalePrice,long parentid) {
 		// TODO Auto-generated constructor stub
 		this.name=name;
 		this.id=id;
@@ -26,9 +24,11 @@ public class CommodityVO {
 		this.salePrice=salePrice;
 		this.lateImportPrice=lateImportPrice;
 		this.lateSalePrice=lateSalePrice;
+		this.parentid=parentid;
 	}
 	public CommodityPO toCommodityPO(){
-		return new CommodityPO(name,id,model,stockNum,importPrice,salePrice,lateImportPrice,lateSalePrice,parent);
+		return new CommodityPO(name,id,model,stockNum,importPrice,
+				salePrice,lateImportPrice,lateSalePrice,parentid);
 	}
 	
 	public String getName() {
@@ -55,8 +55,8 @@ public class CommodityVO {
 	public double getLateImportPrice(){
 		return lateImportPrice;
 	}
-	public String getParent(){
-		return parent;
+	public long getParent(){
+		return parentid;
 	}
 	public void setName(String name){
 		this.name=name;

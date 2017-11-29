@@ -8,7 +8,7 @@ import po.CommodityPO;
 public class CommodityDatabaseServiceMySqlImpl_Stub implements CommodityDataService{
 	
 	public CommodityPO find(long id){
-		return new CommodityPO(null, id, null, 0, id, id, id, id, null);
+		return new CommodityPO(null, id, null, 0, id, id, id, id, id);
 		
 	}
 	public ArrayList<CommodityPO> finds(long id,String field){

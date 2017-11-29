@@ -3,8 +3,6 @@ package po;
 import java.io.Serializable;
 import java.sql.Date;
 
-import businesslogic.billbl.AccountList;
-
 public class PayBillPO implements Serializable {
 	/**
 	 * 
@@ -19,49 +17,36 @@ public class PayBillPO implements Serializable {
 	int state;
 	
 	public PayBillPO(String id ,long userid,long memberid,
-			AccountList accountList,double sum,Date time,int state) {
+			String accountList,double sum,Date time,int state) {
 		this.id=id;
 		this.sum=sum;
 		this.memberid=memberid;
 		this.userid=userid;
 		this.time=time;
 		this.state=state;
-		this.accountList=accountList.toString();
-		this.sum=accountList.getSum();
-	}
-	public int getState(){
-		return state;
+		this.accountList=accountList;
+		this.sum=sum;
 	}
 	public String getID() {
 		return id;
 	}
-	public double getSum() {
-		return sum;
+	public long getUserID(){
+		return userid;
+	}
+	public long getMemberID() {
+		return memberid;
 	}
 	public String getAccountList(){
 		return accountList;
 	}
-	public void setSum(double sum) {
-		this.sum=sum;
-	}
-	
-	public long getMemberID() {
-		return memberid;
-	}
-	
-	public void setMemberID(long memberid) {
-		this.memberid=memberid;
-	}
-	
-	public void setState(int state) {
-		this.state=state;
-	}
-	
-	public long getUserID(){
-		return userid;
+	public double getSum() {
+		return sum;
 	}
 	public Date getTime(){
 		return time;
+	}
+	public int getState(){
+		return state;
 	}
 	
 }

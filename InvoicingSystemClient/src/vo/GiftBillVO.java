@@ -25,6 +25,7 @@ public class GiftBillVO {
 		this.memberid=memberid;
 		this.state=state;
 	}
+	
 	public long getID() {
 		return id;
 	}
