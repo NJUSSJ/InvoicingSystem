@@ -10,19 +10,16 @@ public class PayBillVO {
 	long userid;
 	long memberid;
 	double sum;
-	int time;
-	boolean state=false;
+	Date time;
+	int state;
 	
-	
-	public PayBillVO() {
-		// TODO Auto-generated constructor stub
-	}
-	public PayBillVO(String id ,long userid,long memberid,int sum,int time) {
+	public PayBillVO(String id ,long userid,long memberid,int sum,Date time,int state) {
 		this.id=id;
 		this.sum=sum;
 		this.memberid=memberid;
 		this.userid=userid;
 		this.time=time;
+		this.state=state;
 	}
 	
 	public String getID() {
@@ -44,8 +41,15 @@ public class PayBillVO {
 		this.memberid=memberid;
 	}
 	
-	public void setState(Boolean state) {
+	public void setState(int state) {
 		this.state=state;
+	}
+	
+	public long getUserID(){
+		return userid;
+	}
+	public int getTime(){
+		return time;
 	}
 	
 	

@@ -3,14 +3,15 @@ package businesslogic.billbl;
 import vo.MemberVO;
 
 public class MockMemberVO extends MemberVO{
+	public MockMemberVO(long id, int rank, int postCode, int category, String name, String phoneNum, String address,
+			String eMail, double shouldPay, double shouldGet, double quota, long defaultOperatorID) {
+		super(id, rank, postCode, category, name, phoneNum, address, eMail, shouldPay, shouldGet, quota, defaultOperatorID);
+		// TODO 自动生成的构造函数存根
+	}
+
 	String name;
 	double should_pay;
 	long id;
-	public MockMemberVO(long id,double should_pay) {
-		// TODO Auto-generated constructor stub
-		this.id=id;
-		this.should_pay=should_pay;
-	}
 	
 	public String getName() {
 		return name;

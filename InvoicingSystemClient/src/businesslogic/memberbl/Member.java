@@ -37,7 +37,7 @@ public class Member{
 		// TODO Auto-generated method stub
 		try {
 			MemberPO tmpPO=RemoteHelper.getInstance().getMemberDataService().find(name);
-			return null;
+			return new MemberVO();
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

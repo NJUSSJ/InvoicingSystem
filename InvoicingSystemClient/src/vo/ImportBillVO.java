@@ -15,11 +15,11 @@ public class ImportBillVO {
 	long memberid;
 	CommodityList commodityList;
 	int sum;
-	Boolean state=false;
+	int state;
 	Date time;
 	int num;
 	
-	public ImportBillVO(long id,long userid,long memberid,CommodityList list,int sum,Date time) {
+	public ImportBillVO(long id,long userid,long memberid,CommodityList list,int sum,int state,Date time) {
 		// TODO Auto-generated constructor stub
 		this.commodityList=list;
 		this.id=id;
@@ -27,7 +27,8 @@ public class ImportBillVO {
 		this.userid=userid;
 		this.sum=sum;	
 		this.time=time;
-		 num=this.commodityList.getNum();
+		num=this.commodityList.getNum();
+		this.state=state;
 	}
 	
 	public long getID() {
@@ -46,7 +47,7 @@ public class ImportBillVO {
 		return memberid;
 	}
 	
-	public void changeMember(long memberid) {
+	public void setMember(long memberid) {
 		this.memberid=memberid;
 	}
 	
