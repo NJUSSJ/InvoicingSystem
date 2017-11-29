@@ -6,15 +6,17 @@ package vo;
  *
  */
 
+import java.sql.Date;
+
 import businesslogic.billbl.CommodityList;
 
 public class WarningBillVO {
 	long id;
 	long userid;
 	CommodityList list;
-	int time;
+	Date time;
 	
-	public WarningBillVO(long id,long userid,CommodityList list,int time) {
+	public WarningBillVO(long id,long userid,CommodityList list,Date time) {
 		// TODO Auto-generated constructor stub
 		this.id=id;
 		this.userid=userid;
