@@ -33,7 +33,9 @@ public class LoginPanelController implements Initializable {
 		
 	}
 	
-	private Boolean certifyUser() {
+
+	private boolean certifyUser() {
+
 		String inputUserneme=username.getText();
 		String inputPassword=password.getText();
 		
@@ -98,6 +100,7 @@ public class LoginPanelController implements Initializable {
 				break;
 			}
 		}
+
 		
 		
 	}

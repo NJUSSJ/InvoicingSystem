@@ -205,6 +205,7 @@ public class MainApp extends Application {
 			// TODO: handle exception
 		}
 	}
+
 	
 	/*
 	 * 显示经营历程界面
@@ -513,6 +514,7 @@ public class MainApp extends Application {
 			// TODO: handle exception
 		}
 	}
+
 	/**
      * Returns the main stage.
      * @return

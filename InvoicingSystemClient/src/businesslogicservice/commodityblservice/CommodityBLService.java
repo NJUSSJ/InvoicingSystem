@@ -1,3 +1,19 @@
+<<<<<<< HEAD
+package businesslogicservice.commodityblservice;
+
+import java.util.ArrayList;
+
+import vo.CategoryVO;
+import vo.CommodityVO;
+
+
+
+
+public interface CommodityBLService {
+	public boolean addCommodity(CommodityVO commodityVO);
+	public boolean delete
+}
+=======
 package businesslogicservice.commodityblservice;
 
 import java.util.ArrayList;
@@ -33,3 +49,4 @@ public interface CommodityBLService {
 	
 	public String modifyCategory(CategoryVO c);
 }
+>>>>>>> bbd01677120b3e5469e62b876f3702b66be44be8
