@@ -3,7 +3,6 @@ package dataservice.logdataservice;
 import java.rmi.RemoteException;
 import java.sql.Date;
 import java.util.ArrayList;
-
 import po.LogPO;
 
 public interface LogDataService {

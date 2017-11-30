@@ -5,6 +5,6 @@ import vo.CashBillVO;
 
 public interface CashBillBLService {
 	public CashBillVO toCashBillVO (CashBillPO po);
-	public String conveyBill(CashBillVO cashbill);
-	public CashBillVO checkBill(CashBillVO cashbill);
+	public boolean conveyBill(CashBillVO cashbill);
+	public boolean checkBill(boolean pass);
 }

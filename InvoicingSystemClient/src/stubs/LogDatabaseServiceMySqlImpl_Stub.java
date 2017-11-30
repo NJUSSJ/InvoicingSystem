@@ -1,6 +1,7 @@
 package stubs;
 
 import java.rmi.RemoteException;
+import java.sql.Date;
 import java.util.ArrayList;
 
 import dataservice.logdataservice.LogDataService;
@@ -27,7 +28,19 @@ public class LogDatabaseServiceMySqlImpl_Stub implements LogDataService {
 	}
 
 	@Override
-	public boolean delete(LogPO po) throws RemoteException {
+	public ArrayList<LogPO> findLogbyType(String type) throws RemoteException {
+		// TODO 自动生成的方法存根
+		return null;
+	}
+
+	@Override
+	public int getLogNum() throws RemoteException {
+		// TODO 自动生成的方法存根
+		return 0;
+	}
+
+	@Override
+	public boolean delete(Date time) throws RemoteException {
 		// TODO 自动生成的方法存根
 		return false;
 	}
@@ -38,18 +51,4 @@ public class LogDatabaseServiceMySqlImpl_Stub implements LogDataService {
 		return false;
 	}
 
-	@Override
-	public void init() throws RemoteException {
-		// TODO 自动生成的方法存根
-		
-	}
-
-	@Override
-	public void finish() throws RemoteException {
-		// TODO 自动生成的方法存根
-		
-	}
-
-	
-	
 }
