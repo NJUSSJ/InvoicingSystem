@@ -7,9 +7,6 @@ import po.CommodityPO;
 import vo.CategoryVO;
 import vo.CommodityVO;
 
-
-
-
 public interface CommodityBLService {
 	public boolean addCommodity(CommodityVO commodityVO);
 	public boolean deleteCommodity(CommodityVO commodityVO);

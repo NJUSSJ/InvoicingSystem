@@ -29,7 +29,7 @@ public static void main(String[] args){
 	BillDataService_Driver bddriver=new BillDataService_Driver();
 	bddriver.drive(new BillDatabaseServiceMySqlImpl_Stub());
 	CommodityBLService_Driver cbldriver=new CommodityBLService_Driver();
-	cbldriver.drive(new CommodityBLService_Stub(null, 0, 0, 0, 0, 0, null, null));
+	cbldriver.drive(new CommodityBLService_Stub());
 	CommodityDataService_Driver cddriver=new CommodityDataService_Driver();
 	cddriver.drive(new CommodityDatabaseServiceMySqlImpl_Stub());
 	LogBLService_Driver lbldriver=new LogBLService_Driver();
