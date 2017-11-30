@@ -2,40 +2,90 @@ package businesslogic.commoditybl;
 
 import java.util.ArrayList;
 
+import businesslogicservice.commodityblservice.CommodityBLService;
+import po.CategoryPO;
+import po.CommodityPO;
 import vo.CategoryVO;
 import vo.CommodityVO;
 
-public class CommodityController {
-	public CommodityVO getCommodity(String field){
-		return null;
-		
+public class CommodityController implements CommodityBLService{
+
+	@Override
+	public boolean addCommodity(CommodityVO commodityVO) {
+		// TODO 自动生成的方法存根
+		return false;
 	}
-	public String addCommodity(CommodityVO c){
-		return null;
-		
+
+	@Override
+	public boolean deleteCommodity(CommodityVO commodityVO) {
+		// TODO 自动生成的方法存根
+		return false;
 	}
-	public String deleteCommodity(CommodityVO c){
-		return null;
-		
+
+	@Override
+	public boolean updateCommodity(CommodityVO commodityVO) {
+		// TODO 自动生成的方法存根
+		return false;
 	}
-	public String modifyCommodity(CommodityVO c){
+
+	@Override
+	public CommodityVO findCommodityByName(String name) {
+		// TODO 自动生成的方法存根
 		return null;
-		
 	}
-	public ArrayList<CategoryVO> getCategory(){
+
+	@Override
+	public CommodityVO findCommodityByID(long id) {
+		// TODO 自动生成的方法存根
 		return null;
-		
 	}
-	public String addCategory(CategoryVO c){
+
+	@Override
+	public ArrayList<CommodityVO> findCommodityByField(String field) {
+		// TODO 自动生成的方法存根
 		return null;
-		
 	}
-	public String deleteCategory(CategoryVO c){
+
+	@Override
+	public boolean addCategory(CategoryVO categoryVO) {
+		// TODO 自动生成的方法存根
+		return false;
+	}
+
+	@Override
+	public boolean deleteCategory(CategoryVO categoryVO) {
+		// TODO 自动生成的方法存根
+		return false;
+	}
+
+	@Override
+	public boolean updateCategory(CategoryVO categoryVO) {
+		// TODO 自动生成的方法存根
+		return false;
+	}
+
+	@Override
+	public CategoryVO findCategoryByName(String name) {
+		// TODO 自动生成的方法存根
 		return null;
-		
 	}
-	public String  modifyCategory(CategoryVO c){
+
+	@Override
+	public CategoryVO findCategoryByID(long id) {
+		// TODO 自动生成的方法存根
 		return null;
-		
 	}
+
+	@Override
+	public CommodityVO toCommodityVO(CommodityPO commodityPO) {
+		// TODO 自动生成的方法存根
+		return null;
+	}
+
+	@Override
+	public CategoryVO toCategoryVO(CategoryPO categoryPO) {
+		// TODO 自动生成的方法存根
+		return null;
+	}
+	
 }
