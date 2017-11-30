@@ -1,8 +1,7 @@
 package presentation.mainui;
 
-import java.net 
 
-.URL;
+import java.net.URL;
 import java.util.ResourceBundle;
 
 import MainApp.MainApp;
@@ -23,6 +22,7 @@ public class AdministerMainViewController implements Initializable {
 	
 	@FXML
 	private ImageView userChange;
+
 	@FXML
 	private Label logout;
 	
