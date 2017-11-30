@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import vo.AccountVO;
 import businesslogicservice.accountblservice.*;
+import po.AccountPO;
 
 public class AccountBLService_Stub implements AccountBLService {
 	
@@ -19,33 +20,30 @@ public class AccountBLService_Stub implements AccountBLService {
 		this.deposit=deposit;
 		this.Bank=Bank;
 	}
-
 	@Override
-	public AccountVO getAccount(long id) {
-		// TODO Auto-generated method stub
-		System.out.println("获得账户数据对象");
-		return new AccountVO(id, deposit, Bank);
+	public AccountVO findAccountByID(long id) {
+		// TODO 自动生成的方法存根
+		return null;
 	}
-
 	@Override
-	public String addAccount(AccountVO account) {
-		// TODO Auto-generated method stub
-		System.out.println("增加账户数据对象");
-		return "Succeed";
+	public boolean addAccount(AccountVO accountVO) {
+		// TODO 自动生成的方法存根
+		return false;
 	}
-
 	@Override
-	public String deleteAccount(AccountVO account) {
-		// TODO Auto-generated method stub
-		System.out.println("删除账户数据对象");
-		return "Succeed";
+	public boolean deleteAccount(AccountVO accountVO) {
+		// TODO 自动生成的方法存根
+		return false;
 	}
-
 	@Override
-	public String modifyAccount(long id) {
-		// TODO Auto-generated method stub
-		System.out.println("修改账户数据对象");
-		return "Succeed";
+	public boolean updateAccount(AccountVO accountVO) {
+		// TODO 自动生成的方法存根
+		return false;
+	}
+	@Override
+	public AccountVO toAccountVO(AccountPO accountPO) {
+		// TODO 自动生成的方法存根
+		return null;
 	}
 
 	

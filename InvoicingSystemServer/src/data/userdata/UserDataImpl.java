@@ -13,7 +13,7 @@ public class UserDataImpl implements UserDataService {
 	 * 按员工id在数据库中查找
 	 */
 	@Override
-	public UserPO find(long id) throws RemoteException {
+	public UserPO findUserbyID(long id) throws RemoteException {
 		// TODO Auto-generated method stub
 	String sql="SELECT id, username,rank,password FROM users";
 		
@@ -46,7 +46,7 @@ public class UserDataImpl implements UserDataService {
 	 * 按照员工姓名在数据库中查找
 	 */
 	@Override
-	public UserPO find(String name) throws RemoteException {
+	public UserPO findUserbyName(String name) throws RemoteException {
 		// TODO Auto-generated method stub
 		String sql="SELECT id, username,rank,password FROM users";
 		
@@ -82,7 +82,7 @@ public class UserDataImpl implements UserDataService {
 	public boolean insert(UserPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		String sql="INSERT INTO users(id,username,password,rank) VALUES("+po.getID()
-		+",'"+po.getName()+"','"+po.getPassword()+"','"+po.getPassword()+"',"+po.getRank()+")";
+		+",'"+po.getUserName()+"','"+po.getPassword()+"','"+po.getPassword()+"',"+po.getRank()+")";
 		try {
 			if(DataFactory.statement.execute(sql)){
 				return true;
@@ -117,7 +117,7 @@ public class UserDataImpl implements UserDataService {
 	@Override
 	public boolean update(UserPO po) throws RemoteException {
 		// TODO Auto-generated method stub
-		String sql="UPDATE users SET username='"+po.getName()+"',password='"
+		String sql="UPDATE users SET username='"+po.getUserName()+"',password='"
 				+po.getPassword()+"',rank="+po.getRank()+" WHERE id="+po.getID();
 		try {
 			if(DataFactory.statement.execute(sql)){
@@ -130,16 +130,6 @@ public class UserDataImpl implements UserDataService {
 		return false;
 	}
 
-	@Override
-	public void init() throws RemoteException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void finish() throws RemoteException {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 }

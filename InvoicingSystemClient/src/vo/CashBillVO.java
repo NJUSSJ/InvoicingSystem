@@ -1,5 +1,10 @@
 package vo;
 
+import java.sql.Date;
+import java.util.ArrayList;
+
+import po.CashBillPO;
+
 /**
  * 
  * @author yrz
@@ -7,41 +12,51 @@ package vo;
  *
  */
 public class CashBillVO {
-	long id;
-	String user;
-	String member;
-	Boolean state=false;
-	int time;
-	public CashBillVO(long id,String user,String member,int time) {
+	String id;
+	long userid;
+	long accountid;
+	ArrayList<String> items;//条目：条目名+备注
+	Date time;
+	double sum;
+	int state;
+	public CashBillVO(String id,long userid,long accountid,ArrayList<String> items,Date time,int state) {
 		// TODO Auto-generated constructor stub
 		this.id=id;
-		this.member=member;
-		this.user=user;
+		this.accountid=accountid;
+		this.userid=userid;
 		this.time=time;
+		this.state=state;
 	}
 	
-	public void passState() {
-		state=true;
+	public CashBillPO toCashBillPO(){
+		return new CashBillPO(id,accountid,userid,items,state,time,sum);
 	}
 	
-	public String getUser() {
-		return user;
-	}
-	
-	public void changeUser(String user) {
-		this.user=user;
-	}
-	
-	public long getID() {
+	public String getID(){
 		return id;
 	}
-	
-	public String getMember() {
-		return member;
+	public long getUserID(){
+		return userid;
 	}
-	
-	public void changeMember(String member)
-	{
-		this.member=member;
+	public long getAccountID(){
+		return accountid;
+	}
+	public Date getTime(){
+		return time;
+	}
+	public int getState(){
+		return state;
+	}
+	public void setUserID(long userid){
+		this.userid=userid;
+	}
+	public void setAccountID(long accountid){
+		this.accountid=accountid;
+	}
+	public void setState(int state){
+		this.state=state;
+	}
+	public void setTime(Date time){
+		this.time=time;
 	}
 }

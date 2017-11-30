@@ -1,57 +1,67 @@
 package vo;
 
-public class CommodityVO {
-	
-	 String name;
-	 int ID;
-	 int stock_num;
-	 double price;
-	 int batch;//批次
-	 int batch_num;
-	 int  produce_time;
-	 double averagePrice;
-	 	
-	public CommodityVO(String name, int ID, int stock_num, double price, int batch, int batch_num, int produce_time) {
-		// TODO Auto-generated constructor stub
-		this.ID=ID;
-		this.stock_num=stock_num;
-		this.batch=batch;
-		this.batch_num=batch_num;
-		this.name=name;
-		this.price=price;
-		this.produce_time=produce_time;
-	}
+import po.CommodityPO;
 
-	public CommodityVO() {
-		// TODO 自动生成的构造函数存根
+public class CommodityVO {
+	 String name;
+	 long id;
+	 String model;
+	 int stockNum;
+	 double importPrice;
+	 double salePrice;
+	 double lateImportPrice;
+	 double lateSalePrice;
+	 long parentid;
+	 	
+	public CommodityVO(String name,long id,String model, int stockNum, double importPrice, double salePrice,
+			double lateImportPrice, double lateSalePrice,long parentid) {
+		// TODO Auto-generated constructor stub
+		this.name=name;
+		this.id=id;
+		this.model=model;
+		this.stockNum=stockNum;
+		this.importPrice=importPrice;
+		this.salePrice=salePrice;
+		this.lateImportPrice=lateImportPrice;
+		this.lateSalePrice=lateSalePrice;
+		this.parentid=parentid;
+	}
+	public CommodityPO toCommodityPO(){
+		return new CommodityPO(name,id,model,stockNum,importPrice,
+				salePrice,lateImportPrice,lateSalePrice,parentid);
 	}
 	
 	public String getName() {
 		return name;
 	}
-	
-	public double getPrice() {
-		return price;
+	public long getID() {
+		return id;
 	}
-	
-	public int getID() {
-		return ID;
+	public String getModel(){
+		return model;
 	}
-	
 	public int getStockNum() {
-		return stock_num;
+		return stockNum;
 	}
-	
-	public int getBatch() {
-		return batch;
+	public double getSalePrice(){
+		return salePrice;
 	}
-	
-	public int getBatchNum() {
-		return batch_num;
+	public double getImportPrice(){
+		return importPrice;
 	}
-	
-	
-	public int getProduceTime() {
-		return produce_time;
+	public double getLateSalePrice(){
+		return lateSalePrice;
+	}
+	public double getLateImportPrice(){
+		return lateImportPrice;
+	}
+	public long getParent(){
+		return parentid;
+	}
+	public void setName(String name){
+		this.name=name;
+	}
+	public void setStockNum(int stockNum){
+		this.stockNum=stockNum;
 	}
 }

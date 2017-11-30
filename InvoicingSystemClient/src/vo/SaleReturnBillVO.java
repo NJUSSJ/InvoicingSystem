@@ -1,56 +1,64 @@
 package vo;
 
+import java.sql.Date;
+
 import businesslogic.billbl.CommodityList;
 
 /**
  * 
  * @author yrz
- *	ï¿½ï¿½ï¿½ï¿½ï¿½Ë»ï¿½ï¿½ï¿½
+ *
  */
 public class SaleReturnBillVO {
-	long id;
-	String user;
-	String member;
+	String id;
+	long userid;
+	long memberid;
 	CommodityList commodityList;
-	int sum;
-	int time;
+	double sum;
+	int state;
+	Date time;
 	int num;
+	String remark;//±¸×¢
 	
-	public SaleReturnBillVO(long id,String user,String member,CommodityList list,int sum,int time) {
+	public SaleReturnBillVO(String id,long userid,long memberid,CommodityList list,
+			double sum,int state,Date time,String remark) {
 		// TODO Auto-generated constructor stub
 		this.commodityList=list;
 		this.id=id;
-		this.member=member;
-		this.user=user;
+		this.memberid=memberid;
+		this.userid=userid;
 		this.sum=sum;	
+		this.time=time;
 		num=this.commodityList.getNum();
+		this.state=state;
+		this.remark=remark;
 	}
 	
-	public long getID() {
+	public String getID() {
 		return id;
 	}
 	
-	public String getUser() {
-		return user;
+	public long getUserID() {
+		return userid;
 	}
 	
-	public void changeUser(String user) {
-		this.user=user;
+	public void changeUser(long userid) {
+		this.userid=userid;
 	}
 	
-	public String getMember() {
-		return member;
+	public long getMember() {
+		return memberid;
 	}
 	
-	public void changeMember(String member) {
-		this.member=member;
+	public void setMember(long memberid) {
+		this.memberid=memberid;
 	}
 	
 	public CommodityList getList() {
 		return commodityList;
 	}
 	
-	public int getsum() {
+	public double getsum() {
 		return sum;
 	}
 	public int getnum(){

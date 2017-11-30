@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 
 import po.BillPO;
 
-public interface billdataservice {
+public interface BillDataService {
 	public BillPO importBill (BillPO ib) throws RemoteException;
 	public BillPO exportBill (BillPO ib) throws RemoteException;
 	public BillPO salesBill (BillPO ib) throws RemoteException;

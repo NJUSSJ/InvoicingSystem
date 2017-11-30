@@ -18,24 +18,16 @@ public class UserPO  implements Serializable{
 		this.rank=rank;
 		this.username=username;
 	}
-
-	public UserPO() {
-		// TODO 自动生成的构造函数存根
-	}
-	
 	public long getID() {
 		return id;
 	}
-	
 	public String getPassword() {
 		return password;
 	}
-	
 	public int getRank() {
 		return rank;
 	}
-	
-	public String getName() {
+	public String getUserName() {
 		return username;
 	}
 	

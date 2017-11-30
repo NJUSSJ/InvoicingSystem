@@ -9,6 +9,9 @@ import vo.CommodityVO;
 
 
 public interface CommodityBLService {
+	
+	public CommodityVO toCommodityVO(String name,long id,String model, int stockNum, double importPrice, double salePrice,
+			double lateImportPrice, double lateSalePrice,String parent);
 
 	public CommodityVO getCommodity(String name);
 	

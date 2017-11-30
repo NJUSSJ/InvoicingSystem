@@ -3,6 +3,7 @@ package stubs;
 import java.util.ArrayList;
 
 import businesslogicservice.memberblservice.MemberBLService;
+import po.MemberPO;
 import vo.MemberVO;
 import vo.UserVO;
 
@@ -35,17 +36,17 @@ public class MemberBLService_Stub implements MemberBLService{
 	
 	
 	@Override
-	public MemberVO addMember(MemberVO a) {
+	public boolean addMember(MemberVO a) {
 		// TODO Auto-generated method stub
 		System.out.println("add member");
-		return null;
+		return false;
 	}
 
 	@Override
-	public MemberVO deleteMember(MemberVO a) {
+	public boolean deleteMember(MemberVO a) {
 		// TODO Auto-generated method stub
 		System.out.println("delete member");
-		return null;
+		return false;
 	}
 
 	@Override
@@ -56,20 +57,23 @@ public class MemberBLService_Stub implements MemberBLService{
 	}
 
 	@Override
-	public MemberVO updateMember(MemberVO a) {
+	public boolean updateMember(MemberVO a) {
 		// TODO Auto-generated method stub
 		System.out.println("update member");
-		return null;
+		return false;
 	}
-
-
-	
-
 
 	@Override
 	public ArrayList<MemberVO> findMembers(String field) {
 		// TODO Auto-generated method stub
 		System.out.println("find members");
+		return null;
+	}
+
+
+	@Override
+	public MemberVO toMemberVO(MemberPO memberPO) {
+		// TODO 自动生成的方法存根
 		return null;
 	}
 

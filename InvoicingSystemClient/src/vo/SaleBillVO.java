@@ -1,5 +1,7 @@
 package vo;
 
+import java.sql.Date;
+
 import businesslogic.billbl.CommodityList;
 
 /**
@@ -8,54 +10,58 @@ import businesslogic.billbl.CommodityList;
  *	
  */
 public class SaleBillVO {
-	long id;
-	String user;
-	String member;
+	String id;
+	long userid;
+	long memberid;
 	CommodityList commodityList;
-	int sum;
-	int time;
-	int num=0;
+	double sum;
+	int state;
+	Date time;
+	int num;
+	String remark;//±¸×¢
 	
-	public SaleBillVO() {
-		// TODO Auto-generated constructor stub
-	}
-	public SaleBillVO(long id,String user,String member,CommodityList list,int sum,int time) {
+	public SaleBillVO(String id,long userid,long memberid,CommodityList list,
+			double sum,int state,Date time,String remark) {
 		// TODO Auto-generated constructor stub
 		this.commodityList=list;
 		this.id=id;
-		this.member=member;
-		this.user=user;
+		this.memberid=memberid;
+		this.userid=userid;
 		this.sum=sum;	
+		this.time=time;
+		num=this.commodityList.getNum();
+		this.state=state;
+		this.remark=remark;
 	}
 	
-	public long getID() {
+	public String getID() {
 		return id;
 	}
 	
-	public String getUser() {
-		return user;
+	public long getUserID() {
+		return userid;
 	}
 	
-	public void changeUser(String user) {
-		this.user=user;
+	public void changeUser(long userid) {
+		this.userid=userid;
 	}
 	
-	public String getMember() {
-		return member;
+	public long getMember() {
+		return memberid;
 	}
 	
-	public void changeMember(String member) {
-		this.member=member;
+	public void setMember(long memberid) {
+		this.memberid=memberid;
 	}
 	
 	public CommodityList getList() {
 		return commodityList;
 	}
 	
-	public int getsum() {
+	public double getsum() {
 		return sum;
 	}
 	public int getnum(){
-		return commodityList.getNum();
+		return num;
 	}
 }

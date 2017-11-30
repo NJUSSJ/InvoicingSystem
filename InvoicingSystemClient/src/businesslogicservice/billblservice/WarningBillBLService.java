@@ -1,10 +1,12 @@
 package businesslogicservice.billblservice;
 
+import java.sql.Date;
+
 import businesslogic.billbl.CommodityList;
 import vo.WarningBillVO;
 
 public interface WarningBillBLService {
-	public WarningBillVO toiBillVO(long id, String user,CommodityList list,int time);
+	public WarningBillVO toBillVO(long id, long user,CommodityList list,Date time);
 	public String conveyBill(WarningBillVO warningbill);
 	public WarningBillVO checkBill(WarningBillVO warninbill);
 }

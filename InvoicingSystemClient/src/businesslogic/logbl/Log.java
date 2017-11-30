@@ -1,20 +1,60 @@
 package businesslogic.logbl;
 
-import businesslogicservice.logblservice.LogBLService;
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+
+import po.LogPO;
+import rmi.RemoteHelper;
 import vo.LogVO;
 
-public class Log implements LogBLService{
-
-	@Override
-	public void addRecord(LogVO vo) {
-		// TODO Auto-generated method stub
-		
+public class Log{
+	public boolean addLog(LogVO vo) {
+		// TODO 自动生成的方法存根
+		try {
+			return RemoteHelper.getInstance().getLogDataService().insert(vo.toLogPO());
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return false;
 	}
-
-	@Override
-	public void checkRecord() {
-		// TODO Auto-generated method stub
-		
+	public ArrayList<LogVO> findLog() {
+		// TODO 自动生成的方法存根
+		ArrayList<LogVO> temp=null;
+		ArrayList<LogPO> logs;
+		try {
+			temp=new ArrayList<LogVO>();
+			logs = RemoteHelper.getInstance().getLogDataService().findLogs();
+			for(int i=0;i<logs.size();i++){
+				temp.add(toLogVO(logs.get(i)));
+			}
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return temp;
 	}
-
+	public ArrayList<LogVO> findLogByUserID(long userid) {
+		// TODO 自动生成的方法存根
+		ArrayList<LogVO> temp=null;
+		ArrayList<LogPO> logs;
+		try {
+			temp=new ArrayList<LogVO>();
+			logs = RemoteHelper.getInstance().getLogDataService().findLogbyOperator(userid);
+			for(int i=0;i<logs.size();i++){
+				temp.add(toLogVO(logs.get(i)));
+			}
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return temp;
+	}
+	public ArrayList<LogVO> findLogByType(String type) {
+		// TODO 自动生成的方法存根
+		return null;
+	}
+	public LogVO toLogVO(LogPO logPO){
+		return new LogVO(logPO.getID(),logPO.getTime(),logPO.getType(),logPO.getUserID());
+	}
 }

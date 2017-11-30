@@ -1,5 +1,7 @@
 package businesslogic.billbl;
 
+import java.sql.Date;
+
 import businesslogicservice.billblservice.OverBillBLService;
 import vo.OverBillVO;
 
@@ -7,9 +9,9 @@ public class OverBill  implements OverBillBLService {
 	CommodityList overList;
 	OverBillVO overbill;
 	@Override
-	public OverBillVO toBillVO(long id, String user, String member, CommodityList list, int time) {
+	public OverBillVO toBillVO(long id, long userid, long memberid, CommodityList list, Date time) {
 		// TODO Auto-generated method stub
-		overbill=new OverBillVO(id, user, list, time);
+		overbill=new OverBillVO(id, userid, list, time);
 		return overbill;
 	}
 	@Override
