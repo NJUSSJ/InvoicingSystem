@@ -3,7 +3,6 @@ package businesslogic.promotionbl;
 import java.util.ArrayList;
 
 import po.PricePromotionPO;
-import vo.MemberPromotionVO;
 import vo.PricePromotionVO;
 
 public class PricePromotion {
@@ -20,7 +19,8 @@ public class PricePromotion {
 		
 	}
 	public PricePromotionVO toPricePromotionVO(PricePromotionPO pricePromotionPO){
-		return null;
+		return new PricePromotionVO(pricePromotionPO.getID(),pricePromotionPO.getPriceLine(),
+				pricePromotionPO.getDiscount(),pricePromotionPO.getCoupon());
 		
 	}
 }

@@ -1,7 +1,5 @@
 package businesslogic.billbl;
 
-import java.sql.Date;
-
 import businesslogicservice.billblservice.ReceiveBillBLService;
 import po.ReceiveBillPO;
 import vo.ReceiveBillVO;

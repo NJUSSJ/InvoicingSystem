@@ -8,7 +8,6 @@ import po.PricePromotionPO;
 import vo.MemberPromotionVO;
 import vo.PackagePromotionVO;
 import vo.PricePromotionVO;
-import vo.PromotionVO;
 
 public interface PromotionBLService {
 	public boolean addMemberPromotionVO(MemberPromotionVO memberPromotionVO);

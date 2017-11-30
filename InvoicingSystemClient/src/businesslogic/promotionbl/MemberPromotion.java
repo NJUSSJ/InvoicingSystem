@@ -19,7 +19,12 @@ public class MemberPromotion {
 		
 	}
 	public MemberPromotionVO toMemberPromotionVO(MemberPromotionPO memberPromotionPO){
-		return null;
-		
+		ArrayList<Long> giftsid=new ArrayList<Long>();
+		String[] temp=memberPromotionPO.getGiftsID().split(" ");
+		for(int i=0;i<temp.length;i++){
+			giftsid.add(Long.parseLong(temp[i]));
+		}
+		return new MemberPromotionVO(memberPromotionPO.getID(),memberPromotionPO.getRank(),
+				giftsid,memberPromotionPO.getCoupon());
 	}
 }

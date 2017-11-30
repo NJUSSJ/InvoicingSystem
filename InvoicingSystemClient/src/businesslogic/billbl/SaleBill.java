@@ -1,13 +1,7 @@
  package businesslogic.billbl;
 
-import java.sql.Date;
-import java.util.ArrayList;
-
 import businesslogicservice.billblservice.SaleBillBLService;
 import po.SaleBillPO;
-import vo.MemberPromotionVO;
-import vo.PackagePromotionVO;
-import vo.PricePromotionVO;
 import vo.SaleBillVO;
 
 public class SaleBill implements SaleBillBLService {

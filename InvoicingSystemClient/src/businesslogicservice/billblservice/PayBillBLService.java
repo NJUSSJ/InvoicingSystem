@@ -1,7 +1,5 @@
 package businesslogicservice.billblservice;
 
-import java.sql.Date;
-
 import po.PayBillPO;
 import vo.PayBillVO;
 

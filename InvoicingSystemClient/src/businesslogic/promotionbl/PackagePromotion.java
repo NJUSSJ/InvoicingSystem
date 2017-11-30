@@ -19,7 +19,12 @@ public class PackagePromotion {
 		
 	}
 	public PackagePromotionVO toPackagePromotionVO(PackagePromotionPO packagePromotionPO){
-		return null;
+		ArrayList<Long> commodityid=new ArrayList<Long>();
+		String[] temp=packagePromotionPO.getCommodityID().split(" ");
+		for(int i=0;i<temp.length;i++){
+			commodityid.add(Long.parseLong(temp[i]));
+		}
+		return new PackagePromotionVO(packagePromotionPO.getID(),commodityid,packagePromotionPO.getDiscount());
 		
 	}
 }
