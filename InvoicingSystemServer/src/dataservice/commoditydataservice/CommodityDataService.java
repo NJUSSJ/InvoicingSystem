@@ -7,8 +7,10 @@ import po.CommodityPO;
 
 public interface CommodityDataService {
 	public CommodityPO findCommoditybyID(long id) throws RemoteException;
-	public ArrayList<CommodityPO> findCommodities(long id,String field) throws RemoteException;
-	public void insert(CommodityPO po) throws RemoteException;
-	public void delete(CommodityPO po) throws RemoteException;
-	public void update(CommodityPO po) throws RemoteException;
+	public ArrayList<CommodityPO> findCommodities() throws RemoteException;
+	public ArrayList<CommodityPO> findCommoditiesbyField() throws RemoteException; 
+	public CommodityPO findCommoditybyName(String name) throws RemoteException;
+	public boolean insert(CommodityPO po) throws RemoteException;
+	public boolean delete(CommodityPO po) throws RemoteException;
+	public boolean update(CommodityPO po) throws RemoteException;
 }

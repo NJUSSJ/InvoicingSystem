@@ -24,7 +24,7 @@ public class LogDataImpl implements LogDataService {
 				+ "values"
 				+ "('"+po.getID()+"','"+po.getTime()+"','"+po.getType()+"','"+po.getUserID()+",)";
 		try {
-			if(DataFactory.statement.execute(sql)) {
+			if(DataFactory.statement.executeUpdate(sql)>0) {
 				return true;
 			}
 		} catch (SQLException e) {
@@ -110,7 +110,7 @@ public class LogDataImpl implements LogDataService {
 		String sql="delete from logs where time="+time;
 		
 		try {
-			if(DataFactory.statement.execute(sql)) {
+			if(DataFactory.statement.executeUpdate(sql)>0) {
 				return true;
 			}
 		} catch (SQLException e) {

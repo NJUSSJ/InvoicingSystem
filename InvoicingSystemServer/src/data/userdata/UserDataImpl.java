@@ -14,7 +14,7 @@ public class UserDataImpl implements UserDataService {
 	 */
 	@Override
 	public UserPO findUserbyID(long id) throws RemoteException {
-		// TODO Auto-generated method stub
+		
 	String sql="SELECT id, username,rank,password FROM users";
 		
 		//执行数据库sql语句
@@ -80,7 +80,7 @@ public class UserDataImpl implements UserDataService {
 	 */
 	@Override
 	public boolean insert(UserPO po) throws RemoteException {
-		// TODO Auto-generated method stub
+		
 		String sql="INSERT INTO users(id,username,password,rank) VALUES("+po.getID()
 		+",'"+po.getUserName()+"','"+po.getPassword()+"','"+po.getPassword()+"',"+po.getRank()+")";
 		try {
@@ -88,7 +88,7 @@ public class UserDataImpl implements UserDataService {
 				return true;
 			}
 		} catch (SQLException e) {
-			// TODO 自动生成的 catch 块
+			
 			e.printStackTrace();
 		}
 		return false;
@@ -98,14 +98,12 @@ public class UserDataImpl implements UserDataService {
 	 */
 	@Override
 	public boolean delete(UserPO po) throws RemoteException {
-		// TODO Auto-generated method stub
 		String sql="DELETE FROM users WHERE id="+po.getID();
 		try {
 			if(DataFactory.statement.execute(sql)){
 				return true;
 			}
 		} catch (SQLException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return false;
@@ -116,7 +114,6 @@ public class UserDataImpl implements UserDataService {
 	 */
 	@Override
 	public boolean update(UserPO po) throws RemoteException {
-		// TODO Auto-generated method stub
 		String sql="UPDATE users SET username='"+po.getUserName()+"',password='"
 				+po.getPassword()+"',rank="+po.getRank()+" WHERE id="+po.getID();
 		try {
@@ -124,7 +121,6 @@ public class UserDataImpl implements UserDataService {
 				return true;
 			}
 		} catch (SQLException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return false;

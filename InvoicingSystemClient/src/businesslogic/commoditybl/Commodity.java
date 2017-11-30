@@ -30,4 +30,9 @@ public class Commodity{
 	public ArrayList<CommodityVO> findCommodityByField(String field) {
 		return null;
 	}
+	public CommodityVO toCommodityVO(CommodityPO commodityPO){
+		return new CommodityVO(commodityPO.getName(),commodityPO.getID(),commodityPO.getModel(),
+				commodityPO.getStockNum(),commodityPO.getImportPrice(),commodityPO.getSalePrice(),
+				commodityPO.getLateImportPrice(),commodityPO.getLateSalePrice(),commodityPO.getParentID());
+	}
 }

@@ -54,7 +54,7 @@ public class AccountDataImpl implements AccountDataService {
 		String sql="INSERT INTO users(id,bank,deposit) VALUES("+po.getID()
 		+",'"+po.getBank()+"','"+po.getDeposit()+"')";
 		try {
-			if(DataFactory.statement.execute(sql)){
+			if(DataFactory.statement.executeUpdate(sql)>0){
 				return true;
 			}
 		} catch (SQLException e) {
@@ -73,7 +73,7 @@ public class AccountDataImpl implements AccountDataService {
 		// TODO Auto-generated method stub
 		String sql="DELETE FROM users WHERE id="+po.getID();
 		try {
-			if(DataFactory.statement.execute(sql)){
+			if(DataFactory.statement.executeUpdate(sql)>0){
 				return true;
 			}
 		} catch (SQLException e) {
@@ -88,14 +88,13 @@ public class AccountDataImpl implements AccountDataService {
 	 */
 	@Override
 	public boolean update(AccountPO po) throws RemoteException {
-		// TODO Auto-generated method stub
+		
 		String sql="UPDATE users SET deposit="+po.getDeposit()+" WHERE id="+po.getID();
 		try {
-			if(DataFactory.statement.execute(sql)){
+			if(DataFactory.statement.executeUpdate(sql)>0){
 				return true;
 			}
 		} catch (SQLException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return false;
@@ -105,7 +104,7 @@ public class AccountDataImpl implements AccountDataService {
 
 	@Override
 	public ArrayList<AccountPO> findAccounts() throws RemoteException {
-		// TODO Auto-generated method stub
+		
 		
 		String sql="SELECT id, bank, deposit FROM accounts";
 		ArrayList<AccountPO> results=new ArrayList<>();
@@ -125,7 +124,7 @@ public class AccountDataImpl implements AccountDataService {
 				
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		
 			e.printStackTrace();
 		}
 		return null;
