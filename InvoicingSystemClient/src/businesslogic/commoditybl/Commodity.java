@@ -24,6 +24,10 @@ public class Commodity{
 		return null;
 		
 	}
-	public CommodityVO findCommodity
-	
+	public CommodityVO findCommodityByID(long id){
+		return null;
+	}
+	public ArrayList<CommodityVO> findCommodityByField(String field) {
+		return null;
+	}
 }
