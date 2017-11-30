@@ -108,11 +108,40 @@ public class CommodityDataImpl implements CommodityDataService{
 	 */
 	@Override
 	public boolean insert(CommodityPO po) throws RemoteException {
-		// TODO Auto-generated method stub
 		String sql="insert into commodities (name, id, model, stocknum, importprice, saleprice, lateimportprice, latesaleprice, parentid)"
 				+ "values"
 				+ "('"+po.getName()+"','"+po.getID()+"','"+po.getModel()+"','"+po.getStockNum()+"','"+po.getImportPrice()+"','"+po.getSalePrice()+"','"
 						+ po.getLateImportPrice()+"','"+po.getLateSalePrice()+"','"+po.getParentID()+"')";
+		
+		try {
+			if(DataFactory.statement.executeUpdate(sql)>0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public boolean delete(CommodityPO po) throws RemoteException {
+		String sql="delete from commodities where id="+po.getID();
+		
+		try {
+			if(DataFactory.statement.executeUpdate(sql)>0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public boolean update(CommodityPO po) throws RemoteException {
+		String sql="update commodities set name="+po.getName()+",set id="+po.getID()+",set model="+po.getModel()+",set stocknum="+po.getStockNum()+",set importprice="
+				+ po.getImportPrice()+",set saleprice="+po.getSalePrice()+",set lateimportprice="+po.getLateImportPrice()+",set latesaleprice="+po.getLateImportPrice()
+				+",set parentid="+po.getParentID();
 		
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {
@@ -125,19 +154,7 @@ public class CommodityDataImpl implements CommodityDataService{
 	}
 
 	@Override
-	public boolean delete(CommodityPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean update(CommodityPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public ArrayList<CommodityPO> findCommoditiesbyField() throws RemoteException {
+	public ArrayList<CommodityPO> findCommoditiesbyField(String field) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

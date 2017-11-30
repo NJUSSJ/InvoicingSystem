@@ -2,19 +2,21 @@ package rmi;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.Date;
 import java.util.ArrayList;
 
-import com.mysql.fabric.xmlrpc.base.Data;
-
 import data.accountdata.AccountDataImpl;
+import data.commoditydata.CommodityDataImpl;
 import data.logdata.LogDataImpl;
 import data.memberdata.MemberDataImpl;
 import data.userdata.UserDataImpl;
 import dataservice.accountdataservice.AccountDataService;
+import dataservice.commoditydataservice.CommodityDataService;
 import dataservice.logdataservice.LogDataService;
 import dataservice.memberdataservice.MemberDataService;
 import dataservice.userdataservice.UserDataService;
 import po.AccountPO;
+import po.CommodityPO;
 import po.LogPO;
 import po.MemberPO;
 import po.UserPO;
@@ -25,7 +27,7 @@ import po.UserPO;
  *
  */
 public class DataRemoteObject extends UnicastRemoteObject implements UserDataService,AccountDataService,LogDataService
-,MemberDataService{
+,MemberDataService,CommodityDataService{
 
 	
 	
@@ -40,12 +42,15 @@ public class DataRemoteObject extends UnicastRemoteObject implements UserDataSer
 	
 	private MemberDataService memberService;
 	
+	private CommodityDataService commodityService;
+	
 	
 	protected DataRemoteObject() throws RemoteException {
 		userService=new UserDataImpl();
 		accountService=new AccountDataImpl();
 		logService=new LogDataImpl();
 		memberService=new MemberDataImpl();
+		commodityService=new CommodityDataImpl();
 	}
 	
 	/*
@@ -135,7 +140,7 @@ public class DataRemoteObject extends UnicastRemoteObject implements UserDataSer
 	}
 
 	@Override
-	public boolean delete(Data time) throws RemoteException {
+	public boolean delete(Date time) throws RemoteException {
 		return logService.delete(time);
 	}
 
@@ -175,6 +180,45 @@ public class DataRemoteObject extends UnicastRemoteObject implements UserDataSer
 	@Override
 	public boolean update(MemberPO po) throws RemoteException {
 		return memberService.update(po);
+	}
+
+	/*
+	 * CommodityDataService
+	 */
+	@Override
+	public CommodityPO findCommoditybyID(long id) throws RemoteException {
+		return commodityService.findCommoditybyID(id);
+	}
+
+	@Override
+	public ArrayList<CommodityPO> findCommodities() throws RemoteException {
+		return commodityService.findCommodities();
+	}
+
+	@Override
+	public ArrayList<CommodityPO> findCommoditiesbyField(String field) throws RemoteException {
+		return commodityService.findCommoditiesbyField(field);
+	}
+
+	@Override
+	public CommodityPO findCommoditybyName(String name) throws RemoteException {
+		return commodityService.findCommoditybyName(name);
+	}
+
+	@Override
+	public boolean insert(CommodityPO po) throws RemoteException {
+		return commodityService.insert(po);
+	}
+
+	@Override
+	public boolean delete(CommodityPO po) throws RemoteException {
+		return commodityService.delete(po);
+	}
+
+	@Override
+	public boolean update(CommodityPO po) throws RemoteException {
+		// TODO Auto-generated method stub
+		return commodityService.update(po);
 	}
 	
 	
