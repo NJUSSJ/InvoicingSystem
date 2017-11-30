@@ -8,11 +8,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import data.datafactory.DataFactory;
-import dataservice.accountdataservice.accountdataservice;
+import dataservice.accountdataservice.AccountDataService;
 import po.AccountPO;
 import po.UserPO;
 
-public class AccountDataImpl implements accountdataservice {
+public class AccountDataImpl implements AccountDataService {
 
 	/**
 	 * 根据id查找账户

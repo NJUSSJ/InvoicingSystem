@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
 import data.userdata.UserDataImpl;
+import dataservice.accountdataservice.AccountDataService;
 import dataservice.userdataservice.UserDataService;
 import po.UserPO;
 
@@ -12,7 +13,7 @@ import po.UserPO;
  * @author shisj
  *
  */
-public class DataRemoteObject extends UnicastRemoteObject implements UserDataService{
+public class UserDataRemoteObject extends UnicastRemoteObject implements UserDataService {
 
 	
 	
@@ -21,8 +22,11 @@ public class DataRemoteObject extends UnicastRemoteObject implements UserDataSer
 	
 	private UserDataService userService;
 	
-	
-	protected DataRemoteObject() throws RemoteException {
+	/**
+	 * UserDataService
+	 * @throws RemoteException
+	 */
+	protected UserDataRemoteObject() throws RemoteException {
 		userService=new UserDataImpl();
 		// TODO Auto-generated constructor stub
 	}
@@ -72,5 +76,9 @@ public class DataRemoteObject extends UnicastRemoteObject implements UserDataSer
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	
+	
+	
 	
 }

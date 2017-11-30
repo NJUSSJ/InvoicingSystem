@@ -9,10 +9,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import data.datafactory.DataFactory;
-import dataservice.billdataservice.giftbilldataservice;
+import dataservice.billdataservice.GiftBillDataService;
 import po.GiftBillPO;
 
-public class GiftBillDataImpl implements giftbilldataservice {
+public class GiftBillDataImpl implements GiftBillDataService {
 
 	@Override
 	public boolean insert(GiftBillPO po) throws RemoteException {

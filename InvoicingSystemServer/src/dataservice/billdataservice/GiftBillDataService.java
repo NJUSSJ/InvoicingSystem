@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import po.GiftBillPO;
 
-public interface giftbilldataservice {
+public interface GiftBillDataService {
 	public boolean insert(GiftBillPO po) throws RemoteException;
 	public boolean delete(GiftBillPO po) throws RemoteException;
 	public boolean update(GiftBillPO po) throws RemoteException;

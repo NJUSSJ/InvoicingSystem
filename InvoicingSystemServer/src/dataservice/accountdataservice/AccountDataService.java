@@ -7,7 +7,7 @@ import po.AccountPO;
 
 
 
-public interface accountdataservice {
+public interface AccountDataService {
 	public AccountPO find(long id) throws RemoteException;
 	public ArrayList<AccountPO> finds() throws RemoteException;
 	public boolean insert(AccountPO po) throws RemoteException;

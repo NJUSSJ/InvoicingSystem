@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import po.ImportBillPO;
 
-public interface importbilldataservice {
+public interface ImportBillDataService {
 	public boolean insert(ImportBillPO po) throws RemoteException;
 	public boolean delete(ImportBillPO po) throws RemoteException;
 	public boolean update(ImportBillPO po) throws RemoteException;

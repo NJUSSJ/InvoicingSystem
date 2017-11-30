@@ -23,9 +23,9 @@ public class RemoteHelper {
 	 * 初始化服务器
 	 */
 	public void initServer() {
-		DataRemoteObject dataRemoteObject;
+		UserDataRemoteObject dataRemoteObject;
 		try {
-			dataRemoteObject=new DataRemoteObject();
+			dataRemoteObject=new UserDataRemoteObject();
 			LocateRegistry.createRegistry(8889);
 			String addressName="rmi://localhost:8889/BulbManagement";
 			Naming.bind(addressName, dataRemoteObject);

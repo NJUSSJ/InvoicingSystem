@@ -6,10 +6,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import data.datafactory.DataFactory;
-import dataservice.billdataservice.importbilldataservice;
+import dataservice.billdataservice.ImportBillDataService;
 import po.ImportBillPO;
 
-public class ImportBillDataImpl implements importbilldataservice {
+public class ImportBillDataImpl implements ImportBillDataService {
 
 	@Override
 	public boolean insert(ImportBillPO po) throws RemoteException {
