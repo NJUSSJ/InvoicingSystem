@@ -1,6 +1,7 @@
 package data.logdata;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import dataservice.logdataservice.logdataservice;
 import po.LogPO;
@@ -8,33 +9,33 @@ import po.LogPO;
 public class LogDataImpl implements logdataservice {
 
 	@Override
-	public void insert(LogPO po) throws RemoteException {
+	public boolean insert(LogPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		String sql="insert into logs (id,time,type,userid)"
 				+ "values"
-				+ "('";
+				+ "('"+po.getID()+"','"+po.getTime()+"','"+po.getType()+"','"+po.getUserID()+",)";
 	}
 
 	@Override
-	public void findLogs() throws RemoteException {
+	public ArrayList<LogPO> findLogs() throws RemoteException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void findLogbyOperator(long operatorID) throws RemoteException {
+	public ArrayList<LogPO> findLogbyOperator(long operatorID) throws RemoteException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void delete(LogPO po) throws RemoteException {
+	public boolean delete(LogPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void update(LogPO po) throws RemoteException {
+	public boolean update(LogPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		
 	}
