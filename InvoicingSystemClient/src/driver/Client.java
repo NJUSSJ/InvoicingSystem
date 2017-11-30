@@ -33,7 +33,7 @@ public static void main(String[] args){
 	CommodityDataService_Driver cddriver=new CommodityDataService_Driver();
 	cddriver.drive(new CommodityDatabaseServiceMySqlImpl_Stub());
 	LogBLService_Driver lbldriver=new LogBLService_Driver();
-	lbldriver.drive(new LogBLService_Stub(null, null, null));
+	lbldriver.drive(new LogBLService_Stub());
 	LogDataService_Driver lddriver=new LogDataService_Driver();
 	lddriver.drive(new LogDatabaseServiceMySqlImpl_Stub());
 	MemberBLService_Driver mbldriver=new MemberBLService_Driver();
