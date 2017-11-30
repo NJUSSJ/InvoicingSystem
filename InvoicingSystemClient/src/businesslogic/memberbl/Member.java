@@ -37,7 +37,7 @@ public class Member{
 		// TODO Auto-generated method stub
 		try {
 			MemberPO tmpPO=RemoteHelper.getInstance().getMemberDataService().find(name);
-			return null;
+			return toMemberVO(tmpPO);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -60,6 +60,12 @@ public class Member{
 	public ArrayList<MemberVO> findMembers(String field) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	public MemberVO toMemberVO(MemberPO memberPO){
+		return new MemberVO(memberPO.getID(),memberPO.getRank(),memberPO.getPostCode(),
+				memberPO.getCategory(),memberPO.getName(),memberPO.getPhoneNum(),
+				memberPO.getAddress(),memberPO.getEmail(),memberPO.getShouldPay(),
+				memberPO.getShouldGet(),memberPO.getQuota(),memberPO.getDefaultOperatorID());
 	}
 
 }

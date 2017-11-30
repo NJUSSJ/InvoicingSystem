@@ -1,11 +1,17 @@
 package stubs;
 
 import vo.CommodityVO;
+import vo.MemberPromotionVO;
+import vo.PackagePromotionVO;
+import vo.PricePromotionVO;
 import vo.PromotionVO;
 
 import java.util.ArrayList;
 
 import businesslogicservice.promotionblservice.PromotionBLService;
+import po.MemberPromotionPO;
+import po.PackagePromotionPO;
+import po.PricePromotionPO;
 public class PromotionBLService_Stub implements PromotionBLService {
    PromotionVO pt;
    String promotion_type;
@@ -26,23 +32,66 @@ public class PromotionBLService_Stub implements PromotionBLService {
 	   this.commodity_group=commodity_group;
 	   this.discount_TotalPrice=discount_TotalPrice;
    }
-   @Override
-   public void addPromotion(PromotionVO vo){
-	   System.out.println("create Promotion Strategy successed");
-   }
-   @Override
-   public void deletePromotion(long id){
-	   System.out.println("delete Promotion Strategy successed");
-   }
-   @Override
-   public ArrayList<PromotionVO> getPromotinoList(String field,long id){
-	   
-	   System.out.println("Get PromotionList Succeed");
-	   return null;
-   }
+ 
+
 @Override
-public PromotionVO getPromotion(long id) {
-	// TODO Auto-generated method stub
+public boolean addMemberPromotionVO(MemberPromotionVO memberPromotionVO) {
+	// TODO 自动生成的方法存根
+	return false;
+}
+@Override
+public boolean addPackagePromotionVO(PackagePromotionVO packagePromotionVO) {
+	// TODO 自动生成的方法存根
+	return false;
+}
+@Override
+public boolean addPricePromotionVO(PricePromotionVO pricePromoionVO) {
+	// TODO 自动生成的方法存根
+	return false;
+}
+@Override
+public boolean deleteMemberPromotionVO(MemberPromotionVO memberPromotionVO) {
+	// TODO 自动生成的方法存根
+	return false;
+}
+@Override
+public boolean deletePackagePromotionVO(PackagePromotionVO packagePromotionVO) {
+	// TODO 自动生成的方法存根
+	return false;
+}
+@Override
+public boolean deletePricePromotionVO(PricePromotionVO pricePromoionVO) {
+	// TODO 自动生成的方法存根
+	return false;
+}
+@Override
+public ArrayList<MemberPromotionVO> findMemberPromotionVO() {
+	// TODO 自动生成的方法存根
+	return null;
+}
+@Override
+public ArrayList<PackagePromotionVO> findPackagePromotionVO() {
+	// TODO 自动生成的方法存根
+	return null;
+}
+@Override
+public ArrayList<PricePromotionVO> findPricePromotionVO() {
+	// TODO 自动生成的方法存根
+	return null;
+}
+@Override
+public MemberPromotionVO toMemberPromotionVO(MemberPromotionPO memberPromotionPO) {
+	// TODO 自动生成的方法存根
+	return null;
+}
+@Override
+public PackagePromotionVO toPackagePromotionVO(PackagePromotionPO packagePromotionPO) {
+	// TODO 自动生成的方法存根
+	return null;
+}
+@Override
+public PricePromotionVO toPricePromotionVO(PricePromotionPO pricePromotionPO) {
+	// TODO 自动生成的方法存根
 	return null;
 }
 

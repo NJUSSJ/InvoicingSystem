@@ -3,6 +3,7 @@ package businesslogic.memberbl;
 import java.util.ArrayList;
 
 import businesslogicservice.memberblservice.MemberBLService;
+import po.MemberPO;
 import vo.MemberVO;
 
 public class MemberController implements MemberBLService{
@@ -35,6 +36,12 @@ public class MemberController implements MemberBLService{
 	public ArrayList<MemberVO> findMembers(String field) {
 		// TODO 自动生成的方法存根
 		return memberImpl.findMembers(field);
+	}
+
+	@Override
+	public MemberVO toMemberVO(MemberPO memberPO) {
+		// TODO 自动生成的方法存根
+		return memberImpl.toMemberVO(memberPO);
 	}
 	
 }

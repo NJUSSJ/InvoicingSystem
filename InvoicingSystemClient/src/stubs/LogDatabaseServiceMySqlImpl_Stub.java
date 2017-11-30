@@ -1,25 +1,55 @@
 package stubs;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import dataservice.logdataservice.LogDataService;
 import po.LogPO;
 
 public class LogDatabaseServiceMySqlImpl_Stub implements LogDataService {
 
-	public void insert(LogPO po) throws RemoteException{
-		System.out.println("Insert successfully!");
+	@Override
+	public boolean insert(LogPO po) throws RemoteException {
+		// TODO 自动生成的方法存根
+		return false;
 	}
-	public void delete(LogPO po) throws RemoteException{
-		System.out.println("Delete successfully!");
+
+	@Override
+	public ArrayList<LogPO> findLogs() throws RemoteException {
+		// TODO 自动生成的方法存根
+		return null;
 	}
-	public void update(LogPO po) throws RemoteException{
-		System.out.println("Update successfully!");
+
+	@Override
+	public ArrayList<LogPO> findLogbyOperator(long operatorID) throws RemoteException {
+		// TODO 自动生成的方法存根
+		return null;
 	}
-	public void init() throws RemoteException{
-		System.out.println("Init successfully!");
+
+	@Override
+	public boolean delete(LogPO po) throws RemoteException {
+		// TODO 自动生成的方法存根
+		return false;
 	}
-	public void finish() throws RemoteException{
-		System.out.println("Finish successfully!");
+
+	@Override
+	public boolean update(LogPO po) throws RemoteException {
+		// TODO 自动生成的方法存根
+		return false;
 	}
+
+	@Override
+	public void init() throws RemoteException {
+		// TODO 自动生成的方法存根
+		
+	}
+
+	@Override
+	public void finish() throws RemoteException {
+		// TODO 自动生成的方法存根
+		
+	}
+
+	
+	
 }

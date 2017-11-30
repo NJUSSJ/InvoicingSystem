@@ -3,48 +3,61 @@ package po;
 import java.io.Serializable;
 import java.sql.Date;
 
+
+
 public class ImportReturnBillPO implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	long id;
+	String id;
 	long userid;
 	long memberid;
 	String commodityList;
-	int sum;
+	double sum;
+	int state;
 	Date time;
 	int num;
-	public ImportReturnBillPO(long id,long userid,long memberid,String list,int sum,Date time) {
-		// TODO Auto-generated constructor stub
-		this.id=id;this.userid=userid;
-		this.memberid=memberid;
-		this.commodityList=list;
-		this.sum=sum;
-		this.time=time;
-		
-	}
+	String remark;
 	
-	public long getID() {
+	public ImportReturnBillPO(String id,long userid,long memberid,String commodityList,
+			int sum,Date time,int state,int num,String remark) {
+		// TODO Auto-generated constructor stub
+		this.commodityList=commodityList;
+		this.id=id;
+		this.memberid=memberid;
+		this.userid=userid;
+		this.sum=sum;	
+		this.state=state;
+		this.time=time;
+		this.num=num;
+		this.remark=remark;
+	}
+	public String getID() {
 		return id;
 	}
-	
-	public long getUser() {
+	public long getUserID() {
 		return userid;
 	}
-	
-	public long getMember() {
+	public long getMemberID() {
 		return memberid;
 	}
-	
+	public String getCommodityList(){
+		return commodityList;
+	}
+	public double getSum() {
+		return sum;
+	}
+	public int getState() {
+		return state;
+	}
 	public Date getTime() {
 		return time;
 	}
-	public int getnum(){
+	public int getNum(){
 		return num;
 	}
-
-	public double getsum() {
-		return sum;
+	public String getRemark(){
+		return remark;
 	}
 }

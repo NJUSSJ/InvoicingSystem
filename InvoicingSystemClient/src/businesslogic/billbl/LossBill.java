@@ -1,5 +1,7 @@
 package businesslogic.billbl;
 
+import java.sql.Date;
+
 import businesslogicservice.billblservice.LossBillBLService;
 import vo.LossBillVO;
 
@@ -18,7 +20,7 @@ public class LossBill  implements LossBillBLService {
 		return null;
 	}
 	@Override
-	public LossBillVO toBillVO(long id, String user, String member, CommodityList list,int time) {
+	public LossBillVO toBillVO(long id, long user, long member, CommodityList list,Date time) {
 		// TODO Auto-generated method stub
 		lossbill=new LossBillVO(id, user, list, time);
 		return lossbill;

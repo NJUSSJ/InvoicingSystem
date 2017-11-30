@@ -3,6 +3,7 @@ package vo;
 import java.sql.Date;
 
 import businesslogic.billbl.CommodityList;
+import po.OverBillPO;
 
 /**
  * 
@@ -12,14 +13,17 @@ import businesslogic.billbl.CommodityList;
 public class OverBillVO {
 	long id;
 	long userid;
-	CommodityList commoditys;
+	CommodityList commodityList;
 	Date time;
 	
-	public OverBillVO(long id,long userid,CommodityList list,Date time) {
+	public OverBillVO(long id,long userid,CommodityList commodityList,Date time) {
 		// TODO Auto-generated constructor stub
 		this.id=id;
-		this.commoditys=list;
+		this.commodityList=commodityList;
 		this.userid=userid;
 		this.time=time;
+	}
+	public OverBillPO toOverBillPO(){
+		return new OverBillPO(id,userid,commodityList.toString(),time);
 	}
 }

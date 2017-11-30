@@ -11,7 +11,7 @@ public class AccountDatabaseServiceMySqlImpl_Stub implements AccountDataService 
 	public AccountPO find(long id) throws RemoteException {
 		// TODO Auto-generated method stub
 		System.out.println("Find Succeed");
-		return new AccountPO();
+		return new AccountPO(id, id, null);
 	}
 
 	@Override

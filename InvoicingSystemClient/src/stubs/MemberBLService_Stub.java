@@ -3,6 +3,7 @@ package stubs;
 import java.util.ArrayList;
 
 import businesslogicservice.memberblservice.MemberBLService;
+import po.MemberPO;
 import vo.MemberVO;
 import vo.UserVO;
 
@@ -66,6 +67,13 @@ public class MemberBLService_Stub implements MemberBLService{
 	public ArrayList<MemberVO> findMembers(String field) {
 		// TODO Auto-generated method stub
 		System.out.println("find members");
+		return null;
+	}
+
+
+	@Override
+	public MemberVO toMemberVO(MemberPO memberPO) {
+		// TODO 自动生成的方法存根
 		return null;
 	}
 

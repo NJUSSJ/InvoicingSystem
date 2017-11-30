@@ -1,5 +1,7 @@
 package vo;
 
+import java.sql.Date;
+
 import businesslogic.billbl.CommodityList;
 
 /**
@@ -7,43 +9,58 @@ import businesslogic.billbl.CommodityList;
  * @author yrz
  */
 public class ImportReturnBillVO {
-	long id;
+	String id;
 	long userid;
 	long memberid;
 	CommodityList commodityList;
-	int sum;
-	int time;
+	double sum;
+	int state;
+	Date time;
 	int num;
-	public ImportReturnBillVO(long id,long userid,long memberid,CommodityList list,int sum,int time) {
+	String remark;//±¸×¢
+	
+	public ImportReturnBillVO(String id,long userid,long memberid,CommodityList list,
+			double sum,int state,Date time,String remark) {
 		// TODO Auto-generated constructor stub
-		this.id=id;this.userid=userid;
-		this.memberid=memberid;
 		this.commodityList=list;
-		this.sum=sum;
+		this.id=id;
+		this.memberid=memberid;
+		this.userid=userid;
+		this.sum=sum;	
 		this.time=time;
 		num=this.commodityList.getNum();
+		this.state=state;
+		this.remark=remark;
 	}
 	
-	public long getID() {
+	public String getID() {
 		return id;
 	}
 	
-	public long getUser() {
+	public long getUserID() {
 		return userid;
+	}
+	
+	public void changeUser(long userid) {
+		this.userid=userid;
 	}
 	
 	public long getMember() {
 		return memberid;
 	}
 	
-	public int getTime() {
-		return time;
+	public void setMember(long memberid) {
+		this.memberid=memberid;
+	}
+	
+	public CommodityList getList() {
+		return commodityList;
+	}
+	
+	public double getsum() {
+		return sum;
 	}
 	public int getnum(){
 		return num;
-	}
-
-	public double getsum() {
-		return sum;
 	}
 }

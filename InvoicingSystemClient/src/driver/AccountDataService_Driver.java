@@ -12,9 +12,9 @@ public class AccountDataService_Driver {
 			if(stub.find(0)!=null){
 				System.out.println("find pass");
 			}
-			stub.insert(new AccountPO());
-			stub.delete(new AccountPO());
-			stub.update(new AccountPO());
+			stub.insert(new AccountPO(0, 0, null));
+			stub.delete(new AccountPO(0, 0, null));
+			stub.update(new AccountPO(0, 0, null));
 			stub.init();
 			stub.finish();
 			} catch (RemoteException e) {

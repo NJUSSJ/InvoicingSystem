@@ -10,13 +10,13 @@ public class UserDatabaseServiceMySqlImpl_Stub implements UserDataService{
 	@Override
 	public UserPO find(long id) throws RemoteException {
 		// TODO 自动生成的方法存根
-		return new UserPO();
+		return new UserPO(id, null, 0, null);
 	}
 
 	@Override
 	public UserPO find(String name) throws RemoteException {
 		// TODO 自动生成的方法存根
-		return new UserPO();
+		return new UserPO(0, name, 0, name);
 	}
 
 	@Override

@@ -1,9 +1,10 @@
 package businesslogicservice.billblservice;
 
+import po.CashBillPO;
 import vo.CashBillVO;
 
 public interface CashBillBLService {
-	public CashBillVO toBillVO (long id,String user,String member,int sum,int time);
+	public CashBillVO toCashBillVO (CashBillPO po);
 	public String conveyBill(CashBillVO cashbill);
 	public CashBillVO checkBill(CashBillVO cashbill);
 }

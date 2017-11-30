@@ -4,21 +4,27 @@ import vo.CommodityVO;
 
 public class CommodityLineItem {
 	int num;
-	String name;
-	double price;
+	long commodityid;
+	double salePrice;
+	double importPrice;
 	
 	public CommodityLineItem(CommodityVO commodity,int num) {
 		// TODO Auto-generated constructor stub
 		this.num=num;
-		this.name=commodity.getName();
-		this.price=commodity.getPrice();
+		this.commodityid=commodity.getID();
+		this.salePrice=commodity.getSalePrice();
+		this.importPrice=commodity.getImportPrice();
 	}
 	
-	public String getCommodity() {
-		return name;
+	public long getCommodityID() {
+		return commodityid;
 	}
 	
-	public double getPrice() {
-		return price;
+	public double getSalePrice() {
+		return salePrice;
 	}
+	public double getImportPrice(){
+		return importPrice;
+	}
+	
 }

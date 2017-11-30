@@ -2,6 +2,7 @@ package businesslogicservice.memberblservice;
 
 import java.util.ArrayList;
 
+import po.MemberPO;
 import vo.MemberVO;
 
 public interface MemberBLService {
@@ -11,5 +12,6 @@ public interface MemberBLService {
 	public MemberVO findMember(String name);
 	public boolean updateMember(MemberVO a);//设计参照add
 	public ArrayList<MemberVO> findMembers(String field);//设计参照find
+	public MemberVO toMemberVO(MemberPO memberPO);
 	
 }

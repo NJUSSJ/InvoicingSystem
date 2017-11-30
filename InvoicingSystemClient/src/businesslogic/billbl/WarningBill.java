@@ -1,5 +1,7 @@
 package businesslogic.billbl;
 
+import java.sql.Date;
+
 import businesslogicservice.billblservice.WarningBillBLService;
 import vo.WarningBillVO;
 
@@ -7,7 +9,7 @@ public class WarningBill implements WarningBillBLService {
 
 	WarningBillVO warningbill;
 	@Override
-	public WarningBillVO toiBillVO(long id, String user, CommodityList list, int time) {
+	public WarningBillVO toBillVO(long id, long user, CommodityList list, Date time) {
 		// TODO Auto-generated method stub
 		warningbill=new WarningBillVO(id, user, list, time);
 		return warningbill;

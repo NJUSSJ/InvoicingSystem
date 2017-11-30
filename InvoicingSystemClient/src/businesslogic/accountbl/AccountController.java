@@ -1,23 +1,40 @@
 package businesslogic.accountbl;
 
-import java.util.ArrayList;
-
+import businesslogicservice.accountblservice.AccountBLService;
+import po.AccountPO;
 import vo.AccountVO;
 
-public class AccountController {
-	public String addAccount(AccountVO account){
-		return null;
+public class AccountController implements AccountBLService{
+	Account accountImpl=new Account();
+	@Override
+	public AccountVO findAccountByID(long id) {
+		// TODO 自动生成的方法存根
+		return accountImpl.findAccountByID(id);
 	}
-	public AccountVO getAccount(long id){
-		return null;
+
+	@Override
+	public boolean addAccount(AccountVO accountVO) {
+		// TODO 自动生成的方法存根
+		return accountImpl.addAccount(accountVO);
 	}
-	public String deleteAccount(AccountVO account){
-		return null;
+
+	@Override
+	public boolean deleteAccount(AccountVO accountVO) {
+		// TODO 自动生成的方法存根
+		return accountImpl.deleteAccount(accountVO);
 	}
-	public String modifyAccount(long id){
-		return null;
+
+	@Override
+	public boolean updateAccount(AccountVO accountVO) {
+		// TODO 自动生成的方法存根
+		return accountImpl.updateAccount(accountVO);
 	}
-	public ArrayList<AccountVO> getAccountList(String field,long id){
-		return null;
+
+	@Override
+	public AccountVO toAccountVO(AccountPO accountPO) {
+		// TODO 自动生成的方法存根
+		return accountImpl.toAccountVO(accountPO);
 	}
+	
+	
 }

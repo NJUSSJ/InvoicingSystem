@@ -5,6 +5,7 @@ package rmi;
 
 import java.rmi.Remote;
 
+import dataservice.logdataservice.LogDataService;
 import dataservice.memberdataservice.MemberDataService;
 import dataservice.userdataservice.UserDataService;
 
@@ -30,5 +31,9 @@ public class RemoteHelper {
 	
 	public MemberDataService getMemberDataService(){
 		return (MemberDataService)remote;
+	}
+	
+	public LogDataService getLogDataService(){
+		return (LogDataService)remote;
 	}
 }

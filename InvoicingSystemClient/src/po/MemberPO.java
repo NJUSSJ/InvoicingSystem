@@ -7,21 +7,21 @@ public class MemberPO implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 3733425838145157672L;
-	int id;
+	long id;
 	int rank;
 	int postCode;
 	int category;
-	int defaultOperatorID;
+	long defaultOperatorID;
 	String name;
-	String phoneNum;
+	int phoneNum;
 	String address;
 	String eMail;
 	double shouldPay;
 	double shouldGet;
 	double quota;//”¶ ’∂Ó∂»
 	
-	public MemberPO(int id,int rank,int postCode,int category,String name,String phoneNum,
-	String address,String eMail,double shouldPay,double shouldGet,double quota,int defaultOperatorID){
+	public MemberPO(long id,int rank,int postCode,int category,String name,int phoneNum,
+	String address,String eMail,double shouldPay,double shouldGet,double quota,long defaultOperatorID){
 		this.id=id;
 		this.rank=rank;
 		this.postCode=postCode;
@@ -35,22 +35,40 @@ public class MemberPO implements Serializable{
 		this.quota=quota;
 		this.defaultOperatorID=defaultOperatorID;
 	}
-	
-	public MemberPO() {
-		// TODO Auto-generated constructor stub
+	public long getID(){
+		return id;
+	}
+	public int getRank(){
+		return rank;
+	}
+	public int getPostCode(){
+		return postCode;
+	}
+	public int getCategory(){
+		return category;
 	}
 	public String getName() {
 		return name;
 	}
-	public void setName(String name) {
-		this.name=name;
+	public int getPhoneNum(){
+		return phoneNum;
 	}
-	
+	public String getAddress(){
+		return address;
+	}
+	public String getEmail(){
+		return eMail;
+	}
 	public double getShouldPay() {
 		return shouldPay;
 	}
-	
-	public void setShouldPay(double shouldPay) {
-		this.shouldPay=shouldPay;
+	public double getShouldGet(){
+		return shouldGet;
+	}
+	public double getQuota(){
+		return quota;
+	}
+	public long getDefaultOperatorID(){
+		return defaultOperatorID;
 	}
 }

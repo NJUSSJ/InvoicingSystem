@@ -5,6 +5,6 @@ import vo.LogVO;
 
 public class LogBLService_Driver {
 public void drive(LogBLService_Stub stub){
-	stub.addRecord(new LogVO(null, null, null));
+	//stub.addRecord();
 }
 }

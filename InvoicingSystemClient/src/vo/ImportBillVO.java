@@ -7,34 +7,38 @@ import businesslogic.billbl.CommodityList;
 /**
  * 
  * @author yrz
- *	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *	½ø»õµ¥
  */
 public class ImportBillVO {
-	long id;
+	String id;
 	long userid;
 	long memberid;
 	CommodityList commodityList;
-	int sum;
-	Boolean state=false;
+	double sum;
+	int state;
 	Date time;
 	int num;
+	String remark;//±¸×¢
 	
-	public ImportBillVO(long id,long userid,long memberid,CommodityList list,int sum,Date time) {
+	public ImportBillVO(String id,long userid,long memberid,CommodityList commoditylist,
+			double sum,int state,Date time,String remark) {
 		// TODO Auto-generated constructor stub
-		this.commodityList=list;
+		this.commodityList=commoditylist;
 		this.id=id;
 		this.memberid=memberid;
 		this.userid=userid;
 		this.sum=sum;	
 		this.time=time;
-		 num=this.commodityList.getNum();
+		num=this.commodityList.getNum();
+		this.state=state;
+		this.remark=remark;
 	}
 	
-	public long getID() {
+	public String getID() {
 		return id;
 	}
 	
-	public long getUser() {
+	public long getUserID() {
 		return userid;
 	}
 	
@@ -46,7 +50,7 @@ public class ImportBillVO {
 		return memberid;
 	}
 	
-	public void changeMember(long memberid) {
+	public void setMember(long memberid) {
 		this.memberid=memberid;
 	}
 	
@@ -54,10 +58,10 @@ public class ImportBillVO {
 		return commodityList;
 	}
 	
-	public int getsum() {
+	public double getSum() {
 		return sum;
 	}
-	public int getnum(){
+	public int getNum(){
 		return num;
 	}
 }

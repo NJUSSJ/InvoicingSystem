@@ -1,31 +1,43 @@
 package stubs;
 
 import java.sql.Time;
+import java.util.ArrayList;
 
 import businesslogicservice.logblservice.LogBLService;
+import po.LogPO;
 import vo.LogVO;
 import vo.UserVO;
 
 public class LogBLService_Stub implements LogBLService{
-	Time operate_time;
-	String operate_type;
-	UserVO operator;
-	
-	public LogBLService_Stub(Time operate_time,String operate_type,UserVO operator){
-		this.operate_time=operate_time;
-		this.operate_type=operate_type;
-		this.operator=operator;
-	}
-	
-	public void checkRecord(){
-		
-		System.out.print("check log");
-	}
-	
 
 	@Override
-	public void addRecord(LogVO vo) {
+	public boolean addLog(LogVO vo) {
 		// TODO 自动生成的方法存根
-		
+		return false;
 	}
+
+	@Override
+	public ArrayList<LogVO> findLog() {
+		// TODO 自动生成的方法存根
+		return null;
+	}
+
+	@Override
+	public ArrayList<LogVO> findLogByUserID(long userid) {
+		// TODO 自动生成的方法存根
+		return null;
+	}
+
+	@Override
+	public ArrayList<LogVO> findLogByType(String type) {
+		// TODO 自动生成的方法存根
+		return null;
+	}
+
+	@Override
+	public LogVO toLogVO(LogPO logPo) {
+		// TODO 自动生成的方法存根
+		return null;
+	}
+
 }
