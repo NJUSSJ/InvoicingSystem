@@ -3,6 +3,7 @@ package presentation.mainui;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import MainApp.MainApp;
 import businesslogic.userbl.UserController;
 import businesslogicservice.userblservice.UserBLService;
 import javafx.event.ActionEvent;
@@ -32,7 +33,7 @@ public class LoginPanelController implements Initializable {
 		
 	}
 	
-	private Boolean certifyUser() {
+	private boolean certifyUser() {
 		String inputUserneme=username.getText();
 		String inputPassword=password.getText();
 		
@@ -81,13 +82,23 @@ public class LoginPanelController implements Initializable {
 			//判断用户身份
 			switch (user.getRank()) {
 			case 1:
-				System.out.println("总经理登录！");
+                MainApp.showManagerMainUI();
 				break;
-
-			default:
+			case 2:
+				MainApp.showFianceMainUI();
+				break;
+			case 3:
+                MainApp.showSaleMainUI();
+				break;
+			case 4:
+                MainApp.showStockMainUI();
+				break;
+			case 0:
+                MainApp.showAdministerMainUI();
 				break;
 			}
 		}
+
 		
 		
 	}
