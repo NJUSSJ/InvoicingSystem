@@ -41,7 +41,7 @@ public class AccountBLService_Stub implements AccountBLService {
 		return false;
 	}
 	@Override
-	public AccountVO toAccountVo(AccountPO accountPO) {
+	public AccountVO toAccountVO(AccountPO accountPO) {
 		// TODO 自动生成的方法存根
 		return null;
 	}

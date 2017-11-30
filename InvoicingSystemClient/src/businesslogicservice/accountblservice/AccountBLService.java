@@ -9,5 +9,5 @@ public interface AccountBLService {
 	public boolean addAccount(AccountVO accountVO);
 	public boolean deleteAccount(AccountVO accountVO);
 	public boolean updateAccount(AccountVO accountVO);
-	public AccountVO toAccountVo(AccountPO accountPO);
+	public AccountVO toAccountVO(AccountPO accountPO);
 }
