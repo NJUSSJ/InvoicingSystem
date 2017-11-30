@@ -1,7 +1,6 @@
 package po;
 
 import java.io.Serializable;
-import java.sql.Date;
 
 public class CommodityPO implements Serializable {
 	
