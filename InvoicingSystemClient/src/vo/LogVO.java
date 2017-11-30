@@ -16,7 +16,7 @@ public class LogVO {
 		this.userid=userid;
 	}
 	
-	public LogPO toPO(){
+	public LogPO toLogPO(){
 		return new LogPO(id,time,type,userid);
 	}
 }

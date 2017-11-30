@@ -6,7 +6,7 @@ import vo.AccountVO;
 public class AccountBLService_Driver {
 
 	public void drive(AccountBLService_Stub stub){
-		AccountVO av1=stub.getAccount(181908203);
+		/*AccountVO av1=stub.getAccount(181908203);
 		if(av1!=null){
 			System.out.println("account existed!");
 		}
@@ -19,7 +19,7 @@ public class AccountBLService_Driver {
 		}
 		if((stub.modifyAccount(8009280).equals("Succeed"))){
 			System.out.println("modify pass");
-		}
+		}*/
 		
 	}
 }

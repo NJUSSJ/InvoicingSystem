@@ -1,32 +1,32 @@
 package businesslogic.accountbl;
 
-import businesslogicservice.accountblservice.AccountBLService;
+import po.AccountPO;
 import vo.AccountVO;
 
-public class Account implements AccountBLService {
+public class Account{
 
-	@Override
-	public AccountVO getAccount(long id) {
+	public AccountVO findAccountByID(long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public String addAccount(AccountVO account) {
+	public boolean addAccount(AccountVO accountVO) {
 		// TODO Auto-generated method stub
-		return null;
+		return false;
 	}
 
-	@Override
-	public String deleteAccount(AccountVO account) {
+	public boolean deleteAccount(AccountVO accountVO) {
 		// TODO Auto-generated method stub
-		return null;
+		return false;
 	}
 
-	@Override
-	public String modifyAccount(long id) {
+	public boolean updateAccount(AccountVO accountVO) {
 		// TODO Auto-generated method stub
-		return null;
+		return false;
+	}
+	
+	public AccountVO toAccountVO(AccountPO accountPO){
+		return new AccountVO(accountPO.getID(),accountPO.getDeposit(),accountPO.getBank());
 	}
 
 }
