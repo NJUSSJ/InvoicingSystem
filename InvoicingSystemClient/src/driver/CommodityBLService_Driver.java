@@ -6,7 +6,7 @@ import vo.CommodityVO;
 
 public class CommodityBLService_Driver {
 public void drive(CommodityBLService_Stub stub){
-	if(stub.getCommodity("1189")!=null){
+	/*if(stub.getCommodity("1189")!=null){
 		System.out.println("getCommodity success!");
 	}
 	if(stub.getCategory("")!=null){
@@ -29,6 +29,6 @@ public void drive(CommodityBLService_Stub stub){
 	}
 	if((stub.modifyCategory(new CategoryVO(0,null, null, null, null))).equals("modify category success")){
 		System.out.println("modify cg pass!");
-	}
+	}*/
 }
 }
