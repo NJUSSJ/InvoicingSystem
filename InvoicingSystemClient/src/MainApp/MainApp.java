@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import presentation.mainui.AdministerMainViewController;
 import presentation.mainui.FianceMainViewController;
@@ -15,7 +16,9 @@ import presentation.mainui.LoginPanelController;
 import presentation.mainui.ManagerMainViewController;
 import presentation.mainui.SaleMainViewController;
 import presentation.mainui.StockMainViewController;
+import presentation.mainui.WarningViewController;
 import runner.ClientRunner;
+import vo.UserVO;
 
 /**
  * 
@@ -25,6 +28,7 @@ import runner.ClientRunner;
 public class MainApp extends Application {
 	private static Stage primarystage;
 	private static BorderPane rootlayout;
+	private static UserVO user;
 	
 	@Override
 	public void start(Stage primarystage) throws Exception {
@@ -514,7 +518,42 @@ public class MainApp extends Application {
 			// TODO: handle exception
 		}
 	}
-
+	
+	/*
+	 * correct the user
+	 */
+   public static void setUser(UserVO use){
+	  MainApp.user=use;
+}
+   /*
+	 * cancel the user
+	 */
+   public static void cancelUser(){
+		  MainApp.user=null;
+	}
+   
+   /*
+	 * 显示库存警戒线界面
+	 */
+	public static  void showWarningUI() {
+		try {
+			FXMLLoader loader=new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/presentation/mainui/WarningUI.fxml"));
+			AnchorPane warningUI=loader.load();
+			Scene scene=new Scene(warningUI);
+			Stage warnStage=new Stage();
+			warnStage.setTitle("Warning Num");
+			warnStage.initModality(Modality.WINDOW_MODAL);
+			warnStage.initOwner(MainApp.primarystage);
+			warnStage.setScene(scene);
+            WarningViewController controller=loader.getController();
+            controller.setStage(warnStage);
+            warnStage.showAndWait();
+            
+		} catch (IOException e) {
+			// TODO: handle exception
+		}
+	}
 	/**
      * Returns the main stage.
      * @return

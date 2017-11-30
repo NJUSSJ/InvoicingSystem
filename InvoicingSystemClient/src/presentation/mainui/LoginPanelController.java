@@ -79,7 +79,7 @@ public class LoginPanelController implements Initializable {
 	}
 	
 	public void Login() {
-		
+		MainApp.setUser(user);
 		if(certifyUser()) {
 			//判断用户身份
 			switch (user.getRank()) {

@@ -37,6 +37,7 @@ public class SaleMainViewController implements Initializable  {
 	}
 
 	public void showLoginUI(){
+		MainApp.cancelUser();
 		MainApp.showLoginUI();
 	}
 	

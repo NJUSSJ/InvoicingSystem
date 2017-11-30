@@ -41,6 +41,7 @@ public class AdministerMainViewController implements Initializable {
 	    MainApp.showUserChangeUI();
     }
     public void showLoginUI(){
+    	MainApp.cancelUser();
 		MainApp.showLoginUI();
    	}
 }
