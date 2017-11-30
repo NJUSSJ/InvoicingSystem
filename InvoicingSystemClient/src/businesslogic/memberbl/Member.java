@@ -8,7 +8,7 @@ import po.MemberPO;
 import rmi.RemoteHelper;
 import vo.MemberVO;
 
-public class Member implements MemberBLService{
+public class Member{
 
 	public boolean addMember(MemberVO a) {
 		// TODO Auto-generated method stub
@@ -38,7 +38,7 @@ public class Member implements MemberBLService{
 		// TODO Auto-generated method stub
 		try {
 			MemberPO tmpPO=RemoteHelper.getInstance().getMemberDataService().find(name);
-			return null;
+			return toMemberVO(tmpPO);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -61,6 +61,12 @@ public class Member implements MemberBLService{
 	public ArrayList<MemberVO> findMembers(String field) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	public MemberVO toMemberVO(MemberPO memberPO){
+		return new MemberVO(memberPO.getID(),memberPO.getRank(),memberPO.getPostCode(),
+				memberPO.getCategory(),memberPO.getName(),memberPO.getPhoneNum(),
+				memberPO.getAddress(),memberPO.getEmail(),memberPO.getShouldPay(),
+				memberPO.getShouldGet(),memberPO.getQuota(),memberPO.getDefaultOperatorID());
 	}
 
 }

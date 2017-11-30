@@ -1,11 +1,13 @@
 package businesslogicservice.accountblservice;
 
+import po.AccountPO;
 import vo.AccountVO;
 
 public interface AccountBLService {
 	
-	public AccountVO getAccount(long id);
-	public String addAccount(AccountVO account);
-	public String deleteAccount(AccountVO account);
-	public String modifyAccount(long id);
+	public AccountVO findAccountByID(long id);
+	public boolean addAccount(AccountVO accountVO);
+	public boolean deleteAccount(AccountVO accountVO);
+	public boolean updateAccount(AccountVO accountVO);
+	public AccountVO toAccountVo(AccountPO accountPO);
 }
