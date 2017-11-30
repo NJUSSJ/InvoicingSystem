@@ -8,15 +8,16 @@ import java.util.ArrayList;
 
 import data.datafactory.DataFactory;
 import dataservice.memberdataservice.MemberDataService;
-import po.LogPO;
 import po.MemberPO;
 
 public class MemberDataImpl implements MemberDataService{
 
+	/*
+	 * 根据姓名查找客户
+	 */
 	@Override
-	public MemberPO find(String name) throws RemoteException {
-		// TODO 自动生成的方法存根
-		String sql="select id,rank, category,name,phonenumber,address,email,posecode,quota,shouldget,shouldpay,defaultoperatorid from "
+	public MemberPO findMemberbyName(String name) throws RemoteException {
+		String sql="select * from "
 				+ "members"
 				+ "where name="+name;
 		try {
@@ -39,75 +40,77 @@ public class MemberDataImpl implements MemberDataService{
 				return new MemberPO(id, rank, postcode, category, name_, phonenumber, address, email, shouldpay, shouldget, quota, defaultoperatorid);
 			}
 		} catch (SQLException e) {
+			e.printStackTrace();
 			
-			// TODO: handle exception
 		}
 		return null;
 	}
 
+	/*
+	 * 新增新的客户信息
+	 */
 	@Override
 	public boolean insert(MemberPO po) throws RemoteException {
-		// TODO 自动生成的方法存根
+		
 		String sql="insert into members (id, rank, postcode, category, name, phonenumber, address, email, shouldpay, shouldget, quota, defaultoperatorid)"
 				+ "values"
 				+ "('"+po.getID()+"','"+po.getRank()+"','"+po.getPostCode()+"','"+po.getCategory()+"','"+po.getName()+"','"+po.getPhoneNum()+"','"+po.getAddress()+"','+"
 						+ po.getEmail()+"','"+po.getShouldPay()+"','"+po.getShouldGet()+"','"+po.getQuota()+"','"+po.getDefaultOperatorID()+"')";
 		try {
-			if(DataFactory.statement.execute(sql)) {
+			if(DataFactory.statement.executeUpdate(sql)>0) {
 				return true;
 			}
 		} catch (SQLException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		return false;
 	}
 
+	
+	/*
+	 * 删除一条客户记录
+	 */
 	@Override
 	public boolean delete(MemberPO po) throws RemoteException {
-		// TODO 自动生成的方法存根
+		
 		String sql="delete from members where id="+po.getID();
 		try {
-			if(DataFactory.statement.execute(sql)) {
+			if(DataFactory.statement.executeUpdate(sql)>0) {
 				return true;
 			}
 		} catch (SQLException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		return false;
 	}
 
+	/*
+	 * 维护一条客户记录
+	 */
 	@Override
 	public boolean update(MemberPO po) throws RemoteException {
-		// TODO 自动生成的方法存根
+		
 		String sql="update giftbills set rank='"+po.getRank()+"',postcode='"+po.getPostCode()+"',category='"+po.getCategory()+"',name='"
 				+ po.getName()+"'phonenumber='"+po.getPhoneNum()+"'address='"+po.getAddress()+"'email='"+po.getEmail()+"'shouldpay='"+po.getShouldPay()+"'shouldget='"+po.getShouldGet()+"'quota='"+po.getQuota()+"'defaultoperatorid='"+po.getDefaultOperatorID()
 				+"'where id="+po.getID();
 		try {
-			if(DataFactory.statement.execute(sql)) {
+			if(DataFactory.statement.executeUpdate(sql)>0) {
 				return true;
 			}
 		} catch (SQLException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		return false;
 	}
 
-	@Override
-	public void init() throws RemoteException {
-		// TODO 自动生成的方法存根
-		
-	}
 
-	@Override
-	public void finish() throws RemoteException {
-		// TODO 自动生成的方法存根
-		
-	}
-
+	/*
+	 * 获取客户列表
+	 */
 	@Override
 	public ArrayList<MemberPO> findMembers() throws RemoteException {
-		// TODO Auto-generated method stub
-		String sql="select id,rank, category,name,phonenumber,address,email,posecode,quota,shouldget,shouldpay,defaultoperatorid from "
+		
+		String sql="select * from"
 				+ "members";
 		
 		ArrayList<MemberPO> results=new ArrayList<>();
@@ -137,14 +140,16 @@ public class MemberDataImpl implements MemberDataService{
 			return results;
 		} catch (SQLException e) {
 			
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		return null;
 	}
 
+	/*
+	 * 模糊查找客户
+	 */
 	@Override
-	public ArrayList<MemberPO> fings(String field) throws RemoteException {
-		// TODO Auto-generated method stub
+	public ArrayList<MemberPO> findMembersbyField(String field) throws RemoteException {
 		return null;
 	}
 	
