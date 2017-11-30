@@ -3,11 +3,6 @@ package dataservice.logdataservice;
 import java.rmi.RemoteException;
 import java.sql.Date;
 import java.util.ArrayList;
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 4a65133e24c017179ae77d4274a7263a2ebe59eb
 import po.LogPO;
 
 public interface LogDataService {

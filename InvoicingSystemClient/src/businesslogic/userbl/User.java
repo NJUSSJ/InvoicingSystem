@@ -40,7 +40,7 @@ public class User {
 	
 	public UserVO findUserbyName(String name) {
 		try {
-			UserPO tmpUserPO=RemoteHelper.getInstance().getUserDataService().find(name);
+			UserPO tmpUserPO=RemoteHelper.getInstance().getUserDataService().findUserbyName(name);
 			//未找到相同用户名的用户
 			if(tmpUserPO==null) {
 				return null;
