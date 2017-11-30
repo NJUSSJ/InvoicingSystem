@@ -16,7 +16,4 @@ public interface LogDataService {
 	public int getLogNum() throws RemoteException;
 	public boolean delete(Data time) throws RemoteException;
 	public boolean update(LogPO po) throws RemoteException;
-	public void init() throws RemoteException;
-	public void finish() throws RemoteException;
-
 }

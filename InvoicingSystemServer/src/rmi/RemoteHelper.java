@@ -23,12 +23,15 @@ public class RemoteHelper {
 	 * 初始化服务器
 	 */
 	public void initServer() {
-		UserDataRemoteObject dataRemoteObject;
+		DataRemoteObject dataRemoteObject;
+		
 		try {
-			dataRemoteObject=new UserDataRemoteObject();
+			dataRemoteObject=new DataRemoteObject();
+			
 			LocateRegistry.createRegistry(8889);
 			String addressName="rmi://localhost:8889/BulbManagement";
 			Naming.bind(addressName, dataRemoteObject);
+			
 			
 		}catch (MalformedURLException e) {
 			// TODO: handle exception

@@ -13,7 +13,7 @@ import po.UserPO;
  * @author shisj
  *
  */
-public class UserDataRemoteObject extends UnicastRemoteObject implements UserDataService {
+public class DataRemoteObject extends UnicastRemoteObject implements UserDataService {
 
 	
 	
@@ -26,7 +26,7 @@ public class UserDataRemoteObject extends UnicastRemoteObject implements UserDat
 	 * UserDataService
 	 * @throws RemoteException
 	 */
-	protected UserDataRemoteObject() throws RemoteException {
+	protected DataRemoteObject() throws RemoteException {
 		userService=new UserDataImpl();
 		// TODO Auto-generated constructor stub
 	}

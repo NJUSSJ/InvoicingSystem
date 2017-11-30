@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import data.datafactory.DataFactory;
 import dataservice.accountdataservice.AccountDataService;
 import po.AccountPO;
-import po.UserPO;
 
 public class AccountDataImpl implements AccountDataService {
 
@@ -18,7 +17,7 @@ public class AccountDataImpl implements AccountDataService {
 	 * 根据id查找账户
 	 */
 	@Override
-	public AccountPO find(long id) throws RemoteException {
+	public AccountPO findAccountbyID(long id) throws RemoteException {
 		// TODO Auto-generated method stub
 		String sql="SELECT id, bank, deposit FROM accounts";
 		
@@ -32,7 +31,7 @@ public class AccountDataImpl implements AccountDataService {
 				String bank=result.getString("bank");
 				double deposit=result.getDouble("deposit");
 				
-				AccountPO tmpAccount=new AccountPO(tmpid, bank, deposit);
+				AccountPO tmpAccount=new AccountPO(tmpid, deposit, bank);
 				if(tmpid==id) {
 					return tmpAccount;
 				}
@@ -53,7 +52,7 @@ public class AccountDataImpl implements AccountDataService {
 	public boolean insert(AccountPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		String sql="INSERT INTO users(id,bank,deposit) VALUES("+po.getID()
-		+",'"+po.getBank()+"','"+po.getDposit()+"')";
+		+",'"+po.getBank()+"','"+po.getDeposit()+"')";
 		try {
 			if(DataFactory.statement.execute(sql)){
 				return true;
@@ -90,7 +89,7 @@ public class AccountDataImpl implements AccountDataService {
 	@Override
 	public boolean update(AccountPO po) throws RemoteException {
 		// TODO Auto-generated method stub
-		String sql="UPDATE users SET deposit="+po.getDposit()+" WHERE id="+po.getID();
+		String sql="UPDATE users SET deposit="+po.getDeposit()+" WHERE id="+po.getID();
 		try {
 			if(DataFactory.statement.execute(sql)){
 				return true;
@@ -103,20 +102,9 @@ public class AccountDataImpl implements AccountDataService {
 		
 	}
 
-	@Override
-	public void init() throws RemoteException {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
-	public void finish() throws RemoteException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public ArrayList<AccountPO> finds() throws RemoteException {
+	public ArrayList<AccountPO> findAccounts() throws RemoteException {
 		// TODO Auto-generated method stub
 		
 		String sql="SELECT id, bank, deposit FROM accounts";
@@ -131,7 +119,7 @@ public class AccountDataImpl implements AccountDataService {
 				String bank=result.getString("bank");
 				double deposit=result.getDouble("deposit");
 				
-				AccountPO tmpAccount=new AccountPO(tmpid, bank, deposit);
+				AccountPO tmpAccount=new AccountPO(tmpid, deposit, bank);
 				results.add(tmpAccount);
 				return results;
 				

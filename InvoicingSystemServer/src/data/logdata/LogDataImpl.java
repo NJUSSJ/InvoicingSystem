@@ -14,9 +14,12 @@ import po.LogPO;
 
 public class LogDataImpl implements LogDataService {
 
+	/**
+	 * TODO 插入新一条操作记录
+	 */
 	@Override
 	public boolean insert(LogPO po) throws RemoteException {
-		// TODO Auto-generated method stub
+		
 		String sql="insert into logs (id,time,type,userid)"
 				+ "values"
 				+ "('"+po.getID()+"','"+po.getTime()+"','"+po.getType()+"','"+po.getUserID()+",)";
@@ -25,14 +28,17 @@ public class LogDataImpl implements LogDataService {
 				return true;
 			}
 		} catch (SQLException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		return false;
 	}
 
+	/**
+	 *  TODO 获取操作记录表
+	 */
 	@Override
 	public ArrayList<LogPO> findLogs() throws RemoteException {
-		// TODO Auto-generated method stub
+		
 		String sql="select * from logs";
 		ArrayList<LogPO> results=new ArrayList<>();
 		try {
@@ -51,19 +57,21 @@ public class LogDataImpl implements LogDataService {
 			
 			return results;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		
 		return null;
 	}
-
+	/**
+	 *  TODO 根据操作员查找操作记录
+	 */
 	@Override
 	public ArrayList<LogPO> findLogbyOperator(long operatorID) throws RemoteException {
-		// TODO Auto-generated method stub
+		
 		String sql="select * from logs where userid="+operatorID;
 		ArrayList<LogPO> results=new ArrayList<>();
+		
 		try {
 			ResultSet result=DataFactory.statement.executeQuery(sql);
 			while(result.next()) {
@@ -80,7 +88,7 @@ public class LogDataImpl implements LogDataService {
 			return results;
 			
 		} catch (SQLException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		return null;
 	}
@@ -89,38 +97,78 @@ public class LogDataImpl implements LogDataService {
 
 	@Override
 	public boolean update(LogPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		
+		// TODO 
 		return false;
 	}
 
-	@Override
-	public void init() throws RemoteException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void finish() throws RemoteException {
-		// TODO Auto-generated method stub
-		
-	}
-
+	/**
+	 *  TODO 根据时间删除操作记录
+	 */
 	@Override
 	public boolean delete(Data time) throws RemoteException {
-		// TODO Auto-generated method stub
+		
+		String sql="delete from logs where time="+time;
+		
+		try {
+			if(DataFactory.statement.execute(sql)) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return false;
 	}
 
+	/**
+	 *  TODO 根据操作类型查找操作记录
+	 */
 	@Override
 	public ArrayList<LogPO> findLogbyType(String type) throws RemoteException {
-		// TODO Auto-generated method stub
+		
+		String sql="select * from logs where type="+type;
+		
+		ArrayList<LogPO> results=new ArrayList<>();
+		
+		try {
+			ResultSet result=DataFactory.statement.executeQuery(sql);
+			
+			while(result.next()) {
+				long id=result.getLong("id");
+				Date time=result.getDate("time");
+				long userid=result.getLong("userid");
+				
+				LogPO tmpLog=new LogPO(id, time, type, userid);
+				
+				results.add(tmpLog);
+			}
+			
+			return results;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
+	/**
+	 * 获取操作记录表中记录条数
+	 */
 	@Override
 	public int getLogNum() throws RemoteException {
-		// TODO Auto-generated method stub
+		 
+		String sql="select * from logs";
+		
+		int num=0;
+		try {
+			ResultSet result=DataFactory.statement.executeQuery(sql);
+			while(result.next()) {
+				num++;
+			}
+			
+			return num;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return 0;
 	}
 

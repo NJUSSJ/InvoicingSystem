@@ -12,4 +12,5 @@ public interface ImportBillDataService {
 	public boolean update(ImportBillPO po) throws RemoteException;
 	public ArrayList<ImportBillPO> findImportBillbyState(int state) throws RemoteException;
 	public ArrayList<ImportBillPO> findImportBillbyTime(Date time) throws RemoteException;
+	public ArrayList<ImportBillPO> findImportBills() throws RemoteException;
 }

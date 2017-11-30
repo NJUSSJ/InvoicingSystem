@@ -1,6 +1,7 @@
 package stubs;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import dataservice.memberdataservice.MemberDataService;
 import po.MemberPO;
@@ -25,5 +26,15 @@ public class MemberDatabaseServiceMySqlImpl_Stub implements MemberDataService{
 	}
 	public void finish() throws RemoteException{
 		System.out.println("Finish succeed!");
+	}
+	@Override
+	public ArrayList<MemberPO> findMembers() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ArrayList<MemberPO> fings(String field) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
