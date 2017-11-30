@@ -1,8 +1,9 @@
-<<<<<<< HEAD
 package businesslogicservice.commodityblservice;
 
 import java.util.ArrayList;
 
+import po.CategoryPO;
+import po.CommodityPO;
 import vo.CategoryVO;
 import vo.CommodityVO;
 
@@ -11,42 +12,16 @@ import vo.CommodityVO;
 
 public interface CommodityBLService {
 	public boolean addCommodity(CommodityVO commodityVO);
-	public boolean delete
+	public boolean deleteCommodity(CommodityVO commodityVO);
+	public boolean updateCommodity(CommodityVO commodityVO);
+	public CommodityVO findCommodityByName(String name);
+	public CommodityVO findCommodityByID(long id);
+	public ArrayList<CommodityVO> findCommodityByField(String field);
+	public boolean addCategory(CategoryVO categoryVO);
+	public boolean deleteCategory(CategoryVO categoryVO);
+	public boolean updateCategory(CategoryVO categoryVO);
+	public CategoryVO findCategoryByName(String name);
+	public CategoryVO findCategoryByID(long id);
+	public CommodityVO toCommodityVO(CommodityPO commodityPO);
+	public CategoryVO toCategoryVO(CategoryPO categoryPO);
 }
-=======
-package businesslogicservice.commodityblservice;
-
-import java.util.ArrayList;
-
-import vo.CategoryVO;
-import vo.CommodityVO;
-
-
-
-
-public interface CommodityBLService {
-	
-	public CommodityVO toCommodityVO(String name,long id,String model, int stockNum, double importPrice, double salePrice,
-			double lateImportPrice, double lateSalePrice,String parent);
-
-	public CommodityVO getCommodity(String name);
-	
-	public ArrayList<CommodityVO> getCommodityList(String field);
-	
-	public CategoryVO getCategory(String name);
-	
-	public ArrayList<CategoryVO> getCategoryList(String field);
-	
-	public String addCommodity(CommodityVO c);
-	
-	public String addCategory(CategoryVO c);
-	
-	public String deleteCommodity(CommodityVO c);
-	
-	public String deleteCategory(CategoryVO c);
-	
-	public String modifyCommodity(CommodityVO c);
-	
-	public String modifyCategory(CategoryVO c);
-}
->>>>>>> bbd01677120b3e5469e62b876f3702b66be44be8
