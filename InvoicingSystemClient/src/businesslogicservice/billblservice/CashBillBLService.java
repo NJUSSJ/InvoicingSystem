@@ -9,7 +9,7 @@ import vo.CashBillVO;
 public interface CashBillBLService {
 	public CashBillVO toCashBillVO (CashBillPO po);
 	public boolean submitCashBill(CashBillVO cashbill);
-	public boolean checkCashBill(boolean pass);
+	public boolean checkCashBill(boolean pass,long id);
 	public boolean deleteCashBill(CashBillVO cashbill);
 	public ArrayList<CashBillVO> findCashBillByTime(Date time);
 }

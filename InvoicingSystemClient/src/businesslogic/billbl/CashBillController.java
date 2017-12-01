@@ -10,48 +10,34 @@ import rmi.RemoteHelper;
 import vo.CashBillVO;
 
 public class CashBillController implements CashBillBLService{
-
+	CashBill cashBillImpl=new CashBill();
 	@Override
 	public CashBillVO toCashBillVO(CashBillPO po) {
-		// TODO 自动生成的方法存根
-		String[] items=po.getItems().split(" ");
-		ArrayList<String> temp=new ArrayList<String>();
-		for(int i=0;i<items.length;i++){
-			temp.add(items[i]);
-		}
-		
-		return new CashBillVO(po.getID(),po.getUserID(),po.getAccountID(),temp,po.getTime(),
-				po.getState());
+		return cashBillImpl.toCashBillVO(po);
 	}
 
 	@Override
-	public boolean submitCashBill(CashBillVO cashbill) {
+	public boolean submitCashBill(CashBillVO cashBill) {
 		// TODO 自动生成的方法存根
-		try {
-			return RemoteHelper.getInstance().getCashBillPromotinoDataService().insert(cashbill.toCashBillPO());
-		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
-		}
-		return false;
+		return cashBillImpl.submitCashBill(cashBill);
 	}
 
 	@Override
-	public boolean checkCashBill(boolean pass) {
+	public boolean checkCashBill(boolean pass,long id) {
 		// TODO 自动生成的方法存根
-		return false;
+		return cashBillImpl.checkCashBill(pass, id);
 	}
 
 	@Override
-	public boolean deleteCashBill(CashBillVO cashbill) {
+	public boolean deleteCashBill(CashBillVO cashBill) {
 		// TODO 自动生成的方法存根
-		return false;
+		return cashBillImpl.deleteCashBill(cashBill);
 	}
 
 	@Override
 	public ArrayList<CashBillVO> findCashBillByTime(Date time) {
 		// TODO 自动生成的方法存根
-		return null;
+		return cashBillImpl.findCashBillByTime(time);
 	}
 	
 
