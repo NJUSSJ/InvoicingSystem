@@ -15,7 +15,7 @@ public class CashBillVO {
 	String id;
 	long userid;
 	long accountid;
-	ArrayList<String> items;//条目：条目名+备注
+	ArrayList<String> items;//条目：条目名+,金额,+备注
 	Date time;
 	double sum;
 	int state;
@@ -26,6 +26,11 @@ public class CashBillVO {
 		this.userid=userid;
 		this.time=time;
 		this.state=state;
+		sum=0;
+		for(int i=0;i<items.size();i++){
+			String[] temp=items.get(i).split(",");
+			sum+=Double.parseDouble(temp[1]);
+		}
 	}
 	
 	public CashBillPO toCashBillPO(){
