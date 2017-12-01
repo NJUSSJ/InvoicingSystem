@@ -1,5 +1,7 @@
 package vo;
 
+import po.UserPO;
+
 public class UserVO {
 	long id;
 	String password;
@@ -13,8 +15,8 @@ public class UserVO {
 		this.username=username;
 	}
 
-	public UserVO() {
-		// TODO 自动生成的构造函数存根
+	public UserPO toUserPO(){
+		return new UserPO(id,password,rank,username);
 	}
 	
 	public String getUsername() {

@@ -1,6 +1,7 @@
 package businesslogic.userbl;
 
 import businesslogicservice.userblservice.UserBLService;
+import po.UserPO;
 import vo.UserVO;
 
 public class UserController implements UserBLService {
@@ -28,6 +29,18 @@ public class UserController implements UserBLService {
 	public boolean updateUser(UserVO a) {
 		// TODO Auto-generated method stub
 		return userImpl.updateUser(a);
+	}
+
+	@Override
+	public UserVO toUserVO(UserPO userPO) {
+		// TODO 自动生成的方法存根
+		return userImpl.toUserVO(userPO);
+	}
+
+	@Override
+	public UserVO findUserByID(long id) {
+		// TODO 自动生成的方法存根
+		return userImpl.findUserByID(id);
 	}
 
 	

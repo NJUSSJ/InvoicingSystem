@@ -15,75 +15,81 @@ public class PromotionController implements PromotionBLService{
 	PackagePromotion packagePromotionImpl=new PackagePromotion();
 	PricePromotion pricePromotionImpl=new PricePromotion();
 	@Override
-	public boolean addMemberPromotionVO(MemberPromotionVO memberPromotionVO) {
+	public boolean addMemberPromotion(MemberPromotionVO memberPromotionVO) {
 		// TODO 自动生成的方法存根
 		return memberPromotionImpl.addMemberPromotionVO(memberPromotionVO);
 	}
 
 	@Override
-	public boolean addPackagePromotionVO(PackagePromotionVO packagePromotionVO) {
+	public boolean addPackagePromotion(PackagePromotionVO packagePromotionVO) {
 		// TODO 自动生成的方法存根
 		return packagePromotionImpl.addPackagePromotionVO(packagePromotionVO);
 	}
 
 	@Override
-	public boolean addPricePromotionVO(PricePromotionVO pricePromoionVO) {
+	public boolean addPricePromotion(PricePromotionVO pricePromoionVO) {
 		// TODO 自动生成的方法存根
 		return pricePromotionImpl.addPricePromotionVO(pricePromoionVO);
 	}
 
 	@Override
-	public boolean deleteMemberPromotionVO(MemberPromotionVO memberPromotionVO) {
+	public boolean deleteMemberPromotion(MemberPromotionVO memberPromotionVO) {
 		// TODO 自动生成的方法存根
 		return memberPromotionImpl.deleteMemberPromotionVO(memberPromotionVO);
 	}
 
 	@Override
-	public boolean deletePackagePromotionVO(PackagePromotionVO packagePromotionVO) {
+	public boolean deletePackagePromotion(PackagePromotionVO packagePromotionVO) {
 		// TODO 自动生成的方法存根
 		return packagePromotionImpl.deletePackagePromotionVO(packagePromotionVO);
 	}
 
 	@Override
-	public boolean deletePricePromotionVO(PricePromotionVO pricePromoionVO) {
+	public boolean deletePricePromotion(PricePromotionVO pricePromoionVO) {
 		// TODO 自动生成的方法存根
 		return pricePromotionImpl.deletePricePromotionVO(pricePromoionVO);
 	}
 
 	@Override
-	public ArrayList<MemberPromotionVO> findMemberPromotionVO() {
+	public ArrayList<MemberPromotionVO> findMemberPromotion() {
 		// TODO 自动生成的方法存根
 		return memberPromotionImpl.findMemberPromotionVO();
 	}
 
 	@Override
-	public ArrayList<PackagePromotionVO> findPackagePromotionVO() {
+	public ArrayList<PackagePromotionVO> findPackagePromotion() {
 		// TODO 自动生成的方法存根
 		return packagePromotionImpl.findPackagePromotionVO();
 	}
 
 	@Override
-	public ArrayList<PricePromotionVO> findPricePromotionVO() {
+	public ArrayList<PricePromotionVO> findPricePromotion() {
 		// TODO 自动生成的方法存根
 		return pricePromotionImpl.findPricePromotionVO();
 	}
 
 	@Override
-	public MemberPromotionVO toMemberPromotionVO(MemberPromotionPO memberPromotionPO) {
+	public MemberPromotionVO toMemberPromotion(MemberPromotionPO memberPromotionPO) {
 		// TODO 自动生成的方法存根
 		return memberPromotionImpl.toMemberPromotionVO(memberPromotionPO);
 	}
 
 	@Override
-	public PackagePromotionVO toPackagePromotionVO(PackagePromotionPO packagePromotionPO) {
+	public PackagePromotionVO toPackagePromotion(PackagePromotionPO packagePromotionPO) {
 		// TODO 自动生成的方法存根
 		return packagePromotionImpl.toPackagePromotionVO(packagePromotionPO);
 	}
 
 	@Override
-	public PricePromotionVO toPricePromotionVO(PricePromotionPO pricePromotionPO) {
+	public PricePromotionVO toPricePromotion(PricePromotionPO pricePromotionPO) {
 		// TODO 自动生成的方法存根
 		return pricePromotionImpl.toPricePromotionVO(pricePromotionPO);
+	}
+
+	@Override
+	public ArrayList<MemberPromotionVO> findMemberPromotionByRank() {
+		// TODO 自动生成的方法存根
+		return null;
 	}
 
 	

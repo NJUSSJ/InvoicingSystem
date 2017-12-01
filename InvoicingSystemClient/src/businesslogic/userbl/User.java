@@ -14,9 +14,8 @@ public class User {
 	
 	public boolean addUser(UserVO a) {
 		// TODO 自动生成的方法存根
-		UserPO tmpUserPO=new UserPO(a.getID(),a.getPassword(),a.getRank(),a.getUsername());
 		try {
-			return RemoteHelper.getInstance().getUserDataService().insert(tmpUserPO);	
+			return RemoteHelper.getInstance().getUserDataService().insert(a.toUserPO());	
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
@@ -27,9 +26,8 @@ public class User {
 	
 	public boolean deleteUser(UserVO a) {
 		// TODO 自动生成的方法存根
-		UserPO tmpUserPO=new UserPO(a.getID(),a.getPassword(),a.getRank(),a.getUsername());
 		try {
-			return RemoteHelper.getInstance().getUserDataService().delete(tmpUserPO);	
+			return RemoteHelper.getInstance().getUserDataService().delete(a.toUserPO());	
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
@@ -40,12 +38,7 @@ public class User {
 	
 	public UserVO findUserbyName(String name) {
 		try {
-			UserPO tmpUserPO=RemoteHelper.getInstance().getUserDataService().findUserbyName(name);
-			//未找到相同用户名的用户
-			if(tmpUserPO==null) {
-				return null;
-			}
-			return new UserVO(tmpUserPO.getID(), tmpUserPO.getPassword(), tmpUserPO.getRank(), tmpUserPO.getUserName());
+			return toUserVO(RemoteHelper.getInstance().getUserDataService().findUserbyName(name));
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -53,17 +46,29 @@ public class User {
 		return null;
 	}
 
+	public UserVO findUserByID(long id){
+		try {
+			return toUserVO(RemoteHelper.getInstance().getUserDataService().findUserbyID(id));
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
 	public boolean updateUser(UserVO a) {
 		// TODO 自动生成的方法存根
-		UserPO tmpUserPO=new UserPO(a.getID(),a.getPassword(),a.getRank(),a.getUsername());
 		try {
-			return RemoteHelper.getInstance().getUserDataService().update(tmpUserPO);	
+			return RemoteHelper.getInstance().getUserDataService().update(a.toUserPO());	
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return false;
+	}
+	
+	public UserVO toUserVO(UserPO userPO){
+		return new UserVO(userPO.getID(),userPO.getPassword(),userPO.getRank(),userPO.getUserName());
 	}
 	
 

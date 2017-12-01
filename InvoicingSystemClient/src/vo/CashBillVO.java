@@ -29,7 +29,14 @@ public class CashBillVO {
 	}
 	
 	public CashBillPO toCashBillPO(){
-		return new CashBillPO(id,accountid,userid,items,state,time,sum);
+		String temp="";
+		for(int i=0;i<items.size();i++){
+			temp+=items.get(i);
+			if(i!=items.size()-1){
+				temp+=" ";
+			}
+		}
+		return new CashBillPO(id,accountid,userid,temp,state,time,sum);
 	}
 	
 	public String getID(){
