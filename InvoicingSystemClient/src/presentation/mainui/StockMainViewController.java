@@ -38,6 +38,7 @@ public class StockMainViewController implements Initializable {
 	}
 	
 	public void showLoginUI(){
+		MainApp.cancelUser();
 		MainApp.showLoginUI();
 	}
 	
@@ -61,20 +62,8 @@ public class StockMainViewController implements Initializable {
 		MainApp.showStockInventoryUI();
 	}
 	
-    public void showWarningUI(){//未写完
-	 Label warnningNum=new Label("设定警戒值：");
-	 TextField num=new TextField();
-	 Button righB=new Button("确认");
-	 righB.setOnAction(e ->{String nuM=num.getText();});
-	 VBox root =new VBox();
-	 root.setSpacing(3);
-	 root.getChildren().addAll(warnningNum,num,righB);
-	 Scene scene=new Scene(root,350,150);
-	 Stage smallStage=new Stage();
-	 smallStage.setTitle("Set Warning Num");
-	 smallStage.setScene(scene);
-	 smallStage.show();
-	
+    public void showWarningUI(){
+       MainApp.showWarningUI();
     }
 	 
 }

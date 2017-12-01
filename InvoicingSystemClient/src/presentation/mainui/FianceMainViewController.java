@@ -67,6 +67,7 @@ public class FianceMainViewController implements Initializable  {
 	}
 	
 	public void showLoginUI(){
+		MainApp.cancelUser();
 		MainApp.showLoginUI();
 	}
 	
