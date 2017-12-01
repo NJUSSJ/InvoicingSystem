@@ -105,7 +105,7 @@ public class LogDataImpl implements LogDataService {
 	 *  TODO 根据时间删除操作记录
 	 */
 	@Override
-	public boolean delete(Data time) throws RemoteException {
+	public boolean delete(Date time) throws RemoteException {
 		
 		String sql="delete from logs where time="+time;
 		

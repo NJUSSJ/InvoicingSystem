@@ -10,7 +10,7 @@ public interface SaleBillDataService {
 	public boolean insert(SaleBillPO po) throws RemoteException;
 	public boolean delete(SaleBillPO po) throws RemoteException;
 	public boolean update(SaleBillPO po) throws RemoteException;
-	public SaleBillPO findSaleBillbyID(long id) throws RemoteException;
+	public SaleBillPO findSaleBillbyID(String id) throws RemoteException;
 	public ArrayList<SaleBillPO> findSaleBills() throws RemoteException;
 	public ArrayList<SaleBillPO> findSaleBillbyTime(Date time) throws RemoteException;
 	public ArrayList<SaleBillPO> findSaleBillbyState(int state) throws RemoteException;

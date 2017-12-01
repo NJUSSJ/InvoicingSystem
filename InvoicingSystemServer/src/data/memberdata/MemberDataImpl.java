@@ -92,7 +92,7 @@ public class MemberDataImpl implements MemberDataService{
 		
 		String sql="update giftbills set rank='"+po.getRank()+"',postcode='"+po.getPostCode()+"',category='"+po.getCategory()+"',name='"
 				+ po.getName()+"'phonenumber='"+po.getPhoneNum()+"'address='"+po.getAddress()+"'email='"+po.getEmail()+"'shouldpay='"+po.getShouldPay()+"'shouldget='"+po.getShouldGet()+"'quota='"+po.getQuota()+"'defaultoperatorid='"+po.getDefaultOperatorID()
-				+"'where id="+po.getID();
+				+"'where id='"+po.getID()+"'";
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {
 				return true;

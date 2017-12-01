@@ -139,9 +139,9 @@ public class CommodityDataImpl implements CommodityDataService{
 
 	@Override
 	public boolean update(CommodityPO po) throws RemoteException {
-		String sql="update commodities set name="+po.getName()+",set id="+po.getID()+",set model="+po.getModel()+",set stocknum="+po.getStockNum()+",set importprice="
-				+ po.getImportPrice()+",set saleprice="+po.getSalePrice()+",set lateimportprice="+po.getLateImportPrice()+",set latesaleprice="+po.getLateImportPrice()
-				+",set parentid="+po.getParentID();
+		String sql="update commodities set name='"+po.getName()+"',id='"+po.getID()+"',model='"+po.getModel()+"',stocknum='"+po.getStockNum()+"',importprice='"
+				+ po.getImportPrice()+"',saleprice='"+po.getSalePrice()+"',lateimportprice='"+po.getLateImportPrice()+"',latesaleprice='"+po.getLateImportPrice()
+				+"',parentid='"+po.getParentID()+"' where id='"+po.getID()+"'";
 		
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {

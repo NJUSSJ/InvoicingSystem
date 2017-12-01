@@ -115,7 +115,7 @@ public class UserDataImpl implements UserDataService {
 	@Override
 	public boolean update(UserPO po) throws RemoteException {
 		String sql="UPDATE users SET username='"+po.getUserName()+"',password='"
-				+po.getPassword()+"',rank="+po.getRank()+" WHERE id="+po.getID();
+				+po.getPassword()+"',rank='"+po.getRank()+"' WHERE id='"+po.getID()+"'";
 		try {
 			if(DataFactory.statement.execute(sql)){
 				return true;
