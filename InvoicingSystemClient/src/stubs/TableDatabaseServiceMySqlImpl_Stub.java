@@ -1,9 +1,8 @@
 package stubs;
 
-import dataservice.tabledataservice.TableDataService;
 import po.BillPO;
 
-public class TableDatabaseServiceMySqlImpl_Stub implements TableDataService {
+public class TableDatabaseServiceMySqlImpl_Stub  {
 	public BillPO find(String field){
 		BillPO po=new BillPO();
 		return po;

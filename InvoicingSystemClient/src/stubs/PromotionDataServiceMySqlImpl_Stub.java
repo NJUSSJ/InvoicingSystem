@@ -2,10 +2,9 @@ package stubs;
 
 import java.util.ArrayList;
 
-import dataservice.promotiondataservice.PromotionDataService;
 import po.PromotionPO;
 
-public class PromotionDataServiceMySqlImpl_Stub implements PromotionDataService{
+public class PromotionDataServiceMySqlImpl_Stub {
 	public void insert(PromotionPO po){
 		System.out.println("Insert successed");
 	}

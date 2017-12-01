@@ -1,5 +1,7 @@
 package vo;
 
+import po.PricePromotionPO;
+
 public class PricePromotionVO {
 	long id;
 	double priceline;
@@ -13,10 +15,10 @@ public class PricePromotionVO {
 		this.priceline=priceline;
 		this.coupon=coupon;
 	}
-	public PricePromotionVO(double priceline,double discount) {
-		this.priceline=priceline;
-		this.discount=discount;
+	public PricePromotionPO toPricePromotionPO(){
+		return new PricePromotionPO(id,discount,priceline,coupon);
 	}
+	
 	public long getID(){
 		return id;
 	}

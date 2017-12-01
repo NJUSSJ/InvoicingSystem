@@ -16,7 +16,7 @@ public class CashBillPO implements Serializable{
 	int state;
 	Date time;
 	double sum;
-	public CashBillPO(String id,long userid,long accountid,ArrayList<String> items,int state,Date time,double sum) {
+	public CashBillPO(String id,long userid,long accountid,String items,int state,Date time,double sum) {
 		// TODO Auto-generated constructor stub
 		this.id=id;
 		this.accountid=accountid;
@@ -24,12 +24,7 @@ public class CashBillPO implements Serializable{
 		this.time=time;
 		this.state=state;
 		this.sum=sum;
-		for(int i=0;i<items.size();i++){
-			this.items+=items.get(i);
-			if(i!=items.size()-1){
-				this.items+=" ";
-			}
-		}
+		
 	}
 	public String getID(){
 		return id;

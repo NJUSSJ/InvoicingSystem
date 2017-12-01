@@ -2,6 +2,8 @@ package vo;
 
 import java.util.ArrayList;
 
+import po.MemberPromotionPO;
+
 /**
  * 
  * 
@@ -18,5 +20,8 @@ public class MemberPromotionVO {
 		this.rank=rank;
 		this.giftsid=giftsid;
 		this.coupon=coupon;
+	}
+	public MemberPromotionPO toMemberPromotionPO(){
+		return new MemberPromotionPO(id,rank,giftsid,coupon);
 	}
 }

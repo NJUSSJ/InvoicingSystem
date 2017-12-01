@@ -11,7 +11,7 @@ import vo.PricePromotionVO;
 public class SaleBillTest {
 
 	SaleBill salebill=new SaleBill();
-	PricePromotionVO pricepromotion=new PricePromotionVO(20, 0.8);
+	//PricePromotionVO pricepromotion=new PricePromotionVO(20, 0.8);
 	@Test
 	public void testGetTotal() {
 		//fail("Not yet implemented");

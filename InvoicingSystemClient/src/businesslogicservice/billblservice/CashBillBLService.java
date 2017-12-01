@@ -7,4 +7,5 @@ public interface CashBillBLService {
 	public CashBillVO toCashBillVO (CashBillPO po);
 	public boolean conveyBill(CashBillVO cashbill);
 	public boolean checkBill(boolean pass);
+	public 
 }

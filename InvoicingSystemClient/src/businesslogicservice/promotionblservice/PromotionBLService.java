@@ -10,17 +10,17 @@ import vo.PackagePromotionVO;
 import vo.PricePromotionVO;
 
 public interface PromotionBLService {
-	public boolean addMemberPromotionVO(MemberPromotionVO memberPromotionVO);
-	public boolean addPackagePromotionVO(PackagePromotionVO packagePromotionVO);
-	public boolean addPricePromotionVO(PricePromotionVO pricePromoionVO);
-	public boolean deleteMemberPromotionVO(MemberPromotionVO memberPromotionVO);
-	public boolean deletePackagePromotionVO(PackagePromotionVO packagePromotionVO);
-	public boolean deletePricePromotionVO(PricePromotionVO pricePromoionVO);
-	public ArrayList<MemberPromotionVO> findMemberPromotionVO();
-	public ArrayList<PackagePromotionVO> findPackagePromotionVO();
-	public ArrayList<PricePromotionVO> findPricePromotionVO();
-	public MemberPromotionVO toMemberPromotionVO(MemberPromotionPO memberPromotionPO);
-	public PackagePromotionVO toPackagePromotionVO(PackagePromotionPO packagePromotionPO);
-	public PricePromotionVO toPricePromotionVO(PricePromotionPO pricePromotionPO);
-	
+	public boolean addMemberPromotion(MemberPromotionVO memberPromotionVO);
+	public boolean addPackagePromotion(PackagePromotionVO packagePromotionVO);
+	public boolean addPricePromotion(PricePromotionVO pricePromoionVO);
+	public boolean deleteMemberPromotion(MemberPromotionVO memberPromotionVO);
+	public boolean deletePackagePromotion(PackagePromotionVO packagePromotionVO);
+	public boolean deletePricePromotion(PricePromotionVO pricePromoionVO);
+	public ArrayList<MemberPromotionVO> findMemberPromotion();
+	public ArrayList<PackagePromotionVO> findPackagePromotion();
+	public ArrayList<PricePromotionVO> findPricePromotion();
+	public MemberPromotionVO toMemberPromotion(MemberPromotionPO memberPromotionPO);
+	public PackagePromotionVO toPackagePromotion(PackagePromotionPO packagePromotionPO);
+	public PricePromotionVO toPricePromotion(PricePromotionPO pricePromotionPO);
+	public ArrayList<MemberPromotionVO> findMemberPromotionByRank();
 }
