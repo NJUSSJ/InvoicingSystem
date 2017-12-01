@@ -1,5 +1,6 @@
 package businesslogic.billbl;
 
+import java.rmi.RemoteException;
 import java.sql.Date;
 import java.util.ArrayList;
 
@@ -26,7 +27,13 @@ public class CashBillController implements CashBillBLService{
 	@Override
 	public boolean submitCashBill(CashBillVO cashbill) {
 		// TODO 自动生成的方法存根
-		return RemoteHelper.getInstance();
+		try {
+			return RemoteHelper.getInstance().getCashBillPromotinoDataService().insert(cashbill.toCashBillPO());
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 	@Override

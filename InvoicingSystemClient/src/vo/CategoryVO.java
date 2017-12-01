@@ -2,6 +2,8 @@ package vo;
 
 import java.util.ArrayList;
 
+import po.CategoryPO;
+
 public class CategoryVO {
 	long id;
 	String name;
@@ -17,6 +19,22 @@ public class CategoryVO {
 		this.parent=parent;
 		this.subCategoryID=subCategoryID;
 		this.subCommodityID=subCommodityID;
+	}
+	public CategoryPO toCategoryPO(){
+		String subCategoryID="",subCommodityID="";
+		for(int i=0;i<this.subCategoryID.size();i++){
+			subCategoryID+=this.subCategoryID.get(i)+"";
+			if(i!=this.subCategoryID.size()-1){
+				subCategoryID+=" ";
+			}
+		}
+		for(int i=0;i<this.subCommodityID.size();i++){
+			subCommodityID+=this.subCommodityID.get(i)+"";
+			if(i!=this.subCommodityID.size()-1){
+				subCommodityID+=" ";
+			}
+		}
+		return new CategoryPO(id,name,parent,subCategoryID,subCommodityID);
 	}
 	public String getName(){
 		return name;

@@ -14,6 +14,13 @@ public class PackagePromotionVO {
 		this.discount=discount;
 	}
 	public PackagePromotionPO toPackagePromotionPO(){
-		return new PackagePromotionPO(id,commodityid,discount);
+		String temp="";
+		for(int i=0;i<commodityid.size();i++){
+			temp+=commodityid.get(i);
+			if(i!=commodityid.size()-1){
+				temp+=" ";
+			}
+		}
+		return new PackagePromotionPO(id,temp,discount);
 	}
 }
