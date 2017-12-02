@@ -3,6 +3,7 @@ package vo;
 import java.sql.Date;
 
 import businesslogic.billbl.CommodityList;
+import po.GiftBillPO;
 
 /**
  * 
@@ -25,7 +26,9 @@ public class GiftBillVO {
 		this.memberid=memberid;
 		this.state=state;
 	}
-	
+	public GiftBillPO toGiftBillPO(){
+		return new GiftBillPO(id,userid,memberid,giftList.toString(),time,state);
+	}
 	public long getID() {
 		return id;
 	}
@@ -43,5 +46,8 @@ public class GiftBillVO {
 	}
 	public int getState(){
 		return state;
+	}
+	public void setState(int state){
+		this.state=state;
 	}
 }

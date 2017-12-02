@@ -41,7 +41,8 @@ public class CommodityList {
 	public String toString(){
 		String temp="";
 		for(int i=0;i<list.size();i++){
-			temp+=list.get(i).getCommodityID()+","+list.get(i).getSalePrice();
+			temp+=list.get(i).getNum()+","+list.get(i).getCommodityID()+","+
+		list.get(i).getSalePrice()+","+list.get(i).getImportPrice();
 			if(i!=list.size()-1){
 				temp+=" ";
 			}

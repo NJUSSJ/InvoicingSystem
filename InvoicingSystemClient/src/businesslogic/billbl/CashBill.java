@@ -23,7 +23,7 @@ public class CashBill{
 	public boolean submitCashBill(CashBillVO cashBill) {
 		// TODO 自动生成的方法存根
 		try {
-			return RemoteHelper.getInstance().getCashBillPromotinoDataService().insert(cashBill.toCashBillPO());
+			return RemoteHelper.getInstance().getCashBillDataService().insert(cashBill.toCashBillPO());
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
@@ -33,13 +33,13 @@ public class CashBill{
 	public boolean checkCashBill(boolean pass,long id) {
 		try {
 			CashBillVO cashBillVO=toCashBillVO(RemoteHelper.getInstance().
-				getCashBillPromotinoDataService().findCashBillbyID(id));
+				getCashBillDataService().findCashBillbyID(id));
 			if(pass){
 			cashBillVO.setState(1);
 			}else{
 			cashBillVO.setState(2);
 			}
-			return RemoteHelper.getInstance().getCashBillPromotinoDataService().update(cashBillVO.toCashBillPO());
+			return RemoteHelper.getInstance().getCashBillDataService().update(cashBillVO.toCashBillPO());
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
@@ -49,7 +49,7 @@ public class CashBill{
 	public boolean deleteCashBill(CashBillVO cashBill) {
 		// TODO 自动生成的方法存根
 		try {
-			return RemoteHelper.getInstance().getCashBillPromotinoDataService().delete(cashBill.toCashBillPO());
+			return RemoteHelper.getInstance().getCashBillDataService().delete(cashBill.toCashBillPO());
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
@@ -63,8 +63,7 @@ public class CashBill{
 		try {
 			temp=new ArrayList<CashBillVO>();
 			ArrayList<CashBillPO> cashBills;
-			cashBills = RemoteHelper.getInstance().
-			getCashBillPromotinoDataService().findCashBillbyTime(time);
+			cashBills = RemoteHelper.getInstance().getCashBillDataService().findCashBillbyTime(time);
 			for(int i=0;i<cashBills.size();i++){
 				temp.add(toCashBillVO(cashBills.get(i)));
 			}

@@ -68,7 +68,7 @@ public class RemoteHelper {
 	public PricePromotionDataService getPricePromotionDataService(){
 		return (PricePromotionDataService)remote;
 	}
-	public CashBillDataService getCashBillPromotinoDataService(){
+	public CashBillDataService getCashBillDataService(){
 		return (CashBillDataService)remote;
 	}
 	public GiftBillDataService getGiftBillDataService(){
