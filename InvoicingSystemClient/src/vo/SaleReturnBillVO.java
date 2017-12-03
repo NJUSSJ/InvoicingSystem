@@ -44,30 +44,43 @@ public class SaleReturnBillVO {
 	public long getUserID() {
 		return userid;
 	}
-	
-	public void changeUser(long userid) {
-		this.userid=userid;
-	}
-	
-	public long getMember() {
+	public long getMemberID() {
 		return memberid;
 	}
-	
-	public void setMember(long memberid) {
-		this.memberid=memberid;
-	}
-	
 	public CommodityList getList() {
 		return commodityList;
 	}
-	
-	public double getsum() {
+	public double getSum() {
 		return sum;
 	}
-	public int getnum(){
+	public int getState(){
+		return state;
+	}
+	public Date getTime(){
+		return time;
+	}
+	public int getNum(){
 		return num;
+	}
+	public String getRemark(){
+		return remark;
+	}
+	public void setUserID(long userid) {
+		this.userid=userid;
+	}
+	public void setMemberID(long memberid) {
+		this.memberid=memberid;
 	}
 	public void setState(int state){
 		this.state=state;
+	}
+	public void setTime(Date time){
+		this.time=time;
+	}
+	public void setNum(){
+		this.num=commodityList.getSize();
+	}
+	public void setRemark(String remark){
+		this.remark=remark;
 	}
 }

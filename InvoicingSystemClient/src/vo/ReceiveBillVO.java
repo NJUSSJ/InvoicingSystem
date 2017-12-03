@@ -54,11 +54,17 @@ public class ReceiveBillVO {
 	public int getState(){
 		return state;
 	}
-	public void setSum(double sum) {
+	public void setUserID(long userid){
+		this.userid=userid;
+	}
+	public void setSum() {
 		this.sum=accountList.getSum();
 	}
 	public void setMemberID(long memberid) {
 		this.memberid=memberid;
+	}
+	public void setTime(Date time){
+		this.time=time;
 	}
 	public void setState(int state) {
 		this.state=state;

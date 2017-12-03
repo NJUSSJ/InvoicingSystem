@@ -45,8 +45,8 @@ public class StockCheck implements StockCheckBLService  {
 		list.add(new MockSaleBillVO(null, end_time, end_time, commoditylist, end_time, end_time, null, null));
 		int num=0;
 		for(SaleBillVO s:list) {
-			System.out.println(s.getnum());
-			num+=s.getnum();
+			System.out.println(s.getNum());
+			num+=s.getNum();
 		}
 		return num;
 	}

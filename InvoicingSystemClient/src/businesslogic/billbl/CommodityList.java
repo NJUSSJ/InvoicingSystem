@@ -64,5 +64,7 @@ public class CommodityList {
 		}
 		return temp;
 	}
-
+	public int getSize(){
+		return list.size();
+	}
 }

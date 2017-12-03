@@ -2,25 +2,32 @@ package vo;
 
 import java.util.ArrayList;
 
+import businesslogic.billbl.CommodityList;
 import po.PackagePromotionPO;
 
 public class PackagePromotionVO {
 	long id;
-	ArrayList<Long> commodityid;
+	CommodityList list;
 	double discount;
-	public PackagePromotionVO(long id,ArrayList<Long> commodityid,double discount){
+	public PackagePromotionVO(long id,CommodityList list,double discount){
 		this.id=id;
-		this.commodityid=commodityid;
+		this.list=list;
 		this.discount=discount;
 	}
 	public PackagePromotionPO toPackagePromotionPO(){
-		String temp="";
-		for(int i=0;i<commodityid.size();i++){
-			temp+=commodityid.get(i);
-			if(i!=commodityid.size()-1){
-				temp+=" ";
-			}
-		}
-		return new PackagePromotionPO(id,temp,discount);
+		return new PackagePromotionPO(id,list.toString(),discount);
 	}
+	public long getID(){
+		return id;
+	}
+	public CommodityList getList(){
+		return list;
+	}
+	public double getDiscount(){
+		return discount;
+	}
+	public void setDiscount(double discount){
+		this.discount=discount;
+	}
+	
 }

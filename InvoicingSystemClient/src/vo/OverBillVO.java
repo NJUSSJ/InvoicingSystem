@@ -27,6 +27,27 @@ public class OverBillVO {
 	public OverBillPO toOverBillPO(){
 		return new OverBillPO(id,userid,commodityList.toString(),time,state);
 	}
+	public long getID(){
+		return id;
+	}
+	public long getUserID(){
+		return userid;
+	}
+	public CommodityList getCommodityList(){
+		return commodityList;
+	}
+	public Date getTime(){
+		return time;
+	}
+	public int getState(){
+		return state;
+	}
+	public void setUserID(long userid){
+		this.userid=userid;
+	}
+	public void setTime(Date time){
+		this.time=time;
+	}
 	public void setState(int state){
 		this.state=state;
 	}

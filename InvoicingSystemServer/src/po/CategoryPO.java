@@ -10,7 +10,7 @@ public class CategoryPO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	long id;
 	String name;
-	String parent;
+	long parentid;
 	String subCategoryID;
 	String subCommodityID;
 	
@@ -29,8 +29,8 @@ public class CategoryPO implements Serializable{
 	public String getName(){
 		return name;
 	}
-	public String getParent(){
-		return parent;
+	public long getParentID(){
+		return parentid;
 	}
 	public String getSubCategoryID(){
 		return subCategoryID;

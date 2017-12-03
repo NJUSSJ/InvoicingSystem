@@ -19,4 +19,25 @@ public class LogVO {
 	public LogPO toLogPO(){
 		return new LogPO(id,time,type,userid);
 	}
+	public long getID(){
+		return id;
+	}
+	public Date getTime(){
+		return time;
+	}
+	public String getType(){
+		return type;
+	}
+	public long getUserID(){
+		return userid;
+	}
+	public void setTime(Date time){
+		this.time=time;
+	}
+	public void setType(String type){
+		this.type=type;
+	}
+	public void setUserID(long userid){
+		this.userid=userid;
+	}
 }

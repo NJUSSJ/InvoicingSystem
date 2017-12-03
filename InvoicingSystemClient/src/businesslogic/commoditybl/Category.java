@@ -32,7 +32,7 @@ public class Category {
 		for(int i=0;i<tempSubCate.length;i++){
 			subCategoryID.add(Long.parseLong(tempSubCate[i]));
 		}
-		return new CategoryVO(categoryPO.getID(),categoryPO.getName(),categoryPO.getParent(),
+		return new CategoryVO(categoryPO.getID(),categoryPO.getName(),categoryPO.getParentID(),
 				subCommodityID,subCategoryID);
 	}
 }

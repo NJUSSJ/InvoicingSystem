@@ -3,6 +3,7 @@ package businesslogic.promotionbl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.billbl.CommodityList;
 import po.MemberPromotionPO;
 import rmi.RemoteHelper;
 import vo.MemberPromotionVO;
@@ -48,12 +49,7 @@ public class MemberPromotion {
 		return null;
 	}
 	public MemberPromotionVO toMemberPromotionVO(MemberPromotionPO memberPromotionPO){
-		ArrayList<Long> giftsid=new ArrayList<Long>();
-		String[] temp=memberPromotionPO.getGiftsID().split(" ");
-		for(int i=0;i<temp.length;i++){
-			giftsid.add(Long.parseLong(temp[i]));
-		}
 		return new MemberPromotionVO(memberPromotionPO.getID(),memberPromotionPO.getRank(),
-				giftsid,memberPromotionPO.getCoupon());
+				new CommodityList(memberPromotionPO.getGifts()),memberPromotionPO.getCoupon());
 	}
 }
