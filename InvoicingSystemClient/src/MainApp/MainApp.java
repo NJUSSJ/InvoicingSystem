@@ -27,8 +27,10 @@ import vo.UserVO;
  */
 public class MainApp extends Application {
 	private static Stage primarystage;
+	
 	private static BorderPane rootlayout;
-	private static UserVO user;
+	
+	private static UserVO tempUser;
 	
 	@Override
 	public void start(Stage primarystage) throws Exception {
@@ -523,14 +525,21 @@ public class MainApp extends Application {
 	 * correct the user
 	 */
    public static void setUser(UserVO use){
-	  MainApp.user=use;
-}
+        MainApp.tempUser=use;
+   }
    /*
 	 * cancel the user
 	 */
    public static void cancelUser(){
-		  MainApp.user=null;
+	   MainApp.tempUser=null;
 	}
+   
+   /*
+  	 * 显示用户的id
+  	 */
+   public static long getID(){
+	   return  MainApp.tempUser.getID();
+   }
    
    /*
 	 * 显示库存警戒线界面
@@ -554,11 +563,12 @@ public class MainApp extends Application {
 			// TODO: handle exception
 		}
 	}
+	
 	/**
      * Returns the main stage.
      * @return
      */
-    public Stage getPrimaryStage() {
+    public static Stage getPrimaryStage() {
         return MainApp.primarystage;
     }
  
@@ -567,5 +577,6 @@ public class MainApp extends Application {
 		new ClientRunner();
 		launch(args);
 	}
+
 
 }
