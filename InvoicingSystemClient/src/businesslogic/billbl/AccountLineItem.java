@@ -9,10 +9,6 @@ public class AccountLineItem {
 		this.money=money;
 		this.remark=remark;
 	}
-	public AccountLineItem(long accountid,double money){
-		this.accountid=accountid;
-		this.money=money;
-	}
 	public long getAccountID(){
 		return accountid;
 	}

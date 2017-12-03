@@ -1,35 +1,81 @@
 package businesslogic.billbl;
 
+import java.rmi.RemoteException;
 import java.sql.Date;
+import java.util.ArrayList;
 
-import businesslogicservice.billblservice.OverBillBLService;
+import po.OverBillPO;
+import rmi.RemoteHelper;
 import vo.OverBillVO;
 
-public class OverBill  implements OverBillBLService {
-	CommodityList overList;
-	OverBillVO overbill;
-	@Override
-	public OverBillVO toBillVO(long id, long userid, long memberid, CommodityList list, Date time) {
-		// TODO Auto-generated method stub
-		overbill=new OverBillVO(id, userid, list, time);
-		return overbill;
-	}
-	@Override
-	public String conveyBill(OverBillVO overbill) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public OverBillVO checkBill(OverBillVO overbill) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+public class OverBill{
 
-	public void updateMember() {
-		
+	public OverBillVO toOverBillVO(OverBillPO overBillPO) {
+		// TODO 自动生成的方法存根
+		CommodityList list=new CommodityList(overBillPO.getCommodityList());
+		return new OverBillVO(overBillPO.getID(),overBillPO.getUserID(),list,overBillPO.getTime(),
+				overBillPO.getState());
+	}
+	public boolean submitOverBill(OverBillVO overBill) {
+		// TODO 自动生成的方法存根
+		try {
+			return RemoteHelper.getInstance().getOverBillDataService().insert(overBill.toOverBillPO());
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return false;
+	}
+	public boolean checkOverBill(boolean pass, long id) {
+		// TODO 自动生成的方法存根
+		try {
+			OverBillVO vo=toOverBillVO(RemoteHelper.getInstance().getOverBillDataService().findOverBillbyID(id));
+			if(pass){
+				vo.setState(1);
+			}else{
+				vo.setState(2);
+			}
+			return RemoteHelper.getInstance().getOverBillDataService().update(vo.toOverBillPO());
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return pass;
+	}
+	public boolean deleteOverBill(OverBillVO overBill) {
+		// TODO 自动生成的方法存根
+		try {
+			return RemoteHelper.getInstance().getOverBillDataService().delete(overBill.toOverBillPO());
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return false;
+	}
+	public OverBillVO findOverBillByID(long id) {
+		// TODO 自动生成的方法存根
+		try {
+			return toOverBillVO(RemoteHelper.getInstance().getOverBillDataService().findOverBillbyID(id));
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public ArrayList<OverBillVO> findOverBillByTime(Date time) {
+		// TODO 自动生成的方法存根
+		ArrayList<OverBillVO> temp=new ArrayList<OverBillVO>();
+		try {
+			ArrayList<OverBillPO> overBills=RemoteHelper.getInstance().getOverBillDataService().findOverBillbyTime(time);
+			for(int i=0;i<overBills.size();i++){
+				temp.add(toOverBillVO(overBills.get(i)));
+			}
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return temp;
 	}
 	
-	public void updateAccount() {
-		
-	}
+	
 }

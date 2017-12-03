@@ -4,7 +4,6 @@ import java.rmi.RemoteException;
 import java.sql.Date;
 import java.util.ArrayList;
 
-import businesslogic.commoditybl.CommodityController;
 import po.ImportBillPO;
 import rmi.RemoteHelper;
 import vo.CommodityVO;
