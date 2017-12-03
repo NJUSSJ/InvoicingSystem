@@ -15,6 +15,9 @@ public class CommodityLineItem {
 		this.salePrice=commodity.getSalePrice();
 		this.importPrice=commodity.getImportPrice();
 	}
+	public int getNum(){
+		return num;
+	}
 	
 	public long getCommodityID() {
 		return commodityid;

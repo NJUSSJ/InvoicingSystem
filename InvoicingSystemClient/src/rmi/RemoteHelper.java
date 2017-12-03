@@ -6,6 +6,17 @@ package rmi;
 import java.rmi.Remote;
 
 import dataservice.accountdataservice.AccountDataService;
+import dataservice.billdataservice.CashBillDataService;
+import dataservice.billdataservice.GiftBillDataService;
+import dataservice.billdataservice.ImportBillDataService;
+import dataservice.billdataservice.ImportReturnBillDataService;
+import dataservice.billdataservice.LossBillDataService;
+import dataservice.billdataservice.OverBillDataService;
+import dataservice.billdataservice.PayBillDataService;
+import dataservice.billdataservice.ReceiveBillDataService;
+import dataservice.billdataservice.SaleBillDataService;
+import dataservice.billdataservice.SaleReturnBillDataService;
+import dataservice.billdataservice.WarningBillDataService;
 import dataservice.commoditydataservice.CommodityDataService;
 import dataservice.logdataservice.LogDataService;
 import dataservice.memberdataservice.MemberDataService;
@@ -56,5 +67,38 @@ public class RemoteHelper {
 	}
 	public PricePromotionDataService getPricePromotionDataService(){
 		return (PricePromotionDataService)remote;
+	}
+	public CashBillDataService getCashBillDataService(){
+		return (CashBillDataService)remote;
+	}
+	public GiftBillDataService getGiftBillDataService(){
+		return (GiftBillDataService)remote;
+	}
+	public ImportBillDataService getImportBillDataService(){
+		return (ImportBillDataService)remote;
+	}
+	public ImportReturnBillDataService getImportReturnBillDataService(){
+		return (ImportReturnBillDataService)remote;
+	}
+	public LossBillDataService getLossBillDataService(){
+		return (LossBillDataService)remote;
+	}
+	public OverBillDataService getOverBillDataService(){
+		return (OverBillDataService)remote;
+	}
+	public PayBillDataService getPayBillDataService(){
+		return (PayBillDataService)remote;
+	}
+	public ReceiveBillDataService getReceiveBillDataService(){
+		return (ReceiveBillDataService)remote;
+	}
+	public SaleBillDataService getSaleBillDataService(){
+		return (SaleBillDataService)remote;
+	}
+	public SaleReturnBillDataService getSaleReturnBillDataService(){
+		return (SaleReturnBillDataService)remote;
+	}
+	public WarningBillDataService getWarningBillDataService(){
+		return (WarningBillDataService)remote;
 	}
 }

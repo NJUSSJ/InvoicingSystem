@@ -1,28 +1,101 @@
 package businesslogic.billbl;
 
-import businesslogicservice.billblservice.ImportReturnBillBLService;
+import java.rmi.RemoteException;
+import java.sql.Date;
+import java.util.ArrayList;
+
+import businesslogic.commoditybl.CommodityController;
 import po.ImportReturnBillPO;
-import vo.ImportBillVO;
+import rmi.RemoteHelper;
+import vo.CommodityVO;
 import vo.ImportReturnBillVO;
 
-public class ImportReturnBill implements ImportReturnBillBLService {
+public class ImportReturnBill {
 
-	@Override
 	public ImportReturnBillVO toImportReturnBillVO(ImportReturnBillPO po) {
 		// TODO 自动生成的方法存根
-		return null;
+		CommodityList list=new CommodityList();
+		String[] commodityInfo=po.getCommodityList().split(" ");
+		CommodityController comController=new CommodityController();
+		for(int i=0;i<commodityInfo.length;i++){
+			String[] details=commodityInfo[i].split(",");
+			int num=Integer.parseInt(details[0]);
+			long id=Long.parseLong(details[1]);
+			CommodityVO vo=comController.findCommodityByID(id);
+			list.addCommodity(new CommodityLineItem(vo,num));
+		}
+		return new ImportReturnBillVO(po.getID(),po.getUserID(),po.getMemberID(),list,po.getSum(),po.getState(),
+				po.getTime(),po.getRemark());
 	}
 
-	@Override
-	public boolean conveyBill(ImportBillVO importbill) {
+	public boolean submitImportReturnBill(ImportReturnBillVO importReturnBill) {
 		// TODO 自动生成的方法存根
+		try {
+			return RemoteHelper.getInstance().getImportReturnBillDataService().
+					insert(importReturnBill.toImportReturnBillPO());
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
 		return false;
 	}
 
-	@Override
-	public ImportReturnBillVO checkBill(ImportReturnBillVO importbill) {
+	public boolean checkImportReturnBill(boolean pass, long id) {
 		// TODO 自动生成的方法存根
+
+		try {
+			ImportReturnBillVO vo=toImportReturnBillVO(RemoteHelper.getInstance().
+					getImportReturnBillDataService().findImportReturnBillbyID(id));
+			if(pass){
+				vo.setState(1);
+			}else{
+				vo.setState(2);
+			}
+			return RemoteHelper.getInstance().getImportReturnBillDataService().update(vo.toImportReturnBillPO());
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	public boolean deleteImportReturnBill(ImportReturnBillVO importReturnBill) {
+		// TODO 自动生成的方法存根
+		try {
+			return RemoteHelper.getInstance().getImportReturnBillDataService().delete(importReturnBill.toImportReturnBillPO());
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	public ImportReturnBillVO findImportReturnBillByID(long id) {
+		// TODO 自动生成的方法存根
+		try {
+			return toImportReturnBillVO(RemoteHelper.getInstance().getImportReturnBillDataService().findImportReturnBillbyID(id));
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
 		return null;
+	}
+
+	public ArrayList<ImportReturnBillVO> findImportReturnBillByTime(Date time) {
+		// TODO 自动生成的方法存根
+		ArrayList<ImportReturnBillVO> temp=new ArrayList<ImportReturnBillVO>();
+		try {
+			ArrayList<ImportReturnBillPO> importReturnBills=RemoteHelper.getInstance().getImportReturnBillDataService().
+					findImportReturnBillbyTime(time);
+			for(int i=0;i<importReturnBills.size();i++){
+				temp.add(toImportReturnBillVO(importReturnBills.get(i)));
+			}
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		
+		return temp;
 	}
 	
 	

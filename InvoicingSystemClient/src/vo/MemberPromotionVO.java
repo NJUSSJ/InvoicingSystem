@@ -22,6 +22,13 @@ public class MemberPromotionVO {
 		this.coupon=coupon;
 	}
 	public MemberPromotionPO toMemberPromotionPO(){
-		return new MemberPromotionPO(id,rank,giftsid,coupon);
+		String temp="";
+		for(int i=0;i<giftsid.size();i++){
+			temp+=giftsid.get(i);
+			if(i!=giftsid.size()-1){
+				temp+=" ";
+			}
+		}
+		return new MemberPromotionPO(id,rank,temp,coupon);
 	}
 }

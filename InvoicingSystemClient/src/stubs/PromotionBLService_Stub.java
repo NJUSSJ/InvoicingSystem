@@ -34,63 +34,142 @@ public class PromotionBLService_Stub implements PromotionBLService {
    }
  
 
-@Override
 public boolean addMemberPromotionVO(MemberPromotionVO memberPromotionVO) {
 	// TODO 自动生成的方法存根
 	return false;
 }
-@Override
 public boolean addPackagePromotionVO(PackagePromotionVO packagePromotionVO) {
 	// TODO 自动生成的方法存根
 	return false;
 }
-@Override
 public boolean addPricePromotionVO(PricePromotionVO pricePromoionVO) {
 	// TODO 自动生成的方法存根
 	return false;
 }
-@Override
 public boolean deleteMemberPromotionVO(MemberPromotionVO memberPromotionVO) {
 	// TODO 自动生成的方法存根
 	return false;
 }
-@Override
 public boolean deletePackagePromotionVO(PackagePromotionVO packagePromotionVO) {
 	// TODO 自动生成的方法存根
 	return false;
 }
-@Override
 public boolean deletePricePromotionVO(PricePromotionVO pricePromoionVO) {
 	// TODO 自动生成的方法存根
 	return false;
 }
-@Override
 public ArrayList<MemberPromotionVO> findMemberPromotionVO() {
 	// TODO 自动生成的方法存根
 	return null;
 }
-@Override
 public ArrayList<PackagePromotionVO> findPackagePromotionVO() {
 	// TODO 自动生成的方法存根
 	return null;
 }
-@Override
 public ArrayList<PricePromotionVO> findPricePromotionVO() {
 	// TODO 自动生成的方法存根
 	return null;
 }
-@Override
 public MemberPromotionVO toMemberPromotionVO(MemberPromotionPO memberPromotionPO) {
 	// TODO 自动生成的方法存根
 	return null;
 }
-@Override
 public PackagePromotionVO toPackagePromotionVO(PackagePromotionPO packagePromotionPO) {
 	// TODO 自动生成的方法存根
 	return null;
 }
-@Override
 public PricePromotionVO toPricePromotionVO(PricePromotionPO pricePromotionPO) {
+	// TODO 自动生成的方法存根
+	return null;
+}
+
+
+@Override
+public boolean addMemberPromotion(MemberPromotionVO memberPromotionVO) {
+	// TODO 自动生成的方法存根
+	return false;
+}
+
+
+@Override
+public boolean addPackagePromotion(PackagePromotionVO packagePromotionVO) {
+	// TODO 自动生成的方法存根
+	return false;
+}
+
+
+@Override
+public boolean addPricePromotion(PricePromotionVO pricePromoionVO) {
+	// TODO 自动生成的方法存根
+	return false;
+}
+
+
+@Override
+public boolean deleteMemberPromotion(MemberPromotionVO memberPromotionVO) {
+	// TODO 自动生成的方法存根
+	return false;
+}
+
+
+@Override
+public boolean deletePackagePromotion(PackagePromotionVO packagePromotionVO) {
+	// TODO 自动生成的方法存根
+	return false;
+}
+
+
+@Override
+public boolean deletePricePromotion(PricePromotionVO pricePromoionVO) {
+	// TODO 自动生成的方法存根
+	return false;
+}
+
+
+@Override
+public ArrayList<MemberPromotionVO> findMemberPromotion() {
+	// TODO 自动生成的方法存根
+	return null;
+}
+
+
+@Override
+public ArrayList<PackagePromotionVO> findPackagePromotion() {
+	// TODO 自动生成的方法存根
+	return null;
+}
+
+
+@Override
+public ArrayList<PricePromotionVO> findPricePromotion() {
+	// TODO 自动生成的方法存根
+	return null;
+}
+
+
+@Override
+public MemberPromotionVO toMemberPromotion(MemberPromotionPO memberPromotionPO) {
+	// TODO 自动生成的方法存根
+	return null;
+}
+
+
+@Override
+public PackagePromotionVO toPackagePromotion(PackagePromotionPO packagePromotionPO) {
+	// TODO 自动生成的方法存根
+	return null;
+}
+
+
+@Override
+public PricePromotionVO toPricePromotion(PricePromotionPO pricePromotionPO) {
+	// TODO 自动生成的方法存根
+	return null;
+}
+
+
+@Override
+public ArrayList<MemberPromotionVO> findMemberPromotionByRank() {
 	// TODO 自动生成的方法存根
 	return null;
 }
