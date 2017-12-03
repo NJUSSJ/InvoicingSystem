@@ -1,6 +1,7 @@
 package businesslogic.billbl;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 import businesslogicservice.billblservice.LossBillBLService;
 import po.LossBillPO;
@@ -35,13 +36,13 @@ public class LossBillController implements LossBillBLService{
 	@Override
 	public LossBillVO findLossBillByID(long id) {
 		// TODO 自动生成的方法存根
-		return lossBillImpl.findLossBillByID(id)
+		return lossBillImpl.findLossBillByID(id);
 	}
 
 	@Override
-	public LossBillVO findLossBillByTime(Date time) {
+	public ArrayList<LossBillVO> findLossBillByTime(Date time) {
 		// TODO 自动生成的方法存根
-		return null;
+		return lossBillImpl.findLossBillByTime(time);
 	}
 	
 }

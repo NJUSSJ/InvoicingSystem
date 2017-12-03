@@ -34,4 +34,7 @@ public class OverBillPO implements Serializable{
 	public Date getTime(){
 		return time;
 	}
+	public int getState(){
+		return state;
+	}
 }

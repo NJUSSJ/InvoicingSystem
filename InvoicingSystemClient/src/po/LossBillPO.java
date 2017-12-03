@@ -28,4 +28,7 @@ public class LossBillPO {
 	public Date getTime(){
 		return time;
 	}
+	public int getState(){
+		return state;
+	}
 }

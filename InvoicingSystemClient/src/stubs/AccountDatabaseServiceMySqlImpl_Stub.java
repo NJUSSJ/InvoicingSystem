@@ -1,6 +1,7 @@
 package stubs;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import dataservice.accountdataservice.AccountDataService;
 import po.AccountPO;
@@ -8,41 +9,36 @@ import po.AccountPO;
 public class AccountDatabaseServiceMySqlImpl_Stub implements AccountDataService {
 
 	@Override
-	public AccountPO find(long id) throws RemoteException {
-		// TODO Auto-generated method stub
-		System.out.println("Find Succeed");
-		return new AccountPO(id, id, null);
+	public AccountPO findAccountbyID(long id) throws RemoteException {
+		// TODO 自动生成的方法存根
+		return null;
 	}
 
 	@Override
-	public void insert(AccountPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		System.out.println("Insert Succeed");
+	public ArrayList<AccountPO> findAccounts() throws RemoteException {
+		// TODO 自动生成的方法存根
+		return null;
 	}
 
 	@Override
-	public void delete(AccountPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		System.out.println("Delete Succeed");
+	public boolean insert(AccountPO po) throws RemoteException {
+		// TODO 自动生成的方法存根
+		return false;
 	}
 
 	@Override
-	public void update(AccountPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		System.out.println("Update Succeed");
+	public boolean delete(AccountPO po) throws RemoteException {
+		// TODO 自动生成的方法存根
+		return false;
 	}
 
 	@Override
-	public void init() throws RemoteException {
-		// TODO Auto-generated method stub
-		System.out.println("Init Succeed");
+	public boolean update(AccountPO po) throws RemoteException {
+		// TODO 自动生成的方法存根
+		return false;
 	}
+
 	
-
-	@Override
-	public void finish() throws RemoteException {
-		// TODO Auto-generated method stub
-		System.out.println("Finish");
-	}
+	
 	
 }
