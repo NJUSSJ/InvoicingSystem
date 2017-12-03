@@ -1,5 +1,7 @@
 package data.billdata;
-
+/**
+ * @author shisj
+ */
 import java.rmi.RemoteException;
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -7,9 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import data.datafactory.DataFactory;
-import dataservice.billdataservice.SaleBillDataService;
 import dataservice.billdataservice.SaleReturnBillDataService;
-import po.SaleBillPO;
 import po.SaleReturnBillPO;
 
 public class SaleReturnDataImpl implements SaleReturnBillDataService {
