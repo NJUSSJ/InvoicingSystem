@@ -1,5 +1,7 @@
 package businesslogic.billbl;
 
+import javafx.beans.property.StringProperty;
+
 public class AccountLineItem {
 	long accountid;
 	double money;
@@ -8,6 +10,10 @@ public class AccountLineItem {
 		this.accountid=accountid;
 		this.money=money;
 		this.remark=remark;
+	}
+	public AccountLineItem(long accountid,double money){
+		this.accountid=accountid;
+		this.money=money;
 	}
 	public long getAccountID(){
 		return accountid;
@@ -18,4 +24,5 @@ public class AccountLineItem {
 	public String getRemark(){
 		return remark;
 	}
+	
 }
