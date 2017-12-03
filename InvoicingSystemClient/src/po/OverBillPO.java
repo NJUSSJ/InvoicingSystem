@@ -14,6 +14,7 @@ public class OverBillPO implements Serializable{
 	long userid;
 	String commodityList;
 	Date time;
+	int state;
 	public OverBillPO(long id,long userid,String commodityList, Date time) {
 		// TODO Auto-generated constructor stub
 		this.id=id;

@@ -3,28 +3,45 @@ package businesslogic.billbl;
 import java.sql.Date;
 
 import businesslogicservice.billblservice.LossBillBLService;
+import po.LossBillPO;
 import vo.LossBillVO;
 
 public class LossBill  implements LossBillBLService {
-	CommodityList lossList;
-	LossBillVO lossbill;
-	
+
 	@Override
-	public String conveyBill(LossBillVO lossbill) {
-		// TODO Auto-generated method stub
+	public LossBillVO toLossBillVO(LossBillPO lossBillPO) {
+		// TODO 自动生成的方法存根
 		return null;
 	}
+
 	@Override
-	public LossBillVO checkBill(LossBillVO lossbill) {
-		// TODO Auto-generated method stub
+	public boolean submitLossBill(LossBillVO lossBill) {
+		// TODO 自动生成的方法存根
+		return false;
+	}
+
+	@Override
+	public boolean checkLossBill(boolean pass, long id) {
+		// TODO 自动生成的方法存根
+		return false;
+	}
+
+	@Override
+	public boolean deleteLossBill(LossBillVO lossBill) {
+		// TODO 自动生成的方法存根
+		return false;
+	}
+
+	@Override
+	public LossBillVO findLossBillByID(long id) {
+		// TODO 自动生成的方法存根
 		return null;
 	}
+
 	@Override
-	public LossBillVO toBillVO(long id, long user, long member, CommodityList list,Date time) {
-		// TODO Auto-generated method stub
-		lossbill=new LossBillVO(id, user, list, time);
-		return lossbill;
+	public LossBillVO findLossBillByTime(Date time) {
+		// TODO 自动生成的方法存根
+		return null;
 	}
-	
 	
 }

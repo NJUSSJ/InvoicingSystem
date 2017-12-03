@@ -8,6 +8,7 @@ public class LossBillPO {
 	long userid;
 	String commodityList;
 	Date time;
+	int state;
 	public LossBillPO(long id,long userid,String commodityList, Date time) {
 		// TODO Auto-generated constructor stub
 		this.id=id;
