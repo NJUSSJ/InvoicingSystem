@@ -21,7 +21,7 @@ public class PayBillDataImpl implements PayBillDataService {
 	@Override
 	public boolean insert(PayBillPO po) throws RemoteException {
 		String sql="insert into paybills (id,userid,memberid,accountlist,sum,time,state)"
-				+ "values"
+				+ " values "
 				+ "('"+po.getID()+"','"+po.getUserID()+"','"+po.getMemberID()+"','"+po.getAccountList()+"','"+po.getSum()+"','"+po.getTime()+"','"+po.getState()+"')";
 		
 		try {

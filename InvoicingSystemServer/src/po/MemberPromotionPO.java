@@ -10,12 +10,12 @@ public class MemberPromotionPO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	long id;
 	int rank;
-	String giftsid;//ÔùÆ·
+	String giftlist;//ÔùÆ·
 	int coupon;
-	public MemberPromotionPO(long id,int rank,String giftsid,int coupon){
+	public MemberPromotionPO(long id,int rank,String giftlist,int coupon){
 		this.id=id;
 		this.rank=rank;
-		this.giftsid=giftsid;
+		this.giftlist=giftlist;
 		this.coupon=coupon;
 	}
 	public long getID(){
@@ -24,8 +24,8 @@ public class MemberPromotionPO implements Serializable{
 	public int getRank(){
 		return rank;
 	}
-	public String getGiftsID(){
-		return giftsid;
+	public String getGiftlist(){
+		return giftlist;
 	}
 	public int getCoupon(){
 		return coupon;

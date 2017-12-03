@@ -51,8 +51,8 @@ public class AccountDataImpl implements AccountDataService {
 	@Override
 	public boolean insert(AccountPO po) throws RemoteException {
 		// TODO Auto-generated method stub
-		String sql="INSERT INTO users(id,bank,deposit) VALUES("+po.getID()
-		+",'"+po.getBank()+"','"+po.getDeposit()+"')";
+		String sql="INSERT INTO users(id,bank,deposit) VALUES ("+po.getID()
+		+",'"+po.getName()+"','"+po.getDeposit()+"')";
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0){
 				return true;
@@ -127,6 +127,12 @@ public class AccountDataImpl implements AccountDataService {
 		
 			e.printStackTrace();
 		}
+		return null;
+	}
+
+	@Override
+	public ArrayList<AccountPO> findAcountbyField(String field) throws RemoteException {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

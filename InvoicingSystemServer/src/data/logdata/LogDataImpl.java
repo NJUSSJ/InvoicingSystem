@@ -20,8 +20,8 @@ public class LogDataImpl implements LogDataService {
 	@Override
 	public boolean insert(LogPO po) throws RemoteException {
 		
-		String sql="insert into logs (id,time,type,userid)"
-				+ "values"
+		String sql="insert into logs (id,time,type,userid) "
+				+ "values "
 				+ "('"+po.getID()+"','"+po.getTime()+"','"+po.getType()+"','"+po.getUserID()+",)";
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {

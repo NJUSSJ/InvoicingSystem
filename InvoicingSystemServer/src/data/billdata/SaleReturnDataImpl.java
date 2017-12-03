@@ -20,7 +20,7 @@ public class SaleReturnDataImpl implements SaleReturnBillDataService {
 	@Override
 	public boolean insert(SaleReturnBillPO po) throws RemoteException {
 		String sql="insert into salereturnbills (id,userid,memberid,commoditylist,sum,time,state,num,remark)"
-				+ "values"
+				+ " values "
 				+ "('"+po.getID()+"','"+po.getUserID()+"','"+po.getMemberID()+"','"+po.getCommodityList()+"','"+po.getSum()
 				+"','"+po.getTime()+"','"+po.getState()+"','"+po.getSum()+"','"+po.getNum()+"','"+po.getRemark()+"')";
 		

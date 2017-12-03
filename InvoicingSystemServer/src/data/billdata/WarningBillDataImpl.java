@@ -20,7 +20,7 @@ public class WarningBillDataImpl implements WarningBillDataService {
 	@Override
 	public boolean insert(WarningBillPO po) throws RemoteException {
 		String sql="insert into warningbills (id,userid,commoditylist,time)"
-				+ "values"
+				+ " values "
 				+ "('"+po.getID()+"','"+po.getUserID()+"','"+po.getCommodityList()+"','"+po.getTime()+"')";
 		
 		try {

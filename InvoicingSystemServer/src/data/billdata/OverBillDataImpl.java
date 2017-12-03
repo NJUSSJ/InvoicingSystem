@@ -20,7 +20,7 @@ public class OverBillDataImpl implements OverBillDataService {
 	@Override
 	public boolean insert(OverBillPO po) throws RemoteException {
 		String sql="insert into overbills (id,userid,commoditylist,time)"
-				+ "values"
+				+ " values "
 				+ "('"+po.getID()+"','"+po.getUserID()+"','"+po.getCommodityList()+"','"+po.getTime();
 		
 		try {
