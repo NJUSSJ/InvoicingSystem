@@ -14,16 +14,7 @@ public class ImportBill{
 
 	public ImportBillVO toImportBillVO(ImportBillPO po) {
 		// TODO 自动生成的方法存根
-		CommodityList list=new CommodityList();
-		String[] commodityInfo=po.getCommodityList().split(" ");
-		CommodityController comController=new CommodityController();
-		for(int i=0;i<commodityInfo.length;i++){
-			String[] details=commodityInfo[i].split(",");
-			int num=Integer.parseInt(details[0]);
-			long id=Long.parseLong(details[1]);
-			CommodityVO vo=comController.findCommodityByID(id);
-			list.addCommodity(new CommodityLineItem(vo,num));
-		}
+		CommodityList list=new CommodityList(po.getCommodityList());
 		return new ImportBillVO(po.getID(),po.getUserID(),po.getMemberID(),list,po.getSum(),po.getState(),
 				po.getTime(),po.getRemark());
 	}
