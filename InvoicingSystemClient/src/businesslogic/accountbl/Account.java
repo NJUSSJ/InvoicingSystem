@@ -1,6 +1,7 @@
 package businesslogic.accountbl;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import po.AccountPO;
 import rmi.RemoteHelper;
@@ -55,6 +56,14 @@ public class Account{
 	
 	public AccountVO toAccountVO(AccountPO accountPO){
 		return new AccountVO(accountPO.getID(),accountPO.getDeposit(),accountPO.getName());
+	}
+	public ArrayList<AccountVO> findAccountByField(String field){
+		return null;
+	}
+
+	public ArrayList<AccountVO> findAccountByField(String field) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

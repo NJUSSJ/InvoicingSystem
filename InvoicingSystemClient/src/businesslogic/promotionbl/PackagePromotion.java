@@ -3,6 +3,7 @@ package businesslogic.promotionbl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.billbl.CommodityList;
 import po.PackagePromotionPO;
 import rmi.RemoteHelper;
 import vo.PackagePromotionVO;
@@ -46,12 +47,7 @@ public class PackagePromotion {
 		
 	}
 	public PackagePromotionVO toPackagePromotionVO(PackagePromotionPO packagePromotionPO){
-		ArrayList<Long> commodityid=new ArrayList<Long>();
-		String[] temp=packagePromotionPO.getCommodityID().split(" ");
-		for(int i=0;i<temp.length;i++){
-			commodityid.add(Long.parseLong(temp[i]));
-		}
-		return new PackagePromotionVO(packagePromotionPO.getID(),commodityid,packagePromotionPO.getDiscount());
+		return new PackagePromotionVO(packagePromotionPO.getID(),new CommodityList(packagePromotionPO.getCommodityID()),packagePromotionPO.getDiscount());
 		
 	}
 }

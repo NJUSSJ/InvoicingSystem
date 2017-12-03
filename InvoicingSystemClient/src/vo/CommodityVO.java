@@ -61,7 +61,25 @@ public class CommodityVO {
 	public void setName(String name){
 		this.name=name;
 	}
+	public void setModel(String model){
+		this.model=model;
+	}
 	public void setStockNum(int stockNum){
 		this.stockNum=stockNum;
+	}
+	public void setImportPrice(double importPrice){
+		this.importPrice=importPrice;
+	}
+	public void setSalePrice(double salePrice){
+		this.salePrice=salePrice;
+	}
+	public void setLateImportPrice(double lateImportPrice){
+		this.lateImportPrice=lateImportPrice;
+	}
+	public void setLateSalePrice(double lateSalePrice){
+		this.lateSalePrice=lateSalePrice;
+	}
+	public void setParentID(long parentid){
+		this.parentid=parentid;
 	}
 }
