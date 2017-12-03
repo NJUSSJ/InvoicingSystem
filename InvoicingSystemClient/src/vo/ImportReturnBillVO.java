@@ -3,6 +3,7 @@ package vo;
 import java.sql.Date;
 
 import businesslogic.billbl.CommodityList;
+import po.ImportReturnBillPO;
 
 /**
  * 
@@ -32,7 +33,9 @@ public class ImportReturnBillVO {
 		this.state=state;
 		this.remark=remark;
 	}
-	
+	public ImportReturnBillPO toImportReturnBillPO(){
+		return new ImportReturnBillPO(id,userid,memberid,commodityList.toString(),sum,time,state,num,remark);
+	}
 	public String getID() {
 		return id;
 	}
@@ -62,5 +65,8 @@ public class ImportReturnBillVO {
 	}
 	public int getnum(){
 		return num;
+	}
+	public void setState(int state){
+		this.state=state;
 	}
 }

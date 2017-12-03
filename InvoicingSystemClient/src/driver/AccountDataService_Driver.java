@@ -8,7 +8,7 @@ import stubs.AccountDatabaseServiceMySqlImpl_Stub;
 public class AccountDataService_Driver {
 
 	public void drive(AccountDatabaseServiceMySqlImpl_Stub stub){
-		try {
+		/*try {
 			if(stub.find(0)!=null){
 				System.out.println("find pass");
 			}
@@ -21,6 +21,6 @@ public class AccountDataService_Driver {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
-		
+		*/
 	}
 }

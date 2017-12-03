@@ -1,36 +1,85 @@
 package businesslogic.billbl;
 
-import businesslogicservice.billblservice.PayBillBLService;
+import java.rmi.RemoteException;
+import java.sql.Date;
+import java.util.ArrayList;
+
 import po.PayBillPO;
+import rmi.RemoteHelper;
 import vo.PayBillVO;
 
-public class PayBill  implements PayBillBLService{
+public class PayBill {
 
-	@Override
 	public PayBillVO toPayBillVO(PayBillPO po) {
-		// TODO Auto-generated method stub
-		AccountList accountList=new AccountList();
-		String[] temp=po.getAccountList().split(" ");
-		for(int i=0;i<temp.length;i++){
-			String[] tempinfo=temp[i].split(",");
-			AccountLineItem item=new AccountLineItem(Long.parseLong(tempinfo[0]),
-					Double.parseDouble(tempinfo[1]),tempinfo[2]);
-			accountList.addAccount(item);
-		}
-		return new PayBillVO(po.getID(),po.getUserID(),po.getMemberID(),accountList,
-				po.getSum(),po.getTime(),po.getState());
-	}
-
-	@Override
-	public String conveyBill(PayBillVO paybill) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public PayBillVO checkBill() {
 		// TODO 自动生成的方法存根
+		AccountList list=new AccountList(po.getAccountList());
+		return new PayBillVO(po.getID(),po.getUserID(),po.getMemberID(),list,po.getSum(),po.getTime(),po.getState());
+	}
+
+	public boolean submitPayBill(PayBillVO payBill) {
+		// TODO 自动生成的方法存根
+		try {
+			return RemoteHelper.getInstance().getPayBillDataService().insert(payBill.toPayBillPO());
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	public boolean checkPayBill(boolean pass, long id) {
+		// TODO 自动生成的方法存根
+		try {
+			PayBillVO vo=toPayBillVO(RemoteHelper.getInstance().getPayBillDataService().findPayBillbyID(id));
+			if(pass){
+				vo.setState(1);
+			}else{
+				vo.setState(2);
+			}
+			return RemoteHelper.getInstance().getPayBillDataService().update(vo.toPayBillPO());
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	public boolean deletePayBill(PayBillVO payBill) {
+		// TODO 自动生成的方法存根
+		try {
+			return RemoteHelper.getInstance().getPayBillDataService().delete(payBill.toPayBillPO());
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	public PayBillVO findPayBillByID(long id) {
+		// TODO 自动生成的方法存根
+		try {
+			return toPayBillVO(RemoteHelper.getInstance().getPayBillDataService().findPayBillbyID(id));
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
 		return null;
+	}
+
+	public ArrayList<PayBillVO> findPayBillByTime(Date time) {
+		// TODO 自动生成的方法存根
+		ArrayList<PayBillVO> temp=new ArrayList<PayBillVO>();
+		try {
+			ArrayList<PayBillPO> payBills=RemoteHelper.getInstance().getPayBillDataService().findPayBillbyTime(time);
+			for(int i=0;i<payBills.size();i++){
+				temp.add(toPayBillVO(payBills.get(i)));
+			}
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		
+		return temp;
 	}
 
 	

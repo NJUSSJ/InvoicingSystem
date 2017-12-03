@@ -7,17 +7,23 @@ public class AccountList {
 	public AccountList(){
 		list=new ArrayList<AccountLineItem>();
 	}
+	public AccountList(String info){
+		String[] items=info.split(" ");
+		for(int i=0;i<info.length();i++){
+			String[] temp=items[i].split(",");
+			Long id=Long.parseLong(temp[0]);
+			double money=Double.parseDouble(temp[1]);
+			String remark=temp[2];
+			list.add(new AccountLineItem(id,money,remark));
+		}
+	}
 	public void addAccount(AccountLineItem a){
 		list.add(a);
 	}
 	public String toString(){
 		String temp="";
 		for(int i=0;i<list.size();i++){
-			temp+=list.get(i).getAccountID()+","+list.get(i).getMoney();
-			if(list.get(i).getRemark()!=null){
-				temp+=list.get(i).getRemark();
-			}
-			
+			temp+=list.get(i).getAccountID()+","+list.get(i).getMoney()+","+list.get(i).getRemark();
 			if(i!=list.size()-1){
 				temp+=" ";
 			}

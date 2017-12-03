@@ -1,5 +1,8 @@
 package data.billdata;
 
+/**
+ * @author shisj
+ */
 import java.rmi.RemoteException;
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -19,7 +22,7 @@ public class CashBillDataImpl implements CashBillDataService{
 	public boolean insert(CashBillPO po) throws RemoteException {
 		String sql="insert into cashbills (id, userid, accountid, items, state, time, sum)"
 				+ "values"
-				+ "('"+po.getID()+"','"+po.getUserID()+"','"+po.getAccountID()+"','"+po.getItems()+"','"+po.getState()+"','"+po.getTime()+"','"+po.getSum();
+				+ "('"+po.getID()+"','"+po.getUserID()+"','"+po.getAccountID()+"','"+po.getItems()+"','"+po.getState()+"','"+po.getTime()+"','"+po.getSum()+"','";
 		
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {
@@ -48,10 +51,12 @@ public class CashBillDataImpl implements CashBillDataService{
 		return false;
 	}
 
-	
+	/**
+	 * 维护现金费用单
+	 */
 	@Override
 	public boolean update(CashBillPO po) throws RemoteException {
-		// TODO Auto-generated method stub
+		String sql="update cashbills set state='"+po.getState()+"'";
 		return false;
 	}
 
@@ -70,29 +75,103 @@ public class CashBillDataImpl implements CashBillDataService{
 				Date time=result.getDate("time");
 				double sum=result.getDouble("sum");
 				
-				CashBillPO tmpPO=new CashBillPO(id,userid, accountid, items, state, time, sum);
+				CashBillPO tmpPO=new CashBillPO(id, userid, accountid, items, state, time, sum);
+				return tmpPO;			
 			}
 		} catch (SQLException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		return null;
 	}
 
+	/**
+	 * 获取现金费用单列表
+	 */
 	@Override
 	public ArrayList<CashBillPO> findCashBills() throws RemoteException {
-		// TODO Auto-generated method stub
+		String sql="select * from cashbills";
+		
+		ArrayList<CashBillPO> results=new ArrayList<>();
+		try {
+			ResultSet result=DataFactory.statement.executeQuery(sql);
+			
+			while(result.next()) {
+				String id=result.getString("id");
+				long userid=result.getLong("userid");
+				String items=result.getString("items");
+				int state=result.getInt("state");
+				Date time=result.getDate("time");
+				double sum=result.getDouble("sum");
+				long accountid=result.getLong("accountid");
+				CashBillPO tmpPO=new CashBillPO(id, userid, accountid, items, state, time, sum);
+				
+				results.add(tmpPO);
+			}
+			
+			return results;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
+	/**
+	 * 根据时间获取现金费用单
+	 */
 	@Override
 	public ArrayList<CashBillPO> findCashBillbyTime(Date time) throws RemoteException {
-		// TODO Auto-generated method stub
+		String sql="select * from cashbills where time='"+time+"'";
+		
+		ArrayList<CashBillPO> results=new ArrayList<>();
+		try {
+			ResultSet result=DataFactory.statement.executeQuery(sql);
+			
+			while(result.next()) {
+				String id=result.getString("id");
+				long userid=result.getLong("userid");
+				String items=result.getString("items");
+				int state=result.getInt("state");
+				double sum=result.getDouble("sum");
+				long accountid=result.getLong("accountid");
+				CashBillPO tmpPO=new CashBillPO(id, userid, accountid, items, state, time, sum);
+				
+				results.add(tmpPO);
+			}
+			
+			return results;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
+	/**
+	 * 根据状态查找现金费单
+	 */
 	@Override
 	public ArrayList<CashBillPO> findCashBillbyState(int state) throws RemoteException {
-		// TODO Auto-generated method stub
+		String sql="select * from cashbills where state='"+state+"'";
+		
+		ArrayList<CashBillPO> results=new ArrayList<>();
+		try {
+			ResultSet result=DataFactory.statement.executeQuery(sql);
+			
+			while(result.next()) {
+				String id=result.getString("id");
+				long userid=result.getLong("userid");
+				String items=result.getString("items");
+				Date time=result.getDate("time");
+				double sum=result.getDouble("sum");
+				long accountid=result.getLong("accountid");
+				CashBillPO tmpPO=new CashBillPO(id, userid, accountid, items, state, time, sum);
+				
+				results.add(tmpPO);
+			}
+			
+			return results;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 

@@ -1,45 +1,85 @@
 package businesslogic.billbl;
 
+import java.rmi.RemoteException;
+import java.sql.Date;
+import java.util.ArrayList;
+
 import businesslogicservice.billblservice.ReceiveBillBLService;
+import po.PayBillPO;
 import po.ReceiveBillPO;
+import rmi.RemoteHelper;
+import vo.PayBillVO;
 import vo.ReceiveBillVO;
 
-public class ReceiveBill  implements ReceiveBillBLService{
+public class ReceiveBill{
 
-	ReceiveBillVO receivebill;
-
-	@Override
 	public ReceiveBillVO toReceiveBillVO(ReceiveBillPO po) {
-		// TODO Auto-generated method stub
-		AccountList accountList=new AccountList();
-		String[] tempInfo=po.getAccountList().split(" ");
-		for(int i=0;i<tempInfo.length;i++){
-			String[] temp=tempInfo[i].split(",");
-			if(temp.length==2){
-				accountList.addAccount(new AccountLineItem(Long.parseLong(temp[0]),
-						Double.parseDouble(temp[1])));
-			}else{//区分有备注的情况
-				accountList.addAccount(new AccountLineItem(Long.parseLong(temp[0]),
-						Double.parseDouble(temp[1]),temp[2]));
-			}
+		// TODO 自动生成的方法存根
+		AccountList list=new AccountList(po.getAccountList());
+		return new ReceiveBillVO(po.getID(),po.getUserID(),po.getMemberID(),list,po.getSum(),po.getTime(),po.getState());
+	}
+	public boolean submitReceiveBill(ReceiveBillVO receiveBill) {
+		// TODO 自动生成的方法存根
+		try {
+			return RemoteHelper.getInstance().getReceiveBillDataService().insert(receiveBill.toReceiveBillPO());
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
 		}
-		receivebill=new ReceiveBillVO(po.getID(),po.getUserID(),po.getMemberID(),
-				accountList,accountList.getSum(),po.getTime(),po.getState());
-		return receivebill;
+		return false;
 	}
-
-	@Override
-	public String conveyBill(ReceiveBillVO paybill) {
-		// TODO Auto-generated method stub
+	public boolean checkReceiveBill(boolean pass, long id) {
+		// TODO 自动生成的方法存根
+		try {
+			ReceiveBillVO vo=toReceiveBillVO(RemoteHelper.getInstance().getReceiveBillDataService().findReceiveBillbyID(id));
+			if(pass){
+				vo.setState(1);
+			}else{
+				vo.setState(2);
+			}
+			return RemoteHelper.getInstance().getReceiveBillDataService().update(vo.toReceiveBillPO());
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return false;
+	}
+	public boolean deleteReceiveBill(ReceiveBillVO payBill) {
+		// TODO 自动生成的方法存根
+		try {
+			return RemoteHelper.getInstance().getReceiveBillDataService().delete(payBill.toReceiveBillPO());
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return false;
+	}
+	public ReceiveBillVO findReceiveBillByID(long id) {
+		// TODO 自动生成的方法存根
+		try {
+			return toReceiveBillVO(RemoteHelper.getInstance().getReceiveBillDataService().findReceiveBillbyID(id));
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
 		return null;
 	}
-
-	@Override
-	public ReceiveBillVO checkBill(ReceiveBillVO paybill) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<ReceiveBillVO> findReceiveBillByTime(Date time) {
+		// TODO 自动生成的方法存根
+		ArrayList<ReceiveBillVO> temp=new ArrayList<ReceiveBillVO>();
+		try {
+			ArrayList<ReceiveBillPO> receiveBills=RemoteHelper.getInstance().getReceiveBillDataService().findReceiveBillbyTime(time);
+			for(int i=0;i<receiveBills.size();i++){
+				temp.add(toReceiveBillVO(receiveBills.get(i)));
+			}
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		
+		return temp;
 	}
-	
+
 	
 
 

@@ -21,7 +21,7 @@ public class ImportReturnBillPO implements Serializable {
 	String remark;
 	
 	public ImportReturnBillPO(String id,long userid,long memberid,String commodityList,
-			int sum,Date time,int state,int num,String remark) {
+			double sum,Date time,int state,int num,String remark) {
 		// TODO Auto-generated constructor stub
 		this.commodityList=commodityList;
 		this.id=id;

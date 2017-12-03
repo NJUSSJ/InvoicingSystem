@@ -15,15 +15,19 @@ public class OverBillVO {
 	long userid;
 	CommodityList commodityList;
 	Date time;
-	
-	public OverBillVO(long id,long userid,CommodityList commodityList,Date time) {
+	int state;
+	public OverBillVO(long id,long userid,CommodityList commodityList,Date time,int state) {
 		// TODO Auto-generated constructor stub
 		this.id=id;
 		this.commodityList=commodityList;
 		this.userid=userid;
 		this.time=time;
+		this.state=state;
 	}
 	public OverBillPO toOverBillPO(){
-		return new OverBillPO(id,userid,commodityList.toString(),time);
+		return new OverBillPO(id,userid,commodityList.toString(),time,state);
+	}
+	public void setState(int state){
+		this.state=state;
 	}
 }

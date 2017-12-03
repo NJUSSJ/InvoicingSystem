@@ -9,11 +9,11 @@ public class AccountPO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	long id;
 	double deposit;
-	String bank;
+	String name;
 	
-	public AccountPO(long id,double deposit,String bank){
+	public AccountPO(long id,double deposit,String name){
 		this.id=id;
-		this.bank=bank;
+		this.name=name;
 		this.deposit=deposit;
 	}
 
@@ -23,8 +23,8 @@ public class AccountPO implements Serializable {
 	public double getDeposit(){
 		return deposit;
 	}
-	public String getBank(){
-		return bank;
+	public String getName(){
+		return name;
 	}
 }
 

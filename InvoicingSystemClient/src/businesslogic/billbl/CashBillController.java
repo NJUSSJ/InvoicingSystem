@@ -1,6 +1,5 @@
 package businesslogic.billbl;
 
-import java.rmi.RemoteException;
 import java.sql.Date;
 import java.util.ArrayList;
 
