@@ -5,7 +5,6 @@ import java.sql.Date;
 import java.util.ArrayList;
 
 import businesslogic.commoditybl.CommodityController;
-import businesslogicservice.billblservice.ImportBillBLService;
 import po.ImportBillPO;
 import rmi.RemoteHelper;
 import vo.CommodityVO;
@@ -55,7 +54,7 @@ public class ImportBill{
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
-		return pass;
+		return false;
 	}
 
 	public boolean deleteImportBill(ImportBillVO importBill) {

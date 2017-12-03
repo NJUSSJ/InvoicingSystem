@@ -41,7 +41,7 @@ public class SaleBillPO implements Serializable {
 	public long getUserID(){
 		return userid;
 	}
-	public long getMemeberID(){
+	public long getMemberID(){
 		return memberid;
 	}
 	public String getCommodityList(){
