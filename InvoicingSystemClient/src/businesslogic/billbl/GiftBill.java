@@ -4,11 +4,8 @@ import java.rmi.RemoteException;
 import java.sql.Date;
 import java.util.ArrayList;
 
-import businesslogic.commoditybl.CommodityController;
-import businesslogicservice.billblservice.GiftBillBLService;
 import po.GiftBillPO;
 import rmi.RemoteHelper;
-import vo.CommodityVO;
 import vo.GiftBillVO;
 
 public class GiftBill {
