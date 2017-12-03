@@ -21,7 +21,7 @@ public class AccountList {
 		list.add(a);
 	}
 	public void removeAccount(AccountLineItem a){
-		list.remove(a);
+		list.remove(a);//
 	}
 	public String toString(){
 		String temp="";
