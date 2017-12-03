@@ -8,11 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import org.omg.CORBA.COMM_FAILURE;
-
 import data.datafactory.DataFactory;
 import dataservice.billdataservice.WarningBillDataService;
-import po.SaleBillPO;
 import po.WarningBillPO;
 
 public class WarningBillDataImpl implements WarningBillDataService {
@@ -83,8 +80,8 @@ public class WarningBillDataImpl implements WarningBillDataService {
 				long userid=result.getLong("userid");
 				Date time=result.getDate("time");
 				String commoditylist=result.getString("commoditylist");
-				
-				warn
+				int state=result.getInt("state");
+				WarningBillPO tmpPO=new WarningBillPO(id, userid, commoditylist, time, state);
 				return tmpPO;
 			}
 		} catch (SQLException e) {
@@ -98,7 +95,25 @@ public class WarningBillDataImpl implements WarningBillDataService {
 	 */
 	@Override
 	public ArrayList<WarningBillPO> findWarningBills() throws RemoteException {
-		// TODO Auto-generated method stub
+		String sql="select * from warningbills";
+		ArrayList<WarningBillPO> results=new ArrayList<>();
+		try {
+			ResultSet result=DataFactory.statement.executeQuery(sql);
+			
+			while(result.next()) {
+				long id=result.getLong("id");
+				long userid=result.getLong("userid");
+				Date time=result.getDate("time");
+				String commoditylist=result.getString("commoditylist");
+				int state=result.getInt("state");
+				WarningBillPO tmpPO=new WarningBillPO(id, userid, commoditylist, time, state);
+				results.add(tmpPO);
+			}
+			
+			return results;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
@@ -107,7 +122,24 @@ public class WarningBillDataImpl implements WarningBillDataService {
 	 */
 	@Override
 	public ArrayList<WarningBillPO> findWarningBillbyTime(Date time) throws RemoteException {
-		// TODO Auto-generated method stub
+		String sql="select * from warningbills where time='"+time+"'";
+		ArrayList<WarningBillPO> results=new ArrayList<>();
+		try {
+			ResultSet result=DataFactory.statement.executeQuery(sql);
+			
+			while(result.next()) {
+				long id=result.getLong("id");
+				long userid=result.getLong("userid");
+				String commoditylist=result.getString("commoditylist");
+				int state=result.getInt("state");
+				WarningBillPO tmpPO=new WarningBillPO(id, userid, commoditylist, time, state);
+				results.add(tmpPO);
+			}
+			
+			return results;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
@@ -116,7 +148,24 @@ public class WarningBillDataImpl implements WarningBillDataService {
 	 */
 	@Override
 	public ArrayList<WarningBillPO> findWarningBillbyState(int state) throws RemoteException {
-		// TODO Auto-generated method stub
+		String sql="select * from warningbills where state='"+state+"'";
+		ArrayList<WarningBillPO> results=new ArrayList<>();
+		try {
+			ResultSet result=DataFactory.statement.executeQuery(sql);
+			
+			while(result.next()) {
+				long id=result.getLong("id");
+				long userid=result.getLong("userid");
+				String commoditylist=result.getString("commoditylist");
+				Date time=result.getDate("time");
+				WarningBillPO tmpPO=new WarningBillPO(id, userid, commoditylist, time, state);
+				results.add(tmpPO);
+			}
+			
+			return results;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 

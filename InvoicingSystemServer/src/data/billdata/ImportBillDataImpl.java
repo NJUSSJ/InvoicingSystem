@@ -152,7 +152,7 @@ public class ImportBillDataImpl implements ImportBillDataService {
 	}
 
 	@Override
-	public ImportBillPO findImportReturnBillbyID(String id) throws RemoteException {
+	public ImportBillPO findImportBillbyID(String id) throws RemoteException {
 		String sql="select * from importbills where id='"+id+"'";
 		
 		try {
