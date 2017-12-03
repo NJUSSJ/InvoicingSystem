@@ -27,4 +27,7 @@ public class OverBillVO {
 	public OverBillPO toOverBillPO(){
 		return new OverBillPO(id,userid,commodityList.toString(),time,state);
 	}
+	public void setState(int state){
+		this.state=state;
+	}
 }

@@ -1,12 +1,16 @@
 package businesslogicservice.billblservice;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
-import businesslogic.billbl.CommodityList;
+import po.OverBillPO;
 import vo.OverBillVO;
 
 public interface OverBillBLService {
-	public OverBillVO toBillVO(long id,long userid,long memberid,CommodityList list,Date time);
-	public String conveyBill(OverBillVO overbill);
-	public OverBillVO checkBill(OverBillVO overbill);
+	public OverBillVO toOverBillVO(OverBillPO overBillPO);
+	public boolean submitOverBill(OverBillVO overBill);
+	public boolean checkOverBill(boolean pass,long id);
+	public boolean deleteOverBill(OverBillVO overBill);
+	public OverBillVO findOverBillByID(long id);
+	public ArrayList<OverBillVO> findOverBillByTime(Date time);
 }
