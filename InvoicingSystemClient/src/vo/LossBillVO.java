@@ -23,9 +23,10 @@ public class LossBillVO {
 		this.commodityList=commodityList;
 		this.userid=userid;
 		this.time=time;
+		this.state=state;
 	}
 	public LossBillPO toLossBillPO(){
-		return new LossBillPO(id,userid,commodityList.toString(),time);
+		return new LossBillPO(id,userid,commodityList.toString(),time,state);
 	}
 	public void setState(int state){
 		this.state=state;

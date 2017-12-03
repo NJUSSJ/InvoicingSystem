@@ -7,17 +7,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import data.datafactory.DataFactory;
-import dataservice.billdataservice.LossBillDataService;
+import dataservice.billdataservice.OverBillDataService;
 import po.LossBillPO;
+import po.OverBillPO;
 
-public class LossBillImpl implements LossBillDataService {
+public class OverBillDataImpl implements OverBillDataService {
 
 	/**
-	 * 新增报损单
+	 * 新增报溢单
 	 */
 	@Override
-	public boolean insert(LossBillPO po) throws RemoteException {
-		String sql="insert into lossbills (id,userid,commoditylist,time)"
+	public boolean insert(OverBillPO po) throws RemoteException {
+		String sql="insert into overbills (id,userid,commoditylist,time)"
 				+ "values"
 				+ "('"+po.getID()+"','"+po.getUserID()+"','"+po.getCommodityList()+"','"+po.getTime();
 		
@@ -32,11 +33,11 @@ public class LossBillImpl implements LossBillDataService {
 	}
 
 	/**
-	 * 删除报损单
+	 * 删除报溢单
 	 */
 	@Override
-	public boolean delete(LossBillPO po) throws RemoteException {
-		String sql="delete from lossbills where id='"+po.getID()+"'";
+	public boolean delete(OverBillPO po) throws RemoteException {
+		String sql="delete from overbills where id='"+po.getID()+"'";
 		
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {
@@ -49,11 +50,11 @@ public class LossBillImpl implements LossBillDataService {
 	}
 
 	/**
-	 * 维护报损单
+	 * 维护报溢单
 	 */
 	@Override
-	public boolean update(LossBillPO po) throws RemoteException {
-		String sql="update lossbills set state='"+po.getState()+"'";
+	public boolean update(OverBillPO po) throws RemoteException {
+		String sql="update overbills set state='"+po.getState()+"'";
 		
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {
@@ -66,11 +67,12 @@ public class LossBillImpl implements LossBillDataService {
 	}
 
 	/**
-	 * 根据ＩＤ查找报损单
+	 * 根据就ID查找
 	 */
+	
 	@Override
-	public LossBillPO findLossBillbyID(long id) throws RemoteException {
-		String sql="select * from lossbills where id='"+id+"'";
+	public OverBillPO findOverBillbyID(long id) throws RemoteException {
+		String sql="select * from overbills where id='"+id+"'";
 		
 		try {
 			ResultSet result=DataFactory.statement.executeQuery(sql);
@@ -80,7 +82,7 @@ public class LossBillImpl implements LossBillDataService {
 				Date time=result.getDate("time");
 				int state=result.getInt("state");
 			
-				LossBillPO tmpPO=new LossBillPO(id, userid, commoditylist, time, state);
+				OverBillPO tmpPO=new OverBillPO(id, userid, commoditylist, time, state);
 			
 				return tmpPO;
 			}
@@ -92,39 +94,12 @@ public class LossBillImpl implements LossBillDataService {
 	}
 
 	/**
-	 * 根据状态查找报损单
+	 * 查找报溢单列表
 	 */
 	@Override
-	public ArrayList<LossBillPO> findLossBillbyState(int state) throws RemoteException {
-		String sql="select * from lossbills where state='"+state+"'";
-		ArrayList<LossBillPO> results=new ArrayList<>();
-		try {
-			ResultSet result=DataFactory.statement.executeQuery(sql);
-			while(result.next()) {
-				
-				long userid=result.getLong("userid");
-				String commoditylist=result.getString("commoditylist");
-				Date time=result.getDate("time");
-				long id=result.getLong("id");
-			
-				LossBillPO tmpPO=new LossBillPO(id, userid, commoditylist, time, state);
-				results.add(tmpPO);
-			}
-			return results;
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	/**
-	 * 查找报损单列表
-	 */
-	@Override
-	public ArrayList<LossBillPO> findLossBills() throws RemoteException {
-		String sql="select * from lossbills";
-		ArrayList<LossBillPO> results=new ArrayList<>();
+	public ArrayList<OverBillPO> findOverBills() throws RemoteException {
+		String sql="select * from overbills";
+		ArrayList<OverBillPO> results=new ArrayList<>();
 		try {
 			ResultSet result=DataFactory.statement.executeQuery(sql);
 			while(result.next()) {
@@ -134,7 +109,7 @@ public class LossBillImpl implements LossBillDataService {
 				Date time=result.getDate("time");
 				long id=result.getLong("id");
 				int state=result.getInt("state");
-				LossBillPO tmpPO=new LossBillPO(id, userid, commoditylist, time, state);
+				OverBillPO tmpPO=new OverBillPO(id, userid, commoditylist, time, state);
 				results.add(tmpPO);
 			}
 			return results;
@@ -147,12 +122,12 @@ public class LossBillImpl implements LossBillDataService {
 	}
 
 	/**
-	 * 根据时间查找报损单
+	 * 根据时间查找
 	 */
 	@Override
-	public ArrayList<LossBillPO> findLossBillbyTime(Date time) throws RemoteException {
-		String sql="select * from lossbills where time='"+time+"'";
-		ArrayList<LossBillPO> results=new ArrayList<>();
+	public ArrayList<OverBillPO> findOverBillbyTime(Date time) throws RemoteException {
+		String sql="select * from overbills where time='"+time+"'";
+		ArrayList<OverBillPO> results=new ArrayList<>();
 		try {
 			ResultSet result=DataFactory.statement.executeQuery(sql);
 			while(result.next()) {
@@ -162,7 +137,34 @@ public class LossBillImpl implements LossBillDataService {
 				int state=result.getInt("state");
 				long id=result.getLong("id");
 			
-				LossBillPO tmpPO=new LossBillPO(id, userid, commoditylist, time, state);
+				OverBillPO tmpPO=new OverBillPO(id, userid, commoditylist, time, state);
+				results.add(tmpPO);
+			}
+			return results;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	/**
+	 * 根据状态查找
+	 */
+	@Override
+	public ArrayList<OverBillPO> findOverBillbyState(int state) throws RemoteException {
+		String sql="select * from overbills where state='"+state+"'";
+		ArrayList<OverBillPO> results=new ArrayList<>();
+		try {
+			ResultSet result=DataFactory.statement.executeQuery(sql);
+			while(result.next()) {
+				
+				long userid=result.getLong("userid");
+				String commoditylist=result.getString("commoditylist");
+				Date time=result.getDate("time");
+				long id=result.getLong("id");
+			
+				OverBillPO tmpPO=new OverBillPO(id, userid, commoditylist, time, state);
 				results.add(tmpPO);
 			}
 			return results;
