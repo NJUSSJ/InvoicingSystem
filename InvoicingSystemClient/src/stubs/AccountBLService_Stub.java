@@ -47,7 +47,7 @@ public class AccountBLService_Stub implements AccountBLService {
 	}
 	@Override
 	public ArrayList<AccountVO> findAccountByField(String field) {
-		// TODO 自动生成的方法存根
+		// TODO Auto-generated method stub
 		return null;
 	}
 

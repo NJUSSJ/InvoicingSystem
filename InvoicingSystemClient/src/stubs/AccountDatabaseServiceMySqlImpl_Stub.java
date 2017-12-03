@@ -38,6 +38,12 @@ public class AccountDatabaseServiceMySqlImpl_Stub implements AccountDataService 
 		return false;
 	}
 
+	@Override
+	public ArrayList<AccountPO> findAcountbyField(String field) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 	
 	

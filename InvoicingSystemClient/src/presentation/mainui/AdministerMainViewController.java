@@ -25,12 +25,14 @@ public class AdministerMainViewController implements Initializable {
 
 	@FXML
 	private Label logout;
-	
+	//初始化时设置Id
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		
+		id.setText("ID:"+MainApp.getID());
 	}
+	
+	
 	public void showlogUI(){
 		MainApp.showLogUI();
 	}
