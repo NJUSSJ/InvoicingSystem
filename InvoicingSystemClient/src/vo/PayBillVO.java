@@ -3,6 +3,7 @@ package vo;
 import java.sql.Date;
 
 import businesslogic.billbl.AccountList;
+import po.PayBillPO;
 
 /**
  * 
@@ -28,6 +29,9 @@ public class PayBillVO {
 		this.state=state;
 		this.accountList=accountList;
 		this.sum=accountList.getSum();
+	}
+	public PayBillPO toPayBillPO(){
+		return new PayBillPO(id,memberid,userid,accountList.toString(),sum,time,state);
 	}
 	
 	public String getID() {
