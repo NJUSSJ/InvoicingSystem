@@ -1,5 +1,7 @@
 package data.billdata;
-
+/**
+ * @author shisj
+ */
 import java.rmi.RemoteException;
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -53,7 +55,7 @@ public class LossBillImpl implements LossBillDataService {
 	 */
 	@Override
 	public boolean update(LossBillPO po) throws RemoteException {
-		String sql="update lossbills set state='"+po.getState()+"'";
+		String sql="update lossbills set state='"+po.getState()+"' where id='"+po.getID()+"'";
 		
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {
