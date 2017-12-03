@@ -1,5 +1,7 @@
 package data.billdata;
-
+/**
+ * @author shisj
+ */
 import java.rmi.RemoteException;
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -150,10 +152,8 @@ public class ImportBillDataImpl implements ImportBillDataService {
 	}
 
 	@Override
-	public ImportBillPO findImportBillbyID(String id) throws RemoteException {
+	public ImportBillPO findImportReturnBillbyID(String id) throws RemoteException {
 		String sql="select * from importbills where id='"+id+"'";
-		
-		
 		
 		try {
 			ResultSet result=DataFactory.statement.executeQuery(sql);

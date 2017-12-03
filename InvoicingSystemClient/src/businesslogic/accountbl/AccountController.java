@@ -41,7 +41,7 @@ public class AccountController implements AccountBLService{
 	@Override
 	public ArrayList<AccountVO> findAccountByField(String field) {
 		// TODO 自动生成的方法存根
-		return null;
+		return accountImpl.findAccountByField(field);
 	}
 	
 	

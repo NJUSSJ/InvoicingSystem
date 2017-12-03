@@ -35,7 +35,7 @@ public class LossBillController implements LossBillBLService{
 	@Override
 	public LossBillVO findLossBillByID(long id) {
 		// TODO 自动生成的方法存根
-		return lossBillImpl.findLossBillByID(id)
+		return lossBillImpl.findLossBillByID(id);
 	}
 
 	@Override

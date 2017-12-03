@@ -2,6 +2,9 @@ package businesslogic.billbl;
 
 import java.util.ArrayList;
 
+import businesslogic.commoditybl.CommodityController;
+import vo.CommodityVO;
+
 public class CommodityList {
 	
 	ArrayList<CommodityLineItem> list;
@@ -9,6 +12,18 @@ public class CommodityList {
 	public CommodityList() {
 		// TODO Auto-generated constructor stub
 		list=new ArrayList<>();
+	}
+	public CommodityList(String info){
+		list=new ArrayList<>();
+		String[] commodityInfo=info.split(" ");
+		CommodityController comController=new CommodityController();
+		for(int i=0;i<commodityInfo.length;i++){
+			String[] details=commodityInfo[i].split(",");
+			int num=Integer.parseInt(details[0]);
+			long id=Long.parseLong(details[1]);
+			CommodityVO vo=comController.findCommodityByID(id);
+			list.add(new CommodityLineItem(vo,num));
+		}
 	}
 	
 	public void addCommodity(CommodityLineItem item) {

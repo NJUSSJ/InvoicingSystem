@@ -28,4 +28,7 @@ public class LossBillVO {
 	public LossBillPO toLossBillPO(){
 		return new LossBillPO(id,userid,commodityList.toString(),time,state);
 	}
+	public void setState(int state){
+		this.state=state;
+	}
 }

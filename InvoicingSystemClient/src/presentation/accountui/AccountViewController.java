@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import MainApp.MainApp;
-import MainApp.SimpleAccountController;
 import businesslogic.accountbl.AccountController;
 import businesslogicservice.accountblservice.AccountBLService;
 import javafx.collections.FXCollections;
