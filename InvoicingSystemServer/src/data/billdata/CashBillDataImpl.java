@@ -1,5 +1,8 @@
 package data.billdata;
 
+/**
+ * @author shisj
+ */
 import java.rmi.RemoteException;
 import java.sql.Date;
 import java.sql.ResultSet;

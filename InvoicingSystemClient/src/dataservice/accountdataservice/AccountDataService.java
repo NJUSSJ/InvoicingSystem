@@ -13,7 +13,7 @@ public interface AccountDataService {
 	public boolean insert(AccountPO po) throws RemoteException;
 	public boolean delete(AccountPO po) throws RemoteException;
 	public boolean update(AccountPO po) throws RemoteException;
-	
+	public ArrayList<AccountPO> findAcountbyField(String field) throws RemoteException;
 	
 	
 }

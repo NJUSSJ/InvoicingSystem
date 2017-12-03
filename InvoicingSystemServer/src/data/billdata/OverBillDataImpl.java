@@ -1,5 +1,7 @@
 package data.billdata;
-
+/**
+ * @author shisj
+ */
 import java.rmi.RemoteException;
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -8,7 +10,6 @@ import java.util.ArrayList;
 
 import data.datafactory.DataFactory;
 import dataservice.billdataservice.OverBillDataService;
-import po.LossBillPO;
 import po.OverBillPO;
 
 public class OverBillDataImpl implements OverBillDataService {
@@ -54,7 +55,7 @@ public class OverBillDataImpl implements OverBillDataService {
 	 */
 	@Override
 	public boolean update(OverBillPO po) throws RemoteException {
-		String sql="update overbills set state='"+po.getState()+"'";
+		String sql="update overbills set state='"+po.getState()+"' where id='"+po.getID()+"'";
 		
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {

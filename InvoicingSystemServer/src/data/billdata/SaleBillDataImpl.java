@@ -2,6 +2,7 @@ package data.billdata;
 
 /**
  * @author shisj
+ * 
  */
 import java.rmi.RemoteException;
 import java.sql.Date;
@@ -10,53 +11,21 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import data.datafactory.DataFactory;
-import dataservice.billdataservice.ImportReturnBillDataService;
-import po.ImportReturnBillPO;
+import dataservice.billdataservice.SaleBillDataService;
+import po.SaleBillPO;
 
-public class ImportReturnBillDataImpl implements ImportReturnBillDataService {
+public class SaleBillDataImpl implements SaleBillDataService{
 
 	/**
-	 * 新增进货退货单
+	 * 新增销售单
 	 */
 	@Override
-	public boolean insert(ImportReturnBillPO po) throws RemoteException {
-		String sql="insert into importreturnbills (id,userid,memberid,sum,state,time,commoditylist,num,remark)"
-				+ "VALUES"
-				+ "('"+po.getID()+"','"+po.getUserID()+"','"+po.getMemberID()+"','"+po.getSum()+"','"+po.getState()+"','"+po.getTime()+"','"+po.getCommodityList()+"','"+po.getNum()+"','"+po.getRemark()+"')";
-		try {
-			if(DataFactory.statement.executeUpdate(sql)>0) {
-			return true;
-		}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+	public boolean insert(SaleBillPO po) throws RemoteException {
+		String sql="insert into salebills (id,userid,memberid,commoditylist,sum,time,state,num,remark)"
+				+ "values"
+				+ "('"+po.getID()+"','"+po.getUserID()+"','"+po.getMemberID()+"','"+po.getCommodityList()+"','"+po.getSum()
+				+"','"+po.getTime()+"','"+po.getState()+"','"+po.getSum()+"','"+po.getNum()+"','"+po.getRemark()+"')";
 		
-		
-		return false;
-	}
-
-	/**
-	 * 删除进货退货单
-	 */
-	@Override
-	public boolean delete(ImportReturnBillPO po) throws RemoteException {
-		String sql="delete from importreturnbills where id="+po.getID();
-		try {
-			if(DataFactory.statement.executeUpdate(sql)>0) {
-				return true;
-			}
-		} catch (SQLException e) {
-			// TODO: handle exception
-		}
-		return false;
-	}
-
-	/**
-	 * 更新进货退货单
-	 */
-	@Override
-	public boolean update(ImportReturnBillPO po) throws RemoteException {
-		String sql="update importreturnbills set state='"+po.getState()+"'where id="+po.getID();
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {
 				return true;
@@ -68,32 +37,61 @@ public class ImportReturnBillDataImpl implements ImportReturnBillDataService {
 	}
 
 	/**
-	 * 根据ID查找进货退货单
+	 * 删除销售单
 	 */
 	@Override
-	public ImportReturnBillPO findImportReturnBillbyID(String id) throws RemoteException {
-String sql="select * from importreturnbills where id='"+id+"'";
+	public boolean delete(SaleBillPO po) throws RemoteException {
+		String sql="delete from salebills where id='"+po.getID()+"')";
 		
+		try {
+			if(DataFactory.statement.executeUpdate(sql)>0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	/**
+	 * 维护销售单
+	 */
+	@Override
+	public boolean update(SaleBillPO po) throws RemoteException {
+		String sql="update salebills set state='"+po.getState()+"' where id=="+po.getID()+"'";
 		
-		
+		try {
+			if(DataFactory.statement.executeUpdate(sql)>0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	/**
+	 * 根据ID查找销售单
+	 */
+	@Override
+	public SaleBillPO findSaleBillbyID(String id) throws RemoteException {
+		String sql="select * from salebills where id='"+id+"'";
 		try {
 			ResultSet result=DataFactory.statement.executeQuery(sql);
 			
 			while(result.next()) {
-				int state=result.getInt("state");
 				long userid=result.getLong("userid");
 				long memberid=result.getLong("memberid");
+				String commoditylist=result.getString("commoditylist");
 				double sum=result.getDouble("sum");
 				Date time=result.getDate("time");
-				String commoditylist=result.getString("commoditylist");
+				int state =result.getInt("state");
 				int num=result.getInt("num");
 				String remark=result.getString("remark");
-				ImportReturnBillPO tmpPO=new ImportReturnBillPO(id, userid, memberid, commoditylist, sum, time, state, num, remark);
 				
+				SaleBillPO tmpPO=new SaleBillPO(id, userid, memberid, commoditylist, sum, state, time, num, remark);
 				return tmpPO;
 			}
-			
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -101,14 +99,12 @@ String sql="select * from importreturnbills where id='"+id+"'";
 	}
 
 	/**
-	 * 根据状态查找
+	 * 查找销售单列表
 	 */
 	@Override
-	public ArrayList<ImportReturnBillPO> findImportReturnBillbyState(int state) throws RemoteException {
-		String sql="select * from importreturnbills where state='"+state+"'";
-		
-		ArrayList<ImportReturnBillPO> results=new ArrayList<>();
-		
+	public ArrayList<SaleBillPO> findSaleBills() throws RemoteException {
+		String sql="select * from salebills ";
+		ArrayList<SaleBillPO> results=new ArrayList<>();
 		try {
 			ResultSet result=DataFactory.statement.executeQuery(sql);
 			
@@ -116,17 +112,16 @@ String sql="select * from importreturnbills where id='"+id+"'";
 				String id=result.getString("id");
 				long userid=result.getLong("userid");
 				long memberid=result.getLong("memberid");
+				String commoditylist=result.getString("commoditylist");
 				double sum=result.getDouble("sum");
 				Date time=result.getDate("time");
-				String commoditylist=result.getString("commoditylist");
+				int state =result.getInt("state");
 				int num=result.getInt("num");
 				String remark=result.getString("remark");
-				ImportReturnBillPO tmpPO=new ImportReturnBillPO(id, userid, memberid, commoditylist, sum, time, state, num, remark);
 				
+				SaleBillPO tmpPO=new SaleBillPO(id, userid, memberid, commoditylist, sum, state, time, num, remark);
 				results.add(tmpPO);
-				
 			}
-			
 			return results;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -135,14 +130,12 @@ String sql="select * from importreturnbills where id='"+id+"'";
 	}
 
 	/**
-	 * 查找进货退货单列表
+	 * 根据时间查找销售单
 	 */
 	@Override
-	public ArrayList<ImportReturnBillPO> findImportReturnBills() throws RemoteException {
-		String sql="select * from importreturnbills";
-		
-		ArrayList<ImportReturnBillPO> results=new ArrayList<>();
-		
+	public ArrayList<SaleBillPO> findSaleBillbyTime(Date time) throws RemoteException {
+		String sql="select * from salebills where time='"+time+"'";
+		ArrayList<SaleBillPO> results=new ArrayList<>();
 		try {
 			ResultSet result=DataFactory.statement.executeQuery(sql);
 			
@@ -150,18 +143,15 @@ String sql="select * from importreturnbills where id='"+id+"'";
 				String id=result.getString("id");
 				long userid=result.getLong("userid");
 				long memberid=result.getLong("memberid");
-				double sum=result.getDouble("sum");
-				Date time=result.getDate("time");
 				String commoditylist=result.getString("commoditylist");
+				double sum=result.getDouble("sum");
+				int state =result.getInt("state");
 				int num=result.getInt("num");
 				String remark=result.getString("remark");
-				int state=result.getInt("state");
-				ImportReturnBillPO tmpPO=new ImportReturnBillPO(id, userid, memberid, commoditylist, sum, time, state, num, remark);
 				
+				SaleBillPO tmpPO=new SaleBillPO(id, userid, memberid, commoditylist, sum, state, time, num, remark);
 				results.add(tmpPO);
-				
 			}
-			
 			return results;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -170,14 +160,13 @@ String sql="select * from importreturnbills where id='"+id+"'";
 	}
 
 	/**
-	 * 根据时间查找
+	 * 根据状态查找销售单
 	 */
 	@Override
-	public ArrayList<ImportReturnBillPO> findImportReturnBillbyTime(Date time) throws RemoteException {
-String sql="select * from importreturnbills where time='"+time+"'";
+	public ArrayList<SaleBillPO> findSaleBillbyState(int state) throws RemoteException {
 		
-		ArrayList<ImportReturnBillPO> results=new ArrayList<>();
-		
+		String sql="select * from salebills where state='"+state+"'";
+		ArrayList<SaleBillPO> results=new ArrayList<>();
 		try {
 			ResultSet result=DataFactory.statement.executeQuery(sql);
 			
@@ -185,17 +174,15 @@ String sql="select * from importreturnbills where time='"+time+"'";
 				String id=result.getString("id");
 				long userid=result.getLong("userid");
 				long memberid=result.getLong("memberid");
-				double sum=result.getDouble("sum");
-				int state=result.getInt("state");
 				String commoditylist=result.getString("commoditylist");
+				double sum=result.getDouble("sum");
+				Date time=result.getDate("time");
 				int num=result.getInt("num");
 				String remark=result.getString("remark");
-				ImportReturnBillPO tmpPO=new ImportReturnBillPO(id, userid, memberid, commoditylist, sum, time, state, num, remark);
 				
+				SaleBillPO tmpPO=new SaleBillPO(id, userid, memberid, commoditylist, sum, state, time, num, remark);
 				results.add(tmpPO);
-				
 			}
-			
 			return results;
 		} catch (SQLException e) {
 			e.printStackTrace();
