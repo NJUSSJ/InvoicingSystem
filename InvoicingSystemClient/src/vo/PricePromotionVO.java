@@ -22,12 +22,23 @@ public class PricePromotionVO {
 	public long getID(){
 		return id;
 	}
-	
-	public double getDiscount() {
-		return discount;
-	}
-	
 	public double getPriceline() {
 		return priceline;
 	}
+	public double getDiscount() {
+		return discount;
+	}
+	public int getCoupon(){
+		return coupon;
+	}
+	public void setPriceline(double priceline){
+		this.priceline=priceline;
+	}
+	public void setDiscount(double discount){
+		this.discount=discount;
+	}
+	public void setCoupon(int coupon){
+		this.coupon=coupon;
+	}
+	
 }

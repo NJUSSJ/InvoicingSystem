@@ -7,16 +7,16 @@ import po.CategoryPO;
 public class CategoryVO {
 	long id;
 	String name;
-	String parent;
+	long parentid;
 	ArrayList<Long> subCategoryID;
 	ArrayList<Long> subCommodityID;
 	
-	public CategoryVO(long id,String name,String parent,ArrayList<Long> subCategoryID,
+	public CategoryVO(long id,String name,long parentid,ArrayList<Long> subCategoryID,
 			ArrayList<Long> subCommodityID) {
 		// TODO Auto-generated constructor stub
 		this.id=id;
 		this.name=name;
-		this.parent=parent;
+		this.parentid=parentid;
 		this.subCategoryID=subCategoryID;
 		this.subCommodityID=subCommodityID;
 	}
@@ -34,12 +34,25 @@ public class CategoryVO {
 				subCommodityID+=" ";
 			}
 		}
-		return new CategoryPO(id,name,parent,subCategoryID,subCommodityID);
+		return new CategoryPO(id,name,parentid,subCategoryID,subCommodityID);
 	}
 	public String getName(){
 		return name;
 	}
-	public String getParent(){
-		return parent;
+	public long getParentID(){
+		return parentid;
 	}
+	public ArrayList<Long> getSubCategoryID(){
+		return subCategoryID;
+	}
+	public ArrayList<Long> getSubCommodityID(){
+		return subCommodityID;
+	}
+	public void setParentID(long id){
+		this.parentid=parentid;
+	}
+	public void setName(String name){
+		this.name=name;
+	}
+	
 }

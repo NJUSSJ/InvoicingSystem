@@ -2,6 +2,7 @@ package vo;
 
 import java.util.ArrayList;
 
+import businesslogic.billbl.CommodityList;
 import po.MemberPromotionPO;
 
 /**
@@ -13,22 +14,34 @@ import po.MemberPromotionPO;
 public class MemberPromotionVO {
 	long id;
 	int rank;
-	ArrayList<Long> giftsid;//ÔùÆ·
+	CommodityList gifts;
 	int coupon;
-	public MemberPromotionVO(long id,int rank,ArrayList<Long> giftsid,int coupon){
+	public MemberPromotionVO(long id,int rank,CommodityList gifts,int coupon){
 		this.id=id;
 		this.rank=rank;
-		this.giftsid=giftsid;
+		this.gifts=gifts;
 		this.coupon=coupon;
 	}
 	public MemberPromotionPO toMemberPromotionPO(){
-		String temp="";
-		for(int i=0;i<giftsid.size();i++){
-			temp+=giftsid.get(i);
-			if(i!=giftsid.size()-1){
-				temp+=" ";
-			}
-		}
-		return new MemberPromotionPO(id,rank,temp,coupon);
+		return new MemberPromotionPO(id,rank,gifts.toString(),coupon);
+	}
+	public long getID(){
+		return id;
+	}
+	public int getRank(){
+		return rank;
+	}
+	public CommodityList getGifts(){
+		return gifts;
+	}
+	public int getCoupon(){
+		return coupon;
+	}
+	public void setRank(int rank){
+		this.rank=rank;
+	}
+	public void setCoupon(int coupon){
+		this.coupon=coupon;
 	}
 }
+

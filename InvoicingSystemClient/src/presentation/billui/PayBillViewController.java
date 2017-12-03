@@ -130,7 +130,7 @@ private ObservableList<AccountLineItemData> payData =FXCollections.observableArr
     	int selectedIndex = payTable.getSelectionModel().getSelectedIndex();
    	 if (selectedIndex >= 0) {
    	        payTable.getItems().remove(selectedIndex);
-             aclist.
+          
              
    	    } else {
    	        // Nothing selected.

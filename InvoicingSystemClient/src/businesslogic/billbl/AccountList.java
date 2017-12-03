@@ -20,6 +20,9 @@ public class AccountList {
 	public void addAccount(AccountLineItem a){
 		list.add(a);
 	}
+	public void removeAccount(AccountLineItem a){
+		list.remove(a);//
+	}
 	public String toString(){
 		String temp="";
 		for(int i=0;i<list.size();i++){

@@ -47,6 +47,15 @@ public class GiftBillVO {
 	public int getState(){
 		return state;
 	}
+	public void setUserID(long userid){
+		this.userid=userid;
+	}
+	public void setMemberID(long memberid){
+		this.memberid=memberid;
+	}
+	public void setTime(Date time){
+		this.time=time;
+	}
 	public void setState(int state){
 		this.state=state;
 	}

@@ -36,7 +36,21 @@ public class MemberVO {
 		return new MemberPO(id, rank, postCode, category, name, phoneNum,
 				address, eMail, shouldPay,shouldGet, quota, defaultOperatorID);
 	}
-	
+	public long getID(){
+		return id;
+	}
+	public int getRank(){
+		return rank;
+	}
+	public int getPostCode(){
+		return postCode;
+	}
+	public int getCategory(){
+		return category;
+	}
+	public long getDefaultOperatorID(){
+		return defaultOperatorID;
+	}
 	public String getName() {
 		return name;
 	}
@@ -58,19 +72,31 @@ public class MemberVO {
 	public double getQuota(){
 		return quota;
 	}
-	public long getID(){
-		return id;
+	public void setRank(int rank){
+		this.rank=rank;
 	}
-	public int getRank(){
-		return rank;
+	public void setPostCode(int postCode){
+		this.postCode=postCode;
 	}
-	public int getPostCode(){
-		return postCode;
+	public void setName(String name){
+		this.name=name;
 	}
-	public int getCategory(){
-		return category;
+	public void setPhoneNum(int phoneNum){
+		this.phoneNum=phoneNum;
 	}
-	public long getDefaultOperatorID(){
-		return defaultOperatorID;
+	public void setAddress(String address){
+		this.address=address;
+	}
+	public void setEMail(String eMail){
+		this.eMail=eMail;
+	}
+	public void setShouldPay(double shouldPay){
+		this.shouldPay=shouldPay;
+	}
+	public void setShouldGet(double shouldGet){
+		this.shouldGet=shouldGet;
+	}
+	public void setQuota(double quota){
+		this.quota=quota;
 	}
 }

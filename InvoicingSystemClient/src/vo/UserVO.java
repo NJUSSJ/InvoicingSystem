@@ -18,20 +18,26 @@ public class UserVO {
 	public UserPO toUserPO(){
 		return new UserPO(id,password,rank,username);
 	}
-	
-	public String getUsername() {
-		return username;
-	}
-	
-	public int getRank() {
-		return rank;
-	}
-	
-	public String getPassword() {
-		return password;
-	}
-	
 	public long getID(){
 		return id;
 	}
+	public String getPassword() {
+		return password;
+	}
+	public int getRank() {
+		return rank;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setPassword(String password){
+		this.password=password;
+	}
+	public void setRank(int rank){
+		this.rank=rank;
+	}
+	public void setUsername(String username){
+		this.username=username;
+	}
+
 }

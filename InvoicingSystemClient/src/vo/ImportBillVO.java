@@ -41,34 +41,36 @@ public class ImportBillVO {
 	public String getID() {
 		return id;
 	}
-	
 	public long getUserID() {
 		return userid;
 	}
-	
-	public void changeUser(long userid) {
-		this.userid=userid;
-	}
-	
-	public long getMember() {
+	public long getMemberID() {
 		return memberid;
 	}
-	
-	public void setMember(long memberid) {
-		this.memberid=memberid;
-	}
-	
-	public CommodityList getList() {
+	public CommodityList getCommodityList() {
 		return commodityList;
 	}
-	
 	public double getSum() {
 		return sum;
 	}
 	public int getNum(){
 		return num;
 	}
+	public void setUserID(long userid) {
+		this.userid=userid;
+	}
+	
+	public void setMemberID(long memberid) {
+		this.memberid=memberid;
+	}
+	public void setTime(Date time){
+		this.time=time;
+	}
 	public void setState(int state){
 		this.state=state;
 	}
+	public void setRemark(String remark){
+		this.remark=remark;
+	}
+	
 }
