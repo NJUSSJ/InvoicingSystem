@@ -69,7 +69,7 @@ public class ImportReturnBillDataImpl implements ImportReturnBillDataService {
 	 * 根据ID查找进货退货单
 	 */
 	@Override
-	public ImportReturnBillPO findImportBillbyID(String id) throws RemoteException {
+	public ImportReturnBillPO findImportReturnBillbyID(String id) throws RemoteException {
 String sql="select * from importbills where id='"+id+"'";
 		
 		

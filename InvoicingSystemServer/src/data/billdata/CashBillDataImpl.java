@@ -48,10 +48,12 @@ public class CashBillDataImpl implements CashBillDataService{
 		return false;
 	}
 
-	
+	/**
+	 * 维护现金费用单
+	 */
 	@Override
 	public boolean update(CashBillPO po) throws RemoteException {
-		// TODO Auto-generated method stub
+		String sql="update cashbills set state='"+po.getState()+"'";
 		return false;
 	}
 
