@@ -53,7 +53,7 @@ public class LossBillImpl implements LossBillDataService {
 	 */
 	@Override
 	public boolean update(LossBillPO po) throws RemoteException {
-		String sql="update set state='"+po.getState()+"'";
+		String sql="update lossbills set state='"+po.getState()+"'";
 		
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {
@@ -74,16 +74,19 @@ public class LossBillImpl implements LossBillDataService {
 		
 		try {
 			ResultSet result=DataFactory.statement.executeQuery(sql);
+			while(result.next()) {
+				long userid=result.getLong("userid");
+				String commoditylist=result.getString("commoditylist");
+				Date time=result.getDate("time");
+				int state=result.getInt("state");
 			
-			long userid=result.getLong("userid");
-			String commoditylist=result.getString("commoditylist");
-			Date time=result.getDate("time");
-			int state=result.getInt("state");
+				LossBillPO tmpPO=new LossBillPO(id, userid, commoditylist, time, state);
 			
-			LossBillPO tmpPO=
+				return tmpPO;
+			}
 			
 		} catch (SQLException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		return null;
 	}
@@ -93,7 +96,25 @@ public class LossBillImpl implements LossBillDataService {
 	 */
 	@Override
 	public ArrayList<LossBillPO> findLossBillbyState(int state) throws RemoteException {
-		// TODO Auto-generated method stub
+		String sql="select * from lossbills where state='"+state+"'";
+		ArrayList<LossBillPO> results=new ArrayList<>();
+		try {
+			ResultSet result=DataFactory.statement.executeQuery(sql);
+			while(result.next()) {
+				
+				long userid=result.getLong("userid");
+				String commoditylist=result.getString("commoditylist");
+				Date time=result.getDate("time");
+				long id=result.getLong("id");
+			
+				LossBillPO tmpPO=new LossBillPO(id, userid, commoditylist, time, state);
+				results.add(tmpPO);
+			}
+			return results;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
@@ -102,7 +123,26 @@ public class LossBillImpl implements LossBillDataService {
 	 */
 	@Override
 	public ArrayList<LossBillPO> findLossBills() throws RemoteException {
-		// TODO Auto-generated method stub
+		String sql="select * from lossbills";
+		ArrayList<LossBillPO> results=new ArrayList<>();
+		try {
+			ResultSet result=DataFactory.statement.executeQuery(sql);
+			while(result.next()) {
+				
+				long userid=result.getLong("userid");
+				String commoditylist=result.getString("commoditylist");
+				Date time=result.getDate("time");
+				long id=result.getLong("id");
+				int state=result.getInt("state");
+				LossBillPO tmpPO=new LossBillPO(id, userid, commoditylist, time, state);
+				results.add(tmpPO);
+			}
+			return results;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return null;
 	}
 
@@ -111,7 +151,25 @@ public class LossBillImpl implements LossBillDataService {
 	 */
 	@Override
 	public ArrayList<LossBillPO> findLossBillbyTime(Date time) throws RemoteException {
-		// TODO Auto-generated method stub
+		String sql="select * from lossbills where time='"+time+"'";
+		ArrayList<LossBillPO> results=new ArrayList<>();
+		try {
+			ResultSet result=DataFactory.statement.executeQuery(sql);
+			while(result.next()) {
+				
+				long userid=result.getLong("userid");
+				String commoditylist=result.getString("commoditylist");
+				int state=result.getInt("state");
+				long id=result.getLong("id");
+			
+				LossBillPO tmpPO=new LossBillPO(id, userid, commoditylist, time, state);
+				results.add(tmpPO);
+			}
+			return results;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
