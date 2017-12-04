@@ -57,13 +57,21 @@ public class Account{
 	public AccountVO toAccountVO(AccountPO accountPO){
 		return new AccountVO(accountPO.getID(),accountPO.getDeposit(),accountPO.getName());
 	}
-	public ArrayList<AccountVO> findAccountByField(String field){
-		return null;
-	}
 
 	public ArrayList<AccountVO> findAccountByField(String field) {
 		// TODO Auto-generated method stub
-		return null;
+		ArrayList<AccountVO> temp=new ArrayList<AccountVO>();
+		
+		try {
+			ArrayList<AccountPO> accounts = RemoteHelper.getInstance().getAccountDataService().findAcountbyField(field);
+			for(int i=0;i<accounts.size();i++){
+				temp.add(toAccountVO(accounts.get(i)));
+			}
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return temp;
 	}
 
 }
