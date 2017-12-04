@@ -21,7 +21,7 @@ public class ImportReturnBillDataImpl implements ImportReturnBillDataService {
 	@Override
 	public boolean insert(ImportReturnBillPO po) throws RemoteException {
 		String sql="insert into importreturnbills (id,userid,memberid,sum,state,time,commoditylist,num,remark)"
-				+ "VALUES"
+				+ " VALUES "
 				+ "('"+po.getID()+"','"+po.getUserID()+"','"+po.getMemberID()+"','"+po.getSum()+"','"+po.getState()+"','"+po.getTime()+"','"+po.getCommodityList()+"','"+po.getNum()+"','"+po.getRemark()+"')";
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {

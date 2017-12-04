@@ -52,8 +52,8 @@ public class MemberDataImpl implements MemberDataService{
 	@Override
 	public boolean insert(MemberPO po) throws RemoteException {
 		
-		String sql="insert into members (id, rank, postcode, category, name, phonenumber, address, email, shouldpay, shouldget, quota, defaultoperatorid)"
-				+ "values"
+		String sql="insert into members (id, rank, postcode, category, name, phonenumber, address, email, shouldpay, shouldget, quota, defaultoperatorid) "
+				+ "values "
 				+ "('"+po.getID()+"','"+po.getRank()+"','"+po.getPostCode()+"','"+po.getCategory()+"','"+po.getName()+"','"+po.getPhoneNum()+"','"+po.getAddress()+"','+"
 						+ po.getEmail()+"','"+po.getShouldPay()+"','"+po.getShouldGet()+"','"+po.getQuota()+"','"+po.getDefaultOperatorID()+"')";
 		try {

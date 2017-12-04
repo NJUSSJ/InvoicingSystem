@@ -9,5 +9,5 @@ public interface MemberPromotionDataService {
 	public boolean delete(MemberPromotionPO po) throws RemoteException;
 	public boolean update(MemberPromotionPO po) throws RemoteException;
 	public ArrayList<MemberPromotionPO> findMemberPromotions() throws RemoteException;
-	public ArrayList<MemberPromotionPO> findMemberPromotionsbyRank() throws RemoteException;
+	public ArrayList<MemberPromotionPO> findMemberPromotionsbyRank(int rank) throws RemoteException;
 }

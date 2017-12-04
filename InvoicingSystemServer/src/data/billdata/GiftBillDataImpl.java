@@ -20,7 +20,7 @@ public class GiftBillDataImpl implements GiftBillDataService {
 	@Override
 	public boolean insert(GiftBillPO po) throws RemoteException {
 		String sql="insert into giftbills (id,userid,memberid,giftlist,time,state)"
-				+ "values"
+				+ " values "
 				+ "('"+po.getID()+"','"+po.getUserID()+"','"+po.getMemberID()+"','"+po.getGiftList()+"','"+po.getTime()+"','"+po.getState();
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {

@@ -24,7 +24,7 @@ public class ReceiveBillDataImpl implements ReceiveBillDataService{
 	@Override
 	public boolean insert(ReceiveBillPO po) throws RemoteException {
 		String sql="insert into receivebills (id,userid,memberid,accountlist,sum,time,state)"
-				+ "values"
+				+ " values "
 				+ "('"+po.getID()+"','"+po.getUserID()+"','"+po.getMemberID()+"','"+po.getAccountList()+"','"+po.getSum()+"','"+po.getTime()+"','"+po.getState()+"')";
 		
 		try {
