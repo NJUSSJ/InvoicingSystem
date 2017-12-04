@@ -61,9 +61,5 @@ public class Account{
 		return null;
 	}
 
-	public ArrayList<AccountVO> findAccountByField(String field) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }
