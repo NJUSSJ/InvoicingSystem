@@ -24,5 +24,14 @@ public class AccountLineItem {
 	public String getRemark(){
 		return remark;
 	}
-	
+	public void setAccountID(long id){
+		accountid=id;
+	}
+	public void setMoney(double money){
+		this.money=money;
+	}
+	public void setRemark(String remark){
+		this.remark=remark;
+	}
+
 }

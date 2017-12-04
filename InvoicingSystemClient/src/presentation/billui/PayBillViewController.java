@@ -2,13 +2,18 @@ package presentation.billui;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 
 import MainApp.MainApp;
 import businesslogic.accountbl.AccountController;
 import businesslogic.billbl.AccountLineItem;
 import businesslogic.billbl.AccountList;
+import businesslogic.billbl.PayBillController;
 import businesslogicservice.accountblservice.AccountBLService;
+import businesslogicservice.billblservice.PayBillBLService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -25,6 +30,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import vo.PayBillVO;
 
 
 public class PayBillViewController  implements Initializable{
@@ -35,10 +41,15 @@ public class PayBillViewController  implements Initializable{
 	@FXML
 	private Label operator;
 	@FXML
+	private Label totalsum;
+	@FXML
 	private Label billid;
 	@FXML
 	private TextField account;
-private ObservableList<AccountLineItemData> payData =FXCollections.observableArrayList();
+	
+	Date time;
+	
+    private ObservableList<AccountLineItemData> payData =FXCollections.observableArrayList();
 	
 	@FXML
 	private TableView<AccountLineItemData> payTable;
@@ -70,14 +81,31 @@ private ObservableList<AccountLineItemData> payData =FXCollections.observableArr
 	@FXML
 	private Button deleteB;
 	
+	@FXML
+	private TextField itemName;
+	
+	@FXML
+	private TextField itemMoney;
+	
+	@FXML
+	private TextField itemNote;
+	
 	AccountLineItem ali;
 	
 	AccountList aclist;
 	
-    AccountListController controller;
+	AccountLineItemData  alid;
+	
+	static int times=0;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
+		java.util.Date utiltime=new java.util.Date();
+		time=new Date(utiltime.getTime());
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
+		String str=sdf.format(time);
+		DecimalFormat df=new DecimalFormat("#####");
+		billid.setText("FKD-"+str+"-"+df.format(times));
 		id.setText("ID:"+MainApp.getID());
 		operator.setText(Long.toString(MainApp.getID()));
 		payTable.getSelectionModel().selectedItemProperty().addListener(
@@ -85,53 +113,42 @@ private ObservableList<AccountLineItemData> payData =FXCollections.observableArr
 		nameColoumn.setCellValueFactory(cellData ->cellData.getValue().getName());
 		amountColoumn.setCellValueFactory(cellData ->cellData.getValue().getMoney());
 		noteColoumn.setCellValueFactory(cellData ->cellData.getValue().getRemark());
+         times++;
 	}
 
     public void add(){
-    	try{
-    	FXMLLoader loader=new FXMLLoader();
-		loader.setLocation(MainApp.class.getResource("/presentation/billui/AccountListUI.fxml"));
-		AnchorPane payBillUI=loader.load();
-		Scene scene=new Scene(payBillUI);
-		Stage payStage=new Stage();
-		payStage.setTitle("Create/Change Item");
-		payStage.initModality(Modality.WINDOW_MODAL);
-		payStage.initOwner(MainApp.getPrimaryStage());
-		payStage.setScene(scene);
-		controller=loader.getController();
-        controller.setStage(payStage);
-        payStage.showAndWait();
-    	}catch (IOException e) {
-    		// TODO: handle exception
-    	}
+        long name=Long.parseLong(itemName.getText());
+        double money=Double.parseDouble(itemMoney.getText());
+        String note=itemNote.getText();
+        ali=new AccountLineItem(name,money,note);
+        aclist.addAccount(ali);
+        alid=new AccountLineItemData(ali);
+        payData.add(alid);
+        payTable.setItems(payData);
+        totalsum.setText(Double.toString(aclist.getSum()));
     }
     public void update(){
-    try{
-     	FXMLLoader loader=new FXMLLoader();
-		loader.setLocation(MainApp.class.getResource("/presentation/billui/AccountListUI.fxml"));
-		AnchorPane payBillUI=loader.load();
-		Scene scene=new Scene(payBillUI);
-		Stage payStage=new Stage();
-		payStage.setTitle("Create/Change Item");
-		payStage.initModality(Modality.WINDOW_MODAL);
-		payStage.initOwner(MainApp.getPrimaryStage());
-		payStage.setScene(scene);
-		controller=loader.getController();
-        controller.setStage(payStage);
-        controller.setAccountid(Double.toString(ali.getAccountID()));
-        controller.setRemark(ali.getRemark());
-        controller.setMoney(ali.getMoney());
-        payStage.showAndWait();
-    } catch (IOException e) {
-		// TODO: handle exception
-	}
+    	aclist.removeAccount(ali);
+    	payData.remove(alid);
+    	long name=Long.parseLong(itemName.getText());
+        double money=Double.parseDouble(itemMoney.getText());
+        String note=itemNote.getText();
+        ali.setAccountID(name);
+        ali.setMoney(money);
+        ali.setRemark(note);
+        aclist.addAccount(ali);
+        alid=new AccountLineItemData(ali);
+        payData.add(alid);
+        payTable.setItems(payData);
+        totalsum.setText(Double.toString(aclist.getSum()));
     }
     public void delete(){
     	int selectedIndex = payTable.getSelectionModel().getSelectedIndex();
    	 if (selectedIndex >= 0) {
    	        payTable.getItems().remove(selectedIndex);
-          
-             
+            aclist.removeAccount(ali);
+            payData.remove(selectedIndex);
+            totalsum.setText(Double.toString(aclist.getSum()));
    	    } else {
    	        // Nothing selected.
    	        Alert alert = new Alert(AlertType.WARNING);
@@ -152,12 +169,22 @@ private ObservableList<AccountLineItemData> payData =FXCollections.observableArr
 	private void getInf(AccountLineItemData newValue) {
 		// TODO Auto-generated method stub
 		ali=newValue.getVO();
+		alid=newValue;
 	}
- 
+ public void rightSet(){
+	 PayBillBLService pbs=new PayBillController();
+	 PayBillVO paybill=new PayBillVO(billid.getText() ,Long.parseLong(operator.getText()),Long.parseLong(account.getText()),aclist,aclist.getSum(),time,0);
+	 String isSubmit="fail Submit";
+	 if(pbs.submitPayBill(paybill)){
+		 isSubmit="Succeed Submit";
+	 }
+     Alert alert = new Alert(AlertType.INFORMATION);
+	        alert.initOwner(MainApp.getPrimaryStage());
+	        alert.setTitle("Information");
+	        alert.setHeaderText("Submit");
+	        alert.setContentText(isSubmit);
+	        alert.showAndWait();
+ }
 	
 
-	
-
-
-	
 }
