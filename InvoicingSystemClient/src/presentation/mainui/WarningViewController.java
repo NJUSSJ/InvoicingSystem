@@ -23,13 +23,14 @@ public class WarningViewController implements Initializable {
 		// TODO Auto-generated method stub
 		
 	}
-
+	@FXML
 	public void rightWarning(){
 		String theNum=num.getText();
 		//Î´Ð´Íê
 		
 		stage.close();
 	}
+	@FXML
 	public void cancelWarning(){
 		stage.close();
 	}

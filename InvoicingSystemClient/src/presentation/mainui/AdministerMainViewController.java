@@ -32,16 +32,19 @@ public class AdministerMainViewController implements Initializable {
 		id.setText("ID:"+MainApp.getID());
 	}
 	
-	
+	@FXML
 	public void showlogUI(){
 		MainApp.showLogUI();
 	}
+	@FXML
     public void showEmailUI(){
 		MainApp.showEmailUI();
 	}
+	@FXML
     public void showuserChangeUI(){
 	    MainApp.showUserChangeUI();
     }
+	@FXML
     public void showLoginUI(){
     	MainApp.cancelUser();
 		MainApp.showLoginUI();

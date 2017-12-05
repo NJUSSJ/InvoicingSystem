@@ -6,13 +6,8 @@ import java.util.ResourceBundle;
 import MainApp.MainApp;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 public class StockMainViewController implements Initializable {
 	@FXML
@@ -36,32 +31,32 @@ public class StockMainViewController implements Initializable {
 		// TODO Auto-generated method stub
 		id.setText("ID:"+MainApp.getID());
 	}
-	
+	@FXML
 	public void showLoginUI(){
 		MainApp.cancelUser();
 		MainApp.showLoginUI();
 	}
-	
+	@FXML
 	public void showEmailUI(){
 		MainApp.showEmailUI();
 	}
-	
+	@FXML
 	public void showCategoryUI(){
 		MainApp.showCategoryUI();
 	}
-
+	@FXML
 	public void showCommodityUI(){
 		MainApp.showCommodityUI();
 	}
-
+	@FXML
 	public void showStockCheckUI(){
 		MainApp.showStockCheckUI();
 	}
-
+	@FXML
 	public void showStockInventoryUI(){
 		MainApp.showStockInventoryUI();
 	}
-	
+	@FXML
     public void showWarningUI(){
        MainApp.showWarningUI();
     }

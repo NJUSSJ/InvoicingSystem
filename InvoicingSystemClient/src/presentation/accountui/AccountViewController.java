@@ -34,12 +34,6 @@ public class AccountViewController implements Initializable {
 	private Label logout;
 	
 	@FXML
-	private Label name;
-	
-	@FXML
-	private Label amount;
-	
-	@FXML
 	private TextField search;
 	
 	@FXML
@@ -86,7 +80,7 @@ public class AccountViewController implements Initializable {
 		idColoumn.setCellValueFactory(cellData ->cellData.getValue().getidProperty());
 	}
 	
-	
+	@FXML
 	public void searchAccount(){
 		String findName=search.getText();
 		AccountBLService abs=new AccountController();
@@ -104,7 +98,7 @@ public class AccountViewController implements Initializable {
 		}
 		
 	}
-	
+	@FXML
     public void addAccount(){
     	try {
 			FXMLLoader loader=new FXMLLoader();
@@ -127,6 +121,7 @@ public class AccountViewController implements Initializable {
     public void getInf(AccountData newValue){
     	acco=newValue.getVO();
     }
+    @FXML
     public void deleteAccount(){
     	int selectedIndex = accountTable.getSelectionModel().getSelectedIndex();
     	 if (selectedIndex >= 0) {
@@ -144,7 +139,7 @@ public class AccountViewController implements Initializable {
     	        alert.showAndWait();
     	    }
    	}
-    
+    @FXML
     public void updateAccount(){
     	try {
 			FXMLLoader loader=new FXMLLoader();
@@ -168,10 +163,13 @@ public class AccountViewController implements Initializable {
 		}
 		
    	}
+    @FXML
     public void showFianceMainUI(){
 		MainApp.showFianceMainUI();
    	}
+    @FXML
     public void logout(){
+    	MainApp.cancelUser();
     	MainApp.showLoginUI();
     }
     

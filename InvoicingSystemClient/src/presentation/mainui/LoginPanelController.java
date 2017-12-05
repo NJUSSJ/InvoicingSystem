@@ -78,6 +78,7 @@ public class LoginPanelController implements Initializable {
 		}
 	}
 	
+	@FXML
 	public void Login() {
 		MainApp.setUser(user);
 		if(certifyUser()) {

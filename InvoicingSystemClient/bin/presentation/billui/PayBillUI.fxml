@@ -10,17 +10,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141">
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.billui.PayBillViewController">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0">
          <children>
-            <Label layoutX="786.0" layoutY="14.0" text="ID:XXX">
+            <Label fx:id="id" layoutX="786.0" layoutY="14.0" text="ID:XXX">
                <font>
                   <Font name="Arial Unicode MS" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="862.0" layoutY="14.0" text="|| 登录">
+            <Label fx:id="logout" layoutX="862.0" layoutY="14.0" onMouseClicked="#logout" text="|| 登录">
                <font>
                   <Font name="Arial Unicode MS" size="14.0" />
                </font>
@@ -32,19 +31,19 @@
                </font>
             </Label>
             <Label layoutX="14.0" layoutY="133.0" text="单据编号：" />
-            <Label layoutX="74.0" layoutY="134.0" text="FKD-yyyyMMdd-xxxxx" />
+            <Label fx:id="billid" layoutX="74.0" layoutY="134.0" text="FKD-yyyyMMdd-xxxxx" />
             <Label layoutX="14.0" layoutY="156.0" text="客户：">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField layoutX="67.0" layoutY="155.0" />
+            <TextField fx:id="account" layoutX="67.0" layoutY="155.0" />
             <Label layoutX="309.0" layoutY="157.0" text="操作员：">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="371.0" layoutY="159.0" text="XXX">
+            <Label fx:id="operator" layoutX="371.0" layoutY="159.0" text="XXX">
                <font>
                   <Font size="14.0" />
                </font>
@@ -54,11 +53,11 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="352.0" prefWidth="722.0">
                      <children>
-                        <TableView layoutX="14.0" layoutY="37.0" prefHeight="350.0" prefWidth="761.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-39.0" AnchorPane.topAnchor="0.0">
+                        <TableView fx:id="payTable" layoutX="14.0" layoutY="37.0" prefHeight="350.0" prefWidth="761.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-39.0" AnchorPane.topAnchor="0.0">
                            <columns>
-                              <TableColumn prefWidth="150.39999103546143" text="银行账户" />
-                              <TableColumn minWidth="0.0" prefWidth="163.19996643066406" text="转账金额" />
-                              <TableColumn minWidth="0.0" prefWidth="446.9999755859375" text="备注" />
+                              <TableColumn fx:id="nameColoumn" prefWidth="150.39999103546143" text="银行账户" />
+                              <TableColumn fx:id="amountColoumn" minWidth="0.0" prefWidth="163.19996643066406" text="转账金额" />
+                              <TableColumn fx:id="noteColoumn" minWidth="0.0" prefWidth="446.9999755859375" text="备注" />
                            </columns>
                         </TableView>
                      </children>
@@ -70,32 +69,32 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="86.0" layoutY="559.0" text="xxx">
+            <Label fx:id="totalsum" layoutX="86.0" layoutY="559.0" text="xxx">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button layoutX="804.0" layoutY="398.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="142.0" text="新    增">
+            <Button fx:id="addB" layoutX="804.0" layoutY="398.0" mnemonicParsing="false" onAction="#add" prefHeight="19.0" prefWidth="142.0" text="新    增">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button layoutX="804.0" layoutY="498.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="142.0" text="删    除">
+            <Button fx:id="deleteB" layoutX="804.0" layoutY="498.0" mnemonicParsing="false" onAction="#delete" prefHeight="19.0" prefWidth="142.0" text="删    除">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button layoutX="436.0" layoutY="554.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="142.0" text=" 返    回">
+            <Button fx:id="returnB" layoutX="436.0" layoutY="554.0" mnemonicParsing="false" onAction="#showFianceMainUI" prefHeight="30.0" prefWidth="142.0" text=" 返    回">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button layoutX="804.0" layoutY="448.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="142.0" text="修    改">
+            <Button fx:id="updateB" layoutX="804.0" layoutY="448.0" mnemonicParsing="false" onAction="#update" prefHeight="30.0" prefWidth="142.0" text="修    改">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button layoutX="603.0" layoutY="554.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="142.0" text=" 确    认">
+            <Button fx:id="rightB" layoutX="603.0" layoutY="554.0" mnemonicParsing="false" onAction="#rightSet" prefHeight="30.0" prefWidth="142.0" text=" 确    认">
                <font>
                   <Font size="14.0" />
                </font>
@@ -115,9 +114,9 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField layoutX="794.0" layoutY="189.0" />
-            <TextField layoutX="795.0" layoutY="254.0" />
-            <TextField layoutX="794.0" layoutY="322.0" />
+            <TextField fx:id="itemName" layoutX="794.0" layoutY="189.0" />
+            <TextField fx:id="itemMoney" layoutX="795.0" layoutY="254.0" />
+            <TextField fx:id="itemNote" layoutX="794.0" layoutY="322.0" />
          </children>
       </AnchorPane>
    </children>

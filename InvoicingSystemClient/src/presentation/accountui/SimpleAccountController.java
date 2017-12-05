@@ -34,7 +34,7 @@ public class SimpleAccountController implements Initializable  {
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 	}
-	
+	@FXML
 	public void rightSet(){
 		String name=nameField.getText();
 		String deposit=accountField.getText();
@@ -46,16 +46,20 @@ public class SimpleAccountController implements Initializable  {
 			abs.addAccount(a);
 		}
 	}
+	@FXML
 	public void cancelSet(){
 		stage.close();
 	}
+
 	public void setStage(Stage writeStage) {
 		stage=writeStage;
 	}
+
 	public void setAccount(String a){
 		accountField.setText(a);
 		style=1;
 	}
+	
 	public void setName(String a){
 		nameField.setText(a);
 		style=1;

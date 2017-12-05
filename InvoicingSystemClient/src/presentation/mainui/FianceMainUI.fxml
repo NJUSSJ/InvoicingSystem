@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.mainui.FianceMainViewController">
   <children>
     <Label layoutX="7.0" layoutY="30.0" text="财务人员主界面">
       <font>
@@ -20,44 +15,44 @@
       </font>
     </Label>
     <Separator prefHeight="3.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="110.0" />
-    <Label layoutX="868.0" layoutY="14.0" text="ID：xxx">
+    <Label fx:id="id" layoutX="868.0" layoutY="14.0" text="ID：xxx">
       <font>
         <Font size="14.0" fx:id="x1" />
       </font>
     </Label>
-    <Label font="$x1" layoutX="932.0" layoutY="14.0" text="|| 登出" />
+    <Label fx:id="logout" font="$x1" layoutX="932.0" layoutY="14.0" onMouseClicked="#showLoginUI" text="|| 登出" />
     <Label layoutX="106.0" layoutY="366.0" text="期初建账" />
     <Label layoutX="279.0" layoutY="366.0" text="银行账户管理" />
     <Label layoutX="471.0" layoutY="366.0" text="查看经营历程表" />
     <Label layoutX="667.0" layoutY="366.0" text="查看经营情况表" />
     <Label layoutX="850.0" layoutY="366.0" text="查看销售明细表" />
-    <ImageView fitHeight="124.0" fitWidth="99.0" layoutX="74.0" layoutY="211.0">
+    <ImageView fx:id="accountBook" fitHeight="124.0" fitWidth="99.0" layoutX="74.0" layoutY="211.0" onMouseClicked="#showaccountBookUI">
       <image>
         <Image url="@../../../resources/notebook_585px_1209136_easyicon.net.png" />
       </image>
     </ImageView>
-    <ImageView fitHeight="124.0" fitWidth="120.0" layoutX="255.0" layoutY="207.0">
+    <ImageView fx:id="account" fitHeight="124.0" fitWidth="120.0" layoutX="255.0" layoutY="207.0" onMouseClicked="#showaccountUI">
       <image>
         <Image url="@../../../resources/bank_1251px_1207308_easyicon.net.png" />
       </image>
     </ImageView>
-    <ImageView fitHeight="124.0" fitWidth="120.0" layoutX="453.0" layoutY="207.0">
+    <ImageView fx:id="manageCourse" fitHeight="124.0" fitWidth="120.0" layoutX="453.0" layoutY="207.0" onMouseClicked="#showManageCourseUI">
       <image>
         <Image url="@../../../resources/tables_732px_1153607_easyicon.net.png" />
       </image>
     </ImageView>
     <Label layoutX="112.0" layoutY="551.0" text="邮箱" />
-    <ImageView fitHeight="124.0" fitWidth="120.0" layoutX="649.0" layoutY="207.0">
+    <ImageView fx:id="manageSituation" fitHeight="124.0" fitWidth="120.0" layoutX="649.0" layoutY="207.0" onMouseClicked="#showManageSituationUI">
       <image>
         <Image url="@../../../resources/tables_732px_1153607_easyicon.net.png" />
       </image>
     </ImageView>
-    <ImageView fitHeight="124.0" fitWidth="120.0" layoutX="832.0" layoutY="207.0">
+    <ImageView fx:id="saleDetails" fitHeight="124.0" fitWidth="120.0" layoutX="832.0" layoutY="207.0" onMouseClicked="#showSaleDetailsUI">
       <image>
         <Image url="@../../../resources/tables_732px_1153607_easyicon.net.png" />
       </image>
     </ImageView>
-    <ImageView fitHeight="106.0" fitWidth="120.0" layoutX="70.0" layoutY="425.0">
+    <ImageView fx:id="email" fitHeight="106.0" fitWidth="120.0" layoutX="70.0" layoutY="425.0" onMouseClicked="#showEmailUI">
       <image>
         <Image url="@../../../resources/Mail_Search_512px_1178165_easyicon.net.png" />
       </image>
@@ -65,20 +60,26 @@
     <Label layoutX="285.0" layoutY="551.0" text="制定收款单" />
     <Label layoutX="483.0" layoutY="551.0" text="制定付款单" />
     <Label layoutX="685.0" layoutY="551.0" text="日志查看" />
-    <ImageView fitHeight="116.0" fitWidth="120.0" layoutX="667.0" layoutY="420.0">
+    <ImageView fx:id="log" fitHeight="116.0" fitWidth="120.0" layoutX="667.0" layoutY="420.0" onMouseClicked="#showLogUI">
       <image>
         <Image url="@../../../resources/diary_350px_1146911_easyicon.net.png" />
       </image>
     </ImageView>
-    <ImageView fitHeight="124.0" fitWidth="136.0" layoutX="247.0" layoutY="407.0">
+    <ImageView fx:id="receiveBill" fitHeight="124.0" fitWidth="136.0" layoutX="247.0" layoutY="407.0" onMouseClicked="#showReceiveBillUI">
       <image>
         <Image url="@../../../resources/cash_receiving_512px_1125250_easyicon.net.png" />
       </image>
     </ImageView>
-    <ImageView fitHeight="134.0" fitWidth="136.0" layoutX="453.0" layoutY="402.0">
+    <ImageView fx:id="payBill" fitHeight="134.0" fitWidth="136.0" layoutX="453.0" layoutY="402.0" onMouseClicked="#showpayBillUI">
       <image>
         <Image url="@../../../resources/payment_method_545px_1208153_easyicon.net.png" />
       </image>
     </ImageView>
+      <ImageView fx:id="cashBill" fitHeight="124.0" fitWidth="106.0" layoutX="841.0" layoutY="413.0" onMouseClicked="#showcashBill">
+         <image>
+            <Image url="@../../../resources/bill_1270px_1200280_easyicon.net.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="852.0" layoutY="550.0" text="制定现金费用单" />
   </children>
 </AnchorPane>

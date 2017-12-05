@@ -31,32 +31,32 @@ public class SaleMainViewController implements Initializable  {
 		// TODO Auto-generated method stub
 		id.setText("ID:"+MainApp.getID());
 	}
-
+	@FXML
 	public void showEmailUI(){
 		MainApp.showEmailUI();
 	}
-
+	@FXML
 	public void showLoginUI(){
 		MainApp.cancelUser();
 		MainApp.showLoginUI();
 	}
-	
+	@FXML
 	public void showMemberUI(){
 		MainApp.showMemberUI();
 	}
-	
+	@FXML
 	public void showImportUI(){
 		MainApp.showImportUI();
 	}
-	
+	@FXML
 	public void showImportReturnUI(){
 		MainApp.showImportReturnUI();
 	}
-	
+	@FXML
 	public void showSaleUI(){
 		MainApp.showSaleUI();
 	}
-	
+	@FXML
 	public void showSaleReturnUI(){
 		MainApp.showSaleReturnUI();
 	}

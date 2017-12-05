@@ -107,7 +107,7 @@ public class CashBillViewController  implements Initializable {
 		noteColoumn.setCellValueFactory(cellData ->cellData.getValue().getNote());
          times++;
 	}
-
+	@FXML
     public void add(){
         String name=itemName.getText();
         String money=itemMoney.getText();
@@ -120,6 +120,7 @@ public class CashBillViewController  implements Initializable {
         cashTable.setItems(cashData);
         totalsum.setText(Double.toString(totalSum));
     }
+	@FXML
     public void update(){
     	String itemmoney=a.getmoney();
     	totalSum=totalSum-Double.parseDouble(itemmoney);
@@ -136,6 +137,7 @@ public class CashBillViewController  implements Initializable {
         cashTable.setItems(cashData);
         totalsum.setText(Double.toString(totalSum));
     }
+	@FXML
     public void delete(){
     	int selectedIndex = cashTable.getSelectionModel().getSelectedIndex();
    	 if (selectedIndex >= 0) {
@@ -155,10 +157,13 @@ public class CashBillViewController  implements Initializable {
    	        alert.showAndWait();
    	    }
     }
+	@FXML
     public void showFianceMainUI(){
     	MainApp.showFianceMainUI();
     }
+	@FXML
     public void logout(){
+		MainApp.cancelUser();
     	MainApp.showLoginUI();
     }
 	private void getInf(ItemData newValue) {
@@ -166,6 +171,7 @@ public class CashBillViewController  implements Initializable {
 		item=newValue.getname()+","+newValue.getmoney()+","+newValue.getnote();
 		a=newValue;
 	}
+	@FXML
  public void rightSet(){
 	 CashBillBLService pbs=new CashBillController();
 	 CashBillVO cashbill=new CashBillVO(billid.getText() ,Long.parseLong(operator.getText()),Long.parseLong(account.getText()),items,time,0);
