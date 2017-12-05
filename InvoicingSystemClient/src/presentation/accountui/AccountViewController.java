@@ -90,6 +90,7 @@ public class AccountViewController implements Initializable {
 	public void searchAccount(){
 		String findName=search.getText();
 		AccountBLService abs=new AccountController();
+		accountData.clear();
 		if(findName.charAt(0)>='0'&&findName.charAt(0)<='9'){
 			acco=abs.findAccountByID(Long.parseLong(findName));
 			accountData.add(new AccountData(acco));
@@ -132,7 +133,6 @@ public class AccountViewController implements Initializable {
     	        accountTable.getItems().remove(selectedIndex);
     	    	AccountBLService abs=new AccountController();
     			abs.deleteAccount(acco);
-
     	    } else {
     	        // Nothing selected.
     	        Alert alert = new Alert(AlertType.WARNING);

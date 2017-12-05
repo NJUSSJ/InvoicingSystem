@@ -22,17 +22,6 @@ public class Category {
 		return null;
 	}
 	public CategoryVO toCategoryVO(CategoryPO categoryPO){
-		ArrayList<Long> subCommodityID=new ArrayList<Long>();
-		String[] tempSubCom=categoryPO.getSubCategoryID().split(" ");
-		for(int i=0;i<tempSubCom.length;i++){
-			subCommodityID.add(Long.parseLong(tempSubCom[i]));
-		}
-		ArrayList<Long> subCategoryID=new ArrayList<Long>();
-		String[] tempSubCate=categoryPO.getSubCategoryID().split(" ");
-		for(int i=0;i<tempSubCate.length;i++){
-			subCategoryID.add(Long.parseLong(tempSubCate[i]));
-		}
-		return new CategoryVO(categoryPO.getID(),categoryPO.getName(),categoryPO.getParentID(),
-				subCommodityID,subCategoryID);
+		return new CategoryVO(categoryPO.getID(),categoryPO.getName(),categoryPO.getParentID());
 	}
 }

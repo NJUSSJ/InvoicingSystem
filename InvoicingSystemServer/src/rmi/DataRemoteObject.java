@@ -17,6 +17,7 @@ import data.billdata.ReceiveBillDataImpl;
 import data.billdata.SaleBillDataImpl;
 import data.billdata.SaleReturnDataImpl;
 import data.billdata.WarningBillDataImpl;
+import data.commoditydata.CategoryDataImpl;
 import data.commoditydata.CommodityDataImpl;
 import data.logdata.LogDataImpl;
 import data.memberdata.MemberDataImpl;
@@ -36,6 +37,7 @@ import dataservice.billdataservice.ReceiveBillDataService;
 import dataservice.billdataservice.SaleBillDataService;
 import dataservice.billdataservice.SaleReturnBillDataService;
 import dataservice.billdataservice.WarningBillDataService;
+import dataservice.commoditydataservice.CategoryDataService;
 import dataservice.commoditydataservice.CommodityDataService;
 import dataservice.logdataservice.LogDataService;
 import dataservice.memberdataservice.MemberDataService;
@@ -45,6 +47,7 @@ import dataservice.promotiondataservice.PricePromotionDataService;
 import dataservice.userdataservice.UserDataService;
 import po.AccountPO;
 import po.CashBillPO;
+import po.CategoryPO;
 import po.CommodityPO;
 import po.GiftBillPO;
 import po.ImportBillPO;
@@ -71,7 +74,7 @@ import po.WarningBillPO;
 public class DataRemoteObject extends UnicastRemoteObject implements UserDataService,AccountDataService,LogDataService
 ,MemberDataService,CommodityDataService,CashBillDataService,GiftBillDataService,ImportBillDataService,ImportReturnBillDataService
 ,LossBillDataService,OverBillDataService,PayBillDataService,ReceiveBillDataService,WarningBillDataService,SaleBillDataService
-,SaleReturnBillDataService,PricePromotionDataService,PackagePromotionDataService,MemberPromotionDataService{
+,SaleReturnBillDataService,PricePromotionDataService,PackagePromotionDataService,MemberPromotionDataService,CategoryDataService{
 
 	
 	
@@ -116,6 +119,8 @@ public class DataRemoteObject extends UnicastRemoteObject implements UserDataSer
 	
 	private PackagePromotionDataService packagepromotion;
 	
+	private CategoryDataService categoryservice;
+	
 	protected DataRemoteObject() throws RemoteException {
 		userService=new UserDataImpl();
 		accountService=new AccountDataImpl();
@@ -136,6 +141,7 @@ public class DataRemoteObject extends UnicastRemoteObject implements UserDataSer
 		pricepromotionservice=new PricePromotionDataImpl();
 		memberpromotionservice=new MemberPromotionDataImpl();
 		packagepromotion=new PackagePromotionDataImpl();
+		categoryservice=new CategoryDataImpl();
 		
 	}
 	
@@ -804,13 +810,37 @@ public class DataRemoteObject extends UnicastRemoteObject implements UserDataSer
 	}
 
 	@Override
-	public ArrayList<MemberPromotionPO> findMemberPromotionsbyRank() throws RemoteException {
-		return memberpromotionservice.findMemberPromotionsbyRank();
+	public ArrayList<MemberPromotionPO> findMemberPromotionsbyRank(int rank) throws RemoteException {
+		return memberpromotionservice.findMemberPromotionsbyRank(rank);
 	}
 
-	
-	
-	
+	/*
+	 * (non-Javadoc)
+	 * @see dataservice.commoditydataservice.CategoryDataService#insert(po.CategoryPO)
+	 */
+	@Override
+	public boolean insert(CategoryPO po) throws RemoteException {
+		return categoryservice.insert(po);
+	}
+
+	@Override
+	public boolean update(CategoryPO po) throws RemoteException {
+		return categoryservice.update(po);
+	}
+
+	@Override
+	public boolean delete(CategoryPO po) throws RemoteException {
+		return categoryservice.delete(po);
+	}
+
+	@Override
+	public ArrayList<CategoryPO> findCategories() throws RemoteException {
+		return categoryservice.findCategories();
+	}
+
+	@Override
+	public ArrayList<CategoryPO> findCategorybyParent(long parentid) throws RemoteException {
+		return categoryservice.findCategorybyParent(parentid);
 	
 	
 	
