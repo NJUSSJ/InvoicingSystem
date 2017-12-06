@@ -4,17 +4,27 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="254.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
   <children>
-    <Label prefHeight="21.000099999997474" prefWidth="92.00009999999747" text="修改信息" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="198.0" AnchorPane.topAnchor="10.0" />
-    <Label layoutX="56.0" layoutY="51.0" text="ID：" AnchorPane.leftAnchor="56.0" AnchorPane.topAnchor="51.0" />
-    <Label layoutX="48.0" layoutY="79.0" text="Rank：" AnchorPane.leftAnchor="48.0" AnchorPane.topAnchor="79.0" />
-    <Label layoutX="23.0" layoutY="109.0" text="Password：" AnchorPane.leftAnchor="23.0" AnchorPane.topAnchor="109.0" />
-    <Button layoutX="175.0" layoutY="154.0" mnemonicParsing="false" text="确定" />
-    <Button layoutX="235.0" layoutY="154.0" mnemonicParsing="false" text="取消" />
-    <TextField prefWidth="181.0" AnchorPane.leftAnchor="104.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="47.0" />
-    <TextField AnchorPane.leftAnchor="104.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="75.0" />
-    <TextField prefWidth="181.0" AnchorPane.leftAnchor="104.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="105.0" />
+    <Label prefHeight="29.0" prefWidth="128.0" text="用户新增/修改" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="162.0" AnchorPane.topAnchor="10.0">
+         <font>
+            <Font name="Arial Unicode MS" size="20.0" />
+         </font></Label>
+    <Label layoutX="56.0" layoutY="59.0" text="ID：" AnchorPane.leftAnchor="56.0" AnchorPane.topAnchor="59.0" />
+    <Label layoutX="36.0" layoutY="93.0" text="Rank：" AnchorPane.leftAnchor="36.0" AnchorPane.topAnchor="93.0" />
+    <Label layoutX="14.0" layoutY="182.0" text="Password：" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="182.0" />
+    <Button layoutX="176.0" layoutY="217.0" mnemonicParsing="false" text="确定" />
+    <Button layoutX="234.0" layoutY="217.0" mnemonicParsing="false" text="取消" />
+    <TextField layoutX="85.0" layoutY="89.0" AnchorPane.leftAnchor="85.0" AnchorPane.rightAnchor="34.0" AnchorPane.topAnchor="89.0" />
+    <TextField layoutX="85.0" layoutY="178.0" prefWidth="181.0" AnchorPane.leftAnchor="85.0" AnchorPane.rightAnchor="34.0" AnchorPane.topAnchor="178.0" />
+      <Label layoutX="85.0" layoutY="58.0" text="xxx">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="31.0" layoutY="139.0" text="Name：" />
+      <TextField layoutX="85.0" layoutY="135.0" prefHeight="23.0" prefWidth="181.0" />
   </children>
 </AnchorPane>

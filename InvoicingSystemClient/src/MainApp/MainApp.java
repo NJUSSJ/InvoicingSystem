@@ -203,11 +203,11 @@ public class MainApp extends Application {
 	public static  void showUserChangeUI() {
 		try {
 			FXMLLoader loader=new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("/presentation/userui/UserChangeUI.fxml"));
+			loader.setLocation(MainApp.class.getResource("/presentation/userui/UserUI.fxml"));
 			
-			AnchorPane userChangeUI=loader.load();
+			AnchorPane userUI=loader.load();
 			
-			MainApp.rootlayout.setCenter(userChangeUI);
+			MainApp.rootlayout.setCenter(userUI);
 			
 		} catch (IOException e) {
 			// TODO: handle exception

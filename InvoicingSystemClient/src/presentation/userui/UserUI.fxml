@@ -12,8 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="20.0" layoutY="44.0" text="用户管理">
          <font>
@@ -67,7 +66,8 @@
                   <TableView layoutX="131.0" prefHeight="446.0" prefWidth="770.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
                       <TableColumn prefWidth="75.0" text="id" />
-                      <TableColumn prefWidth="75.0" text="rank" />
+                      <TableColumn prefWidth="75.0" text="name" />
+                        <TableColumn prefWidth="75.0" text="rank" />
                         <TableColumn prefWidth="75.0" text="password" />
                     </columns>
                      <columnResizePolicy>
