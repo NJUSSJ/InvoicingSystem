@@ -21,6 +21,7 @@ public interface CommodityBLService {
 	public CategoryVO findCategoryByID(long id);
 	public CommodityVO toCommodityVO(CommodityPO commodityPO);
 	public CategoryVO toCategoryVO(CategoryPO categoryPO);
-	public ArrayList<CategoryVO> findChildCategory(CategoryVO vo);
-	public ArrayList<CategoryVO> findBrotherCategory(CategoryVO vo);
+	public ArrayList<CategoryVO> findUpCategory(CategoryVO vo);
+	public ArrayList<CategoryVO> findDownCategory(CategoryVO vo);
+	public ArrayList<CommodityVO> findDownCommodity(CategoryVO vo);
 }

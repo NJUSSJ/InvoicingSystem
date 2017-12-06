@@ -90,15 +90,21 @@ public class CommodityController implements CommodityBLService{
 	}
 
 	@Override
-	public ArrayList<CategoryVO> findChildCategory(CategoryVO vo) {
+	public ArrayList<CategoryVO> findUpCategory(CategoryVO vo) {
 		// TODO 自动生成的方法存根
-		return categoryImpl.findChildCategory(vo);
+		return null;
 	}
 
 	@Override
-	public ArrayList<CategoryVO> findBrotherCategory(CategoryVO vo) {
+	public ArrayList<CategoryVO> findDownCategory(CategoryVO vo) {
 		// TODO 自动生成的方法存根
-		return categoryImpl.findBrotherCategory(vo);
+		return null;
+	}
+
+	@Override
+	public ArrayList<CommodityVO> findDownCommodity(CategoryVO vo) {
+		// TODO 自动生成的方法存根
+		return null;
 	}
 	
 }
