@@ -8,48 +8,35 @@ import po.UserPO;
 public class UserDatabaseServiceMySqlImpl_Stub implements UserDataService{
 
 	@Override
-	public UserPO find(long id) throws RemoteException {
+	public UserPO findUserbyID(long id) throws RemoteException {
 		// TODO 自动生成的方法存根
-		return new UserPO(id, null, 0, null);
+		return null;
 	}
 
 	@Override
-	public UserPO find(String name) throws RemoteException {
+	public UserPO findUserbyName(String name) throws RemoteException {
 		// TODO 自动生成的方法存根
-		return new UserPO(0, name, 0, name);
+		return null;
 	}
 
 	@Override
 	public boolean insert(UserPO po) throws RemoteException {
 		// TODO 自动生成的方法存根
-		System.out.println("insert success");
-		return true;
+		return false;
 	}
 
 	@Override
 	public boolean delete(UserPO po) throws RemoteException {
 		// TODO 自动生成的方法存根
-		System.out.println("delete success");
-		return true;
+		return false;
 	}
 
 	@Override
 	public boolean update(UserPO po) throws RemoteException {
 		// TODO 自动生成的方法存根
-		System.out.println("update success");
-		return true;
+		return false;
 	}
 
-	@Override
-	public void init() throws RemoteException {
-		// TODO 自动生成的方法存根
-		System.out.println("init success");
-	}
-
-	@Override
-	public void finish() throws RemoteException {
-		// TODO 自动生成的方法存根
-		System.out.println("finish success");
-	}
+	
 
 }

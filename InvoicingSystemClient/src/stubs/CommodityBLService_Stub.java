@@ -88,5 +88,17 @@ public class CommodityBLService_Stub implements CommodityBLService{
 		// TODO 自动生成的方法存根
 		return null;
 	}
+
+	@Override
+	public ArrayList<CategoryVO> findChildCategory(CategoryVO vo) {
+		// TODO 自动生成的方法存根
+		return null;
+	}
+
+	@Override
+	public ArrayList<CategoryVO> findBrotherCategory(CategoryVO vo) {
+		// TODO 自动生成的方法存根
+		return null;
+	}
 	
 }

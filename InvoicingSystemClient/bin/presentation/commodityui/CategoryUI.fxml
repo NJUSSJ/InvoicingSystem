@@ -60,7 +60,7 @@
             <Font size="13.0" />
          </font>
       </Button>
-      <Button layoutX="773.0" layoutY="300.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="161.0" text="返     回">
+      <Button layoutX="773.0" layoutY="385.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="161.0" text="返     回">
          <font>
             <Font size="13.0" />
          </font>
@@ -73,5 +73,15 @@
       <Label layoutX="64.0" layoutY="155.0" text="查询：" />
       <TextField layoutX="114.0" layoutY="151.0" />
       <Button layoutX="653.0" layoutY="151.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="69.0" text="确   认" />
+      <Button layoutX="773.0" layoutY="343.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="161.0" text="进入子分类">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="773.0" layoutY="300.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="161.0" text="返回父分类">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
