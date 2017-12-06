@@ -88,5 +88,17 @@ public class CommodityController implements CommodityBLService{
 		// TODO 自动生成的方法存根
 		return categoryImpl.toCategoryVO(categoryPO);
 	}
+
+	@Override
+	public ArrayList<CategoryVO> findChildCategory(CategoryVO vo) {
+		// TODO 自动生成的方法存根
+		return categoryImpl.findChildCategory(vo);
+	}
+
+	@Override
+	public ArrayList<CategoryVO> findBrotherCategory(CategoryVO vo) {
+		// TODO 自动生成的方法存根
+		return categoryImpl.findBrotherCategory(vo);
+	}
 	
 }

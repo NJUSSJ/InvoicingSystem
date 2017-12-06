@@ -1,45 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.mainui.AdministerMainViewController">
   <children>
     <Label layoutX="1.0" layoutY="38.0" prefHeight="105.0" prefWidth="391.0" text="管理员主界面">
       <font>
         <Font size="65.0" />
       </font>
     </Label>
-    <Label layoutX="825.0" layoutY="22.0" text="ID：xxx">
+    <Label fx:id="id" layoutX="825.0" layoutY="22.0" text="ID：xxx">
       <font>
         <Font size="14.0" fx:id="x1" />
       </font>
     </Label>
-    <Label font="$x1" layoutX="890.0" layoutY="22.0" text="||  登录" />
+    <Label fx:id="logout" font="$x1" layoutX="890.0" layoutY="22.0" onMouseClicked="#showLoginUI" text="||  登录" />
     <Separator prefHeight="3.0" prefWidth="1000.0" AnchorPane.leftAnchor="-6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="131.0" />
     <Label layoutX="154.0" layoutY="434.0" text="用户管理" />
     <Label layoutX="446.0" layoutY="434.0" text="日记查看" />
     <Label layoutX="782.0" layoutY="434.0" text="邮箱" />
-    <ImageView fitHeight="185.0" fitWidth="192.0" layoutX="96.0" layoutY="194.0">
+    <ImageView fx:id="userChange" fitHeight="185.0" fitWidth="192.0" layoutX="96.0" layoutY="194.0" onMouseClicked="#showuserChangeUI">
       <image>
         <Image url="@../../../resources/user_setting_512px_1174239_easyicon.net.png" />
       </image>
     </ImageView>
-    <ImageView fitHeight="185.0" fitWidth="192.0" layoutX="412.0" layoutY="194.0">
+    <ImageView fx:id="log" fitHeight="185.0" fitWidth="192.0" layoutX="412.0" layoutY="194.0" onMouseClicked="#showlogUI">
       <image>
         <Image url="@../../../resources/diary_350px_1146911_easyicon.net.png" />
       </image>
     </ImageView>
-    <ImageView fitHeight="185.0" fitWidth="200.0" layoutX="706.0" layoutY="214.0">
+    <ImageView fx:id="email" fitHeight="185.0" fitWidth="200.0" layoutX="706.0" layoutY="214.0" onMouseClicked="#showEmailUI">
       <image>
         <Image url="@../../../resources/Mail_Search_512px_1178165_easyicon.net.png" />
       </image>

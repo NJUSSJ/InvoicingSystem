@@ -577,6 +577,22 @@ public class MainApp extends Application {
 		new ClientRunner();
 		launch(args);
 	}
+	/*
+	 * 显示指定现金费用单
+	 */
+	public static void showcashBill() {
+		// TODO Auto-generated method stub
+		try {
+			FXMLLoader loader=new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/presentation/billui/CashBillUI.fxml"));
+			AnchorPane cashBillUI;
+			cashBillUI = loader.load();
+			MainApp.rootlayout.setCenter(cashBillUI);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 
 }

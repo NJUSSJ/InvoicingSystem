@@ -22,7 +22,10 @@ public class CategoryVO {
 	public long getParentID(){
 		return parentid;
 	}
-	public void setParentID(long id){
+	public long getID(){
+		return id;
+	}
+	public void setParentID(long parentid){
 		this.parentid=parentid;
 	}
 	public void setName(String name){

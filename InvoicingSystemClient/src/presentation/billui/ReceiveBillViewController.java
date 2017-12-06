@@ -63,8 +63,6 @@ public class ReceiveBillViewController  implements Initializable{
 	@FXML
 	private Button addB;
 	
-	@FXML
-	private Button reviseB;
 	
 	@FXML
 	private Button updateB;
@@ -106,7 +104,7 @@ public class ReceiveBillViewController  implements Initializable{
 		noteColoumn.setCellValueFactory(cellData ->cellData.getValue().getRemark());
          times++;
 	}
-
+	@FXML
     public void add(){
         long name=Long.parseLong(itemName.getText());
         double money=Double.parseDouble(itemMoney.getText());
@@ -118,6 +116,7 @@ public class ReceiveBillViewController  implements Initializable{
         receiveTable.setItems(receiveData);
         totalsum.setText(Double.toString(aclist.getSum()));
     }
+	@FXML
     public void update(){
     	aclist.removeAccount(ali);
     	receiveData.remove(alid);
@@ -133,6 +132,7 @@ public class ReceiveBillViewController  implements Initializable{
         receiveTable.setItems(receiveData);
         totalsum.setText(Double.toString(aclist.getSum()));
     }
+	@FXML
     public void delete(){
     	int selectedIndex = receiveTable.getSelectionModel().getSelectedIndex();
    	 if (selectedIndex >= 0) {
@@ -151,10 +151,13 @@ public class ReceiveBillViewController  implements Initializable{
    	        alert.showAndWait();
    	    }
     }
+	@FXML
     public void showFianceMainUI(){
     	MainApp.showFianceMainUI();
     }
+	@FXML
     public void logout(){
+		MainApp.cancelUser();
     	MainApp.showLoginUI();
     }
 	private void getInf(AccountLineItemData newValue) {
@@ -162,6 +165,7 @@ public class ReceiveBillViewController  implements Initializable{
 		ali=newValue.getVO();
 		alid=newValue;
 	}
+	@FXML
  public void rightSet(){
 	 ReceiveBillBLService pbs=new ReceiveBillController();
 	 ReceiveBillVO receivebill=new ReceiveBillVO(billid.getText() ,Long.parseLong(operator.getText()),Long.parseLong(account.getText()),aclist,aclist.getSum(),time,0);

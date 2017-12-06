@@ -73,9 +73,6 @@ public class PayBillViewController  implements Initializable{
 	private Button addB;
 	
 	@FXML
-	private Button reviseB;
-	
-	@FXML
 	private Button updateB;
 	
 	@FXML
@@ -115,7 +112,7 @@ public class PayBillViewController  implements Initializable{
 		noteColoumn.setCellValueFactory(cellData ->cellData.getValue().getRemark());
          times++;
 	}
-
+	@FXML
     public void add(){
         long name=Long.parseLong(itemName.getText());
         double money=Double.parseDouble(itemMoney.getText());
@@ -127,6 +124,7 @@ public class PayBillViewController  implements Initializable{
         payTable.setItems(payData);
         totalsum.setText(Double.toString(aclist.getSum()));
     }
+	@FXML
     public void update(){
     	aclist.removeAccount(ali);
     	payData.remove(alid);
@@ -142,6 +140,7 @@ public class PayBillViewController  implements Initializable{
         payTable.setItems(payData);
         totalsum.setText(Double.toString(aclist.getSum()));
     }
+	@FXML
     public void delete(){
     	int selectedIndex = payTable.getSelectionModel().getSelectedIndex();
    	 if (selectedIndex >= 0) {
@@ -160,10 +159,13 @@ public class PayBillViewController  implements Initializable{
    	        alert.showAndWait();
    	    }
     }
+	@FXML
     public void showFianceMainUI(){
     	MainApp.showFianceMainUI();
     }
+	@FXML
     public void logout(){
+		MainApp.cancelUser();
     	MainApp.showLoginUI();
     }
 	private void getInf(AccountLineItemData newValue) {
@@ -171,6 +173,7 @@ public class PayBillViewController  implements Initializable{
 		ali=newValue.getVO();
 		alid=newValue;
 	}
+	@FXML
  public void rightSet(){
 	 PayBillBLService pbs=new PayBillController();
 	 PayBillVO paybill=new PayBillVO(billid.getText() ,Long.parseLong(operator.getText()),Long.parseLong(account.getText()),aclist,aclist.getSum(),time,0);
