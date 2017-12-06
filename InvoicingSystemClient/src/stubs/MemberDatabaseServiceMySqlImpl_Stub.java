@@ -7,34 +7,41 @@ import dataservice.memberdataservice.MemberDataService;
 import po.MemberPO;
 
 public class MemberDatabaseServiceMySqlImpl_Stub implements MemberDataService{
-	public MemberPO find(String name) throws RemoteException{
-		System.out.println("Find succeed!");
-		MemberPO mp=new MemberPO(0, 0, 0, 0, name, 0, name, name, 0, 0, 0, 0);
-		return mp;
+
+	@Override
+	public MemberPO findMemberbyName(String name) throws RemoteException {
+		// TODO 自动生成的方法存根
+		return null;
 	}
-	public boolean insert(MemberPO po) throws RemoteException{
-		return true;
-	}
-	public boolean delete(MemberPO po) throws RemoteException{
-		return true;
-	}
-	public boolean update(MemberPO po) throws RemoteException{
-		return true;
-	}
-	public void init() throws RemoteException{
-		System.out.println("Init succeed!");
-	}
-	public void finish() throws RemoteException{
-		System.out.println("Finish succeed!");
-	}
+
 	@Override
 	public ArrayList<MemberPO> findMembers() throws RemoteException {
-		// TODO Auto-generated method stub
+		// TODO 自动生成的方法存根
 		return null;
 	}
+
 	@Override
-	public ArrayList<MemberPO> fings(String field) throws RemoteException {
-		// TODO Auto-generated method stub
+	public ArrayList<MemberPO> findMembersbyField(String field) throws RemoteException {
+		// TODO 自动生成的方法存根
 		return null;
 	}
+
+	@Override
+	public boolean insert(MemberPO po) throws RemoteException {
+		// TODO 自动生成的方法存根
+		return false;
+	}
+
+	@Override
+	public boolean delete(MemberPO po) throws RemoteException {
+		// TODO 自动生成的方法存根
+		return false;
+	}
+
+	@Override
+	public boolean update(MemberPO po) throws RemoteException {
+		// TODO 自动生成的方法存根
+		return false;
+	}
+
 }

@@ -60,7 +60,11 @@
             <Font size="13.0" />
          </font>
       </Button>
+<<<<<<< HEAD
+      <Button layoutX="773.0" layoutY="385.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="161.0" text="返     回">
+=======
       <Button layoutX="773.0" layoutY="428.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="161.0" text="返     回">
+>>>>>>> c9801336fc65686636c89544e8ec2693aa12063c
          <font>
             <Font size="13.0" />
          </font>
@@ -83,10 +87,13 @@
             <Font size="13.0" />
          </font>
       </Button>
+<<<<<<< HEAD
+=======
       <Button layoutX="773.0" layoutY="386.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="161.0" text="进入商品管理界面">
          <font>
             <Font size="13.0" />
          </font>
       </Button>
+>>>>>>> c9801336fc65686636c89544e8ec2693aa12063c
    </children>
 </AnchorPane>
