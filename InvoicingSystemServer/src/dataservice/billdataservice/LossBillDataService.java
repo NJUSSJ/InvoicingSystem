@@ -1,12 +1,13 @@
 package dataservice.billdataservice;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.sql.Date;
 import java.util.ArrayList;
 
 import po.LossBillPO;
 
-public interface LossBillDataService {
+public interface LossBillDataService extends Remote{
 	public boolean insert(LossBillPO po) throws RemoteException;
 	public boolean delete(LossBillPO po) throws RemoteException;
 	public boolean update(LossBillPO po) throws RemoteException;

@@ -842,6 +842,6 @@ public class DataRemoteObject extends UnicastRemoteObject implements UserDataSer
 	public ArrayList<CategoryPO> findCategorybyParent(long parentid) throws RemoteException {
 		return categoryservice.findCategorybyParent(parentid);
 	
-	
+	}
 	
 }

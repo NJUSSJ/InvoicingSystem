@@ -1,12 +1,13 @@
 package dataservice.memberdataservice;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 
 import po.MemberPO;
 
-public interface MemberDataService {
+public interface MemberDataService extends Remote{
 
 	public MemberPO findMemberbyName(String name) throws RemoteException;
 	public ArrayList<MemberPO> findMembers() throws RemoteException;

@@ -1,12 +1,13 @@
 package dataservice.billdataservice;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.sql.Date;
 import java.util.ArrayList;
 
 import po.SaleReturnBillPO;
 
-public interface SaleReturnBillDataService {
+public interface SaleReturnBillDataService extends Remote {
 	public boolean insert(SaleReturnBillPO po) throws RemoteException;
 	public boolean delete(SaleReturnBillPO po) throws RemoteException;
 	public boolean update(SaleReturnBillPO po) throws RemoteException;

@@ -6,8 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.mysql.fabric.xmlrpc.base.Data;
-
 import data.datafactory.DataFactory;
 import dataservice.logdataservice.LogDataService;
 import po.LogPO;

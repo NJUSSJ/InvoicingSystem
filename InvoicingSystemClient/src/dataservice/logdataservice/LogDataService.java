@@ -1,11 +1,12 @@
 package dataservice.logdataservice;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.sql.Date;
 import java.util.ArrayList;
 import po.LogPO;
 
-public interface LogDataService {
+public interface LogDataService extends Remote {
 	public boolean insert(LogPO po) throws RemoteException;
 	public ArrayList<LogPO> findLogs() throws RemoteException;
 	public ArrayList<LogPO> findLogbyOperator(long operatorID) throws RemoteException;

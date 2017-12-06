@@ -1,5 +1,6 @@
 package dataservice.accountdataservice;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -7,7 +8,7 @@ import po.AccountPO;
 
 
 
-public interface AccountDataService {
+public interface AccountDataService extends Remote {
 	public AccountPO findAccountbyID(long id) throws RemoteException;
 	public ArrayList<AccountPO> findAccounts() throws RemoteException;
 	public boolean insert(AccountPO po) throws RemoteException;

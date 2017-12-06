@@ -56,7 +56,6 @@ public class CashBillDataImpl implements CashBillDataService{
 	 */
 	@Override
 	public boolean update(CashBillPO po) throws RemoteException {
-		String sql="update cashbills set state='"+po.getState()+"'";
 		return false;
 	}
 

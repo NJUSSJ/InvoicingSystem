@@ -1,12 +1,13 @@
 package dataservice.billdataservice;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.sql.Date;
 import java.util.ArrayList;
 
 import po.WarningBillPO;
 
-public interface WarningBillDataService {
+public interface WarningBillDataService extends Remote{
 	public boolean insert(WarningBillPO po) throws RemoteException;
 	public boolean delete(WarningBillPO po) throws RemoteException;
 	public boolean update(WarningBillPO po) throws RemoteException;
