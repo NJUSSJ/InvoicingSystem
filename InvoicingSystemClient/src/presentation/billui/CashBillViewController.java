@@ -105,7 +105,6 @@ public class CashBillViewController  implements Initializable {
 		nameColoumn.setCellValueFactory(cellData ->cellData.getValue().getName());
 		amountColoumn.setCellValueFactory(cellData ->cellData.getValue().getMoney());
 		noteColoumn.setCellValueFactory(cellData ->cellData.getValue().getNote());
-         times++;
 	}
 	@FXML
     public void add(){
@@ -173,6 +172,7 @@ public class CashBillViewController  implements Initializable {
 	}
 	@FXML
  public void rightSet(){
+	times++;
 	 CashBillBLService pbs=new CashBillController();
 	 CashBillVO cashbill=new CashBillVO(billid.getText() ,Long.parseLong(operator.getText()),Long.parseLong(account.getText()),items,time,0);
 	 String isSubmit="fail Submit";
