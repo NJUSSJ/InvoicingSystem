@@ -848,5 +848,11 @@ public class DataRemoteObject extends UnicastRemoteObject implements UserDataSer
 	public CategoryPO findCategorybyID(long id) throws RemoteException {
 		return categoryservice.findCategorybyID(id);
 	}
+
+	@Override
+	public ArrayList<CommodityPO> findCommoditiesbyParent(long parentid) throws RemoteException {
+		// TODO 自动生成的方法存根
+		return null;
+	}
 	
 }

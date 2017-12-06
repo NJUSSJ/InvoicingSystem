@@ -159,4 +159,10 @@ public class CommodityDataImpl implements CommodityDataService{
 		return null;
 	}
 
+	@Override
+	public ArrayList<CommodityPO> findCommoditiesbyParent(long parentid) throws RemoteException {
+		// TODO 自动生成的方法存根
+		return null;
+	}
+
 }
