@@ -12,4 +12,5 @@ public interface CategoryDataService extends Remote{
 	public boolean delete(CategoryPO po) throws RemoteException;
 	public ArrayList<CategoryPO> findCategories() throws RemoteException;
 	public ArrayList<CategoryPO> findCategorybyParent(long parentid) throws RemoteException;
+	public CategoryPO findCategorybyID(long id) throws RemoteException;
 }

@@ -843,5 +843,10 @@ public class DataRemoteObject extends UnicastRemoteObject implements UserDataSer
 		return categoryservice.findCategorybyParent(parentid);
 	
 	}
+
+	@Override
+	public CategoryPO findCategorybyID(long id) throws RemoteException {
+		return categoryservice.findCategorybyID(id);
+	}
 	
 }

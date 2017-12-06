@@ -122,5 +122,27 @@ public class CategoryDataImpl implements CategoryDataService{
 		return null;
 		
 	}
+
+	@Override
+	public CategoryPO findCategorybyID(long id) throws RemoteException {
+		String sql="select * from categories where id='"+id+"'";
+		
+		ArrayList<CategoryPO> results;
+		
+		try {
+			ResultSet result=DataFactory.statement.executeQuery(sql);
+			
+			while(result.next()) {
+				long parentid=result.getLong("parentid");
+				String name=result.getString("name");
+				CategoryPO tmpPO=new CategoryPO(id, name, parentid);
+				
+				return tmpPO;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
 }
