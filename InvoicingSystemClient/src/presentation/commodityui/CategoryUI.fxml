@@ -60,7 +60,7 @@
             <Font size="13.0" />
          </font>
       </Button>
-      <Button layoutX="773.0" layoutY="385.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="161.0" text="返     回">
+      <Button layoutX="773.0" layoutY="428.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="161.0" text="返     回">
          <font>
             <Font size="13.0" />
          </font>
@@ -79,6 +79,11 @@
          </font>
       </Button>
       <Button layoutX="773.0" layoutY="300.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="161.0" text="返回父分类">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="773.0" layoutY="386.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="161.0" text="进入商品管理界面">
          <font>
             <Font size="13.0" />
          </font>

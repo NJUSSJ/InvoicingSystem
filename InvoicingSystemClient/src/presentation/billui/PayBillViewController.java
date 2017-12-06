@@ -110,7 +110,6 @@ public class PayBillViewController  implements Initializable{
 		nameColoumn.setCellValueFactory(cellData ->cellData.getValue().getName());
 		amountColoumn.setCellValueFactory(cellData ->cellData.getValue().getMoney());
 		noteColoumn.setCellValueFactory(cellData ->cellData.getValue().getRemark());
-         times++;
 	}
 	@FXML
     public void add(){
@@ -175,6 +174,7 @@ public class PayBillViewController  implements Initializable{
 	}
 	@FXML
  public void rightSet(){
+	 times++;
 	 PayBillBLService pbs=new PayBillController();
 	 PayBillVO paybill=new PayBillVO(billid.getText() ,Long.parseLong(operator.getText()),Long.parseLong(account.getText()),aclist,aclist.getSum(),time,0);
 	 String isSubmit="fail Submit";

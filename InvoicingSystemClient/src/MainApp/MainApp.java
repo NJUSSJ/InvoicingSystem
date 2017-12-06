@@ -32,6 +32,8 @@ public class MainApp extends Application {
 	
 	private static UserVO tempUser;
 	
+	private static long categoryid=0;
+	
 	@Override
 	public void start(Stage primarystage) throws Exception {
 		// TODO Auto-generated method stub
