@@ -17,6 +17,7 @@ import dataservice.billdataservice.ReceiveBillDataService;
 import dataservice.billdataservice.SaleBillDataService;
 import dataservice.billdataservice.SaleReturnBillDataService;
 import dataservice.billdataservice.WarningBillDataService;
+import dataservice.commoditydataservice.CategoryDataService;
 import dataservice.commoditydataservice.CommodityDataService;
 import dataservice.logdataservice.LogDataService;
 import dataservice.memberdataservice.MemberDataService;
@@ -58,6 +59,9 @@ public class RemoteHelper {
 	}
 	public CommodityDataService getCommodityDataService(){
 		return (CommodityDataService)remote;
+	}
+	public CategoryDataService getCategoryDataService(){
+		return (CategoryDataService)remote;
 	}
 	public MemberPromotionDataService getMemberPromotionDataService(){
 		return (MemberPromotionDataService)remote;
