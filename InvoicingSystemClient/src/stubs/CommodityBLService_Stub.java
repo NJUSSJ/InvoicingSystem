@@ -89,15 +89,30 @@ public class CommodityBLService_Stub implements CommodityBLService{
 		return null;
 	}
 
+	
 	@Override
 	public ArrayList<CategoryVO> findUpCategory(CategoryVO vo) {
+<<<<<<< HEAD
+		// TODO Auto-generated method stub
+=======
 		// TODO 自动生成的方法存根
+>>>>>>> ddec58460cd9051688106ac1485cb6e080a1ed55
 		return null;
 	}
 
 	@Override
 	public ArrayList<CategoryVO> findDownCategory(CategoryVO vo) {
+<<<<<<< HEAD
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<CommodityVO> findDownCommodity(CategoryVO vo) {
+		// TODO Auto-generated method stub
+=======
 		// TODO 自动生成的方法存根
+>>>>>>> ddec58460cd9051688106ac1485cb6e080a1ed55
 		return null;
 	}
 

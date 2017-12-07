@@ -26,6 +26,8 @@ public class UserChangeViewController {
 	UserBLService ubs=new UserController();
 	
 	UserVO user;
+	
+	static long times=0;
 	@FXML
 	private Button cancelB;
     Stage stage;
@@ -52,11 +54,11 @@ public class UserChangeViewController {
 			user=new UserVO(Long.parseLong(a),b,Integer.parseInt(c),d);
 			ubs.addUser(user);
 		}else{
-			String a=id.getText();
+			times++;
 			String b=name.getText();
 			String c=rank.getText();
 			String d=password.getText();
-			user=new UserVO(Long.parseLong(a),b,Integer.parseInt(c),d);
+			user=new UserVO(times,b,Integer.parseInt(c),d);
 			ubs.updateUser(user);
 		}
 	}

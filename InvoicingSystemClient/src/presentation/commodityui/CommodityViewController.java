@@ -1,6 +1,7 @@
 package presentation.commodityui;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import MainApp.MainApp;
@@ -13,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import vo.CommodityVO;
 
 public class CommodityViewController implements Initializable{
@@ -38,6 +40,8 @@ public class CommodityViewController implements Initializable{
 	
 	@FXML
 	private TextField search;
+	
+	Stage stage;
 	
 private ObservableList<CommodityData> categoryData =FXCollections.observableArrayList();
 	
@@ -112,5 +116,17 @@ private ObservableList<CommodityData> categoryData =FXCollections.observableArra
 	private void getInf(CommodityData newValue) {
 		// TODO Auto-generated method stub
 		a=newValue.getVO();
+	}
+	public void setStage(Stage commodityStage) {
+		// TODO Auto-generated method stub
+		stage=commodityStage;
+	}
+	public void setCommoditys(ArrayList<CommodityVO> colist) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void setparent(long id2) {
+		// TODO Auto-generated method stub
+		
 	}
 }
