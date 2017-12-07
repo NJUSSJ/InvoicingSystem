@@ -56,14 +56,5 @@ public class CommodityDatabaseServiceMySqlImpl_Stub implements CommodityDataServ
 		return false;
 	}
 
-<<<<<<< HEAD
-	@Override
-	public ArrayList<CommodityPO> findCommoditiesbyParent(long parentid) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-=======
->>>>>>> ddec58460cd9051688106ac1485cb6e080a1ed55
 	
 }
