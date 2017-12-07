@@ -127,7 +127,6 @@ public class CategoryDataImpl implements CategoryDataService{
 	public CategoryPO findCategorybyID(long id) throws RemoteException {
 		String sql="select * from categories where id='"+id+"'";
 		
-		ArrayList<CategoryPO> results;
 		
 		try {
 			ResultSet result=DataFactory.statement.executeQuery(sql);

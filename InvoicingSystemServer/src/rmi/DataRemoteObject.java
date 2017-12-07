@@ -851,8 +851,7 @@ public class DataRemoteObject extends UnicastRemoteObject implements UserDataSer
 
 	@Override
 	public ArrayList<CommodityPO> findCommoditiesbyParent(long parentid) throws RemoteException {
-		// TODO 自动生成的方法存根
-		return null;
+		return commodityService.findCommoditiesbyParent(parentid);
 	}
 	
 }

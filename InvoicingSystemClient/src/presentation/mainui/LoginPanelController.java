@@ -80,8 +80,9 @@ public class LoginPanelController implements Initializable {
 	
 	@FXML
 	public void Login() {
-		MainApp.setUser(user);
+		
 		if(certifyUser()) {
+			MainApp.setUser(user);
 			//判断用户身份
 			switch (user.getRank()) {
 			case 1:

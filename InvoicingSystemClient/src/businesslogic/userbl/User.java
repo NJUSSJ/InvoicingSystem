@@ -38,6 +38,10 @@ public class User {
 	
 	public UserVO findUserbyName(String name) {
 		try {
+			UserPO tmpPO=RemoteHelper.getInstance().getUserDataService().findUserbyName(name);
+			if(tmpPO==null) {
+				return null;
+			}
 			return toUserVO(RemoteHelper.getInstance().getUserDataService().findUserbyName(name));
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
@@ -7,83 +9,73 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Label layoutX="814.0" layoutY="11.0" text="ID:XXX">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label layoutX="881.0" layoutY="10.0" text="|| 登录">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Separator layoutY="145.0" prefHeight="1.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="145.0" />
-      <Label layoutX="14.0" layoutY="61.0" text="库存查看">
-         <font>
-            <Font size="65.0" />
-         </font>
-      </Label>
-      <ScrollPane layoutY="185.0" prefHeight="417.0" prefWidth="827.0">
-         <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="470.0" prefWidth="899.0">
-               <children>
-                  <TableView layoutY="2.0" prefHeight="395.0" prefWidth="969.0">
-                     <columns>
-                        <TableColumn prefWidth="110.0" text="编号" />
-                        <TableColumn prefWidth="110.0" text="名称" />
-                        <TableColumn text="型号" />
-                        <TableColumn prefWidth="75.0" text="出库数量" />
-                        <TableColumn prefWidth="75.0" text="入库数量" />
-                        <TableColumn prefWidth="75.0" text="出库金额" />
-                        <TableColumn prefWidth="75.0" text="入库金额" />
-                        <TableColumn prefWidth="75.0" text="销售数量" />
-                        <TableColumn prefWidth="75.0" text="进货数量" />
-                        <TableColumn prefWidth="75.0" text="销售金额" />
-                        <TableColumn prefWidth="75.0" text="进货金额" />
-                     </columns>
-                  </TableView>
-               </children>
-            </AnchorPane>
-         </content>
-      </ScrollPane>
-      <Separator layoutX="823.0" layoutY="148.0" orientation="VERTICAL" prefHeight="459.0" prefWidth="6.0" />
-      <Button layoutX="849.6" layoutY="168.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="130.0" text="修    改" AnchorPane.rightAnchor="20.0">
-         <font>
-            <Font size="13.0" />
-         </font>
-      </Button>
-      <Button layoutX="849.6" layoutY="212.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="130.0" text="返    回" AnchorPane.rightAnchor="20.0">
-         <font>
-            <Font size="13.0" />
-         </font>
-      </Button>
-      <Label layoutX="7.0" layoutY="155.0" text="时间区间：">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Button layoutX="656.0" layoutY="154.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="70.0" text="确  认" />
-      <Label layoutX="160.0" layoutY="157.0" text="年" />
-      <ChoiceBox layoutX="79.0" layoutY="154.0" prefHeight="23.0" prefWidth="75.0" />
-      <ChoiceBox layoutX="179.0" layoutY="154.0" prefHeight="23.0" prefWidth="50.0" />
-      <Label layoutX="237.0" layoutY="157.0" text="月" />
-      <ChoiceBox layoutX="256.0" layoutY="154.0" prefHeight="23.0" prefWidth="50.0" />
-      <Label layoutX="314.0" layoutY="158.0" text="日" />
-      <ChoiceBox layoutX="363.0" layoutY="154.0" prefHeight="23.0" prefWidth="75.0" />
-      <ChoiceBox layoutX="465.0" layoutY="154.0" prefHeight="23.0" prefWidth="50.0" />
-      <ChoiceBox layoutX="543.0" layoutY="154.0" prefHeight="23.0" prefWidth="50.0" />
-      <Label layoutX="446.0" layoutY="157.0" text="年" />
-      <Label layoutX="524.0" layoutY="157.0" text="月" />
-      <Label layoutX="602.0" layoutY="157.0" text="日" />
-      <Label layoutX="337.0" layoutY="152.0" text="~">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.commodityui.StockCheckViewController">
+  <children>
+    <Label layoutX="814.0" layoutY="11.0" text="ID:XXX">
+      <font>
+        <Font size="14.0" fx:id="x1" />
+      </font>
+    </Label>
+    <Label font="$x1" layoutX="881.0" layoutY="10.0" text="|| 登录" />
+    <Separator prefHeight="1.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="145.0" />
+    <Label layoutX="14.0" layoutY="61.0" text="库存查看">
+      <font>
+        <Font size="65.0" />
+      </font>
+    </Label>
+    <ScrollPane layoutY="185.0" prefHeight="417.0" prefWidth="827.0">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="470.0" prefWidth="899.0">
+          <children>
+            <TableView layoutY="2.0" prefHeight="395.0" prefWidth="969.0">
+              <columns>
+                <TableColumn prefWidth="110.0" text="编号" />
+                <TableColumn prefWidth="110.0" text="名称" />
+                <TableColumn text="型号" />
+                <TableColumn prefWidth="75.0" text="出库数量" />
+                <TableColumn prefWidth="75.0" text="入库数量" />
+                <TableColumn prefWidth="75.0" text="出库金额" />
+                <TableColumn prefWidth="75.0" text="入库金额" />
+                <TableColumn prefWidth="75.0" text="销售数量" />
+                <TableColumn prefWidth="75.0" text="进货数量" />
+                <TableColumn prefWidth="75.0" text="销售金额" />
+                <TableColumn prefWidth="75.0" text="进货金额" />
+              </columns>
+            </TableView>
+          </children>
+        </AnchorPane>
+      </content>
+    </ScrollPane>
+    <Separator layoutX="823.0" layoutY="148.0" orientation="VERTICAL" prefHeight="459.0" prefWidth="6.0" />
+    <Button layoutY="168.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="130.0" text="修    改" AnchorPane.rightAnchor="20.0">
+      <font>
+        <Font size="13.0" fx:id="x2" />
+      </font>
+    </Button>
+    <Button font="$x2" layoutY="212.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="130.0" text="返    回" AnchorPane.rightAnchor="20.0" />
+    <Label font="$x1" layoutX="7.0" layoutY="155.0" text="时间区间：" />
+    <Button layoutX="656.0" layoutY="154.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="70.0" text="确  认" />
+    <Label layoutX="160.0" layoutY="157.0" text="年" />
+    <ChoiceBox id="startDay" fx:id="startYear" layoutX="79.0" layoutY="154.0" prefHeight="23.0" prefWidth="75.0" />
+    <ChoiceBox layoutX="179.0" layoutY="154.0" prefHeight="23.0" prefWidth="50.0" />
+    <Label layoutX="237.0" layoutY="157.0" text="月" />
+    <ChoiceBox layoutX="256.0" layoutY="154.0" prefHeight="23.0" prefWidth="50.0" />
+    <Label layoutX="314.0" layoutY="158.0" text="日" />
+    <ChoiceBox layoutX="363.0" layoutY="154.0" prefHeight="23.0" prefWidth="75.0" />
+    <ChoiceBox layoutX="465.0" layoutY="154.0" prefHeight="23.0" prefWidth="50.0" />
+    <ChoiceBox layoutX="543.0" layoutY="154.0" prefHeight="23.0" prefWidth="50.0" />
+    <Label layoutX="446.0" layoutY="157.0" text="年" />
+    <Label layoutX="524.0" layoutY="157.0" text="月" />
+    <Label layoutX="602.0" layoutY="157.0" text="日" />
+    <Label layoutX="337.0" layoutY="152.0" text="~">
+      <font>
+        <Font size="20.0" />
+      </font>
+    </Label>
+  </children>
 </AnchorPane>

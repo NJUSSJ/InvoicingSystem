@@ -1,4 +1,4 @@
-package MainApp;
+ package MainApp;
 
 import java.io.IOException;
 
@@ -57,7 +57,7 @@ public class MainApp extends Application {
 			primarystage.setScene(scene);
 			primarystage.show();
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	
@@ -142,7 +142,7 @@ public class MainApp extends Application {
 			MainApp.rootlayout.setCenter(stockMainUI);
 		
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	
@@ -502,7 +502,7 @@ public class MainApp extends Application {
 			MainApp.rootlayout.setCenter(stockCheckUI);
 			
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	
