@@ -45,4 +45,10 @@ public class PayBillController implements PayBillBLService{
 		return payBillImpl.findPayBillByTime(time);
 	}
 
+	@Override
+	public ArrayList<PayBillVO> findPayBills() {
+		// TODO 自动生成的方法存根
+		return null;
+	}
+
 }

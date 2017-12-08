@@ -46,4 +46,10 @@ public class WarningBillController implements WarningBillBLService{
 		return warningBillController.findWarningBillByTime(time);
 	}
 
+	@Override
+	public ArrayList<WarningBillVO> findWarningBills() {
+		// TODO 自动生成的方法存根
+		return null;
+	}
+
 }

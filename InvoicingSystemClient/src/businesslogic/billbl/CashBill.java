@@ -74,6 +74,20 @@ public class CashBill{
 		return temp;
 		
 	}
+	public ArrayList<CashBillVO> findCashBills(){
+		ArrayList<CashBillVO> temp=null;
+		try {
+			temp=new ArrayList<CashBillVO>();
+			ArrayList<CashBillPO> cashbills=RemoteHelper.getInstance().getCashBillDataService().findCashBills();
+			for(int i=0;i<cashbills.size();i++){
+				temp.add(toCashBillVO(cashbills.get(i)));
+			}
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return temp;
+	}
 
 	
 	

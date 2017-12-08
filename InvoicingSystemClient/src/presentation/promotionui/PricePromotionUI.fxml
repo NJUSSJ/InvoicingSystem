@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+  <!-- TODO Add Nodes -->
+  <children>
+    <TableView prefHeight="307.0" prefWidth="451.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0">
+      <columns>
+        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="106.0" text="价格" />
+        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="107.0" text="折扣" />
+        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="107.0" text="代金券金额" />
+        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="129.0" text="赠品信息" />
+      </columns>
+    </TableView>
+    <Button layoutX="501.0" layoutY="103.0" mnemonicParsing="false" text="增加" />
+    <Button layoutX="501.0" layoutY="131.0" mnemonicParsing="false" text="删除" />
+    <Button layoutX="501.0" layoutY="160.0" mnemonicParsing="false" text="返回" />
+    <Label layoutX="466.0" layoutY="14.0" text="Label" />
+    <Label layoutX="514.0" layoutY="14.0" text="Label" />
+  </children>
+</AnchorPane>

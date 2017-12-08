@@ -12,4 +12,5 @@ public interface CashBillBLService {
 	public boolean checkCashBill(boolean pass,long id);
 	public boolean deleteCashBill(CashBillVO cashbill);
 	public ArrayList<CashBillVO> findCashBillByTime(Date time);
+	public ArrayList<CashBillVO> findCashBills();
 }

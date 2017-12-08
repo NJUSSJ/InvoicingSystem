@@ -13,4 +13,5 @@ public interface OverBillBLService {
 	public boolean deleteOverBill(OverBillVO overBill);
 	public OverBillVO findOverBillByID(long id);
 	public ArrayList<OverBillVO> findOverBillByTime(Date time);
+	public ArrayList<OverBillVO> findOverBills();
 }

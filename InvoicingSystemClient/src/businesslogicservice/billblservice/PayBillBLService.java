@@ -13,4 +13,5 @@ public interface PayBillBLService {
 	public boolean deletePayBill(PayBillVO payBill);
 	public PayBillVO findPayBillByID(long id);
 	public ArrayList<PayBillVO> findPayBillByTime(Date time);
+	public ArrayList<PayBillVO> findPayBills();
 }

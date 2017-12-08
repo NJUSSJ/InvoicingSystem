@@ -45,4 +45,10 @@ public class ReceiveBillController implements ReceiveBillBLService{
 		return receiveBillImpl.findReceiveBillByTime(time);
 	}
 
+	@Override
+	public ArrayList<ReceiveBillVO> findReceiveBills() {
+		// TODO 自动生成的方法存根
+		return null;
+	}
+
 }

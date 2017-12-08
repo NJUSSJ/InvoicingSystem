@@ -13,4 +13,5 @@ public interface ImportBillBLService  {
 	public boolean deleteImportBill(ImportBillVO importBill);
 	public ImportBillVO findImportBillByID(long id);
 	public ArrayList<ImportBillVO> findImportBillByTime(Date time);
+	public ArrayList<ImportBillVO> findImportBills();
 }

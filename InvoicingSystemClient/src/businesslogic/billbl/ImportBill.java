@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 import po.ImportBillPO;
 import rmi.RemoteHelper;
-import vo.CommodityVO;
 import vo.ImportBillVO;
 
 public class ImportBill{
@@ -83,6 +82,15 @@ public class ImportBill{
 			e.printStackTrace();
 		}
 		
+		return temp;
+	}
+	public ArrayList<ImportBillVO> findImportBills(){
+		ArrayList<ImportBillVO> temp=null;
+		temp=new ArrayList<ImportBillVO>();
+		ArrayList<ImportBillPO> bills= RemoteHelper.getInstance().getImportBillDataService().findImportBills();
+		for(int i=0;i<bills.size();i++){
+			temp.add(toImportBillVO(bills.get(i)));
+		}
 		return temp;
 	}
 

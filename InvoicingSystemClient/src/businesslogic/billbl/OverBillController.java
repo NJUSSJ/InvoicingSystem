@@ -45,4 +45,10 @@ public class OverBillController implements OverBillBLService{
 		return overBillImpl.findOverBillByTime(time);
 	}
 
+	@Override
+	public ArrayList<OverBillVO> findOverBills() {
+		// TODO 自动生成的方法存根
+		return null;
+	}
+
 }

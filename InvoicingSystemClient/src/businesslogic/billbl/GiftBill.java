@@ -74,7 +74,20 @@ public class GiftBill {
 		}
 		return temp;
 	}
-
+	public ArrayList<GiftBillVO> findGiftBills(){
+		ArrayList<GiftBillVO> temp=null;
+		try {
+			temp=new ArrayList<GiftBillVO>();
+			ArrayList<GiftBillPO> bills= RemoteHelper.getInstance().getGiftBillDataService().findGiftBills();
+			for(int i=0;i<bills.size();i++){
+				temp.add(toGiftBillVO(bills.get(i)));
+			}
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return temp;
+	}
 	
 
 }

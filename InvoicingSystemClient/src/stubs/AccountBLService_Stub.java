@@ -50,6 +50,11 @@ public class AccountBLService_Stub implements AccountBLService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public ArrayList<AccountVO> findAccounts() {
+		// TODO 自动生成的方法存根
+		return null;
+	}
 
 	
 

@@ -44,5 +44,11 @@ public class LossBillController implements LossBillBLService{
 		// TODO 自动生成的方法存根
 		return lossBillImpl.findLossBillByTime(time);
 	}
+
+	@Override
+	public ArrayList<LossBillVO> findLossBills() {
+		// TODO 自动生成的方法存根
+		return null;
+	}
 	
 }

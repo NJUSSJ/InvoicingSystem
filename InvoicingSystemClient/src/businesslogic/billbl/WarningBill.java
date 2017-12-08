@@ -11,16 +11,12 @@ import rmi.RemoteHelper;
 import vo.PayBillVO;
 import vo.WarningBillVO;
 
-public class WarningBill implements WarningBillBLService {
-
-	@Override
+public class WarningBill{
 	public WarningBillVO toWarningBillVO(WarningBillPO po) {
 		// TODO 自动生成的方法存根
 		return new WarningBillVO(po.getID(),po.getUserID(),new CommodityList(po.getCommodityList()),
 				po.getTime(),po.getState());
 	}
-
-	@Override
 	public boolean submitWarningBill(WarningBillVO warningBill) {
 		// TODO 自动生成的方法存根
 		try {
@@ -31,8 +27,6 @@ public class WarningBill implements WarningBillBLService {
 		}
 		return false;
 	}
-
-	@Override
 	public boolean checkWarningBill(boolean pass, long id) {
 		// TODO 自动生成的方法存根
 		try {
@@ -49,8 +43,6 @@ public class WarningBill implements WarningBillBLService {
 		}
 		return false;
 	}
-
-	@Override
 	public boolean deleteWarningBill(WarningBillVO warningBill) {
 		// TODO 自动生成的方法存根
 		try {
@@ -61,8 +53,6 @@ public class WarningBill implements WarningBillBLService {
 		}
 		return false;
 	}
-
-	@Override
 	public WarningBillVO findWarningBillByID(long id) {
 		// TODO 自动生成的方法存根
 		try {
@@ -73,8 +63,6 @@ public class WarningBill implements WarningBillBLService {
 		}
 		return null;
 	}
-
-	@Override
 	public ArrayList<WarningBillVO> findWarningBillByTime(Date time) {
 		// TODO 自动生成的方法存根
 		ArrayList<WarningBillVO> temp=new ArrayList<WarningBillVO>();
