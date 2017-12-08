@@ -54,7 +54,7 @@
             <Image url="@../../../resources/file_527px_1208074_easyicon.net.png" />
           </image>
         </ImageView>
-        <ImageView fx:id="stockCheck" fitHeight="139.0" fitWidth="131.0" layoutX="546.0" layoutY="180.0" onMouseClicked="#showStockCheckUI">
+        <ImageView fx:id="stockCheck" fitHeight="139.0" fitWidth="131.0" layoutX="546.0" layoutY="180.0">
           <image>
             <Image url="@../../../resources/view_file_512px_1169005_easyicon.net.png" />
           </image>
