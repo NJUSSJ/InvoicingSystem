@@ -12,12 +12,17 @@ import dataservice.commoditydataservice.CommodityDataService;
 
 import po.CommodityPO;
 
+<<<<<<< HEAD
 
 
 public class CommodityDatabaseServiceMySqlImpl_Stub {
 
 /*
 
+=======
+public class CommodityDatabaseServiceMySqlImpl_Stub {
+/*
+>>>>>>> d7c72bb7416b4dad57536150352896d787a7cf7a
 	@Override
 
 	public CommodityPO findCommoditybyID(long id) throws RemoteException {
@@ -110,11 +115,15 @@ public class CommodityDatabaseServiceMySqlImpl_Stub {
 
 		return false;
 
+<<<<<<< HEAD
 	}
 
 
 
 	*/
 
+=======
+	*/
+>>>>>>> d7c72bb7416b4dad57536150352896d787a7cf7a
 }
 

@@ -13,4 +13,5 @@ public interface SaleBillBLService {
 	public boolean deleteSaleBill(SaleBillVO saleBill);
 	public SaleBillVO findSaleBillByID(long id);
 	public ArrayList<SaleBillVO> findSaleBillByTime(Date time);
+	public ArrayList<SaleBillVO> findSaleBills();
 }

@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import dataservice.logdataservice.LogDataService;
 import po.LogPO;
 
-public class LogDatabaseServiceMySqlImpl_Stub implements LogDataService {
+public class LogDatabaseServiceMySqlImpl_Stub  {
 
-	@Override
+	/*@Override
 	public boolean insert(LogPO po) throws RemoteException {
 		// TODO 自动生成的方法存根
 		return false;
@@ -50,5 +50,5 @@ public class LogDatabaseServiceMySqlImpl_Stub implements LogDataService {
 		// TODO 自动生成的方法存根
 		return false;
 	}
-
+*/
 }

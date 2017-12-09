@@ -76,6 +76,19 @@ public class OverBill{
 		}
 		return temp;
 	}
-	
+	public ArrayList<OverBillVO> findOverBills(){
+		ArrayList<OverBillVO> temp=null;
+		try {
+			temp=new ArrayList<OverBillVO>();
+			ArrayList<OverBillPO> bills=RemoteHelper.getInstance().getOverBillDataService().findOverBills();
+			for(int i=0;i<bills.size();i++){
+				temp.add(toOverBillVO(bills.get(i)));
+			}
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return temp;
+	}
 	
 }

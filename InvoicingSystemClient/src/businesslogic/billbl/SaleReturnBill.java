@@ -82,6 +82,19 @@ public class SaleReturnBill{
 		
 		return temp;
 	}
-	
+	public ArrayList<SaleReturnBillVO> findSaleReturnBills(){
+		ArrayList<SaleReturnBillVO> temp=null;
+		try {
+			temp=new ArrayList<SaleReturnBillVO>();
+			ArrayList<SaleReturnBillPO> bills=RemoteHelper.getInstance().getSaleReturnBillDataService().findSaleReturnBills();
+			for(int i=0;i<bills.size();i++){
+				temp.add(toSaleReturnBillVO(bills.get(i)));
+			}
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return temp;
+	}
 	
 }

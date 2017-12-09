@@ -18,7 +18,7 @@ public class Log{
 		}
 		return false;
 	}
-	public ArrayList<LogVO> findLog() {
+	public ArrayList<LogVO> findLogs() {
 		// TODO 自动生成的方法存根
 		ArrayList<LogVO> temp=null;
 		ArrayList<LogPO> logs;

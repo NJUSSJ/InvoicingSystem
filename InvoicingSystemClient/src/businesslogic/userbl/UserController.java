@@ -1,5 +1,7 @@
 package businesslogic.userbl;
 
+import java.util.ArrayList;
+
 import businesslogicservice.userblservice.UserBLService;
 import po.UserPO;
 import vo.UserVO;
@@ -41,6 +43,12 @@ public class UserController implements UserBLService {
 	public UserVO findUserByID(long id) {
 		// TODO 自动生成的方法存根
 		return userImpl.findUserByID(id);
+	}
+
+	@Override
+	public ArrayList<UserVO> findUsers() {
+		// TODO 自动生成的方法存根
+		return userImpl.findUsers();
 	}
 
 	

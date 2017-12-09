@@ -39,4 +39,10 @@ public class GiftBillController implements GiftBillBLService{
 		return giftBillImpl.findGiftBillByTime(time);
 	}
 
+	@Override
+	public ArrayList<GiftBillVO> findGiftBills() {
+		// TODO 自动生成的方法存根
+		return giftBillImpl.findGiftBills();
+	}
+
 }

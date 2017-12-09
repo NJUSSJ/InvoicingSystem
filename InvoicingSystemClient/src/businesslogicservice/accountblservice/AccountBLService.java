@@ -13,4 +13,5 @@ public interface AccountBLService {
 	public boolean deleteAccount(AccountVO accountVO);
 	public boolean updateAccount(AccountVO accountVO);
 	public AccountVO toAccountVO(AccountPO accountPO);
+	public ArrayList<AccountVO> findAccounts();
 }

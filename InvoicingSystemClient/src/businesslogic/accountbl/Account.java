@@ -88,6 +88,22 @@ public class Account{
 
 	}
 
-
+	public ArrayList<AccountVO> findAccounts(){
+		ArrayList<AccountVO> temp=null;
+		
+		try {
+			temp=new ArrayList<AccountVO>();
+			ArrayList<AccountPO> accounts = RemoteHelper.getInstance().getAccountDataService().findAccounts();
+			for(int i=0;i<accounts.size();i++){
+				temp.add(toAccountVO(accounts.get(i)));
+			}
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		
+		return temp;
+	}
+	
 
 }

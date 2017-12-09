@@ -8,8 +8,8 @@ import po.LogPO;
 import vo.LogVO;
 import vo.UserVO;
 
-public class LogBLService_Stub implements LogBLService{
-
+public class LogBLService_Stub{
+/*
 	@Override
 	public boolean addLog(LogVO vo) {
 		// TODO 自动生成的方法存根
@@ -17,7 +17,7 @@ public class LogBLService_Stub implements LogBLService{
 	}
 
 	@Override
-	public ArrayList<LogVO> findLog() {
+	public ArrayList<LogVO> findLogs() {
 		// TODO 自动生成的方法存根
 		return null;
 	}
@@ -38,6 +38,6 @@ public class LogBLService_Stub implements LogBLService{
 	public LogVO toLogVO(LogPO logPo) {
 		// TODO 自动生成的方法存根
 		return null;
-	}
+	}*/
 
 }

@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import dataservice.memberdataservice.MemberDataService;
 import po.MemberPO;
 
-public class MemberDatabaseServiceMySqlImpl_Stub implements MemberDataService{
-
+public class MemberDatabaseServiceMySqlImpl_Stub{
+/*
 	@Override
 	public MemberPO findMemberbyName(String name) throws RemoteException {
 		// TODO 自动生成的方法存根
@@ -43,5 +43,5 @@ public class MemberDatabaseServiceMySqlImpl_Stub implements MemberDataService{
 		// TODO 自动生成的方法存根
 		return false;
 	}
-
+*/
 }

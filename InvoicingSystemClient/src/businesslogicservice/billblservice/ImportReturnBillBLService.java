@@ -13,4 +13,5 @@ public interface ImportReturnBillBLService {
 	public boolean deleteImportReturnBill(ImportReturnBillVO importReturnBill);
 	public ImportReturnBillVO findImportReturnBillByID(long id);
 	public ArrayList<ImportReturnBillVO> findImportReturnBillByTime(Date time);
+	public ArrayList<ImportReturnBillVO> findImportReturnBills();
 }

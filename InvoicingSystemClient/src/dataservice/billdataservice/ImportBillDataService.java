@@ -14,5 +14,5 @@ public interface ImportBillDataService extends Remote {
 	public ImportBillPO findImportBillbyID(long id) throws RemoteException;
 	public ArrayList<ImportBillPO> findImportBillbyState(int state) throws RemoteException;
 	public ArrayList<ImportBillPO> findImportBillbyTime(Date time) throws RemoteException;
-	public ArrayList<ImportBillPO> findImportBills();
+	public ArrayList<ImportBillPO> findImportBills() throws RemoteException;
 }

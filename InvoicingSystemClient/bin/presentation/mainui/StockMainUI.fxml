@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.mainui.StockMainViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.mainui.StockMainViewController">
   <children>
     <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0">
       <children>
@@ -49,7 +54,7 @@
             <Image url="@../../../resources/file_527px_1208074_easyicon.net.png" />
           </image>
         </ImageView>
-        <ImageView fx:id="stockCheck" fitHeight="139.0" fitWidth="131.0" layoutX="546.0" layoutY="180.0" onMouseClicked="#showStockCheckUI">
+        <ImageView fx:id="stockCheck" fitHeight="139.0" fitWidth="131.0" layoutX="546.0" layoutY="180.0">
           <image>
             <Image url="@../../../resources/view_file_512px_1169005_easyicon.net.png" />
           </image>
@@ -59,6 +64,7 @@
             <Image url="@../../../resources/view_735px_1173596_easyicon.net.png" />
           </image>
         </ImageView>
+        <Button fx:id="stockCheckButton" layoutX="546.0" layoutY="182.0" mnemonicParsing="false" onAction="#showStockCheckUI" opacity="0.0" prefHeight="139.0" prefWidth="130.9998779296875" text="Button" />
       </children>
     </AnchorPane>
   </children>

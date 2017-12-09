@@ -1,6 +1,7 @@
 package businesslogic.userbl;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import po.UserPO;
 import rmi.RemoteHelper;
@@ -38,6 +39,10 @@ public class User {
 	
 	public UserVO findUserbyName(String name) {
 		try {
+			UserPO tmpPO=RemoteHelper.getInstance().getUserDataService().findUserbyName(name);
+			if(tmpPO==null) {
+				return null;
+			}
 			return toUserVO(RemoteHelper.getInstance().getUserDataService().findUserbyName(name));
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
@@ -70,6 +75,8 @@ public class User {
 	public UserVO toUserVO(UserPO userPO){
 		return new UserVO(userPO.getID(),userPO.getPassword(),userPO.getRank(),userPO.getUserName());
 	}
-	
+	public ArrayList<UserVO> findUsers(){
+		return null;
+	}
 
 }

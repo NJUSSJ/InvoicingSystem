@@ -9,9 +9,9 @@ import po.CommodityPO;
 import vo.CategoryVO;
 import vo.CommodityVO;
 
-public class CommodityBLService_Stub implements CommodityBLService{
+public class CommodityBLService_Stub{
 
-	@Override
+	/*@Override
 	public boolean addCommodity(CommodityVO commodityVO) {
 		// TODO 自动生成的方法存根
 		return false;
@@ -92,12 +92,16 @@ public class CommodityBLService_Stub implements CommodityBLService{
 	
 	@Override
 	public ArrayList<CategoryVO> findUpCategory(CategoryVO vo) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> d7c72bb7416b4dad57536150352896d787a7cf7a
 		return null;
 	}
 
 	@Override
 	public ArrayList<CategoryVO> findDownCategory(CategoryVO vo) {
+<<<<<<< HEAD
 
 		// TODO Auto-generated method stub
 		return null;
@@ -110,6 +114,18 @@ public class CommodityBLService_Stub implements CommodityBLService{
 		return null;
 	}
 
+=======
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<CommodityVO> findDownCommodity(CategoryVO vo) {
+		// TODO 自动生成的方法存根
+		return null;
+	}
+*/
+>>>>>>> d7c72bb7416b4dad57536150352896d787a7cf7a
 
 
 	

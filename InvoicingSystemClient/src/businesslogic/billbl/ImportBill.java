@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 import po.ImportBillPO;
 import rmi.RemoteHelper;
-import vo.CommodityVO;
 import vo.ImportBillVO;
 
 public class ImportBill{
@@ -83,6 +82,21 @@ public class ImportBill{
 			e.printStackTrace();
 		}
 		
+		return temp;
+	}
+	public ArrayList<ImportBillVO> findImportBills(){
+		ArrayList<ImportBillVO> temp=null;
+		try {
+			temp=new ArrayList<ImportBillVO>();
+			ArrayList<ImportBillPO> bills;
+			bills = RemoteHelper.getInstance().getImportBillDataService().findImportBills();
+			for(int i=0;i<bills.size();i++){
+				temp.add(toImportBillVO(bills.get(i)));
+			}
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
 		return temp;
 	}
 

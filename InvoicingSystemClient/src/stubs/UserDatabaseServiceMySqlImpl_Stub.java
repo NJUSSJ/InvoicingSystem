@@ -5,8 +5,8 @@ import java.rmi.RemoteException;
 import dataservice.userdataservice.UserDataService;
 import po.UserPO;
 
-public class UserDatabaseServiceMySqlImpl_Stub implements UserDataService{
-
+public class UserDatabaseServiceMySqlImpl_Stub {
+/*
 	@Override
 	public UserPO findUserbyID(long id) throws RemoteException {
 		// TODO 自动生成的方法存根
@@ -37,6 +37,6 @@ public class UserDatabaseServiceMySqlImpl_Stub implements UserDataService{
 		return false;
 	}
 
-	
+	*/
 
 }

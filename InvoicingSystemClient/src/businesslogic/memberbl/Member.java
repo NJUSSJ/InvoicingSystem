@@ -33,7 +33,7 @@ public class Member{
 		return false;
 	}
 
-	public MemberVO findMember(String name) {
+	public MemberVO findMemberByName(String name) {
 		// TODO Auto-generated method stub
 		try {
 			MemberPO tmpPO=RemoteHelper.getInstance().getMemberDataService().findMemberbyName(name);
@@ -57,7 +57,7 @@ public class Member{
 		return false;
 	}
 
-	public ArrayList<MemberVO> findMembers(String field) {
+	public ArrayList<MemberVO> findMembersByField(String field) {
 		// TODO Auto-generated method stub
 		ArrayList<MemberVO> temp=null;
 		
@@ -80,6 +80,20 @@ public class Member{
 				memberPO.getCategory(),memberPO.getName(),memberPO.getPhoneNum(),
 				memberPO.getAddress(),memberPO.getEmail(),memberPO.getShouldPay(),
 				memberPO.getShouldGet(),memberPO.getQuota(),memberPO.getDefaultOperatorID());
+	}
+	public ArrayList<MemberVO> findMembers(){
+		ArrayList<MemberVO> temp=null;
+		try {
+			temp=new ArrayList<MemberVO>();
+			ArrayList<MemberPO> members=RemoteHelper.getInstance().getMemberDataService().findMembers();
+			for(int i=0;i<members.size();i++){
+				temp.add(toMemberVO(members.get(i)));
+			}
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		} 
+		return temp;
 	}
 
 }
