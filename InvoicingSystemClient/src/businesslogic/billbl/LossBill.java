@@ -64,11 +64,26 @@ public class LossBill{
 	}
 	public ArrayList<LossBillVO> findLossBillByTime(Date time) {
 		// TODO 自动生成的方法存根
-		ArrayList<LossBillVO> temp=new ArrayList<LossBillVO>();
+		ArrayList<LossBillVO> temp=null;
 		try {
+			temp=new ArrayList<LossBillVO>();
 			ArrayList<LossBillPO> lossBills=RemoteHelper.getInstance().getLossBillDataService().findLossBillbyTime(time);
 			for(int i=0;i<lossBills.size();i++){
 				temp.add(toLossBillVO(lossBills.get(i)));
+			}
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return temp;
+	}
+	public ArrayList<LossBillVO> findLossBills(){
+		ArrayList<LossBillVO> temp=null;
+		try {
+			temp=new ArrayList<LossBillVO>();
+			ArrayList<LossBillPO> bills=RemoteHelper.getInstance().getLossBillDataService().findLossBills();
+			for(int i=0;i<bills.size();i++){
+				temp.add(toLossBillVO(bills.get(i)));
 			}
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块

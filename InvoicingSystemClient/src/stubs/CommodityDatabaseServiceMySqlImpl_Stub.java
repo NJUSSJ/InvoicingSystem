@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import dataservice.commoditydataservice.CommodityDataService;
 import po.CommodityPO;
 
-public class CommodityDatabaseServiceMySqlImpl_Stub implements CommodityDataService{
-
+public class CommodityDatabaseServiceMySqlImpl_Stub {
+/*
 	@Override
 	public CommodityPO findCommoditybyID(long id) throws RemoteException {
 		// TODO 自动生成的方法存根
@@ -56,5 +56,5 @@ public class CommodityDatabaseServiceMySqlImpl_Stub implements CommodityDataServ
 		return false;
 	}
 
-	
+	*/
 }

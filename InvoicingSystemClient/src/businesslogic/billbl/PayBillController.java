@@ -48,7 +48,7 @@ public class PayBillController implements PayBillBLService{
 	@Override
 	public ArrayList<PayBillVO> findPayBills() {
 		// TODO 自动生成的方法存根
-		return null;
+		return payBillImpl.findPayBills();
 	}
 
 }

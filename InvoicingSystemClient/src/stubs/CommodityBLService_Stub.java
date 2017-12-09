@@ -9,9 +9,9 @@ import po.CommodityPO;
 import vo.CategoryVO;
 import vo.CommodityVO;
 
-public class CommodityBLService_Stub implements CommodityBLService{
+public class CommodityBLService_Stub{
 
-	@Override
+	/*@Override
 	public boolean addCommodity(CommodityVO commodityVO) {
 		// TODO 自动生成的方法存根
 		return false;
@@ -106,7 +106,7 @@ public class CommodityBLService_Stub implements CommodityBLService{
 		// TODO 自动生成的方法存根
 		return null;
 	}
-
+*/
 
 
 	

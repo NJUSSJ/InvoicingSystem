@@ -80,7 +80,18 @@ public class SaleBill{
 		
 		return temp;
 	}
-
-	
-	
+	public ArrayList<SaleBillVO> findSaleBills(){
+		ArrayList<SaleBillVO> temp=null;
+		try {
+			temp=new ArrayList<SaleBillVO>();
+			ArrayList<SaleBillPO> bills=RemoteHelper.getInstance().getSaleBillDataService().findSaleBills();
+			for(int i=0;i<bills.size();i++){
+				temp.add(toSaleBillVO(bills.get(i)));
+			}
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return temp;
+	}
 }

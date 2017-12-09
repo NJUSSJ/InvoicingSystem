@@ -48,7 +48,7 @@ public class ReceiveBillController implements ReceiveBillBLService{
 	@Override
 	public ArrayList<ReceiveBillVO> findReceiveBills() {
 		// TODO 自动生成的方法存根
-		return null;
+		return receiveBillImpl.findReceiveBills();
 	}
 
 }

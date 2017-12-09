@@ -6,8 +6,8 @@ import vo.AccountVO;
 import businesslogicservice.accountblservice.*;
 import po.AccountPO;
 
-public class AccountBLService_Stub implements AccountBLService {
-	
+public class AccountBLService_Stub {
+	/*
 	long id;
 	AccountVO account;
 	double deposit;
@@ -56,6 +56,6 @@ public class AccountBLService_Stub implements AccountBLService {
 		return null;
 	}
 
-	
+	*/
 
 }

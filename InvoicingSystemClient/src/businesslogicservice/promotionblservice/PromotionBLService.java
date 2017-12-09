@@ -16,11 +16,12 @@ public interface PromotionBLService {
 	public boolean deleteMemberPromotion(MemberPromotionVO memberPromotionVO);
 	public boolean deletePackagePromotion(PackagePromotionVO packagePromotionVO);
 	public boolean deletePricePromotion(PricePromotionVO pricePromoionVO);
-	public ArrayList<MemberPromotionVO> findMemberPromotion();
-	public ArrayList<PackagePromotionVO> findPackagePromotion();
-	public ArrayList<PricePromotionVO> findPricePromotion();
+	public ArrayList<MemberPromotionVO> findMemberPromotions();
+	public ArrayList<PackagePromotionVO> findPackagePromotions();
+	public ArrayList<PricePromotionVO> findPricePromotions();
 	public MemberPromotionVO toMemberPromotion(MemberPromotionPO memberPromotionPO);
 	public PackagePromotionVO toPackagePromotion(PackagePromotionPO packagePromotionPO);
 	public PricePromotionVO toPricePromotion(PricePromotionPO pricePromotionPO);
 	public ArrayList<MemberPromotionVO> findMemberPromotionByRank();
+
 }

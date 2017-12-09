@@ -78,7 +78,18 @@ public class WarningBill{
 		
 		return temp;
 	}
-
-	
-	
+	public ArrayList<WarningBillVO> findWarningBills(){
+		ArrayList<WarningBillVO> temp=null;
+		try {
+			temp=new ArrayList<WarningBillVO>();
+			ArrayList<WarningBillPO> bills=RemoteHelper.getInstance().getWarningBillDataService().findWarningBills();
+			for(int i=0;i<bills.size();i++){
+				temp.add(toWarningBillVO(bills.get(i)));
+			}	
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return temp;
+	}
 }

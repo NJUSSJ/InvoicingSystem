@@ -9,8 +9,8 @@ import vo.CommodityVO;
 import vo.OperateConditionTableVO;
 import vo.SaleDetailsTableVO;
 
-public class TableBLService_Stub implements TableBLService {
-	BillVO bv;
+public class TableBLService_Stub  {
+	/*BillVO bv;
 	String id;
 	String Note;
 	OperateConditionTableVO tov;
@@ -58,6 +58,6 @@ public class TableBLService_Stub implements TableBLService {
 	public void Red(String id,String Note){
 		System.out.println("新账单建立");
 		bv=new BillVO();
-	};
+	};*/
 }
 

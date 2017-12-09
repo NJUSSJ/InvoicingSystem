@@ -48,7 +48,7 @@ public class SaleBillController implements SaleBillBLService{
 	@Override
 	public ArrayList<SaleBillVO> findSaleBills() {
 		// TODO 自动生成的方法存根
-		return null;
+		return saleBillImpl.findSaleBills();
 	}
 
 }

@@ -51,21 +51,21 @@ public class PromotionController implements PromotionBLService{
 	}
 
 	@Override
-	public ArrayList<MemberPromotionVO> findMemberPromotion() {
+	public ArrayList<MemberPromotionVO> findMemberPromotions() {
 		// TODO 自动生成的方法存根
-		return memberPromotionImpl.findMemberPromotionVO();
+		return memberPromotionImpl.findMemberPromotions();
 	}
 
 	@Override
-	public ArrayList<PackagePromotionVO> findPackagePromotion() {
+	public ArrayList<PackagePromotionVO> findPackagePromotions() {
 		// TODO 自动生成的方法存根
-		return packagePromotionImpl.findPackagePromotionVO();
+		return packagePromotionImpl.findPackagePromotions();
 	}
 
 	@Override
-	public ArrayList<PricePromotionVO> findPricePromotion() {
+	public ArrayList<PricePromotionVO> findPricePromotions() {
 		// TODO 自动生成的方法存根
-		return pricePromotionImpl.findPricePromotionVO();
+		return pricePromotionImpl.findPricePromotions();
 	}
 
 	@Override

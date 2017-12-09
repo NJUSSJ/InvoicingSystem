@@ -30,7 +30,7 @@ public class PricePromotion {
 		return false;
 		
 	}
-	public ArrayList<PricePromotionVO> findPricePromotionVO(){
+	public ArrayList<PricePromotionVO> findPricePromotions(){
 		ArrayList<PricePromotionVO> temp=null;
 		try {
 			temp=new ArrayList<PricePromotionVO>();

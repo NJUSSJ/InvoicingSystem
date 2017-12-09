@@ -86,10 +86,16 @@ public class ImportBill{
 	}
 	public ArrayList<ImportBillVO> findImportBills(){
 		ArrayList<ImportBillVO> temp=null;
-		temp=new ArrayList<ImportBillVO>();
-		ArrayList<ImportBillPO> bills= RemoteHelper.getInstance().getImportBillDataService().findImportBills();
-		for(int i=0;i<bills.size();i++){
-			temp.add(toImportBillVO(bills.get(i)));
+		try {
+			temp=new ArrayList<ImportBillVO>();
+			ArrayList<ImportBillPO> bills;
+			bills = RemoteHelper.getInstance().getImportBillDataService().findImportBills();
+			for(int i=0;i<bills.size();i++){
+				temp.add(toImportBillVO(bills.get(i)));
+			}
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
 		}
 		return temp;
 	}

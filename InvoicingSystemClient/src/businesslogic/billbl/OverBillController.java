@@ -48,7 +48,7 @@ public class OverBillController implements OverBillBLService{
 	@Override
 	public ArrayList<OverBillVO> findOverBills() {
 		// TODO 自动生成的方法存根
-		return null;
+		return overBillImpl.findOverBills();
 	}
 
 }

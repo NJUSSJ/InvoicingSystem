@@ -48,7 +48,7 @@ public class SaleReturnBillController implements SaleReturnBillBLService{
 	@Override
 	public ArrayList<SaleReturnBillVO> findSaleReturnBills() {
 		// TODO 自动生成的方法存根
-		return null;
+		return saleReturnBillImpl.findSaleReturnBills();
 	}
 	
 }
