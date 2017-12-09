@@ -61,7 +61,6 @@ public class CategoryViewController implements Initializable{
 	@FXML
 	private TextField search;
 	
-	static long cateid=0;
 	
 	private ObservableList<CategoryData> categoryData =FXCollections.observableArrayList();
 	
@@ -87,12 +86,18 @@ public class CategoryViewController implements Initializable{
 	            (observable, oldValue, newValue) -> getInf(newValue));
 		idColoumn.setCellValueFactory(cellData ->cellData.getValue().getId());
 		nameColoumn.setCellValueFactory(cellData ->cellData.getValue().getName());
+	    volist=cbs.findDownCategory(cbs.findCategoryByID(-1));
+	    for(CategoryVO s:volist){
+			categoryData.add(new CategoryData(s));
+			categoryTable.setItems(categoryData);
+		}
 	}
 	private void getInf(CategoryData newValue) {
 		a=newValue.getVO();
 	}
 	@FXML
 	public void search(){
+		categoryData.clear();
 		String content=search.getText();
 		if(content.charAt(0)>='0'&&content.charAt(0)<='9'){
 			a=cbs.findCategoryByID(Long.parseLong(content));
@@ -119,7 +124,11 @@ public class CategoryViewController implements Initializable{
 			categoryStage.setScene(scene);
             SimpleCategoryController controller=loader.getController();
             controller.setStage(categoryStage);
-            controller.setParentID(a.getParentID());
+            if(a==null){
+            	controller.setParentID(-1);
+            }else{
+            	controller.setParentID(a.getID());
+            }
            categoryStage.showAndWait();
             
 		} catch (IOException e) {
@@ -185,13 +194,14 @@ public class CategoryViewController implements Initializable{
 	@FXML
 	public void enterSon(){
 	volist=cbs.findDownCategory(a);
+	ArrayList<CommodityVO> colist=cbs.findDownCommodity(a);
 	if(volist==null||volist.size()==0){
-		Alert alert = new Alert(AlertType.WARNING);
-        alert.initOwner(MainApp.getPrimaryStage());
-        alert.setTitle("No Category");
-        alert.setHeaderText("No Category Down");
-        alert.setContentText("Please select another category in the table.");
-        alert.showAndWait();
+		if(colist.size()>0){
+			showCommodity();
+		}else{
+		categoryData.clear();
+		categoryTable.setItems(categoryData);
+		}
 	}else{
 		for(CategoryVO s:volist){
 			categoryData.add(new CategoryData(s));

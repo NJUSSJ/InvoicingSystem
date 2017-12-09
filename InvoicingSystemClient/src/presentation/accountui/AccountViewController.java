@@ -68,6 +68,8 @@ public class AccountViewController implements Initializable {
 	
 	AccountVO acco;
 	
+	AccountBLService abs=new AccountController();
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
@@ -83,7 +85,6 @@ public class AccountViewController implements Initializable {
 	@FXML
 	public void searchAccount(){
 		String findName=search.getText();
-		AccountBLService abs=new AccountController();
 		accountData.clear();
 		if(findName.charAt(0)>='0'&&findName.charAt(0)<='9'){
 			acco=abs.findAccountByID(Long.parseLong(findName));
