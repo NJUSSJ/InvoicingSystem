@@ -125,7 +125,6 @@ public class CommodityBLService_Stub{
 		return null;
 	}
 */
->>>>>>> d7c72bb7416b4dad57536150352896d787a7cf7a
 
 
 	

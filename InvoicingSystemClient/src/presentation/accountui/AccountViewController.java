@@ -76,10 +76,14 @@ public class AccountViewController implements Initializable {
 		id.setText("ID:"+MainApp.getID());
 		accountTable.getSelectionModel().selectedItemProperty().addListener(
 	            (observable, oldValue, newValue) -> getInf(newValue));
-		//nameColoumn.setCellValueFactory(cellData ->cellData.getValue().getNameProperty());
 		nameColoumn.setCellValueFactory(cellData ->cellData.getValue().getNameProperty());
 		amountColoumn.setCellValueFactory(cellData ->cellData.getValue().getDepositProperty());
 		idColoumn.setCellValueFactory(cellData ->cellData.getValue().getidProperty());
+	    accountList=abs.findAccounts();
+	    for(AccountVO a:accountList){
+			accountData.add(new AccountData(a));
+		}
+	    accountTable.setItems(accountData);
 	}
 	
 	@FXML
@@ -127,7 +131,6 @@ public class AccountViewController implements Initializable {
     	int selectedIndex = accountTable.getSelectionModel().getSelectedIndex();
     	 if (selectedIndex >= 0) {
     	        accountTable.getItems().remove(selectedIndex);
-    	    	AccountBLService abs=new AccountController();
     			abs.deleteAccount(acco);
     	    } else {
     	        // Nothing selected.
