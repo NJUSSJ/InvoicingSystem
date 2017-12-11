@@ -14,4 +14,5 @@ public interface LossBillBLService {
 	public boolean deleteLossBill(LossBillVO lossBill);
 	public LossBillVO findLossBillByID(long id);
 	public ArrayList<LossBillVO> findLossBillByTime(Date time);
+	public ArrayList<LossBillVO> findLossBills();
 }

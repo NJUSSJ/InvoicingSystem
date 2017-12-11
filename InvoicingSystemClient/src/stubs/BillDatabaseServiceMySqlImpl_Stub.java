@@ -5,8 +5,8 @@ import java.rmi.RemoteException;
 import dataservice.billdataservice.BillDatasService;
 import po.BillPO;
 
-public class BillDatabaseServiceMySqlImpl_Stub implements BillDatasService{
-
+public class BillDatabaseServiceMySqlImpl_Stub{
+/*
 	@Override
 	public void delete(BillPO b) throws RemoteException {
 		// TODO Auto-generated method stub
@@ -42,6 +42,6 @@ public class BillDatabaseServiceMySqlImpl_Stub implements BillDatasService{
 	public void update(BillPO b) throws RemoteException {
 		// TODO 自动生成的方法存根
 		System.out.println("Insert");
-	}
+	}*/
 
 }

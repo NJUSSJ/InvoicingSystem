@@ -30,7 +30,7 @@ public class PackagePromotion {
 		return false;
 		
 	}
-	public ArrayList<PackagePromotionVO> findPackagePromotionVO(){
+	public ArrayList<PackagePromotionVO> findPackagePromotions(){
 		ArrayList<PackagePromotionVO> temp=null;
 		try {
 			temp=new ArrayList<PackagePromotionVO>();
@@ -47,7 +47,7 @@ public class PackagePromotion {
 		
 	}
 	public PackagePromotionVO toPackagePromotionVO(PackagePromotionPO packagePromotionPO){
-		return new PackagePromotionVO(packagePromotionPO.getID(),new CommodityList(packagePromotionPO.getCommodityID()),packagePromotionPO.getDiscount());
-		
+		return new PackagePromotionVO(packagePromotionPO.getID(),
+		new CommodityList(packagePromotionPO.getCommodityID()),packagePromotionPO.getDiscount());	
 	}
 }

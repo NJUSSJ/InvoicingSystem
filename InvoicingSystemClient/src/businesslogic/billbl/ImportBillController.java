@@ -45,4 +45,10 @@ public class ImportBillController implements ImportBillBLService{
 		return importBillImpl.findImportBillByTime(time);
 	}
 
+	@Override
+	public ArrayList<ImportBillVO> findImportBills() {
+		// TODO 自动生成的方法存根
+		return importBillImpl.findImportBills();
+	}
+
 }

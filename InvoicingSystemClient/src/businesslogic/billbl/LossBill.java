@@ -9,16 +9,12 @@ import po.LossBillPO;
 import rmi.RemoteHelper;
 import vo.LossBillVO;
 
-public class LossBill  implements LossBillBLService {
-
-	@Override
+public class LossBill{
 	public LossBillVO toLossBillVO(LossBillPO lossBillPO) {
 		// TODO 自动生成的方法存根
 		CommodityList list=new CommodityList(lossBillPO.getCommodityList());
 		return new LossBillVO(lossBillPO.getID(),lossBillPO.getUserID(),list,lossBillPO.getTime(),lossBillPO.getState());
 	}
-
-	@Override
 	public boolean submitLossBill(LossBillVO lossBill) {
 		// TODO 自动生成的方法存根
 		try {
@@ -29,8 +25,6 @@ public class LossBill  implements LossBillBLService {
 		}
 		return false;
 	}
-
-	@Override
 	public boolean checkLossBill(boolean pass, long id) {
 		// TODO 自动生成的方法存根
 		
@@ -48,8 +42,6 @@ public class LossBill  implements LossBillBLService {
 		}
 		return pass;
 	}
-
-	@Override
 	public boolean deleteLossBill(LossBillVO lossBill) {
 		// TODO 自动生成的方法存根
 		try {
@@ -60,8 +52,6 @@ public class LossBill  implements LossBillBLService {
 		}
 		return false;
 	}
-
-	@Override
 	public LossBillVO findLossBillByID(long id) {
 		// TODO 自动生成的方法存根
 		try {
@@ -72,15 +62,28 @@ public class LossBill  implements LossBillBLService {
 		}
 		return null;
 	}
-
-	@Override
 	public ArrayList<LossBillVO> findLossBillByTime(Date time) {
 		// TODO 自动生成的方法存根
-		ArrayList<LossBillVO> temp=new ArrayList<LossBillVO>();
+		ArrayList<LossBillVO> temp=null;
 		try {
+			temp=new ArrayList<LossBillVO>();
 			ArrayList<LossBillPO> lossBills=RemoteHelper.getInstance().getLossBillDataService().findLossBillbyTime(time);
 			for(int i=0;i<lossBills.size();i++){
 				temp.add(toLossBillVO(lossBills.get(i)));
+			}
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return temp;
+	}
+	public ArrayList<LossBillVO> findLossBills(){
+		ArrayList<LossBillVO> temp=null;
+		try {
+			temp=new ArrayList<LossBillVO>();
+			ArrayList<LossBillPO> bills=RemoteHelper.getInstance().getLossBillDataService().findLossBills();
+			for(int i=0;i<bills.size();i++){
+				temp.add(toLossBillVO(bills.get(i)));
 			}
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块

@@ -15,9 +15,9 @@ public class LogController implements LogBLService{
 	}
 
 	@Override
-	public ArrayList<LogVO> findLog() {
+	public ArrayList<LogVO> findLogs() {
 		// TODO 自动生成的方法存根
-		return logImpl.findLog();
+		return logImpl.findLogs();
 	}
 
 	@Override

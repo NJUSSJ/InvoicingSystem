@@ -79,8 +79,19 @@ public class ReceiveBill{
 		
 		return temp;
 	}
-
-	
-
+	public ArrayList<ReceiveBillVO> findReceiveBills(){
+		ArrayList<ReceiveBillVO> temp=null;
+		try {
+			temp=new ArrayList<ReceiveBillVO>();
+			ArrayList<ReceiveBillPO> bills=RemoteHelper.getInstance().getReceiveBillDataService().findReceiveBills();
+			for(int i=0;i<bills.size();i++){
+				temp.add(toReceiveBillVO(bills.get(i)));
+			}
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		} 
+		return temp;
+	}
 
 }

@@ -2,12 +2,11 @@ package presentation.userui;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import MainApp.MainApp;
-import businesslogic.accountbl.AccountController;
 import businesslogic.userbl.UserController;
-import businesslogicservice.accountblservice.AccountBLService;
 import businesslogicservice.userblservice.UserBLService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,9 +24,6 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import presentation.accountui.AccountData;
-import presentation.accountui.SimpleAccountController;
-import vo.AccountVO;
 import vo.UserVO;
 
 public class UserViewController implements Initializable {
@@ -73,6 +69,7 @@ private ObservableList<UserData> userData =FXCollections.observableArrayList();
 	private TableColumn<UserData,String> idColoumn;
 	
 	UserVO a;
+	ArrayList<UserVO> alist=new ArrayList<UserVO>();
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
@@ -84,7 +81,11 @@ private ObservableList<UserData> userData =FXCollections.observableArrayList();
 		rankColoumn.setCellValueFactory(cellData ->cellData.getValue().getRankProperty());
 		passwordColoumn.setCellValueFactory(cellData ->cellData.getValue().getPasswordProperty());
 		idColoumn.setCellValueFactory(cellData ->cellData.getValue().getIDProperty());
-	
+	    alist=abs.findUsers();
+	    for(UserVO b:alist){
+	    	userData.add(new UserData(b));
+	    }
+	    userTable.setItems(userData);
 	}
 
 	private void getInf(UserData newValue) {

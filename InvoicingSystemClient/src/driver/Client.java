@@ -21,7 +21,7 @@ import stubs.UserDatabaseServiceMySqlImpl_Stub;
 
 public class Client {
 public static void main(String[] args){
-	AccountBLService_Driver abldriver=new AccountBLService_Driver();
+	/*AccountBLService_Driver abldriver=new AccountBLService_Driver();
 	abldriver.drive(new AccountBLService_Stub(0, null, 0, null));
 	AccountDataService_Driver addriver=new AccountDataService_Driver();
 	addriver.drive(new AccountDatabaseServiceMySqlImpl_Stub());
@@ -61,6 +61,6 @@ public static void main(String[] args){
 	TableDataService_Driver tddriver=new TableDataService_Driver();
 	tddriver.drive(new TableDatabaseServiceMySqlImpl_Stub());
 
-
+*/
 }
 }

@@ -21,9 +21,9 @@ public class MemberController implements MemberBLService{
 	}
 
 	@Override
-	public MemberVO findMember(String name) {
+	public MemberVO findMemberByName(String name) {
 		// TODO 自动生成的方法存根
-		return memberImpl.findMember(name);
+		return memberImpl.findMemberByName(name);
 	}
 
 	@Override
@@ -33,15 +33,21 @@ public class MemberController implements MemberBLService{
 	}
 
 	@Override
-	public ArrayList<MemberVO> findMembers(String field) {
+	public ArrayList<MemberVO> findMembersByField(String field) {
 		// TODO 自动生成的方法存根
-		return memberImpl.findMembers(field);
+		return memberImpl.findMembersByField(field);
 	}
 
 	@Override
 	public MemberVO toMemberVO(MemberPO memberPO) {
 		// TODO 自动生成的方法存根
 		return memberImpl.toMemberVO(memberPO);
+	}
+
+	@Override
+	public ArrayList<MemberVO> findMembers() {
+		// TODO 自动生成的方法存根
+		return memberImpl.findMembers();
 	}
 	
 }

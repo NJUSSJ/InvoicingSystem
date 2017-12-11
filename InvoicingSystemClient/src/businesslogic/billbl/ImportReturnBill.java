@@ -5,9 +5,11 @@ import java.sql.Date;
 import java.util.ArrayList;
 
 import businesslogic.commoditybl.CommodityController;
+import po.GiftBillPO;
 import po.ImportReturnBillPO;
 import rmi.RemoteHelper;
 import vo.CommodityVO;
+import vo.GiftBillVO;
 import vo.ImportReturnBillVO;
 
 public class ImportReturnBill {
@@ -88,6 +90,19 @@ public class ImportReturnBill {
 		
 		return temp;
 	}
-	
+	public ArrayList<ImportReturnBillVO> findImportReturnBills(){
+		ArrayList<ImportReturnBillVO> temp=null;
+		try {
+			temp=new ArrayList<ImportReturnBillVO>();
+			ArrayList<ImportReturnBillPO> bills= RemoteHelper.getInstance().getImportReturnBillDataService().findImportReturnBills();
+			for(int i=0;i<bills.size();i++){
+				temp.add(toImportReturnBillVO(bills.get(i)));
+			}
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return temp;
+	}
 	
 }

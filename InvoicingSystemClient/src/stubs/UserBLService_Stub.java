@@ -1,5 +1,7 @@
 package stubs;
 
+import java.util.ArrayList;
+
 import businesslogicservice.userblservice.UserBLService;
 import po.UserPO;
 import vo.UserVO;
@@ -42,6 +44,12 @@ public class UserBLService_Stub implements UserBLService{
 
 	@Override
 	public UserVO toUserVO(UserPO userPO) {
+		// TODO 自动生成的方法存根
+		return null;
+	}
+
+	@Override
+	public ArrayList<UserVO> findUsers() {
 		// TODO 自动生成的方法存根
 		return null;
 	}

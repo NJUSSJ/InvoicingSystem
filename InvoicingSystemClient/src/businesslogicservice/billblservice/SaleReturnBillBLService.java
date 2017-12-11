@@ -13,4 +13,5 @@ public interface SaleReturnBillBLService {
 	public boolean deleteSaleReturnBill(SaleReturnBillVO saleReturnBill);
 	public SaleReturnBillVO findSaleReturnBillByID(long id);
 	public ArrayList<SaleReturnBillVO> findSaleReturnBillByTime(Date time);
+	public ArrayList<SaleReturnBillVO> findSaleReturnBills();
 }

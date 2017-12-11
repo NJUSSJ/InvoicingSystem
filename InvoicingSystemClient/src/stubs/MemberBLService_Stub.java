@@ -7,8 +7,8 @@ import po.MemberPO;
 import vo.MemberVO;
 import vo.UserVO;
 
-public class MemberBLService_Stub implements MemberBLService{
-	MemberVO mv;
+public class MemberBLService_Stub {
+	/*MemberVO mv;
 	String number;
 	String name;
 	String category;
@@ -49,12 +49,6 @@ public class MemberBLService_Stub implements MemberBLService{
 		return false;
 	}
 
-	@Override
-	public MemberVO findMember(String name) {
-		// TODO Auto-generated method stub
-		System.out.println("find member");
-		return null;
-	}
 
 	@Override
 	public boolean updateMember(MemberVO a) {
@@ -63,12 +57,6 @@ public class MemberBLService_Stub implements MemberBLService{
 		return false;
 	}
 
-	@Override
-	public ArrayList<MemberVO> findMembers(String field) {
-		// TODO Auto-generated method stub
-		System.out.println("find members");
-		return null;
-	}
 
 
 	@Override
@@ -76,6 +64,27 @@ public class MemberBLService_Stub implements MemberBLService{
 		// TODO 自动生成的方法存根
 		return null;
 	}
+
+
+	@Override
+	public MemberVO findMemberByName(String name) {
+		// TODO 自动生成的方法存根
+		return null;
+	}
+
+
+	@Override
+	public ArrayList<MemberVO> findMembersByField(String field) {
+		// TODO 自动生成的方法存根
+		return null;
+	}
+
+
+	@Override
+	public ArrayList<MemberVO> findMembers() {
+		// TODO 自动生成的方法存根
+		return null;
+	}*/
 
 	
 }

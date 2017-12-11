@@ -12,8 +12,8 @@ import businesslogicservice.promotionblservice.PromotionBLService;
 import po.MemberPromotionPO;
 import po.PackagePromotionPO;
 import po.PricePromotionPO;
-public class PromotionBLService_Stub implements PromotionBLService {
-   PromotionVO pt;
+public class PromotionBLService_Stub{
+  /* PromotionVO pt;
    String promotion_type;
    ArrayList<CommodityVO> gifts;
    int memberrank;
@@ -172,7 +172,7 @@ public PricePromotionVO toPricePromotion(PricePromotionPO pricePromotionPO) {
 public ArrayList<MemberPromotionVO> findMemberPromotionByRank() {
 	// TODO 自动生成的方法存根
 	return null;
-}
+}*/
 
 
 		   }

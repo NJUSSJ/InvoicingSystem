@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import dataservice.accountdataservice.AccountDataService;
 import po.AccountPO;
 
-public class AccountDatabaseServiceMySqlImpl_Stub implements AccountDataService {
+public class AccountDatabaseServiceMySqlImpl_Stub {
 
-	@Override
+	/*@Override
 	public AccountPO findAccountbyID(long id) throws RemoteException {
 		// TODO 自动生成的方法存根
 		return null;
@@ -44,7 +44,7 @@ public class AccountDatabaseServiceMySqlImpl_Stub implements AccountDataService 
 		return null;
 	}
 
-	
+	*/
 	
 	
 }

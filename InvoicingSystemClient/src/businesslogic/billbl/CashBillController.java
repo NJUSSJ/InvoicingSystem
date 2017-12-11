@@ -38,6 +38,12 @@ public class CashBillController implements CashBillBLService{
 		// TODO 自动生成的方法存根
 		return cashBillImpl.findCashBillByTime(time);
 	}
+
+	@Override
+	public ArrayList<CashBillVO> findCashBills() {
+		// TODO 自动生成的方法存根
+		return cashBillImpl.findCashBills();
+	}
 	
 
 }

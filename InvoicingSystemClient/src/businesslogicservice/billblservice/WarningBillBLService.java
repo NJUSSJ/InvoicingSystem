@@ -13,4 +13,5 @@ public interface WarningBillBLService {
 	public boolean deleteWarningBill(WarningBillVO warningBill);
 	public WarningBillVO findWarningBillByID(long id);
 	public ArrayList<WarningBillVO> findWarningBillByTime(Date time);
+	public ArrayList<WarningBillVO> findWarningBills();
 }

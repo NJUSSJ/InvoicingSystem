@@ -45,4 +45,10 @@ public class SaleBillController implements SaleBillBLService{
 		return saleBillImpl.findSaleBillByTime(time);
 	}
 
+	@Override
+	public ArrayList<SaleBillVO> findSaleBills() {
+		// TODO 自动生成的方法存根
+		return saleBillImpl.findSaleBills();
+	}
+
 }

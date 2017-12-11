@@ -1,6 +1,7 @@
 package businesslogic.userbl;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import po.UserPO;
 import rmi.RemoteHelper;
@@ -74,6 +75,8 @@ public class User {
 	public UserVO toUserVO(UserPO userPO){
 		return new UserVO(userPO.getID(),userPO.getPassword(),userPO.getRank(),userPO.getUserName());
 	}
-	
+	public ArrayList<UserVO> findUsers(){
+		return null;
+	}
 
 }

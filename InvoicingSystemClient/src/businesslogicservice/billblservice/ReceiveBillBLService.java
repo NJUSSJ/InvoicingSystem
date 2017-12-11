@@ -13,4 +13,5 @@ public interface ReceiveBillBLService {
 	public boolean deleteReceiveBill(ReceiveBillVO payBill);
 	public ReceiveBillVO findReceiveBillByID(long id);
 	public ArrayList<ReceiveBillVO> findReceiveBillByTime(Date time);
+	public ArrayList<ReceiveBillVO> findReceiveBills();
 }

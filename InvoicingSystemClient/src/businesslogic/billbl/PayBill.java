@@ -81,6 +81,19 @@ public class PayBill {
 		
 		return temp;
 	}
-
+	public ArrayList<PayBillVO> findPayBills(){
+		ArrayList<PayBillVO> temp=null;
+		try {
+			temp=new ArrayList<PayBillVO>();
+			ArrayList<PayBillPO> bills=RemoteHelper.getInstance().getPayBillDataService().findPayBills();
+			for(int i=0;i<bills.size();i++){
+				temp.add(toPayBillVO(bills.get(i)));
+			}
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return temp;
+	}
 	
 }
