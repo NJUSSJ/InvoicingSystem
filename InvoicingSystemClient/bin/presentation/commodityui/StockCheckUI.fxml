@@ -32,7 +32,7 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="470.0" prefWidth="899.0">
           <children>
-            <TableView fx:id="table" layoutY="2.0" prefHeight="395.0" prefWidth="969.0">
+            <TableView fx:id="table" layoutX="0.0" layoutY="2.0" prefHeight="507.0" prefWidth="965.0">
               <columns>
                 <TableColumn prefWidth="110.0" text="编号" fx:id="idColumn" />
                 <TableColumn prefWidth="110.0" text="名称" fx:id="name" />
