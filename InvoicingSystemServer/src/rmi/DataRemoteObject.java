@@ -853,5 +853,11 @@ public class DataRemoteObject extends UnicastRemoteObject implements UserDataSer
 	public ArrayList<CommodityPO> findCommoditiesbyParent(long parentid) throws RemoteException {
 		return commodityService.findCommoditiesbyParent(parentid);
 	}
+
+	@Override
+	public MemberPO findMemberbyID(long id) throws RemoteException {
+		
+		return memberService.findMemberbyID(id);
+	}
 	
 }

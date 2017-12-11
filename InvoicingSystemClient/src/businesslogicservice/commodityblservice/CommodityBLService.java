@@ -1,11 +1,13 @@
 package businesslogicservice.commodityblservice;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 import po.CategoryPO;
 import po.CommodityPO;
 import vo.CategoryVO;
 import vo.CommodityVO;
+import vo.StockCheckInfoVO;
 
 public interface CommodityBLService {
 	public boolean addCommodity(CommodityVO commodityVO);
@@ -24,4 +26,5 @@ public interface CommodityBLService {
 	public ArrayList<CategoryVO> findUpCategory(CategoryVO vo);
 	public ArrayList<CategoryVO> findDownCategory(CategoryVO vo);
 	public ArrayList<CommodityVO> findDownCommodity(CategoryVO vo);
+	public ArrayList<StockCheckInfoVO> getStockInfo(Date start,Date end);
 }
