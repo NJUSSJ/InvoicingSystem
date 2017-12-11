@@ -2,10 +2,12 @@ package presentation.commodityui;
 
 import java.net.URL;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import MainApp.MainApp;
 import Utility.DateUtil;
+import businesslogic.commoditybl.CommodityController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -44,7 +46,7 @@ public class StockCheckViewController implements Initializable {
 	private TableView<StockCheckInfoVO> table;
 	
 	@FXML
-	private TableColumn<StockCheckInfoVO, Long> idColumn;
+	private TableColumn<StockCheckInfoVO, Number> idColumn;
 	
 	@FXML
 	private TableColumn<StockCheckInfoVO, String> name;
@@ -53,31 +55,34 @@ public class StockCheckViewController implements Initializable {
 	private TableColumn<StockCheckInfoVO, String> model;
 	
 	@FXML
-	private TableColumn<StockCheckInfoVO, Integer> outNum;
+	private TableColumn<StockCheckInfoVO, Number> outNum;
 	
 	@FXML
-	private TableColumn<StockCheckInfoVO, Integer> inNum;
+	private TableColumn<StockCheckInfoVO, Number> inNum;
 	
 	@FXML
-	private TableColumn<StockCheckInfoVO, Integer> saleNum;
+	private TableColumn<StockCheckInfoVO, Number> saleNum;
 	
 	@FXML 
-	private TableColumn<StockCheckInfoVO, Integer> importNum;
+	private TableColumn<StockCheckInfoVO, Number> importNum;
 	
 	@FXML
-	private TableColumn<StockCheckInfoVO, Double> outSum;
+	private TableColumn<StockCheckInfoVO, Number> outSum;
 	
 	@FXML
-	private TableColumn<StockCheckInfoVO, Double> inSum;
+	private TableColumn<StockCheckInfoVO, Number> inSum;
 	
 	@FXML
-	private TableColumn<StockCheckInfoVO, Double> saleSum;
+	private TableColumn<StockCheckInfoVO, Number> saleSum;
 	
 	@FXML
-	private TableColumn<StockCheckInfoVO, Double> importSum;
+	private TableColumn<StockCheckInfoVO, Number> importSum;
 	
 	@FXML
 	private Button confirm;
+	
+	@FXML
+	private Button Return;
 	
 	private ObservableList<StockCheckInfoVO> StockInfo=FXCollections.observableArrayList();
 	
@@ -99,12 +104,32 @@ public class StockCheckViewController implements Initializable {
 		Date start=DateUtil.toSQL(startYear.getSelectionModel().getSelectedItem(),startMonth.getSelectionModel().getSelectedItem(),startDay.getSelectionModel().getSelectedItem());		
 		Date end=DateUtil.toSQL(endYear.getSelectionModel().getSelectedItem(), endMonth.getSelectionModel().getSelectedItem(), endDay.getSelectionModel().getSelectedItem());
 		
+		ArrayList<StockCheckInfoVO> stockinfolist=new CommodityController().getStockInfo(start, end);
 		
+		for(int i=0;i<stockinfolist.size();i++) {
+			StockInfo.add(stockinfolist.get(i));
+		}
+		
+		name.setCellValueFactory(cellData->cellData.getValue().nameProperty());
+		idColumn.setCellValueFactory(cellData->cellData.getValue().IDProperty());
+		model.setCellValueFactory(cellData->cellData.getValue().modelProperty());
+		outNum.setCellValueFactory(cellData->cellData.getValue().outNumProperty());
+		outSum.setCellValueFactory(cellData->cellData.getValue().outSumProperty());
+		inNum.setCellValueFactory(cellData->cellData.getValue().inNumProperty());
+		inSum.setCellValueFactory(cellData->cellData.getValue().inSumProperty());
+		saleNum.setCellValueFactory(cellData->cellData.getValue().saleNumProperty());
+		saleSum.setCellValueFactory(cellData->cellData.getValue().saleSumProperty());
+		importNum.setCellValueFactory(cellData->cellData.getValue().importNumProperty());
+		importSum.setCellValueFactory(cellData->cellData.getValue().importSumProperty());
+		
+		table.setItems(StockInfo);
 	}
 	
 	
 	
-	
+	public void ReturnToMain() {
+		MainApp.showStockMainUI();
+	}
 	
 	}
 
