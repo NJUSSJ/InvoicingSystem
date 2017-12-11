@@ -14,4 +14,5 @@ public interface MemberBLService {
 	public ArrayList<MemberVO> findMembersByField(String field);//…Ëº∆≤Œ’’find
 	public MemberVO toMemberVO(MemberPO memberPO);
 	public ArrayList<MemberVO> findMembers();
+	public MemberVO findMemberByID(long id);
 }

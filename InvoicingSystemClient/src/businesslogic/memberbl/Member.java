@@ -95,5 +95,10 @@ public class Member{
 		} 
 		return temp;
 	}
+	public MemberVO findMemberByID(long id){
+		//MemberVO member=toMemberVO(RemoteHelper.getInstance().getMemberDataService().find)
+		return null;
+	}
+
 
 }

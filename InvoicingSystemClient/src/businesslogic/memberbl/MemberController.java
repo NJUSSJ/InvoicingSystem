@@ -49,5 +49,11 @@ public class MemberController implements MemberBLService{
 		// TODO 自动生成的方法存根
 		return memberImpl.findMembers();
 	}
+
+	@Override
+	public MemberVO findMemberByID(long id) {
+		// TODO 自动生成的方法存根
+		return memberImpl.findMemberByID(id);
+	}
 	
 }
