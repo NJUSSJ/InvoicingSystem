@@ -335,7 +335,21 @@ public class MainApp extends Application {
 			// TODO: handle exception
 		}
 	}
-	
+	/**
+	 * 显示促销策略：价格
+	 */
+	public static void showPricePromotionUI(){
+		try {
+			FXMLLoader loader=new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/presentation/promotionui/PricePromotionUI.fxml"));
+			AnchorPane strategyUI=loader.load();
+			
+			MainApp.rootlayout.setCenter(strategyUI);
+			
+		} catch (IOException e) {
+			// TODO: handle exception
+		}
+	}
 	/*
 	 * 显示期初建账界面
 	 */

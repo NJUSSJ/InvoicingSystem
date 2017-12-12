@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import vo.PricePromotionVO;
 
 public class PricePromotionViewController implements Initializable{
 	@FXML
@@ -37,6 +38,7 @@ public class PricePromotionViewController implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO 自动生成的方法存根
 		id.setText("ID:"+MainApp.getID());
+		promotionData.add(new PricePromotionData(new PricePromotionVO(0, 0, 0, 0)));
 		promotionTable.getSelectionModel().selectedItemProperty().addListener(
 	            (observable, oldValue, newValue) -> getInf(newValue));
 		pricelineCol.setCellValueFactory(cellData ->cellData.getValue().getPricelineProperty());
