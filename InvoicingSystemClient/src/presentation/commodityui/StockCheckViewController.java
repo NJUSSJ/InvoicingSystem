@@ -84,6 +84,9 @@ public class StockCheckViewController implements Initializable {
 	@FXML
 	private Button Return;
 	
+	@FXML
+	private Label LogOut;
+	
 	private ObservableList<StockCheckInfoVO> StockInfo=FXCollections.observableArrayList();
 	
 
@@ -129,6 +132,11 @@ public class StockCheckViewController implements Initializable {
 	
 	public void ReturnToMain() {
 		MainApp.showStockMainUI();
+	}
+	
+	public void LogOut() {
+		MainApp.setUser(null);
+		MainApp.showLoginUI();
 	}
 	
 	}

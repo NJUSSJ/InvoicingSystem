@@ -10,6 +10,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import presentation.commodityui.Sub_StockInventoryController;
 import presentation.mainui.AdministerMainViewController;
 import presentation.mainui.FianceMainViewController;
 import presentation.mainui.LoginPanelController;
@@ -18,6 +19,7 @@ import presentation.mainui.SaleMainViewController;
 import presentation.mainui.StockMainViewController;
 import presentation.mainui.WarningViewController;
 import runner.ClientRunner;
+import vo.StockInventoryInfoVO;
 import vo.UserVO;
 
 /**
@@ -512,14 +514,14 @@ public class MainApp extends Application {
 	public static  void showStockInventoryUI() {
 		try {
 			FXMLLoader loader=new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("/presentation/commodityui/StockInventoryUI.fxml"));
+			loader.setLocation(MainApp.class.getResource("/presentation/commodityui/StockInventory.fxml"));
 			
 			AnchorPane stockInventoryUI=loader.load();
 			
 			MainApp.rootlayout.setCenter(stockInventoryUI);
 			
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	
@@ -596,5 +598,34 @@ public class MainApp extends Application {
 		}
 	}
 
+	/*
+	 * 显示库存盘点盘点界面
+	 * 
+	 */
+	
+	public static void showStockInventorySub(StockInventoryInfoVO info) {
+		try {
+			FXMLLoader loader=new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/presentation/commodityui/Sub_StockInventory.fxml"));
+			
+			AnchorPane pane=(AnchorPane)loader.load();
+			
+			 Stage dialogStage = new Stage();
+		     dialogStage.setTitle("Edit Person");
+		     dialogStage.getIcons().add(new Image("file:resources/light_bulb_310px_1204967_easyicon.net.png"));
+		     dialogStage.initModality(Modality.WINDOW_MODAL);
+		     dialogStage.initOwner(primarystage);
+		     Scene scene = new Scene(pane);
+		     dialogStage.setScene(scene);
+		     
+		     Sub_StockInventoryController controller=loader.getController();
+		     controller.setInfo(info);
+		     controller.setDialogStage(dialogStage);
+		     
+		     dialogStage.showAndWait();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 }

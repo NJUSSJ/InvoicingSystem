@@ -8,6 +8,7 @@ import po.CommodityPO;
 import vo.CategoryVO;
 import vo.CommodityVO;
 import vo.StockCheckInfoVO;
+import vo.StockInventoryInfoVO;
 
 public interface CommodityBLService {
 	public boolean addCommodity(CommodityVO commodityVO);
@@ -27,4 +28,5 @@ public interface CommodityBLService {
 	public ArrayList<CategoryVO> findDownCategory(CategoryVO vo);
 	public ArrayList<CommodityVO> findDownCommodity(CategoryVO vo);
 	public ArrayList<StockCheckInfoVO> getStockInfo(Date start,Date end);
+	public ArrayList<StockInventoryInfoVO> getInventoryInfo();
 }

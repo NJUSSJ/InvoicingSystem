@@ -36,5 +36,63 @@ public class StockInventoryInfoVO {
 		return lineNum;
 	}
 	
+	public String getName() {
+		return name.get();
+	}
 	
+	public void setName(String name) {
+		this.name.set(name);	
+	}
+	
+	public StringProperty NameProperty() {
+		return name;
+	}
+	
+	public String getModel() {
+		return model.get();
+	}
+	
+	public void setModel(String model) {
+		this.model.set(model);
+	}
+	
+	public StringProperty ModelProperty() {
+		return model;
+	}
+	
+	public int getStockNum() {
+		return stockNum.get();
+	}
+	
+	public void setStockNum(int num) {
+		this.stockNum.set(num);
+	}
+	
+	public IntegerProperty StockProperty() {
+		return stockNum;
+	}
+	
+	public double getAveragePrice() {
+		return averagePrice.get();
+	}
+	
+	public void setAveragePrice(double price) {
+		this.averagePrice.set(price);
+	}
+	
+	public DoubleProperty AveragePriceProperty() {
+		return averagePrice;
+	}
+	
+	public String getFinishedTime() {
+		return finishedTime.get();
+	}
+	
+	public void setFnishedTime(String time) {
+		this.finishedTime.set(time);
+	}
+	
+	public StringProperty FinishedTimeProperty() {
+		return finishedTime;
+	}
 }

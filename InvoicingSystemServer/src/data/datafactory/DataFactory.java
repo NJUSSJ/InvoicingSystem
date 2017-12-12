@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class DataFactory {
 	//JDBC 驱动名及数据库URL
 	static final String JDBC_DRIVER="com.mysql.jdbc.Driver";
-	static final String DB_URL="jdbc:mysql://localhost:3306/bulbmanagementdatabase";
+	static final String DB_URL="jdbc:mysql://localhost:3306/bulbmanagementdatabase?useUnicode=true&characterEncoding=utf-8&useSSL=false";
 	
 	static final String USER="root";
 	static final String PASSWORD="19980219";

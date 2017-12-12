@@ -59,12 +59,13 @@
             <Image url="@../../../resources/view_file_512px_1169005_easyicon.net.png" />
           </image>
         </ImageView>
-        <ImageView fx:id="stockInventory" fitHeight="163.0" fitWidth="150.0" layoutX="735.0" layoutY="168.0" onMouseClicked="#showStockInventoryUI">
+        <ImageView fx:id="stockInventory" fitHeight="163.0" fitWidth="150.0" layoutX="735.0" layoutY="168.0">
           <image>
             <Image url="@../../../resources/view_735px_1173596_easyicon.net.png" />
           </image>
         </ImageView>
         <Button fx:id="stockCheckButton" layoutX="546.0" layoutY="182.0" mnemonicParsing="false" onAction="#showStockCheckUI" opacity="0.0" prefHeight="139.0" prefWidth="130.9998779296875" text="Button" />
+        <Button id="stockCheckButton" fx:id="StockInvent" layoutX="735.0" layoutY="169.0" mnemonicParsing="false" onAction="#showStockInventoryUI" opacity="0.0" prefHeight="163.0" prefWidth="150.0" text="Button" />
       </children>
     </AnchorPane>
   </children>
