@@ -1,4 +1,5 @@
 /MainApp/
+/Utility/
 /businesslogic/
 /businesslogicservice/
 /data/
@@ -10,4 +11,3 @@
 /runner/
 /stubs/
 /vo/
-/Utility/
