@@ -46,12 +46,12 @@
       </content>
     </ScrollPane>
     <Separator layoutX="823.0" layoutY="148.0" orientation="VERTICAL" prefHeight="459.0" prefWidth="6.0" />
-    <Button fx:id="Export" layoutY="208.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="130.0" text="导出为Excel" AnchorPane.rightAnchor="20.0">
+    <Button fx:id="Export" layoutY="208.0" mnemonicParsing="false" onAction="#Export" prefHeight="31.0" prefWidth="130.0" text="导出为Excel" AnchorPane.rightAnchor="20.0">
       <font>
         <Font size="13.0" fx:id="x2" />
       </font>
     </Button>
-    <Button fx:id="Return" font="$x2" layoutY="258.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="130.0" text="返    回" AnchorPane.rightAnchor="20.0" />
+    <Button fx:id="Return" font="$x2" layoutY="258.0" mnemonicParsing="false" onAction="#Return" prefHeight="31.0" prefWidth="130.0" text="返    回" AnchorPane.rightAnchor="20.0" />
     <Label fx:id="todayDate" font="$x1" layoutX="7.0" layoutY="155.0" text="日期：XXXX-XX-XX" />
     <Button fx:id="Invent" font="$x2" layoutX="850.0" layoutY="158.0" mnemonicParsing="false" onAction="#Invent" prefHeight="31.0" prefWidth="130.0" text="盘点" />
   </children>
