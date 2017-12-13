@@ -13,15 +13,14 @@ public class StockInventoryInfoVO {
 	private final StringProperty model;
 	private final IntegerProperty stockNum;
 	private final DoubleProperty averagePrice;
-	private final StringProperty finishedTime;
 	
-	public StockInventoryInfoVO(int lineNum,String name,String model,int stockNum,double averagePrice,String finishedTime) {
+	public StockInventoryInfoVO(int lineNum,String name,String model,int stockNum,double averagePrice) {
 		this.lineNum=new SimpleIntegerProperty(lineNum);
 		this.name=new SimpleStringProperty(name);
 		this.model=new SimpleStringProperty(model);
 		this.stockNum=new SimpleIntegerProperty(stockNum);
 		this.averagePrice=new SimpleDoubleProperty(averagePrice);
-		this.finishedTime=new SimpleStringProperty(finishedTime);
+		
 	}
 	
 	public int getLineNum() {
@@ -84,15 +83,5 @@ public class StockInventoryInfoVO {
 		return averagePrice;
 	}
 	
-	public String getFinishedTime() {
-		return finishedTime.get();
-	}
 	
-	public void setFnishedTime(String time) {
-		this.finishedTime.set(time);
-	}
-	
-	public StringProperty FinishedTimeProperty() {
-		return finishedTime;
-	}
 }
