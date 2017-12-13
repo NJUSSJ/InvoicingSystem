@@ -1,5 +1,6 @@
 package businesslogic.commoditybl;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 import businesslogicservice.commodityblservice.CommodityBLService;
@@ -7,6 +8,8 @@ import po.CategoryPO;
 import po.CommodityPO;
 import vo.CategoryVO;
 import vo.CommodityVO;
+import vo.StockCheckInfoVO;
+import vo.StockInventoryInfoVO;
 
 public class CommodityController implements CommodityBLService{
 	Commodity commodityImpl=new Commodity();
@@ -105,6 +108,24 @@ public class CommodityController implements CommodityBLService{
 	public ArrayList<CommodityVO> findDownCommodity(CategoryVO vo) {
 		// TODO 自动生成的方法存根
 		return null;
+	}
+
+	@Override
+	public ArrayList<StockCheckInfoVO> getStockInfo(Date start, Date end) {
+		// TODO Auto-generated method stub
+		ArrayList<StockCheckInfoVO> test=new ArrayList<>();
+		StockCheckInfoVO testVO=new StockCheckInfoVO(11, "吊灯", "XT101", 100, 100, 100, 100, 100, 100, 100, 100);
+		test.add(testVO);
+		return test;
+	}
+
+	@Override
+	public ArrayList<StockInventoryInfoVO> getInventoryInfo() {
+		// TODO Auto-generated method stub
+		ArrayList<StockInventoryInfoVO> test=new ArrayList<>();
+		StockInventoryInfoVO info=new StockInventoryInfoVO(1, "灯带", "XT100", 101, 1000, "2017/12/12");
+		test.add(info);
+		return test;
 	}
 	
 }

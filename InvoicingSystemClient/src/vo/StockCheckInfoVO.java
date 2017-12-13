@@ -126,4 +126,48 @@ public class StockCheckInfoVO {
 	public void setImportSum(double sum) {
 		this.importSum.set(sum);
 	}
+	
+	public LongProperty IDProperty() {
+		return id;
+	}
+	
+	public StringProperty nameProperty() {
+		return name;
+	}
+	
+	public StringProperty modelProperty() {
+		return model;
+	}
+	
+	public IntegerProperty outNumProperty() {
+		return outStockNum;
+	}
+	
+	public IntegerProperty inNumProperty() {
+		return inStockNum;
+	}
+	
+	public IntegerProperty saleNumProperty() {
+		return saleNum;
+	}
+	
+	public IntegerProperty importNumProperty() {
+		return importNum;
+	}
+	
+	public DoubleProperty outSumProperty() {
+		return outSum;
+	}
+	
+	public DoubleProperty inSumProperty() {
+		return inSum;
+	}
+	
+	public DoubleProperty saleSumProperty() {
+		return saleSum;
+	}
+	
+	public DoubleProperty importSumProperty() {
+		return importSum;
+	}
 }

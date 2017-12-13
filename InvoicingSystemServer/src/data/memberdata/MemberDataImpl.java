@@ -152,6 +152,43 @@ public class MemberDataImpl implements MemberDataService{
 	public ArrayList<MemberPO> findMembersbyField(String field) throws RemoteException {
 		return null;
 	}
+
+	@Override
+	public MemberPO findMemberbyID(long id) throws RemoteException {
+		String sql="select * from"
+				+ "members where id='"+id+"'";
+		
+		
+		
+		try {
+			ResultSet result=DataFactory.statement.executeQuery(sql);
+			
+			while(result.next()) {
+				
+				int rank=result.getInt("rank");
+				int category=result.getInt("category");
+				String name_=result.getString("name");
+				int phonenumber=result.getInt("phonenumber");
+				String address=result.getString("address");
+				String email=result.getString("email");
+				int postcode=result.getInt("postcode");
+				double quota=result.getDouble("quota");
+				double shouldget=result.getDouble("shouleget");
+				double shouldpay=result.getDouble("shouldpay");
+				long defaultoperatorid=result.getLong("defaultoperatorid");
+				
+				MemberPO tmpMemberPO=new MemberPO(id, rank, postcode, category, name_, phonenumber, address, email, shouldpay, shouldget, quota, defaultoperatorid);
+				
+				return tmpMemberPO;
+			}
+			
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
 
 }

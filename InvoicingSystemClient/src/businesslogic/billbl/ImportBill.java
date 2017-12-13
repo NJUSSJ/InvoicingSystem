@@ -4,9 +4,11 @@ import java.rmi.RemoteException;
 import java.sql.Date;
 import java.util.ArrayList;
 
+import businesslogic.memberbl.MemberController;
 import po.ImportBillPO;
 import rmi.RemoteHelper;
 import vo.ImportBillVO;
+import vo.MemberVO;
 
 public class ImportBill{
 
@@ -35,6 +37,14 @@ public class ImportBill{
 			ImportBillVO vo=toImportBillVO(RemoteHelper.getInstance().getImportBillDataService().findImportBillbyID(id));
 			if(pass){
 				vo.setState(1);
+				//修改进货单里供应商的应收和应收额度
+				MemberController memberCon=new MemberController();
+				MemberVO member=memberCon.findMemberByID(id);
+				double money=vo.getSum();
+				double quota=Math.pow(10, (money+"").length()-1)*Integer.parseInt((money+"").substring(0, 1));
+				member.setShouldGet(money);
+				member.setQuota(quota);
+				memberCon.updateMember(member);
 			}else{
 				vo.setState(2);
 			}

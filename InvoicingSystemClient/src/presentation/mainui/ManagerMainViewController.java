@@ -67,4 +67,8 @@ public class ManagerMainViewController implements Initializable {
 	public void showexamineUI(){
 		MainApp.showExamineUI();
 	}
+	@FXML
+	public void showPricePromotionUI(){
+		MainApp.showPricePromotionUI();
+	}
 }

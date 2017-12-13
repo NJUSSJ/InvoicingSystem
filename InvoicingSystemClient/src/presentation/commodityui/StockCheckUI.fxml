@@ -21,7 +21,7 @@
         <Font size="14.0" fx:id="x1" />
       </font>
     </Label>
-    <Label font="$x1" layoutX="881.0" layoutY="10.0" text="|| 登录" />
+    <Label fx:id="LogOut" font="$x1" layoutX="881.0" layoutY="10.0" onMouseClicked="#LogOut" text="|| 登出" />
     <Separator prefHeight="1.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="145.0" />
     <Label layoutX="14.0" layoutY="61.0" text="库存查看">
       <font>
@@ -32,7 +32,7 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="470.0" prefWidth="899.0">
           <children>
-            <TableView fx:id="table" layoutY="2.0" prefHeight="395.0" prefWidth="969.0">
+            <TableView fx:id="table" layoutX="0.0" layoutY="2.0" prefHeight="507.0" prefWidth="965.0">
               <columns>
                 <TableColumn prefWidth="110.0" text="编号" fx:id="idColumn" />
                 <TableColumn prefWidth="110.0" text="名称" fx:id="name" />
@@ -52,12 +52,11 @@
       </content>
     </ScrollPane>
     <Separator layoutX="823.0" layoutY="148.0" orientation="VERTICAL" prefHeight="459.0" prefWidth="6.0" />
-    <Button layoutY="168.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="130.0" text="修    改" AnchorPane.rightAnchor="20.0">
+    <Button fx:id="Return" layoutY="158.0" mnemonicParsing="false" onAction="#ReturnToMain" prefHeight="31.0" prefWidth="130.0" text="返    回" AnchorPane.rightAnchor="20.0">
       <font>
         <Font size="13.0" fx:id="x2" />
       </font>
     </Button>
-    <Button font="$x2" layoutY="212.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="130.0" text="返    回" AnchorPane.rightAnchor="20.0" />
     <Label font="$x1" layoutX="7.0" layoutY="155.0" text="时间区间：" />
     <Button fx:id="confirm" layoutX="656.0" layoutY="154.0" mnemonicParsing="false" onAction="#Confrim" prefHeight="23.0" prefWidth="70.0" text="确  认" />
     <Label layoutX="160.0" layoutY="157.0" text="年" />

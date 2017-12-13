@@ -95,5 +95,15 @@ public class Member{
 		} 
 		return temp;
 	}
+	public MemberVO findMemberByID(long id){
+		try {
+			return toMemberVO(RemoteHelper.getInstance().getMemberDataService().findMemberbyID(id));
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 
 }

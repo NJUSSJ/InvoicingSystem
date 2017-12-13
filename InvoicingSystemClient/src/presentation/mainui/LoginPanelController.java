@@ -7,12 +7,16 @@ import MainApp.MainApp;
 import businesslogic.userbl.UserController;
 import businesslogicservice.userblservice.UserBLService;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import vo.UserVO;
 
 public class LoginPanelController implements Initializable {
@@ -30,7 +34,28 @@ public class LoginPanelController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
+		password.setOnKeyPressed(new EventHandler<KeyEvent>() {
+
+			@Override
+			public void handle(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if(e.getCode().equals(KeyCode.ENTER)) {
+					Login();
+				}
+			}
+			
+		});
 		
+		username.setOnKeyPressed(new EventHandler<KeyEvent>() {
+
+			@Override
+			public void handle(KeyEvent event) {
+				if(event.getCode().equals(KeyCode.ENTER)) {
+					password.requestFocus();
+				}
+				
+			}
+		});
 	}
 	
 
@@ -106,4 +131,6 @@ public class LoginPanelController implements Initializable {
 		
 		
 	}
+	
+	
 }
