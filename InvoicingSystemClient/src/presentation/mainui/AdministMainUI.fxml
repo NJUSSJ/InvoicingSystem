@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.mainui.AdministerMainViewController">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.mainui.AdministerMainViewController">
   <children>
     <Label layoutX="1.0" layoutY="38.0" prefHeight="105.0" prefWidth="391.0" text="管理员主界面">
       <font>
@@ -24,7 +29,7 @@
     <Label layoutX="154.0" layoutY="434.0" text="用户管理" />
     <Label layoutX="446.0" layoutY="434.0" text="日记查看" />
     <Label layoutX="782.0" layoutY="434.0" text="邮箱" />
-    <ImageView fx:id="userChange" fitHeight="185.0" fitWidth="192.0" layoutX="96.0" layoutY="194.0" onMouseClicked="#showuserChangeUI">
+    <ImageView fx:id="userChange" fitHeight="185.0" fitWidth="192.0" layoutX="96.0" layoutY="194.0">
       <image>
         <Image url="@../../../resources/user_setting_512px_1174239_easyicon.net.png" />
       </image>
@@ -39,5 +44,6 @@
         <Image url="@../../../resources/Mail_Search_512px_1178165_easyicon.net.png" />
       </image>
     </ImageView>
+    <Button layoutX="85.0" layoutY="174.0" mnemonicParsing="false" onAction="#showuserChangeUI" opacity="0.0" prefHeight="225.0" prefWidth="212.0" text="Button" />
   </children>
 </AnchorPane>

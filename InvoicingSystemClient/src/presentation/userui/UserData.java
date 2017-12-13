@@ -5,16 +5,16 @@ import javafx.beans.property.StringProperty;
 import vo.UserVO;
 
 public class UserData {
-StringProperty id=new SimpleStringProperty();
+StringProperty id;
 StringProperty name=new SimpleStringProperty();
 StringProperty rank=new SimpleStringProperty();
 StringProperty password=new SimpleStringProperty();
 UserVO a;
 public UserData(UserVO a){
-	id.set(Long.toString(a.getID()));
-	rank.set(Integer.toString(a.getRank()));
-	name.set(a.getUsername());
-	password.set(a.getPassword());
+	id=new SimpleStringProperty(Long.toString(a.getID()));
+	rank=new SimpleStringProperty(Integer.toString(a.getRank()));
+	name=new SimpleStringProperty(a.getUsername());
+	password=new SimpleStringProperty(a.getPassword());
 	this.a=a;
 }
 public UserVO getVO() {

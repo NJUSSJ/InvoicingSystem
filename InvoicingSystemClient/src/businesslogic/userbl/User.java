@@ -76,7 +76,9 @@ public class User {
 		return new UserVO(userPO.getID(),userPO.getPassword(),userPO.getRank(),userPO.getUserName());
 	}
 	public ArrayList<UserVO> findUsers(){
-		return null;
+		ArrayList<UserVO> temp;
+		ArrayList<UserPO> users=RemoteHelper.getInstance().getUserDataService().find
+		return RemoteHe;
 	}
 
 }
