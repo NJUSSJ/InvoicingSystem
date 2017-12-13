@@ -862,7 +862,6 @@ public class DataRemoteObject extends UnicastRemoteObject implements UserDataSer
 
 	@Override
 	public ArrayList<UserPO> findUsers() throws RemoteException {
-		
 		return userService.findUsers();
 	}
 	
