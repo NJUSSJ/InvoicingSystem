@@ -144,8 +144,8 @@ public class UserDataImpl implements UserDataService {
 				UserPO tmpUserPO=new UserPO(tmpid, password, rank, username);
 				
 				results.add(tmpUserPO);
-				
 			}
+			return results;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -32,17 +32,17 @@
     <Label fx:id="logout" font="$x1" layoutX="873.0" layoutY="23.0" onMouseClicked="#louout" text="||  登录" />
     <Separator prefHeight="3.0" prefWidth="1000.0" AnchorPane.leftAnchor="-6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="128.0" />
     <Separator layoutX="771.0" layoutY="130.0" orientation="VERTICAL" prefHeight="473.0" prefWidth="7.0" />
-    <Button fx:id="addB" font="$x1" layoutX="810.0" layoutY="172.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="150.0" text="新     增" />
-    <Button fx:id="updateB" font="$x1" layoutX="810.0" layoutY="222.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="150.0" text="修     改" />
-    <Button fx:id="deleteB" font="$x1" layoutX="810.0" layoutY="274.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="150.0" text="删     除" />
-    <Button fx:id="returnB" font="$x1" layoutX="810.0" layoutY="325.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="150.0" text="返      回" />
+    <Button fx:id="addB" font="$x1" layoutX="810.0" layoutY="172.0" mnemonicParsing="false" onAction="#addUser" prefHeight="28.0" prefWidth="150.0" text="新     增" />
+    <Button fx:id="updateB" font="$x1" layoutX="810.0" layoutY="222.0" mnemonicParsing="false" onAction="#updateAccount" prefHeight="28.0" prefWidth="150.0" text="修     改" />
+    <Button fx:id="deleteB" font="$x1" layoutX="810.0" layoutY="274.0" mnemonicParsing="false" onAction="#deleteUser" prefHeight="28.0" prefWidth="150.0" text="删     除" />
+    <Button fx:id="returnB" font="$x1" layoutX="810.0" layoutY="325.0" mnemonicParsing="false" onAction="#showAdministerMainUI" prefHeight="28.0" prefWidth="150.0" text="返      回" />
     <ImageView fitHeight="35.0" fitWidth="36.0" layoutX="33.0" layoutY="133.0">
       <image>
         <Image url="@../../../resources/search_1486px_1202802_easyicon.net.png" />
       </image>
     </ImageView>
     <Label layoutX="80.0" layoutY="143.0" text="查询：" />
-    <TextField fx:id="search" layoutX="138.0" layoutY="139.0" />
+    <TextField fx:id="search" layoutX="138.0" layoutY="138.0" />
     <Button fx:id="rightB" layoutX="697.0" layoutY="139.0" mnemonicParsing="false" onAction="#searchUser" text="确    认" />
     <ScrollPane layoutY="172.0" prefHeight="433.0" prefWidth="774.0">
       <content>
