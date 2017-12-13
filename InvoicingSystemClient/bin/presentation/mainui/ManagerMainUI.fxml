@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<<<<<<< HEAD
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.mainui.ManagerMainViewController">
+=======
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.control.Label?>
@@ -13,6 +23,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.mainui.ManagerMainViewController">
+>>>>>>> e61e4cbca7af0551f2af245c05cfc99c84b5b4bd
   <children>
     <Label layoutX="9.0" layoutY="43.0" prefHeight="100.99990000000253" prefWidth="444.0" text="总经理主页面">
       <font>
@@ -63,7 +74,15 @@
         <Image url="@../../../resources/Mail_Search_512px_1178165_easyicon.net.png" />
       </image>
     </ImageView>
+<<<<<<< HEAD
     <ImageView fx:id="strategy" fitHeight="149.0" fitWidth="146.0" layoutX="786.0" layoutY="177.0">
+=======
+<<<<<<< HEAD
+    <ImageView fx:id="strategy" fitHeight="149.0" fitWidth="146.0" layoutX="784.0" layoutY="177.0" onMouseClicked="#showStrategyUI">
+=======
+    <ImageView fx:id="strategy" fitHeight="149.0" fitWidth="146.0" layoutX="786.0" layoutY="177.0" onMouseClicked="#showPricePromotionUI">
+>>>>>>> e61e4cbca7af0551f2af245c05cfc99c84b5b4bd
+>>>>>>> 62d2b4f867c62de5f0098d5c2236cf0cb364e5f6
       <image>
         <Image url="@../../../resources/strategy_545px_1208206_easyicon.net.png" />
       </image>

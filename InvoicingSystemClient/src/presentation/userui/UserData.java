@@ -1,13 +1,14 @@
 package presentation.userui;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import vo.UserVO;
 
 public class UserData {
-StringProperty id;
-StringProperty name;
-StringProperty rank;
-StringProperty password;
+StringProperty id=new SimpleStringProperty();
+StringProperty name=new SimpleStringProperty();
+StringProperty rank=new SimpleStringProperty();
+StringProperty password=new SimpleStringProperty();
 UserVO a;
 public UserData(UserVO a){
 	id.set(Long.toString(a.getID()));

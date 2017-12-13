@@ -1,17 +1,18 @@
 package presentation.commodityui;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import vo.CommodityVO;
 
 public class CommodityData {
-    StringProperty id;
-    StringProperty name;
-    StringProperty model;
-    StringProperty num;
-    StringProperty importprice;
-    StringProperty saleprice;
-    StringProperty latesale;
-    StringProperty lateimport;
+    StringProperty id=new SimpleStringProperty();
+    StringProperty name=new SimpleStringProperty();
+    StringProperty model=new SimpleStringProperty();
+    StringProperty num=new SimpleStringProperty();
+    StringProperty importprice=new SimpleStringProperty();
+    StringProperty saleprice=new SimpleStringProperty();
+    StringProperty latesale=new SimpleStringProperty();
+    StringProperty lateimport=new SimpleStringProperty();
     CommodityVO a;
     public CommodityData(CommodityVO a){
     	id.set(Long.toString(a.getID()));
