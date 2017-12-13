@@ -129,7 +129,7 @@ private ObservableList<UserData> userData =FXCollections.observableArrayList();
             userStage.showAndWait();
             
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	@FXML
@@ -167,7 +167,7 @@ private ObservableList<UserData> userData =FXCollections.observableArrayList();
 	            userStage.showAndWait();
 	            
 			} catch (IOException e) {
-				// TODO: handle exception
+				e.printStackTrace();
 			}
 			
 	   	}

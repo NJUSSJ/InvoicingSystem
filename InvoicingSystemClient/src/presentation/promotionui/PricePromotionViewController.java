@@ -84,7 +84,7 @@ public class PricePromotionViewController implements Initializable{
             promotionStage.showAndWait();
             
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	private void getInf(PricePromotionData newValue) {

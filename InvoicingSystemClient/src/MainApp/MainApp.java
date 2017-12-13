@@ -81,7 +81,7 @@ public class MainApp extends Application {
 			MainApp.rootlayout.setCenter(loginPanel);
 			
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	
@@ -98,7 +98,7 @@ public class MainApp extends Application {
 			MainApp.rootlayout.setCenter(fianceMainUI);
 			
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	
@@ -115,7 +115,7 @@ public class MainApp extends Application {
 			MainApp.rootlayout.setCenter(administMainUI);
 			
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	
@@ -132,7 +132,7 @@ public class MainApp extends Application {
 			MainApp.rootlayout.setCenter(saleMainUI);
 			
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	
@@ -166,7 +166,7 @@ public class MainApp extends Application {
 			MainApp.rootlayout.setCenter(managerMainUI);
 			
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	
@@ -183,7 +183,7 @@ public class MainApp extends Application {
 			MainApp.rootlayout.setCenter(emailUI);
 			
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	
@@ -200,7 +200,7 @@ public class MainApp extends Application {
 			MainApp.rootlayout.setCenter(logUI);
 			
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	
@@ -211,13 +211,12 @@ public class MainApp extends Application {
 		try {
 			FXMLLoader loader=new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("/presentation/userui/UserUI.fxml"));
-			
 			AnchorPane userUI=loader.load();
 			
 			MainApp.rootlayout.setCenter(userUI);
 			
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 
