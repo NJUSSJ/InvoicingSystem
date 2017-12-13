@@ -1,14 +1,10 @@
-/MainApp/
-/Utility/
-/businesslogic/
-/businesslogicservice/
-/data/
-/dataservice/
-/driver/
-/po/
-/presentation/
-/rmi/
-/runner/
-/stubs/
-/vo/
 /poi-3.17/
+/presentation/
+/po/
+/MainApp/
+/vo/
+<<<<<<< HEAD
+/poi-3.17/
+=======
+/businesslogic/
+>>>>>>> ef040e79d01c6837931613f9c4375af93fe5e947

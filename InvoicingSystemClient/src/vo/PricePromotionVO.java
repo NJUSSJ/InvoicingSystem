@@ -16,7 +16,7 @@ public class PricePromotionVO {
 		this.coupon=coupon;
 	}
 	public PricePromotionPO toPricePromotionPO(){
-		return new PricePromotionPO(id,discount,priceline,coupon);
+		return new PricePromotionPO(id,priceline,discount,coupon);
 	}
 	
 	public long getID(){

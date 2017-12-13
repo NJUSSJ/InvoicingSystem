@@ -8,16 +8,16 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.promotionui.PricePromotionViewController">
   <!-- TODO Add Nodes -->
   <children>
-    <TableView fx:id="promotionTable" prefHeight="307.0" prefWidth="451.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0">
+    <TableView fx:id="promotionTable" prefHeight="307.0" prefWidth="451.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="14.0">
       <columns>
         <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="149.0" text="价格" fx:id="pricelineCol" />
         <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="141.0" text="折扣" fx:id="discountCol" />
         <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="161.0" text="代金券金额" fx:id="couponCol" />
       </columns>
     </TableView>
-    <Button fx:id="add" layoutX="501.0" layoutY="103.0" mnemonicParsing="false" text="增加" />
-    <Button fx:id="delete" layoutX="501.0" layoutY="131.0" mnemonicParsing="false" text="删除" />
-    <Button fx:id="back" layoutX="501.0" layoutY="160.0" mnemonicParsing="false" text="返回" />
+    <Button fx:id="add" layoutX="501.0" layoutY="103.0" mnemonicParsing="false" onAction="#add" text="增加" />
+    <Button fx:id="delete" layoutX="501.0" layoutY="131.0" mnemonicParsing="false" onAction="#delete" text="删除" />
+    <Button fx:id="back" layoutX="501.0" layoutY="160.0" mnemonicParsing="false" onAction="#back" text="返回" />
     <Label fx:id="id" layoutX="466.0" layoutY="14.0" text="Label" />
     <Label layoutX="514.0" layoutY="14.0" text="Label" />
   </children>

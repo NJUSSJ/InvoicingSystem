@@ -1,21 +1,22 @@
 package presentation.memberui;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import vo.MemberVO;
 
 public class MemberData {
-	StringProperty name;
-	StringProperty id;
-	StringProperty telephone;
-	StringProperty address;
-	StringProperty postcode;
-	StringProperty email;
-	StringProperty category;
-	StringProperty rank;
-	StringProperty shouldpay;
-	StringProperty shouldget;
-	StringProperty quota;//应收额度
-	StringProperty operator;
+	StringProperty name=new SimpleStringProperty();
+	StringProperty id=new SimpleStringProperty();
+	StringProperty telephone=new SimpleStringProperty();
+	StringProperty address=new SimpleStringProperty();
+	StringProperty postcode=new SimpleStringProperty();
+	StringProperty email=new SimpleStringProperty();
+	StringProperty category=new SimpleStringProperty();
+	StringProperty rank=new SimpleStringProperty();
+	StringProperty shouldpay=new SimpleStringProperty();
+	StringProperty shouldget=new SimpleStringProperty();
+	StringProperty quota=new SimpleStringProperty();//应收额度
+	StringProperty operator=new SimpleStringProperty();
 	MemberVO a;
 	public MemberData(MemberVO a){
 		this.a=a;

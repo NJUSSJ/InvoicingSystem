@@ -67,4 +67,17 @@ public class CommodityList {
 	public int getSize(){
 		return list.size();
 	}
+	/**
+	 * 以赠品list的形式返回赠品名称和数量
+	 * @return 赠品信息
+	 */
+	public String getNumInfo(){
+		String temp="";
+		CommodityController ccon=new CommodityController();
+		for(CommodityLineItem each:list){
+			CommodityVO vo=ccon.findCommodityByID(each.getCommodityID());
+			temp+=vo.getName()+"×"+each.getNum()+" ";
+		}
+		return temp;
+	}
 }

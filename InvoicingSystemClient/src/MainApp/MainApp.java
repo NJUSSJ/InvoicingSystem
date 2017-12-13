@@ -1,10 +1,15 @@
  package MainApp;
 
 import java.io.IOException;
+import java.util.Optional;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -324,24 +329,32 @@ public class MainApp extends Application {
 	 */
 	public static  void showStrategyUI() {
 		try {
+			Alert alert = new Alert(AlertType.CONFIRMATION);
+			alert.setTitle("Confirmation the Type of Promotion");
+			alert.setHeaderText("Choose Promotion Type");
+			alert.setContentText("Choose Promotion Type");
+
+			ButtonType buttonTypeMember = new ButtonType("Member");
+			ButtonType buttonTypePrice = new ButtonType("Price");
+			ButtonType buttonTypePackage = new ButtonType("Package");
+			ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
+
+			alert.getButtonTypes().setAll(buttonTypeMember, buttonTypePrice, buttonTypePackage, buttonTypeCancel);
+
+			Optional<ButtonType> result = alert.showAndWait();
+			String type;
+			if (result.get() == buttonTypeMember){
+			    type="Member";
+			} else if (result.get() == buttonTypePackage) {
+			    type="Package";
+			} else if (result.get() == buttonTypePrice) {
+			    type="Price";
+			} else {
+			    return;
+			}
 			FXMLLoader loader=new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("/presentation/promotionui/StrategyUI.fxml"));
+			loader.setLocation(MainApp.class.getResource("/presentation/promotionui/"+type+"PromotionUI.fxml"));
 			
-			AnchorPane strategyUI=loader.load();
-			
-			MainApp.rootlayout.setCenter(strategyUI);
-			
-		} catch (IOException e) {
-			// TODO: handle exception
-		}
-	}
-	/**
-	 * 显示促销策略：价格
-	 */
-	public static void showPricePromotionUI(){
-		try {
-			FXMLLoader loader=new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("/presentation/promotionui/PricePromotionUI.fxml"));
 			AnchorPane strategyUI=loader.load();
 			
 			MainApp.rootlayout.setCenter(strategyUI);
