@@ -94,7 +94,6 @@ public class StockInventoryViewController implements Initializable {
 		model.setCellValueFactory(cellData->cellData.getValue().ModelProperty());
 		stockNum.setCellValueFactory(cellData->cellData.getValue().StockProperty());
 		averagePrice.setCellValueFactory(cellData->cellData.getValue().AveragePriceProperty());
-		finishedTime.setCellValueFactory(cellData->cellData.getValue().FinishedTimeProperty());
 		
 		table.setItems(InventoryInfo);
 		
@@ -129,7 +128,7 @@ public class StockInventoryViewController implements Initializable {
 		HSSFRow row1 =sheet.createRow(0);
 		HSSFCell cell1=row1.createCell(0);
 		
-		sheet.addMergedRegion(new CellRangeAddress(0, 1, 0, 11));
+		sheet.addMergedRegion(new CellRangeAddress(0, 1, 0, 9));
 		
 		HSSFFont font=wb.createFont();
 		font.setFontName("微软雅黑");
@@ -204,12 +203,7 @@ public class StockInventoryViewController implements Initializable {
 		AveragePriceCell.setCellValue("库存均价");
 		AveragePriceCell.setCellStyle(style2);
 		
-		HSSFCell FinishedTimeCell=row2.createCell(10);
 		
-		sheet.addMergedRegion(new CellRangeAddress(2,2, 10, 11));
-		
-		FinishedTimeCell.setCellValue("出厂日期");
-		FinishedTimeCell.setCellStyle(style2);
 		
 		/*
 		 * 填入具体信息
@@ -252,12 +246,7 @@ public class StockInventoryViewController implements Initializable {
 			AveragePriceCellInfo.setCellValue(InventoryInfo.get(i).getAveragePrice());
 			AveragePriceCellInfo.setCellStyle(style3);
 			
-			HSSFCell FinishedTimeCellInfo=row.createCell(10);
 			
-			sheet.addMergedRegion(new CellRangeAddress(i+3,i+3, 10, 11));
-			
-			FinishedTimeCellInfo.setCellValue(InventoryInfo.get(i).getFinishedTime());
-			FinishedTimeCellInfo.setCellStyle(style3);
 			
 			
 		}
@@ -267,7 +256,7 @@ public class StockInventoryViewController implements Initializable {
 		try {
 			FileOutputStream fo=new FileOutputStream("c:\\users\\shisj\\test.xls");
 			wb.write(fo);
-			fo.close();
+			fo.close(); 
 			Alert error=new Alert(Alert.AlertType.CONFIRMATION);
         	error.setTitle("Success");
         	error.setHeaderText("");
