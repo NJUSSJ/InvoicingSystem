@@ -63,10 +63,11 @@
         <Image url="@../../../resources/Mail_Search_512px_1178165_easyicon.net.png" />
       </image>
     </ImageView>
-    <ImageView fx:id="strategy" fitHeight="149.0" fitWidth="146.0" layoutX="786.0" layoutY="177.0" onMouseClicked="#showPricePromotionUI">
+    <ImageView fx:id="strategy" fitHeight="149.0" fitWidth="146.0" layoutX="786.0" layoutY="177.0">
       <image>
         <Image url="@../../../resources/strategy_545px_1208206_easyicon.net.png" />
       </image>
     </ImageView>
+    <Button fx:id="promotion" layoutX="786.0" layoutY="177.0" mnemonicParsing="false" onAction="#showStrategyUI" opacity="0.0" prefHeight="149.0" prefWidth="145.9998779296875" text="Button" />
   </children>
 </AnchorPane>

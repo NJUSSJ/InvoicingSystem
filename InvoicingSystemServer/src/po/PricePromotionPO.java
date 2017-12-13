@@ -1,6 +1,12 @@
 package po;
 
-public class PricePromotionPO {
+import java.io.Serializable;
+
+public class PricePromotionPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	long id;
 	double priceLine;
 	double discount;
