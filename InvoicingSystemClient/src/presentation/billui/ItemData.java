@@ -1,11 +1,12 @@
 package presentation.billui;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class ItemData {
-  StringProperty name;
-  StringProperty money;
-  StringProperty note;
+  StringProperty name=new SimpleStringProperty();
+  StringProperty money=new SimpleStringProperty();
+  StringProperty note=new SimpleStringProperty();
   public ItemData(String name,String money,String note){
 	  this.name.set(name);
 	  this.money.set(money);

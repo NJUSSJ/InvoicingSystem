@@ -1,12 +1,13 @@
 package presentation.accountui;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import vo.AccountVO;
 
 public class AccountData {
-	StringProperty namePro;
-	StringProperty depositPro;
-	StringProperty idPro;
+	StringProperty namePro=new SimpleStringProperty();
+	StringProperty depositPro=new SimpleStringProperty();
+	StringProperty idPro=new SimpleStringProperty();
 	AccountVO a;
 	public AccountData(AccountVO a){
 		namePro.set(a.getName());
