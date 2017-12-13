@@ -2,7 +2,6 @@ package vo;
 
 import java.sql.Date;
 
-import businesslogic.billbl.CommodityList;
 import po.LossBillPO;
 
 /**
@@ -14,19 +13,21 @@ import po.LossBillPO;
 public class LossBillVO {
 	long id;
 	long userid;
-	CommodityList commodityList;
+	String commodityname;
 	Date time;
 	int state;
-	public LossBillVO(long id,long userid,CommodityList commodityList, Date time,int state) {
+	int num;
+	double sum;
+	public LossBillVO(long id,long userid,String commodityname, Date time,int state,int num,double sum) {
 		// TODO Auto-generated constructor stub
 		this.id=id;
-		this.commodityList=commodityList;
+		this.commodityname=commodityname;
 		this.userid=userid;
 		this.time=time;
 		this.state=state;
 	}
 	public LossBillPO toLossBillPO(){
-		return new LossBillPO(id,userid,commodityList.toString(),time,state);
+		return new LossBillPO(id,userid,commodityname,time,state,num,sum);
 	}
 	public long getID(){
 		return id;
@@ -34,8 +35,8 @@ public class LossBillVO {
 	public long getUserID(){
 		return userid;
 	}
-	public CommodityList getCommodityList(){
-		return commodityList;
+	public String getCommodityName(){
+		return commodityname;
 	}
 	public Date getTime(){
 		return time;
@@ -51,5 +52,17 @@ public class LossBillVO {
 	}
 	public void setState(int state){
 		this.state=state;
+	}
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num=num;
+	}
+	public double getSum() {
+		return sum;
+	}
+	public void setSum(double sum) {
+		this.sum=sum;
 	}
 }

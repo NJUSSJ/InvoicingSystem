@@ -146,6 +146,7 @@ public class UserDataImpl implements UserDataService {
 				results.add(tmpUserPO);
 				
 			}
+			return results;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
