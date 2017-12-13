@@ -3,6 +3,7 @@ package data.userdata;
 import java.rmi.RemoteException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import data.datafactory.DataFactory;
 import dataservice.userdataservice.UserDataService;
@@ -124,6 +125,34 @@ public class UserDataImpl implements UserDataService {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	@Override
+	public ArrayList<UserPO> findUsers() throws RemoteException {
+		String sql="SELECT id, username,rank,password FROM users";
+		ArrayList<UserPO> results=new ArrayList<>();
+		//执行数据库sql语句
+		try {
+			ResultSet result=DataFactory.statement.executeQuery(sql);
+			
+			//展开结果数据
+			while(result.next()) {
+				long tmpid=result.getLong("id");
+				String username=result.getString("username");
+				int rank=result.getInt("rank");
+				String password=result.getString("password");
+				
+				UserPO tmpUserPO=new UserPO(tmpid, password, rank, username);
+				
+				results.add(tmpUserPO);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return  null;
+		
 	}
 
 	

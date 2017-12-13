@@ -123,7 +123,7 @@ public class CommodityController implements CommodityBLService{
 	public ArrayList<StockInventoryInfoVO> getInventoryInfo() {
 		// TODO Auto-generated method stub
 		ArrayList<StockInventoryInfoVO> test=new ArrayList<>();
-		StockInventoryInfoVO info=new StockInventoryInfoVO(1, "µÆ´ø", "XT100", 101, 1000, "2017/12/12");
+		StockInventoryInfoVO info=new StockInventoryInfoVO(1, "µÆ´ø", "XT100", 101, 1000);
 		test.add(info);
 		return test;
 	}
