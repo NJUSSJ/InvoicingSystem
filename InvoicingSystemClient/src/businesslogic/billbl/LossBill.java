@@ -4,7 +4,6 @@ import java.rmi.RemoteException;
 import java.sql.Date;
 import java.util.ArrayList;
 
-import businesslogicservice.billblservice.LossBillBLService;
 import po.LossBillPO;
 import rmi.RemoteHelper;
 import vo.LossBillVO;
@@ -12,8 +11,8 @@ import vo.LossBillVO;
 public class LossBill{
 	public LossBillVO toLossBillVO(LossBillPO lossBillPO) {
 		// TODO 自动生成的方法存根
-		CommodityList list=new CommodityList(lossBillPO.getCommodityList());
-		return new LossBillVO(lossBillPO.getID(),lossBillPO.getUserID(),list,lossBillPO.getTime(),lossBillPO.getState());
+		
+		return new LossBillVO(lossBillPO.getID(),lossBillPO.getUserID(),lossBillPO.getName(),lossBillPO.getTime(),lossBillPO.getState(),lossBillPO.getNum(),lossBillPO.getSum());
 	}
 	public boolean submitLossBill(LossBillVO lossBill) {
 		// TODO 自动生成的方法存根

@@ -12,9 +12,9 @@ public class OverBill{
 
 	public OverBillVO toOverBillVO(OverBillPO overBillPO) {
 		// TODO 自动生成的方法存根
-		CommodityList list=new CommodityList(overBillPO.getCommodityList());
-		return new OverBillVO(overBillPO.getID(),overBillPO.getUserID(),list,overBillPO.getTime(),
-				overBillPO.getState());
+		
+		return new OverBillVO(overBillPO.getID(),overBillPO.getUserID(),overBillPO.getCommodityName(),overBillPO.getTime(),
+				overBillPO.getState(),overBillPO.getNum(),overBillPO.getSum());
 	}
 	public boolean submitOverBill(OverBillVO overBill) {
 		// TODO 自动生成的方法存根
