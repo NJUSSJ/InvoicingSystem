@@ -15,6 +15,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import presentation.commodityui.LossInfoController;
+import presentation.commodityui.OverInfoController;
 import presentation.commodityui.Sub_StockInventoryController;
 import presentation.mainui.AdministerMainViewController;
 import presentation.mainui.FianceMainViewController;
@@ -637,7 +639,7 @@ public class MainApp extends Application {
 			AnchorPane pane=(AnchorPane)loader.load();
 			
 			 Stage dialogStage = new Stage();
-		     dialogStage.setTitle("Edit Person");
+		     dialogStage.setTitle("盘点");
 		     dialogStage.getIcons().add(new Image("file:resources/light_bulb_310px_1204967_easyicon.net.png"));
 		     dialogStage.initModality(Modality.WINDOW_MODAL);
 		     dialogStage.initOwner(primarystage);
@@ -649,6 +651,61 @@ public class MainApp extends Application {
 		     controller.setDialogStage(dialogStage);
 		     
 		     dialogStage.showAndWait();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	/*
+	 * 显示报损信息界面
+	 * 
+	 */
+	public static void showLossInfo(String name,int num,double sum) {
+		try {
+			FXMLLoader loader=new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/presentation/commodityui/LossBillUI.fxml"));
+			AnchorPane pane=(AnchorPane)loader.load();
+			
+			Stage dialogStage=new Stage();
+			dialogStage.setTitle("报损信息");
+			dialogStage.getIcons().add(new Image("file:resources/light_bulb_310px_1204967_easyicon.net.png"));
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primarystage);
+			Scene scene=new Scene(pane);
+			dialogStage.setScene(scene);
+			
+			LossInfoController controller=loader.getController();
+			controller.setStage(dialogStage);
+			controller.setInfo(name, num, sum);
+			
+			dialogStage.showAndWait();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	/*
+	 * 显示报溢信息界面
+	 */
+	public static void showOverInfo(String name,int num,double sum) {
+		try {
+			FXMLLoader loader=new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/presentation/commodityui/OverBillUI.fxml"));
+			AnchorPane pane=(AnchorPane)loader.load();
+			
+			Stage dialogStage=new Stage();
+			dialogStage.setTitle("报溢信息");
+			dialogStage.getIcons().add(new Image("file:resources/light_bulb_310px_1204967_easyicon.net.png"));
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primarystage);
+			Scene scene=new Scene(pane);
+			dialogStage.setScene(scene);
+			
+			OverInfoController controller=loader.getController();
+			controller.setStage(dialogStage);
+			controller.setInfo(name, num, sum);
+			
+			dialogStage.showAndWait();
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

@@ -1,10 +1,9 @@
 package presentation.commodityui;
 
-import java.lang.instrument.Instrumentation;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import businesslogic.commoditybl.CommodityController;
+import MainApp.MainApp;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -12,7 +11,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import vo.CommodityVO;
 import vo.StockInventoryInfoVO;
 /**
  * 
@@ -60,7 +58,25 @@ public class Sub_StockInventoryController implements Initializable{
 		try {
 			int actual=Integer.parseInt(tmp);
 			info.setStockNum(actual);
-			
+			int systemNum=Integer.parseInt(SystemNum.getText());
+			dialogStage.close();
+			/*
+			 * 判定报损报溢信息
+			 *
+			 */
+			if(systemNum>actual) {
+				/*
+				 * 报损
+				 */
+				MainApp.showLossInfo(info.getName(),systemNum-actual, info.getAveragePrice()*(systemNum-actual));
+				
+			}else if(systemNum<actual) {
+				/*
+				 * 报溢
+				 */
+				MainApp.showOverInfo(info.getName(),-systemNum+actual, info.getAveragePrice()*(-systemNum+actual));
+			}
+			/*
 			String name=info.getName();
 			
 			CommodityController commodityController=new CommodityController();
@@ -71,7 +87,7 @@ public class Sub_StockInventoryController implements Initializable{
 			
 			commodityController.updateCommodity(tmpVO);
 			
-			dialogStage.close();
+			*/
 		} catch (NumberFormatException e) {
 			Alert error=new Alert(Alert.AlertType.WARNING);
         	error.setTitle("Format Warning");

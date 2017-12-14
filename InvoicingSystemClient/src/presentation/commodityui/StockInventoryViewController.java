@@ -1,6 +1,6 @@
 package presentation.commodityui;
 
-import java.io.FileNotFoundException;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
@@ -29,6 +29,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import vo.StockInventoryInfoVO;
 
 public class StockInventoryViewController implements Initializable {
@@ -120,7 +122,22 @@ public class StockInventoryViewController implements Initializable {
 		MainApp.showStockMainUI();
 	}
 	
-	public void Export() {
+	public void handleExport() {
+		FileChooser fileChooser=new FileChooser();
+		
+		//set extension filter
+		FileChooser.ExtensionFilter extFilter=new ExtensionFilter("XLS files (*.xls)", "*.xsl");
+		fileChooser.getExtensionFilters().add(extFilter);
+	
+		//show save file dialog
+		File file=fileChooser.showSaveDialog(MainApp.getPrimaryStage());
+		String filepath=file.getPath();
+		if(!filepath.endsWith(".xls")) {
+			filepath+=".xls";
+		}
+		SaveFiletoPath(filepath);
+	}
+	public void SaveFiletoPath(String filepath) {
 		@SuppressWarnings("resource")
 		HSSFWorkbook wb=new HSSFWorkbook();
 		HSSFSheet sheet=wb.createSheet("sheet1");
@@ -254,7 +271,7 @@ public class StockInventoryViewController implements Initializable {
 		
 		
 		try {
-			FileOutputStream fo=new FileOutputStream("c:\\users\\shisj\\test.xls");
+			FileOutputStream fo=new FileOutputStream(filepath);
 			wb.write(fo);
 			fo.close(); 
 			Alert error=new Alert(Alert.AlertType.CONFIRMATION);
