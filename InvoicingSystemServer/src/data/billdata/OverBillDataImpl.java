@@ -19,9 +19,9 @@ public class OverBillDataImpl implements OverBillDataService {
 	 */
 	@Override
 	public boolean insert(OverBillPO po) throws RemoteException {
-		String sql="insert into overbills (id,userid,commoditylist,time)"
+		String sql="insert into overbills (id,userid,commodityname,time,state,num,sum)"
 				+ " values "
-				+ "('"+po.getID()+"','"+po.getUserID()+"','"+po.getCommodityName()+"','"+po.getTime();
+				+ "('"+po.getID()+"','"+po.getUserID()+"','"+po.getCommodityName()+"','"+po.getTime()+"','"+po.getState()+"','"+po.getNum()+"','"+po.getSum()+"')";
 		
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {
@@ -79,12 +79,12 @@ public class OverBillDataImpl implements OverBillDataService {
 			ResultSet result=DataFactory.statement.executeQuery(sql);
 			while(result.next()) {
 				long userid=result.getLong("userid");
-				String commodityname=result.getString("commoditylist");
+				String commodityname=result.getString("commodityname");
 				Date time=result.getDate("time");
 				int state=result.getInt("state");
 			
-				int num=result.getInt("");
-				double sum=result.getDouble("");
+				int num=result.getInt("num");
+				double sum=result.getDouble("sum");
 				OverBillPO tmpPO=new OverBillPO(id, userid, commodityname, time, state,num,sum);
 			
 				return tmpPO;
@@ -108,12 +108,12 @@ public class OverBillDataImpl implements OverBillDataService {
 			while(result.next()) {
 				
 				long userid=result.getLong("userid");
-				String commodityname=result.getString("commoditylist");
+				String commodityname=result.getString("commodityname");
 				Date time=result.getDate("time");
 				long id=result.getLong("id");
 				int state=result.getInt("state");
-				int num=result.getInt("");
-				double sum=result.getDouble("");
+				int num=result.getInt("num");
+				double sum=result.getDouble("sum");
 				OverBillPO tmpPO=new OverBillPO(id, userid, commodityname, time, state,num,sum);
 							results.add(tmpPO);
 			}
@@ -138,12 +138,12 @@ public class OverBillDataImpl implements OverBillDataService {
 			while(result.next()) {
 				
 				long userid=result.getLong("userid");
-				String commodityname=result.getString("commoditylist");
+				String commodityname=result.getString("commodityname");
 				int state=result.getInt("state");
 				long id=result.getLong("id");
 			
-				int num=result.getInt("");
-				double sum=result.getDouble("");
+				int num=result.getInt("num");
+				double sum=result.getDouble("sum");
 				OverBillPO tmpPO=new OverBillPO(id, userid, commodityname, time, state,num,sum);
 							results.add(tmpPO);
 			}
@@ -167,12 +167,12 @@ public class OverBillDataImpl implements OverBillDataService {
 			while(result.next()) {
 				
 				long userid=result.getLong("userid");
-				String commodityname=result.getString("commoditylist");
+				String commodityname=result.getString("commodityname");
 				Date time=result.getDate("time");
 				long id=result.getLong("id");
 			
-				int num=result.getInt("");
-				double sum=result.getDouble("");
+				int num=result.getInt("num");
+				double sum=result.getDouble("sum");
 				OverBillPO tmpPO=new OverBillPO(id, userid, commodityname, time, state,num,sum);
 							results.add(tmpPO);
 			}

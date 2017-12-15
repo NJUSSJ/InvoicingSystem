@@ -22,7 +22,7 @@ public class CashBillDataImpl implements CashBillDataService{
 	public boolean insert(CashBillPO po) throws RemoteException {
 		String sql="insert into cashbills (id, userid, accountid, items, state, time, sum) "
 				+ "values "
-				+ "('"+po.getID()+"','"+po.getUserID()+"','"+po.getAccountID()+"','"+po.getItems()+"','"+po.getState()+"','"+po.getTime()+"','"+po.getSum()+"','";
+				+ "('"+po.getID()+"','"+po.getUserID()+"','"+po.getAccountID()+"','"+po.getItems()+"','"+po.getState()+"','"+po.getTime()+"','"+po.getSum()+"')";
 		
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {

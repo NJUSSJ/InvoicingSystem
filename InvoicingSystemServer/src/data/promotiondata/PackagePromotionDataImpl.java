@@ -20,7 +20,7 @@ public class PackagePromotionDataImpl implements PackagePromotionDataService {
 	public boolean insert(PackagePromotionPO po) throws RemoteException {
 		String sql="insert into packagepromotions (id,commoditylist,discount)"
 				+ " values "
-				+ "('"+po.getID()+"','"+po.getCommoditylist()+"','"+po.getDiscount();
+				+ "('"+po.getID()+"','"+po.getCommoditylist()+"','"+po.getDiscount()+"')";
 		
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {

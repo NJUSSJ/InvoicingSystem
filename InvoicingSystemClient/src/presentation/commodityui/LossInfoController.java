@@ -11,6 +11,8 @@ import businesslogic.billbl.LossBillController;
 import businesslogicservice.billblservice.LossBillBLService;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
@@ -57,9 +59,23 @@ public class LossInfoController implements Initializable{
 		idS=idS.replaceAll(":", "");
 		long id=Long.parseLong(idS);
 		java.sql.Date sqlDate=DateUtil.toSQL(today);
-		LossBillVO lossbill=new LossBillVO(id, MainApp.getID(),name.getText(), sqlDate, 0, Integer.parseInt(num.getText()), Double.parseDouble(sum.getText()));
+		int lossNum=Integer.parseInt(num.getText());
+		double lossSum=Double.parseDouble(sum.getText());
+		LossBillVO lossbill=new LossBillVO(id, MainApp.getID(), name.getText(), sqlDate, 0, lossNum, lossSum);
 		LossBillBLService lossbillservice=new LossBillController();
-		lossbillservice.submitLossBill(lossbill);
+		boolean success=lossbillservice.submitLossBill(lossbill);
+		if(success) {
+			Alert Information=new Alert(AlertType.INFORMATION);
+			Information.setTitle("SUCCESS");
+			Information.setContentText("发送报损单成功！");
+			Information.showAndWait();
+			stage.close();
+		}else {
+			Alert Information=new Alert(AlertType.INFORMATION);
+			Information.setTitle("FAILE");
+			Information.setContentText("发送报损单失败！");
+			Information.showAndWait();
+		}
 		stage.close();
 	}
 

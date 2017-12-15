@@ -126,16 +126,19 @@ public class StockInventoryViewController implements Initializable {
 		FileChooser fileChooser=new FileChooser();
 		
 		//set extension filter
-		FileChooser.ExtensionFilter extFilter=new ExtensionFilter("XLS files (*.xls)", "*.xsl");
+		FileChooser.ExtensionFilter extFilter=new ExtensionFilter("XLS files (*.xls)", "*.xls");
 		fileChooser.getExtensionFilters().add(extFilter);
 	
 		//show save file dialog
 		File file=fileChooser.showSaveDialog(MainApp.getPrimaryStage());
-		String filepath=file.getPath();
-		if(!filepath.endsWith(".xls")) {
+		if(file!=null) {
+			String filepath=file.getPath();
+			if(!filepath.endsWith(".xls")) {
 			filepath+=".xls";
+			}
+			SaveFiletoPath(filepath);
 		}
-		SaveFiletoPath(filepath);
+		
 	}
 	public void SaveFiletoPath(String filepath) {
 		@SuppressWarnings("resource")

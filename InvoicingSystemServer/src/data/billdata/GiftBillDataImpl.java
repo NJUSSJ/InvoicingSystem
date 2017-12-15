@@ -21,7 +21,7 @@ public class GiftBillDataImpl implements GiftBillDataService {
 	public boolean insert(GiftBillPO po) throws RemoteException {
 		String sql="insert into giftbills (id,userid,memberid,giftlist,time,state)"
 				+ " values "
-				+ "('"+po.getID()+"','"+po.getUserID()+"','"+po.getMemberID()+"','"+po.getGiftList()+"','"+po.getTime()+"','"+po.getState();
+				+ "('"+po.getID()+"','"+po.getUserID()+"','"+po.getMemberID()+"','"+po.getGiftList()+"','"+po.getTime()+"','"+po.getState()+"')";
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {
 				return true;

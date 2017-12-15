@@ -19,9 +19,9 @@ public class LossBillImpl implements LossBillDataService {
 	 */
 	@Override
 	public boolean insert(LossBillPO po) throws RemoteException {
-		String sql="insert into lossbills (id,userid,commoditylist,time)"
+		String sql="insert into lossbills (id,userid,commodityname,time,num,state,sum)"
 				+ " values "
-				+ "('"+po.getID()+"','"+po.getUserID()+"','"+po.getName()+"','"+po.getTime();
+				+ "('"+po.getID()+"','"+po.getUserID()+"','"+po.getName()+"','"+po.getTime()+"','"+po.getNum()+"','"+po.getState()+"','"+po.getSum()+"')";
 		
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {
@@ -78,11 +78,11 @@ public class LossBillImpl implements LossBillDataService {
 			ResultSet result=DataFactory.statement.executeQuery(sql);
 			while(result.next()) {
 				long userid=result.getLong("userid");
-				String commodityname=result.getString("commoditylist");
+				String commodityname=result.getString("commodityname");
 				Date time=result.getDate("time");
 				int state=result.getInt("state");
-				int num=result.getInt("");
-				double sum=result.getDouble("");
+				int num=result.getInt("num");
+				double sum=result.getDouble("sum");
 			
 				LossBillPO tmpPO=new LossBillPO(id, userid, commodityname, time, state, num,sum);
 			
@@ -107,12 +107,12 @@ public class LossBillImpl implements LossBillDataService {
 			while(result.next()) {
 				
 				long userid=result.getLong("userid");
-				String commodityname=result.getString("commoditylist");
+				String commodityname=result.getString("commodityname");
 				Date time=result.getDate("time");
 				long id=result.getLong("id");
 			
-				int num=result.getInt("");
-				double sum=result.getDouble("");
+				int num=result.getInt("num");
+				double sum=result.getDouble("sum");
 			
 				LossBillPO tmpPO=new LossBillPO(id, userid, commodityname, time, state, num,sum);
 				results.add(tmpPO);
@@ -137,12 +137,12 @@ public class LossBillImpl implements LossBillDataService {
 			while(result.next()) {
 				
 				long userid=result.getLong("userid");
-				String commodityname=result.getString("commoditylist");
+				String commodityname=result.getString("commodityname");
 				Date time=result.getDate("time");
 				long id=result.getLong("id");
 				int state=result.getInt("state");
-				int num=result.getInt("");
-				double sum=result.getDouble("");
+				int num=result.getInt("num");
+				double sum=result.getDouble("sum");
 			
 				LossBillPO tmpPO=new LossBillPO(id, userid, commodityname, time, state, num,sum);
 				
@@ -169,12 +169,12 @@ public class LossBillImpl implements LossBillDataService {
 			while(result.next()) {
 				
 				long userid=result.getLong("userid");
-				String commodityname=result.getString("commoditylist");
+				String commodityname=result.getString("commodityname");
 				int state=result.getInt("state");
 				long id=result.getLong("id");
 			
-				int num=result.getInt("");
-				double sum=result.getDouble("");
+				int num=result.getInt("num");
+				double sum=result.getDouble("sum");
 			
 				LossBillPO tmpPO=new LossBillPO(id, userid, commodityname, time, state, num,sum);
 				results.add(tmpPO);
