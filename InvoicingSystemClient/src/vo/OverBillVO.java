@@ -29,7 +29,7 @@ public class OverBillVO {
 		this.num=num;
 	}
 	public OverBillPO toOverBillPO(){
-		return new OverBillPO(id,userid,commodityname,time,state);
+		return new OverBillPO(id,userid,commodityname,time,state,num,sum);
 	}
 	public long getID(){
 		return id;

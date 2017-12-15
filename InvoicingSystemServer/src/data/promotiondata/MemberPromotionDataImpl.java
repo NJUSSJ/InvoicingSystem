@@ -72,8 +72,9 @@ public class MemberPromotionDataImpl implements MemberPromotionDataService{
 				int rank=result.getInt("rank");
 				String giftid=result.getString("giftlist");
 				int coupon=result.getInt("coupon");
+				double discount=result.getDouble("discount");
 				
-				MemberPromotionPO tmpPO=new MemberPromotionPO(id, rank, giftid, coupon);
+				MemberPromotionPO tmpPO=new MemberPromotionPO(id, rank, discount, giftid, coupon);
 				
 				results.add(tmpPO);
 			}
@@ -99,8 +100,9 @@ public class MemberPromotionDataImpl implements MemberPromotionDataService{
 				
 				String giftid=result.getString("giftlist");
 				int coupon=result.getInt("coupon");
+				double discount=result.getDouble("discount");
 				
-				MemberPromotionPO tmpPO=new MemberPromotionPO(id, rank, giftid, coupon);
+				MemberPromotionPO tmpPO=new MemberPromotionPO(id, rank, discount, giftid, coupon);
 				
 				results.add(tmpPO);
 			}
