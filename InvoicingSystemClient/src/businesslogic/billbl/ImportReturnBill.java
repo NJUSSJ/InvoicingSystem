@@ -5,12 +5,14 @@ import java.sql.Date;
 import java.util.ArrayList;
 
 import businesslogic.commoditybl.CommodityController;
+import businesslogic.memberbl.MemberController;
 import po.GiftBillPO;
 import po.ImportReturnBillPO;
 import rmi.RemoteHelper;
 import vo.CommodityVO;
 import vo.GiftBillVO;
 import vo.ImportReturnBillVO;
+import vo.MemberVO;
 
 public class ImportReturnBill {
 
@@ -34,13 +36,17 @@ public class ImportReturnBill {
 	}
 
 	public boolean checkImportReturnBill(boolean pass, long id) {
-		// TODO 自动生成的方法存根
-
 		try {
 			ImportReturnBillVO vo=toImportReturnBillVO(RemoteHelper.getInstance().
 					getImportReturnBillDataService().findImportReturnBillbyID(id));
 			if(pass){
 				vo.setState(1);
+				//修改进货退货单里供货商的应付
+				MemberController memberCon=new MemberController();
+				MemberVO member=memberCon.findMemberByID(id);
+				double money=vo.getSum()+member.getShouldPay();
+				member.setShouldPay(money);
+				memberCon.updateMember(member);
 			}else{
 				vo.setState(2);
 			}

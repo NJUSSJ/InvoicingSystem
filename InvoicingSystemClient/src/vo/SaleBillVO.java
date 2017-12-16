@@ -1,6 +1,5 @@
 package vo;
 
-import java.awt.List;
 import java.sql.Date;
 
 import businesslogic.billbl.CommodityList;
@@ -51,7 +50,7 @@ public class SaleBillVO {
 	public CommodityList getList() {
 		return commodityList;
 	}
-	public double getsum() {
+	public double getSum() {
 		return sum;
 	}
 	public int getState(){
@@ -79,7 +78,7 @@ public class SaleBillVO {
 		this.time=time;
 	}
 	public void setNum(){
-		num=commodityList.getSize();
+		num=commodityList.getListSize();
 	}
 	public void setRemark(String remark){
 		this.remark=remark;

@@ -48,10 +48,10 @@ public class ImportReturnBillVO {
 	public CommodityList getList() {
 		return commodityList;
 	}
-	public double getsum() {
+	public double getSum() {
 		return sum;
 	}
-	public int getnum(){
+	public int getNum(){
 		return num;
 	}
 	public void setUserID(long userid) {

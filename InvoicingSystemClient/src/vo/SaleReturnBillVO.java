@@ -78,7 +78,7 @@ public class SaleReturnBillVO {
 		this.time=time;
 	}
 	public void setNum(){
-		this.num=commodityList.getSize();
+		this.num=commodityList.getListSize();
 	}
 	public void setRemark(String remark){
 		this.remark=remark;
