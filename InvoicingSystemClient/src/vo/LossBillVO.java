@@ -25,6 +25,8 @@ public class LossBillVO {
 		this.userid=userid;
 		this.time=time;
 		this.state=state;
+		this.num=num;
+		this.sum=sum;
 	}
 	public LossBillPO toLossBillPO(){
 		return new LossBillPO(id,userid,commodityname,time,state,num,sum);

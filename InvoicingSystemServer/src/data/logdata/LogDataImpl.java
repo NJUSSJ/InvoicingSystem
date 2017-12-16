@@ -20,7 +20,7 @@ public class LogDataImpl implements LogDataService {
 		
 		String sql="insert into logs (id,time,type,userid) "
 				+ "values "
-				+ "('"+po.getID()+"','"+po.getTime()+"','"+po.getType()+"','"+po.getUserID()+",)";
+				+ "('"+po.getID()+"','"+po.getTime()+"','"+po.getType()+"','"+po.getUserID()+"')";
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {
 				return true;
