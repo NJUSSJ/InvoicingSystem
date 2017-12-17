@@ -88,7 +88,16 @@ public class CashBill{
 		}
 		return temp;
 	}
-
+	public ArrayList<CashBillVO> findCashBillsByInterval(Date begin,Date end){
+		ArrayList<CashBillVO> bills=findCashBills();
+		ArrayList<CashBillVO> result=new ArrayList<CashBillVO>();
+		for(CashBillVO each:bills){
+			if(each.getTime().after(begin)&&each.getTime().before(end)){
+				result.add(each);
+			}
+		}
+		return result;
+	}
 	
 	
 	

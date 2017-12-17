@@ -14,4 +14,5 @@ public interface ImportBillBLService  {
 	public ImportBillVO findImportBillByID(long id);
 	public ArrayList<ImportBillVO> findImportBillByTime(Date time);
 	public ArrayList<ImportBillVO> findImportBills();
+	public ArrayList<ImportBillVO> findImportBillsByInterval(Date begin,Date end);
 }

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import businesslogicservice.billblservice.CashBillBLService;
 import po.CashBillPO;
-import rmi.RemoteHelper;
 import vo.CashBillVO;
 
 public class CashBillController implements CashBillBLService{
@@ -17,32 +16,32 @@ public class CashBillController implements CashBillBLService{
 
 	@Override
 	public boolean submitCashBill(CashBillVO cashBill) {
-		// TODO 自动生成的方法存根
 		return cashBillImpl.submitCashBill(cashBill);
 	}
 
 	@Override
 	public boolean checkCashBill(boolean pass,long id) {
-		// TODO 自动生成的方法存根
 		return cashBillImpl.checkCashBill(pass, id);
 	}
 
 	@Override
 	public boolean deleteCashBill(CashBillVO cashBill) {
-		// TODO 自动生成的方法存根
 		return cashBillImpl.deleteCashBill(cashBill);
 	}
 
 	@Override
+	public ArrayList<CashBillVO> findCashBills() {
+		return cashBillImpl.findCashBills();
+	}
+
+	@Override
 	public ArrayList<CashBillVO> findCashBillByTime(Date time) {
-		// TODO 自动生成的方法存根
 		return cashBillImpl.findCashBillByTime(time);
 	}
 
 	@Override
-	public ArrayList<CashBillVO> findCashBills() {
-		// TODO 自动生成的方法存根
-		return cashBillImpl.findCashBills();
+	public ArrayList<CashBillVO> findCashBillsByInterval(Date begin, Date end) {
+		return cashBillImpl.findCashBillsByInterval(begin, end);
 	}
 	
 

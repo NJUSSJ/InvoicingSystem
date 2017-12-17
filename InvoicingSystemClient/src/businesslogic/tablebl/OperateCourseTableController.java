@@ -1,30 +1,34 @@
 package businesslogic.tablebl;
 
-import java.util.ArrayList;
 import java.util.Date;
 
-import businesslogic.billbl.SaleBillController;
 import businesslogicservice.tableblservice.OperateCourseTableBLService;
 import vo.OperateCourseTableVO;
-import vo.SaleBillVO;
 
-public class OperateCourseTable{
-
+public class OperateCourseTableController implements OperateCourseTableBLService{
+	OperateCourseTable impl=new OperateCourseTable();
+	@Override
 	public OperateCourseTableVO findByDate(Date begin, Date end) {
-		return null;
+		// TODO 自动生成的方法存根
+		return impl.findByDate(begin, end);
 	}
 
+	@Override
 	public OperateCourseTableVO findByType(Date begin, Date end, String type) {
-		return null;
+		// TODO 自动生成的方法存根
+		return impl.findByType(begin, end, type);
 	}
 
+	@Override
 	public OperateCourseTableVO findByField(Date begin, Date end, String field) {
-		return null;
+		// TODO 自动生成的方法存根
+		return impl.findByField(begin, end, field);
 	}
 
+	@Override
 	public boolean exportAsExcel(OperateCourseTableVO vo, String path) {
-		return false;
+		// TODO 自动生成的方法存根
+		return impl.exportAsExcel(vo, path);
 	}
-	
 
 }

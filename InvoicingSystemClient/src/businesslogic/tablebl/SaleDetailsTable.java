@@ -1,47 +1,38 @@
 package businesslogic.tablebl;
 
 import java.util.ArrayList;
+import java.util.Date;
 
-import businesslogicservice.tableblservice.SaleDetailsTableBLService;
+import businesslogic.billbl.SaleBillController;
+import vo.SaleBillVO;
 import vo.SaleDetailsTableVO;
 
-/**
- * 
- * @author yrz:销售明细表
- *
- */
-public class SaleDetailsTable implements SaleDetailsTableBLService{
-	int beginTime;
-	int endTime;
-	ArrayList<BillItem> list;
-	@Override
-	public void setTime(int begin, int end) {
-		// TODO 自动生成的方法存根
-		
+public class SaleDetailsTable{
+	/**
+	 * 只跟根据时间段查找销售记录
+	 */
+	public SaleDetailsTableVO findByDate(Date begin, Date end) {
+		ArrayList<SaleBillVO> result=new SaleBillController().findSaleBillByInterval(begin, end);
+		return new SaleDetailsTableVO(result);
 	}
-
-	@Override
-	public void addBillItem(BillItem item) {
-		// TODO 自动生成的方法存根
-		
-	}
-
-	@Override
-	public void deleteBillItem(BillItem item) {
-		// TODO 自动生成的方法存根
-		
-	}
-
-	@Override
-	public ArrayList<BillItem> checkBillItem(String field) {
-		// TODO 自动生成的方法存根
+	/**根据时间段和关键字查找销售记录
+	 * @param field 传入的关键字，包括商品名，客户，业务员
+	 */
+	public SaleDetailsTableVO findByField(Date begin, Date end, String field) {
+		SaleBillController sbcon=new SaleBillController();
+		//ArrayList<SaleBillVO> all=sbcon.find
 		return null;
 	}
+	/**
+	 * 将销售明细表根据指定的路径导出为excel表
+	 * @param 到处路径
+	 * @return 到处结果
+	 */
+	public boolean exportAsExcel(SaleDetailsTableVO vo, String path) {
 
-	@Override
-	public SaleDetailsTableVO toSalesDetailsTableVO() {
-		// TODO 自动生成的方法存根
-		return null;
+		return false;
 	}
+
+
 
 }

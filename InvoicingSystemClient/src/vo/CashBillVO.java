@@ -11,7 +11,7 @@ import po.CashBillPO;
  * 现金费用单
  *
  */
-public class CashBillVO {
+public class CashBillVO{
 	String id;
 	long userid;
 	long accountid;

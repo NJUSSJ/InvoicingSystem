@@ -53,6 +53,12 @@ public class SaleBillController implements SaleBillBLService{
 	public int handleCoupon(int rank, double sum) {
 		return saleBillImpl.handleCoupon(rank, sum);
 	}
+
+	@Override
+	public ArrayList<SaleBillVO> findSaleBillByInterval(Date begin, Date end) {
+		// TODO 自动生成的方法存根
+		return saleBillImpl.findByInterval(begin, end);
+	}
 	
 	
 

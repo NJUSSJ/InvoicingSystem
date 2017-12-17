@@ -54,6 +54,9 @@ public class ImportReturnBillVO {
 	public int getNum(){
 		return num;
 	}
+	public Date getTime(){
+		return time;
+	}
 	public void setUserID(long userid) {
 		this.userid=userid;
 	}

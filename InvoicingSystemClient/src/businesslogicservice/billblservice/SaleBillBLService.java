@@ -14,6 +14,7 @@ public interface SaleBillBLService {
 	public boolean deleteSaleBill(SaleBillVO saleBill);
 	public SaleBillVO findSaleBillByID(long id);
 	public ArrayList<SaleBillVO> findSaleBillByTime(Date time);
+	public ArrayList<SaleBillVO> findSaleBillByInterval(Date begin,Date end);
 	public ArrayList<SaleBillVO> findSaleBills();
 	public double handleSale(int rank,CommodityList list);
 	public int handleCoupon(int rank,double sum);

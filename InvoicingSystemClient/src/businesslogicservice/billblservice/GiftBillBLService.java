@@ -13,4 +13,5 @@ public interface GiftBillBLService {
 	public boolean deleteGiftBill(GiftBillVO giftBill);
 	public ArrayList<GiftBillVO> findGiftBillByTime(Date time);
 	public ArrayList<GiftBillVO> findGiftBills();
+	public ArrayList<GiftBillVO> findGiftBillsByInterval(Date begin,Date end);
 }

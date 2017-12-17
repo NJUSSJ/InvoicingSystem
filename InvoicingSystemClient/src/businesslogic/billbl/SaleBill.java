@@ -168,4 +168,14 @@ public class SaleBill{
 		}
 		return maxm+maxp;
 	}
+	public ArrayList<SaleBillVO> findByInterval(Date begin,Date end){
+		ArrayList<SaleBillVO> bills=findSaleBills();
+		ArrayList<SaleBillVO> result=new ArrayList<SaleBillVO>();
+		for(SaleBillVO each:bills){
+			if(each.getTime().after(begin)&&each.getTime().before(end)){
+				bills.add(each);
+			}
+		}
+		return bills;	
+	}
 }
