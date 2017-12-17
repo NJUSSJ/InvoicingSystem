@@ -195,7 +195,15 @@ public class SaleBill{
 		return result;
 	}
 	public ArrayList<SaleBillVO> findSaleBillsByField(Date begin,Date end,String commodityName,String memberName,String userName){
-		return null;
-		
+		ArrayList<SaleBillVO> result=new ArrayList<SaleBillVO>();
+		try {
+			ArrayList<SaleBillPO> bills=RemoteHelper.getInstance().getSaleBillDataService().findSaleBillbyField(commodityName, userName, memberName);
+			for(SaleBillPO po:bills){
+				result.add(toSaleBillVO(po));
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 }

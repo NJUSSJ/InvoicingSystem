@@ -56,8 +56,7 @@ public class ImportBillController implements ImportBillBLService{
 
 	@Override
 	public ArrayList<ImportBillVO> findImportBillsByState(int state) {
-		// TODO 自动生成的方法存根
-		return null;
+		return importBillImpl.findImportBillsByState(state);
 	}
 
 }

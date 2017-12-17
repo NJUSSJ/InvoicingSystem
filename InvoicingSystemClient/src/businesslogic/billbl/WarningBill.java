@@ -13,22 +13,18 @@ import vo.WarningBillVO;
 
 public class WarningBill{
 	public WarningBillVO toWarningBillVO(WarningBillPO po) {
-		// TODO 自动生成的方法存根
 		return new WarningBillVO(po.getID(),po.getUserID(),new CommodityList(po.getCommodityList()),
 				po.getTime(),po.getState());
 	}
 	public boolean submitWarningBill(WarningBillVO warningBill) {
-		// TODO 自动生成的方法存根
 		try {
 			return RemoteHelper.getInstance().getWarningBillDataService().insert(warningBill.toWarningBillPO());
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return false;
 	}
 	public boolean checkWarningBill(boolean pass, long id) {
-		// TODO 自动生成的方法存根
 		try {
 			WarningBillVO vo=toWarningBillVO(RemoteHelper.getInstance().getWarningBillDataService().findWarningBillbyID(id));
 			if(pass){
@@ -38,33 +34,27 @@ public class WarningBill{
 			}
 			return RemoteHelper.getInstance().getWarningBillDataService().update(vo.toWarningBillPO());
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return false;
 	}
 	public boolean deleteWarningBill(WarningBillVO warningBill) {
-		// TODO 自动生成的方法存根
 		try {
 			return RemoteHelper.getInstance().getWarningBillDataService().delete(warningBill.toWarningBillPO());
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return false;
 	}
 	public WarningBillVO findWarningBillByID(long id) {
-		// TODO 自动生成的方法存根
 		try {
 			return toWarningBillVO(RemoteHelper.getInstance().getWarningBillDataService().findWarningBillbyID(id));
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return null;
 	}
 	public ArrayList<WarningBillVO> findWarningBillByTime(Date time) {
-		// TODO 自动生成的方法存根
 		ArrayList<WarningBillVO> temp=new ArrayList<WarningBillVO>();
 		try {
 			ArrayList<WarningBillPO> warningBills=RemoteHelper.getInstance().getWarningBillDataService().findWarningBillbyTime(time);
@@ -72,7 +62,6 @@ public class WarningBill{
 				temp.add(toWarningBillVO(warningBills.get(i)));
 			}
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		
@@ -87,9 +76,20 @@ public class WarningBill{
 				temp.add(toWarningBillVO(bills.get(i)));
 			}	
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return temp;
+	}
+	public ArrayList<WarningBillVO> findWarningBillsByState(int state){
+		ArrayList<WarningBillVO> result=new ArrayList<WarningBillVO>();
+		try {
+			ArrayList<WarningBillPO> bills=RemoteHelper.getInstance().getWarningBillDataService().findWarningBillbyState(state);
+			for(WarningBillPO po:bills){
+				result.add(toWarningBillVO(po));
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 }

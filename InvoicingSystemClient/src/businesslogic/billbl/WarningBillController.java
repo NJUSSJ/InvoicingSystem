@@ -9,45 +9,45 @@ import vo.PayBillVO;
 import vo.WarningBillVO;
 
 public class WarningBillController implements WarningBillBLService{
-	WarningBill warningBillController=new WarningBill();
+	WarningBill warningBillImpl=new WarningBill();
 	@Override
 	public WarningBillVO toWarningBillVO(WarningBillPO po) {
-		return warningBillController.toWarningBillVO(po);
+		return warningBillImpl.toWarningBillVO(po);
 	}
 
 	@Override
 	public boolean submitWarningBill(WarningBillVO warningBill) {
-		return warningBillController.submitWarningBill(warningBill);
+		return warningBillImpl.submitWarningBill(warningBill);
 	}
 
 	@Override
 	public boolean checkWarningBill(boolean pass, long id) {
-		return warningBillController.checkWarningBill(pass, id);
+		return warningBillImpl.checkWarningBill(pass, id);
 	}
 
 	@Override
 	public boolean deleteWarningBill(WarningBillVO warningBill) {
-		return warningBillController.deleteWarningBill(warningBill);
+		return warningBillImpl.deleteWarningBill(warningBill);
 	}
 
 	@Override
 	public WarningBillVO findWarningBillByID(long id) {
-		return warningBillController.findWarningBillByID(id);
+		return warningBillImpl.findWarningBillByID(id);
 	}
 
 	@Override
 	public ArrayList<WarningBillVO> findWarningBillByTime(Date time) {
-		return warningBillController.findWarningBillByTime(time);
+		return warningBillImpl.findWarningBillByTime(time);
 	}
 
 	@Override
 	public ArrayList<WarningBillVO> findWarningBills() {
-		return null;
+		return warningBillImpl.findWarningBills();
 	}
 
 	@Override
 	public ArrayList<WarningBillVO> findWarningBillsByState(int state) {
-		return null;
+		return warningBillImpl.findWarningBillsByState(state);
 	}
 
 }

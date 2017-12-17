@@ -91,7 +91,18 @@ public class OverBill{
 		return bills;
 	}
 	public ArrayList<OverBillVO> findOverBillsByField(Date begin,Date end,String userName){
-		return null;
+		ArrayList<OverBillVO> result=new ArrayList<OverBillVO>();
+		ArrayList<OverBillPO> bills;
+		try {
+			bills = RemoteHelper.getInstance().getOverBillDataService().findOverBillbyField(userName);
+			for(OverBillPO po:bills){
+				result.add(toOverBillVO(po));
+			}
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return result;
 	}
 	public ArrayList<OverBillVO> findOverBillsByState(int state){
 		ArrayList<OverBillVO> result=new ArrayList<OverBillVO>();

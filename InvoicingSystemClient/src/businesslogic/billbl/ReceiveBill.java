@@ -111,4 +111,16 @@ public class ReceiveBill{
 		
 		return result;
 	}
+	public ArrayList<ReceiveBillVO> findReceiveBillsByField(Date begin, Date end, String memberName, String userName) {
+		ArrayList<ReceiveBillVO> result=new ArrayList<ReceiveBillVO>();
+		try {
+			ArrayList<ReceiveBillPO> bills=RemoteHelper.getInstance().getReceiveBillDataService().findReceiveBillbyField(userName, memberName);
+			for(ReceiveBillPO po:bills){
+				result.add(toReceiveBillVO(po));
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 }
