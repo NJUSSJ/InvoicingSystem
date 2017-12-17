@@ -38,4 +38,18 @@ public StringProperty getIDProperty() {
 	return id;
 }
 
+public void setName(String name) {
+	this.name.set(name);
+}
+
+public void setRank(String rank) {
+	this.rank.set(rank);
+}
+public void setPassword(String password) {
+	this.password.set(password);
+}
+public void setID(String id) {
+	this.id.set(id);
+}
+
 }

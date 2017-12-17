@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="326.0" prefWidth="325.0000999999975" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.userui.UserModifyController">
+  <!-- TODO Add Nodes -->
+  <children>
+    <Separator layoutX="2.0" layoutY="56.0" prefWidth="200.0" />
+    <Label layoutX="14.0" layoutY="15.0" text="修改用户信息">
+      <font>
+        <Font name="Microsoft YaHei UI Light" size="26.0" />
+      </font>
+    </Label>
+    <Label layoutX="54.0" layoutY="107.0" text="Rank：">
+      <font>
+        <Font name="Microsoft YaHei UI Light" size="15.0" fx:id="x1" />
+      </font>
+    </Label>
+    <Label font="$x1" layoutX="46.0" layoutY="155.0" text="Name：" />
+    <Label font="$x1" layoutX="23.0" layoutY="207.0" text="Password：" />
+    <TextField fx:id="name" layoutX="111.0" layoutY="152.0" prefWidth="200.0" />
+    <TextField fx:id="rank" layoutX="111.0" layoutY="107.0" prefWidth="200.0" />
+    <TextField fx:id="password" layoutX="111.0" layoutY="204.0" prefWidth="200.0" />
+    <Button fx:id="confirm" layoutX="111.0" layoutY="264.0" mnemonicParsing="false" onAction="#confirm" prefWidth="78.9998779296875" text="确认" />
+    <Button fx:id="cancelB" layoutX="236.0" layoutY="264.0" mnemonicParsing="false" onAction="#cancel" prefWidth="79.0" text="取消" />
+    <Label font="$x1" layoutX="72.0" layoutY="70.0" text="ID：" />
+    <Label fx:id="id" font="$x1" layoutX="111.0" layoutY="70.0" text="XXX" />
+  </children>
+</AnchorPane>

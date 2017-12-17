@@ -10,6 +10,7 @@ import businesslogic.userbl.UserController;
 import businesslogicservice.userblservice.UserBLService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,6 +21,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
@@ -53,7 +56,7 @@ public class UserViewController implements Initializable {
 	
 	UserBLService abs=new UserController();
 	
-private ObservableList<UserData> userData =FXCollections.observableArrayList();
+	private ObservableList<UserData> userData =FXCollections.observableArrayList();
 	
 	@FXML
 	private TableView<UserData> userTable;
@@ -86,6 +89,27 @@ private ObservableList<UserData> userData =FXCollections.observableArrayList();
 	    	userData.add(new UserData(b));
 	    }
 	    userTable.setItems(userData);
+	    
+	    search.setOnKeyPressed(new EventHandler<KeyEvent>() {
+
+			@Override
+			public void handle(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if(e.getCode().equals(KeyCode.ENTER)) {
+					searchUser();
+				}
+			}
+		});
+	    search.setOnKeyReleased(new EventHandler<KeyEvent>() {
+
+			@Override
+			public void handle(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if(search.getText().equals("")&&e.getCode().equals(KeyCode.DELETE)) {
+					MainApp.showUserChangeUI();
+				}
+			}
+		});
 	}
 
 	private void getInf(UserData newValue) {
@@ -99,14 +123,36 @@ private ObservableList<UserData> userData =FXCollections.observableArrayList();
 	}
 	@FXML
 	public void searchUser(){
+		
+		
+		
 		String find=search.getText();
+		if(find.equals("")) {
+			MainApp.showUserChangeUI();
+			return;
+		}
+		addB.setDisable(true);
 		userData.clear();
 		if(find.charAt(0)>='0'&&find.charAt(0)<='9'){
 			a=abs.findUserByID(Long.parseLong(find));
+			if(a==null) {
+				Alert info=new Alert(AlertType.INFORMATION);
+				info.setTitle("Information");
+				info.setContentText("Find no mathch!");
+				info.show();
+				return;
+			}
 			userData.add(new UserData(a));
 			userTable.setItems(userData);
 		}else{
 		a=abs.findUserbyName(find);
+		if(a==null) {
+			Alert info=new Alert(AlertType.INFORMATION);
+			info.setTitle("Information");
+			info.setContentText("Find no mathch!");
+			info.showAndWait();
+			return;
+		}
 		userData.add(new UserData(a));
 		userTable.setItems(userData);
 		}
@@ -117,15 +163,16 @@ private ObservableList<UserData> userData =FXCollections.observableArrayList();
     	try {
 			FXMLLoader loader=new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("/presentation/userui/UserChangeUI.fxml"));
-			AnchorPane userUI=loader.load();
+			AnchorPane userUI=(AnchorPane)loader.load();
 			Scene scene=new Scene(userUI);
 			Stage userStage=new Stage();
-			userStage.setTitle("Create/Change User");
+			userStage.setTitle("New User");
 			userStage.initModality(Modality.WINDOW_MODAL);
 			userStage.initOwner(MainApp.getPrimaryStage());
 			userStage.setScene(scene);
             UserChangeViewController controller=loader.getController();
             controller.setStage(userStage);
+            controller.setObeservarableList(userData);
             userStage.showAndWait();
             
 		} catch (IOException e) {
@@ -157,18 +204,21 @@ private ObservableList<UserData> userData =FXCollections.observableArrayList();
 	 @FXML
 	    public void updateAccount(){
 	    	try {
+	    		UserData tmpData=userTable.getSelectionModel().getSelectedItem();
+
 				FXMLLoader loader=new FXMLLoader();
-				loader.setLocation(MainApp.class.getResource("/presentation/userui/UserChangeUI.fxml"));
+				loader.setLocation(MainApp.class.getResource("/presentation/userui/UserModifyUI.fxml"));
 				AnchorPane userUI=loader.load();
 				Scene scene=new Scene(userUI);
 				Stage userStage=new Stage();
-				userStage.setTitle("Create/Change User");
+				userStage.setTitle("Modify User");
 				userStage.initModality(Modality.WINDOW_MODAL);
 				userStage.initOwner(MainApp.getPrimaryStage());
 				userStage.setScene(scene);
-				UserChangeViewController controller=loader.getController();
+				UserModifyController controller=loader.getController();
 	            controller.setStage(userStage);
-	            controller.setID(a.getID());
+	            controller.setSelected(tmpData);
+	            controller.setInfo(tmpData.getNameProperty().get(), Integer.parseInt(tmpData.getRankProperty().get()), tmpData.getPasswordProperty().get(), Long.parseLong(tmpData.getIDProperty().get()));
 	            userStage.showAndWait();
 	            
 			} catch (IOException e) {

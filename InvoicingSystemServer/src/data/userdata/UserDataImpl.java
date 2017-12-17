@@ -82,8 +82,8 @@ public class UserDataImpl implements UserDataService {
 	@Override
 	public boolean insert(UserPO po) throws RemoteException {
 		
-		String sql="INSERT INTO users(id,username,password,rank) VALUES("+po.getID()
-		+",'"+po.getUserName()+"','"+po.getPassword()+"','"+po.getPassword()+"',"+po.getRank()+")";
+		String sql="INSERT INTO users(id,username,password,rank) VALUES ('"+po.getID()
+		+"','"+po.getUserName()+"','"+po.getPassword()+"',"+po.getRank()+")";
 		try {
 			if(DataFactory.statement.execute(sql)){
 				return true;

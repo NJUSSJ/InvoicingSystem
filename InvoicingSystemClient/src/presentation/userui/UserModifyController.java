@@ -4,8 +4,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import businesslogic.userbl.UserController;
-import businesslogicservice.userblservice.UserBLService;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -16,28 +14,28 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import vo.UserVO;
 
-public class UserChangeViewController implements Initializable {
+public class UserModifyController implements Initializable {
+
 	@FXML
 	private TextField name;
 	@FXML
 	private Label id;
 	@FXML
-	private Button rightB;
+	private Button confirm;
 	@FXML
 	private TextField password;
 	@FXML
 	private TextField rank;
 	
-	int style=0;
-	
-	UserBLService ubs=new UserController();
-	
-	UserVO user;
-	
-	ObservableList<UserData> list;
+	UserData data;
 	
 	
-	static long times=0;
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	@FXML
 	private Button cancelB;
     Stage stage;
@@ -50,18 +48,8 @@ public class UserChangeViewController implements Initializable {
 		stage.close();
 	}
 	
-	public void setObeservarableList(ObservableList<UserData> list) {
-		this.list=list;
-		long largest=-1;
-		for(int i=0;i<list.size();i++) {
-			if(Long.parseLong(list.get(i).getIDProperty().get())>largest)
-				largest=Long.parseLong(list.get(i).getIDProperty().get());
-		}
-		String id=largest+1+"";
-		while(id.length()<5) {
-			id="0"+id;
-		}
-		this.id.setText(id);
+	public void setSelected(UserData data) {
+		this.data=data;
 	}
 	
 	public void confirm() {
@@ -73,10 +61,12 @@ public class UserChangeViewController implements Initializable {
 			long id_=Long.parseLong(id.getText());
 			
 			UserVO tmpVO=new UserVO(id_, password_, rankNum, name_);
-			list.add(new UserData(tmpVO));
+			data.setName(name_);
+			data.setPassword(password_);
+			data.setRank(rank_);
 			stage.close();
 			
-			new UserController().addUser(tmpVO);
+			new UserController().updateUser(tmpVO);
 		}
 	}
 	
@@ -84,15 +74,13 @@ public class UserChangeViewController implements Initializable {
 		String name_=name.getText();
 		String rank_=rank.getText();
 		String password_=password.getText();
-		if(name_.equals("")||name_==null||rank_==null||rank_.equals("")||password_.equals("")||password_==null) {
+		if(name_==""||name==null||rank==null||rank_==""||password_==""||password_==null) {
 			Alert warning=new Alert(AlertType.WARNING);
 			warning.setTitle("Input Warning!");
 			warning.setContentText("请填写完整信息");
 			warning.showAndWait();
 			return false;
 		}
-		try {
-			
 		int rankNum=Integer.parseInt(rank_);
 		if(rankNum<0||rankNum>4) {
 			Alert warning=new Alert(AlertType.WARNING);
@@ -101,21 +89,18 @@ public class UserChangeViewController implements Initializable {
 			warning.showAndWait();
 			return false;
 		}
-		} catch (Exception e) {
-			Alert warning=new Alert(AlertType.WARNING);
-			warning.setTitle("Input Warning!");
-			warning.setContentText("等级信息不正确！");
-			warning.showAndWait();
-			return false;
-		}
-		
 		return true;
 	}
 	
-
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		
+	public void setInfo(String name,int rank,String password,long id) {
+		this.name.setText(name);
+		String idString=id+"";
+		while(idString.length()<5) {
+			idString="0"+idString;
+		}
+		this.id.setText(idString);
+		this.password.setText(password);
+		this.rank.setText(rank+"");
 	}
-	
+
 }

@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import MainApp.MainApp;
+import businesslogic.commoditybl.CommodityController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -11,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import vo.CommodityVO;
 import vo.StockInventoryInfoVO;
 /**
  * 
@@ -76,7 +78,7 @@ public class Sub_StockInventoryController implements Initializable{
 				 */
 				MainApp.showOverInfo(info.getName(),-systemNum+actual, info.getAveragePrice()*(-systemNum+actual));
 			}
-			/*
+			
 			String name=info.getName();
 			
 			CommodityController commodityController=new CommodityController();
@@ -87,7 +89,7 @@ public class Sub_StockInventoryController implements Initializable{
 			
 			commodityController.updateCommodity(tmpVO);
 			
-			*/
+			
 		} catch (NumberFormatException e) {
 			Alert error=new Alert(Alert.AlertType.WARNING);
         	error.setTitle("Format Warning");
