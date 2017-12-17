@@ -106,5 +106,8 @@ public class ImportBill{
 		}
 		return bills;
 	}
+	public ArrayList<ImportBillVO> findImportBillsByField(Date begin,Date end,String memberName,String userName){
+		return null;
+	}
 
 }

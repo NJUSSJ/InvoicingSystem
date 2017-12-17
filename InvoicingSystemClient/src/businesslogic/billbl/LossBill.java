@@ -87,5 +87,8 @@ public class LossBill{
 		}
 		return bills;
 	}
+	public ArrayList<LossBillVO> findLossBillsByField(Date begin,Date end,String userName){
+		return null;
+	}
 	
 }

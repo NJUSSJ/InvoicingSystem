@@ -16,6 +16,7 @@ public interface SaleBillBLService {
 	public ArrayList<SaleBillVO> findSaleBillByTime(Date time);
 	public ArrayList<SaleBillVO> findSaleBillByInterval(Date begin,Date end);
 	public ArrayList<SaleBillVO> findSaleBills();
+	public ArrayList<SaleBillVO> findSaleBillsByState(int state);
 	public double handleSale(int rank,CommodityList list);
 	public int handleCoupon(int rank,double sum);
 }

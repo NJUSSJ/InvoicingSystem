@@ -88,5 +88,7 @@ public class OverBill{
 		}
 		return bills;
 	}
-	
+	public ArrayList<OverBillVO> findOverBillsByField(Date begin,Date end,String userName){
+		return null;
+	}
 }

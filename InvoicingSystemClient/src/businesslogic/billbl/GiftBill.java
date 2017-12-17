@@ -98,5 +98,8 @@ public class GiftBill {
 		}
 		return result;
 	}
+	public ArrayList<GiftBillVO> findGiftBillsByField(Date begin,Date end,String memberName,String userName){
+		return null;
+	}
 
 }

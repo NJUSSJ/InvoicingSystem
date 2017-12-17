@@ -59,6 +59,12 @@ public class SaleBillController implements SaleBillBLService{
 		// TODO 自动生成的方法存根
 		return saleBillImpl.findByInterval(begin, end);
 	}
+
+	@Override
+	public ArrayList<SaleBillVO> findSaleBillsByState(int state) {
+		// TODO 自动生成的方法存根
+		return null;
+	}
 	
 	
 

@@ -13,19 +13,16 @@ import vo.MemberVO;
 public class ImportReturnBill {
 
 	public ImportReturnBillVO toImportReturnBillVO(ImportReturnBillPO po) {
-		// TODO 自动生成的方法存根
 		CommodityList list=new CommodityList(po.getCommodityList());
 		return new ImportReturnBillVO(po.getID(),po.getUserID(),po.getMemberID(),list,po.getSum(),po.getState(),
 				po.getTime(),po.getRemark());
 	}
 
 	public boolean submitImportReturnBill(ImportReturnBillVO importReturnBill) {
-		// TODO 自动生成的方法存根
 		try {
 			return RemoteHelper.getInstance().getImportReturnBillDataService().
 					insert(importReturnBill.toImportReturnBillPO());
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return false;
@@ -48,36 +45,30 @@ public class ImportReturnBill {
 			}
 			return RemoteHelper.getInstance().getImportReturnBillDataService().update(vo.toImportReturnBillPO());
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return false;
 	}
 
 	public boolean deleteImportReturnBill(ImportReturnBillVO importReturnBill) {
-		// TODO 自动生成的方法存根
 		try {
 			return RemoteHelper.getInstance().getImportReturnBillDataService().delete(importReturnBill.toImportReturnBillPO());
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return false;
 	}
 
 	public ImportReturnBillVO findImportReturnBillByID(long id) {
-		// TODO 自动生成的方法存根
 		try {
 			return toImportReturnBillVO(RemoteHelper.getInstance().getImportReturnBillDataService().findImportReturnBillbyID(id));
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return null;
 	}
 
 	public ArrayList<ImportReturnBillVO> findImportReturnBillByTime(Date time) {
-		// TODO 自动生成的方法存根
 		ArrayList<ImportReturnBillVO> temp=new ArrayList<ImportReturnBillVO>();
 		try {
 			ArrayList<ImportReturnBillPO> importReturnBills=RemoteHelper.getInstance().getImportReturnBillDataService().
@@ -86,7 +77,6 @@ public class ImportReturnBill {
 				temp.add(toImportReturnBillVO(importReturnBills.get(i)));
 			}
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		
@@ -101,7 +91,6 @@ public class ImportReturnBill {
 				temp.add(toImportReturnBillVO(bills.get(i)));
 			}
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return temp;
@@ -115,5 +104,9 @@ public class ImportReturnBill {
 			}
 		}
 		return bills;
+	}
+	public ArrayList<ImportReturnBillVO> findImportReturnBillsByField(Date begin,Date end,String memberName,String userName){
+		return null;
+		
 	}
 }

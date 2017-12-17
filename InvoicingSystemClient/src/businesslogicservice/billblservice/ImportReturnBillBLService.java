@@ -15,4 +15,6 @@ public interface ImportReturnBillBLService {
 	public ArrayList<ImportReturnBillVO> findImportReturnBillByTime(Date time);
 	public ArrayList<ImportReturnBillVO> findImportReturnBills();
 	public ArrayList<ImportReturnBillVO> findImportReturnBillsByInterval(Date begin,Date end);
+	public ArrayList<ImportReturnBillVO> findImportReturnBillsByField(Date begin,Date end,String memberName,String userName);
+	public ArrayList<ImportReturnBillVO> findImportReturnBillsByState(int state);
 }

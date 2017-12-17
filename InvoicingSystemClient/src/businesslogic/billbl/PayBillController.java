@@ -49,4 +49,15 @@ public class PayBillController implements PayBillBLService{
 		return payBillImpl.findPayBillsByInterval(begin, end);
 	}
 
+	@Override
+	public ArrayList<PayBillVO> findPayBillsByField(Date begin, Date end, String memberName, String userName) {
+		return payBillImpl.findPayBillsByField(begin, end, memberName, userName);
+	}
+
+	@Override
+	public ArrayList<PayBillVO> findPayBillsByState(int state) {
+		// TODO 自动生成的方法存根
+		return null;
+	}
+
 }

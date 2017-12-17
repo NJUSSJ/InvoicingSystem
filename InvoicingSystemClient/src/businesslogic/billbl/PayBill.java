@@ -104,4 +104,8 @@ public class PayBill {
 		}
 		return bills;
 	}
+	public ArrayList<PayBillVO> findPayBillsByField(Date begin,Date end,String memberName,String userName){
+		return null;
+		
+	}
 }

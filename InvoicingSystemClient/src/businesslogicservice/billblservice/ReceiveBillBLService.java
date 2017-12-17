@@ -15,4 +15,5 @@ public interface ReceiveBillBLService {
 	public ArrayList<ReceiveBillVO> findReceiveBillByTime(Date time);
 	public ArrayList<ReceiveBillVO> findReceiveBills();
 	public ArrayList<ReceiveBillVO> findReceiveBillsByInterval(Date begin,Date end);
+	public ArrayList<ReceiveBillVO> findReceiveBillsByState(int state);
 }

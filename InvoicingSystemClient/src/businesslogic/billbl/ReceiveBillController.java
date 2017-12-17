@@ -49,4 +49,10 @@ public class ReceiveBillController implements ReceiveBillBLService{
 		return receiveBillImpl.findReceiveBillsByInterval(begin, end);
 	}
 
+	@Override
+	public ArrayList<ReceiveBillVO> findReceiveBillsByState(int state) {
+		// TODO 自动生成的方法存根
+		return null;
+	}
+
 }
