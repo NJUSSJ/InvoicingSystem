@@ -10,6 +10,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import data.datafactory.DataFactory;
+import data.memberdata.MemberDataImpl;
+import data.userdata.UserDataImpl;
 import dataservice.billdataservice.ImportReturnBillDataService;
 import po.ImportReturnBillPO;
 
@@ -174,7 +176,7 @@ String sql="select * from importreturnbills where id='"+id+"'";
 	 */
 	@Override
 	public ArrayList<ImportReturnBillPO> findImportReturnBillbyTime(Date time) throws RemoteException {
-String sql="select * from importreturnbills where time='"+time+"'";
+		String sql="select * from importreturnbills where time='"+time+"'";
 		
 		ArrayList<ImportReturnBillPO> results=new ArrayList<>();
 		
@@ -201,6 +203,43 @@ String sql="select * from importreturnbills where time='"+time+"'";
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	public ArrayList<ImportReturnBillPO> findImportReturnBillbyField(String user, String member)
+			throws RemoteException {
+		long userid=new UserDataImpl().findUserbyName(user).getID();
+		long memberid=new MemberDataImpl().findMemberbyName(member).getID();
+		
+		String sql="select * from importreturnbills where userid='"+userid+", and memberid="+memberid+"'";
+		
+		ArrayList<ImportReturnBillPO> results=new ArrayList<>();
+		
+		try {
+			ResultSet result=DataFactory.statement.executeQuery(sql);
+			
+			while(result.next()) {
+				String id=result.getString("id");
+				
+				double sum=result.getDouble("sum");
+				Date time=result.getDate("time");
+				String commoditylist=result.getString("commoditylist");
+				int num=result.getInt("num");
+				String remark=result.getString("remark");
+				int state=result.getInt("state");
+				ImportReturnBillPO tmpPO=new ImportReturnBillPO(id, userid, memberid, commoditylist, sum, time, state, num, remark);
+				
+				if(state==1)
+				results.add(tmpPO);
+				
+			}
+			
+			return results;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+		
 	}
 
 }

@@ -15,4 +15,5 @@ public interface OverBillDataService extends Remote {
 	public ArrayList<OverBillPO> findOverBills() throws RemoteException;
 	public ArrayList<OverBillPO> findOverBillbyTime(Date time) throws RemoteException;
 	public ArrayList<OverBillPO> findOverBillbyState(int state) throws RemoteException;
+	public ArrayList<OverBillPO> findOverBillbyField(String user) throws RemoteException; 
 }

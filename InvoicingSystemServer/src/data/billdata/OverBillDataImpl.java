@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import data.datafactory.DataFactory;
+import data.userdata.UserDataImpl;
 import dataservice.billdataservice.OverBillDataService;
 import po.OverBillPO;
 
@@ -181,6 +182,37 @@ public class OverBillDataImpl implements OverBillDataService {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return null;
+	}
+
+	@Override
+	public ArrayList<OverBillPO> findOverBillbyField(String user) throws RemoteException {
+		long userid=new UserDataImpl().findUserbyName(user).getID();
+		
+		String sql="select * from overbills where userid='"+userid+"'";
+		ArrayList<OverBillPO> results=new ArrayList<>();
+		try {
+			ResultSet result=DataFactory.statement.executeQuery(sql);
+			while(result.next()) {
+				
+				
+				String commodityname=result.getString("commodityname");
+				Date time=result.getDate("time");
+				long id=result.getLong("id");
+				int state=result.getInt("state");
+				int num=result.getInt("num");
+				double sum=result.getDouble("sum");
+				OverBillPO tmpPO=new OverBillPO(id, userid, commodityname, time, state,num,sum);
+							
+				if(state==1)
+				results.add(tmpPO);
+			}
+			return results;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return null;
 	}
 

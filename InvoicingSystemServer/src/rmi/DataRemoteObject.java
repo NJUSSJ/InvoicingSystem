@@ -864,5 +864,69 @@ public class DataRemoteObject extends UnicastRemoteObject implements UserDataSer
 	public ArrayList<UserPO> findUsers() throws RemoteException {
 		return userService.findUsers();
 	}
+
+	@Override
+	public ArrayList<GiftBillPO> findGiftBillsByField(String user, String member) throws RemoteException  {
+		return giftbillservice.findGiftBillsByField(user, member);
+	}
+
+	
+
+	@Override
+	public ArrayList<UserPO> findUserbyField(String field) throws RemoteException {
+		return userService.findUserbyField(field);
+	}
+
+	@Override
+	public ArrayList<SaleReturnBillPO> findSaleReturnBillbyField(String usesr, String member) throws RemoteException {
+		return salereturnbillservice.findSaleReturnBillbyField(usesr, member);
+	}
+
+	@Override
+	public ArrayList<SaleBillPO> findSaleBillbyField(String commodity, String user, String member)
+			throws RemoteException {
+		return salebillservice.findSaleBillbyField(commodity, user, member);
+	}
+
+	@Override
+	public ArrayList<WarningBillPO> findWarningBillbyField(String user) throws RemoteException {
+		return warningbillservice.findWarningBillbyField(user);
+	}
+
+	@Override
+	public ArrayList<ReceiveBillPO> findReceiveBillbyField(String user, String member) throws RemoteException {
+		return receivebillservice.findReceiveBillbyField(user, member);
+	}
+
+	@Override
+	public ArrayList<PayBillPO> findPayBillbyField(String user, String member) throws RemoteException {
+		return paybillservice.findPayBillbyField(user, member);
+	}
+
+	@Override
+	public ArrayList<OverBillPO> findOverBillbyField(String user) throws RemoteException {
+		return overbillservice.findOverBillbyField(user);
+	}
+
+	@Override
+	public ArrayList<LossBillPO> findLossBillbyField(String user) throws RemoteException {
+		return lossbillservice.findLossBillbyField(user);
+	}
+
+	@Override
+	public ArrayList<ImportReturnBillPO> findImportReturnBillbyField(String user, String member)
+			throws RemoteException {
+		return findImportReturnBillbyField(user, member);
+	}
+
+	@Override
+	public ArrayList<ImportBillPO> findImportBillsByField(String user, String member) throws RemoteException {
+		return importbillservice.findImportBillsByField(user, member);
+	}
+
+	@Override
+	public ArrayList<CashBillPO> findCashBillbyField(String user) throws RemoteException {
+		return cashbillservice.findCashBillbyField(user);
+	}
 	
 }

@@ -11,6 +11,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import data.datafactory.DataFactory;
+import data.memberdata.MemberDataImpl;
+import data.userdata.UserDataImpl;
 import dataservice.billdataservice.SaleBillDataService;
 import po.SaleBillPO;
 
@@ -181,6 +183,38 @@ public class SaleBillDataImpl implements SaleBillDataService{
 				String remark=result.getString("remark");
 				
 				SaleBillPO tmpPO=new SaleBillPO(id, userid, memberid, commoditylist, sum, state, time, num, remark);
+				results.add(tmpPO);
+			}
+			return results;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public ArrayList<SaleBillPO> findSaleBillbyField(String commodity, String user, String member)
+			throws RemoteException {
+		long userid=new UserDataImpl().findUserbyName(user).getID();
+		long memberid=new MemberDataImpl().findMemberbyName(member).getID();
+		
+		String sql="select * from salebills where userid='"+userid+"' and memberid='"+memberid+"' and commoditylist like '%"+commodity+"%'";
+		
+		ArrayList<SaleBillPO> results=new ArrayList<>();
+		try {
+			ResultSet result=DataFactory.statement.executeQuery(sql);
+			
+			while(result.next()) {
+				String id=result.getString("id");
+				String commoditylist=result.getString("commoditylist");
+				double sum=result.getDouble("sum");
+				Date time=result.getDate("time");
+				int state =result.getInt("state");
+				int num=result.getInt("num");
+				String remark=result.getString("remark");
+				
+				SaleBillPO tmpPO=new SaleBillPO(id, userid, memberid, commoditylist, sum, state, time, num, remark);
+				if(state==1)
 				results.add(tmpPO);
 			}
 			return results;

@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import data.datafactory.DataFactory;
+import data.memberdata.MemberDataImpl;
+import data.userdata.UserDataImpl;
 import dataservice.billdataservice.SaleReturnBillDataService;
 import po.SaleReturnBillPO;
 
@@ -177,6 +179,38 @@ String sql="delete from salereturnbills where id='"+po.getID()+"')";
 				String remark=result.getString("remark");
 				
 				SaleReturnBillPO tmpPO=new SaleReturnBillPO(id, userid, memberid, commoditylist, sum, state, time, num, remark);
+				results.add(tmpPO);
+			}
+			return results;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public ArrayList<SaleReturnBillPO> findSaleReturnBillbyField(String user, String member) throws RemoteException {
+		long userid=new UserDataImpl().findUserbyName(user).getID();
+		
+		long memberid=new MemberDataImpl().findMemberbyName(member).getID();
+		
+		String sql="select * from salebills where userid='"+userid+"' and memberid='"+memberid+"'";
+		
+		ArrayList<SaleReturnBillPO> results=new ArrayList<>();
+		try {
+			ResultSet result=DataFactory.statement.executeQuery(sql);
+			
+			while(result.next()) {
+				String id=result.getString("id");
+				String commoditylist=result.getString("commoditylist");
+				double sum=result.getDouble("sum");
+				Date time=result.getDate("time");
+				int state =result.getInt("state");
+				int num=result.getInt("num");
+				String remark=result.getString("remark");
+				
+				SaleReturnBillPO tmpPO=new SaleReturnBillPO(id, userid, memberid, commoditylist, sum, state, time, num, remark);
+				if(state==1)
 				results.add(tmpPO);
 			}
 			return results;

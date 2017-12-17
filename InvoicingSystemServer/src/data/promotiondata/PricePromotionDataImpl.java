@@ -18,9 +18,9 @@ public class PricePromotionDataImpl implements PricePromotionDataService{
 
 	@Override
 	public boolean insert(PricePromotionPO po) throws RemoteException {
-		String sql="insert into pricepromotions (id,priceline,discount,coupon)"
+		String sql="insert into pricepromotions (id,priceline,gifts,coupon)"
 				+ " values "
-				+ "('"+po.getID()+"','"+po.getPriceLine()+"','"+po.getDiscount()+"','"+po.getCoupon()+"')";
+				+ "('"+po.getID()+"','"+po.getPriceline()+"','"+po.getGifts()+"','"+po.getCoupon()+"')";
 		
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {
@@ -48,7 +48,7 @@ public class PricePromotionDataImpl implements PricePromotionDataService{
 
 	@Override
 	public boolean update(PricePromotionPO po) throws RemoteException {
-		String sql="update pricepromotions set id='"+po.getID()+"',priceline='"+po.getPriceLine()+"',discount='"+po.getCoupon()+"'";
+		String sql="update pricepromotions set id='"+po.getID()+"',priceline='"+po.getPriceline()+"',gifts='"+po.getGifts()+",coupon='"+po.getCoupon()+"'";
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {
 				return true;
@@ -71,9 +71,9 @@ public class PricePromotionDataImpl implements PricePromotionDataService{
 			while(result.next()) {
 				long id=result.getLong("id");
 				double priceline=result.getDouble("priceline");
-				double discount=result.getDouble("discount");
+				String gifts=result.getString("gifts");
 				int coupon=result.getInt("coupon");
-				PricePromotionPO tmpPo=new PricePromotionPO(id, priceline, discount, coupon);
+				PricePromotionPO tmpPo=new PricePromotionPO(id, priceline, gifts, coupon);
 				
 				results.add(tmpPo);
 				
