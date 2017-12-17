@@ -1,8 +1,7 @@
 package businesslogicservice.tableblservice;
 
-import java.util.ArrayList;
+import java.util.Date;
 
-import businesslogic.tablebl.BillItem;
 import vo.OperateCourseTableVO;
 
 /**
@@ -11,11 +10,8 @@ import vo.OperateCourseTableVO;
  *
  */
 public interface OperateCourseTableBLService {
-	public void setTime(int begin,int end);
-	public void addBillItem(BillItem item);
-	public void deleteBillItem(BillItem item);
-	public ArrayList<BillItem> checkBillItem(String field);
-	public BillItem reverseBillItem(BillItem item);
-	public BillItem reverseBillItemPlus(BillItem item);
-	public OperateCourseTableVO toOperateCourseTable();
+	public OperateCourseTableVO findByDate(Date begin,Date end);
+	public OperateCourseTableVO findByType(Date begin,Date end,String type);
+	public OperateCourseTableVO findByField(Date begin,Date end,String field);
+	public boolean exportAsExcel(OperateCourseTableVO vo,String path);
 }

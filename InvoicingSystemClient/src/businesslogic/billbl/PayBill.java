@@ -4,8 +4,10 @@ import java.rmi.RemoteException;
 import java.sql.Date;
 import java.util.ArrayList;
 
+import businesslogic.memberbl.MemberController;
 import po.PayBillPO;
 import rmi.RemoteHelper;
+import vo.MemberVO;
 import vo.PayBillVO;
 
 public class PayBill {
@@ -33,6 +35,14 @@ public class PayBill {
 			PayBillVO vo=toPayBillVO(RemoteHelper.getInstance().getPayBillDataService().findPayBillbyID(id));
 			if(pass){
 				vo.setState(1);
+				//付款单通过以后，修改客户的应收和应收额度
+				MemberController mcon=new MemberController();
+				MemberVO member=mcon.findMemberByID(vo.getMemberID());
+				double money=member.getShouldGet()-vo.getSum();
+				member.setShouldGet(money);
+				double quota=Math.pow(10, (money+"").length()-1)*Integer.parseInt((money+"").substring(0, 1));
+				member.setQuota(quota);
+				mcon.updateMember(member);
 			}else{
 				vo.setState(2);
 			}

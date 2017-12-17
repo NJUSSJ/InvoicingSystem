@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import MainApp.MainApp;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 
@@ -28,6 +29,8 @@ public class ManagerMainViewController implements Initializable {
 	private ImageView log;
 	@FXML
 	private ImageView strategy;
+	@FXML
+	private Button promotion;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -66,9 +69,5 @@ public class ManagerMainViewController implements Initializable {
 	@FXML
 	public void showexamineUI(){
 		MainApp.showExamineUI();
-	}
-	@FXML
-	public void showPricePromotionUI(){
-		MainApp.showPricePromotionUI();
 	}
 }

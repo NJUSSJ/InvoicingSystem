@@ -4,21 +4,26 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.promotionui.PricePromotionViewController">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.promotionui.PricePromotionViewController">
   <!-- TODO Add Nodes -->
   <children>
-    <TableView fx:id="promotionTable" prefHeight="307.0" prefWidth="451.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0">
+    <TableView fx:id="promotionTable" prefHeight="452.0" prefWidth="679.0" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="48.0">
       <columns>
-        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="149.0" text="价格" fx:id="pricelineCol" />
-        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="141.0" text="折扣" fx:id="discountCol" />
-        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="161.0" text="代金券金额" fx:id="couponCol" />
+        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="201.0" text="价格" fx:id="pricelineCol" />
+        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="263.0" text="折扣" fx:id="discountCol" />
+        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="216.0" text="代金券金额" fx:id="couponCol" />
       </columns>
     </TableView>
-    <Button fx:id="add" layoutX="501.0" layoutY="103.0" mnemonicParsing="false" text="增加" />
-    <Button fx:id="delete" layoutX="501.0" layoutY="131.0" mnemonicParsing="false" text="删除" />
-    <Button fx:id="back" layoutX="501.0" layoutY="160.0" mnemonicParsing="false" text="返回" />
-    <Label fx:id="id" layoutX="466.0" layoutY="14.0" text="Label" />
-    <Label layoutX="514.0" layoutY="14.0" text="Label" />
+    <Button fx:id="add" layoutX="823.0" layoutY="158.0" mnemonicParsing="false" onAction="#add" prefHeight="37.0" prefWidth="130.0" text="增加">
+      <font>
+        <Font size="18.0" fx:id="x1" />
+      </font>
+    </Button>
+    <Button fx:id="delete" font="$x1" layoutX="823.0" layoutY="242.0" mnemonicParsing="false" onAction="#delete" prefHeight="37.0" prefWidth="130.0" text="删除" />
+    <Button fx:id="back" font="$x1" layoutX="823.0" layoutY="316.0" mnemonicParsing="false" onAction="#back" prefHeight="37.0" prefWidth="130.0" text="返回" />
+    <Label fx:id="id" font="$x1" layoutX="567.0" layoutY="14.0" text="Label" />
+    <Label font="$x1" layoutX="647.0" layoutY="14.0" text="Label" />
   </children>
 </AnchorPane>

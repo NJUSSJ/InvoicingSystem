@@ -13,4 +13,5 @@ public interface CashBillBLService {
 	public boolean deleteCashBill(CashBillVO cashbill);
 	public ArrayList<CashBillVO> findCashBillByTime(Date time);
 	public ArrayList<CashBillVO> findCashBills();
+	public ArrayList<CashBillVO> findCashBillsByInterval(Date begin,Date end);
 }

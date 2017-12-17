@@ -12,16 +12,20 @@ public class OverBillPO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	long id;
 	long userid;
-	String commodityList;
+	String commodityname;
 	Date time;
 	int state;
-	public OverBillPO(long id,long userid,String commodityList, Date time,int state) {
+	int num;
+	double sum;
+	public OverBillPO(long id,long userid,String commodityname, Date time,int state,int num,double sum) {
 		// TODO Auto-generated constructor stub
 		this.id=id;
-		this.commodityList=commodityList;
+		this.commodityname=commodityname;
 		this.userid=userid;
 		this.time=time;
 		this.state=state;
+		this.sum=sum;
+		this.num=num;
 	}
 	public long getID(){
 		return id;
@@ -29,13 +33,19 @@ public class OverBillPO implements Serializable{
 	public long getUserID(){
 		return userid;
 	}
-	public String getCommodityList(){
-		return commodityList;
+	public String getCommodityName(){
+		return commodityname;
 	}
 	public Date getTime(){
 		return time;
 	}
-	public int getState() {
+	public int getState(){
 		return state;
+	}
+	public int getNum() {
+		return num;
+	}
+	public double getSum() {
+		return sum;
 	}
 }

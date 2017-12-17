@@ -48,11 +48,14 @@ public class ImportReturnBillVO {
 	public CommodityList getList() {
 		return commodityList;
 	}
-	public double getsum() {
+	public double getSum() {
 		return sum;
 	}
-	public int getnum(){
+	public int getNum(){
 		return num;
+	}
+	public Date getTime(){
+		return time;
 	}
 	public void setUserID(long userid) {
 		this.userid=userid;

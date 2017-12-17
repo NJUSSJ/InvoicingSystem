@@ -4,11 +4,10 @@ import java.rmi.RemoteException;
 import java.sql.Date;
 import java.util.ArrayList;
 
-import businesslogicservice.billblservice.ReceiveBillBLService;
-import po.PayBillPO;
+import businesslogic.memberbl.MemberController;
 import po.ReceiveBillPO;
 import rmi.RemoteHelper;
-import vo.PayBillVO;
+import vo.MemberVO;
 import vo.ReceiveBillVO;
 
 public class ReceiveBill{
@@ -34,6 +33,11 @@ public class ReceiveBill{
 			ReceiveBillVO vo=toReceiveBillVO(RemoteHelper.getInstance().getReceiveBillDataService().findReceiveBillbyID(id));
 			if(pass){
 				vo.setState(1);
+				MemberController memberCon=new MemberController();
+				MemberVO member=memberCon.findMemberByID(id);
+				double money=member.getShouldPay()-vo.getSum();
+				member.setShouldPay(money);
+				memberCon.updateMember(member);
 			}else{
 				vo.setState(2);
 			}

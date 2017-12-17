@@ -17,7 +17,7 @@ public class MemberPromotionDataImpl implements MemberPromotionDataService{
 
 	@Override
 	public boolean insert(MemberPromotionPO po) throws RemoteException {
-		String sql="insert into memberpromotions (id,rank,giftlist,coupon) "
+		String sql="insert into memberpromotions (id,rank,gifts,coupon) "
 				+ "values "
 				+ "('"+po.getID()+"','"+po.getRank()+"','"+po.getGiftlist()+"','"+po.getCoupon()+"')";
 		
@@ -47,7 +47,7 @@ public class MemberPromotionDataImpl implements MemberPromotionDataService{
 
 	@Override
 	public boolean update(MemberPromotionPO po) throws RemoteException {
-		String sql="update memberpromotions set id='"+po.getID()+"',rank='"+po.getRank()+"',giftlist='"+po.getGiftlist()+"',coupon='"+po.getCoupon()+"'";
+		String sql="update memberpromotions set id='"+po.getID()+"',rank='"+po.getRank()+"',gifts='"+po.getGiftlist()+"',coupon='"+po.getCoupon()+"'";
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {
 				return true;
@@ -70,10 +70,11 @@ public class MemberPromotionDataImpl implements MemberPromotionDataService{
 			while(result.next()) {
 				long id=result.getLong("id");
 				int rank=result.getInt("rank");
-				String giftid=result.getString("giftlist");
+				String gifts=result.getString("gifts");
 				int coupon=result.getInt("coupon");
+				double discount=result.getDouble("discount");
 				
-				MemberPromotionPO tmpPO=new MemberPromotionPO(id, rank, giftid, coupon);
+				MemberPromotionPO tmpPO=new MemberPromotionPO(id, rank, discount, gifts, coupon);
 				
 				results.add(tmpPO);
 			}
@@ -97,10 +98,11 @@ public class MemberPromotionDataImpl implements MemberPromotionDataService{
 			while(result.next()) {
 				long id=result.getLong("id");
 				
-				String giftid=result.getString("giftlist");
+				String gifts=result.getString("gifts");
 				int coupon=result.getInt("coupon");
+				double discount=result.getDouble("discount");
 				
-				MemberPromotionPO tmpPO=new MemberPromotionPO(id, rank, giftid, coupon);
+				MemberPromotionPO tmpPO=new MemberPromotionPO(id, rank, discount, gifts, coupon);
 				
 				results.add(tmpPO);
 			}

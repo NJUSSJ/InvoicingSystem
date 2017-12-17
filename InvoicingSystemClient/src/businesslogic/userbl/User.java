@@ -76,7 +76,17 @@ public class User {
 		return new UserVO(userPO.getID(),userPO.getPassword(),userPO.getRank(),userPO.getUserName());
 	}
 	public ArrayList<UserVO> findUsers(){
-		return null;
+		ArrayList<UserVO> temp=new ArrayList<UserVO>();
+		try {
+			ArrayList<UserPO> users = RemoteHelper.getInstance().getUserDataService().findUsers();
+			for(int i=0;i<users.size();i++){
+				temp.add(toUserVO(users.get(i)));
+			}
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return temp;
 	}
 
 }

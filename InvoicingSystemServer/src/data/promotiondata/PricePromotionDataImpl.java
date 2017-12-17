@@ -61,7 +61,7 @@ public class PricePromotionDataImpl implements PricePromotionDataService{
 
 	@Override
 	public ArrayList<PricePromotionPO> findPricePromotions() throws RemoteException {
-		String sql="select * from priceprmotions";
+		String sql="select * from pricepromotions";
 		
 		ArrayList<PricePromotionPO> results=new ArrayList<>();
 		

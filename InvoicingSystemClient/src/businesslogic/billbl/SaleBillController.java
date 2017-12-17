@@ -11,44 +11,55 @@ public class SaleBillController implements SaleBillBLService{
 	SaleBill saleBillImpl=new SaleBill();
 	@Override
 	public SaleBillVO toSaleBillVO(SaleBillPO po) {
-		// TODO 自动生成的方法存根
 		return saleBillImpl.toSaleBillVO(po);
 	}
 
 	@Override
 	public boolean submitSaleBill(SaleBillVO saleBill) {
-		// TODO 自动生成的方法存根
 		return saleBillImpl.submitSaleBill(saleBill);
 	}
 
 	@Override
 	public boolean checkSaleBill(boolean pass, long id) {
-		// TODO 自动生成的方法存根
 		return saleBillImpl.checkSaleBill(pass, id);
 	}
 
 	@Override
 	public boolean deleteSaleBill(SaleBillVO saleBill) {
-		// TODO 自动生成的方法存根
 		return saleBillImpl.deleteSaleBill(saleBill);
 	}
 
 	@Override
 	public SaleBillVO findSaleBillByID(long id) {
-		// TODO 自动生成的方法存根
 		return saleBillImpl.findSaleBillByID(id);
 	}
 
 	@Override
 	public ArrayList<SaleBillVO> findSaleBillByTime(Date time) {
-		// TODO 自动生成的方法存根
 		return saleBillImpl.findSaleBillByTime(time);
 	}
 
 	@Override
 	public ArrayList<SaleBillVO> findSaleBills() {
-		// TODO 自动生成的方法存根
 		return saleBillImpl.findSaleBills();
 	}
+
+	@Override
+	public double handleSale(int rank, CommodityList list) {
+		return saleBillImpl.handleSale(rank,list);
+	}
+
+	@Override
+	public int handleCoupon(int rank, double sum) {
+		return saleBillImpl.handleCoupon(rank, sum);
+	}
+
+	@Override
+	public ArrayList<SaleBillVO> findSaleBillByInterval(Date begin, Date end) {
+		// TODO 自动生成的方法存根
+		return saleBillImpl.findByInterval(begin, end);
+	}
+	
+	
 
 }

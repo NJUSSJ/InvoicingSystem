@@ -1,26 +1,31 @@
 package po;
 
-public class PricePromotionPO {
+import java.io.Serializable;
+
+public class PricePromotionPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	long id;
-	double priceLine;
-	double discount;
+	double priceline;
+	String gifts;
 	int coupon;
 	
-	public PricePromotionPO(long id,double priceLine,double discount,int coupon) {
-		// TODO Auto-generated constructor stub
+	public PricePromotionPO(long id,double priceline,String gifts,int coupon) {
 		this.id=id;
-		this.discount=discount;
-		this.priceLine=priceLine;
+		this.priceline=priceline;
+		this.gifts=gifts;
 		this.coupon=coupon;
 	}
 	public long getID(){
 		return id;
 	}
-	public double getPriceLine(){
-		return priceLine;
+	public double getPriceline(){
+		return priceline;
 	}
-	public double getDiscount(){
-		return discount;
+	public String getGifts(){
+		return gifts;
 	}
 	public int getCoupon(){
 		return coupon;

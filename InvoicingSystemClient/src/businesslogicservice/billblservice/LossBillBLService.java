@@ -3,7 +3,6 @@ package businesslogicservice.billblservice;
 import java.sql.Date;
 import java.util.ArrayList;
 
-import businesslogic.billbl.CommodityList;
 import po.LossBillPO;
 import vo.LossBillVO;
 

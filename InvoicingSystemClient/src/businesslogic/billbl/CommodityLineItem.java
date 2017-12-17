@@ -8,12 +8,12 @@ public class CommodityLineItem {
 	double salePrice;
 	double importPrice;
 	
-	public CommodityLineItem(CommodityVO commodity,int num) {
+	public CommodityLineItem(int num,long commodityid,double salePrice,double importPrice) {
 		// TODO Auto-generated constructor stub
 		this.num=num;
-		this.commodityid=commodity.getID();
-		this.salePrice=commodity.getSalePrice();
-		this.importPrice=commodity.getImportPrice();
+		this.commodityid=commodityid;
+		this.salePrice=salePrice;
+		this.importPrice=importPrice;
 	}
 	public int getNum(){
 		return num;
@@ -26,6 +26,7 @@ public class CommodityLineItem {
 	public double getSalePrice() {
 		return salePrice;
 	}
+	
 	public double getImportPrice(){
 		return importPrice;
 	}

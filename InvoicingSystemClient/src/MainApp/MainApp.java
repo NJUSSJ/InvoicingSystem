@@ -1,15 +1,22 @@
  package MainApp;
 
 import java.io.IOException;
+import java.util.Optional;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import presentation.commodityui.LossInfoController;
+import presentation.commodityui.OverInfoController;
 import presentation.commodityui.Sub_StockInventoryController;
 import presentation.mainui.AdministerMainViewController;
 import presentation.mainui.FianceMainViewController;
@@ -76,7 +83,7 @@ public class MainApp extends Application {
 			MainApp.rootlayout.setCenter(loginPanel);
 			
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	
@@ -93,7 +100,7 @@ public class MainApp extends Application {
 			MainApp.rootlayout.setCenter(fianceMainUI);
 			
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	
@@ -110,7 +117,7 @@ public class MainApp extends Application {
 			MainApp.rootlayout.setCenter(administMainUI);
 			
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	
@@ -127,7 +134,7 @@ public class MainApp extends Application {
 			MainApp.rootlayout.setCenter(saleMainUI);
 			
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	
@@ -161,7 +168,7 @@ public class MainApp extends Application {
 			MainApp.rootlayout.setCenter(managerMainUI);
 			
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	
@@ -178,7 +185,7 @@ public class MainApp extends Application {
 			MainApp.rootlayout.setCenter(emailUI);
 			
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	
@@ -195,7 +202,7 @@ public class MainApp extends Application {
 			MainApp.rootlayout.setCenter(logUI);
 			
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	
@@ -206,13 +213,12 @@ public class MainApp extends Application {
 		try {
 			FXMLLoader loader=new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("/presentation/userui/UserUI.fxml"));
-			
 			AnchorPane userUI=loader.load();
 			
 			MainApp.rootlayout.setCenter(userUI);
 			
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 
@@ -324,24 +330,32 @@ public class MainApp extends Application {
 	 */
 	public static  void showStrategyUI() {
 		try {
+			Alert alert = new Alert(AlertType.CONFIRMATION);
+			alert.setTitle("Confirmation the Type of Promotion");
+			alert.setHeaderText("Choose Promotion Type");
+			alert.setContentText("Choose Promotion Type");
+
+			ButtonType buttonTypeMember = new ButtonType("Member");
+			ButtonType buttonTypePrice = new ButtonType("Price");
+			ButtonType buttonTypePackage = new ButtonType("Package");
+			ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
+
+			alert.getButtonTypes().setAll(buttonTypeMember, buttonTypePrice, buttonTypePackage, buttonTypeCancel);
+
+			Optional<ButtonType> result = alert.showAndWait();
+			String type;
+			if (result.get() == buttonTypeMember){
+			    type="Member";
+			} else if (result.get() == buttonTypePackage) {
+			    type="Package";
+			} else if (result.get() == buttonTypePrice) {
+			    type="Price";
+			} else {
+			    return;
+			}
 			FXMLLoader loader=new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("/presentation/promotionui/StrategyUI.fxml"));
+			loader.setLocation(MainApp.class.getResource("/presentation/promotionui/"+type+"PromotionUI.fxml"));
 			
-			AnchorPane strategyUI=loader.load();
-			
-			MainApp.rootlayout.setCenter(strategyUI);
-			
-		} catch (IOException e) {
-			// TODO: handle exception
-		}
-	}
-	/**
-	 * 显示促销策略：价格
-	 */
-	public static void showPricePromotionUI(){
-		try {
-			FXMLLoader loader=new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("/presentation/promotionui/PricePromotionUI.fxml"));
 			AnchorPane strategyUI=loader.load();
 			
 			MainApp.rootlayout.setCenter(strategyUI);
@@ -625,7 +639,7 @@ public class MainApp extends Application {
 			AnchorPane pane=(AnchorPane)loader.load();
 			
 			 Stage dialogStage = new Stage();
-		     dialogStage.setTitle("Edit Person");
+		     dialogStage.setTitle("盘点");
 		     dialogStage.getIcons().add(new Image("file:resources/light_bulb_310px_1204967_easyicon.net.png"));
 		     dialogStage.initModality(Modality.WINDOW_MODAL);
 		     dialogStage.initOwner(primarystage);
@@ -642,11 +656,68 @@ public class MainApp extends Application {
 		}
 	}
 	/*
+
 	 * 返回操作员的名称
 	 */
 	public static String getName() {
 		// TODO Auto-generated method stub
 		return tempUser.getUsername();
+	}
+	/*
+	 * 显示报损信息界面
+	 * 
+	 */
+	public static void showLossInfo(String name,int num,double sum) {
+		try {
+			FXMLLoader loader=new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/presentation/commodityui/LossBillUI.fxml"));
+			AnchorPane pane=(AnchorPane)loader.load();
+			
+			Stage dialogStage=new Stage();
+			dialogStage.setTitle("报损信息");
+			dialogStage.getIcons().add(new Image("file:resources/light_bulb_310px_1204967_easyicon.net.png"));
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primarystage);
+			Scene scene=new Scene(pane);
+			dialogStage.setScene(scene);
+			
+			LossInfoController controller=loader.getController();
+			controller.setStage(dialogStage);
+			controller.setInfo(name, num, sum);
+			
+			dialogStage.showAndWait();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	/*
+	 * 显示报溢信息界面
+	 */
+	public static void showOverInfo(String name,int num,double sum) {
+		try {
+			FXMLLoader loader=new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/presentation/commodityui/OverBillUI.fxml"));
+			AnchorPane pane=(AnchorPane)loader.load();
+			
+			Stage dialogStage=new Stage();
+			dialogStage.setTitle("报溢信息");
+			dialogStage.getIcons().add(new Image("file:resources/light_bulb_310px_1204967_easyicon.net.png"));
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primarystage);
+			Scene scene=new Scene(pane);
+			dialogStage.setScene(scene);
+			
+			OverInfoController controller=loader.getController();
+			controller.setStage(dialogStage);
+			controller.setInfo(name, num, sum);
+			
+			dialogStage.showAndWait();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 }

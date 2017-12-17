@@ -50,6 +50,6 @@ public class MemberPromotion {
 	}
 	public MemberPromotionVO toMemberPromotionVO(MemberPromotionPO memberPromotionPO){
 		return new MemberPromotionVO(memberPromotionPO.getID(),memberPromotionPO.getRank(),
-				new CommodityList(memberPromotionPO.getGifts()),memberPromotionPO.getCoupon());
+	memberPromotionPO.getDiscount(),new CommodityList(memberPromotionPO.getGifts()),memberPromotionPO.getCoupon());
 	}
 }

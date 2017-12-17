@@ -3,6 +3,7 @@ package businesslogic.promotionbl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.billbl.CommodityList;
 import po.PricePromotionPO;
 import rmi.RemoteHelper;
 import vo.PricePromotionVO;
@@ -47,8 +48,7 @@ public class PricePromotion {
 		
 	}
 	public PricePromotionVO toPricePromotionVO(PricePromotionPO pricePromotionPO){
-		return new PricePromotionVO(pricePromotionPO.getID(),pricePromotionPO.getPriceLine(),
-				pricePromotionPO.getDiscount(),pricePromotionPO.getCoupon());
-		
+		return new PricePromotionVO(pricePromotionPO.getID(),pricePromotionPO.getPriceline(),
+				new CommodityList(pricePromotionPO.getGifts()),pricePromotionPO.getCoupon());
 	}
 }

@@ -4,13 +4,10 @@ import java.rmi.RemoteException;
 import java.sql.Date;
 import java.util.ArrayList;
 
-import businesslogic.commoditybl.CommodityController;
-import businesslogicservice.billblservice.SaleReturnBillBLService;
-import po.SaleBillPO;
+import businesslogic.memberbl.MemberController;
 import po.SaleReturnBillPO;
 import rmi.RemoteHelper;
-import vo.CommodityVO;
-import vo.SaleBillVO;
+import vo.MemberVO;
 import vo.SaleReturnBillVO;
 
 public class SaleReturnBill{
@@ -36,6 +33,14 @@ public class SaleReturnBill{
 			SaleReturnBillVO vo=toSaleReturnBillVO(RemoteHelper.getInstance().getSaleReturnBillDataService().findSaleReturnBillbyID(id));
 			if(pass){
 				vo.setState(1);
+				//修改销售退货单里进货商的应收和应收额度
+				MemberController memberCon=new MemberController();
+				MemberVO member=memberCon.findMemberByID(id);
+				double money=vo.getSum()+member.getShouldGet();
+				member.setShouldGet(money);
+				double quota=Math.pow(10, (money+"").length()-1)*Integer.parseInt((money+"").substring(0, 1));
+				member.setQuota(quota);
+				memberCon.updateMember(member);
 			}else{
 				vo.setState(2);
 			}

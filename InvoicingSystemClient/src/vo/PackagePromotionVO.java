@@ -1,7 +1,5 @@
 package vo;
 
-import java.util.ArrayList;
-
 import businesslogic.billbl.CommodityList;
 import po.PackagePromotionPO;
 

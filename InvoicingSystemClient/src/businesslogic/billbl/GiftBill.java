@@ -88,6 +88,15 @@ public class GiftBill {
 		}
 		return temp;
 	}
-	
+	public ArrayList<GiftBillVO> findGiftBillByInterval(Date begin,Date end){
+		ArrayList<GiftBillVO> bills=findGiftBills();
+		ArrayList<GiftBillVO> result=new ArrayList<GiftBillVO>();
+		for(GiftBillVO each:bills){
+			if(each.getTime().after(begin)&&each.getTime().before(end)){
+				result.add(each);
+			}
+		}
+		return result;
+	}
 
 }

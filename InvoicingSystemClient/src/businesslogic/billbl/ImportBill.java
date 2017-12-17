@@ -13,36 +13,31 @@ import vo.MemberVO;
 public class ImportBill{
 
 	public ImportBillVO toImportBillVO(ImportBillPO po) {
-		// TODO 自动生成的方法存根
 		CommodityList list=new CommodityList(po.getCommodityList());
 		return new ImportBillVO(po.getID(),po.getUserID(),po.getMemberID(),list,po.getSum(),po.getState(),
 				po.getTime(),po.getRemark());
 	}
 
 	public boolean submitImportBill(ImportBillVO importBill) {
-		// TODO 自动生成的方法存根
 		try {
 			return RemoteHelper.getInstance().getImportBillDataService().insert(importBill.toImportBillPO());
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return false;
 	}
 
 	public boolean checkImportBill(boolean pass, long id) {
-		// TODO 自动生成的方法存根
-		
 		try {
 			ImportBillVO vo=toImportBillVO(RemoteHelper.getInstance().getImportBillDataService().findImportBillbyID(id));
 			if(pass){
 				vo.setState(1);
-				//修改进货单里供应商的应收和应收额度
+				//修改进货单里供货商的应收和应收额度
 				MemberController memberCon=new MemberController();
 				MemberVO member=memberCon.findMemberByID(id);
-				double money=vo.getSum();
-				double quota=Math.pow(10, (money+"").length()-1)*Integer.parseInt((money+"").substring(0, 1));
+				double money=vo.getSum()+member.getShouldGet();
 				member.setShouldGet(money);
+				double quota=Math.pow(10, (money+"").length()-1)*Integer.parseInt((money+"").substring(0, 1));
 				member.setQuota(quota);
 				memberCon.updateMember(member);
 			}else{
@@ -50,36 +45,30 @@ public class ImportBill{
 			}
 			return RemoteHelper.getInstance().getImportBillDataService().update(vo.toImportBillPO());
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return false;
 	}
 
 	public boolean deleteImportBill(ImportBillVO importBill) {
-		// TODO 自动生成的方法存根
 		try {
 			return RemoteHelper.getInstance().getImportBillDataService().delete(importBill.toImportBillPO());
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return false;
 	}
 
 	public ImportBillVO findImportBillByID(long id) {
-		// TODO 自动生成的方法存根
 		try {
 			return toImportBillVO(RemoteHelper.getInstance().getImportBillDataService().findImportBillbyID(id));
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return null;
 	}
 
 	public ArrayList<ImportBillVO> findImportBillByTime(Date time) {
-		// TODO 自动生成的方法存根
 		ArrayList<ImportBillVO> temp=new ArrayList<ImportBillVO>();
 		try {
 			ArrayList<ImportBillPO> importBills=RemoteHelper.getInstance().getImportBillDataService().
@@ -88,7 +77,6 @@ public class ImportBill{
 				temp.add(toImportBillVO(importBills.get(i)));
 			}
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		
@@ -104,10 +92,19 @@ public class ImportBill{
 				temp.add(toImportBillVO(bills.get(i)));
 			}
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return temp;
+	}
+	public ArrayList<ImportBillVO> findImportBillsByInterval(Date begin,Date end){
+		ArrayList<ImportBillVO> bills=findImportBills();
+		ArrayList<ImportBillVO> result=new ArrayList<ImportBillVO>();
+		for(ImportBillVO each:bills){
+			if(each.getTime().after(begin)&&each.getTime().before(end)){
+				result.add(each);
+			}
+		}
+		return bills;
 	}
 
 }

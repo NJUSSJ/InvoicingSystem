@@ -68,7 +68,7 @@ private ObservableList<UserData> userData =FXCollections.observableArrayList();
 	@FXML
 	private TableColumn<UserData,String> idColoumn;
 	
-	UserVO a;
+	UserVO a=null;
 	ArrayList<UserVO> alist=new ArrayList<UserVO>();
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -129,7 +129,7 @@ private ObservableList<UserData> userData =FXCollections.observableArrayList();
             userStage.showAndWait();
             
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	@FXML
@@ -167,7 +167,7 @@ private ObservableList<UserData> userData =FXCollections.observableArrayList();
 	            userStage.showAndWait();
 	            
 			} catch (IOException e) {
-				// TODO: handle exception
+				e.printStackTrace();
 			}
 			
 	   	}

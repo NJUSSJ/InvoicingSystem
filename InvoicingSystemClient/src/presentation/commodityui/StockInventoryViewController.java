@@ -1,6 +1,6 @@
 package presentation.commodityui;
 
-import java.io.FileNotFoundException;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
@@ -29,6 +29,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import vo.StockInventoryInfoVO;
 
 public class StockInventoryViewController implements Initializable {
@@ -94,7 +96,6 @@ public class StockInventoryViewController implements Initializable {
 		model.setCellValueFactory(cellData->cellData.getValue().ModelProperty());
 		stockNum.setCellValueFactory(cellData->cellData.getValue().StockProperty());
 		averagePrice.setCellValueFactory(cellData->cellData.getValue().AveragePriceProperty());
-		finishedTime.setCellValueFactory(cellData->cellData.getValue().FinishedTimeProperty());
 		
 		table.setItems(InventoryInfo);
 		
@@ -121,7 +122,25 @@ public class StockInventoryViewController implements Initializable {
 		MainApp.showStockMainUI();
 	}
 	
-	public void Export() {
+	public void handleExport() {
+		FileChooser fileChooser=new FileChooser();
+		
+		//set extension filter
+		FileChooser.ExtensionFilter extFilter=new ExtensionFilter("XLS files (*.xls)", "*.xls");
+		fileChooser.getExtensionFilters().add(extFilter);
+	
+		//show save file dialog
+		File file=fileChooser.showSaveDialog(MainApp.getPrimaryStage());
+		if(file!=null) {
+			String filepath=file.getPath();
+			if(!filepath.endsWith(".xls")) {
+			filepath+=".xls";
+			}
+			SaveFiletoPath(filepath);
+		}
+		
+	}
+	public void SaveFiletoPath(String filepath) {
 		@SuppressWarnings("resource")
 		HSSFWorkbook wb=new HSSFWorkbook();
 		HSSFSheet sheet=wb.createSheet("sheet1");
@@ -129,7 +148,7 @@ public class StockInventoryViewController implements Initializable {
 		HSSFRow row1 =sheet.createRow(0);
 		HSSFCell cell1=row1.createCell(0);
 		
-		sheet.addMergedRegion(new CellRangeAddress(0, 1, 0, 11));
+		sheet.addMergedRegion(new CellRangeAddress(0, 1, 0, 9));
 		
 		HSSFFont font=wb.createFont();
 		font.setFontName("微软雅黑");
@@ -204,12 +223,7 @@ public class StockInventoryViewController implements Initializable {
 		AveragePriceCell.setCellValue("库存均价");
 		AveragePriceCell.setCellStyle(style2);
 		
-		HSSFCell FinishedTimeCell=row2.createCell(10);
 		
-		sheet.addMergedRegion(new CellRangeAddress(2,2, 10, 11));
-		
-		FinishedTimeCell.setCellValue("出厂日期");
-		FinishedTimeCell.setCellStyle(style2);
 		
 		/*
 		 * 填入具体信息
@@ -252,12 +266,7 @@ public class StockInventoryViewController implements Initializable {
 			AveragePriceCellInfo.setCellValue(InventoryInfo.get(i).getAveragePrice());
 			AveragePriceCellInfo.setCellStyle(style3);
 			
-			HSSFCell FinishedTimeCellInfo=row.createCell(10);
 			
-			sheet.addMergedRegion(new CellRangeAddress(i+3,i+3, 10, 11));
-			
-			FinishedTimeCellInfo.setCellValue(InventoryInfo.get(i).getFinishedTime());
-			FinishedTimeCellInfo.setCellStyle(style3);
 			
 			
 		}
@@ -265,9 +274,9 @@ public class StockInventoryViewController implements Initializable {
 		
 		
 		try {
-			FileOutputStream fo=new FileOutputStream("c:\\users\\shisj\\test.xls");
+			FileOutputStream fo=new FileOutputStream(filepath);
 			wb.write(fo);
-			fo.close();
+			fo.close(); 
 			Alert error=new Alert(Alert.AlertType.CONFIRMATION);
         	error.setTitle("Success");
         	error.setHeaderText("");

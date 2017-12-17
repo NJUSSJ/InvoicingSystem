@@ -1,5 +1,6 @@
 package presentation.promotionui;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import vo.PricePromotionVO;
 
@@ -10,9 +11,9 @@ public class PricePromotionData {
 	PricePromotionVO promotion;
 	public PricePromotionData(PricePromotionVO promotion){
 		this.promotion=promotion;
-		pricelinePro.set(promotion.getPriceline()+"");
-		discountPro.set(promotion.getPriceline()+"");
-		couponPro.set(promotion.getCoupon()+"");
+		pricelinePro=new SimpleStringProperty(promotion.getPriceline()+"");
+		discountPro=new SimpleStringProperty(promotion.getDiscount()+"");
+		couponPro=new SimpleStringProperty(promotion.getCoupon()+"");
 	}
 	public StringProperty getPricelineProperty() {
 		// TODO Auto-generated method stub

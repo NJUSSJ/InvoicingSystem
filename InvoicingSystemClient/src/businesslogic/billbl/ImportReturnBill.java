@@ -4,13 +4,11 @@ import java.rmi.RemoteException;
 import java.sql.Date;
 import java.util.ArrayList;
 
-import businesslogic.commoditybl.CommodityController;
-import po.GiftBillPO;
+import businesslogic.memberbl.MemberController;
 import po.ImportReturnBillPO;
 import rmi.RemoteHelper;
-import vo.CommodityVO;
-import vo.GiftBillVO;
 import vo.ImportReturnBillVO;
+import vo.MemberVO;
 
 public class ImportReturnBill {
 
@@ -34,13 +32,17 @@ public class ImportReturnBill {
 	}
 
 	public boolean checkImportReturnBill(boolean pass, long id) {
-		// TODO 自动生成的方法存根
-
 		try {
 			ImportReturnBillVO vo=toImportReturnBillVO(RemoteHelper.getInstance().
 					getImportReturnBillDataService().findImportReturnBillbyID(id));
 			if(pass){
 				vo.setState(1);
+				//修改进货退货单里供货商的应付
+				MemberController memberCon=new MemberController();
+				MemberVO member=memberCon.findMemberByID(id);
+				double money=vo.getSum()+member.getShouldPay();
+				member.setShouldPay(money);
+				memberCon.updateMember(member);
 			}else{
 				vo.setState(2);
 			}
@@ -104,5 +106,14 @@ public class ImportReturnBill {
 		}
 		return temp;
 	}
-	
+	public ArrayList<ImportReturnBillVO> findImportReturnBillsByInterval(Date begin,Date end){
+		ArrayList<ImportReturnBillVO> bills=findImportReturnBills();
+		ArrayList<ImportReturnBillVO> result=new ArrayList<ImportReturnBillVO>();
+		for(ImportReturnBillVO each:bills){
+			if(each.getTime().after(begin)&&each.getTime().before(end)){
+				result.add(each);
+			}
+		}
+		return bills;
+	}
 }

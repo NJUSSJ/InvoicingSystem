@@ -1,14 +1,10 @@
 package businesslogicservice.tableblservice;
 
-import java.util.ArrayList;
-
-import businesslogic.tablebl.BillItem;
+import java.util.Date;
 import vo.SaleDetailsTableVO;
 
 public interface SaleDetailsTableBLService {
-	public void setTime(int begin,int end);
-	public void addBillItem(BillItem item);
-	public void deleteBillItem(BillItem item);
-	public ArrayList<BillItem> checkBillItem(String field);
-	public SaleDetailsTableVO toSalesDetailsTableVO();
+	public SaleDetailsTableVO findByDate(Date begin,Date end);
+	public SaleDetailsTableVO findByField(Date begin,Date end,String field);
+	public boolean exportAsExcel(SaleDetailsTableVO vo,String path);
 }

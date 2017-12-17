@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="450.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.commodityui.LossInfoController">
+  <!-- TODO Add Nodes -->
+  <children>
+    <Label layoutX="8.0" layoutY="37.0" text="库存报损信息">
+      <font>
+        <Font name="Microsoft YaHei UI Light" size="30.0" />
+      </font>
+    </Label>
+    <Separator layoutX="2.0" layoutY="79.0" prefWidth="200.0" />
+    <Label layoutX="97.0" layoutY="141.0" text="报损商品名称：">
+      <font>
+        <Font name="Microsoft YaHei UI Light" size="15.0" fx:id="x1" />
+      </font>
+    </Label>
+    <Label font="$x1" layoutX="127.0" layoutY="191.0" text="报损数量：" />
+    <Label font="$x1" layoutX="125.0" layoutY="250.0" text="报损总价：" />
+    <Label fx:id="sum" layoutX="239.0" layoutY="250.0" text="Label" />
+    <Label fx:id="name" layoutX="239.0" layoutY="141.0" text="Label" />
+    <Label fx:id="num" layoutX="239.0" layoutY="191.0" text="Label" />
+    <Button fx:id="confirm" layoutX="122.0" layoutY="335.0" minHeight="20.0" mnemonicParsing="false" onAction="#confirm" prefHeight="39.0" prefWidth="156.0" text="确认生成报损单" />
+  </children>
+</AnchorPane>
