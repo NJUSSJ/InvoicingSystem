@@ -56,6 +56,9 @@ public class PayBillVO {
 	public int getState(){
 		return state;
 	}
+	public int getCoupon(){
+		return coupon;
+	}
 	public void setUserID(long userid){
 		this.userid=userid;
 	}

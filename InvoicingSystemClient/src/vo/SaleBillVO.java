@@ -23,10 +23,10 @@ public class SaleBillVO {
 	int coupon;
 	double discount;
 	double ultimate;
+	double money;//此单中顾客中实际付的钱
 	
-	public SaleBillVO(String id,long userid,long memberid,CommodityList list,
-			double sum,int state,Date time,String remark,int coupon,double discount,double ultimate) {
-		// TODO Auto-generated constructor stub
+	public SaleBillVO(String id,long userid,long memberid,CommodityList list,double sum,int state,
+		Date time,String remark,int coupon,double discount,double ultimate,double money) {
 		this.commodityList=list;
 		this.id=id;
 		this.memberid=memberid;
@@ -39,9 +39,10 @@ public class SaleBillVO {
 		this.coupon=coupon;
 		this.ultimate=ultimate;
 		this.discount=ultimate/sum;
+		this.money=money;
 	}
 	public SaleBillPO toSaleBillPO(){
-		return new SaleBillPO(id,userid,memberid,commodityList.toString(),sum,state,time,num,remark,coupon,discount,ultimate);
+		return new SaleBillPO(id,userid,memberid,commodityList.toString(),sum,state,time,num,remark,coupon,discount,ultimate,money);
 	}
 	public String getID() {
 		return id;
@@ -79,6 +80,9 @@ public class SaleBillVO {
 	}
 	public double getUltimate(){
 		return ultimate;
+	}
+	public double getMoney(){
+		return money;
 	}
 	public void setUserID(long userid) {
 		this.userid=userid;

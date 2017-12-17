@@ -1,11 +1,16 @@
 package vo;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 
 public class SaleDetailsTableVO {
+	Date begin;
+	Date end;
 	ArrayList<SaleBillVO> list;
-	public SaleDetailsTableVO(ArrayList<SaleBillVO> list){
+	public SaleDetailsTableVO(Date begin,Date end,ArrayList<SaleBillVO> list){
+		this.begin=begin;
+		this.end=end;
 		this.list=list;
 		//∞¥ ±º‰À≥–Ú≈≈–Ú
 		for(int i=0;i<list.size()-1;i++){
@@ -17,6 +22,15 @@ public class SaleDetailsTableVO {
 				}
 			}
 		}
+	}
+	public Date getBegin(){
+		return begin;
+	}
+	public Date getEnd(){
+		return end;
+	}
+	public ArrayList<SaleBillVO> getList(){
+		return list;
 	}
 }
 

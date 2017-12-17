@@ -10,7 +10,6 @@ public class CommodityList {
 	ArrayList<CommodityLineItem> list;
 	
 	public CommodityList() {
-		// TODO Auto-generated constructor stub
 		list=new ArrayList<>();
 	}
 	/**
