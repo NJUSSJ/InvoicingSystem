@@ -68,7 +68,7 @@ public class CommodityList {
 			total+=list.get(i).num*list.get(i).importPrice;
 		}
 		return total;
-		
+
 	}
 	/**
 	 * 

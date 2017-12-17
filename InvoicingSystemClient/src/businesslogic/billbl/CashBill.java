@@ -10,7 +10,6 @@ import vo.CashBillVO;
 
 public class CashBill{
 	public CashBillVO toCashBillVO(CashBillPO po) {
-		// TODO 自动生成的方法存根
 		String[] items=po.getItems().split(" ");
 		ArrayList<String> temp=new ArrayList<String>();
 		for(int i=0;i<items.length;i++){
@@ -21,11 +20,9 @@ public class CashBill{
 				po.getState());
 	}
 	public boolean submitCashBill(CashBillVO cashBill) {
-		// TODO 自动生成的方法存根
 		try {
 			return RemoteHelper.getInstance().getCashBillDataService().insert(cashBill.toCashBillPO());
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return false;
@@ -41,23 +38,19 @@ public class CashBill{
 			}
 			return RemoteHelper.getInstance().getCashBillDataService().update(cashBillVO.toCashBillPO());
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return false;
 	}
 	public boolean deleteCashBill(CashBillVO cashBill) {
-		// TODO 自动生成的方法存根
 		try {
 			return RemoteHelper.getInstance().getCashBillDataService().delete(cashBill.toCashBillPO());
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return false;
 	}
 	public ArrayList<CashBillVO> findCashBillByTime(Date time) {
-		// TODO 自动生成的方法存根
 		ArrayList<CashBillVO> temp=null;
 		
 		try {
@@ -68,7 +61,6 @@ public class CashBill{
 				temp.add(toCashBillVO(cashBills.get(i)));
 			}
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return temp;
@@ -83,7 +75,6 @@ public class CashBill{
 				temp.add(toCashBillVO(cashbills.get(i)));
 			}
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return temp;
@@ -98,7 +89,24 @@ public class CashBill{
 		}
 		return result;
 	}
-	
+	public ArrayList<CashBillVO> findCashBillsByField(Date begin,Date end,String userName){
+		return null;	
+	}
+	public ArrayList<CashBillVO> findCashBillsByState(int state){
+		ArrayList<CashBillVO> result=new ArrayList<CashBillVO>();
+		ArrayList<CashBillPO> bills;
+		try {
+			bills = RemoteHelper.getInstance().getCashBillDataService().findCashBillbyState(state);
+			for(CashBillPO po:bills){
+				result.add(toCashBillVO(po));
+			}
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 	
 	
 }

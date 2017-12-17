@@ -104,7 +104,7 @@ public class PayBillViewController  implements Initializable{
 		DecimalFormat df=new DecimalFormat("#####");
 		billid.setText("FKD-"+str+"-"+df.format(times));
 		id.setText("ID:"+MainApp.getID());
-		operator.setText(Long.toString(MainApp.getID()));
+		operator.setText(MainApp.getName());
 		payTable.getSelectionModel().selectedItemProperty().addListener(
 	            (observable, oldValue, newValue) -> getInf(newValue));	
 		nameColoumn.setCellValueFactory(cellData ->cellData.getValue().getName());
@@ -174,11 +174,11 @@ public class PayBillViewController  implements Initializable{
 	}
 	@FXML
  public void rightSet(){
-	 times++;
 	 PayBillBLService pbs=new PayBillController();
-	 PayBillVO paybill=new PayBillVO(billid.getText() ,Long.parseLong(operator.getText()),Long.parseLong(account.getText()),aclist,aclist.getSum(),time,0);
+	 PayBillVO paybill=new PayBillVO(billid.getText() ,MainApp.getID() ,Long.parseLong(account.getText()),aclist,aclist.getSum(),time,0);
 	 String isSubmit="fail Submit";
 	 if(pbs.submitPayBill(paybill)){
+		 times++;
 		 isSubmit="Succeed Submit";
 	 }
      Alert alert = new Alert(AlertType.INFORMATION);

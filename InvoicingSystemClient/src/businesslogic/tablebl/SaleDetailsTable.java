@@ -1,7 +1,7 @@
 package businesslogic.tablebl;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 
 import businesslogic.billbl.SaleBillController;
 import vo.SaleBillVO;
@@ -16,11 +16,13 @@ public class SaleDetailsTable{
 		return new SaleDetailsTableVO(result);
 	}
 	/**根据时间段和关键字查找销售记录
-	 * @param field 传入的关键字，包括商品名，客户，业务员
+	 * @param commodityName 商品名，可为null
+	 * @param userName 客户名，可为null
+	 * @param operatorName 操作员名，可为null
 	 */
-	public SaleDetailsTableVO findByField(Date begin, Date end, String field) {
-		SaleBillController sbcon=new SaleBillController();
-		//ArrayList<SaleBillVO> all=sbcon.find
+	public SaleDetailsTableVO findByField(Date begin, Date end,String commodityName,
+			String userName,String operatorName) {
+		//ArrayList<SaleBillVO> bills=new SaleBillController().
 		return null;
 	}
 	/**

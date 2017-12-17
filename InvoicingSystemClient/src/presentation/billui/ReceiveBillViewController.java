@@ -96,7 +96,7 @@ public class ReceiveBillViewController  implements Initializable{
 		DecimalFormat df=new DecimalFormat("#####");
 		billid.setText("SKD-"+str+"-"+df.format(times));
 		id.setText("ID:"+MainApp.getID());
-		operator.setText(Long.toString(MainApp.getID()));
+		operator.setText(MainApp.getName());
 		receiveTable.getSelectionModel().selectedItemProperty().addListener(
 	            (observable, oldValue, newValue) -> getInf(newValue));	
 		nameColoumn.setCellValueFactory(cellData ->cellData.getValue().getName());
@@ -166,11 +166,11 @@ public class ReceiveBillViewController  implements Initializable{
 	}
 	@FXML
  public void rightSet(){
-     times++;
 	 ReceiveBillBLService pbs=new ReceiveBillController();
-	 ReceiveBillVO receivebill=new ReceiveBillVO(billid.getText() ,Long.parseLong(operator.getText()),Long.parseLong(account.getText()),aclist,aclist.getSum(),time,0);
+	 ReceiveBillVO receivebill=new ReceiveBillVO(billid.getText() ,MainApp.getID(),Long.parseLong(account.getText()),aclist,aclist.getSum(),time,0);
 	 String isSubmit="fail Submit";
 	 if(pbs.submitReceiveBill(receivebill)){
+		 times++;
 		 isSubmit="Succeed Submit";
 	 }
      Alert alert = new Alert(AlertType.INFORMATION);

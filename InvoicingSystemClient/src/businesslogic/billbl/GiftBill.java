@@ -4,8 +4,10 @@ import java.rmi.RemoteException;
 import java.sql.Date;
 import java.util.ArrayList;
 
+import po.CashBillPO;
 import po.GiftBillPO;
 import rmi.RemoteHelper;
+import vo.CashBillVO;
 import vo.GiftBillVO;
 
 public class GiftBill {
@@ -96,6 +98,23 @@ public class GiftBill {
 				result.add(each);
 			}
 		}
+		return result;
+	}
+	public ArrayList<GiftBillVO> findGiftBillsByField(Date begin,Date end,String memberName,String userName){
+		return null;
+	}
+	public ArrayList<GiftBillVO> findGiftBillsByState(int state){
+		ArrayList<GiftBillVO> result=new ArrayList<GiftBillVO>();
+		ArrayList<GiftBillPO> bills;
+		try {
+			bills = RemoteHelper.getInstance().getGiftBillDataService().findGiftBillbyState(state);
+			for(GiftBillPO po:bills){
+				result.add(toGiftBillVO(po));
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
 		return result;
 	}
 

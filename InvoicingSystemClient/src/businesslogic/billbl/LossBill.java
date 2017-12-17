@@ -4,29 +4,26 @@ import java.rmi.RemoteException;
 import java.sql.Date;
 import java.util.ArrayList;
 
+import po.CashBillPO;
 import po.LossBillPO;
 import rmi.RemoteHelper;
+import vo.CashBillVO;
+import vo.ImportBillVO;
 import vo.LossBillVO;
 
 public class LossBill{
 	public LossBillVO toLossBillVO(LossBillPO lossBillPO) {
-		// TODO 自动生成的方法存根
-		
 		return new LossBillVO(lossBillPO.getID(),lossBillPO.getUserID(),lossBillPO.getName(),lossBillPO.getTime(),lossBillPO.getState(),lossBillPO.getNum(),lossBillPO.getSum());
 	}
 	public boolean submitLossBill(LossBillVO lossBill) {
-		// TODO 自动生成的方法存根
 		try {
 			return RemoteHelper.getInstance().getLossBillDataService().insert(lossBill.toLossBillPO());
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return false;
 	}
 	public boolean checkLossBill(boolean pass, long id) {
-		// TODO 自动生成的方法存根
-		
 		try {
 			LossBillVO vo=toLossBillVO(RemoteHelper.getInstance().getLossBillDataService().findLossBillbyID(id));
 			if(pass){
@@ -36,33 +33,27 @@ public class LossBill{
 			}
 			return RemoteHelper.getInstance().getLossBillDataService().update(vo.toLossBillPO());
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return pass;
 	}
 	public boolean deleteLossBill(LossBillVO lossBill) {
-		// TODO 自动生成的方法存根
 		try {
 			return RemoteHelper.getInstance().getLossBillDataService().delete(lossBill.toLossBillPO());
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return false;
 	}
 	public LossBillVO findLossBillByID(long id) {
-		// TODO 自动生成的方法存根
 		try {
 			return toLossBillVO(RemoteHelper.getInstance().getLossBillDataService().findLossBillbyID(id));
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return null;
 	}
 	public ArrayList<LossBillVO> findLossBillByTime(Date time) {
-		// TODO 自动生成的方法存根
 		ArrayList<LossBillVO> temp=null;
 		try {
 			temp=new ArrayList<LossBillVO>();
@@ -71,7 +62,6 @@ public class LossBill{
 				temp.add(toLossBillVO(lossBills.get(i)));
 			}
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return temp;
@@ -85,10 +75,34 @@ public class LossBill{
 				temp.add(toLossBillVO(bills.get(i)));
 			}
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return temp;
 	}
-	
+	public ArrayList<LossBillVO> findLossBillsByInterval(Date begin,Date end){
+		ArrayList<LossBillVO> bills=findLossBills();
+		ArrayList<LossBillVO> result=new ArrayList<LossBillVO>();
+		for(LossBillVO each:bills){
+			if(each.getTime().after(begin)&&each.getTime().before(end)){
+				result.add(each);
+			}
+		}
+		return bills;
+	}
+	public ArrayList<LossBillVO> findLossBillsByField(Date begin,Date end,String userName){
+		return null;
+	}
+	public ArrayList<LossBillVO> findLossBillsByState(int state){
+		ArrayList<LossBillVO> result=new ArrayList<LossBillVO>();
+		ArrayList<LossBillPO> bills;
+		try {
+			bills = RemoteHelper.getInstance().getLossBillDataService().findLossBillbyState(state);
+			for(LossBillPO po:bills){
+				result.add(toLossBillVO(po));
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 }

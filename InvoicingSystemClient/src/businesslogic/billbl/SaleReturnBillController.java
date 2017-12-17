@@ -11,44 +11,55 @@ public class SaleReturnBillController implements SaleReturnBillBLService{
 	SaleReturnBill saleReturnBillImpl=new SaleReturnBill();
 	@Override
 	public SaleReturnBillVO toSaleReturnBillVO(SaleReturnBillPO po) {
-		// TODO 自动生成的方法存根
 		return saleReturnBillImpl.toSaleReturnBillVO(po);
 	}
 
 	@Override
 	public boolean submitSaleReturnBill(SaleReturnBillVO saleReturnBill) {
-		// TODO 自动生成的方法存根
 		return saleReturnBillImpl.submitSaleReturnBill(saleReturnBill);
 	}
 
 	@Override
 	public boolean checkSaleReturnBill(boolean pass, long id) {
-		// TODO 自动生成的方法存根
 		return saleReturnBillImpl.checkSaleReturnBill(pass, id);
 	}
 
 	@Override
 	public boolean deleteSaleReturnBill(SaleReturnBillVO saleReturnBill) {
-		// TODO 自动生成的方法存根
 		return saleReturnBillImpl.deleteSaleReturnBill(saleReturnBill);
 	}
 
 	@Override
 	public SaleReturnBillVO findSaleReturnBillByID(long id) {
-		// TODO 自动生成的方法存根
 		return saleReturnBillImpl.findSaleReturnBillByID(id);
 	}
 
 	@Override
 	public ArrayList<SaleReturnBillVO> findSaleReturnBillByTime(Date time) {
-		// TODO 自动生成的方法存根
 		return saleReturnBillImpl.findSaleReturnBillByTime(time);
 	}
 
 	@Override
 	public ArrayList<SaleReturnBillVO> findSaleReturnBills() {
-		// TODO 自动生成的方法存根
 		return saleReturnBillImpl.findSaleReturnBills();
+	}
+
+	@Override
+	public ArrayList<SaleReturnBillVO> findSaleReturnBillsByInterval(Date begin, Date end) {
+		return saleReturnBillImpl.findSaleReturnBillsByInterval(begin, end);
+	}
+
+	@Override
+	public ArrayList<SaleReturnBillVO> findSaleReturnBillsByState(int state) {
+		// TODO 自动生成的方法存根
+		return null;
+	}
+
+	@Override
+	public ArrayList<SaleReturnBillVO> findSaleReturnBillsByField(Date begin, Date end, String memberName,
+			String userName) {
+		// TODO 自动生成的方法存根
+		return null;
 	}
 	
 }

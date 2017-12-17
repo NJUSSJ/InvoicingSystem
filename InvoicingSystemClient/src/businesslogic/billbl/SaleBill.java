@@ -6,8 +6,10 @@ import java.util.ArrayList;
 
 import businesslogic.memberbl.MemberController;
 import businesslogic.promotionbl.PromotionController;
+import po.CashBillPO;
 import po.SaleBillPO;
 import rmi.RemoteHelper;
+import vo.CashBillVO;
 import vo.MemberPromotionVO;
 import vo.MemberVO;
 import vo.PackagePromotionVO;
@@ -19,7 +21,7 @@ public class SaleBill{
 	public SaleBillVO toSaleBillVO(SaleBillPO po) {
 		CommodityList list=new CommodityList(po.getCommodityList());
 		return new SaleBillVO(po.getID(),po.getUserID(),po.getMemberID(),list,po.getSum(),po.getState(),
-				po.getTime(),po.getRemark());
+				po.getTime(),po.getRemark(),po.getCoupon(),po.getDiscount(),po.getUltimate());
 	}
 	public boolean submitSaleBill(SaleBillVO saleBill) {
 		try {
@@ -68,7 +70,7 @@ public class SaleBill{
 		}
 		return null;
 	}
-	public ArrayList<SaleBillVO> findSaleBillByTime(Date time) {
+	public ArrayList<SaleBillVO> findSaleBillsByTime(Date time) {
 		ArrayList<SaleBillVO> temp=new ArrayList<SaleBillVO>();
 		try {
 			ArrayList<SaleBillPO> saleBills=RemoteHelper.getInstance().getSaleBillDataService().
@@ -168,7 +170,7 @@ public class SaleBill{
 		}
 		return maxm+maxp;
 	}
-	public ArrayList<SaleBillVO> findByInterval(Date begin,Date end){
+	public ArrayList<SaleBillVO> findSaleBillsByInterval(Date begin,Date end){
 		ArrayList<SaleBillVO> bills=findSaleBills();
 		ArrayList<SaleBillVO> result=new ArrayList<SaleBillVO>();
 		for(SaleBillVO each:bills){
@@ -177,5 +179,23 @@ public class SaleBill{
 			}
 		}
 		return bills;	
+	}
+	public ArrayList<SaleBillVO> findSaleBillsByState(int state){
+		ArrayList<SaleBillVO> result=new ArrayList<SaleBillVO>();
+		ArrayList<SaleBillPO> bills;
+		try {
+			bills = RemoteHelper.getInstance().getSaleBillDataService().findSaleBillbyState(state);
+			for(SaleBillPO po:bills){
+				result.add(toSaleBillVO(po));
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	public ArrayList<SaleBillVO> findSaleBillsByField(Date begin,Date end,String commodityName,String memberName,String userName){
+		return null;
+		
 	}
 }

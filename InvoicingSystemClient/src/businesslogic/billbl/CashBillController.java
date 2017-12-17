@@ -43,6 +43,17 @@ public class CashBillController implements CashBillBLService{
 	public ArrayList<CashBillVO> findCashBillsByInterval(Date begin, Date end) {
 		return cashBillImpl.findCashBillsByInterval(begin, end);
 	}
+
+	@Override
+	public ArrayList<CashBillVO> findCashBillsByField(Date begin, Date end,String userName) {
+		return cashBillImpl.findCashBillsByField(begin, end, userName);
+	}
+
+	@Override
+	public ArrayList<CashBillVO> findCashBillsByState(int state) {
+		// TODO 自动生成的方法存根
+		return null;
+	}
 	
 
 }

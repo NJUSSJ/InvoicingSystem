@@ -14,4 +14,7 @@ public interface OverBillBLService {
 	public OverBillVO findOverBillByID(long id);
 	public ArrayList<OverBillVO> findOverBillByTime(Date time);
 	public ArrayList<OverBillVO> findOverBills();
+	public ArrayList<OverBillVO> findOverBillsByInterval(Date begin,Date end);
+	public ArrayList<OverBillVO> findOverBillsByField(Date begin,Date end,String userName);
+	public ArrayList<OverBillVO> findOverBillsByState(int state);
 }

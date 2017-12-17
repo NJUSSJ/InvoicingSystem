@@ -20,9 +20,12 @@ public class SaleBillVO {
 	Date time;
 	int num;
 	String remark;//±¸×¢
+	int coupon;
+	double discount;
+	double ultimate;
 	
 	public SaleBillVO(String id,long userid,long memberid,CommodityList list,
-			double sum,int state,Date time,String remark) {
+			double sum,int state,Date time,String remark,int coupon,double discount,double ultimate) {
 		// TODO Auto-generated constructor stub
 		this.commodityList=list;
 		this.id=id;
@@ -33,9 +36,12 @@ public class SaleBillVO {
 		num=this.commodityList.getNum();
 		this.state=state;
 		this.remark=remark;
+		this.coupon=coupon;
+		this.ultimate=ultimate;
+		this.discount=ultimate/sum;
 	}
 	public SaleBillPO toSaleBillPO(){
-		return new SaleBillPO(id,userid,memberid,commodityList.toString(),sum,state,time,num,remark);
+		return new SaleBillPO(id,userid,memberid,commodityList.toString(),sum,state,time,num,remark,coupon,discount,ultimate);
 	}
 	public String getID() {
 		return id;
@@ -64,6 +70,15 @@ public class SaleBillVO {
 	}
 	public String getRemark(){
 		return remark;
+	}
+	public int getCoupon(){
+		return coupon;
+	}
+	public double getDiscount(){
+		return discount;
+	}
+	public double getUltimate(){
+		return ultimate;
 	}
 	public void setUserID(long userid) {
 		this.userid=userid;

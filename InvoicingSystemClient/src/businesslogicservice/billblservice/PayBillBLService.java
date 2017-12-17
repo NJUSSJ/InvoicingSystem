@@ -14,4 +14,7 @@ public interface PayBillBLService {
 	public PayBillVO findPayBillByID(long id);
 	public ArrayList<PayBillVO> findPayBillByTime(Date time);
 	public ArrayList<PayBillVO> findPayBills();
+	public ArrayList<PayBillVO> findPayBillsByInterval(Date begin,Date end);
+	public ArrayList<PayBillVO> findPayBillsByField(Date begin,Date end,String memberName,String userName);
+	public ArrayList<PayBillVO> findPayBillsByState(int state);
 }
