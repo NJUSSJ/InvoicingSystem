@@ -641,5 +641,12 @@ public class MainApp extends Application {
 			e.printStackTrace();
 		}
 	}
+	/*
+	 * 返回操作员的名称
+	 */
+	public static String getName() {
+		// TODO Auto-generated method stub
+		return tempUser.getUsername();
+	}
 
 }

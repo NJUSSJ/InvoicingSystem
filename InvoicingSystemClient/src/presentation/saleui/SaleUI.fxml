@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="814.0" layoutY="11.0" text="ID:XXX">
          <font>
@@ -71,7 +71,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="14.0" layoutY="338.0" text="备  注：">
+      <Label layoutX="14.0" layoutY="371.0" text="备  注：">
          <font>
             <Font size="14.0" />
          </font>
@@ -81,9 +81,8 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <ChoiceBox layoutX="80.0" layoutY="261.0" prefHeight="23.0" prefWidth="140.0" />
       <TextField layoutX="79.0" layoutY="298.0" prefHeight="23.0" prefWidth="140.0" />
-      <TextArea layoutX="24.0" layoutY="366.0" prefHeight="154.0" prefWidth="195.0" />
+      <TextArea layoutX="24.0" layoutY="395.0" prefHeight="125.0" prefWidth="195.0" />
       <Button layoutX="161.0" layoutY="529.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="64.0" text="确  认">
          <font>
             <Font size="14.0" />
@@ -91,9 +90,9 @@
       </Button>
       <ScrollPane layoutX="231.0" layoutY="231.0" prefHeight="334.0" prefWidth="598.0">
          <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="338.0" prefWidth="755.0">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="334.0" prefWidth="784.0">
                <children>
-                  <TableView prefHeight="319.0" prefWidth="759.0">
+                  <TableView prefHeight="319.0" prefWidth="774.0">
                      <columns>
                         <TableColumn prefWidth="100.0" text="编号" />
                         <TableColumn prefWidth="100.0" text="名称" />
@@ -113,18 +112,43 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Button layoutX="910.0" layoutY="566.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="64.0" text="打  开">
+      <Button layoutX="910.0" layoutY="566.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="64.0" text="返  回">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Label layoutX="851.0" layoutY="253.0" text="折让前总额：" />
+      <Label layoutX="851.0" layoutY="257.0" text="折让前总额：" />
       <Label layoutX="852.0" layoutY="355.0" text="代金券：" />
       <Label layoutX="851.0" layoutY="305.0" text="折让：" />
       <Label layoutX="851.0" layoutY="405.0" text="折让后总额：" />
-      <TextField layoutX="861.0" layoutY="273.0" prefHeight="23.0" prefWidth="118.0" />
-      <TextField layoutX="862.0" layoutY="324.0" prefHeight="23.0" prefWidth="118.0" />
-      <TextField layoutX="864.0" layoutY="424.0" prefHeight="23.0" prefWidth="118.0" />
-      <ChoiceBox layoutX="862.0" layoutY="374.0" prefHeight="23.0" prefWidth="118.0" />
+      <ChoiceBox layoutX="848.0" layoutY="389.0" prefHeight="23.0" prefWidth="118.0" AnchorPane.topAnchor="325.0" />
+      <TextField layoutX="79.0" layoutY="262.0" prefHeight="23.0" prefWidth="140.0" />
+      <TextField layoutX="79.0" layoutY="336.0" prefHeight="23.0" prefWidth="140.0" />
+      <Label layoutX="14.0" layoutY="338.0" text="单  价：">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button layoutX="90.0" layoutY="529.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="64.0" text="删  除">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="20.0" layoutY="529.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="64.0" text="查  询">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Label layoutX="854.0" layoutY="364.0" text="0.0" AnchorPane.bottomAnchor="160.0">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="848.0" layoutY="265.0" text="0.0" AnchorPane.bottomAnchor="305.0">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <TextField layoutX="839.0" layoutY="351.0" prefHeight="23.0" prefWidth="118.0" text="0" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="848.0" />
    </children>
 </AnchorPane>

@@ -29,5 +29,10 @@ public class CommodityLineItem {
 	public double getImportPrice(){
 		return importPrice;
 	}
-	
+	public void setSalePrice(double price) {
+		salePrice=price;
+	}
+	public void setImportPrice(double price){
+		importPrice=price;
+	}
 }

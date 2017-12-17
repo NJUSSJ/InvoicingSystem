@@ -99,7 +99,7 @@ public class CashBillViewController  implements Initializable {
 		DecimalFormat df=new DecimalFormat("#####");
 		billid.setText("FKD-"+str+"-"+df.format(times));
 		id.setText("ID:"+MainApp.getID());
-		operator.setText(Long.toString(MainApp.getID()));
+		operator.setText(MainApp.getName());
 		cashTable.getSelectionModel().selectedItemProperty().addListener(
 	            (observable, oldValue, newValue) -> getInf(newValue));	
 		nameColoumn.setCellValueFactory(cellData ->cellData.getValue().getName());
@@ -172,11 +172,11 @@ public class CashBillViewController  implements Initializable {
 	}
 	@FXML
  public void rightSet(){
-	times++;
 	 CashBillBLService pbs=new CashBillController();
-	 CashBillVO cashbill=new CashBillVO(billid.getText() ,Long.parseLong(operator.getText()),Long.parseLong(account.getText()),items,time,0);
+	 CashBillVO cashbill=new CashBillVO(billid.getText() ,MainApp.getID(),Long.parseLong(account.getText()),items,time,0);
 	 String isSubmit="fail Submit";
 	 if(pbs.submitCashBill(cashbill)){
+		 times++;
 		 isSubmit="Succeed Submit";
 	 }
      Alert alert = new Alert(AlertType.INFORMATION);

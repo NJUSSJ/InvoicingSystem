@@ -62,6 +62,5 @@ public class CommodityData {
 		// TODO Auto-generated method stub
 		return a;
 	}
-
-
+	
 }

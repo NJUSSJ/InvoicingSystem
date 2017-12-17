@@ -38,10 +38,17 @@ public class CommodityList {
 		}
 	}
 	
-	public int getTotal() {
-		int total=0;
+	public double getTotalSale() {
+		double total=0.0;
 		for(int i=0;i<list.size();i++) {
 			total+=list.get(i).num*list.get(i).salePrice;
+		}
+		return total;
+	}
+	public double getTotalImport() {
+		double total=0.0;
+		for(int i=0;i<list.size();i++) {
+			total+=list.get(i).num*list.get(i).importPrice;
 		}
 		return total;
 	}
