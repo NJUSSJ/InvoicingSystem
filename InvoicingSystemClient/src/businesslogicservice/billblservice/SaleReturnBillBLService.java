@@ -14,4 +14,5 @@ public interface SaleReturnBillBLService {
 	public SaleReturnBillVO findSaleReturnBillByID(long id);
 	public ArrayList<SaleReturnBillVO> findSaleReturnBillByTime(Date time);
 	public ArrayList<SaleReturnBillVO> findSaleReturnBills();
+	public ArrayList<SaleReturnBillVO> findSaleReturnBillsByInterval(Date begin,Date end);
 }

@@ -21,10 +21,12 @@ public class SaleBillPO implements Serializable {
 	Date time;
 	int num;
 	String remark;//±¸×¢
+	int coupon;
+	double discount;
+	double ultimate;
 	
-	public SaleBillPO(String id,long userid,long memberid,String commodityList,
-			double sum,int state,Date time,int num,String remark) {
-		// TODO Auto-generated constructor stub
+	public SaleBillPO(String id,long userid,long memberid,String commodityList,double sum,
+			int state,Date time,int num,String remark,int coupon,double discount,double ultimate) {
 		this.commodityList=commodityList;
 		this.id=id;
 		this.memberid=memberid;
@@ -34,6 +36,9 @@ public class SaleBillPO implements Serializable {
 		this.num=num;
 		this.state=state;
 		this.remark=remark;
+		this.coupon=coupon;
+		this.discount=discount;
+		this.ultimate=ultimate;
 	}
 	public String getID(){
 		return id;
@@ -61,5 +66,14 @@ public class SaleBillPO implements Serializable {
 	}
 	public String getRemark(){
 		return remark;
+	}
+	public int getCoupon(){
+		return coupon;
+	}
+	public double getDiscount(){
+		return discount;
+	}
+	public double getUltimate(){
+		return ultimate;
 	}
 }
