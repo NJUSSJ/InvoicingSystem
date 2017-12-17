@@ -5,8 +5,10 @@ import java.sql.Date;
 import java.util.ArrayList;
 
 import businesslogic.memberbl.MemberController;
+import po.CashBillPO;
 import po.ImportReturnBillPO;
 import rmi.RemoteHelper;
+import vo.CashBillVO;
 import vo.ImportReturnBillVO;
 import vo.MemberVO;
 
@@ -106,7 +108,20 @@ public class ImportReturnBill {
 		return bills;
 	}
 	public ArrayList<ImportReturnBillVO> findImportReturnBillsByField(Date begin,Date end,String memberName,String userName){
-		return null;
+		return null;	
+	}
+	public ArrayList<ImportReturnBillVO> findImportReturnBillsByState(int state){
+		ArrayList<ImportReturnBillVO> result=new ArrayList<ImportReturnBillVO>();
+		ArrayList<ImportReturnBillPO> bills;
+		try {
+			bills = RemoteHelper.getInstance().getImportReturnBillDataService().findImportReturnBillbyState(state);
+			for(ImportReturnBillPO po:bills){
+				result.add(toImportReturnBillVO(po));
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		
+		return result;
 	}
 }

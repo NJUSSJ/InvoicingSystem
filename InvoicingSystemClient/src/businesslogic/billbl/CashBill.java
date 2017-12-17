@@ -90,10 +90,23 @@ public class CashBill{
 		return result;
 	}
 	public ArrayList<CashBillVO> findCashBillsByField(Date begin,Date end,String userName){
-		return null;
-		
+		return null;	
 	}
-	
+	public ArrayList<CashBillVO> findCashBillsByState(int state){
+		ArrayList<CashBillVO> result=new ArrayList<CashBillVO>();
+		ArrayList<CashBillPO> bills;
+		try {
+			bills = RemoteHelper.getInstance().getCashBillDataService().findCashBillbyState(state);
+			for(CashBillPO po:bills){
+				result.add(toCashBillVO(po));
+			}
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 	
 	
 }

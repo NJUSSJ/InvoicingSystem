@@ -5,8 +5,10 @@ import java.sql.Date;
 import java.util.ArrayList;
 
 import businesslogic.memberbl.MemberController;
+import po.CashBillPO;
 import po.ReceiveBillPO;
 import rmi.RemoteHelper;
+import vo.CashBillVO;
 import vo.ImportBillVO;
 import vo.MemberVO;
 import vo.ReceiveBillVO;
@@ -95,5 +97,18 @@ public class ReceiveBill{
 		}
 		return bills;
 	}
-
+	public ArrayList<ReceiveBillVO> findReceiveBillsByState(int state){
+		ArrayList<ReceiveBillVO> result=new ArrayList<ReceiveBillVO>();
+		ArrayList<ReceiveBillPO> bills;
+		try {
+			bills = RemoteHelper.getInstance().getReceiveBillDataService().findReceiveBillbyState(state);
+			for(ReceiveBillPO po:bills){
+				result.add(toReceiveBillVO(po));
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 }

@@ -14,7 +14,8 @@ public interface SaleBillBLService {
 	public boolean deleteSaleBill(SaleBillVO saleBill);
 	public SaleBillVO findSaleBillByID(long id);
 	public ArrayList<SaleBillVO> findSaleBillByTime(Date time);
-	public ArrayList<SaleBillVO> findSaleBillByInterval(Date begin,Date end);
+	public ArrayList<SaleBillVO> findSaleBillsByInterval(Date begin,Date end);
+	public ArrayList<SaleBillVO> findSaleBillsByField(Date begin,Date end,String commodityName,String memberName,String userName);
 	public ArrayList<SaleBillVO> findSaleBills();
 	public ArrayList<SaleBillVO> findSaleBillsByState(int state);
 	public double handleSale(int rank,CommodityList list);

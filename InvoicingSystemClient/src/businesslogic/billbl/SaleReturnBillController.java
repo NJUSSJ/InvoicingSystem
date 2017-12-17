@@ -54,5 +54,12 @@ public class SaleReturnBillController implements SaleReturnBillBLService{
 		// TODO 自动生成的方法存根
 		return null;
 	}
+
+	@Override
+	public ArrayList<SaleReturnBillVO> findSaleReturnBillsByField(Date begin, Date end, String memberName,
+			String userName) {
+		// TODO 自动生成的方法存根
+		return null;
+	}
 	
 }

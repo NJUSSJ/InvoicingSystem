@@ -4,8 +4,10 @@ import java.rmi.RemoteException;
 import java.sql.Date;
 import java.util.ArrayList;
 
+import po.CashBillPO;
 import po.OverBillPO;
 import rmi.RemoteHelper;
+import vo.CashBillVO;
 import vo.ImportBillVO;
 import vo.OverBillVO;
 
@@ -90,5 +92,18 @@ public class OverBill{
 	}
 	public ArrayList<OverBillVO> findOverBillsByField(Date begin,Date end,String userName){
 		return null;
+	}
+	public ArrayList<OverBillVO> findOverBillsByState(int state){
+		ArrayList<OverBillVO> result=new ArrayList<OverBillVO>();
+		ArrayList<OverBillPO> bills;
+		try {
+			bills = RemoteHelper.getInstance().getOverBillDataService().findOverBillbyState(state);
+			for(OverBillPO po:bills){
+				result.add(toOverBillVO(po));
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 }
