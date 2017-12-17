@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
@@ -12,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="814.0" layoutY="11.0" text="ID:XXX">
          <font>
@@ -71,7 +70,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="14.0" layoutY="338.0" text="备  注：">
+      <Label layoutX="14.0" layoutY="376.0" text="备  注：">
          <font>
             <Font size="14.0" />
          </font>
@@ -81,9 +80,8 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <ChoiceBox layoutX="80.0" layoutY="261.0" prefHeight="23.0" prefWidth="140.0" />
       <TextField layoutX="79.0" layoutY="298.0" prefHeight="23.0" prefWidth="140.0" />
-      <TextArea layoutX="24.0" layoutY="366.0" prefHeight="154.0" prefWidth="195.0" />
+      <TextArea layoutX="27.0" layoutY="402.0" prefHeight="118.0" prefWidth="192.0" />
       <Button layoutX="161.0" layoutY="529.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="64.0" text="确  认">
          <font>
             <Font size="14.0" />
@@ -113,10 +111,37 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Button layoutX="910.0" layoutY="566.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="64.0" text="打  开">
+      <Button layoutX="910.0" layoutY="566.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="64.0" text="返   回">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
+      <Label layoutX="14.0" layoutY="336.0" text="单  价：">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField layoutX="81.0" layoutY="334.0" prefHeight="23.0" prefWidth="140.0" />
+      <TextField layoutX="81.0" layoutY="261.0" prefHeight="23.0" prefWidth="140.0" />
+      <Button layoutX="91.0" layoutY="529.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="64.0" text="删  除">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="20.0" layoutY="529.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="64.0" text="查  询">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Label layoutX="237.0" layoutY="573.0" text="金额总计：">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="302.0" layoutY="572.0" text="xxx">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

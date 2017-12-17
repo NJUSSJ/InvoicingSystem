@@ -47,33 +47,49 @@ public class CommodityList {
 			}
 		}
 	}
+<<<<<<< HEAD
+	
+	public double getTotalSale() {
+		double total=0.0;
+=======
 	/**
 	 * 
 	 * @return list里所有商品的售价之和
 	 */
 	public double getSaleTotal() {
 		double total=0;
+>>>>>>> 758a1bb7af40ebea6c5ffce6b1decc670e3e12fb
 		for(int i=0;i<list.size();i++) {
 			total+=list.get(i).num*list.get(i).salePrice;
 		}
 		return total;
 	}
+<<<<<<< HEAD
+	public double getTotalImport() {
+		double total=0.0;
+=======
 	/**
 	 * 
 	 * @return list里所有商品的进价之和
 	 */
 	public double getImportTotal(){
 		double total=0;
+>>>>>>> 758a1bb7af40ebea6c5ffce6b1decc670e3e12fb
 		for(int i=0;i<list.size();i++) {
 			total+=list.get(i).num*list.get(i).importPrice;
 		}
 		return total;
+<<<<<<< HEAD
+	}
+	
+=======
 		
 	}
 	/**
 	 * 
 	 * @return list里所有商品的数量之和
 	 */
+>>>>>>> 758a1bb7af40ebea6c5ffce6b1decc670e3e12fb
 	public int getNum() {
 		int num=0;
 		for(int i=0;i<list.size();i++) {
