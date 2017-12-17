@@ -41,6 +41,8 @@ private Label shouldpay;
 private Label shouldget;
 @FXML
 private Label quota;
+@FXML
+private Label operator;
 
 int style=0;//style=1  ÐÞ¸Ä/0 ÐÂÔö
 

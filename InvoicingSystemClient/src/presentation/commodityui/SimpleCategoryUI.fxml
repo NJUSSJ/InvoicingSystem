@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="250.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141">
+<AnchorPane prefHeight="250.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.commodityui.SimpleCategoryController">
    <children>
       <Label layoutX="14.0" layoutY="14.0" text="商品分类新增/修改">
          <font>
@@ -21,7 +20,7 @@
             <Font size="13.0" />
          </font>
       </Label>
-      <Label layoutX="118.0" layoutY="83.0" text="xxx">
+      <Label fx:id="id" layoutX="118.0" layoutY="83.0" text="xxx">
          <font>
             <Font size="13.0" />
          </font>
@@ -31,23 +30,23 @@
             <Font size="13.0" />
          </font>
       </Label>
-      <TextField layoutX="114.0" layoutY="123.0" />
+      <TextField fx:id="name" layoutX="114.0" layoutY="123.0" />
       <Label layoutX="37.0" layoutY="169.0" text="父节点：">
          <font>
             <Font size="13.0" />
          </font>
       </Label>
-      <Label layoutX="120.0" layoutY="169.0" text="xxx">
+      <Label fx:id="parentid" layoutX="120.0" layoutY="169.0" text="xxx">
          <font>
             <Font size="13.0" />
          </font>
       </Label>
-      <Button layoutX="245.0" layoutY="208.0" mnemonicParsing="false" text="取    消">
+      <Button fx:id="reutrnB" layoutX="245.0" layoutY="208.0" mnemonicParsing="false" onAction="#cancel" text="取    消">
          <font>
             <Font size="13.0" />
          </font>
       </Button>
-      <Button layoutX="317.0" layoutY="208.0" mnemonicParsing="false" text="确    认">
+      <Button fx:id="rightB" layoutX="317.0" layoutY="208.0" mnemonicParsing="false" onAction="#setCategory" text="确    认">
          <font>
             <Font size="13.0" />
          </font>

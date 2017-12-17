@@ -30,7 +30,7 @@ public class MemberViewController implements Initializable {
 	private Label id;
 	
 	@FXML
-	private Label logout;
+	private Button logout;
 	
 	@FXML
 	private TextField search;
