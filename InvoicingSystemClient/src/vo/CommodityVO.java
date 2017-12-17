@@ -12,9 +12,10 @@ public class CommodityVO {
 	 double lateImportPrice;
 	 double lateSalePrice;
 	 long parentid;
+	 int limit;
 	 	
 	public CommodityVO(String name,long id,String model, int stockNum, double importPrice, double salePrice,
-			double lateImportPrice, double lateSalePrice,long parentid) {
+			double lateImportPrice, double lateSalePrice,long parentid,int limit) {
 		// TODO Auto-generated constructor stub
 		this.name=name;
 		this.id=id;
@@ -25,10 +26,11 @@ public class CommodityVO {
 		this.lateImportPrice=lateImportPrice;
 		this.lateSalePrice=lateSalePrice;
 		this.parentid=parentid;
+		this.limit=limit;
 	}
 	public CommodityPO toCommodityPO(){
-		return new CommodityPO(name,id,model,stockNum,importPrice,
-				salePrice,lateImportPrice,lateSalePrice,parentid);
+		return new CommodityPO(name,id,model,stockNum,importPrice,salePrice,lateImportPrice,
+				lateSalePrice,parentid,limit);
 	}
 	
 	public String getName() {
@@ -58,6 +60,9 @@ public class CommodityVO {
 	public long getParent(){
 		return parentid;
 	}
+	public int getLimit(){
+		return limit;
+	}
 	public void setName(String name){
 		this.name=name;
 	}
@@ -81,5 +86,8 @@ public class CommodityVO {
 	}
 	public void setParentID(long parentid){
 		this.parentid=parentid;
+	}
+	public void setLimit(int limit){
+		this.limit=limit;
 	}
 }

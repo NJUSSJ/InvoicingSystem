@@ -36,6 +36,10 @@ public class OperateCourseTable{
 	LossBillController lossBL=new LossBillController();
 	OverBillController overBL=new OverBillController();
 	GiftBillController giftBL=new GiftBillController();
+	/**
+	 * 只按照时间区间查找，生成经营历程表
+	 * 
+	 */
 	public OperateCourseTableVO findByInterval(Date begin, Date end) {
 		ArrayList<SaleBillVO> saleBills=saleBL.findSaleBillsByInterval(begin, end);
 		ArrayList<SaleReturnBillVO> saleReturnBills=saleReturnBL.findSaleReturnBillsByInterval(begin, end);
@@ -50,7 +54,12 @@ public class OperateCourseTable{
 		return new OperateCourseTableVO(saleBills,saleReturnBills,importBills,importReturnBills,
 				payBills,receiveBills,cashBills,lossBills,overBills,giftBills);
 	}
-
+	/**
+	 * 按照筛选条件，在时间区间内生成经营历程表
+	 * @param type 单据类型
+	 * @param memberName 客户名称
+	 * @param userName 业务员名称
+	 */
 	public OperateCourseTableVO findByField(Date begin, Date end,String type, String memberName,String userName) {
 		OperateCourseTableVO result=null;
 		if(type==null){
@@ -64,7 +73,7 @@ public class OperateCourseTable{
 					begin, end, memberName, userName);
 			ArrayList<PayBillVO> payBills=payBL.findPayBillsByField(
 					begin, end, memberName, userName);
-			ArrayList<ReceiveBillVO> receiveBills=receiveBL.findReceiveBillSByField(
+			ArrayList<ReceiveBillVO> receiveBills=receiveBL.findReceiveBillsByField(
 					begin, end, memberName, userName);
 			ArrayList<CashBillVO> cashBills=cashBL.findCashBillsByField(begin, end, userName);
 			ArrayList<LossBillVO> lossBills=lossBL.findLossBillsByField(begin, end, userName);
@@ -96,6 +105,22 @@ public class OperateCourseTable{
 			result=new OperateCourseTableVO();
 			ArrayList<ReceiveBillVO> receiveBills=receiveBL.findReceiveBillsByField(begin, end,memberName, userName);
 			result.setReceiveBillList(receiveBills);
+		}else if(type.equals("Cash")){
+			result=new OperateCourseTableVO();
+			ArrayList<CashBillVO> cashBills=cashBL.findCashBillsByField(begin, end,userName);
+			result.setCashBillList(cashBills);
+		}else if(type.equals("Loss")){
+			result=new OperateCourseTableVO();
+			ArrayList<LossBillVO> lossBills=lossBL.findLossBillsByField(begin, end, userName);
+			result.setLossBillList(lossBills);
+		}else if(type.equals("Over")){
+			result=new OperateCourseTableVO();
+			ArrayList<OverBillVO> overBills=overBL.findOverBillsByField(begin, end,userName);
+			result.setOverBillList(overBills);
+		}else if(type.equals("Gift")){
+			result=new OperateCourseTableVO();
+			ArrayList<GiftBillVO> giftBills=giftBL.findGiftBillsByField(begin, end,memberName, userName);
+			result.setGiftBillList(giftBills);
 		}
 		return result;
 	}
