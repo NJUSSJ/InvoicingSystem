@@ -10,14 +10,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.memberui.MemberViewController">
    <children>
-      <Label layoutX="814.0" layoutY="11.0" text="ID:XXX">
+      <Label fx:id="id" layoutX="814.0" layoutY="11.0" text="ID:XXX">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="881.0" layoutY="10.0" text="|| 登录">
+      <Label layoutX="881.0" layoutY="10.0" text="|| 登出">
          <font>
             <Font size="14.0" />
          </font>
@@ -32,47 +32,47 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="581.0" prefWidth="1250.0">
                <children>
-                  <TableView layoutY="1.0" prefHeight="581.0" prefWidth="1250.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="memberTable" layoutY="1.0" prefHeight="581.0" prefWidth="1250.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <columns>
-                        <TableColumn prefWidth="100.0" text="编号" />
-                        <TableColumn prefWidth="69.59998321533203" text="分类" />
-                        <TableColumn prefWidth="53.5999755859375" text="级别" />
-                        <TableColumn prefWidth="76.800048828125" text="姓名" />
-                        <TableColumn prefWidth="108.800048828125" text="电话" />
-                        <TableColumn prefWidth="280.0" text="地址" />
-                        <TableColumn prefWidth="74.39996337890625" text="邮编" />
-                        <TableColumn prefWidth="180.0" text="电子邮箱" />
-                        <TableColumn prefWidth="75.0" text="应收额度" />
-                        <TableColumn prefWidth="75.0" text="应收" />
-                        <TableColumn prefWidth="75.0" text="应付" />
-                        <TableColumn prefWidth="75.0" text="默认业务员" />
+                        <TableColumn fx:id="idColoumn" prefWidth="100.0" text="编号" />
+                        <TableColumn fx:id="categoryColoumn" prefWidth="69.59998321533203" text="分类" />
+                        <TableColumn fx:id="rankColoumn" prefWidth="53.5999755859375" text="级别" />
+                        <TableColumn fx:id="nameColoumn" prefWidth="76.800048828125" text="姓名" />
+                        <TableColumn fx:id="telephoneColoumn" prefWidth="108.800048828125" text="电话" />
+                        <TableColumn fx:id="addressColoumn" prefWidth="280.0" text="地址" />
+                        <TableColumn fx:id="postcodeColoumn" prefWidth="74.39996337890625" text="邮编" />
+                        <TableColumn fx:id="emailColoumn" prefWidth="180.0" text="电子邮箱" />
+                        <TableColumn fx:id="quotaColoumn" prefWidth="75.0" text="应收额度" />
+                        <TableColumn fx:id="shouldgetColoumn" prefWidth="75.0" text="应收" />
+                        <TableColumn fx:id="shouldpayColoumn" prefWidth="75.0" text="应付" />
+                        <TableColumn fx:id="operatorColoumn" prefWidth="75.0" text="默认业务员" />
                      </columns>
                   </TableView>
                </children>
             </AnchorPane>
          </content>
       </ScrollPane>
-      <Button layoutX="896.0" layoutY="169.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="90.0" text="新  增">
+      <Button fx:id="addB" layoutX="896.0" layoutY="169.0" mnemonicParsing="false" onAction="#add" prefHeight="31.0" prefWidth="90.0" text="新  增">
          <font>
             <Font size="13.0" />
          </font>
       </Button>
-      <Button layoutX="896.0" layoutY="213.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="90.0" text="删  除">
+      <Button fx:id="deleteB" layoutX="896.0" layoutY="213.0" mnemonicParsing="false" onAction="#delete" prefHeight="31.0" prefWidth="90.0" text="删  除">
          <font>
             <Font size="13.0" />
          </font>
       </Button>
-      <Button layoutX="896.0" layoutY="256.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="90.0" text="修 改">
+      <Button fx:id="updateB" layoutX="896.0" layoutY="256.0" mnemonicParsing="false" onAction="#updata" prefHeight="31.0" prefWidth="90.0" text="修 改">
          <font>
             <Font size="13.0" />
          </font>
       </Button>
-      <Button layoutX="896.0" layoutY="300.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="90.0" text="返 回">
+      <Button fx:id="returnB" layoutX="896.0" layoutY="300.0" mnemonicParsing="false" onAction="#showSaleMainUI" prefHeight="31.0" prefWidth="90.0" text="返 回">
          <font>
             <Font size="13.0" />
          </font>
       </Button>
-      <Button layoutX="317.0" layoutY="152.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="63.0" text="确 认">
+      <Button fx:id="rightB" layoutX="317.0" layoutY="152.0" mnemonicParsing="false" onAction="#search" prefHeight="19.0" prefWidth="63.0" text="确 认">
          <font>
             <Font size="13.0" />
          </font>
@@ -82,6 +82,8 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="61.0" layoutY="154.0" prefHeight="23.0" prefWidth="210.0" />
+      <TextField fx:id="search" layoutX="61.0" layoutY="154.0" prefHeight="23.0" prefWidth="210.0" />
+      <Button fx:id="logout" layoutX="875.0" layoutY="14.0" mnemonicParsing="false" onAction="#logout" opacity="0.0" prefHeight="31.0" prefWidth="63.0" text="Button" />
+      <Separator layoutX="898.0" layoutY="144.0" orientation="VERTICAL" prefHeight="458.0" prefWidth="1.0" AnchorPane.rightAnchor="120.0" />
    </children>
 </AnchorPane>

@@ -31,7 +31,7 @@ public class CommodityViewController implements Initializable{
 	private Label id;
 	
 	@FXML
-	private Label logout;
+	private Button logout;
 	@FXML
 	private Button returnB;
 	

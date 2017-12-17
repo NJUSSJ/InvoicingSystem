@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.commodityui.CommodityViewController">
    <children>
-      <Label layoutX="814.0" layoutY="11.0" text="ID:XXX">
+      <Label fx:id="id" layoutX="814.0" layoutY="11.0" text="ID:XXX">
          <font>
             <Font size="14.0" />
          </font>
@@ -34,39 +34,42 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="460.0" prefWidth="797.0">
                <children>
-                  <TableView layoutY="6.0" prefHeight="460.0" prefWidth="797.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="commodityTable" layoutY="20.0" prefHeight="460.0" prefWidth="797.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <columns>
-                        <TableColumn prefWidth="100.0" text="编号" />
-                        <TableColumn prefWidth="100.0" text="名称" />
-                        <TableColumn prefWidth="90.0" text="型号" />
-                        <TableColumn prefWidth="90.0" text="库存数量" />
-                        <TableColumn prefWidth="90.0" text="进价" />
-                        <TableColumn prefWidth="90.0" text="零售价" />
-                        <TableColumn prefWidth="90.0" text="最近进价" />
-                        <TableColumn prefWidth="90.0" text="最近零售价" />
+                        <TableColumn fx:id="idColoumn" prefWidth="100.0" text="编号" />
+                        <TableColumn fx:id="nameColoumn" prefWidth="100.0" text="名称" />
+                        <TableColumn fx:id="modelColoumn" prefWidth="90.0" text="型号" />
+                        <TableColumn fx:id="stockNumColoumn" prefWidth="90.0" text="库存数量" />
+                        <TableColumn fx:id="importPriceColoumn" prefWidth="90.0" text="进价" />
+                        <TableColumn fx:id="salePriceColoumn" prefWidth="90.0" text="零售价" />
+                        <TableColumn fx:id="lateImportPriceColoumn" prefWidth="90.0" text="最近进价" />
+                        <TableColumn fx:id="lateSalePriceColoumn" prefWidth="90.0" text="最近零售价" />
                      </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
                   </TableView>
                </children>
             </AnchorPane>
          </content>
       </ScrollPane>
       <Separator layoutX="750.0" layoutY="147.0" orientation="VERTICAL" prefHeight="454.0" prefWidth="5.0" />
-      <Button layoutX="773.0" layoutY="169.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="161.0" text="新 增 商 品">
+      <Button fx:id="addB" layoutX="773.0" layoutY="169.0" mnemonicParsing="false" onAction="#add" prefHeight="31.0" prefWidth="161.0" text="新 增 商 品">
          <font>
             <Font size="13.0" />
          </font>
       </Button>
-      <Button layoutX="773.0" layoutY="213.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="161.0" text="删 除 商 品">
+      <Button fx:id="deleteB" layoutX="773.0" layoutY="213.0" mnemonicParsing="false" onAction="#delete" prefHeight="31.0" prefWidth="161.0" text="删 除 商 品">
          <font>
             <Font size="13.0" />
          </font>
       </Button>
-      <Button layoutX="773.0" layoutY="256.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="161.0" text="修 改 商 品">
+      <Button fx:id="updateB" layoutX="773.0" layoutY="256.0" mnemonicParsing="false" onAction="#update" prefHeight="31.0" prefWidth="161.0" text="修 改 商 品">
          <font>
             <Font size="13.0" />
          </font>
       </Button>
-      <Button layoutX="773.0" layoutY="300.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="161.0" text="返    回">
+      <Button fx:id="returnB" layoutX="773.0" layoutY="300.0" mnemonicParsing="false" onAction="#showFiance" prefHeight="31.0" prefWidth="161.0" text="返    回">
          <font>
             <Font size="13.0" />
          </font>
@@ -81,7 +84,8 @@
             <Font size="13.0" />
          </font>
       </Label>
-      <TextField layoutX="113.0" layoutY="151.0" prefHeight="23.0" prefWidth="203.0" />
-      <Button layoutX="667.0" layoutY="151.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="72.0" text="确    认" />
+      <TextField fx:id="search" layoutX="113.0" layoutY="151.0" prefHeight="23.0" prefWidth="203.0" />
+      <Button fx:id="rightB" layoutX="667.0" layoutY="151.0" mnemonicParsing="false" onAction="#search" prefHeight="23.0" prefWidth="72.0" text="确    认" />
+      <Button fx:id="logout" layoutX="874.0" layoutY="8.0" mnemonicParsing="false" onAction="#logout" opacity="0.0" text="Button" />
    </children>
 </AnchorPane>

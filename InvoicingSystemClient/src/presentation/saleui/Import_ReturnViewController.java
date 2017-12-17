@@ -36,7 +36,9 @@ public class Import_ReturnViewController implements Initializable {
 	private Label id;
 	
 	@FXML
-	private Label logout;
+	private Button logout;
+	@FXML
+	private Button search;
 	
 	@FXML
 	private Label billid;
@@ -150,7 +152,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	   		commodityTable.getItems().remove(selectedIndex);
 	           comlist.deleteCommodity(item);
 	           commodityData.remove(selectedIndex);
-	           altogether.setText(""+comlist.getTotalImport());
+	           altogether.setText(""+comlist.getImportTotal());
 	   	    } else {
 	   	        // Nothing selected.
 	   	        Alert alert = new Alert(AlertType.WARNING);
@@ -184,12 +186,11 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	@FXML
 	public void confirm(){
 		itemdata=new CommodityItemData(0,a,Integer.parseInt(num.getText()),Double.parseDouble(lastprice.getText()),notea.getText());
-	    item=new CommodityLineItem(a,Integer.parseInt(num.getText()));
-	    item.setImportPrice(Double.parseDouble(lastprice.getText()));
+	    item=new CommodityLineItem(Integer.parseInt(num.getText()),a.getID(),a.getSalePrice(),Double.parseDouble(lastprice.getText()));
 	    comlist.addCommodity(item);
 		commodityData.add(itemdata);
 	    commodityTable.setItems(commodityData);
-	    altogether.setText(""+comlist.getTotalImport());
+	    altogether.setText(""+comlist.getImportTotal());
 	}
 	@FXML
 	public void logout(){
@@ -203,7 +204,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	@FXML
 	public void setBill(){
 		memberl=mbs.findMemberByName(member.getText());
-		ImportReturnBillVO importReturnBill=new ImportReturnBillVO(billid.getText(),MainApp.getID(),memberl.getID(),comlist,comlist.getTotalSale(),0,time,note.getText());
+		ImportReturnBillVO importReturnBill=new ImportReturnBillVO(billid.getText(),MainApp.getID(),memberl.getID(),comlist,comlist.getImportTotal(),0,time,note.getText());
 		 String isSubmit="fail Submit";
 		 if(irbbs.submitImportReturnBill(importReturnBill)){
 			 times++;
