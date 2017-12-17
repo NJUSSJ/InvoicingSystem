@@ -56,7 +56,7 @@ public class ReceiveBillController implements ReceiveBillBLService{
 	}
 
 	@Override
-	public ArrayList<ReceiveBillVO> findReceiveBillSByField(Date begin, Date end, String memberName, String userName) {
+	public ArrayList<ReceiveBillVO> findReceiveBillsByField(Date begin, Date end, String memberName, String userName) {
 		// TODO 自动生成的方法存根
 		return null;
 	}

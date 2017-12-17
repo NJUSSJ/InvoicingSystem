@@ -12,7 +12,7 @@ public class SaleDetailsTable{
 	 * 只跟根据时间段查找销售记录
 	 */
 	public SaleDetailsTableVO findByDate(Date begin, Date end) {
-		ArrayList<SaleBillVO> result=new SaleBillController().findSaleBillByInterval(begin, end);
+		ArrayList<SaleBillVO> result=new SaleBillController().findSaleBillsByInterval(begin, end);
 		return new SaleDetailsTableVO(result);
 	}
 	/**根据时间段和关键字查找销售记录
@@ -21,9 +21,9 @@ public class SaleDetailsTable{
 	 * @param operatorName 操作员名，可为null
 	 */
 	public SaleDetailsTableVO findByField(Date begin, Date end,String commodityName,
-			String userName,String operatorName) {
-		//ArrayList<SaleBillVO> bills=new SaleBillController().
-		return null;
+			String memberName,String userName) {
+		ArrayList<SaleBillVO> bills=new SaleBillController().findSaleBillsByField(begin, end, commodityName, memberName, userName);
+		return new SaleDetailsTableVO(bills);
 	}
 	/**
 	 * 将销售明细表根据指定的路径导出为excel表

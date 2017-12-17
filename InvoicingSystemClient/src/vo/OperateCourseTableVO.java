@@ -34,34 +34,66 @@ public class OperateCourseTableVO {
 		this.overBillList=overBillList;
 		this.giftBillList=giftBillList;
 	}
+	public OperateCourseTableVO(){
+	}
 	public ArrayList<SaleBillVO> getSaleBillList(){
 		return saleBillList;
+	}
+	public void setSaleBillList(ArrayList<SaleBillVO> list){
+		saleBillList=list;
 	}
 	public ArrayList<SaleReturnBillVO> getSaleReturnBillList(){
 		return saleReturnBillList;
 	}
+	public void setSaleReturnBillList(ArrayList<SaleReturnBillVO> list){
+		saleReturnBillList=list;
+	}
 	public ArrayList<ImportBillVO> getImportBillList(){
 		return importBillList;
+	}
+	public void setImportBillList(ArrayList<ImportBillVO> list){
+		importBillList=list;
 	}
 	public ArrayList<ImportReturnBillVO> getImportReturnBillList(){
 		return importReturnBillList;
 	}
+	public void setImportReturnBillList(ArrayList<ImportReturnBillVO> list){
+		importReturnBillList=list;
+	}
 	public ArrayList<PayBillVO> getPayBillList(){
 		return payBillList;
+	}
+	public void setPayBillList(ArrayList<PayBillVO> list){
+		payBillList=list;
 	}
 	public ArrayList<ReceiveBillVO> getReceiveBillList(){
 		return receiveBillList;
 	}
+	public void setReceiveBillList(ArrayList<ReceiveBillVO> list){
+		receiveBillList=list;
+	}
 	public ArrayList<CashBillVO> getCashBillList(){
 		return cashBillList;
+	}
+	public void setCashBillList(ArrayList<CashBillVO> list){
+		cashBillList=list;
 	}
 	public ArrayList<LossBillVO> getLossBillList(){
 		return lossBillList;
 	}
+	public void setLossBillList(ArrayList<LossBillVO> list){
+		lossBillList=list;
+	}
 	public ArrayList<OverBillVO> getOverBillList(){
 		return overBillList;
 	}
+	public void setOverBillList(ArrayList<OverBillVO> list){
+		overBillList=list;
+	}
 	public ArrayList<GiftBillVO> getGiftBillList(){
 		return giftBillList;
+	}
+	public void setGiftBillList(ArrayList<GiftBillVO> list){
+		giftBillList=list;
 	}
 }
