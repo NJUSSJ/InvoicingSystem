@@ -4,8 +4,10 @@ import java.rmi.RemoteException;
 import java.sql.Date;
 import java.util.ArrayList;
 
+import po.CashBillPO;
 import po.LossBillPO;
 import rmi.RemoteHelper;
+import vo.CashBillVO;
 import vo.ImportBillVO;
 import vo.LossBillVO;
 
@@ -87,5 +89,29 @@ public class LossBill{
 		}
 		return bills;
 	}
-	
+	public ArrayList<LossBillVO> findLossBillsByField(Date begin,Date end,String userName){
+		ArrayList<LossBillVO> result=new ArrayList<LossBillVO>();
+		try {
+			ArrayList<LossBillPO> bills=RemoteHelper.getInstance().getLossBillDataService().findLossBillbyField(userName);
+			for(LossBillPO po:bills){
+				result.add(toLossBillVO(po));
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	public ArrayList<LossBillVO> findLossBillsByState(int state){
+		ArrayList<LossBillVO> result=new ArrayList<LossBillVO>();
+		ArrayList<LossBillPO> bills;
+		try {
+			bills = RemoteHelper.getInstance().getLossBillDataService().findLossBillbyState(state);
+			for(LossBillPO po:bills){
+				result.add(toLossBillVO(po));
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 }

@@ -15,7 +15,6 @@ public class Commodity{
 		try {
 			return RemoteHelper.getInstance().getCommodityDataService().insert(commodityVO.toCommodityPO());
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return false;
@@ -25,7 +24,6 @@ public class Commodity{
 		try {
 			return RemoteHelper.getInstance().getCommodityDataService().delete(commodityVO.toCommodityPO());
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return false;
@@ -35,7 +33,6 @@ public class Commodity{
 		try {
 			return RemoteHelper.getInstance().getCommodityDataService().update(commodityVO.toCommodityPO());
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return false;
@@ -44,7 +41,6 @@ public class Commodity{
 		try {
 			return toCommodityVO(RemoteHelper.getInstance().getCommodityDataService().findCommoditybyName(name));
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return null;
@@ -54,7 +50,6 @@ public class Commodity{
 		try {
 			return toCommodityVO(RemoteHelper.getInstance().getCommodityDataService().findCommoditybyID(id));
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return null;
@@ -68,7 +63,6 @@ public class Commodity{
 				temp.add(toCommodityVO(commodity.get(i)));
 			}
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		
@@ -76,7 +70,7 @@ public class Commodity{
 	}
 	public CommodityVO toCommodityVO(CommodityPO commodityPO){
 		return new CommodityVO(commodityPO.getName(),commodityPO.getID(),commodityPO.getModel(),
-				commodityPO.getStockNum(),commodityPO.getImportPrice(),commodityPO.getSalePrice(),
-				commodityPO.getLateImportPrice(),commodityPO.getLateSalePrice(),commodityPO.getParentID());
+		commodityPO.getStockNum(),commodityPO.getImportPrice(),commodityPO.getSalePrice(),
+		commodityPO.getLateImportPrice(),commodityPO.getLateSalePrice(),commodityPO.getParentID(),commodityPO.getLimit());
 	}
 }

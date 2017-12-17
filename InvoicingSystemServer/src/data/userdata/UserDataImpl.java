@@ -82,8 +82,8 @@ public class UserDataImpl implements UserDataService {
 	@Override
 	public boolean insert(UserPO po) throws RemoteException {
 		
-		String sql="INSERT INTO users(id,username,password,rank) VALUES("+po.getID()
-		+",'"+po.getUserName()+"','"+po.getPassword()+"','"+po.getPassword()+"',"+po.getRank()+")";
+		String sql="INSERT INTO users(id,username,password,rank) VALUES ('"+po.getID()
+		+"','"+po.getUserName()+"','"+po.getPassword()+"',"+po.getRank()+")";
 		try {
 			if(DataFactory.statement.execute(sql)){
 				return true;
@@ -142,6 +142,39 @@ public class UserDataImpl implements UserDataService {
 				String password=result.getString("password");
 				
 				UserPO tmpUserPO=new UserPO(tmpid, password, rank, username);
+				results.add(tmpUserPO);
+				
+			}
+			
+			return results;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return  null;
+		
+	}
+	/*
+	 * (non-Javadoc)模糊查询
+	 * @see dataservice.userdataservice.UserDataService#findUserbyField(java.lang.String)
+	 */
+	@Override
+	public ArrayList<UserPO> findUserbyField(String field) throws RemoteException {
+		String sql="SELECT * FROM users where name like '%"+field+"%";
+		ArrayList<UserPO> results=new ArrayList<>();
+		//执行数据库sql语句
+		try {
+			ResultSet result=DataFactory.statement.executeQuery(sql);
+			
+			//展开结果数据
+			while(result.next()) {
+				long tmpid=result.getLong("id");
+				String username=result.getString("username");
+				int rank=result.getInt("rank");
+				String password=result.getString("password");
+				
+				UserPO tmpUserPO=new UserPO(tmpid, password, rank, username);
 				
 				results.add(tmpUserPO);
 			}
@@ -152,7 +185,6 @@ public class UserDataImpl implements UserDataService {
 		}
 		
 		return  null;
-		
 	}
 
 	

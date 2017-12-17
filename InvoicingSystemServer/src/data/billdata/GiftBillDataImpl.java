@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import data.datafactory.DataFactory;
+import data.memberdata.MemberDataImpl;
+import data.userdata.UserDataImpl;
 import dataservice.billdataservice.GiftBillDataService;
 import po.GiftBillPO;
 
@@ -186,6 +188,38 @@ public class GiftBillDataImpl implements GiftBillDataService {
 		}
 		
 		return null;
+	}
+
+	@Override
+	public ArrayList<GiftBillPO> findGiftBillsByField(String user, String member) throws RemoteException{
+		long userid=new UserDataImpl().findUserbyName(user).getID();
+		long memberid=new MemberDataImpl().findMemberbyName(member).getID();
+		
+		String sql="select * from giftbills where userid='"+userid+"' and memberid="+memberid+"'";
+		
+		ArrayList<GiftBillPO> results=new ArrayList<>();
+		
+		try {
+			ResultSet result=DataFactory.statement.executeQuery(sql);
+			
+			while(result.next()) {
+				long id=result.getLong("id");
+				Date time=result.getDate("time");
+				String giftlist=result.getString("giftlist");
+				int state=result.getInt("state");
+				GiftBillPO tmpPO=new GiftBillPO(id, userid, memberid, giftlist, time, state);
+				if(state==1)
+				results.add(tmpPO);
+			}
+			
+			return results;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+		
+		
 	}
 
 	

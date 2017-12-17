@@ -132,7 +132,27 @@ public class AccountDataImpl implements AccountDataService {
 
 	@Override
 	public ArrayList<AccountPO> findAcountbyField(String field) throws RemoteException {
-		// TODO Auto-generated method stub
+		String sql="SELECT id, bank, deposit FROM accounts where bank='%"+field+"%'";
+		ArrayList<AccountPO> results=new ArrayList<>();
+		//执行数据库sql语句
+		try {
+			ResultSet result=DataFactory.statement.executeQuery(sql);
+			
+			//展开结果数据
+			while(result.next()) {
+				long tmpid=result.getLong("id");
+				String bank=result.getString("bank");
+				double deposit=result.getDouble("deposit");
+				
+				AccountPO tmpAccount=new AccountPO(tmpid, deposit, bank);
+				results.add(tmpAccount);
+				
+				
+			}return results;
+		} catch (SQLException e) {
+		
+			e.printStackTrace();
+		}
 		return null;
 	}
 

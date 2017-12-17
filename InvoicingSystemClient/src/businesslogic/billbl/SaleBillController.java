@@ -36,7 +36,7 @@ public class SaleBillController implements SaleBillBLService{
 
 	@Override
 	public ArrayList<SaleBillVO> findSaleBillByTime(Date time) {
-		return saleBillImpl.findSaleBillByTime(time);
+		return saleBillImpl.findSaleBillsByTime(time);
 	}
 
 	@Override
@@ -55,9 +55,19 @@ public class SaleBillController implements SaleBillBLService{
 	}
 
 	@Override
-	public ArrayList<SaleBillVO> findSaleBillByInterval(Date begin, Date end) {
-		// TODO 自动生成的方法存根
-		return saleBillImpl.findByInterval(begin, end);
+	public ArrayList<SaleBillVO> findSaleBillsByInterval(Date begin, Date end) {
+		return saleBillImpl.findSaleBillsByInterval(begin, end);
+	}
+
+	@Override
+	public ArrayList<SaleBillVO> findSaleBillsByState(int state) {
+		return saleBillImpl.findSaleBillsByState(state);
+	}
+
+	@Override
+	public ArrayList<SaleBillVO> findSaleBillsByField(Date begin, Date end, String commodityName, String memberName,
+			String userName) {
+		return saleBillImpl.findSaleBillsByField(begin, end, commodityName, memberName, userName);
 	}
 	
 	

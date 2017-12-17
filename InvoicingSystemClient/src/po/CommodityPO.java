@@ -17,10 +17,10 @@ public class CommodityPO implements Serializable {
 	double lateImportPrice;
 	double lateSalePrice;
 	long parentid;
+	int limit;
 	 	
 	public CommodityPO(String name,long id,String model, int stockNum, double importPrice, double salePrice,
-				double lateImportPrice, double lateSalePrice,long parentid) {
-			// TODO Auto-generated constructor stub
+				double lateImportPrice, double lateSalePrice,long parentid,int limit) {
 			this.name=name;
 			this.id=id;
 			this.model=model;
@@ -30,6 +30,7 @@ public class CommodityPO implements Serializable {
 			this.lateImportPrice=lateImportPrice;
 			this.lateSalePrice=lateSalePrice;
 			this.parentid=parentid;
+			this.limit=limit;
 		}
 	
 	public String getName() {
@@ -58,6 +59,9 @@ public class CommodityPO implements Serializable {
 	}
 	public long getParentID(){
 		return parentid;
+	}
+	public int getLimit(){
+		return limit;
 	}
 }
 

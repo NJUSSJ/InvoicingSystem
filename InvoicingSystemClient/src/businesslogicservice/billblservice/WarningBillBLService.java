@@ -14,4 +14,5 @@ public interface WarningBillBLService {
 	public WarningBillVO findWarningBillByID(long id);
 	public ArrayList<WarningBillVO> findWarningBillByTime(Date time);
 	public ArrayList<WarningBillVO> findWarningBills();
+	public ArrayList<WarningBillVO> findWarningBillsByState(int state);
 }

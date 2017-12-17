@@ -48,5 +48,15 @@ public class LossBillController implements LossBillBLService{
 	public ArrayList<LossBillVO> findLossBillsByInterval(Date begin, Date end) {
 		return lossBillImpl.findLossBillsByInterval(begin, end);
 	}
+
+	@Override
+	public ArrayList<LossBillVO> findLossBillsByField(Date begin, Date end, String userName) {
+		return lossBillImpl.findLossBillsByField(begin, end, userName);
+	}
+
+	@Override
+	public ArrayList<LossBillVO> findLossBillsByState(int state) {
+		return lossBillImpl.findLossBillsByState(state);
+	}
 	
 }

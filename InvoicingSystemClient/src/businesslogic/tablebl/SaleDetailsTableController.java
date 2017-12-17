@@ -15,7 +15,8 @@ public class SaleDetailsTableController implements SaleDetailsTableBLService{
 	}
 
 	@Override
-	public SaleDetailsTableVO findByField(Date begin, Date end, String field, String type) {
+	public SaleDetailsTableVO findByField(Date begin, Date end, String commodityName, String memberName,
+			String operatorName) {
 		// TODO 自动生成的方法存根
 		return null;
 	}
@@ -25,6 +26,7 @@ public class SaleDetailsTableController implements SaleDetailsTableBLService{
 		// TODO 自动生成的方法存根
 		return false;
 	}
+
 
 	
 }

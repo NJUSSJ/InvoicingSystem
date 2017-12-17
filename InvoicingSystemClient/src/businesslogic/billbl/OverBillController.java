@@ -49,4 +49,14 @@ public class OverBillController implements OverBillBLService{
 		return overBillImpl.findOverBillsByInterval(begin, end);
 	}
 
+	@Override
+	public ArrayList<OverBillVO> findOverBillsByField(Date begin, Date end, String userName) {
+		return overBillImpl.findOverBillsByField(begin, end, userName);
+	}
+
+	@Override
+	public ArrayList<OverBillVO> findOverBillsByState(int state) {
+		return overBillImpl.findOverBillsByState(state);
+	}
+
 }

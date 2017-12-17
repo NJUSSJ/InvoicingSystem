@@ -48,5 +48,16 @@ public class SaleReturnBillController implements SaleReturnBillBLService{
 	public ArrayList<SaleReturnBillVO> findSaleReturnBillsByInterval(Date begin, Date end) {
 		return saleReturnBillImpl.findSaleReturnBillsByInterval(begin, end);
 	}
+
+	@Override
+	public ArrayList<SaleReturnBillVO> findSaleReturnBillsByState(int state) {
+		return null;
+	}
+
+	@Override
+	public ArrayList<SaleReturnBillVO> findSaleReturnBillsByField(Date begin, Date end, String memberName,
+			String userName) {
+		return null;
+	}
 	
 }

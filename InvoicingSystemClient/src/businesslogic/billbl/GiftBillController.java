@@ -44,4 +44,14 @@ public class GiftBillController implements GiftBillBLService{
 		return giftBillImpl.findGiftBillByInterval(begin, end);
 	}
 
+	@Override
+	public ArrayList<GiftBillVO> findGiftBillsByField(Date begin, Date end, String memberName, String userName) {
+		return giftBillImpl.findGiftBillsByField(begin, end, memberName, userName);
+	}
+
+	@Override
+	public ArrayList<GiftBillVO> findGiftBillsByState(int state) {
+		return giftBillImpl.findGiftBillsByState(state);
+	}
+
 }

@@ -155,7 +155,31 @@ public class CommodityDataImpl implements CommodityDataService{
 
 	@Override
 	public ArrayList<CommodityPO> findCommoditiesbyField(String field) throws RemoteException {
-		// TODO Auto-generated method stub
+		String sql="select * from commodities where name='%"+field+"%'";
+		
+		ArrayList<CommodityPO> results=new ArrayList<>();
+		
+		try {
+			ResultSet result=DataFactory.statement.executeQuery(sql);
+			while(result.next()) {
+				String name=result.getString("name");
+				String model=result.getString("model");
+				int stocknum=result.getInt("stocknum");
+				double importprice=result.getDouble("importprice");
+				double saleprice=result.getDouble("saleprice");
+				double lateimportprice=result.getDouble("lateimportprice");
+				double latesaleprice=result.getDouble("latesaleprice");
+				long parentid=result.getLong("parentid");
+				long id=result.getLong("id");
+				
+				CommodityPO tmpPO=new CommodityPO(name, id, model, stocknum, importprice, saleprice, lateimportprice, latesaleprice, parentid);
+				results.add(tmpPO);
+			}
+			
+			return results;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 

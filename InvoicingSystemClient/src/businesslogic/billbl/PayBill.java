@@ -5,8 +5,10 @@ import java.sql.Date;
 import java.util.ArrayList;
 
 import businesslogic.memberbl.MemberController;
+import po.CashBillPO;
 import po.PayBillPO;
 import rmi.RemoteHelper;
+import vo.CashBillVO;
 import vo.ImportBillVO;
 import vo.MemberVO;
 import vo.PayBillVO;
@@ -103,5 +105,32 @@ public class PayBill {
 			}
 		}
 		return bills;
+	}
+	public ArrayList<PayBillVO> findPayBillsByField(Date begin,Date end,String memberName,String userName){
+		ArrayList<PayBillVO> result=new ArrayList<PayBillVO>();
+		try {
+			ArrayList<PayBillPO> bills=RemoteHelper.getInstance().getPayBillDataService().findPayBillbyField(userName, memberName);
+			for(PayBillPO po:bills){
+				result.add(toPayBillVO(po));
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return result;	
+	}
+	public ArrayList<PayBillVO> findPayBillsByState(int state){
+		ArrayList<PayBillVO> result=new ArrayList<PayBillVO>();
+		ArrayList<PayBillPO> bills;
+		try {
+			bills = RemoteHelper.getInstance().getPayBillDataService().findPayBillbyState(state);
+			for(PayBillPO po:bills){
+				result.add(toPayBillVO(po));
+			}
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 }

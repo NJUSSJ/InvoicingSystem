@@ -49,4 +49,14 @@ public class ImportBillController implements ImportBillBLService{
 		return importBillImpl.findImportBillsByInterval(begin, end);
 	}
 
+	@Override
+	public ArrayList<ImportBillVO> findImportBillsByField(Date begin, Date end, String memberName, String userName) {
+		return importBillImpl.findImportBillsByField(begin, end, memberName, userName);
+	}
+
+	@Override
+	public ArrayList<ImportBillVO> findImportBillsByState(int state) {
+		return importBillImpl.findImportBillsByState(state);
+	}
+
 }
