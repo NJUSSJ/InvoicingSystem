@@ -34,11 +34,11 @@ public class RemoteHelper {
 			
 			
 		}catch (MalformedURLException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}catch (AlreadyBoundException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}catch (RemoteException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 			System.out.println("Registration Failed-->"+"Port in use");
 		}
 		

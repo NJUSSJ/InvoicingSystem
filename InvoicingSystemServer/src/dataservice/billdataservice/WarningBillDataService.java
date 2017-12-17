@@ -15,4 +15,5 @@ public interface WarningBillDataService extends Remote{
 	public ArrayList<WarningBillPO> findWarningBills() throws RemoteException;
 	public ArrayList<WarningBillPO> findWarningBillbyTime(Date time) throws RemoteException;
 	public ArrayList<WarningBillPO> findWarningBillbyState(int state) throws RemoteException;
+	public ArrayList<WarningBillPO> findWarningBillbyField(String user) throws RemoteException;
 }

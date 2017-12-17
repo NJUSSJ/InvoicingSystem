@@ -15,4 +15,6 @@ public interface GiftBillDataService extends Remote{
 	public ArrayList<GiftBillPO> findGiftBillbyState(int state) throws RemoteException;
 	public ArrayList<GiftBillPO> findGiftBills() throws RemoteException;
 	public ArrayList<GiftBillPO> findGiftBillsbyTime(Date time) throws RemoteException;
+	public ArrayList<GiftBillPO> findGiftBillsByField(String user,String member) throws RemoteException;
+
 }

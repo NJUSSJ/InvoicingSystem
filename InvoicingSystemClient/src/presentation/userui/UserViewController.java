@@ -132,12 +132,17 @@ private ObservableList<UserData> userData =FXCollections.observableArrayList();
 			e.printStackTrace();
 		}
 	}
+	
 	@FXML
 	public void deleteUser(){
     	int selectedIndex = userTable.getSelectionModel().getSelectedIndex();
+    	UserData tmpUser=userTable.getSelectionModel().getSelectedItem();
+    	long id=Long.parseLong(tmpUser.getIDProperty().get());
+    	int rank=Integer.parseInt(tmpUser.getRankProperty().get());
+    	UserVO tmpUserVO=new UserVO(id, tmpUser.getPasswordProperty().get(), rank, tmpUser.getNameProperty().get()); 
     	 if (selectedIndex >= 0) {
     	        userTable.getItems().remove(selectedIndex);
-    			abs.deleteUser(a);
+    			abs.deleteUser(tmpUserVO);
     	    } else {
     	        // Nothing selected.
     	        Alert alert = new Alert(AlertType.WARNING);

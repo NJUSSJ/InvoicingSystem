@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import data.datafactory.DataFactory;
+import data.memberdata.MemberDataImpl;
+import data.userdata.UserDataImpl;
 import dataservice.billdataservice.ReceiveBillDataService;
 import po.ReceiveBillPO;
 
@@ -194,6 +196,38 @@ public class ReceiveBillDataImpl implements ReceiveBillDataService{
 			e.printStackTrace();
 		}
 		
+		return null;
+	}
+
+	@Override
+	public ArrayList<ReceiveBillPO> findReceiveBillbyField(String user,String member) throws RemoteException {
+		long userid=new UserDataImpl().findUserbyName(user).getID();
+		long memberid=new MemberDataImpl().findMemberbyName(member).getID();
+		String sql="select * from receivebills where userid='"+userid+"' and memberid='"+memberid+"'";
+		ArrayList<ReceiveBillPO> results=new ArrayList<>();
+		try {
+			ResultSet result=DataFactory.statement.executeQuery(sql);
+			
+			while(result.next()) {
+				String id=result.getString("id");
+				
+				
+				String accountlist=result.getString("commoditylist");
+				double sum=result.getDouble("sum");
+				Date time=result.getDate("time");
+				int state=result.getInt("state");
+				
+				ReceiveBillPO tmpPO=new ReceiveBillPO(id, userid, memberid, accountlist, sum, time, state);
+				
+				if(state==1)
+				results.add(tmpPO);
+				
+				
+			}
+			return results;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 

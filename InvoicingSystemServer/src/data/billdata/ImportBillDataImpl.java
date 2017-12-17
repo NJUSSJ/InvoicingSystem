@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import data.datafactory.DataFactory;
+import data.memberdata.MemberDataImpl;
+import data.userdata.UserDataImpl;
 import dataservice.billdataservice.ImportBillDataService;
 import po.ImportBillPO;
 
@@ -208,6 +210,41 @@ public class ImportBillDataImpl implements ImportBillDataService {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return null;
+	}
+
+	@Override
+	public ArrayList<ImportBillPO> findImportBillsByField(String user, String member) throws RemoteException {
+		long userid=new UserDataImpl().findUserbyName(user).getID();
+		long memberid=new MemberDataImpl().findMemberbyName(member).getID();
+
+		String sql="select * from importbills where userid='"+userid+"' and memberid='"+memberid;
+		
+		ArrayList<ImportBillPO> results=new ArrayList<>();
+		
+		try {
+			ResultSet result=DataFactory.statement.executeQuery(sql);
+			
+			while(result.next()) {
+				String id=result.getString("id");
+				double sum=result.getDouble("sum");
+				Date time=result.getDate("time");
+				String commoditylist=result.getString("commoditylist");
+				int num=result.getInt("num");
+				String remark=result.getString("remark");
+				int state=result.getInt("state");
+				ImportBillPO tmpPO=new ImportBillPO(id, userid, memberid, commoditylist, sum, time, state, num, remark);
+				
+				if(state==1)
+				results.add(tmpPO);
+				
+			}
+			
+			return results;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return null;
 	}
 

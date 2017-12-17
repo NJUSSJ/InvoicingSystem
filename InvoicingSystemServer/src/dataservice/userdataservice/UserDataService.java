@@ -13,5 +13,6 @@ public interface UserDataService extends Remote {
 	public boolean delete(UserPO po) throws RemoteException;
 	public boolean update(UserPO po) throws RemoteException;
 	public ArrayList<UserPO> findUsers() throws RemoteException;
+	public ArrayList<UserPO> findUserbyField(String field) throws RemoteException;
 
 }
