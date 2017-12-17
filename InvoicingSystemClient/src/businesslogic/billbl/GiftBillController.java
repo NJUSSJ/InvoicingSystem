@@ -51,8 +51,7 @@ public class GiftBillController implements GiftBillBLService{
 
 	@Override
 	public ArrayList<GiftBillVO> findGiftBillsByState(int state) {
-		// TODO 自动生成的方法存根
-		return null;
+		return giftBillImpl.findGiftBillsByState(state);
 	}
 
 }

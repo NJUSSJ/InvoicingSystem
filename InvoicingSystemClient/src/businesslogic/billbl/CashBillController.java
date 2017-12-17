@@ -51,8 +51,7 @@ public class CashBillController implements CashBillBLService{
 
 	@Override
 	public ArrayList<CashBillVO> findCashBillsByState(int state) {
-		// TODO 自动生成的方法存根
-		return null;
+		return cashBillImpl.findCashBillsByState(state);
 	}
 	
 

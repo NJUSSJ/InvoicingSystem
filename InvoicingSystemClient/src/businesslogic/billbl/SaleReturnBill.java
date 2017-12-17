@@ -115,4 +115,17 @@ public class SaleReturnBill{
 		}
 		return result;
 	}
+	public ArrayList<SaleReturnBillVO> findSaleReturnBillsByField(Date begin, Date end, String memberName,
+			String userName) {
+		ArrayList<SaleReturnBillVO> result=new ArrayList<SaleReturnBillVO>();
+		try {
+			ArrayList<SaleReturnBillPO> bills=RemoteHelper.getInstance().getSaleReturnBillDataService().findSaleReturnBillbyField(userName, memberName);
+			for(SaleReturnBillPO po:bills){
+				result.add(toSaleReturnBillVO(po));
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 }

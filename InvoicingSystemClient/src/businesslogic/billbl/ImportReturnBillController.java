@@ -57,8 +57,7 @@ public class ImportReturnBillController implements ImportReturnBillBLService{
 
 	@Override
 	public ArrayList<ImportReturnBillVO> findImportReturnBillsByState(int state) {
-		// TODO 自动生成的方法存根
-		return null;
+		return importReturnBillImpl.findImportReturnBillsByState(state);
 	}
 
 }

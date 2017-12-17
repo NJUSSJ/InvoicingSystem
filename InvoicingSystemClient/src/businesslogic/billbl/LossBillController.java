@@ -51,14 +51,12 @@ public class LossBillController implements LossBillBLService{
 
 	@Override
 	public ArrayList<LossBillVO> findLossBillsByField(Date begin, Date end, String userName) {
-		// TODO 自动生成的方法存根
 		return lossBillImpl.findLossBillsByField(begin, end, userName);
 	}
 
 	@Override
 	public ArrayList<LossBillVO> findLossBillsByState(int state) {
-		// TODO 自动生成的方法存根
-		return null;
+		return lossBillImpl.findLossBillsByState(state);
 	}
 	
 }

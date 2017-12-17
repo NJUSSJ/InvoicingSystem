@@ -107,7 +107,16 @@ public class PayBill {
 		return bills;
 	}
 	public ArrayList<PayBillVO> findPayBillsByField(Date begin,Date end,String memberName,String userName){
-		return null;	
+		ArrayList<PayBillVO> result=new ArrayList<PayBillVO>();
+		try {
+			ArrayList<PayBillPO> bills=RemoteHelper.getInstance().getPayBillDataService().findPayBillbyField(userName, memberName);
+			for(PayBillPO po:bills){
+				result.add(toPayBillVO(po));
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return result;	
 	}
 	public ArrayList<PayBillVO> findPayBillsByState(int state){
 		ArrayList<PayBillVO> result=new ArrayList<PayBillVO>();

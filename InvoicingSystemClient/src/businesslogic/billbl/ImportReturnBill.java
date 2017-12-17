@@ -108,7 +108,17 @@ public class ImportReturnBill {
 		return bills;
 	}
 	public ArrayList<ImportReturnBillVO> findImportReturnBillsByField(Date begin,Date end,String memberName,String userName){
-		return null;	
+		ArrayList<ImportReturnBillVO> result=new ArrayList<ImportReturnBillVO>();
+		try {
+			ArrayList<ImportReturnBillPO> bills=RemoteHelper.getInstance().getImportReturnBillDataService().
+					findImportReturnBillbyField(userName, memberName);
+			for(ImportReturnBillPO po:bills){
+				result.add(toImportReturnBillVO(po));
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return result;	
 	}
 	public ArrayList<ImportReturnBillVO> findImportReturnBillsByState(int state){
 		ArrayList<ImportReturnBillVO> result=new ArrayList<ImportReturnBillVO>();

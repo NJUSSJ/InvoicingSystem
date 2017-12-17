@@ -90,7 +90,16 @@ public class LossBill{
 		return bills;
 	}
 	public ArrayList<LossBillVO> findLossBillsByField(Date begin,Date end,String userName){
-		return null;
+		ArrayList<LossBillVO> result=new ArrayList<LossBillVO>();
+		try {
+			ArrayList<LossBillPO> bills=RemoteHelper.getInstance().getLossBillDataService().findLossBillbyField(userName);
+			for(LossBillPO po:bills){
+				result.add(toLossBillVO(po));
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 	public ArrayList<LossBillVO> findLossBillsByState(int state){
 		ArrayList<LossBillVO> result=new ArrayList<LossBillVO>();

@@ -56,8 +56,7 @@ public class PayBillController implements PayBillBLService{
 
 	@Override
 	public ArrayList<PayBillVO> findPayBillsByState(int state) {
-		// TODO 自动生成的方法存根
-		return null;
+		return payBillImpl.findPayBillsByState(state);
 	}
 
 }
