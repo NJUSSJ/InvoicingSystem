@@ -62,13 +62,13 @@ public class ImportViewController implements Initializable {
 	private TextField lastprice;
 	
 	@FXML
-	private TextField notea;
+	private TextField note;
 	
 	@FXML
 	private TextField num;
 	
 	@FXML
-	private TextArea note;
+	private TextArea notea;
 	
 	@FXML
 	private Button rightB;
