@@ -4,6 +4,8 @@ import java.rmi.RemoteException;
 import java.sql.Date;
 import java.util.ArrayList;
 
+import businesslogic.billbl.CommodityLineItem;
+import businesslogic.billbl.CommodityList;
 import businesslogic.billbl.ImportBillController;
 import businesslogic.billbl.ImportReturnBillController;
 import businesslogic.billbl.SaleBillController;
@@ -79,6 +81,9 @@ public class Commodity{
 		return temp;
 	}
 	public CommodityVO toCommodityVO(CommodityPO commodityPO){
+		if(commodityPO==null){
+			return null;
+		}
 		return new CommodityVO(commodityPO.getName(),commodityPO.getID(),commodityPO.getModel(),
 		commodityPO.getStockNum(),commodityPO.getImportPrice(),commodityPO.getSalePrice(),
 		commodityPO.getLateImportPrice(),commodityPO.getLateSalePrice(),commodityPO.getParentID(),commodityPO.getLimit());
@@ -91,20 +96,65 @@ public class Commodity{
 		ArrayList<ImportBillVO> importBills=new ImportBillController().findImportBillsByInterval(start, end);
 		ArrayList<SaleReturnBillVO> saleReturnBills=new SaleReturnBillController().findSaleReturnBillsByInterval(start, end);
 		ArrayList<ImportReturnBillVO> importReturnBills=new ImportReturnBillController().findImportReturnBillsByInterval(start, end);
-		
-		return null;
+		ArrayList<StockCheckInfoVO> result=new ArrayList<StockCheckInfoVO>();
+		CommodityController ccon=new CommodityController();
+		CommodityList list;
+		for(SaleBillVO bill:saleBills){
+			list=bill.getList();
+			for(int i=0;i<list.getListSize();i++){
+				CommodityLineItem item=list.get(i);
+				CommodityVO cvo=ccon.findCommodityByID(item.getCommodityID());
+				StockCheckInfoVO vo=new StockCheckInfoVO(item.getCommodityID(),cvo.getName(),cvo.getModel(),
+			item.getNum(),0,item.getNum()*item.getSalePrice(),0,item.getNum(),0,item.getNum()*item.getSalePrice(),0); 
+				result.add(vo);
+			}
+		}
+		for(ImportBillVO bill:importBills){
+			list=bill.getCommodityList();
+			for(int i=0;i<list.getListSize();i++){
+				CommodityLineItem item=list.get(i);
+				CommodityVO cvo=ccon.findCommodityByID(item.getCommodityID());
+				StockCheckInfoVO vo=new StockCheckInfoVO(item.getCommodityID(),cvo.getName(),cvo.getModel(),
+			0,list.getNum(),0,item.getNum()*item.getImportPrice(),0,list.getNum(),0,item.getNum()*item.getImportPrice());
+				result.add(vo);
+			}
+		}
+		for(ImportReturnBillVO bill:importReturnBills){
+			list=bill.getList();
+			for(int i=0;i<list.getListSize();i++){
+				CommodityLineItem item=list.get(i);
+				CommodityVO cvo=ccon.findCommodityByID(item.getCommodityID());
+				StockCheckInfoVO vo=new StockCheckInfoVO(item.getCommodityID(),cvo.getName(),cvo.getModel(),
+			item.getNum(),0,item.getNum()*item.getSalePrice(),0,0,0,0,0); 
+				result.add(vo);
+			}
+		}
+		for(SaleReturnBillVO bill:saleReturnBills){
+			list=bill.getList();
+			for(int i=0;i<list.getListSize();i++){
+				CommodityLineItem item=list.get(i);
+				CommodityVO cvo=ccon.findCommodityByID(item.getCommodityID());
+				StockCheckInfoVO vo=new StockCheckInfoVO(item.getCommodityID(),cvo.getName(),cvo.getModel(),
+			0,list.getNum(),0,item.getNum()*item.getImportPrice(),0,0,0,0);
+				result.add(vo);
+			}
+		}
+		return result;
 	}
 	/**
 	 * 库存盘点
 	 */
 	public ArrayList<StockInventoryInfoVO> getInventoryInfo() {
 		ArrayList<StockInventoryInfoVO> result=new ArrayList<StockInventoryInfoVO>();
-		ArrayList<CommodityVO> vos=findCommodities();
-		for(CommodityVO vo:vos){
-			//StockInventoryInfoVO temp=new StockInvetoryInfo();
+		ArrayList<CommodityVO> comVOs=findCommodities();
+		int line=0;
+		for(CommodityVO com:comVOs){
+			line++;
+			StockInventoryInfoVO vo=new StockInventoryInfoVO(line,com.getName(),com.getModel(),
+					com.getStockNum(),com.getSalePrice());
+			result.add(vo);
  		}
-		
-		return null;
+		return result;
 	}
 	/**
 	 * 返回所有商品

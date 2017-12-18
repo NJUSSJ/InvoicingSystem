@@ -16,6 +16,9 @@ import vo.PayBillVO;
 public class PayBill {
 
 	public PayBillVO toPayBillVO(PayBillPO po) {
+		if(po==null){
+			return null;
+		}
 		AccountList list=new AccountList(po.getAccountList());
 		return new PayBillVO(po.getID(),po.getUserID(),po.getMemberID(),list,po.getSum(),po.getTime(),po.getState());
 	}

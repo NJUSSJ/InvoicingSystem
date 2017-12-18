@@ -14,6 +14,9 @@ import vo.OverBillVO;
 public class OverBill{
 
 	public OverBillVO toOverBillVO(OverBillPO overBillPO) {
+		if(overBillPO==null){
+			return null;
+		}
 		return new OverBillVO(overBillPO.getID(),overBillPO.getUserID(),overBillPO.getCommodityName(),overBillPO.getTime(),
 				overBillPO.getState(),overBillPO.getNum(),overBillPO.getSum());
 	}

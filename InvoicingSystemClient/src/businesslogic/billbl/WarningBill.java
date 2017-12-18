@@ -13,6 +13,9 @@ import vo.WarningBillVO;
 
 public class WarningBill{
 	public WarningBillVO toWarningBillVO(WarningBillPO po) {
+		if(po==null){
+			return null;
+		}
 		return new WarningBillVO(po.getID(),po.getUserID(),new CommodityList(po.getCommodityList()),
 				po.getTime(),po.getState());
 	}

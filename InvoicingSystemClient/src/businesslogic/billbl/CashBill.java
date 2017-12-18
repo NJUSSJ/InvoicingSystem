@@ -10,6 +10,9 @@ import vo.CashBillVO;
 
 public class CashBill{
 	public CashBillVO toCashBillVO(CashBillPO po) {
+		if(po==null){
+			return null;
+		}
 		String[] items=po.getItems().split(" ");
 		ArrayList<String> temp=new ArrayList<String>();
 		for(int i=0;i<items.length;i++){

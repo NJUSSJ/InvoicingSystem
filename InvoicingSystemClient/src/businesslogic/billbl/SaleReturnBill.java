@@ -17,6 +17,9 @@ import vo.SaleReturnBillVO;
 
 public class SaleReturnBill{
 	public SaleReturnBillVO toSaleReturnBillVO(SaleReturnBillPO po) {
+		if(po==null){
+			return null;
+		}
 		CommodityList list=new CommodityList(po.getCommodityList());
 		return new SaleReturnBillVO(po.getID(),po.getUserID(),po.getMemberID(),list,po.getSum(),po.getState(),
 				po.getTime(),po.getRemark());

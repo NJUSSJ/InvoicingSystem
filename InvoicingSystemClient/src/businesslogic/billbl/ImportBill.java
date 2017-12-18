@@ -17,6 +17,9 @@ import vo.MemberVO;
 public class ImportBill{
 
 	public ImportBillVO toImportBillVO(ImportBillPO po) {
+		if(po==null){
+			return null;
+		}
 		CommodityList list=new CommodityList(po.getCommodityList());
 		return new ImportBillVO(po.getID(),po.getUserID(),po.getMemberID(),list,po.getSum(),po.getState(),
 				po.getTime(),po.getRemark());
@@ -46,8 +49,9 @@ public class ImportBill{
 				memberCon.updateMember(member);
 				//修改库存数量，最近进价
 				CommodityController ccon=new CommodityController();
-				for(int i=0;i<vo.getCommodityList().getListSize();i++){
-					CommodityLineItem item=vo.getCommodityList().get(i);
+				CommodityList list=vo.getCommodityList();
+				for(int i=0;i<list.getListSize();i++){
+					CommodityLineItem item=list.get(i);
 					CommodityVO commodityVO=ccon.findCommodityByID(item.getCommodityID());
 					commodityVO.setLateImportPrice(item.getImportPrice());
 					commodityVO.setStockNum(commodityVO.getStockNum()+item.getNum());

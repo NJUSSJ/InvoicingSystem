@@ -5,21 +5,21 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+<AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.promotionui.SimpleMemberPromotionController">
   <!-- TODO Add Nodes -->
   <children>
-    <TextField layoutX="100.0" layoutY="88.0" prefWidth="200.0" />
-    <TextField layoutX="100.0" layoutY="123.0" prefWidth="200.0" />
-    <TextField layoutX="100.0" layoutY="190.0" prefWidth="98.0" />
-    <TextField layoutX="233.0" layoutY="190.0" prefHeight="20.0" prefWidth="67.00009999999747" />
+    <TextField fx:id="rank" layoutX="100.0" layoutY="88.0" prefWidth="200.0" />
+    <TextField fx:id="coupon" layoutX="100.0" layoutY="123.0" prefWidth="200.0" />
+    <TextField id="number" fx:id="gift" layoutX="100.0" layoutY="190.0" prefWidth="98.0" />
+    <TextField fx:id="number" layoutX="233.0" layoutY="190.0" prefHeight="20.0" prefWidth="67.00009999999747" />
     <Label layoutX="41.0" layoutY="91.0" text="客户等级" />
     <Label layoutX="35.0" layoutY="126.0" text="代金券金额" />
     <Label layoutX="53.0" layoutY="193.0" text="赠品" />
     <Label layoutX="202.0" layoutY="193.0" text="数量" />
-    <TextField layoutX="100.0" layoutY="157.0" prefWidth="200.0" />
+    <TextField fx:id="discount" layoutX="100.0" layoutY="157.0" prefWidth="200.0" />
     <Label layoutX="53.0" layoutY="160.0" text="折扣" />
-    <Button layoutX="78.0" layoutY="248.0" mnemonicParsing="false" text="增加" />
-    <Button layoutX="256.0" layoutY="248.0" mnemonicParsing="false" text="返回" />
-    <Button layoutX="309.0" layoutY="190.0" mnemonicParsing="false" text="添加赠品" />
+    <Button id="back" fx:id="add" layoutX="77.0" layoutY="248.0" mnemonicParsing="false" onAction="#add" text="增加" />
+    <Button fx:id="back" layoutX="256.0" layoutY="248.0" mnemonicParsing="false" onAction="#back" text="返回" />
+    <Button fx:id="addGift" layoutX="309.0" layoutY="190.0" mnemonicParsing="false" onAction="#addGift" text="添加赠品" />
   </children>
 </AnchorPane>

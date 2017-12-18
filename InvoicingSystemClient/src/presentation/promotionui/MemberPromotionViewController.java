@@ -1,5 +1,6 @@
 package presentation.promotionui;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -9,13 +10,18 @@ import businesslogic.promotionbl.PromotionController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import vo.MemberPromotionVO;
 import vo.PricePromotionVO;
 
@@ -86,11 +92,26 @@ public class MemberPromotionViewController implements Initializable{
 	}
 	@FXML
 	public void add(){
-		
+		try {
+			FXMLLoader loader=new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/presentation/promotionui/SimpleMemberPromotion.fxml"));
+			AnchorPane promotionUI=loader.load();
+			Scene scene=new Scene(promotionUI);
+			Stage promotionStage=new Stage();
+			promotionStage.setTitle("Create MemberPromotion");
+			promotionStage.initModality(Modality.WINDOW_MODAL);
+			promotionStage.initOwner(MainApp.getPrimaryStage());
+			promotionStage.setScene(scene);
+            SimpleMemberPromotionController controller=loader.getController();
+            controller.setStage(promotionStage);
+            promotionStage.showAndWait();
+            
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	private void getInf(MemberPromotionData newValue) {
-		// TODO 自动生成的方法存根
 		promotionVO=newValue.getVO();
 	}
 }

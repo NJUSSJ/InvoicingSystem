@@ -14,7 +14,6 @@ public class PackagePromotion {
 			return RemoteHelper.getInstance().getPackagePromotionDataService().
 					insert(packagePromotionVO.toPackagePromotionPO());
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return false;
@@ -24,7 +23,6 @@ public class PackagePromotion {
 		try {
 			return RemoteHelper.getInstance().getPackagePromotionDataService().delete(packagePromotionVO.toPackagePromotionPO());
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return false;
@@ -40,13 +38,15 @@ public class PackagePromotion {
 				temp.add(toPackagePromotionVO(pp.get(i)));
 			}
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return temp;
 		
 	}
 	public PackagePromotionVO toPackagePromotionVO(PackagePromotionPO packagePromotionPO){
+		if(packagePromotionPO==null){
+			return null;
+		}
 		return new PackagePromotionVO(packagePromotionPO.getID(),
 		new CommodityList(packagePromotionPO.getCommodityID()),packagePromotionPO.getDiscount());	
 	}

@@ -14,7 +14,6 @@ public class Category {
 		try {
 			return RemoteHelper.getInstance().getCategoryDataService().insert(categoryVO.toCategoryPO());
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return false;
@@ -23,7 +22,6 @@ public class Category {
 		try {
 			return RemoteHelper.getInstance().getCategoryDataService().delete(categoryVO.toCategoryPO());
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return false;
@@ -32,18 +30,25 @@ public class Category {
 		try {
 			return RemoteHelper.getInstance().getCategoryDataService().update(categoryVO.toCategoryPO());
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return false;
 	}
 	public CategoryVO findCategoryByID(long id){
-		return null;//toCategoryVO(RemoteHelper.getInstance().getCategoryDataService().find);
+		try {
+			return toCategoryVO(RemoteHelper.getInstance().getCategoryDataService().findCategorybyID(id));
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	public CategoryVO findCategoryByName(String name){
 		return null;
 	}
 	public CategoryVO toCategoryVO(CategoryPO categoryPO){
+		if(categoryPO==null){
+			return null;
+		}
 		return new CategoryVO(categoryPO.getID(),categoryPO.getName(),categoryPO.getParentID());
 	}
 	/**
@@ -52,7 +57,6 @@ public class Category {
 	 * @return 商品分类的上一级
 	 */
 	public ArrayList<CategoryVO> findUpCategory(CategoryVO vo) {
-		// TODO 自动生成的方法存根
 		ArrayList<CategoryVO> temp=null;
 		try {
 			temp=new ArrayList<CategoryVO>();
@@ -63,13 +67,11 @@ public class Category {
 				temp.add(toCategoryVO(upCategory.get(i)));
 			}
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return temp;
 	}
 	public ArrayList<CategoryVO> findDownCategory(CategoryVO vo) {
-		// TODO 自动生成的方法存根
 		ArrayList<CategoryVO> temp = null;
 		try {
 			temp=new ArrayList<CategoryVO>();
@@ -78,13 +80,11 @@ public class Category {
 				temp.add(toCategoryVO(category.get(i)));
 			}
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return temp;
 	}
 	public ArrayList<CommodityVO> findDownCommodity(CategoryVO vo) {
-		// TODO 自动生成的方法存根
 		ArrayList<CommodityVO> temp=null;
 		
 		try {
@@ -95,7 +95,6 @@ public class Category {
 				temp.add(controller.toCommodityVO(commodity.get(i)));
 			}
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		
