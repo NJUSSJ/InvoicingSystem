@@ -77,8 +77,7 @@ public class UserViewController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 		id.setText("ID:"+MainApp.getID());
-		userTable.getSelectionModel().selectedItemProperty().addListener(
-	            (observable, oldValue, newValue) -> getInf(newValue));
+		
 		//nameColoumn.setCellValueFactory(cellData ->cellData.getValue().getNameProperty());
 		nameColoumn.setCellValueFactory(cellData ->cellData.getValue().getNameProperty());
 		rankColoumn.setCellValueFactory(cellData ->cellData.getValue().getRankProperty());
@@ -112,10 +111,7 @@ public class UserViewController implements Initializable {
 		});
 	}
 
-	private void getInf(UserData newValue) {
-		// TODO Auto-generated method stub
-		a=newValue.getVO();
-	}
+	
 	@FXML
 	public void louout(){
 		MainApp.cancelUser();

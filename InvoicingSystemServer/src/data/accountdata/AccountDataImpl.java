@@ -71,7 +71,7 @@ public class AccountDataImpl implements AccountDataService {
 	@Override
 	public boolean delete(AccountPO po) throws RemoteException {
 		// TODO Auto-generated method stub
-		String sql="DELETE FROM users WHERE id="+po.getID();
+		String sql="DELETE FROM accounts WHERE id='"+po.getID()+"'";
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0){
 				return true;
