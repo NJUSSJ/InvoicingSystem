@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="308.0" prefWidth="321.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.commodityui.SimpleCommodityController">
+<AnchorPane prefHeight="350.0" prefWidth="321.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.commodityui.SimpleCommodityController">
    <children>
       <Label layoutX="14.0" layoutY="14.0" text="商品新增/编辑">
          <font>
@@ -20,12 +20,12 @@
       <Label layoutX="47.0" layoutY="149.0" text="库存数量：" />
       <Label layoutX="59.0" layoutY="192.0" text="进价：" />
       <Label layoutX="59.0" layoutY="234.0" text="售价：" />
-      <Button fx:id="returnB" layoutX="145.0" layoutY="271.0" mnemonicParsing="false" onAction="#cancel" prefHeight="23.0" prefWidth="69.0" text="取     消">
+      <Button fx:id="returnB" layoutX="145.0" layoutY="308.0" mnemonicParsing="false" onAction="#cancel" prefHeight="23.0" prefWidth="69.0" text="取     消">
          <font>
             <Font size="13.0" />
          </font>
       </Button>
-      <Button fx:id="rightB" layoutX="238.0" layoutY="271.0" mnemonicParsing="false" onAction="#setCommodity" prefHeight="23.0" prefWidth="69.0" text="确     认">
+      <Button fx:id="rightB" layoutX="238.0" layoutY="308.0" mnemonicParsing="false" onAction="#setCommodity" prefHeight="23.0" prefWidth="69.0" text="确     认">
          <font>
             <Font size="13.0" />
          </font>
@@ -35,5 +35,7 @@
       <TextField fx:id="num" layoutX="120.0" layoutY="145.0" />
       <TextField fx:id="importprice" layoutX="120.0" layoutY="188.0" />
       <TextField fx:id="saleprice" layoutX="120.0" layoutY="230.0" />
+      <Label layoutX="53.0" layoutY="274.0" text="警戒值：" />
+      <TextField fx:id="warning" layoutX="120.0" layoutY="270.0" />
    </children>
 </AnchorPane>
