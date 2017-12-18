@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import businesslogic.memberbl.MemberController;
 import businesslogic.promotionbl.PromotionController;
 import po.CashBillPO;
+import po.MemberPromotionPO;
 import po.SaleBillPO;
 import rmi.RemoteHelper;
 import vo.CashBillVO;
@@ -21,7 +22,7 @@ public class SaleBill{
 	public SaleBillVO toSaleBillVO(SaleBillPO po) {
 		CommodityList list=new CommodityList(po.getCommodityList());
 		return new SaleBillVO(po.getID(),po.getUserID(),po.getMemberID(),list,po.getSum(),po.getState(),
-				po.getTime(),po.getRemark(),po.getCoupon(),po.getDiscount(),po.getUltimate());
+	po.getTime(),po.getRemark(),po.getCoupon(),po.getDiscount(),po.getUltimate(),po.getMoney());
 	}
 	public boolean submitSaleBill(SaleBillVO saleBill) {
 		try {
@@ -44,6 +45,7 @@ public class SaleBill{
 				memberCon.updateMember(member);
 				//根据通过的销售单生成一份库存赠送单
 				PromotionController pcon=new PromotionController();
+				ArrayList<MemberPromotionVO> memberPro=pcon.findMemberPromotionByRank(member.getRank());
 				
 			}else{
 				vo.setState(2);
@@ -152,12 +154,10 @@ public class SaleBill{
 	public int handleCoupon(int rank,double sum){
 		int maxm=0,maxp=0;
 		PromotionController pcon=new PromotionController();
-		ArrayList<MemberPromotionVO> memberPromotions=pcon.findMemberPromotions();
-		for(MemberPromotionVO m:memberPromotions){
-			if(rank>=m.getRank()){
-				if(m.getCoupon()>maxm){
-					maxm=m.getCoupon();
-				}
+		ArrayList<MemberPromotionVO> memberPromotions=pcon.findMemberPromotionByRank(rank);
+		for(MemberPromotionVO vo:memberPromotions){
+			if(vo.getCoupon()>maxm){
+				maxm=vo.getCoupon();
 			}
 		}
 		ArrayList<PricePromotionVO> pricePromotions=pcon.findPricePromotions();

@@ -22,6 +22,6 @@ public interface PromotionBLService {
 	public MemberPromotionVO toMemberPromotion(MemberPromotionPO memberPromotionPO);
 	public PackagePromotionVO toPackagePromotion(PackagePromotionPO packagePromotionPO);
 	public PricePromotionVO toPricePromotion(PricePromotionPO pricePromotionPO);
-	public ArrayList<MemberPromotionVO> findMemberPromotionByRank();
+	public ArrayList<MemberPromotionVO> findMemberPromotionByRank(int rank);
 
 }

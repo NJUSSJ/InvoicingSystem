@@ -12,14 +12,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.commodityui.CategoryViewController">
    <children>
-      <Label layoutX="814.0" layoutY="11.0" text="ID:XXX">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label layoutX="881.0" layoutY="10.0" text="|| 登录">
+      <Label fx:id="id" layoutX="814.0" layoutY="11.0" text="ID:XXX">
          <font>
             <Font size="14.0" />
          </font>
@@ -34,10 +29,10 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="441.0" prefWidth="749.0">
                <children>
-                  <TableView layoutY="36.0" prefHeight="441.0" prefWidth="749.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="categoryTable" layoutY="36.0" prefHeight="441.0" prefWidth="749.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn prefWidth="151.1999785900116" text="编号" />
-                      <TableColumn prefWidth="584.8000030517578" text="名称" />
+                      <TableColumn fx:id="idColoumn" prefWidth="151.1999785900116" text="编号" />
+                      <TableColumn fx:id="nameColoumn" prefWidth="584.8000030517578" text="名称" />
                     </columns>
                   </TableView>
                </children>
@@ -45,22 +40,22 @@
         </content>
       </ScrollPane>
       <Separator layoutX="750.0" layoutY="147.0" orientation="VERTICAL" prefHeight="454.0" prefWidth="5.0" />
-      <Button layoutX="773.0" layoutY="169.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="161.0" text="新 增 分 类">
+      <Button fx:id="addB" layoutX="773.0" layoutY="169.0" mnemonicParsing="false" onAction="#addCategory" prefHeight="31.0" prefWidth="161.0" text="新 增 分 类">
          <font>
             <Font size="13.0" />
          </font>
       </Button>
-      <Button layoutX="773.0" layoutY="213.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="161.0" text="删 除 分 类">
+      <Button fx:id="deleteB" layoutX="773.0" layoutY="213.0" mnemonicParsing="false" onAction="#deleteCategory" prefHeight="31.0" prefWidth="161.0" text="删 除 分 类">
          <font>
             <Font size="13.0" />
          </font>
       </Button>
-      <Button layoutX="773.0" layoutY="256.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="161.0" text="修 改 分 类">
+      <Button fx:id="updateB" layoutX="773.0" layoutY="256.0" mnemonicParsing="false" onAction="#updateCategory" prefHeight="31.0" prefWidth="161.0" text="修 改 分 类">
          <font>
             <Font size="13.0" />
          </font>
       </Button>
-      <Button layoutX="773.0" layoutY="428.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="161.0" text="返     回">
+      <Button fx:id="returnB" layoutX="773.0" layoutY="428.0" mnemonicParsing="false" onAction="#showStockMainUI" prefHeight="31.0" prefWidth="161.0" text="返     回">
          <font>
             <Font size="13.0" />
          </font>
@@ -71,22 +66,32 @@
          </image>
       </ImageView>
       <Label layoutX="64.0" layoutY="155.0" text="查询：" />
-      <TextField layoutX="114.0" layoutY="151.0" />
-      <Button layoutX="653.0" layoutY="151.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="69.0" text="确   认" />
-      <Button layoutX="773.0" layoutY="343.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="161.0" text="进入子分类">
+      <TextField fx:id="search" layoutX="114.0" layoutY="151.0" />
+      <Button fx:id="rightB" layoutX="653.0" layoutY="151.0" mnemonicParsing="false" onAction="#search" prefHeight="23.0" prefWidth="69.0" text="确   认" />
+      <Button fx:id="enterSon" layoutX="773.0" layoutY="343.0" mnemonicParsing="false" onAction="#enterSon" prefHeight="31.0" prefWidth="161.0" text="进入子分类">
          <font>
             <Font size="13.0" />
          </font>
       </Button>
-      <Button layoutX="773.0" layoutY="300.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="161.0" text="返回父分类">
+      <Button fx:id="returnFather" layoutX="773.0" layoutY="300.0" mnemonicParsing="false" onAction="#returnFather" prefHeight="31.0" prefWidth="161.0" text="返回父分类">
          <font>
             <Font size="13.0" />
          </font>
       </Button>
-      <Button layoutX="773.0" layoutY="386.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="161.0" text="进入商品管理界面">
+      <Button fx:id="enterCommodity" layoutX="773.0" layoutY="386.0" mnemonicParsing="false" onAction="#showCommodity" prefHeight="31.0" prefWidth="161.0" text="进入商品管理界面">
          <font>
             <Font size="13.0" />
          </font>
       </Button>
+      <Button fx:id="logout" layoutX="871.0" layoutY="7.0" mnemonicParsing="false" onAction="#logout" opacity="0.0" text="||   登出">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Label layoutX="871.0" layoutY="10.0" text="||  登出">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

@@ -13,7 +13,7 @@ public class SaleDetailsTable{
 	 */
 	public SaleDetailsTableVO findByDate(Date begin, Date end) {
 		ArrayList<SaleBillVO> result=new SaleBillController().findSaleBillsByInterval(begin, end);
-		return new SaleDetailsTableVO(result);
+		return new SaleDetailsTableVO(begin,end,result);
 	}
 	/**根据时间段和关键字查找销售记录
 	 * @param commodityName 商品名，可为null
@@ -23,7 +23,7 @@ public class SaleDetailsTable{
 	public SaleDetailsTableVO findByField(Date begin, Date end,String commodityName,
 			String memberName,String userName) {
 		ArrayList<SaleBillVO> bills=new SaleBillController().findSaleBillsByField(begin, end, commodityName, memberName, userName);
-		return new SaleDetailsTableVO(bills);
+		return new SaleDetailsTableVO(begin,end,bills);
 	}
 	/**
 	 * 将销售明细表根据指定的路径导出为excel表

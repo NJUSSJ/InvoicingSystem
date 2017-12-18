@@ -9,10 +9,10 @@ import java.util.ResourceBundle;
 import MainApp.MainApp;
 import businesslogic.billbl.CommodityLineItem;
 import businesslogic.billbl.CommodityList;
-import businesslogic.billbl.ImportBillController;
+import businesslogic.billbl.SaleBillController;
 import businesslogic.commoditybl.CommodityController;
 import businesslogic.memberbl.MemberController;
-import businesslogicservice.billblservice.ImportBillBLService;
+import businesslogicservice.billblservice.SaleBillBLService;
 import businesslogicservice.commodityblservice.CommodityBLService;
 import businesslogicservice.memberblservice.MemberBLService;
 import javafx.collections.FXCollections;
@@ -21,7 +21,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -29,16 +28,17 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import vo.CommodityVO;
-import vo.ImportBillVO;
 import vo.MemberVO;
+import vo.SaleBillVO;
 
 public class SaleViewController implements Initializable  {
 	@FXML
 	private Label id;
 	
 	@FXML
-	private Label logout;
-	
+	private Button logout;
+	@FXML
+	private Button search;
 	@FXML
 	private Label discountbefore;
 	@FXML
@@ -46,7 +46,7 @@ public class SaleViewController implements Initializable  {
 	@FXML
 	private TextField coupon;
 	@FXML
-	private ChoiceBox<Double> discount;
+	private Label discount;
 	
 	@FXML
 	private Label billid;
@@ -112,13 +112,13 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	
 	Date time;
 	CommodityItemData itemdata;
-	CommodityLineItem item;
+	CommodityLineItem item=null;
 	CommodityList comlist;
 	CommodityVO a;
-	MemberVO memberl;
+	MemberVO memberl=null;
 	CommodityBLService cbs=new CommodityController();
 	MemberBLService mbs=new MemberController();
-	ImportBillBLService ibbs=new ImportBillController();
+	SaleBillBLService sbbs=new SaleBillController();
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -128,7 +128,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
 		String str=sdf.format(time);
 		DecimalFormat df=new DecimalFormat("#####");
-		billid.setText("JHD-"+str+"-"+df.format(times));
+		billid.setText("XSD-"+str+"-"+df.format(times));
 		id.setText("ID:"+MainApp.getID());
 		operator.setText(MainApp.getName());
 		commodityTable.getSelectionModel().selectedItemProperty().addListener(
@@ -156,8 +156,13 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	   		commodityTable.getItems().remove(selectedIndex);
 	           comlist.deleteCommodity(item);
 	           commodityData.remove(selectedIndex);
-	          discountbefore.setText(""+comlist.getTotalImport());
-	   	    } else {
+	          discountbefore.setText(""+comlist.getSaleTotal());
+	          double discountl=sbbs.handleSale(memberl.getRank(), comlist)/comlist.getSaleTotal();
+	           discount.setText(""+discountl);
+	           double finalsale=sbbs.handleSale(memberl.getRank(), comlist)-Double.parseDouble(coupon.getText());
+	          discountafter.setText(""+finalsale);
+	   	      
+	   	 } else {
 	   	        // Nothing selected.
 	   	        Alert alert = new Alert(AlertType.WARNING);
 	   	        alert.initOwner(MainApp.getPrimaryStage());
@@ -181,21 +186,24 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	   	        alert.setTitle("No Commodity");
 	   	        alert.setHeaderText("No Commodity find");
 	   	        alert.setContentText("Please comfirm your spelling ");
-
-	   	        alert.showAndWait();
+                alert.showAndWait();
 		}else{
 			lastprice.setText(""+a.getImportPrice());
 		}
 	}
 	@FXML
 	public void confirm(){
+		memberl=mbs.findMemberByName(member.getText());
 		itemdata=new CommodityItemData(0,a,Integer.parseInt(num.getText()),Double.parseDouble(lastprice.getText()),notea.getText());
-	    item=new CommodityLineItem(a,Integer.parseInt(num.getText()));
-	    item.setImportPrice(Double.parseDouble(lastprice.getText()));
+	    item=new CommodityLineItem(Integer.parseInt(num.getText()),a.getID(),Double.parseDouble(lastprice.getText()),a.getImportPrice());
 	    comlist.addCommodity(item);
 		commodityData.add(itemdata);
 	    commodityTable.setItems(commodityData);
-	    discountbefore.setText(""+comlist.getTotalImport());
+	    discountbefore.setText(""+comlist.getSaleTotal());
+	    double discountl=1.0-(sbbs.handleSale(memberl.getRank(), comlist)/comlist.getSaleTotal());
+        discount.setText(""+discountl);
+        double finalsale=sbbs.handleSale(memberl.getRank(), comlist)-Double.parseDouble(coupon.getText());
+       discountafter.setText(""+finalsale);
 	}
 	@FXML
 	public void logout(){
@@ -208,10 +216,10 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	}
 	@FXML
 	public void setBill(){
-		memberl=mbs.findMemberByName(member.getText());
-		ImportBillVO importbill=new ImportBillVO(billid.getText(),MainApp.getID(),memberl.getID(),comlist,comlist.getTotalSale(),0,time,note.getText());
-		 String isSubmit="fail Submit";
-		 if(ibbs.submitImportBill(importbill)){
+		SaleBillVO salebill=new SaleBillVO(billid.getText(),Long.parseLong(id.getText()),memberl.getID(),comlist,
+			comlist.getSaleTotal(),0,time,note.getText(),Integer.parseInt(coupon.getText()),Double.parseDouble(discount.getText()),Double.parseDouble(discountafter.getText()));
+		String isSubmit="fail Submit";
+		 if(sbbs.submitSaleBill(salebill)){
 			 times++;
 			 isSubmit="Succeed Submit";
 		 }
@@ -222,6 +230,9 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		        alert.setContentText(isSubmit);
 		        alert.showAndWait();
 	}
-}
+
 
 }
+
+
+

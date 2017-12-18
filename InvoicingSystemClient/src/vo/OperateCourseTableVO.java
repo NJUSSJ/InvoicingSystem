@@ -1,8 +1,11 @@
 package vo;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 public class OperateCourseTableVO {
+	Date begin;
+	Date end;
 	ArrayList<SaleBillVO> saleBillList;
 	ArrayList<SaleReturnBillVO> saleReturnBillList;
 	ArrayList<ImportBillVO> importBillList;
@@ -13,7 +16,7 @@ public class OperateCourseTableVO {
 	ArrayList<LossBillVO> lossBillList;
 	ArrayList<OverBillVO> overBillList;
 	ArrayList<GiftBillVO> giftBillList;
-	public OperateCourseTableVO(ArrayList<SaleBillVO> saleBillList,
+	public OperateCourseTableVO(Date begin,Date end,ArrayList<SaleBillVO> saleBillList,
 	ArrayList<SaleReturnBillVO> saleReturnBillList,
 	ArrayList<ImportBillVO> importBillList,
 	ArrayList<ImportReturnBillVO> importReturnBillList,
@@ -23,6 +26,7 @@ public class OperateCourseTableVO {
 	ArrayList<LossBillVO> lossBillList,
 	ArrayList<OverBillVO> overBillList,
 	ArrayList<GiftBillVO> giftBillList){
+		this.begin=begin;this.end=end;
 		this.saleBillList=saleBillList;
 		this.saleReturnBillList=saleReturnBillList;
 		this.importBillList=importBillList;
@@ -35,6 +39,12 @@ public class OperateCourseTableVO {
 		this.giftBillList=giftBillList;
 	}
 	public OperateCourseTableVO(){
+	}
+	public Date getBegin(){
+		return begin;
+	}
+	public Date getEnd(){
+		return end;
 	}
 	public ArrayList<SaleBillVO> getSaleBillList(){
 		return saleBillList;
