@@ -109,5 +109,10 @@ public class CommodityController implements CommodityBLService{
 		test.add(info);
 		return test;
 	}
+
+	@Override
+	public ArrayList<CommodityVO> findCommodities() {
+		return commodityImpl.findCommodities();
+	}
 	
 }

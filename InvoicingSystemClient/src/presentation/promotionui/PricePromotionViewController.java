@@ -41,7 +41,7 @@ public class PricePromotionViewController implements Initializable{
 	@FXML
 	private TableColumn<PricePromotionData,String> pricelineCol;
 	@FXML
-	private TableColumn<PricePromotionData,String> discountCol;
+	private TableColumn<PricePromotionData,String> giftCol;
 	@FXML
 	private TableColumn<PricePromotionData,String> couponCol;
 	
@@ -59,7 +59,7 @@ public class PricePromotionViewController implements Initializable{
 		promotionTable.getSelectionModel().selectedItemProperty().addListener(
 	            (observable, oldValue, newValue) -> getInf(newValue));
 		pricelineCol.setCellValueFactory(cellData ->cellData.getValue().getPricelineProperty());
-		discountCol.setCellValueFactory(cellData ->cellData.getValue().getDiscountProperty());
+		giftCol.setCellValueFactory(cellData ->cellData.getValue().getGiftProperty());
 		couponCol.setCellValueFactory(cellData ->cellData.getValue().getCouponProperty());
 		promotionTable.setItems(promotionData);
 	}

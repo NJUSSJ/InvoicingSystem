@@ -29,4 +29,5 @@ public interface CommodityBLService {
 	public ArrayList<CommodityVO> findDownCommodity(CategoryVO vo);
 	public ArrayList<StockCheckInfoVO> getStockInfo(Date start,Date end);
 	public ArrayList<StockInventoryInfoVO> getInventoryInfo();
+	public ArrayList<CommodityVO> findCommodities();
 }
