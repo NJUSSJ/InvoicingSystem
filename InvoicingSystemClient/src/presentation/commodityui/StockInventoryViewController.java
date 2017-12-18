@@ -77,7 +77,12 @@ public class StockInventoryViewController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		ID.setText("ID:"+MainApp.getID());
+		long idLong=MainApp.getID();
+		String idString=idLong+"";
+		while(idString.length()<5) {
+			idString="0"+idString;
+		}
+		ID.setText("ID:"+idString);
 		Date todayDate=new Date();
 		SimpleDateFormat dateFormat=new SimpleDateFormat("yyyyÄêmmÔÂddÈÕ");
 		

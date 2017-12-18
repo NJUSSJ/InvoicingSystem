@@ -47,7 +47,12 @@ public class MemberPromotionViewController implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO 自动生成的方法存根
-		id.setText("ID"+MainApp.getID());
+		long idLong=MainApp.getID();
+		String idString=idLong+"";
+		while(idString.length()<5) {
+			idString="0"+idString;
+		}
+		id.setText("ID:"+idString);
 		ArrayList<MemberPromotionVO> list=pcon.findMemberPromotions();
 		for(MemberPromotionVO m:list){
 			promotionData.add(new MemberPromotionData(m));
