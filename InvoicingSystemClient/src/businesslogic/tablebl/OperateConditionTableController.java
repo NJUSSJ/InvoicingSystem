@@ -11,5 +11,9 @@ public class OperateConditionTableController implements OperateConditionTableBLS
 	public OperateConditionTableVO findByInterval(Date begin, Date end) {
 		return impl.findByInterval(begin, end);
 	}
+	@Override
+	public boolean exportAsExcel(OperateConditionTableVO vo, String path) {
+		return impl.exportAsExcel(vo, path);
+	}
 
 }

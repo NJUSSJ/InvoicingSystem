@@ -2,15 +2,22 @@ package businesslogic.billbl;
 
 import java.rmi.RemoteException;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+import businesslogic.commoditybl.CommodityController;
 import businesslogic.memberbl.MemberController;
+import businesslogic.promotionbl.PromotionController;
 import po.CashBillPO;
 import po.ImportReturnBillPO;
 import rmi.RemoteHelper;
 import vo.CashBillVO;
+import vo.CommodityVO;
+import vo.GiftBillVO;
 import vo.ImportReturnBillVO;
+import vo.MemberPromotionVO;
 import vo.MemberVO;
+import vo.WarningBillVO;
 
 public class ImportReturnBill {
 
@@ -36,8 +43,41 @@ public class ImportReturnBill {
 					getImportReturnBillDataService().findImportReturnBillbyID(id));
 			if(pass){
 				vo.setState(1);
-				//修改进货退货单里供货商的应付
 				MemberController memberCon=new MemberController();
+				CommodityController ccon=new CommodityController();
+				WarningBillController wcon=new WarningBillController();
+				//生成一个单据id以备用
+				java.util.Date now=new java.util.Date();
+				long billid=Long.parseLong(new SimpleDateFormat("yyyyMMddHHmmss").format(now));
+				//修改库存数量,如果少于警戒量则生成报警单
+				CommodityList list=vo.getList();
+				for(int i=0;i<list.getListSize();i++){
+					long commodityid=list.get(i).getCommodityID();
+					CommodityVO commodityVO=ccon.findCommodityByID(commodityid);
+					int rest=commodityVO.getStockNum()-list.get(i).getNum();
+					if(rest<0){
+						vo.setState(2);
+						return false;
+					}
+				}
+				WarningBillVO warningBill=new WarningBillVO(billid,vo.getUserID(),
+						new CommodityList(),new Date(now.getTime()),0);
+				for(int i=0;i<list.getListSize();i++){
+					long commodityid=list.get(i).getCommodityID();
+					CommodityVO commodityVO=ccon.findCommodityByID(commodityid);
+					int rest=commodityVO.getStockNum()-list.get(i).getNum();
+					commodityVO.setStockNum(rest);
+					ccon.updateCommodity(commodityVO);
+					if(commodityVO.getStockNum()<commodityVO.getLimit()){
+						int dis=commodityVO.getLimit()-commodityVO.getStockNum();
+						warningBill.getList().addCommodity(new CommodityLineItem(dis,
+					commodityVO.getID(),commodityVO.getSalePrice(),commodityVO.getImportPrice()));
+					}
+				}
+				if(warningBill.getList().getListSize()>0){
+					wcon.submitWarningBill(warningBill);
+				}
+				//修改进货退货单里供应商的应付
 				MemberVO member=memberCon.findMemberByID(id);
 				double money=vo.getSum()+member.getShouldPay();
 				member.setShouldPay(money);

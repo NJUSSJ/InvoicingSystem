@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141">
+   <children>
+      <Label layoutX="7.0" layoutY="34.0" text="单据详细信息">
+         <font>
+            <Font name="Arial Unicode MS" size="65.0" />
+         </font>
+      </Label>
+      <Separator layoutY="115.0" prefHeight="3.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="115.0" />
+      <Label layoutX="86.0" layoutY="150.0" text="单据编号：xxx">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="86.0" layoutY="188.0" text="操作员：xxx">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="93.0" layoutY="224.0" text="仓库：xxx">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="93.0" layoutY="275.0" text="客户：xxx">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="93.0" layoutY="256.0" text="银行账户：xxx">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -2,8 +2,10 @@
 
 import java.rmi.RemoteException;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+import businesslogic.commoditybl.CommodityController;
 import businesslogic.memberbl.MemberController;
 import businesslogic.promotionbl.PromotionController;
 import po.CashBillPO;
@@ -11,11 +13,14 @@ import po.MemberPromotionPO;
 import po.SaleBillPO;
 import rmi.RemoteHelper;
 import vo.CashBillVO;
+import vo.CommodityVO;
+import vo.GiftBillVO;
 import vo.MemberPromotionVO;
 import vo.MemberVO;
 import vo.PackagePromotionVO;
 import vo.PricePromotionVO;
 import vo.SaleBillVO;
+import vo.WarningBillVO;
 
 public class SaleBill{
 
@@ -37,16 +42,65 @@ public class SaleBill{
 			SaleBillVO vo=toSaleBillVO(RemoteHelper.getInstance().getSaleBillDataService().findSaleBillbyID(id));
 			if(pass){
 				vo.setState(1);
-				//修改销售单里进货商的应付
 				MemberController memberCon=new MemberController();
+				PromotionController pcon=new PromotionController();
+				CommodityController ccon=new CommodityController();
+				GiftBillController gcon=new GiftBillController();
+				WarningBillController wcon=new WarningBillController();
+				//生成一个单据id以备用
+				java.util.Date now=new java.util.Date();
+				long billid=Long.parseLong(new SimpleDateFormat("yyyyMMddHHmmss").format(now));
+				//修改库存数量,最近售价,如果少于警戒量则生成报警单
+				CommodityList list=vo.getList();
+				for(int i=0;i<list.getListSize();i++){
+					long commodityid=list.get(i).getCommodityID();
+					CommodityVO commodityVO=ccon.findCommodityByID(commodityid);
+					int rest=commodityVO.getStockNum()-list.get(i).getNum();
+					if(rest<0){
+						vo.setState(2);
+						return false;
+					}
+				}
+				WarningBillVO warningBill=new WarningBillVO(billid,vo.getUserID(),
+						new CommodityList(),new Date(now.getTime()),0);
+				for(int i=0;i<list.getListSize();i++){
+					long commodityid=list.get(i).getCommodityID();
+					CommodityVO commodityVO=ccon.findCommodityByID(commodityid);
+					int rest=commodityVO.getStockNum()-list.get(i).getNum();
+					commodityVO.setStockNum(rest);
+					commodityVO.setLateSalePrice(list.get(i).getSalePrice());
+					ccon.updateCommodity(commodityVO);
+					if(commodityVO.getStockNum()<commodityVO.getLimit()){
+						int dis=commodityVO.getLimit()-commodityVO.getStockNum();
+						warningBill.getList().addCommodity(new CommodityLineItem(dis,
+					commodityVO.getID(),commodityVO.getSalePrice(),commodityVO.getImportPrice()));
+					}
+				}
+				if(warningBill.getList().getListSize()>0){
+					wcon.submitWarningBill(warningBill);
+				}
+				//修改销售单里进货商的应付
 				MemberVO member=memberCon.findMemberByID(id);
 				double money=vo.getSum()+member.getShouldPay();
 				member.setShouldPay(money);
 				memberCon.updateMember(member);
 				//根据通过的销售单生成一份库存赠送单
-				PromotionController pcon=new PromotionController();
-				ArrayList<MemberPromotionVO> memberPro=pcon.findMemberPromotionByRank(member.getRank());
-				
+				ArrayList<MemberPromotionVO> memberPros=pcon.findMemberPromotionByRank(member.getRank());
+				CommodityList giftList=new CommodityList();
+				int num;
+				long giftid;
+				double salePrice,importPrice;
+				for(MemberPromotionVO memberPro:memberPros){
+					CommodityList proList=memberPro.getGifts();
+					for(int i=0;i<proList.getListSize();i++){
+						num=proList.get(i).getNum();
+						giftid=proList.get(i).getCommodityID();
+						salePrice=ccon.findCommodityByID(giftid).getSalePrice();
+						importPrice=ccon.findCommodityByID(giftid).getImportPrice();
+						giftList.addCommodity(new CommodityLineItem(num,giftid,salePrice,importPrice));
+					}
+				}
+				gcon.submitGiftBill(new GiftBillVO(billid,vo.getUserID(),vo.getMemberID(),giftList,new Date(now.getTime()),0));
 			}else{
 				vo.setState(2);
 			}

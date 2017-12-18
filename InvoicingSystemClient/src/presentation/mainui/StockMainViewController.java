@@ -26,8 +26,6 @@ public class StockMainViewController implements Initializable {
 	@FXML
 	private ImageView email;
 	@FXML
-	private ImageView warn;
-	@FXML
 	private Button stockCheckButton;
 	@FXML
 	private Button StockInvent;
@@ -68,9 +66,5 @@ public class StockMainViewController implements Initializable {
 	public void showStockInventoryUI(){
 		MainApp.showStockInventoryUI();
 	}
-	@FXML
-    public void showWarningUI(){
-       MainApp.showWarningUI();
-    }
 	 
 }
