@@ -4,11 +4,13 @@ import java.rmi.RemoteException;
 import java.sql.Date;
 import java.util.ArrayList;
 
+import businesslogic.commoditybl.CommodityController;
 import businesslogic.memberbl.MemberController;
 import po.CashBillPO;
 import po.ImportBillPO;
 import rmi.RemoteHelper;
 import vo.CashBillVO;
+import vo.CommodityVO;
 import vo.ImportBillVO;
 import vo.MemberVO;
 
@@ -42,6 +44,15 @@ public class ImportBill{
 				double quota=Math.pow(10, (money+"").length()-1)*Integer.parseInt((money+"").substring(0, 1));
 				member.setQuota(quota);
 				memberCon.updateMember(member);
+				//修改库存数量，最近进价
+				CommodityController ccon=new CommodityController();
+				for(int i=0;i<vo.getCommodityList().getListSize();i++){
+					CommodityLineItem item=vo.getCommodityList().get(i);
+					CommodityVO commodityVO=ccon.findCommodityByID(item.getCommodityID());
+					commodityVO.setLateImportPrice(item.getImportPrice());
+					commodityVO.setStockNum(commodityVO.getStockNum()+item.getNum());
+					ccon.updateCommodity(commodityVO);
+				}
 			}else{
 				vo.setState(2);
 			}

@@ -1,7 +1,5 @@
 package businesslogic.billbl;
 
-import vo.CommodityVO;
-
 public class CommodityLineItem {
 	int num;
 	long commodityid;
@@ -9,7 +7,6 @@ public class CommodityLineItem {
 	double importPrice;
 	
 	public CommodityLineItem(int num,long commodityid,double salePrice,double importPrice) {
-		// TODO Auto-generated constructor stub
 		this.num=num;
 		this.commodityid=commodityid;
 		this.salePrice=salePrice;

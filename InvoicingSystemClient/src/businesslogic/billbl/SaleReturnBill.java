@@ -4,11 +4,13 @@ import java.rmi.RemoteException;
 import java.sql.Date;
 import java.util.ArrayList;
 
+import businesslogic.commoditybl.CommodityController;
 import businesslogic.memberbl.MemberController;
 import po.CashBillPO;
 import po.SaleReturnBillPO;
 import rmi.RemoteHelper;
 import vo.CashBillVO;
+import vo.CommodityVO;
 import vo.ImportBillVO;
 import vo.MemberVO;
 import vo.SaleReturnBillVO;
@@ -40,6 +42,14 @@ public class SaleReturnBill{
 				double quota=Math.pow(10, (money+"").length()-1)*Integer.parseInt((money+"").substring(0, 1));
 				member.setQuota(quota);
 				memberCon.updateMember(member);
+				//ÐÞ¸Ä¿â´æÊýÁ¿
+				CommodityController ccon=new CommodityController();
+				for(int i=0;i<vo.getList().getListSize();i++){
+					CommodityLineItem item=vo.getList().get(i);
+					CommodityVO commodityVO=ccon.findCommodityByID(item.getCommodityID());
+					commodityVO.setStockNum(commodityVO.getStockNum()+item.getNum());
+					ccon.updateCommodity(commodityVO);
+				}
 			}else{
 				vo.setState(2);
 			}

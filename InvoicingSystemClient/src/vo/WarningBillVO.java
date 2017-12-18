@@ -19,7 +19,6 @@ public class WarningBillVO {
 	int state;
 	
 	public WarningBillVO(long id,long userid,CommodityList list,Date time,int state) {
-		// TODO Auto-generated constructor stub
 		this.id=id;
 		this.userid=userid;
 		this.list=list;
