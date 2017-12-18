@@ -10,7 +10,6 @@ import vo.CommodityVO;
 
 public class SimpleCommodityController {
 Stage stage;
-
 static long id=0;
 @FXML
 private Button rightB;
