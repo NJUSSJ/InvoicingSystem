@@ -76,7 +76,12 @@ public class UserViewController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		id.setText("ID:"+MainApp.getID());
+		long idLong=MainApp.getID();
+		String idString=idLong+"";
+		while(idString.length()<5) {
+			idString="0"+idString;
+		}
+		id.setText("ID:"+idString);
 		
 		//nameColoumn.setCellValueFactory(cellData ->cellData.getValue().getNameProperty());
 		nameColoumn.setCellValueFactory(cellData ->cellData.getValue().getNameProperty());

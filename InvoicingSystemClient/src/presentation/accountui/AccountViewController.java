@@ -73,7 +73,12 @@ public class AccountViewController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		id.setText("ID:"+MainApp.getID());
+		long idLong=MainApp.getID();
+		String idString=idLong+"";
+		while(idString.length()<5) {
+			idString="0"+idString;
+		}
+		id.setText("ID:"+idString);
 		
 		nameColoumn.setCellValueFactory(cellData ->cellData.getValue().getNameProperty());
 		amountColoumn.setCellValueFactory(cellData ->cellData.getValue().getDepositProperty());
@@ -135,8 +140,8 @@ public class AccountViewController implements Initializable {
     	        double deposit=Double.parseDouble(data.getDepositProperty().get());
     	        
     	        AccountVO tmpVO=new AccountVO(id, deposit, name);
-    			boolean b=abs.deleteAccount(tmpVO);
-    			System.out.println(b);
+    	        abs.deleteAccount(tmpVO);
+    			
     	    } else {
     	        // Nothing selected.
     	        Alert alert = new Alert(AlertType.WARNING);

@@ -26,8 +26,6 @@ public class StockMainViewController implements Initializable {
 	@FXML
 	private ImageView email;
 	@FXML
-	private ImageView warn;
-	@FXML
 	private Button stockCheckButton;
 	@FXML
 	private Button StockInvent;
@@ -35,7 +33,12 @@ public class StockMainViewController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		id.setText("ID:"+MainApp.getID());
+		long idLong=MainApp.getID();
+		String idString=idLong+"";
+		while(idString.length()<5) {
+			idString="0"+idString;
+		}
+		id.setText("ID:"+idString);
 		
 	}
 	@FXML
@@ -63,9 +66,5 @@ public class StockMainViewController implements Initializable {
 	public void showStockInventoryUI(){
 		MainApp.showStockInventoryUI();
 	}
-	@FXML
-    public void showWarningUI(){
-       MainApp.showWarningUI();
-    }
 	 
 }

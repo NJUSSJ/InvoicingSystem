@@ -51,7 +51,12 @@ public class PricePromotionViewController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO 自动生成的方法存根
-		id.setText("ID:"+MainApp.getID());
+		long idLong=MainApp.getID();
+		String idString=idLong+"";
+		while(idString.length()<5) {
+			idString="0"+idString;
+		}
+		id.setText("ID:"+idString);
 		ArrayList<PricePromotionVO> list=pcon.findPricePromotions();
 		for(PricePromotionVO p:list){
 			promotionData.add(new PricePromotionData(p));

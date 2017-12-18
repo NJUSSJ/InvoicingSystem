@@ -82,7 +82,12 @@ public class CategoryViewController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		id.setText("ID:"+MainApp.getID());
+		long idLong=MainApp.getID();
+		String idString=idLong+"";
+		while(idString.length()<5) {
+			idString="0"+idString;
+		}
+		id.setText("ID:"+idString);
 		categoryTable.getSelectionModel().selectedItemProperty().addListener(
 	            (observable, oldValue, newValue) -> getInf(newValue));
 		idColoumn.setCellValueFactory(cellData ->cellData.getValue().getId());
