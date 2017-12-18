@@ -14,25 +14,45 @@ public class FianceMainViewController implements Initializable  {
 	@FXML
 	private ImageView accountBook;
 	@FXML
+	private Button accountBookButton;
+	@FXML
 	private ImageView manageCourse;
+	@FXML
+	private Button manageCourseButton;
 	@FXML
 	private ImageView manageSituation;
 	@FXML
+	private Button manageSituationButton;
+	@FXML
 	private ImageView saleDetails;
+	@FXML
+	private Button saleDetailsButton;
 	@FXML
 	private Label id;
 	@FXML
 	private ImageView cashBill;
 	@FXML
+	private Button cashBillButton;
+	@FXML
 	private ImageView account;
+	@FXML
+	private Button accountButton;
 	@FXML
 	private ImageView email;
 	@FXML
+	private Button emailButton;
+	@FXML
 	private ImageView payBill;
+	@FXML
+	private Button payBillButton;
 	@FXML
 	private ImageView receiveBill;
 	@FXML
+	private Button receiveButton;
+	@FXML
 	private ImageView log;
+	@FXML
+	private Button logButton;
 	@FXML
 	private Label logout;
 	@FXML

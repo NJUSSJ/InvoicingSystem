@@ -62,13 +62,13 @@ public class Sale_ReturnViewController implements Initializable{
 	private TextField lastprice;
 	
 	@FXML
-	private TextField notea;
+	private TextField note;
 	
 	@FXML
 	private TextField num;
 	
 	@FXML
-	private TextArea note;
+	private TextArea notea;
 	
 	@FXML
 	private Button rightB;
@@ -179,7 +179,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 
 	   	        alert.showAndWait();
 		}else{
-			lastprice.setText(""+a.getImportPrice());
+			lastprice.setText(""+a.getSalePrice());
 		}
 	}
 	@FXML
@@ -189,7 +189,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	    comlist.addCommodity(item);
 		commodityData.add(itemdata);
 	    commodityTable.setItems(commodityData);
-	    altogether.setText(""+comlist.getImportTotal());
+	    altogether.setText(""+comlist.getSaleTotal());
 	}
 	@FXML
 	public void logout(){

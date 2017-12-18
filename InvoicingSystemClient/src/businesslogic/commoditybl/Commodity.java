@@ -81,9 +81,13 @@ public class Commodity{
 		return temp;
 	}
 	public CommodityVO toCommodityVO(CommodityPO commodityPO){
+<<<<<<< HEAD
 		if(commodityPO==null){
 			return null;
 		}
+=======
+		if(commodityPO==null) return null;
+>>>>>>> 7d9e26ce1beddb10fc60803f5c7f1ffd2e98c59b
 		return new CommodityVO(commodityPO.getName(),commodityPO.getID(),commodityPO.getModel(),
 		commodityPO.getStockNum(),commodityPO.getImportPrice(),commodityPO.getSalePrice(),
 		commodityPO.getLateImportPrice(),commodityPO.getLateSalePrice(),commodityPO.getParentID(),commodityPO.getLimit());

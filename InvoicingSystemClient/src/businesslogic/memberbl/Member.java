@@ -65,9 +65,13 @@ public class Member{
 		return temp;
 	}
 	public MemberVO toMemberVO(MemberPO memberPO){
+<<<<<<< HEAD
 		if(memberPO==null){
 			return null;
 		}
+=======
+		if(memberPO==null) return null;
+>>>>>>> 7d9e26ce1beddb10fc60803f5c7f1ffd2e98c59b
 		return new MemberVO(memberPO.getID(),memberPO.getRank(),memberPO.getPostCode(),
 				memberPO.getCategory(),memberPO.getName(),memberPO.getPhoneNum(),
 				memberPO.getAddress(),memberPO.getEmail(),memberPO.getShouldPay(),

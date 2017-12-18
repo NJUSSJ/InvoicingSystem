@@ -46,6 +46,8 @@ public class SaleViewController implements Initializable  {
 	@FXML
 	private TextField coupon;
 	@FXML
+	private TextField haspay;
+	@FXML
 	private Label discount;
 	
 	@FXML
@@ -67,13 +69,13 @@ public class SaleViewController implements Initializable  {
 	private TextField lastprice;
 	
 	@FXML
-	private TextField notea;
+	private TextField note;
 	
 	@FXML
 	private TextField num;
 	
 	@FXML
-	private TextArea note;
+	private TextArea notea;
 	
 	@FXML
 	private Button rightB;
@@ -113,7 +115,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	Date time;
 	CommodityItemData itemdata;
 	CommodityLineItem item=null;
-	CommodityList comlist;
+	CommodityList comlist=new CommodityList();
 	CommodityVO a;
 	MemberVO memberl=null;
 	CommodityBLService cbs=new CommodityController();
@@ -188,7 +190,8 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	   	        alert.setContentText("Please comfirm your spelling ");
                 alert.showAndWait();
 		}else{
-			lastprice.setText(""+a.getImportPrice());
+			lastprice.setText(""+a.getSalePrice());
+			num.setText(0+"");
 		}
 	}
 	@FXML
@@ -217,7 +220,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	@FXML
 	public void setBill(){
 		SaleBillVO salebill=new SaleBillVO(billid.getText(),Long.parseLong(id.getText()),memberl.getID(),comlist,
-			comlist.getSaleTotal(),0,time,note.getText(),Integer.parseInt(coupon.getText()),Double.parseDouble(discount.getText()),Double.parseDouble(discountafter.getText()));
+			comlist.getSaleTotal(),0,time,note.getText(),Integer.parseInt(coupon.getText()),Double.parseDouble(discount.getText()),Double.parseDouble(discountafter.getText()),Double.parseDouble(haspay.getText()));
 		String isSubmit="fail Submit";
 		 if(sbbs.submitSaleBill(salebill)){
 			 times++;

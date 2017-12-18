@@ -236,7 +236,7 @@ public class MainApp extends Application {
 			MainApp.rootlayout.setCenter(manageCourseUI);
 			
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	
@@ -253,7 +253,7 @@ public class MainApp extends Application {
 			MainApp.rootlayout.setCenter(manageSituationUI);
 			
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	
@@ -270,7 +270,7 @@ public class MainApp extends Application {
 			MainApp.rootlayout.setCenter(saleDetailsUI);
 			
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	
@@ -287,7 +287,7 @@ public class MainApp extends Application {
 			MainApp.rootlayout.setCenter(accountUI);
 			
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 
@@ -304,7 +304,7 @@ public class MainApp extends Application {
 			MainApp.rootlayout.setCenter(receiveBillUI);
 			
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	
@@ -321,7 +321,7 @@ public class MainApp extends Application {
 			MainApp.rootlayout.setCenter(payBillUI);
 			
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	
@@ -361,7 +361,7 @@ public class MainApp extends Application {
 			MainApp.rootlayout.setCenter(strategyUI);
 			
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	/*
@@ -377,7 +377,7 @@ public class MainApp extends Application {
 			MainApp.rootlayout.setCenter(accountBookUI);
 			
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	
@@ -394,7 +394,7 @@ public class MainApp extends Application {
 			MainApp.rootlayout.setCenter(examineUI);
 			
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	
@@ -411,7 +411,7 @@ public class MainApp extends Application {
 			MainApp.rootlayout.setCenter(memberUI);
 			
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	
@@ -428,7 +428,7 @@ public class MainApp extends Application {
 			MainApp.rootlayout.setCenter(importUI);
 			
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	
@@ -439,14 +439,14 @@ public class MainApp extends Application {
 	public static  void showImportReturnUI() {
 		try {
 			FXMLLoader loader=new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("/presentation/saleui/Import_ReturnUI.fxml"));
+			loader.setLocation(MainApp.class.getResource("/presentation/saleui/Import_Return.fxml"));
 			
 			AnchorPane importReturnUI=loader.load();
 			
 			MainApp.rootlayout.setCenter(importReturnUI);
 			
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	
@@ -464,7 +464,7 @@ public class MainApp extends Application {
 			MainApp.rootlayout.setCenter(saleUI);
 			
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	
@@ -481,7 +481,7 @@ public class MainApp extends Application {
 			MainApp.rootlayout.setCenter(saleReturnUI);
 			
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	
@@ -498,7 +498,7 @@ public class MainApp extends Application {
 			MainApp.rootlayout.setCenter(categoryUI);
 			
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	
@@ -515,7 +515,7 @@ public class MainApp extends Application {
 			MainApp.rootlayout.setCenter(commodityUI);
 			
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	
@@ -592,7 +592,7 @@ public class MainApp extends Application {
             warnStage.showAndWait();
             
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	

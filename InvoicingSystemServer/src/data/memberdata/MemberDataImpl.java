@@ -19,7 +19,7 @@ public class MemberDataImpl implements MemberDataService{
 	public MemberPO findMemberbyName(String name) throws RemoteException {
 		String sql="select * from "
 				+ "members"
-				+ "where name="+name;
+				+ "where name='"+name+"'";
 		try {
 			ResultSet result=DataFactory.statement.executeQuery(sql);
 			

@@ -87,5 +87,14 @@
     </ImageView>
     <Label layoutX="852.0" layoutY="550.0" text="制定现金费用单" />
     <Button fx:id="AccountButton" layoutX="239.0" layoutY="207.0" mnemonicParsing="false" onAction="#showaccountUI" opacity="0.0" prefHeight="124.0" prefWidth="136.0" text="Button" />
+    <Button fx:id="accountBookButton" layoutX="64.0" layoutY="211.0" mnemonicParsing="false" onAction="#showaccountBookUI" opacity="0.0" prefHeight="124.0" prefWidth="120.0" text="Button" />
+    <Button fx:id="manageCourseButton" layoutX="453.0" layoutY="207.0" mnemonicParsing="false" onAction="#showManageCourseUI" opacity="0.0" prefHeight="124.0" prefWidth="120.0" text="Button" />
+    <Button fx:id="manageSituationButton" layoutX="649.0" layoutY="207.0" mnemonicParsing="false" onAction="#showManageSituationUI" opacity="0.0" prefHeight="124.0" prefWidth="120.0" text="Button" />
+    <Button fx:id="saleDetailsButton" layoutX="832.0" layoutY="207.0" mnemonicParsing="false" onAction="#showSaleDetailsUI" opacity="0.0" prefHeight="124.0" prefWidth="120.0" text="Button" />
+    <Button fx:id="cashBillButton" layoutX="834.0" layoutY="412.0" mnemonicParsing="false" onAction="#showcashBill" opacity="0.0" prefHeight="124.0" prefWidth="120.0" text="Button" />
+    <Button fx:id="logButton" layoutX="667.0" layoutY="420.0" mnemonicParsing="false" onAction="#showLogUI" opacity="0.0" prefHeight="124.0" prefWidth="120.0" text="Button" />
+    <Button fx:id="payBillButton" layoutX="456.0" layoutY="407.0" mnemonicParsing="false" onAction="#showpayBillUI" opacity="0.0" prefHeight="124.00009999999747" prefWidth="127.0" text="Button" />
+    <Button fx:id="receiveButton" layoutX="248.0" layoutY="417.0" mnemonicParsing="false" onAction="#showReceiveBillUI" opacity="0.0" prefHeight="119.0" prefWidth="135.0" text="Button" />
+    <Button fx:id="emailButton" layoutX="67.0" layoutY="420.0" mnemonicParsing="false" onAction="#showEmailUI" opacity="0.0" prefHeight="123.9998779296875" prefWidth="127.0" text="Button" />
   </children>
 </AnchorPane>
