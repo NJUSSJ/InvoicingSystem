@@ -15,6 +15,7 @@ public class OperateConditionTableVO {
 	double giftExpense;//赠品支出
 	double saleReturnExpense;//销售退货支出
 	double profit;
+	double discount;
 	public OperateConditionTableVO(Date begin,Date end,double saleIncome,double saleOriginIncome,
 	double overIncome,double importReturnIncome,double couponIncome,double importExpense,double lossExpense,double giftExpense,
 	double saleReturnExpense,double profit){
@@ -30,6 +31,7 @@ public class OperateConditionTableVO {
 		this.giftExpense=giftExpense;
 		this.saleReturnExpense=saleReturnExpense;
 		this.profit=profit;
+		discount=saleOriginIncome-saleIncome;
 	}
 	public Date getBegin(){
 		return begin;
@@ -63,5 +65,28 @@ public class OperateConditionTableVO {
 	}
 	public double getSaleReturnExpense(){
 		return saleReturnExpense;
+	}
+	public double getDiscount(){
+		return discount;
+	}
+	/**
+	 * @return 总收入
+	 */
+	public double getIncome(){
+		return saleIncome+overIncome+importReturnIncome+couponIncome;
+	}
+	/**
+	 * 
+	 * @return 总支出
+	 */
+	public double getExpense(){
+		return importExpense+lossExpense+giftExpense+giftExpense;
+	}
+	/**
+	 * 
+	 * @return 利润
+	 */
+	public double getProfit(){
+		return getIncome()-getExpense();
 	}
 }

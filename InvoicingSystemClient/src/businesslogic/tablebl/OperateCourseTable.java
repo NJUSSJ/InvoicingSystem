@@ -51,7 +51,7 @@ public class OperateCourseTable{
 		ArrayList<LossBillVO> lossBills=lossBL.findLossBillsByInterval(begin, end);
 		ArrayList<OverBillVO> overBills=overBL.findOverBillsByInterval(begin, end);
 		ArrayList<GiftBillVO> giftBills=giftBL.findGiftBillsByInterval(begin, end);
-		return new OperateCourseTableVO(saleBills,saleReturnBills,importBills,importReturnBills,
+		return new OperateCourseTableVO(begin,end,saleBills,saleReturnBills,importBills,importReturnBills,
 				payBills,receiveBills,cashBills,lossBills,overBills,giftBills);
 	}
 	/**
@@ -79,7 +79,7 @@ public class OperateCourseTable{
 			ArrayList<LossBillVO> lossBills=lossBL.findLossBillsByField(begin, end, userName);
 			ArrayList<OverBillVO> overBills=overBL.findOverBillsByField(begin, end, userName);
 			ArrayList<GiftBillVO> giftBills=giftBL.findGiftBillsByField(begin, end, memberName, userName);
-			result=new OperateCourseTableVO(saleBills,saleReturnBills,importBills,importReturnBills,
+			result=new OperateCourseTableVO(begin,end,saleBills,saleReturnBills,importBills,importReturnBills,
 					payBills,receiveBills,cashBills,lossBills,overBills,giftBills);
 		}else if(type.equals("Sale")){
 			result=new OperateCourseTableVO();
@@ -123,10 +123,6 @@ public class OperateCourseTable{
 			result.setGiftBillList(giftBills);
 		}
 		return result;
-	}
-
-	public boolean exportAsExcel(OperateCourseTableVO vo, String path) {
-		return false;
 	}
 	
 

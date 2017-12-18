@@ -12,5 +12,4 @@ import vo.OperateCourseTableVO;
 public interface OperateCourseTableBLService {
 	public OperateCourseTableVO findByInterval(Date begin,Date end);
 	public OperateCourseTableVO findByField(Date begin,Date end,String type,String memberName,String userName);
-	public boolean exportAsExcel(OperateCourseTableVO vo,String path);
 }

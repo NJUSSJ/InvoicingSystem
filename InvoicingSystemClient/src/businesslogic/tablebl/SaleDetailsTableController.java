@@ -7,24 +7,20 @@ import vo.SaleDetailsTableVO;
 
 public class SaleDetailsTableController implements SaleDetailsTableBLService{
 	SaleDetailsTable impl=new SaleDetailsTable();
-
 	@Override
 	public SaleDetailsTableVO findByDate(Date begin, Date end) {
-		// TODO 自动生成的方法存根
-		return null;
+		return impl.findByDate(begin, end);
 	}
 
 	@Override
 	public SaleDetailsTableVO findByField(Date begin, Date end, String commodityName, String memberName,
-			String operatorName) {
-		// TODO 自动生成的方法存根
-		return null;
+			String userName) {
+		return impl.findByField(begin, end, commodityName, memberName, userName);
 	}
 
 	@Override
 	public boolean exportAsExcel(SaleDetailsTableVO vo, String path) {
-		// TODO 自动生成的方法存根
-		return false;
+		return impl.exportAsExcel(vo, path);
 	}
 
 

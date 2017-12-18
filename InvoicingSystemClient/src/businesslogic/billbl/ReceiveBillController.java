@@ -51,7 +51,7 @@ public class ReceiveBillController implements ReceiveBillBLService{
 
 	@Override
 	public ArrayList<ReceiveBillVO> findReceiveBillsByState(int state) {
-		return receiveBillImpl.findReceiveBillsByInterval(begin, end);
+		return receiveBillImpl.findReceiveBillsByState(state);
 	}
 
 	@Override

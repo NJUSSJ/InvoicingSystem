@@ -12,10 +12,6 @@ public class OperateCourseTableController implements OperateCourseTableBLService
 		return impl.findByInterval(begin, end);
 	}
 	
-	@Override
-	public boolean exportAsExcel(OperateCourseTableVO vo, String path) {
-		return impl.exportAsExcel(vo, path);
-	}
 
 	@Override
 	public OperateCourseTableVO findByField(Date begin, Date end,String type, String memberName, String userName) {
