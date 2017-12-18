@@ -10,7 +10,6 @@ public class CommodityList {
 	ArrayList<CommodityLineItem> list;
 	
 	public CommodityList() {
-		// TODO Auto-generated constructor stub
 		list=new ArrayList<>();
 	}
 	/**
@@ -128,6 +127,11 @@ public class CommodityList {
 		}
 		return false;
 	}
+	/**
+	 * 根据id查找list里的商品
+	 * @param id 商品id
+	 * @return list里的商品，如果不存在返回null
+	 */
 	public CommodityLineItem findCommodity(long id){
 		for(CommodityLineItem item:list){
 			if(item.getCommodityID()==id){
@@ -136,4 +140,11 @@ public class CommodityList {
 		}
 		return null;
 	}
+	/**
+	 * @return list里的第index个item
+	 */
+	public CommodityLineItem get(int index){
+		return list.get(index);
+	}
+	
 }

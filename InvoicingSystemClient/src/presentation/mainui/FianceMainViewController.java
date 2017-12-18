@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import MainApp.MainApp;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 
@@ -34,6 +35,8 @@ public class FianceMainViewController implements Initializable  {
 	private ImageView log;
 	@FXML
 	private Label logout;
+	@FXML
+	private Button AccountButton;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub

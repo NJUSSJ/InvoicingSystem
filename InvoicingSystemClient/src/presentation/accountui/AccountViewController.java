@@ -74,8 +74,7 @@ public class AccountViewController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 		id.setText("ID:"+MainApp.getID());
-		accountTable.getSelectionModel().selectedItemProperty().addListener(
-	            (observable, oldValue, newValue) -> getInf(newValue));
+		
 		nameColoumn.setCellValueFactory(cellData ->cellData.getValue().getNameProperty());
 		amountColoumn.setCellValueFactory(cellData ->cellData.getValue().getDepositProperty());
 		idColoumn.setCellValueFactory(cellData ->cellData.getValue().getidProperty());
@@ -120,18 +119,24 @@ public class AccountViewController implements Initializable {
             accountStage.showAndWait();
             
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
-    public void getInf(AccountData newValue){
-    	acco=newValue.getVO();
-    }
+    
     @FXML
     public void deleteAccount(){
     	int selectedIndex = accountTable.getSelectionModel().getSelectedIndex();
     	 if (selectedIndex >= 0) {
+    		 	AccountData data=accountTable.getSelectionModel().getSelectedItem();
     	        accountTable.getItems().remove(selectedIndex);
-    			abs.deleteAccount(acco);
+    	        
+    	        String name=data.getNameProperty().get();
+    	        long id=Long.parseLong(data.getidProperty().get());
+    	        double deposit=Double.parseDouble(data.getDepositProperty().get());
+    	        
+    	        AccountVO tmpVO=new AccountVO(id, deposit, name);
+    			boolean b=abs.deleteAccount(tmpVO);
+    			System.out.println(b);
     	    } else {
     	        // Nothing selected.
     	        Alert alert = new Alert(AlertType.WARNING);
@@ -139,7 +144,7 @@ public class AccountViewController implements Initializable {
     	        alert.setTitle("No Selection");
     	        alert.setHeaderText("No Account Selected");
     	        alert.setContentText("Please select an account in the table.");
-
+    	        
     	        alert.showAndWait();
     	    }
    	}
@@ -147,7 +152,7 @@ public class AccountViewController implements Initializable {
     public void updateAccount(){
     	try {
 			FXMLLoader loader=new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("/presentation/accountui/SimpleAccountUI.fxml"));
+			loader.setLocation(MainApp.class.getResource("/presentation/accountui/SimpleAccount.fxml"));
 			AnchorPane accountUI=loader.load();
 			Scene scene=new Scene(accountUI);
 			Stage accountStage=new Stage();
@@ -163,7 +168,7 @@ public class AccountViewController implements Initializable {
             accountStage.showAndWait();
             
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		
    	}

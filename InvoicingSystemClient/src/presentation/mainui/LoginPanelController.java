@@ -7,7 +7,6 @@ import MainApp.MainApp;
 import businesslogic.userbl.UserController;
 import businesslogicservice.userblservice.UserBLService;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

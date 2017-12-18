@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.mainui.FianceMainViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.mainui.FianceMainViewController">
   <children>
     <Label layoutX="7.0" layoutY="30.0" text="财务人员主界面">
       <font>
@@ -75,11 +80,12 @@
         <Image url="@../../../resources/payment_method_545px_1208153_easyicon.net.png" />
       </image>
     </ImageView>
-      <ImageView fx:id="cashBill" fitHeight="124.0" fitWidth="106.0" layoutX="841.0" layoutY="413.0" onMouseClicked="#showcashBill">
-         <image>
-            <Image url="@../../../resources/bill_1270px_1200280_easyicon.net.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="852.0" layoutY="550.0" text="制定现金费用单" />
+    <ImageView fx:id="cashBill" fitHeight="124.0" fitWidth="106.0" layoutX="841.0" layoutY="413.0" onMouseClicked="#showcashBill">
+      <image>
+        <Image url="@../../../resources/bill_1270px_1200280_easyicon.net.png" />
+      </image>
+    </ImageView>
+    <Label layoutX="852.0" layoutY="550.0" text="制定现金费用单" />
+    <Button fx:id="AccountButton" layoutX="239.0" layoutY="207.0" mnemonicParsing="false" onAction="#showaccountUI" opacity="0.0" prefHeight="124.0" prefWidth="136.0" text="Button" />
   </children>
 </AnchorPane>

@@ -73,6 +73,7 @@ public class User {
 	}
 	
 	public UserVO toUserVO(UserPO userPO){
+		if(userPO==null) return null;
 		return new UserVO(userPO.getID(),userPO.getPassword(),userPO.getRank(),userPO.getUserName());
 	}
 	public ArrayList<UserVO> findUsers(){
@@ -83,7 +84,6 @@ public class User {
 				temp.add(toUserVO(users.get(i)));
 			}
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return temp;

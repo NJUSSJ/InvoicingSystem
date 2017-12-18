@@ -3,10 +3,6 @@ package po;
 import java.io.Serializable;
 import java.sql.Date;
 
-
-
-
-
 public class SaleBillPO implements Serializable {
 	/**
 	 * 
@@ -24,9 +20,10 @@ public class SaleBillPO implements Serializable {
 	int coupon;
 	double discount;
 	double ultimate;
+	double money;
 	
-	public SaleBillPO(String id,long userid,long memberid,String commodityList,double sum,
-			int state,Date time,int num,String remark,int coupon,double discount,double ultimate) {
+	public SaleBillPO(String id,long userid,long memberid,String commodityList,double sum,int state,
+			Date time,int num,String remark,int coupon,double discount,double ultimate,double money) {
 		this.commodityList=commodityList;
 		this.id=id;
 		this.memberid=memberid;
@@ -39,6 +36,7 @@ public class SaleBillPO implements Serializable {
 		this.coupon=coupon;
 		this.discount=discount;
 		this.ultimate=ultimate;
+		this.money=money;
 	}
 	public String getID(){
 		return id;
@@ -75,5 +73,8 @@ public class SaleBillPO implements Serializable {
 	}
 	public double getUltimate(){
 		return ultimate;
+	}
+	public double getMoney(){
+		return money;
 	}
 }
