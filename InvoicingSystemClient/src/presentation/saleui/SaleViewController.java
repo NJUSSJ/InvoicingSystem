@@ -115,7 +115,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	Date time;
 	CommodityItemData itemdata;
 	CommodityLineItem item=null;
-	CommodityList comlist;
+	CommodityList comlist=new CommodityList();
 	CommodityVO a;
 	MemberVO memberl=null;
 	CommodityBLService cbs=new CommodityController();
@@ -190,7 +190,8 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	   	        alert.setContentText("Please comfirm your spelling ");
                 alert.showAndWait();
 		}else{
-			lastprice.setText(""+a.getImportPrice());
+			lastprice.setText(""+a.getSalePrice());
+			num.setText(0+"");
 		}
 	}
 	@FXML

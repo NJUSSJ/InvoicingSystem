@@ -76,6 +76,7 @@ public class Member{
 		return temp;
 	}
 	public MemberVO toMemberVO(MemberPO memberPO){
+		if(memberPO==null) return null;
 		return new MemberVO(memberPO.getID(),memberPO.getRank(),memberPO.getPostCode(),
 				memberPO.getCategory(),memberPO.getName(),memberPO.getPhoneNum(),
 				memberPO.getAddress(),memberPO.getEmail(),memberPO.getShouldPay(),

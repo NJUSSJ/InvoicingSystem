@@ -79,7 +79,7 @@ public class CommodityDataImpl implements CommodityDataService{
 	 */
 	@Override
 	public CommodityPO findCommoditybyName(String name) throws RemoteException {
-		String sql="select * from commodities where name="+name;
+		String sql="select * from commodities where name='"+name+"'";
 		
 		try {
 			ResultSet result=DataFactory.statement.executeQuery(sql);
