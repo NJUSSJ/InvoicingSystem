@@ -10,7 +10,6 @@ import vo.CommodityVO;
 
 public class SimpleCommodityController {
 Stage stage;
-
 static long id=0;
 @FXML
 private Button rightB;
@@ -26,6 +25,8 @@ private TextField model;
 private TextField saleprice;
 @FXML
 private TextField importprice;
+@FXML
+private TextField warning;
 
 long parentid;
 
@@ -44,10 +45,10 @@ CommodityVO a;
 	public void setCommodity(){
 		if(style==0){
 			id++;
-			a=new CommodityVO(name.getText(),tempid,model.getText(),Integer.parseInt(num.getText()),Double.parseDouble(importprice.getText()),Double.parseDouble(saleprice.getText()),Double.parseDouble(importprice.getText()),Double.parseDouble(saleprice.getText()),parentid);
+			a=new CommodityVO(name.getText(),tempid,model.getText(),Integer.parseInt(num.getText()),Double.parseDouble(importprice.getText()),Double.parseDouble(saleprice.getText()),Double.parseDouble(importprice.getText()),Double.parseDouble(saleprice.getText()),parentid,Integer.parseInt(warning.getText()));
 	        cbs.addCommodity(a);
 		}else{
-			a=new CommodityVO(name.getText(),tempid,model.getText(),Integer.parseInt(num.getText()),Double.parseDouble(importprice.getText()),Double.parseDouble(saleprice.getText()),Double.parseDouble(importprice.getText()),Double.parseDouble(saleprice.getText()),parentid);
+			a=new CommodityVO(name.getText(),tempid,model.getText(),Integer.parseInt(num.getText()),Double.parseDouble(importprice.getText()),Double.parseDouble(saleprice.getText()),Double.parseDouble(importprice.getText()),Double.parseDouble(saleprice.getText()),parentid,Integer.parseInt(warning.getText()));
 			cbs.updateCommodity(a);
 		}
 	}
@@ -70,6 +71,7 @@ CommodityVO a;
 		saleprice.setText(Double.toString(a.getSalePrice()));
 		importprice.setText(Double.toString(a.getImportPrice()));
 		style=1;
+		warning.setText(Integer.toString(a.getLimit()));
 	}
 
 }
