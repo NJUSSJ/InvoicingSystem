@@ -17,4 +17,5 @@ public interface ReceiveBillBLService {
 	public ArrayList<ReceiveBillVO> findReceiveBillsByInterval(Date begin,Date end);
 	public ArrayList<ReceiveBillVO> findReceiveBillsByField(Date begin,Date end,String memberName,String userName);
 	public ArrayList<ReceiveBillVO> findReceiveBillsByState(int state);
+	public ArrayList<ReceiveBillVO> findReceiveBillsByUser(long userid);
 }

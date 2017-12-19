@@ -6,9 +6,11 @@ import java.util.ArrayList;
 
 import businesslogicservice.billblservice.WarningBillBLService;
 import po.PayBillPO;
+import po.ReceiveBillPO;
 import po.WarningBillPO;
 import rmi.RemoteHelper;
 import vo.PayBillVO;
+import vo.ReceiveBillVO;
 import vo.WarningBillVO;
 
 public class WarningBill{
@@ -87,6 +89,18 @@ public class WarningBill{
 		ArrayList<WarningBillVO> result=new ArrayList<WarningBillVO>();
 		try {
 			ArrayList<WarningBillPO> bills=RemoteHelper.getInstance().getWarningBillDataService().findWarningBillbyState(state);
+			for(WarningBillPO po:bills){
+				result.add(toWarningBillVO(po));
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	public ArrayList<WarningBillVO> findWarningBillsByUser(long userid){
+		ArrayList<WarningBillVO> result=new ArrayList<WarningBillVO>();
+		try {
+			ArrayList<WarningBillPO> bills=RemoteHelper.getInstance().getWarningBillDataService().findWarningBillbyUser(userid);
 			for(WarningBillPO po:bills){
 				result.add(toWarningBillVO(po));
 			}

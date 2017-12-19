@@ -118,5 +118,17 @@ public class GiftBill {
 		}
 		return result;
 	}
+	public ArrayList<GiftBillVO> findGiftBillsByUser(long userid){
+		ArrayList<GiftBillVO> result=new ArrayList<GiftBillVO>();
+		try {
+			ArrayList<GiftBillPO> bills=RemoteHelper.getInstance().getGiftBillDataService().findGiftBillbyUser(userid);
+			for(GiftBillPO po:bills){
+				result.add(toGiftBillVO(po));
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 
 }

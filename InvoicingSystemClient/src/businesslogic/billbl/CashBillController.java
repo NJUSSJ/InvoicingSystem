@@ -53,6 +53,11 @@ public class CashBillController implements CashBillBLService{
 	public ArrayList<CashBillVO> findCashBillsByState(int state) {
 		return cashBillImpl.findCashBillsByState(state);
 	}
+
+	@Override
+	public ArrayList<CashBillVO> findCashBillsByUser(long userid) {
+		return cashBillImpl.findCashBillsByUser(userid);
+	}
 	
 
 }

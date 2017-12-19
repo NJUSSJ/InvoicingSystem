@@ -59,4 +59,9 @@ public class ImportBillController implements ImportBillBLService{
 		return importBillImpl.findImportBillsByState(state);
 	}
 
+	@Override
+	public ArrayList<ImportBillVO> findImportBillsByUser(long userid) {
+		return importBillImpl.findImportBillsByUser(userid);
+	}
+
 }

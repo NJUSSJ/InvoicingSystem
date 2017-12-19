@@ -54,4 +54,9 @@ public class GiftBillController implements GiftBillBLService{
 		return giftBillImpl.findGiftBillsByState(state);
 	}
 
+	@Override
+	public ArrayList<GiftBillVO> findGiftBillsByUser(long userid) {
+		return giftBillImpl.findGiftBillsByUser(userid);
+	}
+
 }

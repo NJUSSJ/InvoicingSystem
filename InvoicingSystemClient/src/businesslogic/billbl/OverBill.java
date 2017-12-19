@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 
 import po.CashBillPO;
+import po.ImportBillPO;
 import po.OverBillPO;
 import rmi.RemoteHelper;
 import vo.CashBillVO;
@@ -112,6 +113,18 @@ public class OverBill{
 		ArrayList<OverBillPO> bills;
 		try {
 			bills = RemoteHelper.getInstance().getOverBillDataService().findOverBillbyState(state);
+			for(OverBillPO po:bills){
+				result.add(toOverBillVO(po));
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	public ArrayList<OverBillVO> findOverBillsByUser(long userid){
+		ArrayList<OverBillVO> result=new ArrayList<OverBillVO>();
+		try {
+			ArrayList<OverBillPO> bills=RemoteHelper.getInstance().getOverBillDataService().findOverBillbyUser(userid);
 			for(OverBillPO po:bills){
 				result.add(toOverBillVO(po));
 			}

@@ -6,11 +6,13 @@ import java.util.ArrayList;
 
 import businesslogic.memberbl.MemberController;
 import po.CashBillPO;
+import po.OverBillPO;
 import po.ReceiveBillPO;
 import rmi.RemoteHelper;
 import vo.CashBillVO;
 import vo.ImportBillVO;
 import vo.MemberVO;
+import vo.OverBillVO;
 import vo.ReceiveBillVO;
 
 public class ReceiveBill{
@@ -118,6 +120,18 @@ public class ReceiveBill{
 		ArrayList<ReceiveBillVO> result=new ArrayList<ReceiveBillVO>();
 		try {
 			ArrayList<ReceiveBillPO> bills=RemoteHelper.getInstance().getReceiveBillDataService().findReceiveBillbyField(userName, memberName);
+			for(ReceiveBillPO po:bills){
+				result.add(toReceiveBillVO(po));
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	public ArrayList<ReceiveBillVO> findReceiveBillsByUser(long userid){
+		ArrayList<ReceiveBillVO> result=new ArrayList<ReceiveBillVO>();
+		try {
+			ArrayList<ReceiveBillPO> bills=RemoteHelper.getInstance().getReceiveBillDataService().findReceiveBillbyUser(userid);
 			for(ReceiveBillPO po:bills){
 				result.add(toReceiveBillVO(po));
 			}

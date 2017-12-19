@@ -59,4 +59,9 @@ public class PayBillController implements PayBillBLService{
 		return payBillImpl.findPayBillsByState(state);
 	}
 
+	@Override
+	public ArrayList<PayBillVO> findPayBillsByUser(long userid) {
+		return payBillImpl.findPayBillsByUser(userid);
+	}
+
 }

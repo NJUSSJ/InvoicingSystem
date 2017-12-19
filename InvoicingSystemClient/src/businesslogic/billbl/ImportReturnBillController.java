@@ -60,4 +60,9 @@ public class ImportReturnBillController implements ImportReturnBillBLService{
 		return importReturnBillImpl.findImportReturnBillsByState(state);
 	}
 
+	@Override
+	public ArrayList<ImportReturnBillVO> findImportReturnBillsByUser(long userid) {
+		return importReturnBillImpl.findImportReturnBillsByUser(userid);
+	}
+
 }

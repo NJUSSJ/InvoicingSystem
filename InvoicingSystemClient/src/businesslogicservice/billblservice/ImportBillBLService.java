@@ -17,4 +17,5 @@ public interface ImportBillBLService  {
 	public ArrayList<ImportBillVO> findImportBillsByInterval(Date begin,Date end);
 	public ArrayList<ImportBillVO> findImportBillsByField(Date begin,Date end,String memberName,String userName);
 	public ArrayList<ImportBillVO> findImportBillsByState(int state);
+	public ArrayList<ImportBillVO> findImportBillsByUser(long userid);
 }

@@ -59,4 +59,9 @@ public class OverBillController implements OverBillBLService{
 		return overBillImpl.findOverBillsByState(state);
 	}
 
+	@Override
+	public ArrayList<OverBillVO> findOverBillsByUser(long id) {
+		return overBillImpl.findOverBillsByUser(id);
+	}
+
 }
