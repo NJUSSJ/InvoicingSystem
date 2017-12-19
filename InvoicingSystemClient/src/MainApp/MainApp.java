@@ -508,7 +508,7 @@ public class MainApp extends Application {
 	public static  void showCommodityUI() {
 		try {
 			FXMLLoader loader=new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("/presentation/commodityui/ComodityUI.fxml"));
+			loader.setLocation(MainApp.class.getResource("/presentation/commodityui/CommodityUI.fxml"));
 			
 			AnchorPane commodityUI=loader.load();
 			

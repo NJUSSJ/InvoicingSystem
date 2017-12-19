@@ -928,5 +928,11 @@ public class DataRemoteObject extends UnicastRemoteObject implements UserDataSer
 	public ArrayList<CashBillPO> findCashBillbyField(String user) throws RemoteException {
 		return cashbillservice.findCashBillbyField(user);
 	}
+
+	@Override
+	public CategoryPO findCategorybyName(String Name) throws RemoteException {
+		
+		return categoryservice.findCategorybyName(Name);
+	}
 	
 }

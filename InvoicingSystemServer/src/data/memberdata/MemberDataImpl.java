@@ -18,7 +18,7 @@ public class MemberDataImpl implements MemberDataService{
 	@Override
 	public MemberPO findMemberbyName(String name) throws RemoteException {
 		String sql="select * from "
-				+ "members"
+				+ " members "
 				+ "where name='"+name+"'";
 		try {
 			ResultSet result=DataFactory.statement.executeQuery(sql);
