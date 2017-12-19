@@ -8,6 +8,7 @@ import businesslogic.billbl.CommodityLineItem;
 import businesslogic.billbl.CommodityList;
 import businesslogic.commoditybl.CommodityController;
 import businesslogic.promotionbl.PromotionController;
+import businesslogic.utilitybl.Utility;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -45,8 +46,7 @@ public class SimpleMemberPromotionController {
 		String discountText=discount.getText();
 		if((rankText!=null&&rankText.length()>0)&&(couponText!=null&&couponText.length()>0)
 				&&(discountText!=null&&discountText.length()>0)){
-			SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddHHmmss");
-			long id=Long.parseLong(sdf.format(new Date()));
+			long id=Utility.creatID();
 			double discountValue=Double.parseDouble(discountText);
 			int rankValue=Integer.parseInt(rankText);
 			int couponValue=Integer.parseInt(couponText);

@@ -351,7 +351,7 @@ public class MainApp extends Application {
 			} else if (result.get() == buttonTypePrice) {
 			    type="Price";
 			} else {
-			    return;
+				type="Package";
 			}
 			FXMLLoader loader=new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("/presentation/promotionui/"+type+"PromotionUI.fxml"));

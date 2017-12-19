@@ -22,9 +22,9 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import vo.PricePromotionVO;
+import vo.PackagePromotionVO;
 
-public class PricePromotionViewController implements Initializable{
+public class PackagePromotionViewController implements Initializable{
 	@FXML
 	private Label id;
 	@FXML
@@ -34,18 +34,16 @@ public class PricePromotionViewController implements Initializable{
 	@FXML
 	private Button back;
 	
-	private ObservableList<PricePromotionData> promotionData =FXCollections.observableArrayList();
+	private ObservableList<PackagePromotionData> promotionData =FXCollections.observableArrayList();
 	
 	@FXML
-	private TableView<PricePromotionData> promotionTable;
+	private TableView<PackagePromotionData> promotionTable;
 	@FXML
-	private TableColumn<PricePromotionData,String> pricelineCol;
+	private TableColumn<PackagePromotionData,String> discountCol;
 	@FXML
-	private TableColumn<PricePromotionData,String> giftCol;
-	@FXML
-	private TableColumn<PricePromotionData,String> couponCol;
+	private TableColumn<PackagePromotionData,String> commodityCol;
 	
-	private PricePromotionVO pricePromotionVO;
+	private PackagePromotionVO packagePromotionVO;
 	
 	private PromotionController pcon=new PromotionController();
 	@Override
@@ -56,15 +54,14 @@ public class PricePromotionViewController implements Initializable{
 			idString="0"+idString;
 		}
 		id.setText("ID:"+idString);
-		ArrayList<PricePromotionVO> list=pcon.findPricePromotions();
-		for(PricePromotionVO p:list){
-			promotionData.add(new PricePromotionData(p));
+		ArrayList<PackagePromotionVO> list=pcon.findPackagePromotions();
+		for(PackagePromotionVO p:list){
+			promotionData.add(new PackagePromotionData(p));
 		}
 		promotionTable.getSelectionModel().selectedItemProperty().addListener(
 	            (observable, oldValue, newValue) -> getInf(newValue));
-		pricelineCol.setCellValueFactory(cellData ->cellData.getValue().getPricelineProperty());
-		giftCol.setCellValueFactory(cellData ->cellData.getValue().getGiftProperty());
-		couponCol.setCellValueFactory(cellData ->cellData.getValue().getCouponProperty());
+		discountCol.setCellValueFactory(cellData ->cellData.getValue().getDiscountProperty());
+		commodityCol.setCellValueFactory(cellData ->cellData.getValue().getCommodityProperty());
 		promotionTable.setItems(promotionData);
 	}
 	@FXML 
@@ -75,15 +72,15 @@ public class PricePromotionViewController implements Initializable{
 	public void add(){
 		try {
 			FXMLLoader loader=new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("/presentation/promotionui/SimplePricePromotion.fxml"));
+			loader.setLocation(MainApp.class.getResource("/presentation/promotionui/SimplePackagePromotion.fxml"));
 			AnchorPane promotionUI=loader.load();
 			Scene scene=new Scene(promotionUI);
 			Stage promotionStage=new Stage();
-			promotionStage.setTitle("Create PricePromotion");
+			promotionStage.setTitle("Create PackagePromotion");
 			promotionStage.initModality(Modality.WINDOW_MODAL);
 			promotionStage.initOwner(MainApp.getPrimaryStage());
 			promotionStage.setScene(scene);
-            SimplePricePromotionController controller=loader.getController();
+            SimplePackagePromotionController controller=loader.getController();
             controller.setStage(promotionStage);
             promotionStage.showAndWait();
             
@@ -91,20 +88,20 @@ public class PricePromotionViewController implements Initializable{
 			e.printStackTrace();
 		}
 	}
-	private void getInf(PricePromotionData newValue) {
-		pricePromotionVO=newValue.getVO();
+	private void getInf(PackagePromotionData newValue) {
+		packagePromotionVO=newValue.getVO();
 	}
 	@FXML
 	public void delete(){
 		int index=promotionTable.getSelectionModel().getSelectedIndex();
 		if(index>=0){
-			pcon.deletePricePromotion(pricePromotionVO);
+			pcon.deletePackagePromotion(packagePromotionVO);
 			promotionTable.getItems().remove(index);
 		}else {
 	        Alert alert = new Alert(AlertType.WARNING);
 	        alert.initOwner(MainApp.getPrimaryStage());
 	        alert.setTitle("No Selection");
-	        alert.setHeaderText("No PricePromotion Selected");
+	        alert.setHeaderText("No PackagePromotion Selected");
 	        alert.setContentText("Please select a promotion in the table.");
 	        alert.showAndWait();
 	    }

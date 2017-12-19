@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import businesslogic.commoditybl.CommodityController;
 import businesslogic.memberbl.MemberController;
 import businesslogic.promotionbl.PromotionController;
+import businesslogic.utilitybl.Utility;
 import po.CashBillPO;
 import po.MemberPromotionPO;
 import po.SaleBillPO;
@@ -51,8 +52,7 @@ public class SaleBill{
 				GiftBillController gcon=new GiftBillController();
 				WarningBillController wcon=new WarningBillController();
 				//生成一个单据id以备用
-				java.util.Date now=new java.util.Date();
-				long billid=Long.parseLong(new SimpleDateFormat("yyyyMMddHHmmss").format(now));
+				long billid=Utility.creatID();
 				//修改库存数量,最近售价,如果少于警戒量则生成报警单
 				CommodityList list=vo.getList();
 				for(int i=0;i<list.getListSize();i++){
@@ -65,7 +65,7 @@ public class SaleBill{
 					}
 				}
 				WarningBillVO warningBill=new WarningBillVO(billid,vo.getUserID(),
-						new CommodityList(),new Date(now.getTime()),0);
+						new CommodityList(),new Date(Utility.getNow().getTime()),0);
 				for(int i=0;i<list.getListSize();i++){
 					long commodityid=list.get(i).getCommodityID();
 					CommodityVO commodityVO=ccon.findCommodityByID(commodityid);
@@ -103,7 +103,7 @@ public class SaleBill{
 						giftList.addCommodity(new CommodityLineItem(num,giftid,salePrice,importPrice));
 					}
 				}
-				gcon.submitGiftBill(new GiftBillVO(billid,vo.getUserID(),vo.getMemberID(),giftList,new Date(now.getTime()),0));
+				gcon.submitGiftBill(new GiftBillVO(billid,vo.getUserID(),vo.getMemberID(),giftList,new Date(Utility.getNow().getTime()),0));
 			}else{
 				vo.setState(2);
 			}
