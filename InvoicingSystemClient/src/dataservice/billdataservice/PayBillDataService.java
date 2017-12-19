@@ -16,4 +16,5 @@ public interface PayBillDataService extends Remote {
 	public ArrayList<PayBillPO> findPayBillbyTime(Date time) throws RemoteException;
 	public ArrayList<PayBillPO> findPayBillbyState(int state) throws RemoteException;
 	public ArrayList<PayBillPO> findPayBillbyField(String user,String member) throws RemoteException;
+	public ArrayList<PayBillPO> findPayBillbyUser(long userid) throws RemoteException;
 }

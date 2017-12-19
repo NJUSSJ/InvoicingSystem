@@ -16,5 +16,6 @@ public interface ReceiveBillDataService extends Remote{
 	public ArrayList<ReceiveBillPO> findReceiveBillbyTime(Date time) throws RemoteException;
 	public ArrayList<ReceiveBillPO> findReceiveBillbyState(int state) throws RemoteException;
 	public ArrayList<ReceiveBillPO> findReceiveBillbyField(String user,String member) throws RemoteException;
-
+	public ArrayList<ReceiveBillPO> findReceiveBillbyUser(long userid) throws RemoteException;
+	
 }

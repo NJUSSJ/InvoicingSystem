@@ -17,6 +17,6 @@ public interface CashBillDataService extends Remote {
 	public ArrayList<CashBillPO> findCashBillbyTime(Date time) throws RemoteException;
 	public ArrayList<CashBillPO> findCashBillbyState(int state) throws RemoteException;
 	public ArrayList<CashBillPO> findCashBillbyField(String user) throws RemoteException;
-	public ArrayList<WarningBillPO> findWarningBillbyField(String user) throws RemoteException;
-
+	
+	public ArrayList<CashBillPO> findCashBillbyUser(long userid) throws RemoteException;
 }
