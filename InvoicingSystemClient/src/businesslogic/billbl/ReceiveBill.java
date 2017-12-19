@@ -16,6 +16,9 @@ import vo.ReceiveBillVO;
 public class ReceiveBill{
 
 	public ReceiveBillVO toReceiveBillVO(ReceiveBillPO po) {
+		if(po==null){
+			return null;
+		}
 		AccountList list=new AccountList(po.getAccountList());
 		return new ReceiveBillVO(po.getID(),po.getUserID(),po.getMemberID(),list,po.getSum(),po.getTime(),po.getState());
 	}

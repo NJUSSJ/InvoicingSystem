@@ -93,7 +93,6 @@ public class PricePromotionViewController implements Initializable{
 		}
 	}
 	private void getInf(PricePromotionData newValue) {
-		// TODO 自动生成的方法存根
 		pricePromotionVO=newValue.getVO();
 	}
 	@FXML

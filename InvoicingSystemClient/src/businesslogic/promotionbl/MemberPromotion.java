@@ -60,6 +60,9 @@ public class MemberPromotion {
 		return result;
 	}
 	public MemberPromotionVO toMemberPromotionVO(MemberPromotionPO memberPromotionPO){
+		if(memberPromotionPO==null){
+			return null;
+		}
 		return new MemberPromotionVO(memberPromotionPO.getID(),memberPromotionPO.getRank(),
 	memberPromotionPO.getDiscount(),new CommodityList(memberPromotionPO.getGifts()),memberPromotionPO.getCoupon());
 	}

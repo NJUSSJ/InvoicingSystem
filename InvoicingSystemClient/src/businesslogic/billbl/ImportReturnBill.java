@@ -22,6 +22,9 @@ import vo.WarningBillVO;
 public class ImportReturnBill {
 
 	public ImportReturnBillVO toImportReturnBillVO(ImportReturnBillPO po) {
+		if(po==null){
+			return null;
+		}
 		CommodityList list=new CommodityList(po.getCommodityList());
 		return new ImportReturnBillVO(po.getID(),po.getUserID(),po.getMemberID(),list,po.getSum(),po.getState(),
 				po.getTime(),po.getRemark());

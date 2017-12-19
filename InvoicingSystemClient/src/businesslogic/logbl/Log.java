@@ -9,17 +9,14 @@ import vo.LogVO;
 
 public class Log{
 	public boolean addLog(LogVO vo) {
-		// TODO 自动生成的方法存根
 		try {
 			return RemoteHelper.getInstance().getLogDataService().insert(vo.toLogPO());
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return false;
 	}
 	public ArrayList<LogVO> findLogs() {
-		// TODO 自动生成的方法存根
 		ArrayList<LogVO> temp=null;
 		ArrayList<LogPO> logs;
 		try {
@@ -29,13 +26,11 @@ public class Log{
 				temp.add(toLogVO(logs.get(i)));
 			}
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return temp;
 	}
 	public ArrayList<LogVO> findLogByUserID(long userid) {
-		// TODO 自动生成的方法存根
 		ArrayList<LogVO> temp=null;
 		ArrayList<LogPO> logs;
 		try {
@@ -45,13 +40,11 @@ public class Log{
 				temp.add(toLogVO(logs.get(i)));
 			}
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return temp;
 	}
 	public ArrayList<LogVO> findLogByType(String type) {
-		// TODO 自动生成的方法存根
 		ArrayList<LogVO> temp=null;
 		ArrayList<LogPO> logs;
 		try {
@@ -61,13 +54,15 @@ public class Log{
 			temp.add(toLogVO(logs.get(i)));
 			}
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		
 		return temp;
 	}
 	public LogVO toLogVO(LogPO logPO){
+		if(logPO==null){
+			return null;
+		}
 		return new LogVO(logPO.getID(),logPO.getTime(),logPO.getType(),logPO.getUserID());
 	}
 }

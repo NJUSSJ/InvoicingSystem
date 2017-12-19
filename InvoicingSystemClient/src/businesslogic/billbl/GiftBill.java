@@ -13,6 +13,9 @@ import vo.GiftBillVO;
 public class GiftBill {
 
 	public GiftBillVO toGiftBillVO(GiftBillPO giftBillPO) {
+		if(giftBillPO==null){
+			return null;
+		}
 		CommodityList list=new CommodityList(giftBillPO.getGiftList());
 		return new GiftBillVO(giftBillPO.getID(),giftBillPO.getUserID(),giftBillPO.getMemberID(),
 				list,giftBillPO.getTime(),giftBillPO.getState());

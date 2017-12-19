@@ -25,7 +25,6 @@ public class StockCheckInfoVO {
 	
 	public StockCheckInfoVO(long id,String name,String model,int outStockNum,int inStockNum,
 			double outSum,double inSum,int saleNum,int importNum,double saleSum,double importSum) {
-		// TODO Auto-generated constructor stub
 		this.id=new SimpleLongProperty(id);
 		this.name=new SimpleStringProperty(name);
 		this.model=new SimpleStringProperty(model);

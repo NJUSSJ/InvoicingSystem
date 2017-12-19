@@ -14,7 +14,6 @@ public class PricePromotion {
 			return RemoteHelper.getInstance().getPricePromotionDataService().
 					insert(pricePromotionVO.toPricePromotionPO());
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return false;
@@ -25,7 +24,6 @@ public class PricePromotion {
 			return RemoteHelper.getInstance().getPricePromotionDataService().
 					delete(pricePromotionVO.toPricePromotionPO());
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return false;
@@ -41,13 +39,15 @@ public class PricePromotion {
 				temp.add(toPricePromotionVO(pp.get(i)));
 			}
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return temp;
 		
 	}
 	public PricePromotionVO toPricePromotionVO(PricePromotionPO pricePromotionPO){
+		if(pricePromotionPO==null){
+			return null;
+		}
 		return new PricePromotionVO(pricePromotionPO.getID(),pricePromotionPO.getPriceline(),
 				new CommodityList(pricePromotionPO.getGifts()),pricePromotionPO.getCoupon());
 	}

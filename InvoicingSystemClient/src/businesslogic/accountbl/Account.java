@@ -48,6 +48,9 @@ public class Account{
 	}
 	
 	public AccountVO toAccountVO(AccountPO accountPO){
+		if(accountPO==null){
+			return null;
+		}
 		return new AccountVO(accountPO.getID(),accountPO.getDeposit(),accountPO.getName());
 	}
 

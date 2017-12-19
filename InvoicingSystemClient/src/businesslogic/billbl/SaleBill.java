@@ -25,6 +25,9 @@ import vo.WarningBillVO;
 public class SaleBill{
 
 	public SaleBillVO toSaleBillVO(SaleBillPO po) {
+		if(po==null){
+			return null;
+		}
 		CommodityList list=new CommodityList(po.getCommodityList());
 		return new SaleBillVO(po.getID(),po.getUserID(),po.getMemberID(),list,po.getSum(),po.getState(),
 	po.getTime(),po.getRemark(),po.getCoupon(),po.getDiscount(),po.getUltimate(),po.getMoney());

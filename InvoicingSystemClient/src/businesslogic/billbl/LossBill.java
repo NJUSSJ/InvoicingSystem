@@ -13,6 +13,9 @@ import vo.LossBillVO;
 
 public class LossBill{
 	public LossBillVO toLossBillVO(LossBillPO lossBillPO) {
+		if(lossBillPO==null){
+			return null;
+		}
 		return new LossBillVO(lossBillPO.getID(),lossBillPO.getUserID(),lossBillPO.getName(),lossBillPO.getTime(),lossBillPO.getState(),lossBillPO.getNum(),lossBillPO.getSum());
 	}
 	public boolean submitLossBill(LossBillVO lossBill) {
