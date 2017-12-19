@@ -195,4 +195,27 @@ public class WarningBillDataImpl implements WarningBillDataService {
 		return null;
 	}
 
+	@Override
+	public ArrayList<WarningBillPO> findWarningBillbyUser(long userid) throws RemoteException {
+		String sql="select * from warningbills";
+		ArrayList<WarningBillPO> results=new ArrayList<>();
+		try {
+			ResultSet result=DataFactory.statement.executeQuery(sql);
+			
+			while(result.next()) {
+				long id=result.getLong("id");
+				Date time=result.getDate("time");
+				String commoditylist=result.getString("commoditylist");
+				int state=result.getInt("state");
+				WarningBillPO tmpPO=new WarningBillPO(id, userid, commoditylist, time, state);
+				results.add(tmpPO);
+			}
+			
+			return results;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }

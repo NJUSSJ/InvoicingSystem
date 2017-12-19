@@ -204,4 +204,33 @@ public class CashBillDataImpl implements CashBillDataService{
 		return null;
 	}
 
+	@Override
+	public ArrayList<CashBillPO> findCashBillbyUser(long userid) throws RemoteException {
+		
+		String sql="select * from cashbills where userid='"+userid+"'";
+		
+		ArrayList<CashBillPO> results=new ArrayList<>();
+		try {
+			ResultSet result=DataFactory.statement.executeQuery(sql);
+			
+			while(result.next()) {
+				String id=result.getString("id");
+				int state=result.getInt("state");
+				String items=result.getString("items");
+				Date time=result.getDate("time");
+				double sum=result.getDouble("sum");
+				long accountid=result.getLong("accountid");
+				CashBillPO tmpPO=new CashBillPO(id, userid, accountid, items, state, time, sum);
+				
+				if(state==1)
+				results.add(tmpPO);
+			}
+			
+			return results;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }

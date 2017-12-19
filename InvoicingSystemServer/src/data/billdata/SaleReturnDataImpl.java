@@ -220,4 +220,32 @@ String sql="delete from salereturnbills where id='"+po.getID()+"')";
 		return null;
 	}
 
+	@Override
+	public ArrayList<SaleReturnBillPO> findSaleReturnBillbyUser(long userid) throws RemoteException {
+		String sql="select * from salebills where userid='"+userid+"'";
+		
+		ArrayList<SaleReturnBillPO> results=new ArrayList<>();
+		try {
+			ResultSet result=DataFactory.statement.executeQuery(sql);
+			
+			while(result.next()) {
+				String id=result.getString("id");
+				String commoditylist=result.getString("commoditylist");
+				double sum=result.getDouble("sum");
+				Date time=result.getDate("time");
+				int state =result.getInt("state");
+				int num=result.getInt("num");
+				String remark=result.getString("remark");
+				long memberid=result.getLong("memberid");
+				
+				SaleReturnBillPO tmpPO=new SaleReturnBillPO(id, userid, memberid, commoditylist, sum, state, time, num, remark);
+				if(state==1)
+				results.add(tmpPO);
+			}
+			return results;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}		return null;
+	}
+
 }

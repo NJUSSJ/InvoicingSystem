@@ -16,4 +16,6 @@ public interface SaleReturnBillDataService extends Remote{
 	public ArrayList<SaleReturnBillPO> findSaleReturnBillbyTime(Date time) throws RemoteException;
 	public ArrayList<SaleReturnBillPO> findSaleReturnBillbyState(int state) throws RemoteException;
 	public ArrayList<SaleReturnBillPO> findSaleReturnBillbyField(String usesr,String member) throws RemoteException;
+	public ArrayList<SaleReturnBillPO> findSaleReturnBillbyUser(long userid) throws RemoteException;
+
 }

@@ -6,7 +6,6 @@ import java.sql.Date;
 import java.util.ArrayList;
 
 import po.CashBillPO;
-import po.WarningBillPO;
 
 public interface CashBillDataService extends Remote {
 	public boolean insert(CashBillPO po) throws RemoteException;

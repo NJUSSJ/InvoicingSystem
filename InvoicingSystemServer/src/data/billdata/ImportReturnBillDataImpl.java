@@ -242,4 +242,37 @@ String sql="select * from importreturnbills where id='"+id+"'";
 		
 	}
 
+	@Override
+	public ArrayList<ImportReturnBillPO> findImportReturnBillbyUser(long userid) throws RemoteException {
+	String sql="select * from importreturnbills where userid='"+userid+"'";
+		
+		ArrayList<ImportReturnBillPO> results=new ArrayList<>();
+		
+		try {
+			ResultSet result=DataFactory.statement.executeQuery(sql);
+			
+			while(result.next()) {
+				String id=result.getString("id");
+				
+				double sum=result.getDouble("sum");
+				Date time=result.getDate("time");
+				String commoditylist=result.getString("commoditylist");
+				int num=result.getInt("num");
+				String remark=result.getString("remark");
+				int state=result.getInt("state");
+				long memberid=result.getLong("memberid");
+				ImportReturnBillPO tmpPO=new ImportReturnBillPO(id, userid, memberid, commoditylist, sum, time, state, num, remark);
+				
+				if(state==1)
+				results.add(tmpPO);
+				
+			}
+			
+			return results;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }

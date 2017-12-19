@@ -231,4 +231,34 @@ public class ReceiveBillDataImpl implements ReceiveBillDataService{
 		return null;
 	}
 
+	@Override
+	public ArrayList<ReceiveBillPO> findReceiveBillbyUser(long userid) throws RemoteException {
+		String sql="select * from receivebills where userid='"+userid+"'";
+		ArrayList<ReceiveBillPO> results=new ArrayList<>();
+		try {
+			ResultSet result=DataFactory.statement.executeQuery(sql);
+			
+			while(result.next()) {
+				String id=result.getString("id");
+				
+				
+				String accountlist=result.getString("commoditylist");
+				double sum=result.getDouble("sum");
+				Date time=result.getDate("time");
+				int state=result.getInt("state");
+				long memberid=result.getLong("memberid");
+				
+				ReceiveBillPO tmpPO=new ReceiveBillPO(id, userid, memberid, accountlist, sum, time, state);
+				
+				if(state==1)
+				results.add(tmpPO);
+				
+				
+			}
+			return results;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}		return null;
+	}
+
 }

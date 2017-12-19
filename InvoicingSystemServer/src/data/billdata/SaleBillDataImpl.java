@@ -247,4 +247,36 @@ public class SaleBillDataImpl implements SaleBillDataService{
 		return null;
 	}
 
+	@Override
+	public ArrayList<SaleBillPO> findSaleBillbyUser(long userid) throws RemoteException {
+		String sql="select * from salebills where userid='"+userid+"'";
+		
+		ArrayList<SaleBillPO> results=new ArrayList<>();
+		try {
+			ResultSet result=DataFactory.statement.executeQuery(sql);
+			
+			while(result.next()) {
+				String id=result.getString("id");
+				String commoditylist=result.getString("commoditylist");
+				double sum=result.getDouble("sum");
+				Date time=result.getDate("time");
+				int state =result.getInt("state");
+				int num=result.getInt("num");
+				String remark=result.getString("remark");
+				
+				int coupon=result.getInt("coupon");
+				double discount=result.getDouble("discount");
+				double ultimate=result.getDouble("ultimate");
+				int money=result.getInt("money");
+				long memberid=result.getLong("memberid");
+				SaleBillPO tmpPO=new SaleBillPO(id, userid, memberid, commoditylist, sum, state, time, num, remark, coupon, discount, ultimate,money);				if(state==1)
+				results.add(tmpPO);
+			}
+			return results;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }

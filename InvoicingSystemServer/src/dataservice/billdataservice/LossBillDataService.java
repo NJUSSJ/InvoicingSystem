@@ -16,4 +16,6 @@ public interface LossBillDataService extends Remote{
 	public ArrayList<LossBillPO> findLossBills() throws RemoteException;
 	public ArrayList<LossBillPO> findLossBillbyTime(Date time) throws RemoteException;
 	public ArrayList<LossBillPO> findLossBillbyField(String user) throws RemoteException;
+	public ArrayList<LossBillPO> findLossBillbyUser(long userid) throws RemoteException;
+
 }

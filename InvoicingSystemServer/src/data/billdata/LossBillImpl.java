@@ -220,4 +220,33 @@ public class LossBillImpl implements LossBillDataService {
 		return null;
 	}
 
+	@Override
+	public ArrayList<LossBillPO> findLossBillbyUser(long userid) throws RemoteException {
+		String sql="select * from lossbills where userid='"+userid+"'";
+		ArrayList<LossBillPO> results=new ArrayList<>();
+		try {
+			ResultSet result=DataFactory.statement.executeQuery(sql);
+			while(result.next()) {
+				
+				
+				String commodityname=result.getString("commodityname");
+				Date time=result.getDate("time");
+				long id=result.getLong("id");
+				int state=result.getInt("state");
+				int num=result.getInt("num");
+				double sum=result.getDouble("sum");
+			
+				LossBillPO tmpPO=new LossBillPO(id, userid, commodityname, time, state, num,sum);
+				
+				if(state==1)
+				results.add(tmpPO);
+			}
+			return results;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }

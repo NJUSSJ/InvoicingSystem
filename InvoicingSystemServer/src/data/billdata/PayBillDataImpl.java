@@ -231,4 +231,35 @@ public class PayBillDataImpl implements PayBillDataService {
 		return null;
 	}
 
+	@Override
+	public ArrayList<PayBillPO> findPayBillbyUser(long userid) throws RemoteException {
+		String sql="select * from paybills where userid="+userid+"'";
+		ArrayList<PayBillPO> results=new ArrayList<>();
+		try {
+			ResultSet result=DataFactory.statement.executeQuery(sql);
+			
+			while(result.next()) {
+				String id=result.getString("id");
+				
+				String accountlist=result.getString("commoditylist");
+				double sum=result.getDouble("sum");
+				Date time=result.getDate("time");
+				int state=result.getInt("state");
+				long memberid=result.getLong("memberid");
+				
+				PayBillPO tmpPO=new PayBillPO(id, userid, memberid, accountlist, sum, time, state);
+				
+				if(state==1)
+				results.add(tmpPO);
+				
+				
+			}
+			return results;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+
 }

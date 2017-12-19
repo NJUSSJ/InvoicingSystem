@@ -217,4 +217,31 @@ public class OverBillDataImpl implements OverBillDataService {
 		return null;
 	}
 
+	@Override
+	public ArrayList<OverBillPO> findOverBillbyUser(long userid) throws RemoteException {
+		String sql="select * from overbills where userid='"+userid+"'";
+		ArrayList<OverBillPO> results=new ArrayList<>();
+		try {
+			ResultSet result=DataFactory.statement.executeQuery(sql);
+			while(result.next()) {
+				
+				
+				String commodityname=result.getString("commodityname");
+				Date time=result.getDate("time");
+				long id=result.getLong("id");
+				int state=result.getInt("state");
+				int num=result.getInt("num");
+				double sum=result.getDouble("sum");
+				OverBillPO tmpPO=new OverBillPO(id, userid, commodityname, time, state,num,sum);
+							
+				if(state==1)
+				results.add(tmpPO);
+			}
+			return results;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}		return null;
+	}
+
 }

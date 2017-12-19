@@ -248,4 +248,38 @@ public class ImportBillDataImpl implements ImportBillDataService {
 		return null;
 	}
 
+	@Override
+	public ArrayList<ImportBillPO> findImportBillsByUser(long userid) throws RemoteException {
+		String sql="select * from importbills where userid='"+userid+"'";
+		
+		ArrayList<ImportBillPO> results=new ArrayList<>();
+		
+		try {
+			ResultSet result=DataFactory.statement.executeQuery(sql);
+			
+			while(result.next()) {
+				String id=result.getString("id");
+				double sum=result.getDouble("sum");
+				Date time=result.getDate("time");
+				String commoditylist=result.getString("commoditylist");
+				int num=result.getInt("num");
+				String remark=result.getString("remark");
+				int state=result.getInt("state");
+				long memberid=result.getLong("memberid");
+				ImportBillPO tmpPO=new ImportBillPO(id, userid, memberid, commoditylist, sum, time, state, num, remark);
+				
+				if(state==1)
+				results.add(tmpPO);
+				
+			}
+			
+			return results;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+		
+	}
+
 }

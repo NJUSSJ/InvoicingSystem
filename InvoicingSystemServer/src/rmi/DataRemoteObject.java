@@ -934,5 +934,60 @@ public class DataRemoteObject extends UnicastRemoteObject implements UserDataSer
 		
 		return categoryservice.findCategorybyName(Name);
 	}
+
+	@Override
+	public ArrayList<SaleReturnBillPO> findSaleReturnBillbyUser(long userid) throws RemoteException {
+		return salereturnbillservice.findSaleReturnBillbyUser(userid);
+	}
+
+	@Override
+	public ArrayList<SaleBillPO> findSaleBillbyUser(long userid) throws RemoteException {
+		return salebillservice.findSaleBillbyUser(userid);
+	}
+
+	@Override
+	public ArrayList<WarningBillPO> findWarningBillbyUser(long userid) throws RemoteException {
+		return warningbillservice.findWarningBillbyUser(userid);
+	}
+
+	@Override
+	public ArrayList<ReceiveBillPO> findReceiveBillbyUser(long userid) throws RemoteException {
+		return receivebillservice.findReceiveBillbyUser(userid);
+	}
+
+	@Override
+	public ArrayList<PayBillPO> findPayBillbyUser(long userid) throws RemoteException {
+		return paybillservice.findPayBillbyUser(userid);
+	}
+
+	@Override
+	public ArrayList<OverBillPO> findOverBillbyUser(long userid) throws RemoteException {
+		return overbillservice.findOverBillbyUser(userid);
+	}
+
+	@Override
+	public ArrayList<LossBillPO> findLossBillbyUser(long userid) throws RemoteException {
+		return lossbillservice.findLossBillbyUser(userid);
+	}
+
+	@Override
+	public ArrayList<ImportReturnBillPO> findImportReturnBillbyUser(long userid) throws RemoteException {
+		return importreturnbillservice.findImportReturnBillbyUser(userid);
+	}
+
+	@Override
+	public ArrayList<ImportBillPO> findImportBillsByUser(long userid) throws RemoteException {
+		return importbillservice.findImportBillsByUser(userid);
+	}
+
+	@Override
+	public ArrayList<GiftBillPO> findGiftBillbyUser(long userid) throws RemoteException {
+		return giftbillservice.findGiftBillbyUser(userid);
+	}
+
+	@Override
+	public ArrayList<CashBillPO> findCashBillbyUser(long userid) throws RemoteException {
+		return cashbillservice.findCashBillbyUser(userid);
+	}
 	
 }

@@ -222,6 +222,35 @@ public class GiftBillDataImpl implements GiftBillDataService {
 		
 	}
 
+	@Override
+	public ArrayList<GiftBillPO> findGiftBillbyUser(long userid) throws RemoteException {
+		
+		String sql="select * from giftbills where userid='"+userid+"'";
+		
+		ArrayList<GiftBillPO> results=new ArrayList<>();
+		
+		try {
+			ResultSet result=DataFactory.statement.executeQuery(sql);
+			
+			while(result.next()) {
+				long id=result.getLong("id");
+				Date time=result.getDate("time");
+				String giftlist=result.getString("giftlist");
+				int state=result.getInt("state");
+				long memberid=result.getLong("memberid");
+				GiftBillPO tmpPO=new GiftBillPO(id, userid, memberid, giftlist, time, state);
+				if(state==1)
+				results.add(tmpPO);
+			}
+			
+			return results;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return null;		
+	}
+
 	
 
 	
