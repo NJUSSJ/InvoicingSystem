@@ -117,6 +117,19 @@ public class CommodityList {
 		return temp;
 	}
 	/**
+	 * 返回每个item的商品名称
+	 * @return 形式为"name name name..."的字符串
+	 */
+	public String getNameInfo(){
+		String temp="";
+		CommodityController ccon=new CommodityController();
+		for(CommodityLineItem each:list){
+			CommodityVO vo=ccon.findCommodityByID(each.getCommodityID());
+			temp+=vo.getName()+" ";
+		}
+		return temp;
+	}
+	/**
 	 * @return 返回指定id的商品是否在list中
 	 */
 	public boolean hasCommodity(long id){

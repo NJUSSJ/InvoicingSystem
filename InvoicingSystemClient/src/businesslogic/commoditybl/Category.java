@@ -43,6 +43,11 @@ public class Category {
 		return null;
 	}
 	public CategoryVO findCategoryByName(String name){
+		try {
+			return toCategoryVO(RemoteHelper.getInstance().getCategoryDataService().findCategorybyName(name));
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 	public CategoryVO toCategoryVO(CategoryPO categoryPO){
