@@ -45,7 +45,7 @@ public class SaleBill{
 		}
 		return false;
 	}
-	public boolean checkSaleBill(boolean pass, long id) {
+	public boolean checkSaleBill(boolean pass, String id) {
 		try {
 			SaleBillVO vo=toSaleBillVO(RemoteHelper.getInstance().getSaleBillDataService().findSaleBillbyID(id));
 			if(pass){
@@ -98,7 +98,7 @@ public class SaleBill{
 					wcon.submitWarningBill(warningBill);
 				}
 				//修改销售单里进货商的应付
-				MemberVO member=memberCon.findMemberByID(id);
+				MemberVO member=memberCon.findMemberByID(vo.getMemberID());
 				double money=vo.getSum()+member.getShouldPay();
 				member.setShouldPay(money);
 				memberCon.updateMember(member);
@@ -136,7 +136,7 @@ public class SaleBill{
 		}
 		return false;
 	}
-	public SaleBillVO findSaleBillByID(long id) {
+	public SaleBillVO findSaleBillByID(String id) {
 		try {
 			return toSaleBillVO(RemoteHelper.getInstance().getSaleBillDataService().findSaleBillbyID(id));
 		} catch (RemoteException e) {

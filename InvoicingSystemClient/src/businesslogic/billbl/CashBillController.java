@@ -20,7 +20,7 @@ public class CashBillController implements CashBillBLService{
 	}
 
 	@Override
-	public boolean checkCashBill(boolean pass,long id) {
+	public boolean checkCashBill(boolean pass,String id) {
 		return cashBillImpl.checkCashBill(pass, id);
 	}
 
@@ -57,6 +57,11 @@ public class CashBillController implements CashBillBLService{
 	@Override
 	public ArrayList<CashBillVO> findCashBillsByUser(long userid) {
 		return cashBillImpl.findCashBillsByUser(userid);
+	}
+
+	@Override
+	public CashBillVO findCashBillByID(String id) {
+		return null;
 	}
 	
 

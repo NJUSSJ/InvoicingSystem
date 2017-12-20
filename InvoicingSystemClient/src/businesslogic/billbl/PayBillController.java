@@ -20,7 +20,7 @@ public class PayBillController implements PayBillBLService{
 	}
 
 	@Override
-	public boolean checkPayBill(boolean pass, long id) {
+	public boolean checkPayBill(boolean pass, String id) {
 		return payBillImpl.checkPayBill(pass, id);
 	}
 
@@ -30,7 +30,7 @@ public class PayBillController implements PayBillBLService{
 	}
 
 	@Override
-	public PayBillVO findPayBillByID(long id) {
+	public PayBillVO findPayBillByID(String id) {
 		return payBillImpl.findPayBillByID(id);
 	}
 

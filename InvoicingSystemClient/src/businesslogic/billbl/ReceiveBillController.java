@@ -20,7 +20,7 @@ public class ReceiveBillController implements ReceiveBillBLService{
 	}
 
 	@Override
-	public boolean checkReceiveBill(boolean pass, long id) {
+	public boolean checkReceiveBill(boolean pass, String id) {
 		return receiveBillImpl.checkReceiveBill(pass, id);
 	}
 
@@ -30,7 +30,7 @@ public class ReceiveBillController implements ReceiveBillBLService{
 	}
 
 	@Override
-	public ReceiveBillVO findReceiveBillByID(long id) {
+	public ReceiveBillVO findReceiveBillByID(String id) {
 		return receiveBillImpl.findReceiveBillByID(id);
 	}
 

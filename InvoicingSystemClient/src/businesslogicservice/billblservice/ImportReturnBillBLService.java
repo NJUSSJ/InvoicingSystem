@@ -9,9 +9,9 @@ import vo.ImportReturnBillVO;
 public interface ImportReturnBillBLService {
 	public ImportReturnBillVO toImportReturnBillVO(ImportReturnBillPO po);
 	public boolean submitImportReturnBill(ImportReturnBillVO importReturnBill);
-	public boolean checkImportReturnBill(boolean pass,long id);
+	public boolean checkImportReturnBill(boolean pass,String id);
 	public boolean deleteImportReturnBill(ImportReturnBillVO importReturnBill);
-	public ImportReturnBillVO findImportReturnBillByID(long id);
+	public ImportReturnBillVO findImportReturnBillByID(String id);
 	public ArrayList<ImportReturnBillVO> findImportReturnBillByTime(Date time);
 	public ArrayList<ImportReturnBillVO> findImportReturnBills();
 	public ArrayList<ImportReturnBillVO> findImportReturnBillsByInterval(Date begin,Date end);

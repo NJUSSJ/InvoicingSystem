@@ -34,7 +34,7 @@ public class SaleReturnBill{
 		}
 		return false;
 	}
-	public boolean checkSaleReturnBill(boolean pass, long id) {
+	public boolean checkSaleReturnBill(boolean pass,String id) {
 		try {
 			SaleReturnBillVO vo=toSaleReturnBillVO(RemoteHelper.getInstance().getSaleReturnBillDataService().findSaleReturnBillbyID(id));
 			if(pass){
@@ -72,7 +72,7 @@ public class SaleReturnBill{
 		}
 		return false;
 	}
-	public SaleReturnBillVO findSaleReturnBillByID(long id) {
+	public SaleReturnBillVO findSaleReturnBillByID(String id) {
 		try {
 			return toSaleReturnBillVO(RemoteHelper.getInstance().getSaleReturnBillDataService().findSaleReturnBillbyID(id));
 		} catch (RemoteException e) {

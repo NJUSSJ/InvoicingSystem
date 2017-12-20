@@ -32,13 +32,13 @@ public class ReceiveBill{
 		}
 		return false;
 	}
-	public boolean checkReceiveBill(boolean pass, long id) {
+	public boolean checkReceiveBill(boolean pass, String id) {
 		try {
 			ReceiveBillVO vo=toReceiveBillVO(RemoteHelper.getInstance().getReceiveBillDataService().findReceiveBillbyID(id));
 			if(pass){
 				vo.setState(1);
 				MemberController memberCon=new MemberController();
-				MemberVO member=memberCon.findMemberByID(id);
+				MemberVO member=memberCon.findMemberByID(vo.getMemberID());
 				double money=member.getShouldPay()-vo.getSum();
 				member.setShouldPay(money);
 				memberCon.updateMember(member);
@@ -59,7 +59,7 @@ public class ReceiveBill{
 		}
 		return false;
 	}
-	public ReceiveBillVO findReceiveBillByID(long id) {
+	public ReceiveBillVO findReceiveBillByID(String id) {
 		try {
 			return toReceiveBillVO(RemoteHelper.getInstance().getReceiveBillDataService().findReceiveBillbyID(id));
 		} catch (RemoteException e) {

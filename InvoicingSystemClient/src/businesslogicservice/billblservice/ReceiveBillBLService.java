@@ -9,9 +9,9 @@ import vo.ReceiveBillVO;
 public interface ReceiveBillBLService {
 	public ReceiveBillVO toReceiveBillVO(ReceiveBillPO po);
 	public boolean submitReceiveBill(ReceiveBillVO receiveBill);
-	public boolean checkReceiveBill(boolean pass,long id);
+	public boolean checkReceiveBill(boolean pass,String id);
 	public boolean deleteReceiveBill(ReceiveBillVO payBill);
-	public ReceiveBillVO findReceiveBillByID(long id);
+	public ReceiveBillVO findReceiveBillByID(String id);
 	public ArrayList<ReceiveBillVO> findReceiveBillByTime(Date time);
 	public ArrayList<ReceiveBillVO> findReceiveBills();
 	public ArrayList<ReceiveBillVO> findReceiveBillsByInterval(Date begin,Date end);

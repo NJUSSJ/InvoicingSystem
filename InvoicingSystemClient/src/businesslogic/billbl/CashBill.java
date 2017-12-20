@@ -30,7 +30,7 @@ public class CashBill{
 		}
 		return false;
 	}
-	public boolean checkCashBill(boolean pass,long id) {
+	public boolean checkCashBill(boolean pass,String id) {
 		try {
 			CashBillVO cashBillVO=toCashBillVO(RemoteHelper.getInstance().
 				getCashBillDataService().findCashBillbyID(id));
@@ -55,7 +55,6 @@ public class CashBill{
 	}
 	public ArrayList<CashBillVO> findCashBillByTime(Date time) {
 		ArrayList<CashBillVO> temp=null;
-		
 		try {
 			temp=new ArrayList<CashBillVO>();
 			ArrayList<CashBillPO> cashBills;
@@ -129,5 +128,12 @@ public class CashBill{
 		}
 		return result;
 	}
-	
+	public CashBillVO findCashBillByID(String id){
+		try {
+			return toCashBillVO(RemoteHelper.getInstance().getCashBillDataService().findCashBillbyID(id));
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

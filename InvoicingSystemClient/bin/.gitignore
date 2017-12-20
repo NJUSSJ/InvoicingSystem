@@ -6,5 +6,11 @@
 /dataservice/
 /driver/
 /po/
+<<<<<<< HEAD
+=======
+/presentation/
+/rmi/
+/runner/
+>>>>>>> 75c0ea2dca08eb322559daa9084647c32fbda900
 /stubs/
 /vo/
