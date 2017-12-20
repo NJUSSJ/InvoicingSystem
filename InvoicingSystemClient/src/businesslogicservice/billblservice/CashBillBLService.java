@@ -16,4 +16,5 @@ public interface CashBillBLService {
 	public ArrayList<CashBillVO> findCashBillsByInterval(Date begin,Date end);
 	public ArrayList<CashBillVO> findCashBillsByField(Date begin,Date end,String userName);
 	public ArrayList<CashBillVO> findCashBillsByState(int state);
+	public ArrayList<CashBillVO> findCashBillsByUser(long userid);
 }

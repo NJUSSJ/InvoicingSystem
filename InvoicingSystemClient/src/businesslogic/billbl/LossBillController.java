@@ -58,5 +58,10 @@ public class LossBillController implements LossBillBLService{
 	public ArrayList<LossBillVO> findLossBillsByState(int state) {
 		return lossBillImpl.findLossBillsByState(state);
 	}
+
+	@Override
+	public ArrayList<LossBillVO> findLossBillsByUser(long id) {
+		return lossBillImpl.findLossBillsByUser(id);
+	}
 	
 }

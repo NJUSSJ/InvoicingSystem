@@ -8,9 +8,11 @@ import java.util.ArrayList;
 import businesslogic.commoditybl.CommodityController;
 import businesslogic.memberbl.MemberController;
 import businesslogic.promotionbl.PromotionController;
+import businesslogic.userbl.UserController;
 import businesslogic.utilitybl.Utility;
 import po.CashBillPO;
 import po.MemberPromotionPO;
+import po.ReceiveBillPO;
 import po.SaleBillPO;
 import rmi.RemoteHelper;
 import vo.CashBillVO;
@@ -20,7 +22,9 @@ import vo.MemberPromotionVO;
 import vo.MemberVO;
 import vo.PackagePromotionVO;
 import vo.PricePromotionVO;
+import vo.ReceiveBillVO;
 import vo.SaleBillVO;
+import vo.UserVO;
 import vo.WarningBillVO;
 
 public class SaleBill{
@@ -51,8 +55,19 @@ public class SaleBill{
 				CommodityController ccon=new CommodityController();
 				GiftBillController gcon=new GiftBillController();
 				WarningBillController wcon=new WarningBillController();
+				UserController ucon=new UserController();
 				//生成一个单据id以备用
 				long billid=Utility.creatID();
+				//随机找出一个库存人员
+				ArrayList<UserVO> allUsers=ucon.findUsers();
+				ArrayList<UserVO> stockUsers=new ArrayList<UserVO>();
+				for(UserVO uvo:allUsers){
+					if(uvo.getRank()==4){
+						stockUsers.add(uvo);
+					}
+				}
+				int index=(int)(Math.random()*(stockUsers.size()));
+				long stockid=stockUsers.get(index).getID();
 				//修改库存数量,最近售价,如果少于警戒量则生成报警单
 				CommodityList list=vo.getList();
 				for(int i=0;i<list.getListSize();i++){
@@ -64,7 +79,7 @@ public class SaleBill{
 						return false;
 					}
 				}
-				WarningBillVO warningBill=new WarningBillVO(billid,vo.getUserID(),
+				WarningBillVO warningBill=new WarningBillVO(billid,stockid,
 						new CommodityList(),new Date(Utility.getNow().getTime()),0);
 				for(int i=0;i<list.getListSize();i++){
 					long commodityid=list.get(i).getCommodityID();
@@ -103,7 +118,7 @@ public class SaleBill{
 						giftList.addCommodity(new CommodityLineItem(num,giftid,salePrice,importPrice));
 					}
 				}
-				gcon.submitGiftBill(new GiftBillVO(billid,vo.getUserID(),vo.getMemberID(),giftList,new Date(Utility.getNow().getTime()),0));
+				gcon.submitGiftBill(new GiftBillVO(billid,stockid,vo.getMemberID(),giftList,new Date(Utility.getNow().getTime()),0));
 			}else{
 				vo.setState(2);
 			}
@@ -255,6 +270,18 @@ public class SaleBill{
 		ArrayList<SaleBillVO> result=new ArrayList<SaleBillVO>();
 		try {
 			ArrayList<SaleBillPO> bills=RemoteHelper.getInstance().getSaleBillDataService().findSaleBillbyField(commodityName, userName, memberName);
+			for(SaleBillPO po:bills){
+				result.add(toSaleBillVO(po));
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	public ArrayList<SaleBillVO> findSaleBillsByUser(long userid){
+		ArrayList<SaleBillVO> result=new ArrayList<SaleBillVO>();
+		try {
+			ArrayList<SaleBillPO> bills=RemoteHelper.getInstance().getSaleBillDataService().findSaleBillbyUser(userid);
 			for(SaleBillPO po:bills){
 				result.add(toSaleBillVO(po));
 			}

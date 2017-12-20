@@ -69,6 +69,11 @@ public class SaleBillController implements SaleBillBLService{
 			String userName) {
 		return saleBillImpl.findSaleBillsByField(begin, end, commodityName, memberName, userName);
 	}
+
+	@Override
+	public ArrayList<SaleBillVO> findSaleBillsByUser(long userid) {
+		return saleBillImpl.findSaleBillsByUser(userid);
+	}
 	
 	
 

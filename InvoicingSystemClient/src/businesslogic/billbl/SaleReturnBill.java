@@ -7,12 +7,14 @@ import java.util.ArrayList;
 import businesslogic.commoditybl.CommodityController;
 import businesslogic.memberbl.MemberController;
 import po.CashBillPO;
+import po.ReceiveBillPO;
 import po.SaleReturnBillPO;
 import rmi.RemoteHelper;
 import vo.CashBillVO;
 import vo.CommodityVO;
 import vo.ImportBillVO;
 import vo.MemberVO;
+import vo.ReceiveBillVO;
 import vo.SaleReturnBillVO;
 
 public class SaleReturnBill{
@@ -133,6 +135,18 @@ public class SaleReturnBill{
 		ArrayList<SaleReturnBillVO> result=new ArrayList<SaleReturnBillVO>();
 		try {
 			ArrayList<SaleReturnBillPO> bills=RemoteHelper.getInstance().getSaleReturnBillDataService().findSaleReturnBillbyField(userName, memberName);
+			for(SaleReturnBillPO po:bills){
+				result.add(toSaleReturnBillVO(po));
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	public ArrayList<SaleReturnBillVO> findSaleReturnBillsByUser(long userid){
+		ArrayList<SaleReturnBillVO> result=new ArrayList<SaleReturnBillVO>();
+		try {
+			ArrayList<SaleReturnBillPO> bills=RemoteHelper.getInstance().getSaleReturnBillDataService().findSaleReturnBillbyUser(userid);
 			for(SaleReturnBillPO po:bills){
 				result.add(toSaleReturnBillVO(po));
 			}

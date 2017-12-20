@@ -51,13 +51,18 @@ public class SaleReturnBillController implements SaleReturnBillBLService{
 
 	@Override
 	public ArrayList<SaleReturnBillVO> findSaleReturnBillsByState(int state) {
-		return null;
+		return saleReturnBillImpl.findSaleReturnBillsByState(state);
 	}
 
 	@Override
 	public ArrayList<SaleReturnBillVO> findSaleReturnBillsByField(Date begin, Date end, String memberName,
 			String userName) {
-		return null;
+		return saleReturnBillImpl.findSaleReturnBillsByField(begin, end, memberName, userName);
+	}
+
+	@Override
+	public ArrayList<SaleReturnBillVO> findSaleReturnBillsByUser(long userid) {
+		return saleReturnBillImpl.findSaleReturnBillsByUser(userid);
 	}
 	
 }

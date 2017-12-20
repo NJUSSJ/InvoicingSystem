@@ -50,4 +50,9 @@ public class WarningBillController implements WarningBillBLService{
 		return warningBillImpl.findWarningBillsByState(state);
 	}
 
+	@Override
+	public ArrayList<WarningBillVO> findWarningBillsByUser(long userid) {
+		return warningBillImpl.findWarningBillsByUser(userid);
+	}
+
 }

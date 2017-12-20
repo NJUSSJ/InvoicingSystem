@@ -117,6 +117,17 @@ public class CashBill{
 		}
 		return result;
 	}
-	
+	public ArrayList<CashBillVO> findCashBillsByUser(long userid){
+		ArrayList<CashBillVO> result=new ArrayList<CashBillVO>();
+		try {
+			ArrayList<CashBillPO> bills=RemoteHelper.getInstance().getCashBillDataService().findCashBillbyUser(userid);
+			for(CashBillPO po:bills){
+				result.add(toCashBillVO(po));
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 	
 }

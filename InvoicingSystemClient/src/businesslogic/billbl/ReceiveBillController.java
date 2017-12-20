@@ -59,4 +59,9 @@ public class ReceiveBillController implements ReceiveBillBLService{
 		return receiveBillImpl.findReceiveBillsByField(begin, end, memberName, userName);
 	}
 
+	@Override
+	public ArrayList<ReceiveBillVO> findReceiveBillsByUser(long userid) {
+		return receiveBillImpl.findReceiveBillsByUser(userid);
+	}
+
 }

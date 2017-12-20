@@ -18,6 +18,7 @@ public interface SaleBillBLService {
 	public ArrayList<SaleBillVO> findSaleBillsByField(Date begin,Date end,String commodityName,String memberName,String userName);
 	public ArrayList<SaleBillVO> findSaleBills();
 	public ArrayList<SaleBillVO> findSaleBillsByState(int state);
+	public ArrayList<SaleBillVO> findSaleBillsByUser(long userid);
 	public double handleSale(int rank,CommodityList list);
 	public int handleCoupon(int rank,double sum);
 }

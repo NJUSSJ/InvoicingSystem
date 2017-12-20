@@ -6,11 +6,13 @@ import java.util.ArrayList;
 
 import businesslogic.memberbl.MemberController;
 import po.CashBillPO;
+import po.OverBillPO;
 import po.PayBillPO;
 import rmi.RemoteHelper;
 import vo.CashBillVO;
 import vo.ImportBillVO;
 import vo.MemberVO;
+import vo.OverBillVO;
 import vo.PayBillVO;
 
 public class PayBill {
@@ -134,6 +136,18 @@ public class PayBill {
 			e.printStackTrace();
 		}
 		
+		return result;
+	}
+	public ArrayList<PayBillVO> findPayBillsByUser(long userid){
+		ArrayList<PayBillVO> result=new ArrayList<PayBillVO>();
+		try {
+			ArrayList<PayBillPO> bills=RemoteHelper.getInstance().getPayBillDataService().findPayBillbyUser(userid);
+			for(PayBillPO po:bills){
+				result.add(toPayBillVO(po));
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return result;
 	}
 }

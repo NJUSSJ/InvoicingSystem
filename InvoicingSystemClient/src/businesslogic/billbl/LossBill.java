@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 
 import po.CashBillPO;
+import po.ImportBillPO;
 import po.LossBillPO;
 import rmi.RemoteHelper;
 import vo.CashBillVO;
@@ -109,6 +110,18 @@ public class LossBill{
 		ArrayList<LossBillPO> bills;
 		try {
 			bills = RemoteHelper.getInstance().getLossBillDataService().findLossBillbyState(state);
+			for(LossBillPO po:bills){
+				result.add(toLossBillVO(po));
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	public ArrayList<LossBillVO> findLossBillsByUser(long userid){
+		ArrayList<LossBillVO> result=new ArrayList<LossBillVO>();
+		try {
+			ArrayList<LossBillPO> bills=RemoteHelper.getInstance().getLossBillDataService().findLossBillbyUser(userid);
 			for(LossBillPO po:bills){
 				result.add(toLossBillVO(po));
 			}

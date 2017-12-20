@@ -8,15 +8,20 @@ import java.util.ArrayList;
 import businesslogic.commoditybl.CommodityController;
 import businesslogic.memberbl.MemberController;
 import businesslogic.promotionbl.PromotionController;
+import businesslogic.userbl.UserController;
+import businesslogic.utilitybl.Utility;
 import po.CashBillPO;
+import po.ImportBillPO;
 import po.ImportReturnBillPO;
 import rmi.RemoteHelper;
 import vo.CashBillVO;
 import vo.CommodityVO;
 import vo.GiftBillVO;
+import vo.ImportBillVO;
 import vo.ImportReturnBillVO;
 import vo.MemberPromotionVO;
 import vo.MemberVO;
+import vo.UserVO;
 import vo.WarningBillVO;
 
 public class ImportReturnBill {
@@ -49,9 +54,19 @@ public class ImportReturnBill {
 				MemberController memberCon=new MemberController();
 				CommodityController ccon=new CommodityController();
 				WarningBillController wcon=new WarningBillController();
+				UserController ucon=new UserController();
 				//生成一个单据id以备用
-				java.util.Date now=new java.util.Date();
-				long billid=Long.parseLong(new SimpleDateFormat("yyyyMMddHHmmss").format(now));
+				long billid=Utility.creatID();
+				//随机找出一个库存人员
+				ArrayList<UserVO> allUsers=ucon.findUsers();
+				ArrayList<UserVO> stockUsers=new ArrayList<UserVO>();
+				for(UserVO uvo:allUsers){
+					if(uvo.getRank()==4){
+						stockUsers.add(uvo);
+					}
+				}
+				int index=(int)(Math.random()*(stockUsers.size()));
+				long stockid=stockUsers.get(index).getID();
 				//修改库存数量,如果少于警戒量则生成报警单
 				CommodityList list=vo.getList();
 				for(int i=0;i<list.getListSize();i++){
@@ -64,7 +79,7 @@ public class ImportReturnBill {
 					}
 				}
 				WarningBillVO warningBill=new WarningBillVO(billid,vo.getUserID(),
-						new CommodityList(),new Date(now.getTime()),0);
+						new CommodityList(),new Date(Utility.getNow().getTime()),0);
 				for(int i=0;i<list.getListSize();i++){
 					long commodityid=list.get(i).getCommodityID();
 					CommodityVO commodityVO=ccon.findCommodityByID(commodityid);
@@ -175,6 +190,18 @@ public class ImportReturnBill {
 			e.printStackTrace();
 		}
 		
+		return result;
+	}
+	public ArrayList<ImportReturnBillVO> findImportReturnBillsByUser(long userid){
+		ArrayList<ImportReturnBillVO> result=new ArrayList<ImportReturnBillVO>();
+		try {
+			ArrayList<ImportReturnBillPO> bills=RemoteHelper.getInstance().getImportReturnBillDataService().findImportReturnBillbyUser(userid);
+			for(ImportReturnBillPO po:bills){
+				result.add(toImportReturnBillVO(po));
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return result;
 	}
 }

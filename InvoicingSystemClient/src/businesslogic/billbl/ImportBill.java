@@ -7,10 +7,12 @@ import java.util.ArrayList;
 import businesslogic.commoditybl.CommodityController;
 import businesslogic.memberbl.MemberController;
 import po.CashBillPO;
+import po.GiftBillPO;
 import po.ImportBillPO;
 import rmi.RemoteHelper;
 import vo.CashBillVO;
 import vo.CommodityVO;
+import vo.GiftBillVO;
 import vo.ImportBillVO;
 import vo.MemberVO;
 
@@ -150,5 +152,16 @@ public class ImportBill{
 		
 		return result;
 	}
-
+	public ArrayList<ImportBillVO> findImportBillsByUser(long userid){
+		ArrayList<ImportBillVO> result=new ArrayList<ImportBillVO>();
+		try {
+			ArrayList<ImportBillPO> bills=RemoteHelper.getInstance().getImportBillDataService().findImportBillsByUser(userid);
+			for(ImportBillPO po:bills){
+				result.add(toImportBillVO(po));
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 }
