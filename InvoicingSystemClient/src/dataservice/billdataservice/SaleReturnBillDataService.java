@@ -11,7 +11,7 @@ public interface SaleReturnBillDataService extends Remote {
 	public boolean insert(SaleReturnBillPO po) throws RemoteException;
 	public boolean delete(SaleReturnBillPO po) throws RemoteException;
 	public boolean update(SaleReturnBillPO po) throws RemoteException;
-	public SaleReturnBillPO findSaleReturnBillbyID(long id) throws RemoteException;
+	public SaleReturnBillPO findSaleReturnBillbyID(String id) throws RemoteException;
 	public ArrayList<SaleReturnBillPO> findSaleReturnBills() throws RemoteException;
 	public ArrayList<SaleReturnBillPO> findSaleReturnBillbyTime(Date time) throws RemoteException;
 	public ArrayList<SaleReturnBillPO> findSaleReturnBillbyState(int state) throws RemoteException;
