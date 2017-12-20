@@ -18,9 +18,14 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.billui.CashBillViewController">
   <children>
-    <ImageView id="timg2.jpg" fitHeight="602.0" fitWidth="1000.0" layoutX="0.0" layoutY="-1.0">
+    <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="600.0" fitWidth="1000.0" layoutX="0.0" layoutY="-1.0">
       <image>
-        <Image url="@../../../../../Desktop/timg2.jpg" preserveRatio="true" smooth="true" />
+        <Image url="@../../../resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
+    <ImageView id="16sucai_p20161021120_25c.jpg" fitHeight="600.0" fitWidth="1000.0" layoutX="0.0" layoutY="0.0">
+      <image>
+        <Image url="@../../../../../Desktop/16sucai_p20161021120_25c.jpg" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
     <Label fx:id="id" layoutX="856.0" layoutY="15.0" prefWidth="60.000099999997474" text="ID:XXX">
@@ -38,11 +43,11 @@
     <Label font="$x1" layoutX="15.0" layoutY="130.0" text="单据编号：" />
     <Label fx:id="billid" font="$x1" layoutX="104.0" layoutY="130.0" text="XJFYD-yyyyMMdd-xxxxx" />
     <Label font="$x1" layoutX="15.0" layoutY="158.0" text="银行账户：" />
-    <TextField fx:id="account" layoutX="104.0" layoutY="155.0" />
+    <TextField fx:id="account" layoutX="104.0" layoutY="155.0" opacity="0.6" />
     <Label font="$x1" layoutX="323.0" layoutY="158.0" text="操作员：" />
     <Label fx:id="operator" font="$x1" layoutX="390.0" layoutY="158.0" prefWidth="75.0" text="XXX" />
     <Separator layoutX="778.0" layoutY="128.0" orientation="VERTICAL" prefHeight="471.0" prefWidth="7.0" />
-    <ScrollPane layoutX="1.0" layoutY="189.0" prefHeight="350.0" prefWidth="777.0">
+    <ScrollPane layoutX="1.0" layoutY="189.0" opacity="0.7" prefHeight="350.0" prefWidth="777.0">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="352.0" prefWidth="722.0">
           <children>
@@ -57,13 +62,13 @@
         </AnchorPane>
       </content>
     </ScrollPane>
-    <Label layoutX="14.0" layoutY="552.0" prefHeight="27.0" prefWidth="52.0" text="总额：">
+    <Label layoutX="500.0" layoutY="153.0" prefHeight="27.0" prefWidth="52.0" text="总额：">
       <font>
         <Font name="Microsoft JhengHei UI Light" size="17.0" fx:id="x2" />
       </font>
     </Label>
-    <Label fx:id="totalsum" font="$x2" layoutX="66.0" layoutY="553.0" prefHeight="26.0" prefWidth="83.0" text="xxx" />
-    <Button fx:id="addB" layoutX="796.0" layoutY="342.0" mnemonicParsing="false" onAction="#add" prefHeight="30.0" prefWidth="164.0" text="新    增">
+    <Label fx:id="totalsum" font="$x2" layoutX="559.0" layoutY="155.0" prefHeight="26.0" prefWidth="83.0" text="xxx" />
+    <Button fx:id="addB" layoutX="796.0" layoutY="340.0" mnemonicParsing="false" onAction="#add" opacity="0.77" prefHeight="30.0" prefWidth="164.0" text="新    增">
       <effect>
         <Lighting diffuseConstant="2.0" surfaceScale="2.7977099236641223" fx:id="x3">
           <bumpInput>
@@ -78,25 +83,15 @@
         <Font name="Microsoft YaHei UI Light" size="14.0" fx:id="x4" />
       </font>
     </Button>
-    <Button fx:id="deleteB" effect="$x3" font="$x4" layoutX="796.0" layoutY="434.0" mnemonicParsing="false" onAction="#delete" prefHeight="31.0" prefWidth="163.9998779296875" text="删    除" />
-    <Button fx:id="returnB" effect="$x3" font="$x4" layoutX="465.0" layoutY="549.0" mnemonicParsing="false" onAction="#showFianceMainUI" prefHeight="30.0" prefWidth="142.0" text=" 返    回" />
-    <Button fx:id="updateB" effect="$x3" font="$x4" layoutX="796.0" layoutY="387.0" mnemonicParsing="false" onAction="#update" prefHeight="30.000099999997474" prefWidth="164.0" text="修    改" />
-    <Button fx:id="rightB" effect="$x3" font="$x4" layoutX="626.0" layoutY="549.0" mnemonicParsing="false" onAction="#rightSet" prefHeight="30.0" prefWidth="142.0" text=" 确    认" />
+    <Button fx:id="deleteB" effect="$x3" font="$x4" layoutX="796.0" layoutY="434.0" mnemonicParsing="false" onAction="#delete" opacity="0.77" prefHeight="31.0" prefWidth="163.9998779296875" text="删    除" />
+    <Button fx:id="returnB" effect="$x3" font="$x4" layoutX="465.0" layoutY="547.0" mnemonicParsing="false" onAction="#showFianceMainUI" opacity="0.77" prefHeight="30.0" prefWidth="142.0" text=" 返    回" />
+    <Button fx:id="updateB" effect="$x3" font="$x4" layoutX="796.0" layoutY="387.0" mnemonicParsing="false" onAction="#update" opacity="0.77" prefHeight="30.000099999997474" prefWidth="164.0" text="修    改" />
+    <Button fx:id="rightB" effect="$x3" font="$x4" layoutX="626.0" layoutY="548.0" mnemonicParsing="false" onAction="#rightSet" opacity="0.77" prefHeight="30.0" prefWidth="142.0" text=" 确    认" />
     <Label font="$x1" layoutX="796.0" layoutY="135.0" text="条目名：" />
     <Label font="$x1" layoutX="796.0" layoutY="201.0" text="金额：" />
     <Label font="$x1" layoutX="796.0" layoutY="266.0" text="备注：" />
-    <TextField fx:id="itemName" layoutX="796.0" layoutY="158.0" prefHeight="30.0" />
-    <TextField fx:id="itemMoney" layoutX="796.0" layoutY="222.0" prefHeight="30.0" />
-    <TextField fx:id="itemNote" layoutX="796.0" layoutY="287.0" prefHeight="30.0" />
+    <TextField fx:id="itemName" layoutX="795.0" layoutY="158.0" opacity="0.6" prefHeight="30.0" />
+    <TextField fx:id="itemMoney" layoutX="795.0" layoutY="222.0" opacity="0.6" prefHeight="30.0" />
+    <TextField fx:id="itemNote" layoutX="795.0" layoutY="287.0" opacity="0.6" prefHeight="30.0" />
   </children>
-  <effect>
-    <Lighting>
-      <bumpInput>
-        <Shadow />
-      </bumpInput>
-      <light>
-        <javafx.scene.effect.Light.Distant />
-      </light>
-    </Lighting>
-  </effect>
 </AnchorPane>

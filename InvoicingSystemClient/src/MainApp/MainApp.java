@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Optional;
 
 import javafx.application.Application;
+import javafx.css.StyleOrigin;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -15,16 +16,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import presentation.commodityui.LossInfoController;
 import presentation.commodityui.OverInfoController;
 import presentation.commodityui.Sub_StockInventoryController;
-import presentation.mainui.AdministerMainViewController;
-import presentation.mainui.FianceMainViewController;
-import presentation.mainui.LoginPanelController;
-import presentation.mainui.ManagerMainViewController;
-import presentation.mainui.SaleMainViewController;
-import presentation.mainui.StockMainViewController;
-import presentation.mainui.WarningViewController;
 import runner.ClientRunner;
 import vo.StockInventoryInfoVO;
 import vo.UserVO;
@@ -60,7 +55,6 @@ public class MainApp extends Application {
 			FXMLLoader loader=new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("/presentation/RootLayout/RootLayout.fxml"));
 			rootlayout=(BorderPane)loader.load();
-			
 			Scene scene =new Scene(rootlayout);
 			
 			primarystage.setScene(scene);
@@ -79,7 +73,6 @@ public class MainApp extends Application {
 			loader.setLocation(MainApp.class.getResource("/presentation/mainui/LoginPanel.fxml"));
 			
 			AnchorPane loginPanel=loader.load();
-			
 			MainApp.rootlayout.setCenter(loginPanel);
 			
 		} catch (IOException e) {

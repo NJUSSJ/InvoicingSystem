@@ -30,8 +30,8 @@ public class CommodityDataImpl implements CommodityDataService{
 				double lateimportprice=result.getDouble("lateimportprice");
 				double latesaleprice=result.getDouble("latesaleprice");
 				long parentid=result.getLong("parentid");
-				
-				CommodityPO tmpPO=new CommodityPO(name, id, model, stocknum, importprice, saleprice, lateimportprice, latesaleprice, parentid);
+				int limit=result.getInt("limit");
+				CommodityPO tmpPO=new CommodityPO(name, id, model, stocknum, importprice, saleprice, lateimportprice, latesaleprice, parentid,limit);
 				
 				return tmpPO;
 			}
@@ -62,8 +62,8 @@ public class CommodityDataImpl implements CommodityDataService{
 				double latesaleprice=result.getDouble("latesaleprice");
 				long parentid=result.getLong("parentid");
 				long id=result.getLong("id");
-				
-				CommodityPO tmpPO=new CommodityPO(name, id, model, stocknum, importprice, saleprice, lateimportprice, latesaleprice, parentid);
+				int limit=result.getInt("limit");
+				CommodityPO tmpPO=new CommodityPO(name, id, model, stocknum, importprice, saleprice, lateimportprice, latesaleprice, parentid,limit);
 				results.add(tmpPO);
 			}
 			
@@ -93,8 +93,8 @@ public class CommodityDataImpl implements CommodityDataService{
 				double latesaleprice=result.getDouble("latesaleprice");
 				long parentid=result.getLong("parentid");
 				long id=result.getLong("id");
-				
-				CommodityPO tmpPO=new CommodityPO(name, id, model, stocknum, importprice, saleprice, lateimportprice, latesaleprice, parentid);
+				int limit=result.getInt("limit");
+				CommodityPO tmpPO=new CommodityPO(name, id, model, stocknum, importprice, saleprice, lateimportprice, latesaleprice, parentid,limit);
 				return tmpPO;
 			}
 		} catch (SQLException e) {
@@ -172,8 +172,9 @@ public class CommodityDataImpl implements CommodityDataService{
 				long parentid=result.getLong("parentid");
 				long id=result.getLong("id");
 				
-				CommodityPO tmpPO=new CommodityPO(name, id, model, stocknum, importprice, saleprice, lateimportprice, latesaleprice, parentid);
-				results.add(tmpPO);
+int limit=result.getInt("limit");
+				
+				CommodityPO tmpPO=new CommodityPO(name, id, model, stocknum, importprice, saleprice, lateimportprice, latesaleprice, parentid,limit);				results.add(tmpPO);
 			}
 			
 			return results;
@@ -200,8 +201,9 @@ public class CommodityDataImpl implements CommodityDataService{
 				double lateimportprice=result.getDouble("lateimportprice");
 				double latesaleprice=result.getDouble("latesaleprice");
 				long id=result.getLong("id");
+				int limit=result.getInt("limit");
 				
-				CommodityPO tmpPO=new CommodityPO(name, id, model, stocknum, importprice, saleprice, lateimportprice, latesaleprice, parentid);
+				CommodityPO tmpPO=new CommodityPO(name, id, model, stocknum, importprice, saleprice, lateimportprice, latesaleprice, parentid,limit);
 				results.add(tmpPO);
 			}
 		} catch (SQLException e) {

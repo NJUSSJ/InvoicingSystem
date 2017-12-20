@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="250.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.commodityui.SimpleCategoryController">
+   <children>
+      <Label layoutX="14.0" layoutY="14.0" text="商品分类新增/修改">
+         <font>
+            <Font name="Arial Unicode MS" size="28.0" />
+         </font>
+      </Label>
+      <Separator layoutY="53.0" prefHeight="3.0" prefWidth="400.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="53.0" />
+      <Label layoutX="62.0" layoutY="83.0" text="ID：">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="id" layoutX="118.0" layoutY="83.0" text="xxx">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="49.0" layoutY="126.0" text="名称：">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="name" layoutX="114.0" layoutY="123.0" />
+      <Label layoutX="37.0" layoutY="169.0" text="父节点：">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="parentid" layoutX="120.0" layoutY="169.0" text="xxx">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Button fx:id="reutrnB" layoutX="245.0" layoutY="208.0" mnemonicParsing="false" onAction="#cancel" text="取    消">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="rightB" layoutX="317.0" layoutY="208.0" mnemonicParsing="false" onAction="#setCategory" text="确    认">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.mainui.LoginPanelController">
+  <children>
+    <Label layoutX="302.0" layoutY="144.0" text="Welcome To BulbManage" textFill="#ffc633">
+      <font>
+        <Font name="Bauhaus 93" size="35.0" />
+      </font>
+    </Label>
+    <Label layoutX="303.0" layoutY="214.0" text="Username">
+      <font>
+        <Font name="Arial Rounded MT Bold" size="20.0" fx:id="x1" />
+      </font>
+    </Label>
+    <Label font="$x1" layoutX="303.0" layoutY="314.0" text="Password" />
+    <TextField fx:id="username" layoutX="303.0" layoutY="247.0" prefHeight="52.000099999997474" prefWidth="397.0" />
+    <Button fx:id="SignButton" font="$x1" layoutX="302.0" layoutY="428.0" mnemonicParsing="false" onAction="#Login" opacity="0.99" prefHeight="53.0" prefWidth="397.0" text="Sign in">
+      <effect>
+        <Reflection />
+      </effect>
+    </Button>
+    <PasswordField fx:id="password" layoutX="303.0" layoutY="346.0" prefHeight="53.0" prefWidth="397.0" />
+    <ImageView id="light_bulb_310px_1204967_easyicon.net.png" fitHeight="106.99990000000253" fitWidth="78.0" layoutX="461.0" layoutY="23.0">
+      <image>
+        <Image url="@../../../resources/light_bulb_310px_1204967_easyicon.net.png" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
+  </children>
+</AnchorPane>

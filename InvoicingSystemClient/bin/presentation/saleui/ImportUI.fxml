@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.saleui.ImportViewController">
+   <children>
+      <Label fx:id="id" layoutX="814.0" layoutY="11.0" text="ID:XXX">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="881.0" layoutY="10.0" text="|| 登录">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Separator layoutY="145.0" prefHeight="1.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="145.0" />
+      <Label layoutX="14.0" layoutY="61.0" text="进货单据">
+         <font>
+            <Font size="65.0" />
+         </font>
+      </Label>
+      <Separator layoutX="231.0" layoutY="231.0" orientation="VERTICAL" prefHeight="334.0" prefWidth="6.0" />
+      <Separator layoutY="562.0" prefHeight="3.2" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="562.0" />
+      <Separator layoutY="231.0" prefHeight="3.2" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="231.0" />
+      <Label layoutX="14.0" layoutY="148.0" text="单据编号：">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="482.0" layoutY="203.0" text="备 注：">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="482.0" layoutY="173.0" text="仓 库：">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="24.0" layoutY="203.0" text="操作员：">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="24.0" layoutY="173.0" text="供应商：">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="member" layoutX="85.0" layoutY="171.0" />
+      <TextField fx:id="stock" layoutX="537.0" layoutY="171.0" />
+      <TextField fx:id="note" layoutX="537.0" layoutY="201.0" />
+      <Label fx:id="operator" layoutX="85.0" layoutY="203.0" text="xxx">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="12.0" layoutY="263.0" text="商品名称：">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="386.0" text="备  注：">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="300.0" text="数  量：">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="num" layoutX="81.0" layoutY="298.0" prefHeight="23.0" prefWidth="140.0" />
+      <TextArea fx:id="notea" layoutX="24.0" layoutY="414.0" prefHeight="106.0" prefWidth="195.0" />
+      <Button fx:id="addB" layoutX="161.0" layoutY="532.0" mnemonicParsing="false" onAction="#confirm" prefHeight="23.0" prefWidth="64.0" text="确  认">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <ScrollPane layoutX="231.0" layoutY="231.0" prefHeight="328.0" prefWidth="766.0">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="340.0" prefWidth="782.0">
+               <children>
+                  <TableView fx:id="commodityTable" prefHeight="334.0" prefWidth="782.0">
+                     <columns>
+                        <TableColumn fx:id="idColumn" prefWidth="100.0" text="编号" />
+                        <TableColumn fx:id="nameColumn" prefWidth="100.0" text="名称" />
+                        <TableColumn fx:id="modelColumn" prefWidth="75.0" text="型号" />
+                        <TableColumn fx:id="amountColumn" prefWidth="75.0" text="数量" />
+                        <TableColumn fx:id="moneyColumn" prefWidth="75.0" text="单价" />
+                        <TableColumn fx:id="totalmoneyColumn" prefWidth="75.0" text="金额" />
+                        <TableColumn fx:id="noteColumn" prefWidth="280.0" text="备注" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+      <Button fx:id="rightB" layoutX="823.0" layoutY="566.0" mnemonicParsing="false" onAction="#setBill" prefHeight="19.0" prefWidth="64.0" text="确  认">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="returnB" layoutX="910.0" layoutY="566.0" mnemonicParsing="false" onAction="#showSaleMainUI" prefHeight="19.0" prefWidth="64.0" text="返   回">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Label fx:id="billid" layoutX="92.0" layoutY="150.0" prefHeight="15.0" prefWidth="182.0" text="xxx">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="name" layoutX="81.0" layoutY="261.0" prefHeight="23.0" prefWidth="140.0" />
+      <Button fx:id="deleteB" layoutX="96.0" layoutY="533.0" mnemonicParsing="false" onAction="#delete" prefHeight="23.0" prefWidth="56.0" text="删  除">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Label layoutX="14.0" layoutY="343.0" text="单  价：">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="lastprice" layoutX="81.0" layoutY="341.0" prefHeight="23.0" prefWidth="140.0" />
+      <Button fx:id="search" layoutX="31.0" layoutY="533.0" mnemonicParsing="false" onAction="#search" prefHeight="28.0" prefWidth="56.0" text="查  找">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Label layoutX="234.0" layoutY="573.0" text="金额总计：">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="altogether" layoutX="305.0" layoutY="573.0" text="0.0">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Button fx:id="logout" layoutX="874.0" layoutY="8.0" mnemonicParsing="false" onAction="#logout" opacity="0.0" prefHeight="23.0" prefWidth="65.0" text="Button" />
+   </children>
+</AnchorPane>

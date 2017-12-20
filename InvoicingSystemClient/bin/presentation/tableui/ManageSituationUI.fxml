@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="814.0" layoutY="11.0" text="ID:XXX">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="881.0" layoutY="10.0" text="|| 登录">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Separator layoutY="130.0" prefHeight="1.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="130.0" />
+      <Label layoutX="10.0" layoutY="51.0" text="经营情况表">
+         <font>
+            <Font size="65.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="145.0" text="时间：" />
+      <Label layoutX="328.0" layoutY="145.0" prefHeight="15.0" prefWidth="24.0" text="~" />
+      <ChoiceBox layoutX="73.0" layoutY="141.0" prefHeight="23.0" prefWidth="72.0" />
+      <ChoiceBox layoutX="167.0" layoutY="141.0" prefHeight="23.0" prefWidth="55.0" />
+      <ChoiceBox layoutX="244.0" layoutY="141.0" prefHeight="23.0" prefWidth="55.0" />
+      <ChoiceBox layoutX="354.0" layoutY="141.0" prefHeight="23.0" prefWidth="72.0" />
+      <ChoiceBox layoutX="449.0" layoutY="141.0" prefHeight="23.0" prefWidth="55.0" />
+      <ChoiceBox layoutX="527.0" layoutY="141.0" prefHeight="23.0" prefWidth="55.0" />
+      <Label layoutX="150.0" layoutY="145.0" text="年" />
+      <Label layoutX="228.0" layoutY="145.0" text="月" />
+      <Label layoutX="304.0" layoutY="145.0" text="日" />
+      <Label layoutX="432.0" layoutY="145.0" text="年" />
+      <Label layoutX="510.0" layoutY="145.0" text="月" />
+      <Label layoutX="587.0" layoutY="145.0" text="日" />
+      <Button layoutX="840.0" layoutY="563.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="120.0" text="确      认" />
+      <Button layoutX="840.0" layoutY="524.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="120.0" text="清      空" />
+      <Button layoutX="840.0" layoutY="484.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="120.0" text="导出为Excel" />
+      <Separator layoutX="791.0" layoutY="130.0" orientation="VERTICAL" prefHeight="469.0" prefWidth="2.0" />
+      <Separator layoutX="-1.0" layoutY="174.0" prefHeight="3.0" prefWidth="792.0" />
+      <Label layoutX="59.0" layoutY="208.0" text="销售收入：">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="59.0" layoutY="234.0" text="商品收入：">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="60.0" layoutY="260.0" text="折让后总收入：">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="60.0" layoutY="287.0" text="折让：">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="30.0" layoutY="324.0" text="二、支出类">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="59.0" layoutY="355.0" text="销售成本：">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="60.0" layoutY="386.0" text="商品类支出：">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="59.0" layoutY="416.0" text="总支出：">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="29.0" layoutY="184.0" text="一、收入类">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="29.0" layoutY="454.0" text="三、利润">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="59.0" layoutY="487.0" text="利润：">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

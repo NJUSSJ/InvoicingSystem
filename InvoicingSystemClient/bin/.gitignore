@@ -1,5 +1,3 @@
-/poi-3.17/
-/presentation/
 /MainApp/
 /Utility/
 /businesslogic/
@@ -8,7 +6,5 @@
 /dataservice/
 /driver/
 /po/
-/rmi/
-/runner/
 /stubs/
 /vo/
