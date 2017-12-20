@@ -9,9 +9,9 @@ import vo.ImportBillVO;
 public interface ImportBillBLService  {
 	public ImportBillVO toImportBillVO(ImportBillPO po);
 	public boolean submitImportBill(ImportBillVO importBill);
-	public boolean checkImportBill(boolean pass,long id);
+	public boolean checkImportBill(boolean pass,String id);
 	public boolean deleteImportBill(ImportBillVO importBill);
-	public ImportBillVO findImportBillByID(long id);
+	public ImportBillVO findImportBillByID(String id);
 	public ArrayList<ImportBillVO> findImportBillByTime(Date time);
 	public ArrayList<ImportBillVO> findImportBills();
 	public ArrayList<ImportBillVO> findImportBillsByInterval(Date begin,Date end);

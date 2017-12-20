@@ -10,9 +10,9 @@ import vo.SaleBillVO;
 public interface SaleBillBLService {
 	public SaleBillVO toSaleBillVO(SaleBillPO po);
 	public boolean submitSaleBill(SaleBillVO saleBill);
-	public boolean checkSaleBill(boolean pass,long id);
+	public boolean checkSaleBill(boolean pass,String id);
 	public boolean deleteSaleBill(SaleBillVO saleBill);
-	public SaleBillVO findSaleBillByID(long id);
+	public SaleBillVO findSaleBillByID(String id);
 	public ArrayList<SaleBillVO> findSaleBillByTime(Date time);
 	public ArrayList<SaleBillVO> findSaleBillsByInterval(Date begin,Date end);
 	public ArrayList<SaleBillVO> findSaleBillsByField(Date begin,Date end,String commodityName,String memberName,String userName);

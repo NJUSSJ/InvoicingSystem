@@ -45,7 +45,7 @@ public class ImportReturnBill {
 		return false;
 	}
 
-	public boolean checkImportReturnBill(boolean pass, long id) {
+	public boolean checkImportReturnBill(boolean pass,String id) {
 		try {
 			ImportReturnBillVO vo=toImportReturnBillVO(RemoteHelper.getInstance().
 					getImportReturnBillDataService().findImportReturnBillbyID(id));
@@ -119,7 +119,7 @@ public class ImportReturnBill {
 		return false;
 	}
 
-	public ImportReturnBillVO findImportReturnBillByID(long id) {
+	public ImportReturnBillVO findImportReturnBillByID(String id) {
 		try {
 			return toImportReturnBillVO(RemoteHelper.getInstance().getImportReturnBillDataService().findImportReturnBillbyID(id));
 		} catch (RemoteException e) {

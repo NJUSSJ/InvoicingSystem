@@ -9,8 +9,9 @@ import vo.CashBillVO;
 public interface CashBillBLService {
 	public CashBillVO toCashBillVO (CashBillPO po);
 	public boolean submitCashBill(CashBillVO cashbill);
-	public boolean checkCashBill(boolean pass,long id);
+	public boolean checkCashBill(boolean pass,String id);
 	public boolean deleteCashBill(CashBillVO cashbill);
+	public CashBillVO findCashBillByID(String id);
 	public ArrayList<CashBillVO> findCashBillByTime(Date time);
 	public ArrayList<CashBillVO> findCashBills();
 	public ArrayList<CashBillVO> findCashBillsByInterval(Date begin,Date end);

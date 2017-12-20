@@ -20,7 +20,7 @@ public class ImportReturnBillController implements ImportReturnBillBLService{
 	}
 
 	@Override
-	public boolean checkImportReturnBill(boolean pass, long id) {
+	public boolean checkImportReturnBill(boolean pass, String id) {
 		return importReturnBillImpl.checkImportReturnBill(pass, id);
 	}
 
@@ -30,7 +30,7 @@ public class ImportReturnBillController implements ImportReturnBillBLService{
 	}
 
 	@Override
-	public ImportReturnBillVO findImportReturnBillByID(long id) {
+	public ImportReturnBillVO findImportReturnBillByID(String id) {
 		return importReturnBillImpl.findImportReturnBillByID(id);
 	}
 

@@ -20,7 +20,7 @@ public class ImportBillController implements ImportBillBLService{
 	}
 
 	@Override
-	public boolean checkImportBill(boolean pass, long id) {
+	public boolean checkImportBill(boolean pass, String id) {
 		return importBillImpl.checkImportBill(pass, id);
 	}
 
@@ -30,7 +30,7 @@ public class ImportBillController implements ImportBillBLService{
 	}
 
 	@Override
-	public ImportBillVO findImportBillByID(long id) {
+	public ImportBillVO findImportBillByID(String id) {
 		return importBillImpl.findImportBillByID(id);
 	}
 

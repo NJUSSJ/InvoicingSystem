@@ -9,9 +9,9 @@ import vo.PayBillVO;
 public interface PayBillBLService {
 	public PayBillVO toPayBillVO(PayBillPO po);
 	public boolean submitPayBill(PayBillVO payBill);
-	public boolean checkPayBill(boolean pass,long id);
+	public boolean checkPayBill(boolean pass,String id);
 	public boolean deletePayBill(PayBillVO payBill);
-	public PayBillVO findPayBillByID(long id);
+	public PayBillVO findPayBillByID(String id);
 	public ArrayList<PayBillVO> findPayBillByTime(Date time);
 	public ArrayList<PayBillVO> findPayBills();
 	public ArrayList<PayBillVO> findPayBillsByInterval(Date begin,Date end);

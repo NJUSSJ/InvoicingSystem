@@ -20,7 +20,7 @@ public class SaleReturnBillController implements SaleReturnBillBLService{
 	}
 
 	@Override
-	public boolean checkSaleReturnBill(boolean pass, long id) {
+	public boolean checkSaleReturnBill(boolean pass, String id) {
 		return saleReturnBillImpl.checkSaleReturnBill(pass, id);
 	}
 
@@ -30,7 +30,7 @@ public class SaleReturnBillController implements SaleReturnBillBLService{
 	}
 
 	@Override
-	public SaleReturnBillVO findSaleReturnBillByID(long id) {
+	public SaleReturnBillVO findSaleReturnBillByID(String id) {
 		return saleReturnBillImpl.findSaleReturnBillByID(id);
 	}
 

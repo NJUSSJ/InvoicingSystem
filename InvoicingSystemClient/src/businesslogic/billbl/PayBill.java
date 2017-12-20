@@ -34,7 +34,7 @@ public class PayBill {
 		return false;
 	}
 
-	public boolean checkPayBill(boolean pass, long id) {
+	public boolean checkPayBill(boolean pass, String id) {
 		try {
 			PayBillVO vo=toPayBillVO(RemoteHelper.getInstance().getPayBillDataService().findPayBillbyID(id));
 			if(pass){
@@ -66,7 +66,7 @@ public class PayBill {
 		return false;
 	}
 
-	public PayBillVO findPayBillByID(long id) {
+	public PayBillVO findPayBillByID(String id) {
 		try {
 			return toPayBillVO(RemoteHelper.getInstance().getPayBillDataService().findPayBillbyID(id));
 		} catch (RemoteException e) {

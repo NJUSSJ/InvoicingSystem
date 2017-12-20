@@ -9,9 +9,9 @@ import vo.SaleReturnBillVO;
 public interface SaleReturnBillBLService {
 	public SaleReturnBillVO toSaleReturnBillVO(SaleReturnBillPO po);
 	public boolean submitSaleReturnBill(SaleReturnBillVO saleReturnBill);
-	public boolean checkSaleReturnBill(boolean pass,long id);
+	public boolean checkSaleReturnBill(boolean pass,String id);
 	public boolean deleteSaleReturnBill(SaleReturnBillVO saleReturnBill);
-	public SaleReturnBillVO findSaleReturnBillByID(long id);
+	public SaleReturnBillVO findSaleReturnBillByID(String id);
 	public ArrayList<SaleReturnBillVO> findSaleReturnBillByTime(Date time);
 	public ArrayList<SaleReturnBillVO> findSaleReturnBills();
 	public ArrayList<SaleReturnBillVO> findSaleReturnBillsByInterval(Date begin,Date end);
