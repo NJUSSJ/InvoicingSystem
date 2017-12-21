@@ -96,7 +96,7 @@ public class ImportReturnBill {
 					wcon.submitWarningBill(warningBill);
 				}
 				//修改进货退货单里供应商的应付
-				MemberVO member=memberCon.findMemberByID(id);
+				MemberVO member=memberCon.findMemberByID(vo.getMemberID());
 				double money=vo.getSum()+member.getShouldPay();
 				member.setShouldPay(money);
 				memberCon.updateMember(member);
