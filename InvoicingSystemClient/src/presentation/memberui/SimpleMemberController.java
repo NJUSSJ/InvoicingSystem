@@ -54,14 +54,11 @@ MemberVO a;
 
 @Override
 public void initialize(URL location, ResourceBundle resources) {
-	// TODO Auto-generated method stub
 }
 	public void setStage(Stage memberStage) {
-		// TODO Auto-generated method stub
 		stage=memberStage;
 	}
 	public void setMember(MemberVO me) {
-		// TODO Auto-generated method stub
 		a=me;
 		nameField.setText(a.getName());
 		rankField.setText(Integer.toString(a.getRank()));
