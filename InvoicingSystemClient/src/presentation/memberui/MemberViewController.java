@@ -88,7 +88,6 @@ public class MemberViewController implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
 		long idLong=MainApp.getID();
 		String idString=idLong+"";
 		while(idString.length()<5) {
@@ -117,7 +116,6 @@ public class MemberViewController implements Initializable {
 	}
 
 	private void getInf(MemberData newValue) {
-		// TODO Auto-generated method stub
 		me=newValue.getVO();
 	}
 	
@@ -154,7 +152,7 @@ public class MemberViewController implements Initializable {
             memberStage.showAndWait();
             
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	@FXML
@@ -174,10 +172,10 @@ public class MemberViewController implements Initializable {
    	    }
 	}
 	@FXML
-	public void updata(){
+	public void update(){
 		try {
 			FXMLLoader loader=new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("/presentation/membertui/SimpleMemberUI.fxml"));
+			loader.setLocation(MainApp.class.getResource("/presentation/memberui/SimpleMember.fxml"));
 			AnchorPane memberUI=loader.load();
 			Scene scene=new Scene(memberUI);
 			Stage memberStage=new Stage();
@@ -191,7 +189,7 @@ public class MemberViewController implements Initializable {
             memberStage.showAndWait();
             
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	@FXML
