@@ -59,6 +59,13 @@ public class CashBillVO{
 	public int getState(){
 		return state;
 	}
+	/**
+	 * 
+	 * @return 条目名："条目名,金额,备注"
+	 */
+	public ArrayList<String> getAccountList(){
+		return items;
+	}
 	public void setUserID(long userid){
 		this.userid=userid;
 	}

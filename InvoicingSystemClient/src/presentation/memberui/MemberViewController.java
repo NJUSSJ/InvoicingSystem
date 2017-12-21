@@ -141,7 +141,7 @@ public class MemberViewController implements Initializable {
 	public void add(){
 		try {
 			FXMLLoader loader=new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("/presentation/membertui/SimpleMemberUI.fxml"));
+			loader.setLocation(MainApp.class.getResource("/presentation/memberui/SimpleMember.fxml"));
 			AnchorPane memberUI=loader.load();
 			Scene scene=new Scene(memberUI);
 			Stage memberStage=new Stage();
