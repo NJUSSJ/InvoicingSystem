@@ -130,5 +130,13 @@ public class GiftBill {
 		}
 		return result;
 	}
-
+	public GiftBillVO findGiftBillByID(long id){
+		try {
+			return toGiftBillVO(RemoteHelper.getInstance().getGiftBillDataService().findGiftBillbyID(id));
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+		
+	}
 }
