@@ -1,6 +1,5 @@
 package presentation.billui;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.text.DecimalFormat;
@@ -8,28 +7,22 @@ import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 
 import MainApp.MainApp;
-import businesslogic.accountbl.AccountController;
 import businesslogic.billbl.AccountLineItem;
 import businesslogic.billbl.AccountList;
 import businesslogic.billbl.PayBillController;
-import businesslogicservice.accountblservice.AccountBLService;
 import businesslogicservice.billblservice.PayBillBLService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.scene.control.Alert.AlertType;
 import vo.PayBillVO;
 
 
@@ -46,6 +39,8 @@ public class PayBillViewController  implements Initializable{
 	private Label billid;
 	@FXML
 	private TextField account;
+	
+	Stage stage;
 	
 	Date time;
 	
@@ -188,6 +183,14 @@ public class PayBillViewController  implements Initializable{
 	        alert.setContentText(isSubmit);
 	        alert.showAndWait();
  }
+	public void setStage(Stage stage) {
+		// TODO Auto-generated method stub
+		this.stage=stage;
+	}
+	public void setVo(PayBillVO m) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 
 }
