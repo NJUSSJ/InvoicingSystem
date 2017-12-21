@@ -74,9 +74,8 @@ public class Member{
 				memberPO.getShouldGet(),memberPO.getQuota(),memberPO.getDefaultOperatorID());
 	}
 	public ArrayList<MemberVO> findMembers(){
-		ArrayList<MemberVO> temp=null;
+		ArrayList<MemberVO> temp=new ArrayList<MemberVO>();
 		try {
-			temp=new ArrayList<MemberVO>();
 			ArrayList<MemberPO> members=RemoteHelper.getInstance().getMemberDataService().findMembers();
 			for(int i=0;i<members.size();i++){
 				temp.add(toMemberVO(members.get(i)));

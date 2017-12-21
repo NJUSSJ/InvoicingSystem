@@ -13,7 +13,6 @@ public class Account{
 		try {
 			return toAccountVO(RemoteHelper.getInstance().getAccountDataService().findAccountbyID(id));
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return null;

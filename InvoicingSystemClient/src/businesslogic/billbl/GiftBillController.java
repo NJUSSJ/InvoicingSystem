@@ -59,4 +59,9 @@ public class GiftBillController implements GiftBillBLService{
 		return giftBillImpl.findGiftBillsByUser(userid);
 	}
 
+	@Override
+	public GiftBillVO findGiftBillByID(long id) {
+		return null;
+	}
+
 }

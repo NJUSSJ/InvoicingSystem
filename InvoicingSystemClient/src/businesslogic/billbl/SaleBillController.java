@@ -21,7 +21,7 @@ public class SaleBillController implements SaleBillBLService{
 
 	@Override
 	public boolean checkSaleBill(boolean pass, String id) {
-		return saleBillImpl.checkSaleBill(pass, 0);
+		return saleBillImpl.checkSaleBill(pass, id);
 	}
 
 	@Override
@@ -31,7 +31,7 @@ public class SaleBillController implements SaleBillBLService{
 
 	@Override
 	public SaleBillVO findSaleBillByID(String id) {
-		return saleBillImpl.findSaleBillByID(0);
+		return saleBillImpl.findSaleBillByID(id);
 	}
 
 	@Override

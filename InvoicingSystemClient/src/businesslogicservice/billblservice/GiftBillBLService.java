@@ -17,4 +17,5 @@ public interface GiftBillBLService {
 	public ArrayList<GiftBillVO> findGiftBillsByField(Date begin,Date end,String memberName,String userName);
 	public ArrayList<GiftBillVO> findGiftBillsByState(int state);
 	public ArrayList<GiftBillVO> findGiftBillsByUser(long userid);
+	public GiftBillVO findGiftBillByID(long id);
 }

@@ -45,6 +45,7 @@ import presentation.accountui.SimpleAccountController;
 import presentation.commodityui.LossInfoController;
 import presentation.commodityui.OverInfoController;
 import presentation.saleui.SaleViewController;
+import presentation.saleui.Sale_ReturnViewController;
 import vo.CashBillVO;
 import vo.GiftBillVO;
 import vo.ImportBillVO;
@@ -384,16 +385,17 @@ public class ExamineViewController implements Initializable {
 			}
 		}else if(style.equals("销售退货单")){
 			try {
+				SaleReturnBillVO m=srbbs.findSaleReturnBillByID(id);
 				FXMLLoader loader=new FXMLLoader();
-				loader.setLocation(MainApp.class.getResource("/presentation/billui/PayBillUI.fxml"));
-				AnchorPane paybillUI=loader.load();
-				Scene scene=new Scene(paybillUI);
+				loader.setLocation(MainApp.class.getResource("/presentation/saleui/Sale_ReturnUI.fxml"));
+				AnchorPane salebillUI=loader.load();
+				Scene scene=new Scene(salebillUI);
 				Stage stage=new Stage();
 				stage.setTitle("PayUI");
 				stage.initModality(Modality.WINDOW_MODAL);
 				stage.initOwner(MainApp.getPrimaryStage());
 				stage.setScene(scene);
-	            PayBillViewController controller=loader.getController();
+	            Sale_ReturnViewController controller=loader.getController();
 	            controller.setStage(stage);
 	            controller.setVo(m);
 	            stage.showAndWait();
