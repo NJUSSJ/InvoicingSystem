@@ -51,7 +51,7 @@ public class AccountDataImpl implements AccountDataService {
 	@Override
 	public boolean insert(AccountPO po) throws RemoteException {
 		// TODO Auto-generated method stub
-		String sql="INSERT INTO users(id,bank,deposit) VALUES ("+po.getID()
+		String sql="INSERT INTO accounts(id,bank,deposit) VALUES ("+po.getID()
 		+",'"+po.getName()+"','"+po.getDeposit()+"')";
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0){
@@ -120,9 +120,10 @@ public class AccountDataImpl implements AccountDataService {
 				
 				AccountPO tmpAccount=new AccountPO(tmpid, deposit, bank);
 				results.add(tmpAccount);
-				return results;
+				
 				
 			}
+			return results;
 		} catch (SQLException e) {
 		
 			e.printStackTrace();
@@ -132,7 +133,7 @@ public class AccountDataImpl implements AccountDataService {
 
 	@Override
 	public ArrayList<AccountPO> findAcountbyField(String field) throws RemoteException {
-		String sql="SELECT id, bank, deposit FROM accounts where bank='%"+field+"%'";
+		String sql="SELECT id, bank, deposit FROM accounts where bank like '%"+field+"%'";
 		ArrayList<AccountPO> results=new ArrayList<>();
 		//Ö´ÐÐÊý¾Ý¿âsqlÓï¾ä
 		try {
@@ -148,7 +149,8 @@ public class AccountDataImpl implements AccountDataService {
 				results.add(tmpAccount);
 				
 				
-			}return results;
+			}
+			return results;
 		} catch (SQLException e) {
 		
 			e.printStackTrace();
