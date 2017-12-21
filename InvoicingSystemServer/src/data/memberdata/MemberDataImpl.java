@@ -110,7 +110,7 @@ public class MemberDataImpl implements MemberDataService{
 	@Override
 	public ArrayList<MemberPO> findMembers() throws RemoteException {
 		
-		String sql="select * from"
+		String sql="select * from "
 				+ "members";
 		
 		ArrayList<MemberPO> results=new ArrayList<>();

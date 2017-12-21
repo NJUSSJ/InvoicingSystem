@@ -566,28 +566,7 @@ public class MainApp extends Application {
 	   return  MainApp.tempUser.getID();
    }
    
-   /*
-	 * 显示库存警戒线界面
-	 */
-	public static  void showWarningUI() {
-		try {
-			FXMLLoader loader=new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("/presentation/mainui/WarningUI.fxml"));
-			AnchorPane warningUI=loader.load();
-			Scene scene=new Scene(warningUI);
-			Stage warnStage=new Stage();
-			warnStage.setTitle("Warning Num");
-			warnStage.initModality(Modality.WINDOW_MODAL);
-			warnStage.initOwner(MainApp.primarystage);
-			warnStage.setScene(scene);
-            WarningViewController controller=loader.getController();
-            controller.setStage(warnStage);
-            warnStage.showAndWait();
-            
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+ 
 	
 	/**
      * Returns the main stage.

@@ -73,7 +73,7 @@ public class CategoryViewController implements Initializable{
 	@FXML
 	private TableColumn<CategoryData,String> nameColoumn;
 	
-	CategoryVO a;
+	CategoryVO a=null;
 	
 	ArrayList<CategoryVO> volist;
 	

@@ -79,4 +79,9 @@ public class LossInfoController implements Initializable{
 		stage.close();
 	}
 
+	public void setVo(LossBillVO m) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
