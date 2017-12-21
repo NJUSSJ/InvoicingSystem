@@ -21,6 +21,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import javafx.scene.control.Alert.AlertType;
 import vo.ReceiveBillVO;
 
@@ -63,7 +64,7 @@ public class ReceiveBillViewController  implements Initializable{
 	@FXML
 	private Button addB;
 	
-	
+	Stage stage;
 	@FXML
 	private Button updateB;
 	
@@ -180,6 +181,14 @@ public class ReceiveBillViewController  implements Initializable{
 	        alert.setContentText(isSubmit);
 	        alert.showAndWait();
  }
+	public void setStage(Stage stage) {
+		// TODO Auto-generated method stub
+		this.stage=stage;
+	}
+	public void setVo(ReceiveBillVO m) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 
 

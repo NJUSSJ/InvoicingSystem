@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import vo.LossBillVO;
+import vo.OverBillVO;
 
 public class OverInfoController implements Initializable{
 private Stage stage;
@@ -60,5 +61,10 @@ private Stage stage;
 		LossBillBLService lossbillservice=new LossBillController();
 		lossbillservice.submitLossBill(lossbill);
 		stage.close();
+	}
+
+	public void setVo(OverBillVO m) {
+		// TODO Auto-generated method stub
+		
 	}
 }

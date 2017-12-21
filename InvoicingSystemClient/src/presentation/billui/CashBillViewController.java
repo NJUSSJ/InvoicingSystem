@@ -20,6 +20,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import vo.CashBillVO;
 import javafx.scene.control.Alert.AlertType;
 
@@ -36,7 +37,7 @@ public class CashBillViewController  implements Initializable {
 	private Label billid;
 	@FXML
 	private TextField account;
-	
+	Stage stage;
 	Date time;
 	
 	ArrayList<String> items;
@@ -187,6 +188,15 @@ public class CashBillViewController  implements Initializable {
 	        alert.showAndWait();
  }
 	
-
+	public void setStage(Stage writeStage) {
+		stage=writeStage;
+	}
+	public void setBill(CashBillVO bill){
+		
+	}
+	public void setVo(CashBillVO m) {
+		// TODO Auto-generated method stub
+		
+	}
 }
 
