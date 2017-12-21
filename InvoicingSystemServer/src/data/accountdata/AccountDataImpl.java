@@ -89,7 +89,7 @@ public class AccountDataImpl implements AccountDataService {
 	@Override
 	public boolean update(AccountPO po) throws RemoteException {
 		
-		String sql="UPDATE users SET deposit='"+po.getDeposit()+"' WHERE id='"+po.getID()+"'";
+		String sql="UPDATE accounts SET deposit='"+po.getDeposit()+"' WHERE id='"+po.getID()+"'";
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0){
 				return true;
