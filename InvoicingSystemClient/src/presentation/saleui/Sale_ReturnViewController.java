@@ -26,7 +26,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import javafx.scene.control.Alert.AlertType;
 import vo.CommodityVO;
 import vo.MemberVO;
@@ -104,7 +103,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	private TableColumn<CommodityItemData,String> noteColumn;
 	
 	static int times=0;
-	Stage stage;
+	
 	Date time;
 	CommodityItemData itemdata;
 	CommodityLineItem item;
@@ -217,18 +216,6 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		        alert.setHeaderText("Submit");
 		        alert.setContentText(isSubmit);
 		        alert.showAndWait();
-	}
-
-
-	public void setStage(Stage stage) {
-		// TODO Auto-generated method stub
-		this.stage=stage;
-	}
-
-
-	public void setVo(SaleReturnBillVO m) {
-		// TODO Auto-generated method stub
-		
 	}
 	
 	

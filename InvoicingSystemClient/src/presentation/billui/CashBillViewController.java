@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import MainApp.MainApp;
+import businesslogic.accountbl.AccountController;
 import businesslogic.billbl.CashBillController;
+import businesslogicservice.accountblservice.AccountBLService;
 import businesslogicservice.billblservice.CashBillBLService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,7 +22,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
+import vo.AccountVO;
 import vo.CashBillVO;
 import javafx.scene.control.Alert.AlertType;
 
@@ -37,12 +39,12 @@ public class CashBillViewController  implements Initializable {
 	private Label billid;
 	@FXML
 	private TextField account;
-	Stage stage;
+	
 	Date time;
 	
-	ArrayList<String> items;
+	ArrayList<String> items=new ArrayList<>();
 	
-	ItemData a;
+	ItemData a;;
 	
 	String item;
 	
@@ -95,12 +97,30 @@ public class CashBillViewController  implements Initializable {
 		// TODO Auto-generated method stub
 		java.util.Date utiltime=new java.util.Date();
 		time=new Date(utiltime.getTime());
+		
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
 		String str=sdf.format(time);
 		DecimalFormat df=new DecimalFormat("#####");
+		
+		/*
+		 * get times
+		 */
+		
+		ArrayList<CashBillVO> tmpList=new CashBillController().findCashBillByTime(time);
+		times=tmpList.size()+1;
+		
+		
 		billid.setText("FKD-"+str+"-"+df.format(times));
-		id.setText("ID:"+MainApp.getID());
+		
+		
+		long idLong=MainApp.getID();
+		String idString=idLong+"";
+		while(idString.length()<5) {
+			idString="0"+idString;
+		}
+		id.setText("ID:"+idString);
 		operator.setText(MainApp.getName());
+		cashTable.setItems(cashData);
 		cashTable.getSelectionModel().selectedItemProperty().addListener(
 	            (observable, oldValue, newValue) -> getInf(newValue));	
 		nameColoumn.setCellValueFactory(cellData ->cellData.getValue().getName());
@@ -109,33 +129,64 @@ public class CashBillViewController  implements Initializable {
 	}
 	@FXML
     public void add(){
-        String name=itemName.getText();
-        String money=itemMoney.getText();
-        String note=itemNote.getText();
-        totalSum=totalSum+Double.parseDouble(money);
-        item=name+","+money+","+note;
-        a=new ItemData(name,money,note);
-        items.add(item);
-        cashData.add(a);
-        cashTable.setItems(cashData);
-        totalsum.setText(Double.toString(totalSum));
+		try {
+			 String name=itemName.getText();
+			 String money=itemMoney.getText();
+			 String note=itemNote.getText();
+			 
+			 if(name.equals("")||money.equals("")||note.equals("")) {
+				 	Alert warning =new Alert(AlertType.WARNING);
+					warning.setContentText("Please check your input!");
+					warning.showAndWait();
+					return ;
+			 }
+			 totalSum=totalSum+Double.parseDouble(money);
+			 item=name+","+money+","+note;
+			 a=new ItemData(name,money,note);
+			 items.add(item);
+			 cashData.add(a);
+			 totalsum.setText(Double.toString(totalSum));
+			 itemMoney.setText("");
+			 itemName.setText("");
+			 itemNote.setText("");
+		} catch (NumberFormatException e) {
+			Alert warning =new Alert(AlertType.WARNING);
+			warning.setContentText("Please check your input!");
+			warning.showAndWait();
+		}
+       
     }
 	@FXML
     public void update(){
-    	String itemmoney=a.getmoney();
-    	totalSum=totalSum-Double.parseDouble(itemmoney);
-    	items.remove(item);
-    	cashData.remove(a);
-    	String name=itemName.getText();
-        String money=itemMoney.getText();
-        String note=itemNote.getText();
-        totalSum=totalSum-Double.parseDouble(money);
-        item=name+","+money+","+note;
-        items.add(item);
-        a=new ItemData(name,money,note);
-        cashData.add(a);
-        cashTable.setItems(cashData);
-        totalsum.setText(Double.toString(totalSum));
+		try {
+			items.remove(item);
+			String name=itemName.getText();
+			String money=itemMoney.getText();
+			String note=itemNote.getText();
+			
+			 if(name.equals("")||money.equals("")||note.equals("")) {
+				 	Alert warning =new Alert(AlertType.WARNING);
+					warning.setContentText("Please check your input!");
+					warning.showAndWait();
+					return ;
+			 }
+			totalSum=totalSum-Double.parseDouble(a.getmoney());
+			item=name+","+money+","+note;
+			items.add(item);
+			a.setMoney(money);
+			a.setName(name);
+			a.setNote(note);
+			totalSum=totalSum+Double.parseDouble(money);
+			totalsum.setText(Double.toString(totalSum));
+			itemMoney.setText("");
+			itemName.setText("");
+			itemNote.setText("");
+		} catch (NumberFormatException e) {
+			Alert warning =new Alert(AlertType.WARNING);
+			warning.setContentText("Please check your input!");
+			warning.showAndWait();
+		}
+    	
     }
 	@FXML
     public void delete(){
@@ -143,7 +194,6 @@ public class CashBillViewController  implements Initializable {
    	 if (selectedIndex >= 0) {
    	        cashTable.getItems().remove(selectedIndex);
             items.remove(item);
-            cashData.remove(selectedIndex);
             totalSum=totalSum-Double.parseDouble(a.getmoney());
             totalsum.setText(Double.toString(totalSum));
    	    } else {
@@ -168,35 +218,65 @@ public class CashBillViewController  implements Initializable {
     }
 	private void getInf(ItemData newValue) {
 		// TODO Auto-generated method stub
+		if(newValue!=null) {
 		item=newValue.getname()+","+newValue.getmoney()+","+newValue.getnote();
 		a=newValue;
+		}
 	}
 	@FXML
  public void rightSet(){
 	 CashBillBLService pbs=new CashBillController();
-	 CashBillVO cashbill=new CashBillVO(billid.getText() ,MainApp.getID(),Long.parseLong(account.getText()),items,time,0);
-	 String isSubmit="fail Submit";
-	 if(pbs.submitCashBill(cashbill)){
-		 times++;
-		 isSubmit="Succeed Submit";
-	 }
-     Alert alert = new Alert(AlertType.INFORMATION);
+	 
+	 AccountBLService accountService=new AccountController();
+	 boolean ifAccountExisted=false;
+	 try {
+		long accountID=Long.parseLong(account.getText());
+		AccountVO tmpVO=accountService.findAccountByID(accountID);
+		if(tmpVO!=null) {
+			ifAccountExisted=true;
+		}
+	} catch (NumberFormatException e) {
+		Alert warning=new Alert(AlertType.WARNING);
+		warning.setContentText("Please check your account id input!");
+		warning.showAndWait();
+	}
+	 if(ifAccountExisted) {
+		 	CashBillVO cashbill=new CashBillVO(billid.getText(), MainApp.getID(),Long.parseLong(account.getText()) , items, time, 0);
+		 	String isSubmit="fail Submit";
+		 	if(pbs.submitCashBill(cashbill)){
+		 		
+		 		isSubmit="Succeed Submit";
+		 		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
+		 		String str=sdf.format(time);
+		 		DecimalFormat df=new DecimalFormat("#####");
+		 		
+		 		ArrayList<CashBillVO> tmpList=new CashBillController().findCashBillByTime(time);
+				times=tmpList.size()+1;
+				if(times>99999) {
+					Alert warning=new Alert(AlertType.WARNING);
+					warning.setContentText("No more than 99999 cashbills a day!");
+					warning.showAndWait();
+				}
+		 		billid.setText("FKD-"+str+"-"+df.format(times));
+		 		cashData.clear();
+		 		account.setText("");
+		 		}
+	 		Alert alert = new Alert(AlertType.INFORMATION);
 	        alert.initOwner(MainApp.getPrimaryStage());
 	        alert.setTitle("Information");
 	        alert.setHeaderText("Submit");
 	        alert.setContentText(isSubmit);
 	        alert.showAndWait();
+	        }
+	 else {
+		 	Alert warning=new Alert(AlertType.WARNING);
+			warning.setContentText("Please check your account id input!");
+			warning.showAndWait();
+	 }
+	
+	        
  }
 	
-	public void setStage(Stage writeStage) {
-		stage=writeStage;
-	}
-	public void setBill(CashBillVO bill){
-		
-	}
-	public void setVo(CashBillVO m) {
-		// TODO Auto-generated method stub
-		
-	}
+
 }
 

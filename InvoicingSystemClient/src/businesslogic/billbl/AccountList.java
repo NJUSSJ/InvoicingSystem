@@ -40,10 +40,4 @@ public class AccountList {
 		}
 		return temp;
 	}
-	public AccountLineItem getItem(int index){
-		return list.get(index);
-	}
-	public int getListLength(){
-		return list.size();
-	}
 }

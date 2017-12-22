@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import MainApp.MainApp;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 
@@ -26,6 +27,19 @@ public class SaleMainViewController implements Initializable  {
 	private ImageView sale;
 	@FXML
 	private ImageView saleReturn;
+	@FXML
+	private Button emailButton;
+	@FXML
+	private Button memberButton;
+	@FXML
+	private Button importReturnButton;
+	@FXML
+	private Button importBillButton;
+	@FXML
+	private Button saleButton;
+	@FXML
+	private Button saleReturnButton;
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub

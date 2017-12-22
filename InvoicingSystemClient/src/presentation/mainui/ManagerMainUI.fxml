@@ -14,23 +14,28 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.mainui.ManagerMainViewController">
   <children>
+    <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="601.0" fitWidth="1000.0000999999975" layoutX="0.0" layoutY="-1.0">
+      <image>
+        <Image url="@../../../../../InvoicingSystem/InvoicingSystemClient/resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
     <Label layoutX="9.0" layoutY="43.0" prefHeight="100.99990000000253" prefWidth="444.0" text="总经理主页面">
       <font>
         <Font size="65.0" />
       </font>
     </Label>
-    <Label fx:id="id" layoutX="846.0" layoutY="18.0" text="ID：xxx">
+    <Label fx:id="id" layoutX="846.0" layoutY="18.0" prefWidth="72.0" text="ID：xxx">
       <font>
-        <Font size="14.0" fx:id="x1" />
+        <Font name="Microsoft YaHei UI Light" size="16.0" fx:id="x1" />
       </font>
     </Label>
-    <Label fx:id="logout" font="$x1" layoutX="910.0" layoutY="18.0" onMouseClicked="#showLoginUI" text="|| 登出" />
+    <Label fx:id="logout" font="$x1" layoutX="917.0" layoutY="18.0" onMouseClicked="#showLoginUI" text="|| 登出" />
     <Separator prefHeight="3.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="130.0" />
-    <Label layoutX="94.0" layoutY="339.0" text="审批单据" />
+    <Label layoutX="92.0" layoutY="346.0" text="审批单据" />
     <Label layoutX="244.0" layoutY="346.0" text="查看销售明细表" />
     <Label layoutX="435.0" layoutY="346.0" text="查看经营情况表" />
     <Label layoutX="616.0" layoutY="346.0" text="查看经营历程表" />
-    <Label layoutX="835.0" layoutY="346.0" prefHeight="3.0" prefWidth="72.0" text="制定促销策略" />
+    <Label layoutX="818.0" layoutY="346.0" prefHeight="20.0" prefWidth="105.0" text="制定促销策略" />
     <Label layoutX="107.0" layoutY="546.0" text="邮箱" />
     <ImageView fx:id="examine" fitHeight="125.0" fitWidth="121.0" layoutX="58.0" layoutY="197.0" onMouseClicked="#showexamineUI">
       <image>
@@ -63,11 +68,17 @@
         <Image url="@../../../resources/Mail_Search_512px_1178165_easyicon.net.png" />
       </image>
     </ImageView>
-    <ImageView fx:id="strategy" fitHeight="149.0" fitWidth="146.0" layoutX="786.0" layoutY="177.0">
+    <Button fx:id="promotion" layoutX="786.0" layoutY="177.0" mnemonicParsing="false" onAction="#showStrategyUI" opacity="0.0" prefHeight="149.0" prefWidth="145.9998779296875" text="Button" />
+    <ImageView id="strategy_545px_1208206_easyicon.net.gif" fitHeight="148.99990000000253" fitWidth="146.0" layoutX="786.0" layoutY="177.0">
       <image>
-        <Image url="@../../../resources/strategy_545px_1208206_easyicon.net.png" />
+        <Image url="@../../../../../InvoicingSystem/InvoicingSystemClient/resources/strategy_545px_1208206_easyicon.net.gif" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <Button fx:id="promotion" layoutX="786.0" layoutY="177.0" mnemonicParsing="false" onAction="#showStrategyUI" opacity="0.0" prefHeight="149.0" prefWidth="145.9998779296875" text="Button" />
+    <Button id="promotion" fx:id="manageCourseButton" layoutX="596.0" layoutY="185.0" mnemonicParsing="false" onAction="#showManageCourseUI" opacity="0.0" prefHeight="149.0" prefWidth="145.9998779296875" text="Button" />
+    <Button id="promotion" fx:id="manageSituationButton" layoutX="405.0" layoutY="173.0" mnemonicParsing="false" onAction="#showManageSituationUI" opacity="0.0" prefHeight="149.0" prefWidth="145.9998779296875" text="Button" />
+    <Button id="promotion" fx:id="saleDetailsButton" layoutX="219.0" layoutY="177.0" mnemonicParsing="false" onAction="#showSaleDetailsUI" opacity="0.0" prefHeight="149.0" prefWidth="145.9998779296875" text="Button" />
+    <Button id="promotion" fx:id="exmineButton" layoutX="46.0" layoutY="185.0" mnemonicParsing="false" onAction="#showexamineUI" opacity="0.0" prefHeight="149.0" prefWidth="145.9998779296875" text="Button" />
+    <Button id="promotion" fx:id="emailButton" layoutX="43.0" layoutY="386.0" mnemonicParsing="false" onAction="#showEmailUI" opacity="0.0" prefHeight="149.0" prefWidth="145.9998779296875" text="Button" />
+    <Button id="promotion" fx:id="logButton" layoutX="223.0" layoutY="397.0" mnemonicParsing="false" onAction="#showLogUI" opacity="0.0" prefHeight="149.0" prefWidth="145.9998779296875" text="Button" />
   </children>
 </AnchorPane>

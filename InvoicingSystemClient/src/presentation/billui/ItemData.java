@@ -21,7 +21,7 @@ public StringProperty getMoney() {
 	return money;
 }
 public StringProperty getNote() {
-	// TODO Auto-generated method stub
+	
 	return note;
 }
 public String getname(){
@@ -32,5 +32,14 @@ public String getmoney(){
 }
 public String getnote(){
 	return note.get();
+}
+public void setName(String name) {
+	this.name.set(name);
+}
+public void setMoney(String money) {
+	this.money.set(money);
+}
+public void setNote(String note) {
+	this.note.set(note);
 }
 }

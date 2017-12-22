@@ -13,6 +13,7 @@ public class Account{
 		try {
 			return toAccountVO(RemoteHelper.getInstance().getAccountDataService().findAccountbyID(id));
 		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return null;
@@ -39,7 +40,7 @@ public class Account{
 
 	public boolean updateAccount(AccountVO accountVO) {
 		try {
-			return RemoteHelper.getInstance().getAccountDataService().delete(accountVO.toAccountPO());
+			return RemoteHelper.getInstance().getAccountDataService().update(accountVO.toAccountPO());
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -58,6 +59,7 @@ public class Account{
 		try {
 			ArrayList<AccountPO> accounts = RemoteHelper.getInstance().getAccountDataService().
 					findAcountbyField(field);
+			if(accounts==null||accounts.isEmpty()) return temp;
 			for(int i=0;i<accounts.size();i++){
 				temp.add(toAccountVO(accounts.get(i)));
 			}
@@ -68,10 +70,11 @@ public class Account{
 	}
 	
 	public ArrayList<AccountVO> findAccounts(){
-		ArrayList<AccountVO> temp=null;
+		ArrayList<AccountVO> temp=new ArrayList<>();
 		try {
 			temp=new ArrayList<AccountVO>();
 			ArrayList<AccountPO> accounts = RemoteHelper.getInstance().getAccountDataService().findAccounts();
+			if(accounts.isEmpty()) return temp;
 			for(int i=0;i<accounts.size();i++){
 				temp.add(toAccountVO(accounts.get(i)));
 			}

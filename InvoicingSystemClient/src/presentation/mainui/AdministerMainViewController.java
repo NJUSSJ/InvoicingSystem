@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import MainApp.MainApp;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 
@@ -15,13 +16,17 @@ public class AdministerMainViewController implements Initializable {
 	private Label id;
 	
 	@FXML
-	private ImageView email;
-	
-	@FXML
 	private ImageView log;
 	
 	@FXML
+	private Button logButton;
+	
+	@FXML
 	private ImageView userChange;
+	
+	@FXML
+	private Button userChangeButton;
+	
 
 	@FXML
 	private Label logout;

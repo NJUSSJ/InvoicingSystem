@@ -30,7 +30,19 @@ public class ManagerMainViewController implements Initializable {
 	@FXML
 	private ImageView strategy;
 	@FXML
-	private Button promotion;
+	private Button promotionButton;
+	@FXML
+	private Button examineButton;
+	@FXML
+	private Button manageCourseButton;
+	@FXML
+	private Button manageSituationButton;
+	@FXML
+	private Button saleDetailsButton;
+	@FXML
+	private Button emailButton;
+	@FXML
+	private Button logButton;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

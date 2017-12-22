@@ -8,6 +8,7 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
@@ -15,19 +16,24 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.commodityui.StockInventoryViewController">
   <children>
-    <Label fx:id="ID" layoutX="814.0" layoutY="11.0" text="ID:XXX">
+    <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="604.0" fitWidth="1000.0000999999975" layoutX="0.0" layoutY="0.0">
+      <image>
+        <Image url="@../../../../../InvoicingSystem/InvoicingSystemClient/resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
+    <Label fx:id="ID" layoutX="814.0" layoutY="11.0" prefWidth="76.0" text="ID:XXX">
       <font>
-        <Font size="14.0" fx:id="x1" />
+        <Font name="Microsoft YaHei UI Light" size="16.0" fx:id="x1" />
       </font>
     </Label>
-    <Label fx:id="LogOut" font="$x1" layoutX="881.0" layoutY="10.0" text="|| 登出" />
+    <Label fx:id="LogOut" font="$x1" layoutX="898.0" layoutY="10.0" text="|| 登出" />
     <Separator prefHeight="1.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="145.0" />
     <Label layoutX="14.0" layoutY="61.0" text="库存盘点">
       <font>
         <Font size="65.0" />
       </font>
     </Label>
-    <ScrollPane layoutY="185.0" prefHeight="417.0" prefWidth="827.0">
+    <ScrollPane layoutY="185.0" opacity="0.7" prefHeight="417.0" prefWidth="827.0">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="582.0" prefWidth="812.0">
           <children>
@@ -45,13 +51,13 @@
       </content>
     </ScrollPane>
     <Separator layoutX="823.0" layoutY="148.0" orientation="VERTICAL" prefHeight="459.0" prefWidth="6.0" />
-    <Button fx:id="Export" layoutY="208.0" mnemonicParsing="false" onAction="#handleExport" prefHeight="31.0" prefWidth="130.0" text="导出为Excel" AnchorPane.rightAnchor="20.0">
+    <Button fx:id="Export" layoutY="239.0" mnemonicParsing="false" onAction="#handleExport" opacity="0.7" prefHeight="35.0" prefWidth="131.0" text="导出为Excel" AnchorPane.rightAnchor="19.0">
       <font>
-        <Font size="13.0" fx:id="x2" />
+        <Font name="Microsoft YaHei UI Light" size="15.0" fx:id="x2" />
       </font>
     </Button>
-    <Button fx:id="Return" font="$x2" layoutY="258.0" mnemonicParsing="false" onAction="#Return" prefHeight="31.0" prefWidth="130.0" text="返    回" AnchorPane.rightAnchor="20.0" />
+    <Button fx:id="Return" font="$x2" layoutY="289.0" mnemonicParsing="false" onAction="#Return" opacity="0.7" prefHeight="35.0" prefWidth="131.0" text="返    回" AnchorPane.rightAnchor="19.0" />
     <Label fx:id="todayDate" font="$x1" layoutX="7.0" layoutY="155.0" text="日期：XXXX-XX-XX" />
-    <Button fx:id="Invent" font="$x2" layoutX="850.0" layoutY="158.0" mnemonicParsing="false" onAction="#Invent" prefHeight="31.0" prefWidth="130.0" text="盘点" />
+    <Button fx:id="Invent" font="$x2" layoutX="852.0" layoutY="185.0" mnemonicParsing="false" onAction="#Invent" opacity="0.7" prefHeight="34.0001220703125" prefWidth="130.00009999999747" text="盘点" />
   </children>
 </AnchorPane>

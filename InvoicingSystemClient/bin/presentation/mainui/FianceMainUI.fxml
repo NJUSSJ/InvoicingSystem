@@ -14,15 +14,20 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.mainui.FianceMainViewController">
   <children>
+    <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="601.0" fitWidth="1000.0000999999975" layoutX="0.0" layoutY="0.0">
+      <image>
+        <Image url="@../../../../../InvoicingSystem/InvoicingSystemClient/resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
     <Label layoutX="7.0" layoutY="30.0" text="财务人员主界面">
       <font>
         <Font size="65.0" />
       </font>
     </Label>
     <Separator prefHeight="3.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="110.0" />
-    <Label fx:id="id" layoutX="868.0" layoutY="14.0" text="ID：xxx">
+    <Label fx:id="id" layoutX="857.0" layoutY="14.0" prefWidth="75.0" text="ID：xxx">
       <font>
-        <Font size="14.0" fx:id="x1" />
+        <Font name="Microsoft YaHei UI Light" size="16.0" fx:id="x1" />
       </font>
     </Label>
     <Label fx:id="logout" font="$x1" layoutX="932.0" layoutY="14.0" onMouseClicked="#showLoginUI" text="|| 登出" />
@@ -75,11 +80,6 @@
         <Image url="@../../../resources/cash_receiving_512px_1125250_easyicon.net.png" />
       </image>
     </ImageView>
-    <ImageView fx:id="payBill" fitHeight="134.0" fitWidth="136.0" layoutX="453.0" layoutY="402.0" onMouseClicked="#showpayBillUI">
-      <image>
-        <Image url="@../../../resources/payment_method_545px_1208153_easyicon.net.png" />
-      </image>
-    </ImageView>
     <ImageView fx:id="cashBill" fitHeight="124.0" fitWidth="106.0" layoutX="841.0" layoutY="413.0" onMouseClicked="#showcashBill">
       <image>
         <Image url="@../../../resources/bill_1270px_1200280_easyicon.net.png" />
@@ -93,8 +93,13 @@
     <Button fx:id="saleDetailsButton" layoutX="832.0" layoutY="207.0" mnemonicParsing="false" onAction="#showSaleDetailsUI" opacity="0.0" prefHeight="124.0" prefWidth="120.0" text="Button" />
     <Button fx:id="cashBillButton" layoutX="834.0" layoutY="412.0" mnemonicParsing="false" onAction="#showcashBill" opacity="0.0" prefHeight="124.0" prefWidth="120.0" text="Button" />
     <Button fx:id="logButton" layoutX="667.0" layoutY="420.0" mnemonicParsing="false" onAction="#showLogUI" opacity="0.0" prefHeight="124.0" prefWidth="120.0" text="Button" />
-    <Button fx:id="payBillButton" layoutX="456.0" layoutY="407.0" mnemonicParsing="false" onAction="#showpayBillUI" opacity="0.0" prefHeight="124.00009999999747" prefWidth="127.0" text="Button" />
     <Button fx:id="receiveButton" layoutX="248.0" layoutY="417.0" mnemonicParsing="false" onAction="#showReceiveBillUI" opacity="0.0" prefHeight="119.0" prefWidth="135.0" text="Button" />
     <Button fx:id="emailButton" layoutX="67.0" layoutY="420.0" mnemonicParsing="false" onAction="#showEmailUI" opacity="0.0" prefHeight="123.9998779296875" prefWidth="127.0" text="Button" />
+    <ImageView id="payment_method_545px_1208153_easyicon.net.gif" fitHeight="141.0" fitWidth="138.0" layoutX="455.0" layoutY="399.0">
+      <image>
+        <Image url="@../../../../../InvoicingSystem/InvoicingSystemClient/resources/payment_method_545px_1208153_easyicon.net.gif" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
+    <Button id="emailButton" fx:id="payBillButton" layoutX="460.0" layoutY="413.0" mnemonicParsing="false" onAction="#showpayBillUI" opacity="0.0" prefHeight="123.9998779296875" prefWidth="127.0" text="Button" />
   </children>
 </AnchorPane>

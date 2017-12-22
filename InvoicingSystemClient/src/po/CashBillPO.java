@@ -24,7 +24,7 @@ public class CashBillPO implements Serializable{
 		this.time=time;
 		this.state=state;
 		this.sum=sum;
-		
+		this.items=items;
 	}
 	public String getID(){
 		return id;

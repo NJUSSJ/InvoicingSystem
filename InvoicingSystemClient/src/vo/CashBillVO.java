@@ -26,6 +26,7 @@ public class CashBillVO{
 		this.userid=userid;
 		this.time=time;
 		this.state=state;
+		this.items=items;
 		sum=0;
 		for(int i=0;i<items.size();i++){
 			String[] temp=items.get(i).split(",");
@@ -41,7 +42,7 @@ public class CashBillVO{
 				temp+=" ";
 			}
 		}
-		return new CashBillPO(id,accountid,userid,temp,state,time,sum);
+		return new CashBillPO(id,userid,accountid,temp,state,time,sum);
 	}
 	
 	public String getID(){

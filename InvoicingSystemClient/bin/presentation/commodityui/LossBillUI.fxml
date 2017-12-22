@@ -2,6 +2,7 @@
 
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
@@ -9,6 +10,11 @@
 <AnchorPane prefHeight="450.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.commodityui.LossInfoController">
   <!-- TODO Add Nodes -->
   <children>
+    <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="450.0" fitWidth="411.50006948241935" layoutX="0.0" layoutY="0.0">
+      <image>
+        <Image url="@../../../../../InvoicingSystem/InvoicingSystemClient/resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
     <Label layoutX="8.0" layoutY="37.0" text="库存报损信息">
       <font>
         <Font name="Microsoft YaHei UI Light" size="30.0" />
@@ -25,6 +31,6 @@
     <Label fx:id="sum" layoutX="239.0" layoutY="250.0" text="Label" />
     <Label fx:id="name" layoutX="239.0" layoutY="141.0" text="Label" />
     <Label fx:id="num" layoutX="239.0" layoutY="191.0" text="Label" />
-    <Button fx:id="confirm" layoutX="122.0" layoutY="335.0" minHeight="20.0" mnemonicParsing="false" onAction="#confirm" prefHeight="39.0" prefWidth="156.0" text="确认生成报损单" />
+    <Button fx:id="confirm" layoutX="122.0" layoutY="335.0" minHeight="20.0" mnemonicParsing="false" onAction="#confirm" opacity="0.7" prefHeight="39.0" prefWidth="156.0" text="确认生成报损单" />
   </children>
 </AnchorPane>

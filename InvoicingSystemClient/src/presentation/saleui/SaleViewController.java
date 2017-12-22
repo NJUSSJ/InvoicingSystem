@@ -26,7 +26,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import javafx.scene.control.Alert.AlertType;
 import vo.CommodityVO;
 import vo.MemberVO;
@@ -35,7 +34,7 @@ import vo.SaleBillVO;
 public class SaleViewController implements Initializable  {
 	@FXML
 	private Label id;
-	Stage stage;
+	
 	@FXML
 	private Button logout;
 	@FXML
@@ -233,18 +232,6 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		        alert.setHeaderText("Submit");
 		        alert.setContentText(isSubmit);
 		        alert.showAndWait();
-	}
-
-
-	public void setStage(Stage stage) {
-		// TODO Auto-generated method stub
-		this.stage=stage;
-	}
-
-
-	public void setVo(SaleBillVO m) {
-		// TODO Auto-generated method stub
-		
 	}
 
 

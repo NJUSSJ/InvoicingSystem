@@ -133,7 +133,7 @@ public class AccountDataImpl implements AccountDataService {
 
 	@Override
 	public ArrayList<AccountPO> findAcountbyField(String field) throws RemoteException {
-		String sql="SELECT id, name, deposit FROM accounts where bank like '%"+field+"%'";
+		String sql="SELECT id, name, deposit FROM accounts where name like '%"+field+"%'";
 		ArrayList<AccountPO> results=new ArrayList<>();
 		//Ö´ÐÐÊý¾Ý¿âsqlÓï¾ä
 		try {
