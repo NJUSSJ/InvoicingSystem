@@ -59,4 +59,10 @@ public class GiftBillController implements GiftBillBLService{
 		return giftBillImpl.findGiftBillsByUser(userid);
 	}
 
+	@Override
+	public GiftBillVO findGiftBillByID(long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
