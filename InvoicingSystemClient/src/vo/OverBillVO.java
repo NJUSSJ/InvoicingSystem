@@ -37,7 +37,7 @@ public class OverBillVO {
 	public long getUserID(){
 		return userid;
 	}
-	public String getCommodityList(){
+	public String getCommodityName(){
 		return commodityname;
 	}
 	public Date getTime(){

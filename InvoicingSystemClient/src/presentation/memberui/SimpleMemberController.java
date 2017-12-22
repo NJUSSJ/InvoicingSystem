@@ -6,6 +6,8 @@ import java.util.ResourceBundle;
 import MainApp.MainApp;
 import businesslogic.memberbl.MemberController;
 import businesslogicservice.memberblservice.MemberBLService;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -44,6 +46,7 @@ private Label quota;
 @FXML
 private Label operator;
 
+private ObservableList<MemberData> memberData =FXCollections.observableArrayList();
 int style=0;//style=1  ÐÞ¸Ä/0 ÐÂÔö
 
 static long id=0;
@@ -71,17 +74,23 @@ public void initialize(URL location, ResourceBundle resources) {
 	}
     public void cancel(){
     	stage.close();
-}
-	public void Set(){
+    }
+    public void setList(ObservableList list){
+    	memberData=list;
+    }
+	public void set(){
 		if(style==1){
 			a=new MemberVO(id,Integer.parseInt(rankField.getText()),Integer.parseInt(postcodeField.getText()),Integer.parseInt(categoryField.getText()),nameField.getText(),Integer.parseInt(telephoneField.getText()),
 addressField.getText(),emailField.getText(),Double.parseDouble(shouldpay.getText()),Double.parseDouble(shouldget.getText()),Double.parseDouble(quota.getText()),MainApp.getID());
 		mbs.updateMember(a);
+		stage.close();
 		}else{
 			id++;
 			a=new MemberVO(id,Integer.parseInt(rankField.getText()),Integer.parseInt(postcodeField.getText()),Integer.parseInt(categoryField.getText()),nameField.getText(),Integer.parseInt(telephoneField.getText()),
 	addressField.getText(),emailField.getText(),0.0,0.0,0.0,MainApp.getID());
 			mbs.addMember(a);
+			memberData.add(new MemberData(a));
+			stage.close();
 		}
 		
 	}
