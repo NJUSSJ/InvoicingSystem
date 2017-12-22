@@ -116,7 +116,9 @@ public class MemberViewController implements Initializable {
 	}
 
 	private void getInf(MemberData newValue) {
-		me=newValue.getVO();
+		if(newValue!=null){
+			me=newValue.getVO();
+		}
 	}
 	
 	@FXML
@@ -149,6 +151,7 @@ public class MemberViewController implements Initializable {
 			memberStage.setScene(scene);
             SimpleMemberController controller=loader.getController();
             controller.setStage(memberStage);
+            controller.setList(memberData);
             memberStage.showAndWait();
             
 		} catch (IOException e) {
@@ -159,8 +162,8 @@ public class MemberViewController implements Initializable {
 	public void delete(){
 		int selectedIndex = memberTable.getSelectionModel().getSelectedIndex();
    	 if (selectedIndex >= 0) {
-   	        memberTable.getItems().remove(selectedIndex);
    			mbs.deleteMember(me);
+  	        memberTable.getItems().remove(selectedIndex);
    	    } else {
    	        // Nothing selected.
    	        Alert alert = new Alert(AlertType.WARNING);
@@ -186,6 +189,7 @@ public class MemberViewController implements Initializable {
             SimpleMemberController controller=loader.getController();
             controller.setStage(memberStage);
             controller.setMember(me);
+            controller.setList(memberData);
             memberStage.showAndWait();
             
 		} catch (IOException e) {
