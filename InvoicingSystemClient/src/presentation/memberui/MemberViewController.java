@@ -125,13 +125,41 @@ public class MemberViewController implements Initializable {
 	@FXML
 	public void search(){
 		String findName=search.getText();
-		memberData.clear();
+		if(findName==null||findName.length()<=0){
+			 Alert alert = new Alert(AlertType.WARNING);
+	   	        alert.initOwner(MainApp.getPrimaryStage());
+	   	        alert.setTitle("No Input");
+	   	        alert.setHeaderText("No Input");
+	   	        alert.setContentText("Please input first.");
+	            alert.showAndWait();
+	            return;
+		}
 		if(findName.charAt(0)>='0'&&findName.charAt(0)<='9'){
 			me=mbs.findMemberByID(Long.parseLong(findName));
+			if(me==null){
+				Alert alert = new Alert(AlertType.WARNING);
+	   	        alert.initOwner(MainApp.getPrimaryStage());
+	   	        alert.setTitle("Not Found");
+	   	        alert.setHeaderText("Not Found");
+	   	        alert.setContentText("Not Found:"+findName);
+	            alert.showAndWait();
+	            return;
+			}
+			memberData.clear();
 			memberData.add(new MemberData(me));
 			memberTable.setItems(memberData);
 		}else{
 		memberList=mbs.findMembersByField(findName);
+		if(memberList==null||memberList.size()<=0){
+			Alert alert = new Alert(AlertType.WARNING);
+   	        alert.initOwner(MainApp.getPrimaryStage());
+   	        alert.setTitle("Not Found");
+   	        alert.setHeaderText("Not Found");
+   	        alert.setContentText("Not Found:"+findName);
+            alert.showAndWait();
+            return;
+		}
+		memberData.clear();
 		for(MemberVO a:memberList){
 			memberData.add(new MemberData(a));
 		}
@@ -177,7 +205,7 @@ public class MemberViewController implements Initializable {
    	    }
 	}
 	@FXML
-	public void updata(){
+	public void update(){
 		try {
 			FXMLLoader loader=new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("/presentation/memberui/SimpleMember.fxml"));

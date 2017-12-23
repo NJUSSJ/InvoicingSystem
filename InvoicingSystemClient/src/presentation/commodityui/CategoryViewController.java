@@ -108,17 +108,33 @@ public class CategoryViewController implements Initializable{
 	}
 	@FXML
 	public void search(){
-		categoryData.clear();
 		String content=search.getText();
+		if(content==null||content.length()<=0){
+			 Alert alert = new Alert(AlertType.WARNING);
+	   	        alert.initOwner(MainApp.getPrimaryStage());
+	   	        alert.setTitle("No Input");
+	   	        alert.setHeaderText("No Input");
+	   	        alert.setContentText("Please input first.");
+	            alert.showAndWait();
+	            return;
+		}
 		if(content.charAt(0)>='0'&&content.charAt(0)<='9'){
 			categoryVO=cbs.findCategoryByID(Long.parseLong(content));
-			categoryData.add(new CategoryData (categoryVO));
-			categoryTable.setItems(categoryData);
 		}else{
 			categoryVO=cbs.findCategoryByName(content);
-			categoryData.add(new CategoryData (categoryVO));
-			categoryTable.setItems(categoryData);
 		}
+		if(categoryVO==null){
+			Alert alert = new Alert(AlertType.WARNING);
+   	        alert.initOwner(MainApp.getPrimaryStage());
+   	        alert.setTitle("Not Found");
+   	        alert.setHeaderText("Not Found");
+   	        alert.setContentText("Not Found:"+content);
+            alert.showAndWait();
+            return;
+		}
+		categoryData.clear();
+		categoryData.add(new CategoryData (categoryVO));
+		categoryTable.setItems(categoryData);
 	}
 	
 	@FXML

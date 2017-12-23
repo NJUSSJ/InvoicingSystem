@@ -17,25 +17,13 @@ public class MemberData {
 	StringProperty shouldget=new SimpleStringProperty();
 	StringProperty quota=new SimpleStringProperty();//”¶ ’∂Ó∂»
 	StringProperty operator=new SimpleStringProperty();
-	MemberVO a;
-	public MemberData(MemberVO a){
-		this.a=a;
-		name.set(a.getName());
-		id.set(Long.toString(a.getID()));
-		telephone.set(Long.toString(a.getPhoneNum()));
-		address.set(a.getAddress());
-		postcode.set(Long.toString(a.getPostCode()));
-		email.set(a.getEmail());
-		category.set(Integer.toString(a.getCategory()));
-		rank.set(Integer.toString(a.getRank()));
-		shouldpay.set(Double.toString(a.getShouldPay()));
-		shouldget.set(Double.toString(a.getShouldGet()));
-		quota.set(Double.toString(a.getQuota()));
-		operator.set(Long.toString(a.getDefaultOperatorID()));
+	MemberVO memberVO;
+	public MemberData(MemberVO vo){
+		setMemberVO(vo);
 	}
 
 	public MemberVO getVO() {
-		return a;
+		return memberVO;
 	}
 
 	public StringProperty getNameProperty() {
@@ -86,19 +74,19 @@ public class MemberData {
 		return telephone;
 	}
 	public void setMemberVO(MemberVO vo){
-		this.a=vo;
-		name.set(a.getName());
-		id.set(Long.toString(a.getID()));
-		telephone.set(Long.toString(a.getPhoneNum()));
-		address.set(a.getAddress());
-		postcode.set(Long.toString(a.getPostCode()));
-		email.set(a.getEmail());
-		category.set(Integer.toString(a.getCategory()));
-		rank.set(Integer.toString(a.getRank()));
-		shouldpay.set(Double.toString(a.getShouldPay()));
-		shouldget.set(Double.toString(a.getShouldGet()));
-		quota.set(Double.toString(a.getQuota()));
-		operator.set(Long.toString(a.getDefaultOperatorID()));
+		memberVO=vo;
+		name.set(memberVO.getName());
+		id.set(Long.toString(memberVO.getID()));
+		telephone.set(Long.toString(memberVO.getPhoneNum()));
+		address.set(memberVO.getAddress());
+		postcode.set(Long.toString(memberVO.getPostCode()));
+		email.set(memberVO.getEmail());
+		category.set(Integer.toString(memberVO.getCategory()));
+		rank.set(Integer.toString(memberVO.getRank()));
+		shouldpay.set(Double.toString(memberVO.getShouldPay()));
+		shouldget.set(Double.toString(memberVO.getShouldGet()));
+		quota.set(Double.toString(memberVO.getQuota()));
+		operator.set(Long.toString(memberVO.getDefaultOperatorID()));
 	}
 
 }

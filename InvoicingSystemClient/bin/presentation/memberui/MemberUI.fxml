@@ -19,12 +19,12 @@
   <children>
     <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="598.0" fitWidth="999.0" layoutX="1.0" layoutY="1.0">
       <image>
-        <Image url="@../../../../../InvoicingSystem/InvoicingSystemClient/resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
+        <Image url="@../../../resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
     <Label fx:id="id" layoutX="837.0" layoutY="14.0" prefWidth="63.0" text="ID:XXX">
       <font>
-        <Font name="Microsoft YaHei UI Light" size="14.0" fx:id="x1" />
+        <Font size="14.0" fx:id="x1" />
       </font>
     </Label>
     <Label font="$x1" layoutX="908.0" layoutY="14.0" text="|| 登出" />
@@ -60,17 +60,13 @@
     </ScrollPane>
     <Button fx:id="addB" layoutX="896.0" layoutY="169.0" mnemonicParsing="false" onAction="#add" prefHeight="31.0" prefWidth="90.0" text="新  增">
       <font>
-        <Font name="Microsoft JhengHei UI Light" size="13.0" fx:id="x2" />
+        <Font size="13.0" fx:id="x2" />
       </font>
     </Button>
     <Button fx:id="deleteB" font="$x2" layoutX="896.0" layoutY="213.0" mnemonicParsing="false" onAction="#delete" prefHeight="31.0" prefWidth="90.0" text="删  除" />
-    <Button fx:id="updateB" font="$x2" layoutX="896.0" layoutY="256.0" mnemonicParsing="false" onAction="#updata" prefHeight="31.0" prefWidth="90.0" text="修 改" />
+    <Button fx:id="updateB" font="$x2" layoutX="896.0" layoutY="256.0" mnemonicParsing="false" onAction="#update" prefHeight="31.0" prefWidth="90.0" text="修 改" />
     <Button fx:id="returnB" font="$x2" layoutX="896.0" layoutY="300.0" mnemonicParsing="false" onAction="#showSaleMainUI" prefHeight="31.0" prefWidth="90.0" text="返 回" />
-    <Button fx:id="rightB" layoutX="308.0" layoutY="154.0" mnemonicParsing="false" onAction="#search" prefHeight="23.0" prefWidth="62.999900000002526" text="确 认">
-      <font>
-        <Font name="Microsoft YaHei UI Light" size="13.0" />
-      </font>
-    </Button>
+    <Button fx:id="rightB" font="$x2" layoutX="308.0" layoutY="154.0" mnemonicParsing="false" onAction="#search" prefHeight="23.0" prefWidth="62.999900000002526" text="确 认" />
     <Label font="$x1" layoutX="9.0" layoutY="156.0" text="查 询：" />
     <TextField fx:id="search" layoutX="61.0" layoutY="154.0" prefHeight="23.0" prefWidth="210.0" />
     <Button fx:id="logout" layoutX="876.0" layoutY="38.0" mnemonicParsing="false" onAction="#logout" opacity="0.0" prefHeight="31.0" prefWidth="63.0" text="Button" />
