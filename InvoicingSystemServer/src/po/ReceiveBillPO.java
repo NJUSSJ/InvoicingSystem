@@ -1,8 +1,13 @@
 package po;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class ReceiveBillPO {
+public class ReceiveBillPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	String id;
 	long userid;
 	long memberid;

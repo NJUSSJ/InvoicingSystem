@@ -238,7 +238,7 @@ public class ReceiveBillViewController  implements Initializable{
 	 }
 	 
 	 ReceiveBillBLService pbs=new ReceiveBillController();
-	 ReceiveBillVO receivebill=new ReceiveBillVO(billid.getText() ,MainApp.getID(),Long.parseLong(account.getText()),aclist,aclist.getSum(),time,0);
+	 ReceiveBillVO receivebill=new ReceiveBillVO(billid.getText() ,MainApp.getID(),tmpMember.getID(),aclist,aclist.getSum(),time,0);
 	 String isSubmit="fail Submit";
 	 if(pbs.submitReceiveBill(receivebill)){
 		 
