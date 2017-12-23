@@ -35,6 +35,8 @@ public class SimpleMemberController implements Initializable{
 	@FXML
 	private TextField telephoneField;
 	@FXML
+	private TextField parentField;
+	@FXML
 	private Button cancelB;
 	@FXML
 	private Button rightB;

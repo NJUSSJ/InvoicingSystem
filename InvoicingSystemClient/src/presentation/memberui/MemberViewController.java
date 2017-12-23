@@ -177,7 +177,7 @@ public class MemberViewController implements Initializable {
    	    }
 	}
 	@FXML
-	public void updata(){
+	public void update(){
 		try {
 			FXMLLoader loader=new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("/presentation/memberui/SimpleMember.fxml"));
