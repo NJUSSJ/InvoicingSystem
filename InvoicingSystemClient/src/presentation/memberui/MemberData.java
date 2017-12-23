@@ -17,86 +17,76 @@ public class MemberData {
 	StringProperty shouldget=new SimpleStringProperty();
 	StringProperty quota=new SimpleStringProperty();//”¶ ’∂Ó∂»
 	StringProperty operator=new SimpleStringProperty();
-	MemberVO a;
-	public MemberData(MemberVO a){
-		this.a=a;
-		name.set(a.getName());
-		id.set(Long.toString(a.getID()));
-		telephone.set(Long.toString(a.getPhoneNum()));
-		address.set(a.getAddress());
-		postcode.set(Long.toString(a.getPostCode()));
-		email.set(a.getEmail());
-		category.set(Integer.toString(a.getCategory()));
-		rank.set(Integer.toString(a.getRank()));
-		shouldpay.set(Double.toString(a.getShouldPay()));
-		shouldget.set(Double.toString(a.getShouldGet()));
-		quota.set(Double.toString(a.getQuota()));
-		operator.set(Long.toString(a.getDefaultOperatorID()));
+	MemberVO memberVO;
+	public MemberData(MemberVO vo){
+		setMemberVO(vo);
 	}
 
 	public MemberVO getVO() {
-		// TODO Auto-generated method stub
-		return a;
+		return memberVO;
 	}
 
 	public StringProperty getNameProperty() {
-		// TODO Auto-generated method stub
 		return name;
 	}
 
 	public StringProperty getCategoryProperty() {
-		// TODO Auto-generated method stub
 		return category;
 	}
 
 	public StringProperty getidProperty() {
-		// TODO Auto-generated method stub
 		return id;
 	}
 
 	public StringProperty getRankProperty() {
-		// TODO Auto-generated method stub
 		return rank;
 	}
 
 	public StringProperty getAddressProperty() {
-		// TODO Auto-generated method stub
 		return address;
 	}
 
 	public StringProperty getPostCodeProperty() {
-		// TODO Auto-generated method stub
 		return postcode;
 	}
 
 	public StringProperty getEmailProperty() {
-		// TODO Auto-generated method stub
 		return email;
 	}
 
 	public StringProperty getQuotaProperty() {
-		// TODO Auto-generated method stub
 		return quota;
 	}
 
 	public StringProperty getOperatorProperty() {
-		// TODO Auto-generated method stub
 		return operator;
 	}
 
 	public StringProperty getpayProperty() {
-		// TODO Auto-generated method stub
 		return shouldpay;
 	}
 
 	public StringProperty getgetProperty() {
-		// TODO Auto-generated method stub
 		return shouldget;
 	}
 
 	public StringProperty getTelephoneProperty() {
-		// TODO Auto-generated method stub
 		return telephone;
+	}
+	public void setMemberVO(MemberVO vo){
+		memberVO=vo;
+		name.set(memberVO.getName());
+		id.set(Long.toString(memberVO.getID()));
+		telephone.set(Long.toString(memberVO.getPhoneNum()));
+		address.set(memberVO.getAddress());
+		postcode.set(Long.toString(memberVO.getPostCode()));
+		email.set(memberVO.getEmail());
+		category.set(Integer.toString(memberVO.getCategory()));
+		rank.set(Integer.toString(memberVO.getRank()));
+		shouldpay.set(Double.toString(memberVO.getShouldPay()));
+		shouldget.set(Double.toString(memberVO.getShouldGet()));
+		quota.set(Double.toString(memberVO.getQuota()));
+		operator.set(Long.toString(memberVO.getDefaultOperatorID()));
 	}
 
 }

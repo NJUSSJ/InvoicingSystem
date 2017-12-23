@@ -104,7 +104,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	private TableColumn<CommodityItemData,String> noteColumn;
 	
 	static int times=0;
-	Stage stage;
+	
 	Date time;
 	CommodityItemData itemdata;
 	CommodityLineItem item;
@@ -222,7 +222,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 
 	public void setStage(Stage stage) {
 		// TODO Auto-generated method stub
-		this.stage=stage;
+		
 	}
 
 

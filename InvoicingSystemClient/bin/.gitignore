@@ -1,20 +1,13 @@
+/presentation/
 /MainApp/
 /Utility/
 /businesslogic/
 /businesslogicservice/
-<<<<<<< HEAD
-/dataservice/
-=======
 /data/
 /dataservice/
 /driver/
->>>>>>> 7c98bada8647a1115f2eaf771333c00d96c0e14d
 /po/
-/presentation/
 /rmi/
 /runner/
-<<<<<<< HEAD
-=======
 /stubs/
->>>>>>> 7c98bada8647a1115f2eaf771333c00d96c0e14d
 /vo/

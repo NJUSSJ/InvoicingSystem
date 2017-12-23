@@ -29,6 +29,12 @@ public class StockMainViewController implements Initializable {
 	private Button stockCheckButton;
 	@FXML
 	private Button StockInvent;
+	@FXML
+	private Button emailButton;
+	@FXML
+	private Button categoryButton;
+	@FXML
+	private Button commodityButton;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

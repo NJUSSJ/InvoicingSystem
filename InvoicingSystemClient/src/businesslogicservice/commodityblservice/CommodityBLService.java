@@ -30,4 +30,6 @@ public interface CommodityBLService {
 	public ArrayList<StockCheckInfoVO> getStockInfo(Date start,Date end);
 	public ArrayList<StockInventoryInfoVO> getInventoryInfo();
 	public ArrayList<CommodityVO> findCommodities();
+	public long findLargestIDofCommodity();
+	public long findLargestIDofCategory();
 }

@@ -70,7 +70,10 @@ public class Commodity{
 	public ArrayList<CommodityVO> findCommodityByField(String field) {
 		ArrayList<CommodityVO> temp = new ArrayList<CommodityVO>();
 		try {
-			ArrayList<CommodityPO> commodity=RemoteHelper.getInstance().getCommodityDataService().findCommoditiesbyField();
+			ArrayList<CommodityPO> commodity=RemoteHelper.getInstance().getCommodityDataService().findCommoditiesbyField(field);
+			if(commodity==null){
+				return null;
+			}
 			for(int i=0;i<commodity.size();i++){
 				temp.add(toCommodityVO(commodity.get(i)));
 			}
@@ -163,6 +166,9 @@ public class Commodity{
 		ArrayList<CommodityVO> result=new ArrayList<CommodityVO>();
 		try {
 			ArrayList<CommodityPO> pos=RemoteHelper.getInstance().getCommodityDataService().findCommodities();
+			if(pos==null){
+				return null;
+			}
 			for(CommodityPO po:pos){
 				result.add(toCommodityVO(po));
 			}
@@ -170,5 +176,13 @@ public class Commodity{
 			e.printStackTrace();
 		}
 		return result;
+	}
+	public long findLargestIDofCommodity(){
+		try {
+			return RemoteHelper.getInstance().getCommodityDataService().getLargestIDofCommodity();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return -2;
 	}
 }

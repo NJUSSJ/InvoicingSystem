@@ -30,4 +30,13 @@ public class AccountData {
 		// TODO Auto-generated method stub
 		return idPro;
 	}
+	public void setName(String name) {
+		this.namePro.set(name);
+	}
+	public void setDeposit(String deposit) {
+		this.depositPro.set(deposit);
+	}
+	public void setID(String id) {
+		this.idPro.set(id);
+	}
 }

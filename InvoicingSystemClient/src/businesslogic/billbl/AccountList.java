@@ -3,13 +3,13 @@ package businesslogic.billbl;
 import java.util.ArrayList;
 
 public class AccountList {
-	ArrayList<AccountLineItem> list;
+	ArrayList<AccountLineItem> list=new ArrayList<>();
 	public AccountList(){
 		list=new ArrayList<AccountLineItem>();
 	}
 	public AccountList(String info){
 		String[] items=info.split(" ");
-		for(int i=0;i<info.length();i++){
+		for(int i=0;i<items.length;i++){
 			String[] temp=items[i].split(",");
 			Long id=Long.parseLong(temp[0]);
 			double money=Double.parseDouble(temp[1]);
@@ -40,10 +40,12 @@ public class AccountList {
 		}
 		return temp;
 	}
-	public AccountLineItem getItem(int index){
-		return list.get(index);
-	}
-	public int getListLength(){
+	public int getListLength() {
+		// TODO Auto-generated method stub
 		return list.size();
+	}
+	public AccountLineItem getItem(int i) {
+		// TODO Auto-generated method stub
+		return list.get(i);
 	}
 }

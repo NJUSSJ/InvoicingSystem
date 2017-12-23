@@ -140,7 +140,7 @@ public class ReceiveBillDataImpl implements ReceiveBillDataService{
 	 */
 	@Override
 	public ArrayList<ReceiveBillPO> findReceiveBillbyTime(Date time) throws RemoteException {
-		String sql="select * from rececivebills where time='"+time+"'";
+		String sql="select * from receivebills where time='"+time+"'";
 		ArrayList<ReceiveBillPO> results=new ArrayList<>();
 		try {
 			ResultSet result=DataFactory.statement.executeQuery(sql);
@@ -149,7 +149,7 @@ public class ReceiveBillDataImpl implements ReceiveBillDataService{
 				String id=result.getString("id");
 				long userid=result.getLong("userid");
 				long memberid=result.getLong("memberid");
-				String accountlist=result.getString("commoditylist");
+				String accountlist=result.getString("accountlist");
 				double sum=result.getDouble("sum");
 				int state=result.getInt("state");
 				
@@ -181,7 +181,7 @@ public class ReceiveBillDataImpl implements ReceiveBillDataService{
 				String id=result.getString("id");
 				long userid=result.getLong("userid");
 				long memberid=result.getLong("memberid");
-				String accountlist=result.getString("commoditylist");
+				String accountlist=result.getString("accountlist");
 				double sum=result.getDouble("sum");
 				Date time=result.getDate("time");
 				

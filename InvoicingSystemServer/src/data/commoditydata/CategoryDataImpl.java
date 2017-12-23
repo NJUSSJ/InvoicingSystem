@@ -165,5 +165,36 @@ public class CategoryDataImpl implements CategoryDataService{
 		}
 		return null;
 	}
+
+	@Override
+	public long getLargestIDofCategory() throws RemoteException {
+		String sql="select * from categories";
+		ArrayList<CategoryPO> results= new ArrayList<>();
+		try {
+			ResultSet result=DataFactory.statement.executeQuery(sql);
+			
+			while(result.next()) {
+				long id=result.getLong("id");
+				String name=result.getString("name");
+				long parentid=result.getLong("parentid");
+				
+				CategoryPO tmpPO=new CategoryPO(id, name, parentid);
+				
+				results.add(tmpPO);
+			}
+			long largestID=-1;
+			for(int i=0;i<results.size();i++) {
+				if(results.get(i).getID()>largestID){
+					largestID=results.get(i).getID();
+				}
+				
+			}
+			return largestID;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
 	
 }

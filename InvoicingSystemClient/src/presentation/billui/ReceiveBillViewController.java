@@ -4,12 +4,17 @@ import java.net.URL;
 import java.sql.Date;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import MainApp.MainApp;
+import businesslogic.accountbl.AccountController;
 import businesslogic.billbl.AccountLineItem;
 import businesslogic.billbl.AccountList;
+import businesslogic.billbl.ReceiveBill;
 import businesslogic.billbl.ReceiveBillController;
+import businesslogic.memberbl.MemberController;
+import businesslogicservice.accountblservice.AccountBLService;
 import businesslogicservice.billblservice.ReceiveBillBLService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,6 +28,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.control.Alert.AlertType;
+import vo.AccountVO;
+import vo.MemberVO;
 import vo.ReceiveBillVO;
 
 public class ReceiveBillViewController  implements Initializable{
@@ -40,7 +47,7 @@ public class ReceiveBillViewController  implements Initializable{
 	private TextField account;
 	
 	Date time;
-	
+	Stage stage;
     private ObservableList<AccountLineItemData> receiveData =FXCollections.observableArrayList();
 	
 	@FXML
@@ -64,7 +71,7 @@ public class ReceiveBillViewController  implements Initializable{
 	@FXML
 	private Button addB;
 	
-	Stage stage;
+	
 	@FXML
 	private Button updateB;
 	
@@ -82,7 +89,7 @@ public class ReceiveBillViewController  implements Initializable{
 	
 	AccountLineItem ali;
 	
-	AccountList aclist;
+	AccountList aclist=new AccountList();
 	
 	AccountLineItemData  alid;
 	
@@ -95,8 +102,22 @@ public class ReceiveBillViewController  implements Initializable{
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
 		String str=sdf.format(time);
 		DecimalFormat df=new DecimalFormat("#####");
+		receiveTable.setItems(receiveData);
+		
+		/*
+		 * set times
+		 */
+		ArrayList<ReceiveBillVO> tmpList=new ReceiveBillController().findReceiveBillByTime(time);
+		times=tmpList.size()+1;
 		billid.setText("SKD-"+str+"-"+df.format(times));
-		id.setText("ID:"+MainApp.getID());
+		
+		long idLong=MainApp.getID();
+		String idString=idLong+"";
+		while(idString.length()<5) {
+			idString="0"+idString;
+		}
+		id.setText("ID:"+idString);
+		
 		operator.setText(MainApp.getName());
 		receiveTable.getSelectionModel().selectedItemProperty().addListener(
 	            (observable, oldValue, newValue) -> getInf(newValue));	
@@ -106,31 +127,65 @@ public class ReceiveBillViewController  implements Initializable{
 	}
 	@FXML
     public void add(){
-        long name=Long.parseLong(itemName.getText());
-        double money=Double.parseDouble(itemMoney.getText());
-        String note=itemNote.getText();
-        ali=new AccountLineItem(name,money,note);
-        aclist.addAccount(ali);
-        alid=new AccountLineItemData(ali);
-        receiveData.add(alid);
-        receiveTable.setItems(receiveData);
-        totalsum.setText(Double.toString(aclist.getSum()));
+        try {
+        	 long name=Long.parseLong(itemName.getText());
+        	 
+        	 AccountBLService accountService=new AccountController();
+        	 AccountVO tmpVO= accountService.findAccountByID(name);
+        	 if(tmpVO==null) {
+        		 Alert warning=new Alert(AlertType.WARNING);
+     			 warning.setContentText("Account Does Not Exist!");
+     			 warning.showAndWait();
+        	 }
+        	 double money=Double.parseDouble(itemMoney.getText());
+        	 String note=itemNote.getText();
+			 ali=new AccountLineItem(name,money,note);
+			 aclist.addAccount(ali);
+			 alid=new AccountLineItemData(ali);
+			 receiveData.add(alid);
+			 totalsum.setText(Double.toString(aclist.getSum()));
+			 
+			 
+		} catch (NumberFormatException e) {
+			Alert warning=new Alert(AlertType.WARNING);
+			warning.setContentText("Please Check Your Input!");
+			warning.showAndWait();
+		}
+        	 itemMoney.setText("");
+			 itemName.setText("");
+			 itemNote.setText("");
     }
 	@FXML
     public void update(){
-    	aclist.removeAccount(ali);
-    	receiveData.remove(alid);
-    	long name=Long.parseLong(itemName.getText());
-        double money=Double.parseDouble(itemMoney.getText());
-        String note=itemNote.getText();
-        ali.setAccountID(name);
-        ali.setMoney(money);
-        ali.setRemark(note);
-        aclist.addAccount(ali);
-        alid=new AccountLineItemData(ali);
-        receiveData.add(alid);
-        receiveTable.setItems(receiveData);
-        totalsum.setText(Double.toString(aclist.getSum()));
+		
+    	try {
+       	 long name=Long.parseLong(itemName.getText());
+       	 
+       	 AccountBLService accountService=new AccountController();
+       	 AccountVO tmpVO= accountService.findAccountByID(name);
+       	 if(tmpVO==null) {
+       		 Alert warning=new Alert(AlertType.WARNING);
+    			 warning.setContentText("Account Does Not Exist!");
+    			 warning.showAndWait();
+       	 }
+       	 double money=Double.parseDouble(itemMoney.getText());
+       	 	 String note=itemNote.getText();
+       	 	 aclist.removeAccount(ali);
+       	 	 receiveData.remove(alid);
+			 ali=new AccountLineItem(name,money,note);
+			 aclist.addAccount(ali);
+			 alid=new AccountLineItemData(ali);
+			 receiveData.add(alid);
+			 totalsum.setText(Double.toString(aclist.getSum()));
+			 
+			 itemMoney.setText("");
+			 itemName.setText("");
+			 itemNote.setText("");
+		} catch (NumberFormatException e) {
+			Alert warning=new Alert(AlertType.WARNING);
+			warning.setContentText("Please Check Your Input!");
+			warning.showAndWait();
+		}
     }
 	@FXML
     public void delete(){
@@ -138,7 +193,6 @@ public class ReceiveBillViewController  implements Initializable{
    	 if (selectedIndex >= 0) {
    		    receiveTable.getItems().remove(selectedIndex);
             aclist.removeAccount(ali);
-            receiveData.remove(selectedIndex);
             totalsum.setText(Double.toString(aclist.getSum()));
    	    } else {
    	        // Nothing selected.
@@ -162,19 +216,48 @@ public class ReceiveBillViewController  implements Initializable{
     }
 	private void getInf(AccountLineItemData newValue) {
 		// TODO Auto-generated method stub
-		ali=newValue.getVO();
-		alid=newValue;
+		if(newValue!=null) {
+			ali=newValue.getVO();
+			alid=newValue;
+			 itemMoney.setText(alid.getMoney().get());
+			 itemName.setText(alid.getName().get());
+			 itemNote.setText(alid.getRemark().get());
+		}
+		
 	}
 	@FXML
  public void rightSet(){
+		/*
+		 * judge member
+		 */
+	 MemberVO tmpMember=new MemberController().findMemberByName(account.getText());
+	 if(tmpMember==null) {
+		 Alert warning=new Alert(AlertType.WARNING);
+			warning.setContentText("Member Does Not Exist!");
+			warning.showAndWait();
+			return ;
+	 }
+	 
 	 ReceiveBillBLService pbs=new ReceiveBillController();
-	 ReceiveBillVO receivebill=new ReceiveBillVO(billid.getText() ,MainApp.getID(),Long.parseLong(account.getText()),aclist,aclist.getSum(),time,0);
+	 ReceiveBillVO receivebill=new ReceiveBillVO(billid.getText() ,MainApp.getID(),tmpMember.getID(),aclist,aclist.getSum(),time,0);
 	 String isSubmit="fail Submit";
 	 if(pbs.submitReceiveBill(receivebill)){
-		 times++;
+		 
+		 SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
+		 String str=sdf.format(time);
+		 DecimalFormat df=new DecimalFormat("#####");
+		 ArrayList<ReceiveBillVO> tmpList=new ReceiveBillController().findReceiveBillByTime(time);
+		 times=tmpList.size()+1;
+		 billid.setText("SKD-"+str+"-"+df.format(times));
+		 
 		 isSubmit="Succeed Submit";
+		 
+		 receiveData.clear();
+		 aclist=new AccountList();
+		 account.setText("");
+		 totalsum.setText(Double.toString(aclist.getSum()));
 	 }
-     Alert alert = new Alert(AlertType.INFORMATION);
+     		Alert alert = new Alert(AlertType.INFORMATION);
 	        alert.initOwner(MainApp.getPrimaryStage());
 	        alert.setTitle("Information");
 	        alert.setHeaderText("Submit");
@@ -204,6 +287,7 @@ public class ReceiveBillViewController  implements Initializable{
 	   updateB.setVisible(false);
 	   deleteB.setVisible(false);
 	}
+
 	
 
 

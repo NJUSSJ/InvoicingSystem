@@ -14,5 +14,5 @@ public interface CategoryDataService extends Remote {
 	public ArrayList<CategoryPO> findCategorybyParent(long parentid) throws RemoteException;
 	public CategoryPO findCategorybyID(long id) throws RemoteException;
 	public CategoryPO findCategorybyName(String Name) throws RemoteException;
-
+	public long getLargestIDofCategory() throws RemoteException;
 }

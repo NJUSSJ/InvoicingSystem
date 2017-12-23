@@ -109,16 +109,13 @@ public class BillData {
 		// TODO Auto-generated method stub
 		choose.set(string);
 	}
-	public String getchoose() {
-		// TODO Auto-generated method stub
+	public String getchoose(){
 		return choose.get();
 	}
-	public String getid() {
-		// TODO Auto-generated method stub
-		return id.get();
-	}
-	public String getstyle() {
-		// TODO Auto-generated method stub
+	public String getstyle(){
 		return style.get();
+	}
+	public String getid(){
+		return id.get();
 	}
 }

@@ -989,5 +989,15 @@ public class DataRemoteObject extends UnicastRemoteObject implements UserDataSer
 	public ArrayList<CashBillPO> findCashBillbyUser(long userid) throws RemoteException {
 		return cashbillservice.findCashBillbyUser(userid);
 	}
+
+	@Override
+	public long getLargestIDofCategory() throws RemoteException {
+		return categoryservice.getLargestIDofCategory();
+	}
+
+	@Override
+	public long getLargestIDofCommodity() throws RemoteException {
+		return commodityService.getLargestIDofCommodity();
+	}
 	
 }

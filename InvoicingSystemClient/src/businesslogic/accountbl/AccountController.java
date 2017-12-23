@@ -10,21 +10,25 @@ public class AccountController implements AccountBLService{
 	Account accountImpl=new Account();
 	@Override
 	public AccountVO findAccountByID(long id) {
+		// TODO 自动生成的方法存根
 		return accountImpl.findAccountByID(id);
 	}
 
 	@Override
 	public boolean addAccount(AccountVO accountVO) {
+		// TODO 自动生成的方法存根
 		return accountImpl.addAccount(accountVO);
 	}
 
 	@Override
 	public boolean deleteAccount(AccountVO accountVO) {
+		// TODO 自动生成的方法存根
 		return accountImpl.deleteAccount(accountVO);
 	}
 
 	@Override
 	public boolean updateAccount(AccountVO accountVO) {
+		// TODO 自动生成的方法存根
 		return accountImpl.updateAccount(accountVO);
 	}
 

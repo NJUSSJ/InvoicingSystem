@@ -10,12 +10,15 @@ import businesslogic.accountbl.AccountController;
 import businesslogicservice.accountblservice.AccountBLService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -51,7 +54,7 @@ public class AccountViewController implements Initializable {
 	@FXML
 	private Button returnB;
 	
-	private ObservableList<AccountData> accountData =FXCollections.observableArrayList();
+	public  ObservableList<AccountData> accountData =FXCollections.observableArrayList();
 	
 	@FXML
 	private TableView<AccountData> accountTable;
@@ -88,22 +91,36 @@ public class AccountViewController implements Initializable {
 			accountData.add(new AccountData(a));
 		}
 	    accountTable.setItems(accountData);
+	    search.setOnKeyPressed(new EventHandler<KeyEvent>() {
+
+			@Override
+			public void handle(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if(e.getCode().equals(KeyCode.ENTER)) {
+					searchAccount();
+				}
+			}
+		});
 	}
 	
 	@FXML
 	public void searchAccount(){
 		String findName=search.getText();
+		if(findName.equals("")) {
+			MainApp.showAccountUI();
+			return;
+		}
 		accountData.clear();
 		if(findName.charAt(0)>='0'&&findName.charAt(0)<='9'){
 			acco=abs.findAccountByID(Long.parseLong(findName));
 			accountData.add(new AccountData(acco));
-			accountTable.setItems(accountData);
+			
 		}else{
 		accountList=abs.findAccountByField(findName);
 		for(AccountVO a:accountList){
 			accountData.add(new AccountData(a));
 		}
-		accountTable.setItems(accountData);
+		
 		}
 		
 	}
@@ -111,7 +128,7 @@ public class AccountViewController implements Initializable {
     public void addAccount(){
     	try {
 			FXMLLoader loader=new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("/presentation/accountui/SimpleAccountUI.fxml"));
+			loader.setLocation(MainApp.class.getResource("/presentation/accountui/SimpleAccount.fxml"));
 			AnchorPane accountUI=loader.load();
 			Scene scene=new Scene(accountUI);
 			Stage accountStage=new Stage();
@@ -121,6 +138,8 @@ public class AccountViewController implements Initializable {
 			accountStage.setScene(scene);
             SimpleAccountController controller=loader.getController();
             controller.setStage(accountStage);
+            controller.setStyle(0);
+            controller.setList(accountData);
             accountStage.showAndWait();
             
 		} catch (IOException e) {
@@ -156,6 +175,17 @@ public class AccountViewController implements Initializable {
     @FXML
     public void updateAccount(){
     	try {
+    		AccountData data=accountTable.getSelectionModel().getSelectedItem();
+    		if(data==null) {
+    			// Nothing selected.
+    	        Alert alert = new Alert(AlertType.WARNING);
+    	        alert.initOwner(MainApp.getPrimaryStage());
+    	        alert.setTitle("No Selection");
+    	        alert.setHeaderText("No Account Selected");
+    	        alert.setContentText("Please select an account in the table.");
+    	        
+    	        alert.showAndWait();
+    		}
 			FXMLLoader loader=new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("/presentation/accountui/SimpleAccount.fxml"));
 			AnchorPane accountUI=loader.load();
@@ -167,9 +197,8 @@ public class AccountViewController implements Initializable {
 			accountStage.setScene(scene);
             SimpleAccountController controller=loader.getController();
             controller.setStage(accountStage);
-           controller.setAccount(Double.toString(acco.getDeposit()));
-           controller.setName(acco.getName());
-           controller.setId(Long.toString(acco.getID()));
+            controller.setSelect(data);
+            controller.setStyle(1);
             accountStage.showAndWait();
             
 		} catch (IOException e) {

@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.mainui.StockMainViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.mainui.StockMainViewController">
   <children>
     <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0">
       <children>
+        <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="600.0" fitWidth="1000.0" layoutX="-1.0" layoutY="0.0">
+          <image>
+            <Image url="@../../../../../InvoicingSystem/InvoicingSystemClient/resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
+          </image>
+        </ImageView>
         <Label layoutX="11.0" layoutY="37.0" prefHeight="102.99990000000253" prefWidth="614.0" text="库存管理人员主页面">
           <font>
             <Font size="65.0" />
@@ -39,11 +49,6 @@
             <Image url="@../../../resources/folder_1096px_1207337_easyicon.net.png" />
           </image>
         </ImageView>
-        <ImageView fx:id="commodity" fitHeight="152.0" fitWidth="150.0" layoutX="325.0" layoutY="175.0" onMouseClicked="#showCommodityUI">
-          <image>
-            <Image url="@../../../resources/file_527px_1208074_easyicon.net.png" />
-          </image>
-        </ImageView>
         <ImageView fx:id="stockCheck" fitHeight="139.0" fitWidth="131.0" layoutX="546.0" layoutY="180.0">
           <image>
             <Image url="@../../../resources/view_file_512px_1169005_easyicon.net.png" />
@@ -56,6 +61,14 @@
         </ImageView>
         <Button fx:id="stockCheckButton" layoutX="546.0" layoutY="182.0" mnemonicParsing="false" onAction="#showStockCheckUI" opacity="0.0" prefHeight="139.0" prefWidth="130.9998779296875" text="Button" />
         <Button id="stockCheckButton" fx:id="StockInvent" layoutX="735.0" layoutY="169.0" mnemonicParsing="false" onAction="#showStockInventoryUI" opacity="0.0" prefHeight="163.0" prefWidth="150.0" text="Button" />
+        <ImageView id="file_527px_1208074_easyicon.net.gif" fitHeight="163.0" fitWidth="150.0" layoutX="318.0" layoutY="169.0">
+          <image>
+            <Image url="@../../../../../InvoicingSystem/InvoicingSystemClient/resources/file_527px_1208074_easyicon.net.gif" preserveRatio="true" smooth="true" />
+          </image>
+        </ImageView>
+        <Button fx:id="categoryButton" layoutX="91.0" layoutY="182.0" mnemonicParsing="false" onAction="#showCategoryUI" opacity="0.0" prefHeight="146.0" prefWidth="150.0" text="Button" />
+        <Button fx:id="emailButton" layoutX="96.0" layoutY="392.0" mnemonicParsing="false" onAction="#showEmailUI" opacity="0.0" prefHeight="146.0" prefWidth="150.0" text="Button" />
+        <Button fx:id="commodityButton" layoutX="311.0" layoutY="177.0" mnemonicParsing="false" onAction="#showCommodityUI" opacity="0.0" prefHeight="146.0" prefWidth="150.0" text="Button" />
       </children>
     </AnchorPane>
   </children>

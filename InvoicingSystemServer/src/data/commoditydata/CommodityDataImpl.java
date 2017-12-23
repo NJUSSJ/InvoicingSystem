@@ -108,10 +108,10 @@ public class CommodityDataImpl implements CommodityDataService{
 	 */
 	@Override
 	public boolean insert(CommodityPO po) throws RemoteException {
-		String sql="insert into commodities (name, id, model, stocknum, importprice, saleprice, lateimportprice, latesaleprice, parentid) "
+		String sql="insert into commodities (name, id, model, stocknum, importprice, saleprice, lateimportprice, latesaleprice, parentid,`limit`) "
 				+ "values "
 				+ "('"+po.getName()+"','"+po.getID()+"','"+po.getModel()+"','"+po.getStockNum()+"','"+po.getImportPrice()+"','"+po.getSalePrice()+"','"
-						+ po.getLateImportPrice()+"','"+po.getLateSalePrice()+"','"+po.getParentID()+"')";
+						+ po.getLateImportPrice()+"','"+po.getLateSalePrice()+"','"+po.getParentID()+"','"+po.getLimit()+"')";
 		
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {
@@ -141,7 +141,7 @@ public class CommodityDataImpl implements CommodityDataService{
 	public boolean update(CommodityPO po) throws RemoteException {
 		String sql="update commodities set name='"+po.getName()+"',id='"+po.getID()+"',model='"+po.getModel()+"',stocknum='"+po.getStockNum()+"',importprice='"
 				+ po.getImportPrice()+"',saleprice='"+po.getSalePrice()+"',lateimportprice='"+po.getLateImportPrice()+"',latesaleprice='"+po.getLateImportPrice()
-				+"',parentid='"+po.getParentID()+"' where id='"+po.getID()+"'";
+				+"',parentid='"+po.getParentID()+"',`limit`='"+po.getLimit()+"' where id='"+po.getID()+"'";
 		
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {
@@ -155,7 +155,7 @@ public class CommodityDataImpl implements CommodityDataService{
 
 	@Override
 	public ArrayList<CommodityPO> findCommoditiesbyField(String field) throws RemoteException {
-		String sql="select * from commodities where name='%"+field+"%'";
+		String sql="select * from commodities where name like '%"+field+"%'";
 		
 		ArrayList<CommodityPO> results=new ArrayList<>();
 		
@@ -172,7 +172,7 @@ public class CommodityDataImpl implements CommodityDataService{
 				long parentid=result.getLong("parentid");
 				long id=result.getLong("id");
 				
-int limit=result.getInt("limit");
+				int limit=result.getInt("`limit`");
 				
 				CommodityPO tmpPO=new CommodityPO(name, id, model, stocknum, importprice, saleprice, lateimportprice, latesaleprice, parentid,limit);				results.add(tmpPO);
 			}
@@ -201,7 +201,7 @@ int limit=result.getInt("limit");
 				double lateimportprice=result.getDouble("lateimportprice");
 				double latesaleprice=result.getDouble("latesaleprice");
 				long id=result.getLong("id");
-				int limit=result.getInt("limit");
+				int limit=result.getInt("`limit`");
 				
 				CommodityPO tmpPO=new CommodityPO(name, id, model, stocknum, importprice, saleprice, lateimportprice, latesaleprice, parentid,limit);
 				results.add(tmpPO);
@@ -210,6 +210,42 @@ int limit=result.getInt("limit");
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	public long getLargestIDofCommodity() throws RemoteException {
+		String sql="select * from commodities";
+		
+		ArrayList<CommodityPO> results=new ArrayList<>();
+		
+		try {
+			ResultSet result=DataFactory.statement.executeQuery(sql);
+			while(result.next()) {
+				String name=result.getString("name");
+				String model=result.getString("model");
+				int stocknum=result.getInt("stocknum");
+				double importprice=result.getDouble("importprice");
+				double saleprice=result.getDouble("saleprice");
+				double lateimportprice=result.getDouble("lateimportprice");
+				double latesaleprice=result.getDouble("latesaleprice");
+				long parentid=result.getLong("parentid");
+				long id=result.getLong("id");
+				int limit=result.getInt("limit");
+				CommodityPO tmpPO=new CommodityPO(name, id, model, stocknum, importprice, saleprice, lateimportprice, latesaleprice, parentid,limit);
+				results.add(tmpPO);
+			}
+			
+			long largest=-1;
+			for(int i=0;i<results.size();i++) {
+				if(results.get(i).getID()>largest) {
+					largest=results.get(i).getID();
+				}
+			}
+			return largest;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
 	}
 
 }

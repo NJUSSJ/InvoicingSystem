@@ -52,45 +52,46 @@ public class CommodityViewController implements Initializable{
 	
 	Stage stage;
 	
-	long parentid;
+	//long parentid;
 	
-private ObservableList<CommodityData> commodityData =FXCollections.observableArrayList();
+	private ObservableList<CommodityData> commodityData =FXCollections.observableArrayList();
 	
 	@FXML
 	private TableView<CommodityData> commodityTable;
 	
 	@FXML
-	private TableColumn<CommodityData,String> idColoumn;
+	private TableColumn<CommodityData,String> idColumn;
 	
 	@FXML
-	private TableColumn<CommodityData,String> nameColoumn;
+	private TableColumn<CommodityData,String> nameColumn;
 	
 	@FXML
-	private TableColumn<CommodityData,String> modelColoumn;
+	private TableColumn<CommodityData,String> modelColumn;
 	
 	@FXML
-	private TableColumn<CommodityData,String> stockNumColoumn;
+	private TableColumn<CommodityData,String> stockNumColumn;
 	
 	@FXML
-	private TableColumn<CommodityData,String> importPriceColoumn;
+	private TableColumn<CommodityData,String> importPriceColumn;
 	
 	@FXML
-	private TableColumn<CommodityData,String> salePriceColoumn;
+	private TableColumn<CommodityData,String> salePriceColumn;
 	
 	@FXML
-	private TableColumn<CommodityData,String> lateImportPriceColoumn;
+	private TableColumn<CommodityData,String> lateImportPriceColumn;
 	
 	@FXML
-	private TableColumn<CommodityData,String> lateSalePriceColoumn;
+	private TableColumn<CommodityData,String> lateSalePriceColumn;
 	
-	CommodityVO a;
+	@FXML
+	private TableColumn<CommodityData,String> parentColumn;
+	CommodityVO commodityVO;
 	
 	ArrayList<CommodityVO> colist;
 	
 	CommodityBLService cbs=new CommodityController();
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
 		long idLong=MainApp.getID();
 		String idString=idLong+"";
 		while(idString.length()<5) {
@@ -99,20 +100,26 @@ private ObservableList<CommodityData> commodityData =FXCollections.observableArr
 		id.setText("ID:"+idString);
 		commodityTable.getSelectionModel().selectedItemProperty().addListener(
 	            (observable, oldValue, newValue) -> getInf(newValue));
-		idColoumn.setCellValueFactory(cellData ->cellData.getValue().getId());
-		nameColoumn.setCellValueFactory(cellData ->cellData.getValue().getName());
-	    modelColoumn.setCellValueFactory(cellData ->cellData.getValue().getModel());
-		stockNumColoumn.setCellValueFactory(cellData ->cellData.getValue().getNum());
-		importPriceColoumn.setCellValueFactory(cellData ->cellData.getValue().getImport());
-		salePriceColoumn.setCellValueFactory(cellData ->cellData.getValue().getSale());
-		lateImportPriceColoumn.setCellValueFactory(cellData ->cellData.getValue().getLateImport());
-		lateSalePriceColoumn.setCellValueFactory(cellData ->cellData.getValue().getLateSale());
+		idColumn.setCellValueFactory(cellData ->cellData.getValue().getId());
+		nameColumn.setCellValueFactory(cellData ->cellData.getValue().getName());
+	    modelColumn.setCellValueFactory(cellData ->cellData.getValue().getModel());
+		stockNumColumn.setCellValueFactory(cellData ->cellData.getValue().getNum());
+		importPriceColumn.setCellValueFactory(cellData ->cellData.getValue().getImport());
+		salePriceColumn.setCellValueFactory(cellData ->cellData.getValue().getSale());
+		lateImportPriceColumn.setCellValueFactory(cellData ->cellData.getValue().getLateImport());
+		lateSalePriceColumn.setCellValueFactory(cellData ->cellData.getValue().getLateSale());
+		parentColumn.setCellValueFactory(cellData ->cellData.getValue().getParent());
+		colist=cbs.findCommodities();
+		for(CommodityVO vo:colist){
+			commodityData.add(new CommodityData(vo));
+		}
+		commodityTable.setItems(commodityData);
 	}
 	@FXML
    public void add(){
 		try{
 		FXMLLoader loader=new FXMLLoader();
-		loader.setLocation(MainApp.class.getResource("/presentation/commodityui/SimpleCommodityUI.fxml"));
+		loader.setLocation(MainApp.class.getResource("/presentation/commodityui/SimpleCommodity.fxml"));
 		AnchorPane commodityUI=loader.load();
 		Scene scene=new Scene(commodityUI);
 		Stage commodityStage=new Stage();
@@ -122,33 +129,33 @@ private ObservableList<CommodityData> commodityData =FXCollections.observableArr
 		commodityStage.setScene(scene);
         SimpleCommodityController controller=loader.getController();
         controller.setStage(commodityStage);
-        controller.setParentID(parentid);
+        //controller.setParentID(parentid);
+        controller.setList(commodityData);
         commodityStage.showAndWait();
 		}catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
    }
 	@FXML
    public void delete(){
 		int selectedIndex = commodityTable.getSelectionModel().getSelectedIndex();
-	   	 if (selectedIndex >= 0) {
-	   		commodityTable.getItems().remove(selectedIndex);
-	   			cbs.deleteCommodity(a);
+	   	 	if (selectedIndex >= 0) {
+	   	 		cbs.deleteCommodity(commodityVO);
+	   	 		commodityTable.getItems().remove(selectedIndex);
 	   	    } else { 
-	   	    Alert alert = new Alert(AlertType.WARNING);
-	        alert.initOwner(MainApp.getPrimaryStage());
-	        alert.setTitle("No Selection");
-	        alert.setHeaderText("No Category Selected");
-	        alert.setContentText("Please select a category in the table.");
-
-	        alert.showAndWait();
+	   	    	Alert alert = new Alert(AlertType.WARNING);
+	   	    	alert.initOwner(MainApp.getPrimaryStage());
+	   	    	alert.setTitle("No Selection");
+	   	    	alert.setHeaderText("No Category Selected");
+	   	    	alert.setContentText("Please select a category in the table.");
+	   	    	alert.showAndWait();
 	    }
    }
 	@FXML
 	public void update(){
 		try{
 			FXMLLoader loader=new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("/presentation/commodityui/SimpleCommodityUI.fxml"));
+			loader.setLocation(MainApp.class.getResource("/presentation/commodityui/SimpleCommodity.fxml"));
 			AnchorPane commodityUI=loader.load();
 			Scene scene=new Scene(commodityUI);
 			Stage commodityStage=new Stage();
@@ -158,10 +165,11 @@ private ObservableList<CommodityData> commodityData =FXCollections.observableArr
 			commodityStage.setScene(scene);
 	        SimpleCommodityController controller=loader.getController();
 	        controller.setStage(commodityStage);
-	        controller.setItem(a);
+	        controller.setItem(commodityTable.getSelectionModel().getSelectedItem());
+	        controller.setList(commodityData);
 	        commodityStage.showAndWait();
 			}catch(IOException e) {
-				// TODO: handle exception
+				e.printStackTrace();
 			}
 	}
 	@FXML
@@ -170,42 +178,71 @@ private ObservableList<CommodityData> commodityData =FXCollections.observableArr
 		MainApp.showLoginUI();
 	}
 	@FXML
-	public void showFiance(){
-		MainApp.showFianceMainUI();
+	public void showStockMain(){
+		MainApp.showStockMainUI();
 	}
 	@FXML
 	public void search(){
-		commodityData.clear();
 		String content=search.getText();
+		if(content==null||content.length()<=0){
+			 Alert alert = new Alert(AlertType.WARNING);
+	   	        alert.initOwner(MainApp.getPrimaryStage());
+	   	        alert.setTitle("No Input");
+	   	        alert.setHeaderText("No Input");
+	   	        alert.setContentText("Please input first.");
+	            alert.showAndWait();
+	            return;
+		}
 		if(content.charAt(0)>='0'&&content.charAt(0)<='9'){
-			a=cbs.findCommodityByID(Long.parseLong(content));
-			parentid=a.getParent();
-			commodityData.add(new CommodityData (a));
-			commodityTable.setItems(commodityData);
+			commodityVO=cbs.findCommodityByID(Long.parseLong(content));
+			//parentid=commodityVO.getParent();
+			if(commodityVO==null){
+				Alert alert = new Alert(AlertType.WARNING);
+	   	        alert.initOwner(MainApp.getPrimaryStage());
+	   	        alert.setTitle("Not Found");
+	   	        alert.setHeaderText("Not Found");
+	   	        alert.setContentText("Not Found:"+content);
+	            alert.showAndWait();
+	            return;
+			}
+			commodityData.clear();
+			commodityData.add(new CommodityData (commodityVO));
+			//commodityTable.setItems(commodityData);
 		}else{
-			a=cbs.findCommodityByName(content);
-			parentid=a.getParent();
-			commodityData.add(new CommodityData (a));
-			commodityTable.setItems(commodityData);
+			ArrayList<CommodityVO> vos=cbs.findCommodityByField(content);
+			if(vos==null||vos.size()<=0){
+				Alert alert = new Alert(AlertType.WARNING);
+	   	        alert.initOwner(MainApp.getPrimaryStage());
+	   	        alert.setTitle("Not Found");
+	   	        alert.setHeaderText("Not Found");
+	   	        alert.setContentText("Not Found:"+content);
+	            alert.showAndWait();
+	            return;
+			}
+			//parentid=commodityVO.getParent();
+			commodityData.clear();
+			for(CommodityVO vo:vos){
+				commodityData.add(new CommodityData (vo));
+				//commodityTable.setItems(commodityData);
+			}
 		}
 	}
 	private void getInf(CommodityData newValue) {
-		// TODO Auto-generated method stub
-		a=newValue.getVO();
+		if(newValue==null){
+			return;
+		}
+		commodityVO=newValue.getVO();
 	}
 	public void setStage(Stage commodityStage) {
-		// TODO Auto-generated method stub
 		stage=commodityStage;
 	}
 	public void setCommoditys(ArrayList<CommodityVO> colist) {
-		// TODO Auto-generated method stub
 		for(CommodityVO a:colist){
 			commodityData.add(new CommodityData(a));
 		}
 		commodityTable.setItems(commodityData);
 	}
-	public void setparent(long id2) {
-		// TODO Auto-generated method stub
-		parentid=id2;
-	}
+	/*public void setparent(long id) {
+		parentid=id;
+	}*/
 }

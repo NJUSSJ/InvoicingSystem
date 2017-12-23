@@ -116,19 +116,50 @@ public class MemberViewController implements Initializable {
 	}
 
 	private void getInf(MemberData newValue) {
+		if(newValue==null){
+			return;
+		}
 		me=newValue.getVO();
 	}
 	
 	@FXML
 	public void search(){
 		String findName=search.getText();
-		memberData.clear();
+		if(findName==null||findName.length()<=0){
+			 Alert alert = new Alert(AlertType.WARNING);
+	   	        alert.initOwner(MainApp.getPrimaryStage());
+	   	        alert.setTitle("No Input");
+	   	        alert.setHeaderText("No Input");
+	   	        alert.setContentText("Please input first.");
+	            alert.showAndWait();
+	            return;
+		}
 		if(findName.charAt(0)>='0'&&findName.charAt(0)<='9'){
-			me=mbs.findMemberByName(findName);
+			me=mbs.findMemberByID(Long.parseLong(findName));
+			if(me==null){
+				Alert alert = new Alert(AlertType.WARNING);
+	   	        alert.initOwner(MainApp.getPrimaryStage());
+	   	        alert.setTitle("Not Found");
+	   	        alert.setHeaderText("Not Found");
+	   	        alert.setContentText("Not Found:"+findName);
+	            alert.showAndWait();
+	            return;
+			}
+			memberData.clear();
 			memberData.add(new MemberData(me));
 			memberTable.setItems(memberData);
 		}else{
 		memberList=mbs.findMembersByField(findName);
+		if(memberList==null||memberList.size()<=0){
+			Alert alert = new Alert(AlertType.WARNING);
+   	        alert.initOwner(MainApp.getPrimaryStage());
+   	        alert.setTitle("Not Found");
+   	        alert.setHeaderText("Not Found");
+   	        alert.setContentText("Not Found:"+findName);
+            alert.showAndWait();
+            return;
+		}
+		memberData.clear();
 		for(MemberVO a:memberList){
 			memberData.add(new MemberData(a));
 		}
@@ -149,6 +180,7 @@ public class MemberViewController implements Initializable {
 			memberStage.setScene(scene);
             SimpleMemberController controller=loader.getController();
             controller.setStage(memberStage);
+            controller.setList(memberData);
             memberStage.showAndWait();
             
 		} catch (IOException e) {
@@ -158,9 +190,10 @@ public class MemberViewController implements Initializable {
 	@FXML
 	public void delete(){
 		int selectedIndex = memberTable.getSelectionModel().getSelectedIndex();
-   	 if (selectedIndex >= 0) {
-   	        memberTable.getItems().remove(selectedIndex);
-   			mbs.deleteMember(me);
+
+   	 	if (selectedIndex >= 0) {
+   	 		mbs.deleteMember(me);
+   	 		memberTable.getItems().remove(selectedIndex);
    	    } else {
    	        // Nothing selected.
    	        Alert alert = new Alert(AlertType.WARNING);
@@ -186,6 +219,8 @@ public class MemberViewController implements Initializable {
             SimpleMemberController controller=loader.getController();
             controller.setStage(memberStage);
             controller.setMember(me);
+            controller.setList(memberData);
+            controller.setMemberData(memberData.get(memberTable.getSelectionModel().getSelectedIndex()));
             memberStage.showAndWait();
             
 		} catch (IOException e) {

@@ -41,7 +41,7 @@ public class CommodityList {
 	 */
 	public void deleteCommodity(CommodityLineItem item) {
 		for(int i=0;i<list.size();i++) {
-			if(list.get(i).equals(item)) {
+			if(list.get(i).commodityid==item.commodityid) {
 				list.remove(i);
 			}
 		}

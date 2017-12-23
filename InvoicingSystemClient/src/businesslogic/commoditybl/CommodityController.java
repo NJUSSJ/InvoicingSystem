@@ -96,23 +96,27 @@ public class CommodityController implements CommodityBLService{
 
 	@Override
 	public ArrayList<StockCheckInfoVO> getStockInfo(Date start, Date end) {
-		ArrayList<StockCheckInfoVO> test=new ArrayList<>();
-		StockCheckInfoVO testVO=new StockCheckInfoVO(11, "µõµÆ", "XT101", 100, 100, 100, 100, 100, 100, 100, 100);
-		test.add(testVO);
-		return test;
+		return commodityImpl.getStockInfo(start, end);
 	}
 
 	@Override
 	public ArrayList<StockInventoryInfoVO> getInventoryInfo() {
-		ArrayList<StockInventoryInfoVO> test=new ArrayList<>();
-		StockInventoryInfoVO info=new StockInventoryInfoVO(1, "µÆ´ø", "XT100", 101, 1000);
-		test.add(info);
-		return test;
+		return commodityImpl.getInventoryInfo();
 	}
 
 	@Override
 	public ArrayList<CommodityVO> findCommodities() {
 		return commodityImpl.findCommodities();
+	}
+
+	@Override
+	public long findLargestIDofCommodity() {
+		return commodityImpl.findLargestIDofCommodity();
+	}
+
+	@Override
+	public long findLargestIDofCategory() {
+		return categoryImpl.findLargestIDofCategory();
 	}
 	
 }

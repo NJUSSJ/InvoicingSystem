@@ -35,7 +35,7 @@ import vo.SaleBillVO;
 public class SaleViewController implements Initializable  {
 	@FXML
 	private Label id;
-	Stage stage;
+	
 	@FXML
 	private Button logout;
 	@FXML
@@ -238,7 +238,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 
 	public void setStage(Stage stage) {
 		// TODO Auto-generated method stub
-		this.stage=stage;
+		
 	}
 
 

@@ -34,7 +34,6 @@ public class MemberController implements MemberBLService{
 
 	@Override
 	public ArrayList<MemberVO> findMembersByField(String field) {
-		// TODO 自动生成的方法存根
 		return memberImpl.findMembersByField(field);
 	}
 

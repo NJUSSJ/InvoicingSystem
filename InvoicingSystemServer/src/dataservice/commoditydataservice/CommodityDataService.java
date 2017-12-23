@@ -15,4 +15,5 @@ public interface CommodityDataService extends Remote{
 	public boolean insert(CommodityPO po) throws RemoteException;
 	public boolean delete(CommodityPO po) throws RemoteException;
 	public boolean update(CommodityPO po) throws RemoteException;
+	public long getLargestIDofCommodity() throws RemoteException;
 }

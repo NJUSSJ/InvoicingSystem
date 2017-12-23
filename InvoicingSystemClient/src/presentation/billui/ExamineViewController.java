@@ -1,6 +1,5 @@
 package presentation.billui;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -91,6 +90,7 @@ public class ExamineViewController implements Initializable {
 	private TableColumn<BillData,String> chooseColumn;
 	@FXML
 	private TableColumn<BillData,String> operatorColumn;
+	
 	CashBillBLService cbbs =new CashBillController();
 	PayBillBLService pbbs =new PayBillController();
 	ReceiveBillBLService rbbs =new ReceiveBillController();
@@ -102,20 +102,21 @@ public class ExamineViewController implements Initializable {
 	LossBillBLService lbbs=new LossBillController();
 	OverBillBLService obbs=new OverBillController();
 	WarningBillBLService wbbs=new WarningBillController();
-	BillData billitem=null;
 	
-    ArrayList<CashBillVO> cashlist=new ArrayList<CashBillVO>();
-    ArrayList<PayBillVO> paylist=new ArrayList<PayBillVO>();
-	ArrayList<ReceiveBillVO> receivelist=new ArrayList<ReceiveBillVO>();
-	ArrayList<ImportReturnBillVO> importreturnlist=new ArrayList<ImportReturnBillVO>();
+	ArrayList<SaleBillVO> salelist=new ArrayList<SaleBillVO>();
 	ArrayList<ImportBillVO> importlist=new ArrayList<ImportBillVO>();
 	ArrayList<SaleReturnBillVO> salereturnlist=new ArrayList<SaleReturnBillVO>();
-	ArrayList<SaleBillVO> salelist=new ArrayList<SaleBillVO>();
+	ArrayList<ImportReturnBillVO> importreturnlist=new ArrayList<ImportReturnBillVO>();
+	ArrayList<PayBillVO> paylist=new ArrayList<PayBillVO>();
+	ArrayList<ReceiveBillVO> receivelist=new ArrayList<ReceiveBillVO>();
+	ArrayList<CashBillVO> cashlist=new ArrayList<CashBillVO>();
 	ArrayList<GiftBillVO> giftlist=new ArrayList<GiftBillVO>();
-	ArrayList<LossBillVO> losslist=new ArrayList<LossBillVO>();
 	ArrayList<OverBillVO> overlist=new ArrayList<OverBillVO>();
+	ArrayList<LossBillVO> losslist=new ArrayList<LossBillVO>();
 	ArrayList<WarningBillVO> warninglist=new ArrayList<WarningBillVO>();
-	 BillData a=null;
+	
+	BillData data=null;
+    BillData billitem;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
@@ -126,19 +127,18 @@ public class ExamineViewController implements Initializable {
 		styleColumn.setCellValueFactory(cellData ->cellData.getValue().getstyleProperty());
 		operatorColumn.setCellValueFactory(cellData ->cellData.getValue().getoperatorProperty());
 		chooseColumn.setCellValueFactory(cellData ->cellData.getValue().getchooseProperty());
-	    search();
+		search();
 	}
 	private void getInf(BillData newValue) {
 		// TODO Auto-generated method stub
-		billData.remove(newValue);
 		if(newValue.getchooseProperty().get().equals("否")){
 			newValue.setChoose("是");
 		}else{
 			newValue.setChoose("否");
 		}
-		a=newValue;
-		billData.add(newValue);
-		billTable.setItems(billData);
+		if(newValue!=null){
+			data=newValue;
+		}
 	}
 	@FXML
 	public void showManagerMainUI(){
@@ -155,6 +155,7 @@ public class ExamineViewController implements Initializable {
 			if(bill.getchoose().equals("是")){
 				String style=bill.getstyle();
 				String id=bill.getid();
+				billData.remove(bill);
 				if(style.equals("销售单")){
 						sbbs.checkSaleBill(true, id);
 				}else if(style.equals("付款单")){
@@ -183,12 +184,13 @@ public class ExamineViewController implements Initializable {
 				}
 			}
 		}
-		billTable.setItems(billData);
+		
 	}
 	@FXML
 	public void notpass(){
 		for(BillData bill:billData){
 			if(bill.getchoose().equals("是")){
+				billData.remove(bill);
 				String style=bill.getstyle();
 				String id=bill.getid();
 				if(style.equals("销售单")){
@@ -223,8 +225,8 @@ public class ExamineViewController implements Initializable {
 	}
 	@FXML
 	public void showDetail(){
-		String id=a.getid();
-		String style=a.getstyle();
+		String id=data.getid();
+		String style=data.getstyle();
 		if(style.equals("销售单")){
 			SaleBillVO m=sbbs.findSaleBillByID(id);
 			try {
@@ -242,7 +244,7 @@ public class ExamineViewController implements Initializable {
 	            controller.setVo(m);
 	            stage.showAndWait();
 	            
-			} catch (IOException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}else if(style.equals("付款单")){
@@ -262,7 +264,7 @@ public class ExamineViewController implements Initializable {
 	            controller.setVo(m);
 	            stage.showAndWait();
 	            
-			} catch (IOException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}else if(style.equals("收款单")){
@@ -282,7 +284,7 @@ public class ExamineViewController implements Initializable {
 	            controller.setVo(m);
 	            stage.showAndWait();
 	            
-			} catch (IOException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}else if(style.equals("报损单")){
@@ -302,7 +304,7 @@ public class ExamineViewController implements Initializable {
 	            controller.setVo(m);
 	            stage.showAndWait();
 	            
-			} catch (IOException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}else if(style.equals("报溢单")){
@@ -322,7 +324,7 @@ public class ExamineViewController implements Initializable {
 	            controller.setVo(m);
 	            stage.showAndWait();
 	            
-			} catch (IOException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}else if(style.equals("报警单")){
@@ -342,7 +344,7 @@ public class ExamineViewController implements Initializable {
 	            controller.setVo(m);
 	            stage.showAndWait();
 	            
-			} catch (IOException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}else if(style.equals("现金费用单")){
@@ -362,7 +364,7 @@ public class ExamineViewController implements Initializable {
 	            controller.setVo(m);
 	            stage.showAndWait();
 	            
-			} catch (IOException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}else if(style.equals("赠送单")){
@@ -382,7 +384,7 @@ public class ExamineViewController implements Initializable {
 	            controller.setVo(m);
 	            stage.showAndWait();
 	            
-			} catch (IOException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}else if(style.equals("销售退货单")){
@@ -402,7 +404,7 @@ public class ExamineViewController implements Initializable {
 	            controller.setVo(m);
 	            stage.showAndWait();
 	            
-			} catch (IOException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}else if(style.equals("进货退货单")){
@@ -422,7 +424,7 @@ public class ExamineViewController implements Initializable {
 	            controller.setVo(m);
 	            stage.showAndWait();
 	            
-			} catch (IOException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}else if(style.equals("进货单")){
@@ -442,7 +444,7 @@ public class ExamineViewController implements Initializable {
 	            controller.setVo(m);
 	            stage.showAndWait();
 	            
-			} catch (IOException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
@@ -528,4 +530,5 @@ public class ExamineViewController implements Initializable {
 		    }
 		    billTable.setItems(billData);
 	}
+
 }

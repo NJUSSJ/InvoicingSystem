@@ -19,17 +19,22 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.userui.UserViewController">
   <children>
+    <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="606.0" fitWidth="999.00022207031" layoutX="1.0" layoutY="0.0">
+      <image>
+        <Image url="@../../../../../InvoicingSystem/InvoicingSystemClient/resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
     <Label layoutX="20.0" layoutY="44.0" text="用户管理">
       <font>
-        <Font name="Arial Unicode MS" size="65.0" />
+        <Font size="65.0" />
       </font>
     </Label>
-    <Label fx:id="id" layoutX="798.0" layoutY="24.0" text="ID：xxx">
+    <Label fx:id="id" layoutX="798.0" layoutY="24.0" prefWidth="74.0" text="ID：xxx">
       <font>
         <Font size="13.0" fx:id="x1" />
       </font>
     </Label>
-    <Label fx:id="logout" font="$x1" layoutX="873.0" layoutY="23.0" onMouseClicked="#louout" text="||  登录" />
+    <Label fx:id="logout" font="$x1" layoutX="873.0" layoutY="23.0" onMouseClicked="#louout" text="||  登出" />
     <Separator prefHeight="3.0" prefWidth="1000.0" AnchorPane.leftAnchor="-6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="128.0" />
     <Separator layoutX="771.0" layoutY="130.0" orientation="VERTICAL" prefHeight="473.0" prefWidth="7.0" />
     <Button fx:id="addB" font="$x1" layoutX="810.0" layoutY="172.0" mnemonicParsing="false" onAction="#addUser" prefHeight="28.0" prefWidth="150.0" text="新     增" />
@@ -44,7 +49,7 @@
     <Label layoutX="80.0" layoutY="143.0" text="查询：" />
     <TextField fx:id="search" layoutX="138.0" layoutY="138.0" />
     <Button fx:id="rightB" layoutX="697.0" layoutY="139.0" mnemonicParsing="false" onAction="#searchUser" text="确    认" />
-    <ScrollPane layoutY="172.0" prefHeight="433.0" prefWidth="774.0">
+    <ScrollPane layoutY="172.0" opacity="0.7" prefHeight="433.0" prefWidth="774.0">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="446.0" prefWidth="770.0">
           <children>

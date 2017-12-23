@@ -19,7 +19,7 @@ public class AccountDataImpl implements AccountDataService {
 	@Override
 	public AccountPO findAccountbyID(long id) throws RemoteException {
 		// TODO Auto-generated method stub
-		String sql="SELECT id, bank, deposit FROM accounts";
+		String sql="SELECT id, name, deposit FROM accounts";
 		
 		//执行数据库sql语句
 		try {
@@ -28,7 +28,7 @@ public class AccountDataImpl implements AccountDataService {
 			//展开结果数据
 			while(result.next()) {
 				long tmpid=result.getLong("id");
-				String bank=result.getString("bank");
+				String bank=result.getString("name");
 				double deposit=result.getDouble("deposit");
 				
 				AccountPO tmpAccount=new AccountPO(tmpid, deposit, bank);
@@ -51,7 +51,7 @@ public class AccountDataImpl implements AccountDataService {
 	@Override
 	public boolean insert(AccountPO po) throws RemoteException {
 		// TODO Auto-generated method stub
-		String sql="INSERT INTO accounts(id,bank,deposit) VALUES ("+po.getID()
+		String sql="INSERT INTO accounts(id,name,deposit) VALUES ("+po.getID()
 		+",'"+po.getName()+"','"+po.getDeposit()+"')";
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0){
@@ -106,7 +106,7 @@ public class AccountDataImpl implements AccountDataService {
 	public ArrayList<AccountPO> findAccounts() throws RemoteException {
 		
 		
-		String sql="SELECT id, bank, deposit FROM accounts";
+		String sql="SELECT id, name, deposit FROM accounts";
 		ArrayList<AccountPO> results=new ArrayList<>();
 		//执行数据库sql语句
 		try {
@@ -115,7 +115,7 @@ public class AccountDataImpl implements AccountDataService {
 			//展开结果数据
 			while(result.next()) {
 				long tmpid=result.getLong("id");
-				String bank=result.getString("bank");
+				String bank=result.getString("name");
 				double deposit=result.getDouble("deposit");
 				
 				AccountPO tmpAccount=new AccountPO(tmpid, deposit, bank);
@@ -133,7 +133,7 @@ public class AccountDataImpl implements AccountDataService {
 
 	@Override
 	public ArrayList<AccountPO> findAcountbyField(String field) throws RemoteException {
-		String sql="SELECT id, bank, deposit FROM accounts where bank like '%"+field+"%'";
+		String sql="SELECT id, name, deposit FROM accounts where name like '%"+field+"%'";
 		ArrayList<AccountPO> results=new ArrayList<>();
 		//执行数据库sql语句
 		try {
@@ -142,7 +142,7 @@ public class AccountDataImpl implements AccountDataService {
 			//展开结果数据
 			while(result.next()) {
 				long tmpid=result.getLong("id");
-				String bank=result.getString("bank");
+				String bank=result.getString("name");
 				double deposit=result.getDouble("deposit");
 				
 				AccountPO tmpAccount=new AccountPO(tmpid, deposit, bank);

@@ -9,6 +9,7 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
@@ -16,19 +17,24 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.commodityui.StockCheckViewController">
   <children>
-    <Label fx:id="id" layoutX="814.0" layoutY="11.0" text="ID:XXX">
+    <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="600.0" fitWidth="999.0" layoutX="1.0" layoutY="0.0">
+      <image>
+        <Image url="@../../../../../InvoicingSystem/InvoicingSystemClient/resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
+    <Label fx:id="id" layoutX="814.0" layoutY="11.0" prefWidth="80.0" text="ID:XXX">
       <font>
-        <Font size="14.0" fx:id="x1" />
+        <Font name="Microsoft YaHei UI Light" size="16.0" fx:id="x1" />
       </font>
     </Label>
-    <Label fx:id="LogOut" font="$x1" layoutX="881.0" layoutY="10.0" onMouseClicked="#LogOut" text="|| 登出" />
+    <Label fx:id="LogOut" font="$x1" layoutX="894.0" layoutY="10.0" onMouseClicked="#LogOut" text="|| 登出" />
     <Separator prefHeight="1.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="145.0" />
     <Label layoutX="14.0" layoutY="61.0" text="库存查看">
       <font>
         <Font size="65.0" />
       </font>
     </Label>
-    <ScrollPane layoutY="185.0" prefHeight="417.0" prefWidth="827.0">
+    <ScrollPane layoutY="185.0" opacity="0.7" prefHeight="417.0" prefWidth="827.0">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="470.0" prefWidth="899.0">
           <children>
@@ -52,29 +58,25 @@
       </content>
     </ScrollPane>
     <Separator layoutX="823.0" layoutY="148.0" orientation="VERTICAL" prefHeight="459.0" prefWidth="6.0" />
-    <Button fx:id="Return" layoutY="158.0" mnemonicParsing="false" onAction="#ReturnToMain" prefHeight="31.0" prefWidth="130.0" text="返    回" AnchorPane.rightAnchor="20.0">
+    <Button fx:id="Return" layoutY="158.0" mnemonicParsing="false" onAction="#ReturnToMain" opacity="0.8" prefHeight="31.0" prefWidth="130.0" text="返    回" AnchorPane.rightAnchor="20.0">
       <font>
-        <Font size="13.0" fx:id="x2" />
+        <Font name="Microsoft YaHei UI Light" size="15.0" fx:id="x2" />
       </font>
     </Button>
-    <Label font="$x1" layoutX="7.0" layoutY="155.0" text="时间区间：" />
-    <Button fx:id="confirm" layoutX="656.0" layoutY="154.0" mnemonicParsing="false" onAction="#Confrim" prefHeight="23.0" prefWidth="70.0" text="确  认" />
-    <Label layoutX="160.0" layoutY="157.0" text="年" />
+    <Label font="$x1" layoutX="8.0" layoutY="158.0" text="时间区间：" />
+    <Button fx:id="confirm" font="$x2" layoutX="656.0" layoutY="154.0" mnemonicParsing="false" onAction="#Confrim" prefHeight="23.0" prefWidth="70.0" text="确  认" />
+    <Label font="$x1" layoutX="160.0" layoutY="156.0" text="年" />
     <ChoiceBox id="startDay" fx:id="startYear" layoutX="79.0" layoutY="154.0" prefHeight="23.0" prefWidth="75.0" />
     <ChoiceBox fx:id="startMonth" layoutX="179.0" layoutY="154.0" prefHeight="23.0" prefWidth="50.0" />
-    <Label layoutX="237.0" layoutY="157.0" text="月" />
+    <Label font="$x1" layoutX="236.0" layoutY="157.0" text="月" />
     <ChoiceBox fx:id="startDay" layoutX="256.0" layoutY="154.0" prefHeight="23.0" prefWidth="50.0" />
-    <Label layoutX="314.0" layoutY="158.0" text="日" />
+    <Label font="$x1" layoutX="315.0" layoutY="158.0" text="日" />
     <ChoiceBox fx:id="endYear" layoutX="363.0" layoutY="154.0" prefHeight="23.0" prefWidth="75.0" />
     <ChoiceBox fx:id="endMonth" layoutX="465.0" layoutY="154.0" prefHeight="23.0" prefWidth="50.0" />
     <ChoiceBox fx:id="endDay" layoutX="543.0" layoutY="154.0" prefHeight="23.0" prefWidth="50.0" />
-    <Label layoutX="446.0" layoutY="157.0" text="年" />
-    <Label layoutX="524.0" layoutY="157.0" text="月" />
-    <Label layoutX="602.0" layoutY="157.0" text="日" />
-    <Label layoutX="337.0" layoutY="152.0" text="~">
-      <font>
-        <Font size="20.0" />
-      </font>
-    </Label>
+    <Label font="$x1" layoutX="446.0" layoutY="157.0" text="年" />
+    <Label font="$x1" layoutX="524.0" layoutY="157.0" text="月" />
+    <Label font="$x1" layoutX="602.0" layoutY="157.0" text="日" />
+    <Label font="$x1" layoutX="339.0" layoutY="157.0" text="~" />
   </children>
 </AnchorPane>
