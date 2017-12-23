@@ -163,6 +163,9 @@ public class Commodity{
 		ArrayList<CommodityVO> result=new ArrayList<CommodityVO>();
 		try {
 			ArrayList<CommodityPO> pos=RemoteHelper.getInstance().getCommodityDataService().findCommodities();
+			if(pos==null){
+				return null;
+			}
 			for(CommodityPO po:pos){
 				result.add(toCommodityVO(po));
 			}
@@ -170,5 +173,13 @@ public class Commodity{
 			e.printStackTrace();
 		}
 		return result;
+	}
+	public long findLargestIDofCommodity(){
+		try {
+			return RemoteHelper.getInstance().getCommodityDataService().getLargestIDofCommodity();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return -2;
 	}
 }

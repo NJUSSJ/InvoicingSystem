@@ -35,8 +35,6 @@ public class SimpleMemberController implements Initializable{
 	@FXML
 	private TextField telephoneField;
 	@FXML
-	private TextField parentField;
-	@FXML
 	private Button cancelB;
 	@FXML
 	private Button rightB;
@@ -62,6 +60,7 @@ public class SimpleMemberController implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		operator.setText(MainApp.getID()+"");
 	}
 
 	public void setStage(Stage memberStage) {

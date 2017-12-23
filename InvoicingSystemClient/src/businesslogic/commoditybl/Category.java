@@ -108,4 +108,12 @@ public class Category {
 		
 		return temp;
 	}
+	public long findLargestIDofCategory(){
+		try {
+			return RemoteHelper.getInstance().getCategoryDataService().getLargestIDofCategory();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return -2;
+	}
 }
