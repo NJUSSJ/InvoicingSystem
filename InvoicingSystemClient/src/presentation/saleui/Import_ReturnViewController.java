@@ -10,7 +10,6 @@ import java.util.ResourceBundle;
 import MainApp.MainApp;
 import businesslogic.billbl.CommodityLineItem;
 import businesslogic.billbl.CommodityList;
-import businesslogic.billbl.ImportBillController;
 import businesslogic.billbl.ImportReturnBillController;
 import businesslogic.commoditybl.CommodityController;
 import businesslogic.memberbl.MemberController;
@@ -58,9 +57,6 @@ public class Import_ReturnViewController implements Initializable {
 	
 	@FXML
 	private TextField member;
-	
-	@FXML
-	private TextField stock;
 	
 	@FXML
 	private TextField lastprice;
@@ -156,9 +152,9 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 
 	
 	private void getInf(CommodityItemData newValue) {
-		if(newValue!=null) {
-			itemdata=newValue;
-			item=itemdata.getItem();
+		// TODO Auto-generated method stub
+		if(newValue!=null){
+		item=newValue.getItem();
 		}
 	}
 
@@ -167,9 +163,9 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	public void delete(){
 		int selectedIndex = commodityTable.getSelectionModel().getSelectedIndex();
 	   	 if (selectedIndex >= 0) {
-	   		   comlist.deleteCommodity(item);
-	   		   commodityTable.getItems().remove(selectedIndex);
-	           
+	   		commodityTable.getItems().remove(selectedIndex);
+	           comlist.deleteCommodity(item);
+	           commodityData.remove(selectedIndex);
 	           altogether.setText(""+comlist.getImportTotal());
 	   	    } else {
 	   	        // Nothing selected.
@@ -178,7 +174,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	   	        alert.setTitle("No Selection");
 	   	        alert.setHeaderText("No Item Selected");
 	   	        alert.setContentText("Please select an item in the table.");
-                alert.showAndWait();
+                 alert.showAndWait();
 	   	    }
 	}
 	@FXML
@@ -209,11 +205,6 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		commodityData.add(itemdata);
 	    commodityTable.setItems(commodityData);
 	    altogether.setText(""+comlist.getImportTotal());
-	    
-	    name.setText("");
-	    lastprice.setText("");
-	    num.setText("");
-	    notea.setText("");
 	}
 	@FXML
 	public void logout(){
@@ -227,38 +218,13 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	@FXML
 	public void setBill(){
 		memberl=mbs.findMemberByName(member.getText());
-		if(memberl==null) {
-			Alert warning=new Alert(AlertType.WARNING);
-			warning.setContentText("供应商不存在");
-			warning.showAndWait();
-			return ;
-		}
-		ImportReturnBillVO importreturnbill=new ImportReturnBillVO(billid.getText(),MainApp.getID(),memberl.getID(),comlist,comlist.getImportTotal(),0,time,note.getText());
+		ImportReturnBillVO importReturnBill=new ImportReturnBillVO(billid.getText(),MainApp.getID(),memberl.getID(),comlist,comlist.getImportTotal(),0,time,note.getText());
 		 String isSubmit="fail Submit";
-		 if(irbbs.submitImportReturnBill(importreturnbill)){
-			 	SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
-				String str=sdf.format(time);
-				DecimalFormat df=new DecimalFormat("#####");
-				
-				ArrayList<ImportBillVO> tmpList=new ImportBillController().findImportBillByTime(time);
-				times=tmpList.size()+1;
-				
-				billid.setText("JHD-"+str+"-"+df.format(times));
-			 
-				isSubmit="Succeed Submit";
-				
-				member.setText("");
-				name.setText("");
-				note.setText("");
-				notea.setText("");
-				num.setText("");
-				lastprice.setText("");
-				
-				commodityData.clear();
-				
-			 
+		 if(irbbs.submitImportReturnBill(importReturnBill)){
+			 times++;
+			 isSubmit="Succeed Submit";
 		 }
-		 		Alert alert = new Alert(AlertType.INFORMATION);
+	     Alert alert = new Alert(AlertType.INFORMATION);
 		        alert.initOwner(MainApp.getPrimaryStage());
 		        alert.setTitle("Information");
 		        alert.setHeaderText("Submit");
@@ -274,6 +240,28 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 
 
 	public void setVo(ImportReturnBillVO m) {
+		// TODO Auto-generated method stub
+		billid.setText(m.getID());
+		id.setText("ID:"+MainApp.getID());
+		memberl=mbs.findMemberByID(m.getMemberID());
+		operator.setText(""+m.getUserID());
+		altogether.setText(""+m.getSum());
+		member.setText(memberl.getName());
+		comlist=m.getList();
+		note.setText(m.getRemark());
+		for(int i=0;i<comlist.getListSize();i++){
+			commodityData.add(new CommodityItemData(comlist.get(i)));
+		}
+			commodityTable.setItems(commodityData);
+			rightB.setVisible(false);
+			 addB.setVisible(false);
+			deleteB.setVisible(false);
+			 returnB.setVisible(false);
+			 search.setVisible(false);
+	}
+
+
+	public void setVO(ImportReturnBillVO m) {
 		// TODO Auto-generated method stub
 		
 	}

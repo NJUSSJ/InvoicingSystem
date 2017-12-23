@@ -115,6 +115,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	private TableColumn<CommodityItemData,String> noteColumn;
 	
 	static int times=0;
+	Stage stage;
 	
 	Date time;
 	CommodityItemData itemdata;
@@ -255,16 +256,40 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 
 	public void setStage(Stage stage) {
 		// TODO Auto-generated method stub
-		
+		this.stage=stage;
 	}
 
 
 	public void setVo(SaleBillVO m) {
 		// TODO Auto-generated method stub
-		
+		billid.setText(m.getID());
+		id.setText("ID:"+MainApp.getID());
+		memberl=mbs.findMemberByID(m.getMemberID());
+		operator.setText(""+m.getUserID());
+		discountbefore.setText(""+m.getSum());
+		discountafter.setText(""+m.getUltimate());
+		discount.setText(""+m.getDiscount());
+		coupon.setText(""+m.getCoupon());
+		haspay.setText(""+m.getMoney());
+		member.setText(memberl.getName());
+		comlist=m.getList();
+		for(int i=0;i<comlist.getListSize();i++){
+			commodityData.add(new CommodityItemData(comlist.get(i)));
+		}
+			commodityTable.setItems(commodityData);
+			rightB.setVisible(false);
+			 addB.setVisible(false);
+			deleteB.setVisible(false);
+			 returnB.setVisible(false);
+			 search.setVisible(false);
 	}
 
 
+	public void setVO(SaleBillVO m) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 }
 
 

@@ -287,6 +287,10 @@ public class ReceiveBillViewController  implements Initializable{
 	   updateB.setVisible(false);
 	   deleteB.setVisible(false);
 	}
+	public void setVO(ReceiveBillVO m) {
+		// TODO Auto-generated method stub
+		
+	}
 
 	
 

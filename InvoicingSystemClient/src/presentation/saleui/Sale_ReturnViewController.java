@@ -45,7 +45,7 @@ public class Sale_ReturnViewController implements Initializable{
 	private Button logout;
 	@FXML
 	private Button search;
-	
+	Stage stage;
 	
 	@FXML
 	private Label billid;
@@ -203,7 +203,11 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	@FXML
 	public void confirm(){
 		itemdata=new CommodityItemData(0,a,Integer.parseInt(num.getText()),Double.parseDouble(lastprice.getText()),notea.getText());
+<<<<<<< HEAD
 	    item=new CommodityLineItem(Integer.parseInt(num.getText()),a.getID(),a.getSalePrice(),Double.parseDouble(lastprice.getText()),notea.getText());
+=======
+	    item=new CommodityLineItem(Integer.parseInt(num.getText()),a.getID(),Double.parseDouble(lastprice.getText()),a.getImportPrice(),notea.getText());
+>>>>>>> 57408fdf8ced87c8adb838c18478381407b12678
 	    comlist.addCommodity(item);
 		commodityData.add(itemdata);
 	    commodityTable.setItems(commodityData);
@@ -268,11 +272,33 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 
 	public void setStage(Stage stage) {
 		// TODO Auto-generated method stub
-		
+		this.stage=stage;
 	}
 
 
 	public void setVo(SaleReturnBillVO m) {
+		// TODO Auto-generated method stub
+		billid.setText(m.getID());
+		id.setText("ID:"+MainApp.getID());
+		memberl=mbs.findMemberByID(m.getMemberID());
+		operator.setText(""+m.getUserID());
+		altogether.setText(""+m.getSum());
+		member.setText(memberl.getName());
+		comlist=m.getList();
+		note.setText(m.getRemark());
+		for(int i=0;i<comlist.getListSize();i++){
+			commodityData.add(new CommodityItemData(comlist.get(i)));
+		}
+			commodityTable.setItems(commodityData);
+			rightB.setVisible(false);
+			 addB.setVisible(false);
+			deleteB.setVisible(false);
+			 returnB.setVisible(false);
+			 search.setVisible(false);
+	}
+
+
+	public void setVO(SaleReturnBillVO m) {
 		// TODO Auto-generated method stub
 		
 	}

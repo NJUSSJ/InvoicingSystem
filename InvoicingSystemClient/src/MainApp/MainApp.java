@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.Optional;
 
 import javafx.application.Application;
-import javafx.css.StyleOrigin;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -16,7 +15,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import presentation.commodityui.LossInfoController;
 import presentation.commodityui.OverInfoController;
 import presentation.commodityui.Sub_StockInventoryController;
@@ -36,7 +34,6 @@ public class MainApp extends Application {
 	
 	private static UserVO tempUser;
 	
-	private static long categoryid=0;
 	
 	@Override
 	public void start(Stage primarystage) throws Exception {
@@ -80,6 +77,9 @@ public class MainApp extends Application {
 		}
 	}
 	
+	public static int getRank(){
+		return tempUser.getRank();
+	}
 	/*
 	 * 显示财务人员主界面
 	 */
