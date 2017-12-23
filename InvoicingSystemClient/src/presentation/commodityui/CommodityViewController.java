@@ -90,7 +90,6 @@ private ObservableList<CommodityData> commodityData =FXCollections.observableArr
 	CommodityBLService cbs=new CommodityController();
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
 		long idLong=MainApp.getID();
 		String idString=idLong+"";
 		while(idString.length()<5) {
@@ -112,7 +111,7 @@ private ObservableList<CommodityData> commodityData =FXCollections.observableArr
    public void add(){
 		try{
 		FXMLLoader loader=new FXMLLoader();
-		loader.setLocation(MainApp.class.getResource("/presentation/commodityui/SimpleCommodityUI.fxml"));
+		loader.setLocation(MainApp.class.getResource("/presentation/commodityui/SimpleCommodity.fxml"));
 		AnchorPane commodityUI=loader.load();
 		Scene scene=new Scene(commodityUI);
 		Stage commodityStage=new Stage();
@@ -125,7 +124,7 @@ private ObservableList<CommodityData> commodityData =FXCollections.observableArr
         controller.setParentID(parentid);
         commodityStage.showAndWait();
 		}catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
    }
 	@FXML
@@ -161,7 +160,7 @@ private ObservableList<CommodityData> commodityData =FXCollections.observableArr
 	        controller.setItem(a);
 	        commodityStage.showAndWait();
 			}catch(IOException e) {
-				// TODO: handle exception
+				e.printStackTrace();
 			}
 	}
 	@FXML
@@ -170,8 +169,8 @@ private ObservableList<CommodityData> commodityData =FXCollections.observableArr
 		MainApp.showLoginUI();
 	}
 	@FXML
-	public void showFiance(){
-		MainApp.showFianceMainUI();
+	public void showStockMain(){
+		MainApp.showStockMainUI();
 	}
 	@FXML
 	public void search(){
@@ -190,22 +189,21 @@ private ObservableList<CommodityData> commodityData =FXCollections.observableArr
 		}
 	}
 	private void getInf(CommodityData newValue) {
-		// TODO Auto-generated method stub
+		if(newValue==null){
+			return;
+		}
 		a=newValue.getVO();
 	}
 	public void setStage(Stage commodityStage) {
-		// TODO Auto-generated method stub
 		stage=commodityStage;
 	}
 	public void setCommoditys(ArrayList<CommodityVO> colist) {
-		// TODO Auto-generated method stub
 		for(CommodityVO a:colist){
 			commodityData.add(new CommodityData(a));
 		}
 		commodityTable.setItems(commodityData);
 	}
-	public void setparent(long id2) {
-		// TODO Auto-generated method stub
-		parentid=id2;
+	public void setparent(long id) {
+		parentid=id;
 	}
 }

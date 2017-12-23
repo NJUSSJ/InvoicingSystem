@@ -27,7 +27,7 @@
     <Separator layoutX="3.0" layoutY="52.0" prefHeight="4.0" prefWidth="311.0" />
     <Label layoutX="32.0" layoutY="79.0" text="名称：">
       <font>
-        <Font name="Microsoft YaHei UI Light" size="15.0" fx:id="x1" />
+        <Font size="15.0" fx:id="x1" />
       </font>
     </Label>
     <Label font="$x1" layoutX="32.0" layoutY="112.0" text="分类：" />
@@ -53,10 +53,10 @@
     <TextField fx:id="nameField" layoutX="102.0" layoutY="73.0" />
     <Button fx:id="cancelB" layoutX="32.0" layoutY="495.0" mnemonicParsing="false" onAction="#cancel" prefHeight="29.0" prefWidth="83.00009999999747" text="取     消">
       <font>
-        <Font name="Microsoft YaHei UI Light" size="13.0" fx:id="x2" />
+        <Font size="13.0" fx:id="x2" />
       </font>
     </Button>
-    <Button fx:id="rightB" font="$x2" layoutX="145.0" layoutY="495.0" mnemonicParsing="false" onAction="#Set" prefHeight="29.000099999997474" prefWidth="75.00009999999747" text="确      认" />
+    <Button fx:id="rightB" font="$x2" layoutX="145.0" layoutY="495.0" mnemonicParsing="false" onAction="#set" prefHeight="29.000099999997474" prefWidth="75.00009999999747" text="确      认" />
     <Label font="$x1" layoutX="303.0" layoutY="112.0" text="供货商0  /销售商1" />
     <Label font="$x1" layoutX="303.0" layoutY="153.0" text="一~五级客户：1~5" />
   </children>

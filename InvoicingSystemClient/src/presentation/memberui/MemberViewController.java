@@ -88,6 +88,7 @@ public class MemberViewController implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
 		long idLong=MainApp.getID();
 		String idString=idLong+"";
 		while(idString.length()<5) {
@@ -116,9 +117,8 @@ public class MemberViewController implements Initializable {
 	}
 
 	private void getInf(MemberData newValue) {
-		if(newValue!=null){
-			me=newValue.getVO();
-		}
+		// TODO Auto-generated method stub
+		me=newValue.getVO();
 	}
 	
 	@FXML
@@ -141,7 +141,7 @@ public class MemberViewController implements Initializable {
 	public void add(){
 		try {
 			FXMLLoader loader=new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("/presentation/memberui/SimpleMember.fxml"));
+			loader.setLocation(MainApp.class.getResource("/presentation/membertui/SimpleMemberUI.fxml"));
 			AnchorPane memberUI=loader.load();
 			Scene scene=new Scene(memberUI);
 			Stage memberStage=new Stage();
@@ -151,19 +151,19 @@ public class MemberViewController implements Initializable {
 			memberStage.setScene(scene);
             SimpleMemberController controller=loader.getController();
             controller.setStage(memberStage);
-            controller.setList(memberData);
             memberStage.showAndWait();
             
 		} catch (IOException e) {
-			e.printStackTrace();
+			// TODO: handle exception
 		}
 	}
 	@FXML
 	public void delete(){
 		int selectedIndex = memberTable.getSelectionModel().getSelectedIndex();
-   	 if (selectedIndex >= 0) {
+
+   	 	if (selectedIndex >= 0) {
+
    			mbs.deleteMember(me);
-  	        memberTable.getItems().remove(selectedIndex);
    	    } else {
    	        // Nothing selected.
    	        Alert alert = new Alert(AlertType.WARNING);
@@ -175,10 +175,10 @@ public class MemberViewController implements Initializable {
    	    }
 	}
 	@FXML
-	public void update(){
+	public void updata(){
 		try {
 			FXMLLoader loader=new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("/presentation/memberui/SimpleMember.fxml"));
+			loader.setLocation(MainApp.class.getResource("/presentation/membertui/SimpleMemberUI.fxml"));
 			AnchorPane memberUI=loader.load();
 			Scene scene=new Scene(memberUI);
 			Stage memberStage=new Stage();
@@ -189,11 +189,10 @@ public class MemberViewController implements Initializable {
             SimpleMemberController controller=loader.getController();
             controller.setStage(memberStage);
             controller.setMember(me);
-            controller.setList(memberData);
             memberStage.showAndWait();
             
 		} catch (IOException e) {
-			e.printStackTrace();
+			// TODO: handle exception
 		}
 	}
 	@FXML

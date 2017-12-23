@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import MainApp.MainApp;
+import businesslogic.commoditybl.Category;
 import businesslogic.commoditybl.CommodityController;
 import businesslogicservice.commodityblservice.CommodityBLService;
 import javafx.collections.FXCollections;
@@ -73,7 +74,9 @@ public class CategoryViewController implements Initializable{
 	@FXML
 	private TableColumn<CategoryData,String> nameColoumn;
 	
-	CategoryVO a=null;
+
+	CategoryVO categoryVO=null;
+
 	
 	ArrayList<CategoryVO> volist;
 	
@@ -81,7 +84,6 @@ public class CategoryViewController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
 		long idLong=MainApp.getID();
 		String idString=idLong+"";
 		while(idString.length()<5) {
@@ -90,7 +92,7 @@ public class CategoryViewController implements Initializable{
 		id.setText("ID:"+idString);
 		categoryTable.getSelectionModel().selectedItemProperty().addListener(
 	            (observable, oldValue, newValue) -> getInf(newValue));
-		idColoumn.setCellValueFactory(cellData ->cellData.getValue().getId());
+		idColoumn.setCellValueFactory(cellData ->cellData.getValue().getID());
 		nameColoumn.setCellValueFactory(cellData ->cellData.getValue().getName());
 	    volist=cbs.findDownCategory(cbs.findCategoryByID(-1));
 	    for(CategoryVO s:volist){
@@ -99,19 +101,22 @@ public class CategoryViewController implements Initializable{
 		}
 	}
 	private void getInf(CategoryData newValue) {
-		a=newValue.getVO();
+		if(newValue==null){
+			return;
+		}
+		categoryVO=newValue.getVO();
 	}
 	@FXML
 	public void search(){
 		categoryData.clear();
 		String content=search.getText();
 		if(content.charAt(0)>='0'&&content.charAt(0)<='9'){
-			a=cbs.findCategoryByID(Long.parseLong(content));
-			categoryData.add(new CategoryData (a));
+			categoryVO=cbs.findCategoryByID(Long.parseLong(content));
+			categoryData.add(new CategoryData (categoryVO));
 			categoryTable.setItems(categoryData);
 		}else{
-			a=cbs.findCategoryByName(content);
-			categoryData.add(new CategoryData (a));
+			categoryVO=cbs.findCategoryByName(content);
+			categoryData.add(new CategoryData (categoryVO));
 			categoryTable.setItems(categoryData);
 		}
 	}
@@ -130,43 +135,50 @@ public class CategoryViewController implements Initializable{
 			categoryStage.setScene(scene);
             SimpleCategoryController controller=loader.getController();
             controller.setStage(categoryStage);
-            if(a==null){
+            controller.setList(categoryData);
+            if(categoryVO==null){
             	controller.setParentID(-1);
             }else{
-            	controller.setParentID(a.getID());
+            	controller.setParentID(categoryVO.getID());
             }
            categoryStage.showAndWait();
             
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 
 	}
 	@FXML
 	public void deleteCategory(){
-		volist=cbs.findDownCategory(a);
+		volist=cbs.findDownCategory(categoryVO);
 		if(volist==null||volist.size()==0){
+		long parentid= categoryVO.getParentID();
 		int selectedIndex = categoryTable.getSelectionModel().getSelectedIndex();
-   	 if (selectedIndex >= 0) {
-   	        categoryTable.getItems().remove(selectedIndex);
-   			cbs.deleteCategory(a);
-   	    } else { 
-   	    Alert alert = new Alert(AlertType.WARNING);
-        alert.initOwner(MainApp.getPrimaryStage());
-        alert.setTitle("No Selection");
-        alert.setHeaderText("No Category Selected");
-        alert.setContentText("Please select a category in the table.");
-
-        alert.showAndWait();
-    }}else{
-    	  Alert alert = new Alert(AlertType.WARNING);
-          alert.initOwner(MainApp.getPrimaryStage());
-          alert.setTitle("Warning");
-          alert.setHeaderText("No leaf");
-          alert.setContentText("Please select a leaf in the table.");
-
-          alert.showAndWait();
-    }
+			if (selectedIndex >= 0) {
+				cbs.deleteCategory(categoryVO);
+				categoryTable.getItems().remove(selectedIndex);
+				if(categoryData.isEmpty()){
+					if(parentid!=-1){
+						returnFather();
+					}
+				}
+				categoryVO=null;
+			} else { 
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.initOwner(MainApp.getPrimaryStage());
+				alert.setTitle("No Selection");
+				alert.setHeaderText("No Category Selected");
+				alert.setContentText("Please select a category in the table.");
+				alert.showAndWait();
+			}
+		}else{
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.initOwner(MainApp.getPrimaryStage());
+			alert.setTitle("Warning");
+			alert.setHeaderText("No leaf");
+			alert.setContentText("Please select a leaf in the table.");
+			alert.showAndWait();
+		}
 	}
 	@FXML
 	public void updateCategory(){
@@ -182,10 +194,11 @@ public class CategoryViewController implements Initializable{
 		categoryStage.setScene(scene);
         SimpleCategoryController controller=loader.getController();
         controller.setStage(categoryStage);
-        controller.setItem(a);
-       categoryStage.showAndWait();
+        controller.setList(categoryData);
+        controller.setItem(categoryVO,categoryTable.getSelectionModel().getSelectedItem());
+        categoryStage.showAndWait();
 		}catch(IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	@FXML
@@ -199,16 +212,26 @@ public class CategoryViewController implements Initializable{
 	}
 	@FXML
 	public void enterSon(){
-	volist=cbs.findDownCategory(a);
-	ArrayList<CommodityVO> colist=cbs.findDownCommodity(a);
+	volist=cbs.findDownCategory(categoryVO);
+	ArrayList<CommodityVO> colist=cbs.findDownCommodity(categoryVO);
 	if(volist==null||volist.size()==0){
-		if(colist.size()>0){
+		if(colist==null||colist.size()==0){
+			Alert alert = new Alert(AlertType.WARNING);
+	        alert.initOwner(MainApp.getPrimaryStage());
+	        alert.setTitle("No commodity under this category");
+	        alert.setHeaderText("No commodity under this category");
+	        alert.setContentText("No commodity under this category.");
+	        alert.showAndWait();
+		}
+		else if(colist.size()>0){
 			showCommodity();
 		}else{
-		categoryData.clear();
-		categoryTable.setItems(categoryData);
+		/*categoryData.clear();
+		categoryTable.setItems(categoryData);*/
+			System.out.println("error");
 		}
 	}else{
+		categoryData.clear();
 		for(CategoryVO s:volist){
 			categoryData.add(new CategoryData(s));
 			categoryTable.setItems(categoryData);
@@ -217,8 +240,8 @@ public class CategoryViewController implements Initializable{
 	}
 	@FXML
 	public void returnFather(){
-		volist=cbs.findUpCategory(a);
-		if(volist==null||volist.size()==0){
+		volist=cbs.findUpCategory(categoryVO);
+		if(volist==null||volist.size()==0||categoryVO.getParentID()==-1){
 			Alert alert = new Alert(AlertType.WARNING);
 	        alert.initOwner(MainApp.getPrimaryStage());
 	        alert.setTitle("No Category");
@@ -226,6 +249,7 @@ public class CategoryViewController implements Initializable{
 	        alert.setContentText("Please select another category in the table.");
 	        alert.showAndWait();
 		}else{
+			categoryData.clear();
 			for(CategoryVO s:volist){
 				categoryData.add(new CategoryData(s));
 				categoryTable.setItems(categoryData);
@@ -235,7 +259,7 @@ public class CategoryViewController implements Initializable{
 	@FXML
 	public void showCommodity(){
 		ArrayList<CommodityVO> colist;
-		colist=cbs.findDownCommodity(a);
+		colist=cbs.findDownCommodity(categoryVO);
 		if(colist==null||colist.size()==0){
 			Alert alert = new Alert(AlertType.WARNING);
 	        alert.initOwner(MainApp.getPrimaryStage());
@@ -257,11 +281,10 @@ public class CategoryViewController implements Initializable{
 	            CommodityViewController controller=loader.getController();
 	            controller.setStage(commodityStage);
 	            controller.setCommoditys(colist);
-	            controller.setparent(a.getID());
+	            controller.setparent(categoryVO.getID());
 	            commodityStage.showAndWait();
-	            
 			} catch (IOException e) {
-				// TODO: handle exception
+				e.printStackTrace();
 			}
 	}
 	}

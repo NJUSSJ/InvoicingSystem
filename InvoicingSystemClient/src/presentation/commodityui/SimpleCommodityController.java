@@ -9,47 +9,46 @@ import javafx.stage.Stage;
 import vo.CommodityVO;
 
 public class SimpleCommodityController {
-Stage stage;
-static long id=0;
-@FXML
-private Button rightB;
-@FXML
-private Button returnB;
-@FXML
-private TextField name;
-@FXML
-private TextField num;
-@FXML
-private TextField model;
-@FXML
-private TextField saleprice;
-@FXML
-private TextField importprice;
-@FXML
-private TextField warning;
+	Stage stage;
+	static long id=0;
+	@FXML
+	private Button rightB;
+	@FXML
+	private Button returnB;
+	@FXML
+	private TextField name;
+	@FXML
+	private TextField num;
+	@FXML
+	private TextField model;
+	@FXML
+	private TextField saleprice;
+	@FXML
+	private TextField importprice;
+	@FXML
+	private TextField warning;
 
-long parentid;
+	long parentid;
 
-long tempid=id;
+	long tempid=id;
 
-int style=0;
+	int style=0;
 
-CommodityBLService cbs=new CommodityController();
+	CommodityBLService cbs=new CommodityController();
 
-CommodityVO a;
+	CommodityVO commodityVO;
 	public void setStage(Stage commodityStage) {
-		// TODO Auto-generated method stub
 		stage=commodityStage;
 	}
 	@FXML
 	public void setCommodity(){
 		if(style==0){
 			id++;
-			a=new CommodityVO(name.getText(),tempid,model.getText(),Integer.parseInt(num.getText()),Double.parseDouble(importprice.getText()),Double.parseDouble(saleprice.getText()),Double.parseDouble(importprice.getText()),Double.parseDouble(saleprice.getText()),parentid,Integer.parseInt(warning.getText()));
-	        cbs.addCommodity(a);
+			commodityVO=new CommodityVO(name.getText(),tempid,model.getText(),Integer.parseInt(num.getText()),Double.parseDouble(importprice.getText()),Double.parseDouble(saleprice.getText()),Double.parseDouble(importprice.getText()),Double.parseDouble(saleprice.getText()),parentid,Integer.parseInt(warning.getText()));
+	        cbs.addCommodity(commodityVO);
 		}else{
-			a=new CommodityVO(name.getText(),tempid,model.getText(),Integer.parseInt(num.getText()),Double.parseDouble(importprice.getText()),Double.parseDouble(saleprice.getText()),Double.parseDouble(importprice.getText()),Double.parseDouble(saleprice.getText()),parentid,Integer.parseInt(warning.getText()));
-			cbs.updateCommodity(a);
+			commodityVO=new CommodityVO(name.getText(),tempid,model.getText(),Integer.parseInt(num.getText()),Double.parseDouble(importprice.getText()),Double.parseDouble(saleprice.getText()),Double.parseDouble(importprice.getText()),Double.parseDouble(saleprice.getText()),parentid,Integer.parseInt(warning.getText()));
+			cbs.updateCommodity(commodityVO);
 		}
 	}
 	@FXML
@@ -57,21 +56,19 @@ CommodityVO a;
 		stage.close();
 	}
 	public void setParentID(long parentid) {
-		// TODO Auto-generated method stub
 		this.parentid=parentid;
 	}
 
-	public void setItem(CommodityVO a) {
-		// TODO Auto-generated method stub
-		tempid=a.getID();
-		parentid=a.getParent();
-		num.setText(Integer.toString(a.getStockNum()));
-		name.setText(a.getName());
-		model.setText(a.getModel());
-		saleprice.setText(Double.toString(a.getSalePrice()));
-		importprice.setText(Double.toString(a.getImportPrice()));
+	public void setItem(CommodityVO vo) {
+		tempid=vo.getID();
+		parentid=vo.getParent();
+		num.setText(Integer.toString(vo.getStockNum()));
+		name.setText(vo.getName());
+		model.setText(vo.getModel());
+		saleprice.setText(Double.toString(vo.getSalePrice()));
+		importprice.setText(Double.toString(vo.getImportPrice()));
 		style=1;
-		warning.setText(Integer.toString(a.getLimit()));
+		warning.setText(Integer.toString(vo.getLimit()));
 	}
 
 }
