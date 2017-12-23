@@ -150,13 +150,9 @@ public class MemberDataImpl implements MemberDataService{
 	 */
 	@Override
 	public ArrayList<MemberPO> findMembersbyField(String field) throws RemoteException {
-<<<<<<< HEAD
-		String sql="select * from "
-				+ "members where name='%"+field+"%'";
-=======
+
 		String sql="select * from"
 				+ "members where name like '%"+field+"%'";
->>>>>>> 7704d7e58ac554fc084cfa980e63af1ea77c1d81
 		
 		ArrayList<MemberPO> results=new ArrayList<>();
 		
