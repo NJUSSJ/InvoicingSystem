@@ -4,12 +4,16 @@ import java.net.URL;
 import java.sql.Date;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import MainApp.MainApp;
+import businesslogic.accountbl.AccountController;
 import businesslogic.billbl.AccountLineItem;
 import businesslogic.billbl.AccountList;
+import businesslogic.billbl.ReceiveBill;
 import businesslogic.billbl.ReceiveBillController;
+import businesslogicservice.accountblservice.AccountBLService;
 import businesslogicservice.billblservice.ReceiveBillBLService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,6 +26,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import vo.AccountVO;
 import vo.ReceiveBillVO;
 
 public class ReceiveBillViewController  implements Initializable{
@@ -94,8 +99,21 @@ public class ReceiveBillViewController  implements Initializable{
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
 		String str=sdf.format(time);
 		DecimalFormat df=new DecimalFormat("#####");
+		
+		/*
+		 * set times
+		 */
+		ArrayList<ReceiveBillVO> tmpList=new ReceiveBillController().findReceiveBillByTime(time);
+		times=tmpList.size()+1;
 		billid.setText("SKD-"+str+"-"+df.format(times));
-		id.setText("ID:"+MainApp.getID());
+		
+		long idLong=MainApp.getID();
+		String idString=idLong+"";
+		while(idString.length()<5) {
+			idString="0"+idString;
+		}
+		id.setText("ID:"+idString);
+		
 		operator.setText(MainApp.getName());
 		receiveTable.getSelectionModel().selectedItemProperty().addListener(
 	            (observable, oldValue, newValue) -> getInf(newValue));	
@@ -105,15 +123,31 @@ public class ReceiveBillViewController  implements Initializable{
 	}
 	@FXML
     public void add(){
-        long name=Long.parseLong(itemName.getText());
-        double money=Double.parseDouble(itemMoney.getText());
-        String note=itemNote.getText();
-        ali=new AccountLineItem(name,money,note);
-        aclist.addAccount(ali);
-        alid=new AccountLineItemData(ali);
-        receiveData.add(alid);
-        receiveTable.setItems(receiveData);
-        totalsum.setText(Double.toString(aclist.getSum()));
+       
+        try {
+        	 long name=Long.parseLong(itemName.getText());
+        	 
+        	 AccountBLService accountService=new AccountController();
+        	 AccountVO tmpVO= accountService.findAccountByID(name);
+        	 if(tmpVO==null) {
+        		 Alert warning=new Alert(AlertType.WARNING);
+     			warning.setContentText("Account Does Not Exist!");
+     			warning.showAndWait();
+        	 }
+        	 double money=Double.parseDouble(itemMoney.getText());
+        	 String note=itemNote.getText();
+			 ali=new AccountLineItem(name,money,note);
+			 aclist.addAccount(ali);
+			 alid=new AccountLineItemData(ali);
+			 receiveData.add(alid);
+			 receiveTable.setItems(receiveData);
+			 totalsum.setText(Double.toString(aclist.getSum()));
+		} catch (NumberFormatException e) {
+			Alert warning=new Alert(AlertType.WARNING);
+			warning.setContentText("Please Check Your Input!");
+			warning.showAndWait();
+		}
+       
     }
 	@FXML
     public void update(){
