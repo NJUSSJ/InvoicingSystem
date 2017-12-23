@@ -210,6 +210,11 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		commodityData.add(itemdata);
 	    commodityTable.setItems(commodityData);
 	    altogether.setText(""+comlist.getImportTotal());
+	    
+	    name.setText("");
+	    lastprice.setText("");
+	    num.setText("");
+	    notea.setText("");
 	}
 	@FXML
 	public void logout(){
@@ -223,13 +228,38 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	@FXML
 	public void setBill(){
 		memberl=mbs.findMemberByName(member.getText());
+		if(memberl==null) {
+			Alert warning=new Alert(AlertType.WARNING);
+			warning.setContentText("供应商不存在");
+			warning.showAndWait();
+			return ;
+		}
 		ImportBillVO importbill=new ImportBillVO(billid.getText(),MainApp.getID(),memberl.getID(),comlist,comlist.getImportTotal(),0,time,note.getText());
 		 String isSubmit="fail Submit";
 		 if(ibbs.submitImportBill(importbill)){
-			 times++;
-			 isSubmit="Succeed Submit";
+			 	SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
+				String str=sdf.format(time);
+				DecimalFormat df=new DecimalFormat("#####");
+				
+				ArrayList<ImportBillVO> tmpList=new ImportBillController().findImportBillByTime(time);
+				times=tmpList.size()+1;
+				
+				billid.setText("JHD-"+str+"-"+df.format(times));
+			 
+				isSubmit="Succeed Submit";
+				
+				member.setText("");
+				name.setText("");
+				note.setText("");
+				notea.setText("");
+				num.setText("");
+				lastprice.setText("");
+				
+				commodityData.clear();
+				
+			 
 		 }
-	     Alert alert = new Alert(AlertType.INFORMATION);
+		 		Alert alert = new Alert(AlertType.INFORMATION);
 		        alert.initOwner(MainApp.getPrimaryStage());
 		        alert.setTitle("Information");
 		        alert.setHeaderText("Submit");

@@ -4,11 +4,13 @@ import java.net.URL;
 import java.sql.Date;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import MainApp.MainApp;
 import businesslogic.billbl.CommodityLineItem;
 import businesslogic.billbl.CommodityList;
+import businesslogic.billbl.ImportBillController;
 import businesslogic.billbl.ImportReturnBillController;
 import businesslogic.commoditybl.CommodityController;
 import businesslogic.memberbl.MemberController;
@@ -28,6 +30,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import vo.CommodityVO;
+import vo.ImportBillVO;
 import vo.ImportReturnBillVO;
 import vo.MemberVO;
 
@@ -108,7 +111,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	Date time;
 	CommodityItemData itemdata;
 	CommodityLineItem item;
-	CommodityList comlist;
+	CommodityList comlist=new CommodityList();
 	CommodityVO a;
 	MemberVO memberl;
 	CommodityBLService cbs=new CommodityController();
@@ -123,8 +126,20 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
 		String str=sdf.format(time);
 		DecimalFormat df=new DecimalFormat("#####");
-		billid.setText("JHTHD-"+str+"-"+df.format(times));
-		id.setText("ID:"+MainApp.getID());
+		
+		ArrayList<ImportReturnBillVOBillVO> tmpList=new ImportBillController().findImportBillByTime(time);
+		times=tmpList.size()+1;
+		
+		billid.setText("JHD-"+str+"-"+df.format(times));
+		/*
+		 * set id
+		 */
+		long idLong=MainApp.getID();
+		String idString=idLong+"";
+		while(idString.length()<5) {
+			idString="0"+idString;
+		}
+		id.setText("ID:"+idString);
 		operator.setText(MainApp.getName());
 		commodityTable.getSelectionModel().selectedItemProperty().addListener(
 	            (observable, oldValue, newValue) -> getInf(newValue));
