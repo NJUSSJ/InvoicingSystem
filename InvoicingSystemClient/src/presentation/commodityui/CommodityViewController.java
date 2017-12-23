@@ -130,6 +130,7 @@ public class CommodityViewController implements Initializable{
         SimpleCommodityController controller=loader.getController();
         controller.setStage(commodityStage);
         //controller.setParentID(parentid);
+        controller.setList(commodityData);
         commodityStage.showAndWait();
 		}catch (IOException e) {
 			e.printStackTrace();
@@ -164,7 +165,8 @@ public class CommodityViewController implements Initializable{
 			commodityStage.setScene(scene);
 	        SimpleCommodityController controller=loader.getController();
 	        controller.setStage(commodityStage);
-	        controller.setItem(commodityVO);
+	        controller.setItem(commodityTable.getSelectionModel().getSelectedItem());
+	        controller.setList(commodityData);
 	        commodityStage.showAndWait();
 			}catch(IOException e) {
 				e.printStackTrace();
