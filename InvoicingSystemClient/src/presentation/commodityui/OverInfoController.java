@@ -70,4 +70,9 @@ private Stage stage;
 			sum.setText(""+m.getSum());
 		    confirm.setVisible(false);
 	}
+
+	public void setVO(OverBillVO m) {
+		// TODO Auto-generated method stub
+		
+	}
 }

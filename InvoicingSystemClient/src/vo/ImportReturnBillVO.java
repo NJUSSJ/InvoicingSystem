@@ -39,6 +39,9 @@ public class ImportReturnBillVO {
 	public String getID() {
 		return id;
 	}
+	public String getRemark() {
+		return remark;
+	}
 	public long getUserID() {
 		return userid;
 	}
@@ -73,5 +76,9 @@ public class ImportReturnBillVO {
 	}
 	public void setRemark(String remark){
 		this.remark=remark;
+	}
+	public int getState() {
+		// TODO Auto-generated method stub
+		return state;
 	}
 }

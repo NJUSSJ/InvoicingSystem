@@ -1,6 +1,8 @@
 package presentation.saleui;
 
 import businesslogic.billbl.CommodityLineItem;
+import businesslogic.commoditybl.CommodityController;
+import businesslogicservice.commodityblservice.CommodityBLService;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import vo.CommodityVO;
@@ -15,6 +17,7 @@ public class CommodityItemData {
 	StringProperty note=new SimpleStringProperty("0");
 	StringProperty name=new SimpleStringProperty("0");
 	CommodityVO a;
+	CommodityBLService cbs=new CommodityController();
 	public CommodityItemData(int style,CommodityVO commodity,int num,double price,String note) {
 		// TODO Auto-generated constructor stub
 		a=commodity;
@@ -31,6 +34,19 @@ public class CommodityItemData {
 		name.set(commodity.getName());
 		this.note.set(note);
 		}
+	public CommodityItemData(CommodityLineItem item) {
+		a=cbs.findCommodityByID(item.getCommodityID());
+		commodityid.set(""+item.getCommodityID());
+		name.set(""+a.getName());
+		model.set(""+a.getModel());
+		saleprice.set(""+item.getSalePrice());
+		importprice.set(""+item.getImportPrice());
+		num.set(""+item.getNum());
+		totalprice.set(""+item.getImportPrice()*item.getNum());
+		
+		
+		// TODO Auto-generated constructor stub
+	}
 	public StringProperty getId(){
 		return commodityid;
 	}
@@ -57,7 +73,7 @@ public class CommodityItemData {
 	}
 	public CommodityLineItem getItem() {
 		// TODO Auto-generated method stub
-		CommodityLineItem item=new CommodityLineItem(Integer.parseInt(num.get()), a.getID(), Double.parseDouble(saleprice.get()), Double.parseDouble(importprice.get()));
+		CommodityLineItem item=new CommodityLineItem(Integer.parseInt(num.get()), a.getID(), Double.parseDouble(saleprice.get()), Double.parseDouble(importprice.get()),note.get());
 		return item;
 	}
 }

@@ -70,10 +70,10 @@ public class CashBillViewController  implements Initializable {
 	private Button returnB;
 	
 	@FXML
-	private Button addB;
+	private Button reviseB;
 	
 	@FXML
-	private Button reviseB;
+	private Button addB;
 	
 	@FXML
 	private Button updateB;
@@ -110,6 +110,7 @@ public class CashBillViewController  implements Initializable {
 		ArrayList<CashBillVO> tmpList=new CashBillController().findCashBillByTime(time);
 		times=tmpList.size()+1;
 		
+		reviseB.setVisible(false);
 		
 		billid.setText("FKD-"+str+"-"+df.format(times));
 		
@@ -248,22 +249,7 @@ public class CashBillViewController  implements Initializable {
 		 	CashBillVO cashbill=new CashBillVO(billid.getText(), MainApp.getID(),Long.parseLong(account.getText()) , items, time, 0);
 		 	String isSubmit="fail Submit";
 		 	if(pbs.submitCashBill(cashbill)){
-		 		
 		 		isSubmit="Succeed Submit";
-		 		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
-		 		String str=sdf.format(time);
-		 		DecimalFormat df=new DecimalFormat("#####");
-		 		
-		 		ArrayList<CashBillVO> tmpList=new CashBillController().findCashBillByTime(time);
-				times=tmpList.size()+1;
-				if(times>99999) {
-					Alert warning=new Alert(AlertType.WARNING);
-					warning.setContentText("No more than 99999 cashbills a day!");
-					warning.showAndWait();
-				}
-		 		billid.setText("FKD-"+str+"-"+df.format(times));
-		 		cashData.clear();
-		 		account.setText("");
 		 		}
 	 		Alert alert = new Alert(AlertType.INFORMATION);
 	        alert.initOwner(MainApp.getPrimaryStage());
@@ -303,9 +289,76 @@ public class CashBillViewController  implements Initializable {
 	   rightB.setVisible(false);
 	   returnB.setVisible(false);
 	   addB.setVisible(false);
-	   reviseB.setVisible(false);
 	   updateB.setVisible(false);
 	   deleteB.setVisible(false);
+	}
+	public void rivise(){
+		 CashBillBLService pbs=new CashBillController();
+		 
+		 AccountBLService accountService=new AccountController();
+		 boolean ifAccountExisted=false;
+		 try {
+			long accountID=Long.parseLong(account.getText());
+			AccountVO tmpVO=accountService.findAccountByID(accountID);
+			if(tmpVO!=null) {
+				ifAccountExisted=true;
+			}
+		} catch (NumberFormatException e) {
+			Alert warning=new Alert(AlertType.WARNING);
+			warning.setContentText("Please check your account id input!");
+			warning.showAndWait();
+		}
+		 if(ifAccountExisted) {
+			 	CashBillVO cashbill=new CashBillVO(billid.getText(), MainApp.getID(),Long.parseLong(account.getText()) , items, time, 0);
+			 	String isSubmit="fail Submit";
+			 	if(pbs.submitCashBill(cashbill)){
+			 		//√ªÃ÷¬€∫√
+			 		isSubmit="Succeed Submit";
+			 		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
+			 		String str=sdf.format(time);
+			 		DecimalFormat df=new DecimalFormat("#####");
+			 		
+			 		ArrayList<CashBillVO> tmpList=new CashBillController().findCashBillByTime(time);
+					times=tmpList.size()+1;
+					if(times>99999) {
+						Alert warning=new Alert(AlertType.WARNING);
+						warning.setContentText("No more than 99999 cashbills a day!");
+						warning.showAndWait();
+					}
+			 		billid.setText("FKD-"+str+"-"+df.format(times));
+			 		cashData.clear();
+			 		account.setText("");
+			 		}
+		 		Alert alert = new Alert(AlertType.INFORMATION);
+		        alert.initOwner(MainApp.getPrimaryStage());
+		        alert.setTitle("Information");
+		        alert.setHeaderText("Submit");
+		        alert.setContentText(isSubmit);
+		        alert.showAndWait();
+		        }
+		 else {
+			 	Alert warning=new Alert(AlertType.WARNING);
+				warning.setContentText("Please check your account id input!");
+				warning.showAndWait();
+		 }
+	}
+	public void setVO(CashBillVO m) {
+		// TODO Auto-generated method stub
+		id.setText(""+MainApp.getID());
+		billid.setText(m.getID());
+		account.setText(""+m.getAccountID());
+		operator.setText(""+m.getUserID());
+		totalsum.setText(""+m.getSum());
+	   ArrayList<String> items=m.getAccountList();
+	   for(String it:items){
+		   String[] its=it.split(",");
+		   ItemData a=new ItemData(its[0],its[1],its[2]);
+		   cashData.add(a);
+	   }
+	   cashTable.setItems(cashData);
+	   rightB.setVisible(false);
+	   returnB.setVisible(false);
+	   reviseB.setVisible(true);
 	}
 }
 
