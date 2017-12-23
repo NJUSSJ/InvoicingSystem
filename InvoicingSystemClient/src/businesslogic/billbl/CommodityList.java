@@ -14,7 +14,7 @@ public class CommodityList {
 	}
 	/**
 	 * 
-	 * @param info:形式为"id,num,salePrice,importPrice id,num,salePrice,importPrice..."的字符串
+	 * @param info:形式为"id,num,salePrice,importPrice,remark id,num,salePrice,importPrice,remark..."的字符串
 	 */
 	public CommodityList(String info){
 		list=new ArrayList<>();
@@ -25,7 +25,8 @@ public class CommodityList {
 			long id=Long.parseLong(details[1]);
 			double salePrice=Double.parseDouble(details[2]);
 			double importPrice=Double.parseDouble(details[3]);
-			list.add(new CommodityLineItem(num,id,salePrice,importPrice));
+			String remark=details[4];
+			list.add(new CommodityLineItem(num,id,salePrice,importPrice,remark));
 		}
 	}
 	/**

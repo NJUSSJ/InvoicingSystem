@@ -91,7 +91,7 @@ public class SaleBill{
 					if(commodityVO.getStockNum()<commodityVO.getLimit()){
 						int dis=commodityVO.getLimit()-commodityVO.getStockNum();
 						warningBill.getList().addCommodity(new CommodityLineItem(dis,
-					commodityVO.getID(),commodityVO.getSalePrice(),commodityVO.getImportPrice()));
+					commodityVO.getID(),commodityVO.getSalePrice(),commodityVO.getImportPrice(),""));
 					}
 				}
 				if(warningBill.getList().getListSize()>0){
@@ -115,7 +115,7 @@ public class SaleBill{
 						giftid=proList.get(i).getCommodityID();
 						salePrice=ccon.findCommodityByID(giftid).getSalePrice();
 						importPrice=ccon.findCommodityByID(giftid).getImportPrice();
-						giftList.addCommodity(new CommodityLineItem(num,giftid,salePrice,importPrice));
+						giftList.addCommodity(new CommodityLineItem(num,giftid,salePrice,importPrice,""));
 					}
 				}
 				gcon.submitGiftBill(new GiftBillVO(billid,stockid,vo.getMemberID(),giftList,new Date(Utility.getNow().getTime()),0));

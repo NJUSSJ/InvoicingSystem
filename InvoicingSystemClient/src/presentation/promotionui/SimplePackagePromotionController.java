@@ -60,7 +60,7 @@ public class SimplePackagePromotionController {
 		if(ccon.findCommodityByName(name)!=null){
 			CommodityVO vo=ccon.findCommodityByName(name);
 			if(!list.hasCommodity(vo.getID())){
-				list.addCommodity(new CommodityLineItem(0,vo.getID(),vo.getSalePrice(),vo.getLateImportPrice()));
+				list.addCommodity(new CommodityLineItem(0,vo.getID(),vo.getSalePrice(),vo.getLateImportPrice(),""));
 			}
 			Alert alert = new Alert(AlertType.WARNING);
 	        alert.initOwner(MainApp.getPrimaryStage());

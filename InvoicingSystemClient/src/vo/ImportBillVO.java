@@ -23,7 +23,6 @@ public class ImportBillVO {
 	
 	public ImportBillVO(String id,long userid,long memberid,CommodityList commoditylist,
 			double sum,int state,Date time,String remark) {
-		// TODO Auto-generated constructor stub
 		this.commodityList=commoditylist;
 		this.id=id;
 		this.memberid=memberid;

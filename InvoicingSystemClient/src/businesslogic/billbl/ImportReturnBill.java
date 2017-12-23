@@ -89,7 +89,7 @@ public class ImportReturnBill {
 					if(commodityVO.getStockNum()<commodityVO.getLimit()){
 						int dis=commodityVO.getLimit()-commodityVO.getStockNum();
 						warningBill.getList().addCommodity(new CommodityLineItem(dis,
-					commodityVO.getID(),commodityVO.getSalePrice(),commodityVO.getImportPrice()));
+					commodityVO.getID(),commodityVO.getSalePrice(),commodityVO.getImportPrice(),""));
 					}
 				}
 				if(warningBill.getList().getListSize()>0){

@@ -73,7 +73,7 @@ public class SimplePricePromotionController {
 				CommodityLineItem item=list.findCommodity(vo.getID());
 				item.setNum(item.getNum()+num);
 			}else{
-				list.addCommodity(new CommodityLineItem(num,vo.getID(),vo.getSalePrice(),vo.getLateImportPrice()));
+				list.addCommodity(new CommodityLineItem(num,vo.getID(),vo.getSalePrice(),vo.getLateImportPrice(),""));
 			}
 			Alert alert = new Alert(AlertType.WARNING);
 	        alert.initOwner(MainApp.getPrimaryStage());
