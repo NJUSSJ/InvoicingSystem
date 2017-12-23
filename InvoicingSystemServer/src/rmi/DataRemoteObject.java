@@ -994,5 +994,10 @@ public class DataRemoteObject extends UnicastRemoteObject implements UserDataSer
 	public long getLargestIDofCategory() throws RemoteException {
 		return categoryservice.getLargestIDofCategory();
 	}
+
+	@Override
+	public long getLargestIDofCommodity() throws RemoteException {
+		return commodityService.getLargestIDofCommodity();
+	}
 	
 }

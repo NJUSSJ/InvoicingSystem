@@ -149,7 +149,7 @@ public class ReceiveBillDataImpl implements ReceiveBillDataService{
 				String id=result.getString("id");
 				long userid=result.getLong("userid");
 				long memberid=result.getLong("memberid");
-				String accountlist=result.getString("commoditylist");
+				String accountlist=result.getString("accountlist");
 				double sum=result.getDouble("sum");
 				int state=result.getInt("state");
 				
@@ -181,7 +181,7 @@ public class ReceiveBillDataImpl implements ReceiveBillDataService{
 				String id=result.getString("id");
 				long userid=result.getLong("userid");
 				long memberid=result.getLong("memberid");
-				String accountlist=result.getString("commoditylist");
+				String accountlist=result.getString("accountlist");
 				double sum=result.getDouble("sum");
 				Date time=result.getDate("time");
 				
