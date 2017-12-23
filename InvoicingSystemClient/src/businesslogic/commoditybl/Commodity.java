@@ -171,4 +171,12 @@ public class Commodity{
 		}
 		return result;
 	}
+	public long findLargestIDofCommodity(){
+		try {
+			return RemoteHelper.getInstance().getCommodityDataService().getLargestIDofCommodity();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return -2;
+	}
 }

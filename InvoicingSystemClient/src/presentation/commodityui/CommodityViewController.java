@@ -142,7 +142,6 @@ public class CommodityViewController implements Initializable{
 	        alert.setTitle("No Selection");
 	        alert.setHeaderText("No Category Selected");
 	        alert.setContentText("Please select a category in the table.");
-
 	        alert.showAndWait();
 	    }
    }

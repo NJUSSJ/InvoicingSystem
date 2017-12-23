@@ -62,6 +62,7 @@ public class SimpleMemberController implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		operator.setText(MainApp.getID()+"");
 	}
 
 	public void setStage(Stage memberStage) {

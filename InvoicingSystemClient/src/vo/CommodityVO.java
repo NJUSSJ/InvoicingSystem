@@ -16,7 +16,6 @@ public class CommodityVO {
 	 	
 	public CommodityVO(String name,long id,String model, int stockNum, double importPrice, double salePrice,
 			double lateImportPrice, double lateSalePrice,long parentid,int limit) {
-		// TODO Auto-generated constructor stub
 		this.name=name;
 		this.id=id;
 		this.model=model;
