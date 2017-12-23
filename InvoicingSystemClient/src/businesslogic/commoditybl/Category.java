@@ -96,6 +96,9 @@ public class Category {
 			temp=new ArrayList<CommodityVO>();
 			ArrayList<CommodityPO> commodity = RemoteHelper.getInstance().getCommodityDataService().findCommoditiesbyParent(vo.getParentID());
 			CommodityController controller=new CommodityController();
+			if(commodity==null){
+				return null;
+			}
 			for(int i=0;i<commodity.size();i++){
 				temp.add(controller.toCommodityVO(commodity.get(i)));
 			}

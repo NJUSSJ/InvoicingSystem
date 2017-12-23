@@ -56,17 +56,16 @@ public class SimpleMemberController implements Initializable{
 
 	MemberVO memberVO;
 
+	MemberData memberData;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 	}
 
 	public void setStage(Stage memberStage) {
-		// TODO Auto-generated method stub
 		stage=memberStage;
 	}
 	public void setMember(MemberVO me) {
-
 		memberVO=me;
 		nameField.setText(memberVO.getName());
 		rankField.setText(Integer.toString(memberVO.getRank()));
@@ -75,15 +74,16 @@ public class SimpleMemberController implements Initializable{
 		addressField.setText(memberVO.getAddress());
 		postcodeField.setText(Integer.toString(memberVO.getPostCode()));
 		telephoneField.setText(Long.toString(memberVO.getPhoneNum()));
-
 		style=1;
 	}
     public void cancel(){
     	stage.close();
-
     }
     public void setList(ObservableList<MemberData> list){
     	this.list=list;
+    }
+    public void setMemberData(MemberData data){
+    	memberData=data;
     }
 	public void set(){
 		if(style==1){
@@ -92,8 +92,9 @@ public class SimpleMemberController implements Initializable{
 				nameField.getText(),Integer.parseInt(telephoneField.getText()),addressField.getText(),
 				emailField.getText(),Double.parseDouble(shouldpay.getText()),Double.parseDouble(shouldget.getText()),
 				Double.parseDouble(quota.getText()),MainApp.getID());
-		mbs.updateMember(memberVO);
-		stage.close();
+			mbs.updateMember(memberVO);
+			memberData.setMemberVO(memberVO);
+			stage.close();
 		}else{
 			long largest=-1;
 			for(int i=0;i<list.size();i++) {
@@ -111,7 +112,6 @@ public class SimpleMemberController implements Initializable{
 			mbs.addMember(memberVO);
 			list.add(new MemberData(memberVO));
 			stage.close();
-
 		}
 		
 	}

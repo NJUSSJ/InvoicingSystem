@@ -53,8 +53,11 @@ public class Member{
 		ArrayList<MemberVO> temp=null;
 		try {
 			temp=new ArrayList<MemberVO>();
-		ArrayList<MemberPO> members= RemoteHelper.getInstance().getMemberDataService().
+			ArrayList<MemberPO> members= RemoteHelper.getInstance().getMemberDataService().
 					findMembersbyField(field);
+			if(members==null){
+				return null;
+			}
 			for(int i=0;i<members.size();i++){
 			temp.add(toMemberVO(members.get(i)));
 			}
