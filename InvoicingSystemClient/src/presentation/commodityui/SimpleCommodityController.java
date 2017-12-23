@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import vo.CategoryVO;
 import vo.CommodityVO;
 
 public class SimpleCommodityController {
@@ -45,10 +46,20 @@ public class SimpleCommodityController {
 		if(style==0){
 			long id=cbs.findLargestIDofCommodity()+1;
 			if(id>=0){
+				String parentName=parent.getText();
+				CategoryVO parentCategory=cbs.findCategoryByName(parentName);
+				if(parentCategory==null){
+					Alert alert = new Alert(AlertType.WARNING);
+			        alert.initOwner(MainApp.getPrimaryStage());
+			        alert.setTitle("Parent not found");
+			        alert.setHeaderText("Parent not found");
+			        alert.setContentText("Parent not found:"+parentName);
+			        alert.showAndWait();
+				}
 				commodityVO=new CommodityVO(name.getText(),id,model.getText(),
 						Integer.parseInt(num.getText()),Double.parseDouble(importprice.getText()),
 						Double.parseDouble(saleprice.getText()),Double.parseDouble(importprice.getText())
-						,Double.parseDouble(saleprice.getText()),Long.parseLong(parent.getText()),
+						,Double.parseDouble(saleprice.getText()),parentCategory.getParentID(),
 						Integer.parseInt(warning.getText()));
 				cbs.addCommodity(commodityVO);
 			}else{

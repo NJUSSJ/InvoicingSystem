@@ -109,6 +109,11 @@ public class CommodityViewController implements Initializable{
 		lateImportPriceColumn.setCellValueFactory(cellData ->cellData.getValue().getLateImport());
 		lateSalePriceColumn.setCellValueFactory(cellData ->cellData.getValue().getLateSale());
 		parentColumn.setCellValueFactory(cellData ->cellData.getValue().getParent());
+		colist=cbs.findCommodities();
+		for(CommodityVO vo:colist){
+			commodityData.add(new CommodityData(vo));
+		}
+		commodityTable.setItems(commodityData);
 	}
 	@FXML
    public void add(){
@@ -124,7 +129,7 @@ public class CommodityViewController implements Initializable{
 		commodityStage.setScene(scene);
         SimpleCommodityController controller=loader.getController();
         controller.setStage(commodityStage);
-        controller.setParentID(parentid);
+        //controller.setParentID(parentid);
         commodityStage.showAndWait();
 		}catch (IOException e) {
 			e.printStackTrace();

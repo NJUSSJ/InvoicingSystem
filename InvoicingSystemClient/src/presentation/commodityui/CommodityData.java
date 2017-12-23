@@ -1,5 +1,6 @@
 package presentation.commodityui;
 
+import businesslogic.commoditybl.CommodityController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import vo.CommodityVO;
@@ -58,7 +59,7 @@ public class CommodityData {
     	saleprice.set(Double.toString(vo.getSalePrice()));
     	latesale.set(Double.toString(vo.getLateSalePrice()));
     	lateimport.set(Double.toString(vo.getLateImportPrice()));
-    	parent.set(vo.getParent()+"");
+    	parent.set(new CommodityController().findCategoryByID(vo.getParent()).getName());
     	commodityVO=vo;
 	}
 	
