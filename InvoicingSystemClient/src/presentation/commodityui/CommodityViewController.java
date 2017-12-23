@@ -52,7 +52,7 @@ public class CommodityViewController implements Initializable{
 	
 	Stage stage;
 	
-	long parentid;
+	//long parentid;
 	
 	private ObservableList<CommodityData> commodityData =FXCollections.observableArrayList();
 	
@@ -139,23 +139,23 @@ public class CommodityViewController implements Initializable{
 	@FXML
    public void delete(){
 		int selectedIndex = commodityTable.getSelectionModel().getSelectedIndex();
-	   	 if (selectedIndex >= 0) {
-	   		commodityTable.getItems().remove(selectedIndex);
-	   			cbs.deleteCommodity(commodityVO);
+	   	 	if (selectedIndex >= 0) {
+	   	 		cbs.deleteCommodity(commodityVO);
+	   	 		commodityTable.getItems().remove(selectedIndex);
 	   	    } else { 
-	   	    Alert alert = new Alert(AlertType.WARNING);
-	        alert.initOwner(MainApp.getPrimaryStage());
-	        alert.setTitle("No Selection");
-	        alert.setHeaderText("No Category Selected");
-	        alert.setContentText("Please select a category in the table.");
-	        alert.showAndWait();
+	   	    	Alert alert = new Alert(AlertType.WARNING);
+	   	    	alert.initOwner(MainApp.getPrimaryStage());
+	   	    	alert.setTitle("No Selection");
+	   	    	alert.setHeaderText("No Category Selected");
+	   	    	alert.setContentText("Please select a category in the table.");
+	   	    	alert.showAndWait();
 	    }
    }
 	@FXML
 	public void update(){
 		try{
 			FXMLLoader loader=new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("/presentation/commodityui/SimpleCommodityUI.fxml"));
+			loader.setLocation(MainApp.class.getResource("/presentation/commodityui/SimpleCommodity.fxml"));
 			AnchorPane commodityUI=loader.load();
 			Scene scene=new Scene(commodityUI);
 			Stage commodityStage=new Stage();
@@ -183,18 +183,48 @@ public class CommodityViewController implements Initializable{
 	}
 	@FXML
 	public void search(){
-		commodityData.clear();
 		String content=search.getText();
+		if(content==null||content.length()<=0){
+			 Alert alert = new Alert(AlertType.WARNING);
+	   	        alert.initOwner(MainApp.getPrimaryStage());
+	   	        alert.setTitle("No Input");
+	   	        alert.setHeaderText("No Input");
+	   	        alert.setContentText("Please input first.");
+	            alert.showAndWait();
+	            return;
+		}
 		if(content.charAt(0)>='0'&&content.charAt(0)<='9'){
 			commodityVO=cbs.findCommodityByID(Long.parseLong(content));
-			parentid=commodityVO.getParent();
+			//parentid=commodityVO.getParent();
+			if(commodityVO==null){
+				Alert alert = new Alert(AlertType.WARNING);
+	   	        alert.initOwner(MainApp.getPrimaryStage());
+	   	        alert.setTitle("Not Found");
+	   	        alert.setHeaderText("Not Found");
+	   	        alert.setContentText("Not Found:"+content);
+	            alert.showAndWait();
+	            return;
+			}
+			commodityData.clear();
 			commodityData.add(new CommodityData (commodityVO));
-			commodityTable.setItems(commodityData);
+			//commodityTable.setItems(commodityData);
 		}else{
-			commodityVO=cbs.findCommodityByName(content);
-			parentid=commodityVO.getParent();
-			commodityData.add(new CommodityData (commodityVO));
-			commodityTable.setItems(commodityData);
+			ArrayList<CommodityVO> vos=cbs.findCommodityByField(content);
+			if(vos==null||vos.size()<=0){
+				Alert alert = new Alert(AlertType.WARNING);
+	   	        alert.initOwner(MainApp.getPrimaryStage());
+	   	        alert.setTitle("Not Found");
+	   	        alert.setHeaderText("Not Found");
+	   	        alert.setContentText("Not Found:"+content);
+	            alert.showAndWait();
+	            return;
+			}
+			//parentid=commodityVO.getParent();
+			commodityData.clear();
+			for(CommodityVO vo:vos){
+				commodityData.add(new CommodityData (vo));
+				//commodityTable.setItems(commodityData);
+			}
 		}
 	}
 	private void getInf(CommodityData newValue) {
@@ -212,7 +242,7 @@ public class CommodityViewController implements Initializable{
 		}
 		commodityTable.setItems(commodityData);
 	}
-	public void setparent(long id) {
+	/*public void setparent(long id) {
 		parentid=id;
-	}
+	}*/
 }
