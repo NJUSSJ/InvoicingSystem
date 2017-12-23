@@ -4,6 +4,7 @@ import java.net.URL;
 import java.sql.Date;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import MainApp.MainApp;
@@ -108,7 +109,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	Date time;
 	CommodityItemData itemdata;
 	CommodityLineItem item;
-	CommodityList comlist;
+	CommodityList comlist=new CommodityList();
 	CommodityVO a;
 	MemberVO memberl;
 	CommodityBLService cbs=new CommodityController();
@@ -123,8 +124,21 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
 		String str=sdf.format(time);
 		DecimalFormat df=new DecimalFormat("#####");
+		
+		ArrayList<ImportBillVO> tmpList=new ImportBillController().findImportBillByTime(time);
+		times=tmpList.size()+1;
+		
 		billid.setText("JHD-"+str+"-"+df.format(times));
-		id.setText("ID:"+MainApp.getID());
+		/*
+		 * set id
+		 */
+		long idLong=MainApp.getID();
+		String idString=idLong+"";
+		while(idString.length()<5) {
+			idString="0"+idString;
+		}
+		id.setText("ID:"+idString);
+		
 		operator.setText(MainApp.getName());
 		commodityTable.getSelectionModel().selectedItemProperty().addListener(
 	            (observable, oldValue, newValue) -> getInf(newValue));
@@ -141,7 +155,12 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	
 	private void getInf(CommodityItemData newValue) {
 		// TODO Auto-generated method stub
-		item=newValue.getItem();
+		if(newValue!=null) {
+			itemdata=newValue;
+			item=itemdata.getItem();
+		}
+			
+		
 	}
 
 
@@ -149,9 +168,9 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	public void delete(){
 		int selectedIndex = commodityTable.getSelectionModel().getSelectedIndex();
 	   	 if (selectedIndex >= 0) {
-	   		commodityTable.getItems().remove(selectedIndex);
-	           comlist.deleteCommodity(item);
-	           commodityData.remove(selectedIndex);
+	   		   comlist.deleteCommodity(item);
+	   		   commodityTable.getItems().remove(selectedIndex);
+	           
 	           altogether.setText(""+comlist.getImportTotal());
 	   	    } else {
 	   	        // Nothing selected.

@@ -92,6 +92,8 @@ public class ImportBill{
 		try {
 			ArrayList<ImportBillPO> importBills=RemoteHelper.getInstance().getImportBillDataService().
 					findImportBillbyTime(time);
+			
+			if(importBills.isEmpty()||importBills==null) return temp;
 			for(int i=0;i<importBills.size();i++){
 				temp.add(toImportBillVO(importBills.get(i)));
 			}
