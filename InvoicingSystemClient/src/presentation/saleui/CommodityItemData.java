@@ -6,14 +6,14 @@ import javafx.beans.property.StringProperty;
 import vo.CommodityVO;
 
 public class CommodityItemData {
-	StringProperty num=new SimpleStringProperty();
-	StringProperty commodityid=new SimpleStringProperty();
-	StringProperty saleprice=new SimpleStringProperty();
-	StringProperty importprice=new SimpleStringProperty();
-	StringProperty model=new SimpleStringProperty();
-	StringProperty totalprice=new SimpleStringProperty();
-	StringProperty note=new SimpleStringProperty();
-	StringProperty name=new SimpleStringProperty();
+	StringProperty num=new SimpleStringProperty("0");
+	StringProperty commodityid=new SimpleStringProperty("0");
+	StringProperty saleprice=new SimpleStringProperty("0");
+	StringProperty importprice=new SimpleStringProperty("0");
+	StringProperty model=new SimpleStringProperty("0");
+	StringProperty totalprice=new SimpleStringProperty("0");
+	StringProperty note=new SimpleStringProperty("0");
+	StringProperty name=new SimpleStringProperty("0");
 	CommodityVO a;
 	public CommodityItemData(int style,CommodityVO commodity,int num,double price,String note) {
 		// TODO Auto-generated constructor stub
@@ -57,7 +57,7 @@ public class CommodityItemData {
 	}
 	public CommodityLineItem getItem() {
 		// TODO Auto-generated method stub
-		CommodityLineItem item=new CommodityLineItem(a.getStockNum(), a.getID(), a.getSalePrice(),a.getImportPrice());
+		CommodityLineItem item=new CommodityLineItem(Integer.parseInt(num.get()), a.getID(), Double.parseDouble(saleprice.get()), Double.parseDouble(importprice.get()));
 		return item;
 	}
 }

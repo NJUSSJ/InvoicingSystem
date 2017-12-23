@@ -141,7 +141,7 @@ public class CommodityDataImpl implements CommodityDataService{
 	public boolean update(CommodityPO po) throws RemoteException {
 		String sql="update commodities set name='"+po.getName()+"',id='"+po.getID()+"',model='"+po.getModel()+"',stocknum='"+po.getStockNum()+"',importprice='"
 				+ po.getImportPrice()+"',saleprice='"+po.getSalePrice()+"',lateimportprice='"+po.getLateImportPrice()+"',latesaleprice='"+po.getLateImportPrice()
-				+"',parentid='"+po.getParentID()+"' where id='"+po.getID()+"'";
+				+"',parentid='"+po.getParentID()+"',`limit`='"+po.getLimit()+"' where id='"+po.getID()+"'";
 		
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {
@@ -172,7 +172,7 @@ public class CommodityDataImpl implements CommodityDataService{
 				long parentid=result.getLong("parentid");
 				long id=result.getLong("id");
 				
-				int limit=result.getInt("limit");
+				int limit=result.getInt("`limit`");
 				
 				CommodityPO tmpPO=new CommodityPO(name, id, model, stocknum, importprice, saleprice, lateimportprice, latesaleprice, parentid,limit);				results.add(tmpPO);
 			}
@@ -201,7 +201,7 @@ public class CommodityDataImpl implements CommodityDataService{
 				double lateimportprice=result.getDouble("lateimportprice");
 				double latesaleprice=result.getDouble("latesaleprice");
 				long id=result.getLong("id");
-				int limit=result.getInt("limit");
+				int limit=result.getInt("`limit`");
 				
 				CommodityPO tmpPO=new CommodityPO(name, id, model, stocknum, importprice, saleprice, lateimportprice, latesaleprice, parentid,limit);
 				results.add(tmpPO);
@@ -230,7 +230,7 @@ public class CommodityDataImpl implements CommodityDataService{
 				double latesaleprice=result.getDouble("latesaleprice");
 				long parentid=result.getLong("parentid");
 				long id=result.getLong("id");
-				int limit=result.getInt("limit");
+				int limit=result.getInt("`limit`");
 				CommodityPO tmpPO=new CommodityPO(name, id, model, stocknum, importprice, saleprice, lateimportprice, latesaleprice, parentid,limit);
 				results.add(tmpPO);
 			}
