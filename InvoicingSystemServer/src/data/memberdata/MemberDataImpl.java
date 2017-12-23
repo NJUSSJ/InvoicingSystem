@@ -150,8 +150,13 @@ public class MemberDataImpl implements MemberDataService{
 	 */
 	@Override
 	public ArrayList<MemberPO> findMembersbyField(String field) throws RemoteException {
+<<<<<<< HEAD
+		String sql="select * from "
+				+ "members where name='%"+field+"%'";
+=======
 		String sql="select * from"
 				+ "members where name like '%"+field+"%'";
+>>>>>>> 7704d7e58ac554fc084cfa980e63af1ea77c1d81
 		
 		ArrayList<MemberPO> results=new ArrayList<>();
 		
@@ -187,11 +192,8 @@ public class MemberDataImpl implements MemberDataService{
 
 	@Override
 	public MemberPO findMemberbyID(long id) throws RemoteException {
-		String sql="select * from"
+		String sql="select * from "
 				+ "members where id='"+id+"'";
-		
-		
-		
 		try {
 			ResultSet result=DataFactory.statement.executeQuery(sql);
 			
@@ -205,7 +207,7 @@ public class MemberDataImpl implements MemberDataService{
 				String email=result.getString("email");
 				int postcode=result.getInt("postcode");
 				double quota=result.getDouble("quota");
-				double shouldget=result.getDouble("shouleget");
+				double shouldget=result.getDouble("shouldget");
 				double shouldpay=result.getDouble("shouldpay");
 				long defaultoperatorid=result.getLong("defaultoperatorid");
 				
