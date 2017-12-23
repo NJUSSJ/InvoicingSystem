@@ -86,7 +86,7 @@ public class ReceiveBillViewController  implements Initializable{
 	
 	AccountLineItem ali;
 	
-	AccountList aclist;
+	AccountList aclist=new AccountList();
 	
 	AccountLineItemData  alid;
 	
@@ -140,7 +140,6 @@ public class ReceiveBillViewController  implements Initializable{
 			 aclist.addAccount(ali);
 			 alid=new AccountLineItemData(ali);
 			 receiveData.add(alid);
-			 receiveTable.setItems(receiveData);
 			 totalsum.setText(Double.toString(aclist.getSum()));
 		} catch (NumberFormatException e) {
 			Alert warning=new Alert(AlertType.WARNING);
