@@ -71,6 +71,7 @@ public class ReceiveBill{
 		ArrayList<ReceiveBillVO> temp=new ArrayList<ReceiveBillVO>();
 		try {
 			ArrayList<ReceiveBillPO> receiveBills=RemoteHelper.getInstance().getReceiveBillDataService().findReceiveBillbyTime(time);
+			if(receiveBills==null||receiveBills.isEmpty()) return temp;
 			for(int i=0;i<receiveBills.size();i++){
 				temp.add(toReceiveBillVO(receiveBills.get(i)));
 			}
