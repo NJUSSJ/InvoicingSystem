@@ -172,7 +172,7 @@ public class CommodityDataImpl implements CommodityDataService{
 				long parentid=result.getLong("parentid");
 				long id=result.getLong("id");
 				
-				int limit=result.getInt("`limit`");
+				int limit=result.getInt("limit");
 				
 				CommodityPO tmpPO=new CommodityPO(name, id, model, stocknum, importprice, saleprice, lateimportprice, latesaleprice, parentid,limit);				results.add(tmpPO);
 			}
