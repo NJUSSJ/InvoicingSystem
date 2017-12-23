@@ -1,8 +1,11 @@
 package presentation.commodityui;
 
+import java.util.ArrayList;
+
 import MainApp.MainApp;
 import businesslogic.commoditybl.CommodityController;
 import businesslogicservice.commodityblservice.CommodityBLService;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -33,11 +36,12 @@ public class SimpleCommodityController {
 	@FXML
 	private TextField warning;
 	
+	private ObservableList<CommodityData> list=null;
 	int style=0;
-
 	CommodityBLService cbs=new CommodityController();
 
 	CommodityVO commodityVO;
+	CommodityData data;
 	public void setStage(Stage commodityStage) {
 		stage=commodityStage;
 	}
@@ -55,13 +59,25 @@ public class SimpleCommodityController {
 			        alert.setHeaderText("Parent not found");
 			        alert.setContentText("Parent not found:"+parentName);
 			        alert.showAndWait();
+			        return;
+				}
+				ArrayList<CategoryVO> down=cbs.findDownCategory(parentCategory);
+				if(down!=null&&down.size()>0){
+					Alert alert = new Alert(AlertType.WARNING);
+			        alert.initOwner(MainApp.getPrimaryStage());
+			        alert.setTitle("Parent error");
+			        alert.setHeaderText("Parent error");
+			        alert.setContentText("Parent is not leaf node:"+parentName);
+			        alert.showAndWait();
+			        return;
 				}
 				commodityVO=new CommodityVO(name.getText(),id,model.getText(),
 						Integer.parseInt(num.getText()),Double.parseDouble(importprice.getText()),
 						Double.parseDouble(saleprice.getText()),Double.parseDouble(importprice.getText())
-						,Double.parseDouble(saleprice.getText()),parentCategory.getParentID(),
+						,Double.parseDouble(saleprice.getText()),parentCategory.getID(),
 						Integer.parseInt(warning.getText()));
 				cbs.addCommodity(commodityVO);
+				list.add(new CommodityData(commodityVO));
 			}else{
 				Alert alert = new Alert(AlertType.WARNING);
 		        alert.initOwner(MainApp.getPrimaryStage());
@@ -76,15 +92,19 @@ public class SimpleCommodityController {
 					Double.parseDouble(saleprice.getText()),Double.parseDouble(importprice.getText()),
 					Double.parseDouble(saleprice.getText()),Long.parseLong(parent.getText()),Integer.parseInt(warning.getText()));
 			cbs.updateCommodity(commodityVO);
+			data.setVO(commodityVO);
 		}
+		stage.close();
 	}
 	@FXML
 	public void cancel(){
 		stage.close();
 	}
 
-	public void setItem(CommodityVO vo) {
+	public void setItem(CommodityData data) {
 		//id=vo.getID();
+		this.data=data;
+		CommodityVO vo=data.getVO();
 		parent.setText(vo.getParent()+"");
 		if(style==1){
 			parent.setEditable(false);
@@ -96,8 +116,9 @@ public class SimpleCommodityController {
 		importprice.setText(Double.toString(vo.getImportPrice()));
 		parent.setText(vo.getParent()+"");
 		style=1;
-		warning.setText(Integer.toString(vo.getLimit()));
-		
+		warning.setText(Integer.toString(vo.getLimit()));	
 	}
-
+	public void setList(ObservableList<CommodityData> list){
+		this.list=list;
+	}
 }

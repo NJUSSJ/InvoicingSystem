@@ -108,7 +108,7 @@ public class CommodityDataImpl implements CommodityDataService{
 	 */
 	@Override
 	public boolean insert(CommodityPO po) throws RemoteException {
-		String sql="insert into commodities (name, id, model, stocknum, importprice, saleprice, lateimportprice, latesaleprice, parentid,limit) "
+		String sql="insert into commodities (name, id, model, stocknum, importprice, saleprice, lateimportprice, latesaleprice, parentid,`limit`) "
 				+ "values "
 				+ "('"+po.getName()+"','"+po.getID()+"','"+po.getModel()+"','"+po.getStockNum()+"','"+po.getImportPrice()+"','"+po.getSalePrice()+"','"
 						+ po.getLateImportPrice()+"','"+po.getLateSalePrice()+"','"+po.getParentID()+"','"+po.getLimit()+"')";
