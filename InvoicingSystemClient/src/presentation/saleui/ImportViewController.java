@@ -27,6 +27,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import javafx.scene.control.Alert.AlertType;
 import vo.CommodityVO;
 import vo.ImportBillVO;
@@ -82,7 +83,7 @@ public class ImportViewController implements Initializable {
 	
 	@FXML
 	private Button returnB;
-	
+	Stage stage;
 private ObservableList<CommodityItemData> commodityData =FXCollections.observableArrayList();
 	
 	@FXML
@@ -265,5 +266,19 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		        alert.setHeaderText("Submit");
 		        alert.setContentText(isSubmit);
 		        alert.showAndWait();
+	}
+
+
+	public void setStage(Stage stage) {
+		// TODO Auto-generated method stub
+		this.stage=stage;
+	}
+
+
+	public void setVo(ImportBillVO m) {
+		// TODO Auto-generated method stub
+		billid.setText(m.getID());
+		id.setText("ID:"+MainApp.getID());
+		operator.setText(""+m.getUserID());
 	}
 }

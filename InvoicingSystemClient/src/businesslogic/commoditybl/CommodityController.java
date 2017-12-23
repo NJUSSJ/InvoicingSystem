@@ -111,12 +111,12 @@ public class CommodityController implements CommodityBLService{
 
 	@Override
 	public long findLargestIDofCommodity() {
-		return 0;
+		return commodityImpl.findLargestIDofCommodity();
 	}
 
 	@Override
 	public long findLargestIDofCategory() {
-		return 0;
+		return categoryImpl.findLargestIDofCategory();
 	}
 	
 }

@@ -297,7 +297,7 @@ public class CategoryViewController implements Initializable{
 	            CommodityViewController controller=loader.getController();
 	            controller.setStage(commodityStage);
 	            controller.setCommoditys(colist);
-	            controller.setparent(categoryVO.getID());
+	           // controller.setparent(categoryVO.getID());
 	            commodityStage.showAndWait();
 			} catch (IOException e) {
 				e.printStackTrace();

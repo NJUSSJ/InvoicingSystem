@@ -22,6 +22,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import vo.AccountVO;
 import vo.CashBillVO;
 import javafx.scene.control.Alert.AlertType;
@@ -41,7 +42,7 @@ public class CashBillViewController  implements Initializable {
 	private TextField account;
 	
 	Date time;
-	
+	Stage stage;
 	ArrayList<String> items=new ArrayList<>();
 	
 	ItemData a;;
@@ -281,5 +282,30 @@ public class CashBillViewController  implements Initializable {
  }
 	
 
+	public void setStage(Stage writeStage) {
+		stage=writeStage;
+	}
+
+	public void setVo(CashBillVO m) {
+		// TODO Auto-generated method stub
+		id.setText(""+MainApp.getID());
+		billid.setText(m.getID());
+		account.setText(""+m.getAccountID());
+		operator.setText(""+m.getUserID());
+		totalsum.setText(""+m.getSum());
+	   ArrayList<String> items=m.getAccountList();
+	   for(String it:items){
+		   String[] its=it.split(",");
+		   ItemData a=new ItemData(its[0],its[1],its[2]);
+		   cashData.add(a);
+	   }
+	   cashTable.setItems(cashData);
+	   rightB.setVisible(false);
+	   returnB.setVisible(false);
+	   addB.setVisible(false);
+	   reviseB.setVisible(false);
+	   updateB.setVisible(false);
+	   deleteB.setVisible(false);
+	}
 }
 

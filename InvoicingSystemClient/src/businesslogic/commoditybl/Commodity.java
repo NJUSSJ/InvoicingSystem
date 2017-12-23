@@ -70,7 +70,10 @@ public class Commodity{
 	public ArrayList<CommodityVO> findCommodityByField(String field) {
 		ArrayList<CommodityVO> temp = new ArrayList<CommodityVO>();
 		try {
-			ArrayList<CommodityPO> commodity=RemoteHelper.getInstance().getCommodityDataService().findCommoditiesbyField();
+			ArrayList<CommodityPO> commodity=RemoteHelper.getInstance().getCommodityDataService().findCommoditiesbyField(field);
+			if(commodity==null){
+				return null;
+			}
 			for(int i=0;i<commodity.size();i++){
 				temp.add(toCommodityVO(commodity.get(i)));
 			}

@@ -87,7 +87,7 @@ public class SimpleCommodityController {
 		        alert.showAndWait();
 			}
 		}else{
-			commodityVO=new CommodityVO(name.getText(),commodityVO.getID(),model.getText(),
+			commodityVO=new CommodityVO(name.getText(),Long.parseLong(data.getId().get()),model.getText(),
 					Integer.parseInt(num.getText()),Double.parseDouble(importprice.getText()),
 					Double.parseDouble(saleprice.getText()),Double.parseDouble(importprice.getText()),
 					Double.parseDouble(saleprice.getText()),Long.parseLong(parent.getText()),Integer.parseInt(warning.getText()));
