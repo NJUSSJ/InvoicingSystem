@@ -191,12 +191,27 @@ public class CashBillViewController  implements Initializable {
 	public void setStage(Stage writeStage) {
 		stage=writeStage;
 	}
-	public void setBill(CashBillVO bill){
-		
-	}
+
 	public void setVo(CashBillVO m) {
 		// TODO Auto-generated method stub
-		
+		id.setText(""+MainApp.getID());
+		billid.setText(m.getID());
+		account.setText(""+m.getAccountID());
+		operator.setText(""+m.getUserID());
+		totalsum.setText(""+m.getSum());
+	   ArrayList<String> items=m.getAccountList();
+	   for(String it:items){
+		   String[] its=it.split(",");
+		   ItemData a=new ItemData(its[0],its[1],its[2]);
+		   cashData.add(a);
+	   }
+	   cashTable.setItems(cashData);
+	   rightB.setVisible(false);
+	   returnB.setVisible(false);
+	   addB.setVisible(false);
+	   reviseB.setVisible(false);
+	   updateB.setVisible(false);
+	   deleteB.setVisible(false);
 	}
 }
 

@@ -3,6 +3,7 @@ package presentation.billui;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import businesslogic.billbl.CommodityList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -45,7 +46,14 @@ public class WarningBillViewController implements Initializable{
 	}
 	public void setVo(WarningBillVO m) {
 		// TODO Auto-generated method stub
-		
+		ID.setText(""+m.getID());
+		userid.setText(""+m.getUserID());
+		CommodityList list=m.getList();
+		for(int i=0;i<list.getListSize();i++){
+			CommodityItemData a=new CommodityItemData(list.get(i));
+			cashData.add(a);
+		}
+		cashTable.setItems(cashData);
 	}
 	
 }

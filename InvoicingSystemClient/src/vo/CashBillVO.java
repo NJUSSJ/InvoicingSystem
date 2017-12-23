@@ -56,6 +56,9 @@ public class CashBillVO{
 	public Date getTime(){
 		return time;
 	}
+	public double getSum(){
+		return sum;
+	}
 	public int getState(){
 		return state;
 	}

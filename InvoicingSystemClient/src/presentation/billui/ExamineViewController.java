@@ -44,6 +44,8 @@ import javafx.stage.Stage;
 import presentation.accountui.SimpleAccountController;
 import presentation.commodityui.LossInfoController;
 import presentation.commodityui.OverInfoController;
+import presentation.saleui.ImportViewController;
+import presentation.saleui.Import_ReturnViewController;
 import presentation.saleui.SaleViewController;
 import presentation.saleui.Sale_ReturnViewController;
 import vo.CashBillVO;
@@ -365,7 +367,7 @@ public class ExamineViewController implements Initializable {
 			}
 		}else if(style.equals("赠送单")){
 			try {
-				GiftBillVO m=gbbs.findGiftBillById(Long.parseLong(id));
+				GiftBillVO m=gbbs.findGiftBillByID(Long.parseLong(id));
 				FXMLLoader loader=new FXMLLoader();
 				loader.setLocation(MainApp.class.getResource("/presentation/billui/GiftBillUI.fxml"));
 				AnchorPane giftbillUI=loader.load();
@@ -405,16 +407,17 @@ public class ExamineViewController implements Initializable {
 			}
 		}else if(style.equals("进货退货单")){
 			try {
+				ImportReturnBillVO m=irbbs.findImportReturnBillByID(id);
 				FXMLLoader loader=new FXMLLoader();
-				loader.setLocation(MainApp.class.getResource("/presentation/billui/PayBillUI.fxml"));
-				AnchorPane paybillUI=loader.load();
-				Scene scene=new Scene(paybillUI);
+				loader.setLocation(MainApp.class.getResource("/presentation/saleui/Import_Return.fxml"));
+				AnchorPane imbillUI=loader.load();
+				Scene scene=new Scene(imbillUI);
 				Stage stage=new Stage();
-				stage.setTitle("PayUI");
+				stage.setTitle("importreturnUI");
 				stage.initModality(Modality.WINDOW_MODAL);
 				stage.initOwner(MainApp.getPrimaryStage());
 				stage.setScene(scene);
-	            PayBillViewController controller=loader.getController();
+	            Import_ReturnViewController controller=loader.getController();
 	            controller.setStage(stage);
 	            controller.setVo(m);
 	            stage.showAndWait();
@@ -424,16 +427,17 @@ public class ExamineViewController implements Initializable {
 			}
 		}else if(style.equals("进货单")){
 			try {
+				ImportBillVO m=ibbs.findImportBillByID(id);
 				FXMLLoader loader=new FXMLLoader();
-				loader.setLocation(MainApp.class.getResource("/presentation/billui/PayBillUI.fxml"));
+				loader.setLocation(MainApp.class.getResource("/presentation/saleui/ImportBillUI.fxml"));
 				AnchorPane paybillUI=loader.load();
 				Scene scene=new Scene(paybillUI);
 				Stage stage=new Stage();
-				stage.setTitle("PayUI");
+				stage.setTitle("ImportUI");
 				stage.initModality(Modality.WINDOW_MODAL);
 				stage.initOwner(MainApp.getPrimaryStage());
 				stage.setScene(scene);
-	            PayBillViewController controller=loader.getController();
+	            ImportViewController controller=loader.getController();
 	            controller.setStage(stage);
 	            controller.setVo(m);
 	            stage.showAndWait();

@@ -4,6 +4,7 @@ import java.net.URL;
 import java.sql.Date;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import MainApp.MainApp;
@@ -189,7 +190,22 @@ public class PayBillViewController  implements Initializable{
 	}
 	public void setVo(PayBillVO m) {
 		// TODO Auto-generated method stub
-		
+		id.setText(""+MainApp.getID());
+		billid.setText(m.getID());
+		account.setText(""+m.getMemberID());
+		operator.setText(""+m.getUserID());
+		totalsum.setText(""+m.getSum());
+	    AccountList items=m.getAccountList();
+	    for(int i=0;i<items.getListLength();i++){
+		   AccountLineItemData a=new AccountLineItemData(items.getItem(i));
+		   payData.add(a);
+	   }
+	   payTable.setItems(payData);
+	   rightB.setVisible(false);
+	   returnB.setVisible(false);
+	   addB.setVisible(false);
+	   updateB.setVisible(false);
+	   deleteB.setVisible(false);
 	}
 	
 

@@ -187,7 +187,22 @@ public class ReceiveBillViewController  implements Initializable{
 	}
 	public void setVo(ReceiveBillVO m) {
 		// TODO Auto-generated method stub
-		
+		id.setText(""+MainApp.getID());
+		billid.setText(m.getID());
+		account.setText(""+m.getMemberID());
+		operator.setText(""+m.getUserID());
+		totalsum.setText(""+m.getSum());
+	    AccountList items=m.getAccountList();
+	    for(int i=0;i<items.getListLength();i++){
+		   AccountLineItemData a=new AccountLineItemData(items.getItem(i));
+		   receiveData.add(a);
+	   }
+	   receiveTable.setItems(receiveData);
+	   rightB.setVisible(false);
+	   returnB.setVisible(false);
+	   addB.setVisible(false);
+	   updateB.setVisible(false);
+	   deleteB.setVisible(false);
 	}
 	
 
