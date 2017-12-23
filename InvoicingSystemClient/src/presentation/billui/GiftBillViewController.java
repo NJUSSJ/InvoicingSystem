@@ -3,6 +3,7 @@ package presentation.billui;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import businesslogic.billbl.CommodityList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -18,6 +19,8 @@ public class GiftBillViewController  implements Initializable{
 	private Label ID;
 	@FXML
 	private Label userid;
+	@FXML
+	private Label memberid;
 	Stage stage;
  private ObservableList<CommodityItemData> cashData =FXCollections.observableArrayList();
 		
@@ -45,6 +48,14 @@ public class GiftBillViewController  implements Initializable{
 	}
 	public void setVo(GiftBillVO m) {
 		// TODO Auto-generated method stub
-		
+		ID.setText(""+m.getID());
+		userid.setText(""+m.getUserID());
+		memberid.setText(""+m.getMemberID());
+		CommodityList list=m.getCommodityList();
+		for(int i=0;i<list.getListSize();i++){
+			CommodityItemData data=new CommodityItemData(list.get(0));
+			cashData.add(data);
+		}
+		cashTable.setItems(cashData);
 	}
 }

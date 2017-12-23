@@ -65,6 +65,9 @@ private Stage stage;
 
 	public void setVo(OverBillVO m) {
 		// TODO Auto-generated method stub
-		
+		  name.setText(""+m.getCommodityName());
+		    num.setText(""+m.getNum());
+			sum.setText(""+m.getSum());
+		    confirm.setVisible(false);
 	}
 }

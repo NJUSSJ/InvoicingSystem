@@ -27,6 +27,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import vo.AccountVO;
 import vo.MemberVO;
 import vo.PayBillVO;
@@ -48,7 +49,7 @@ public class PayBillViewController  implements Initializable{
 	private TextField account;
 	
 	Date time;
-	
+	Stage stage;
     private ObservableList<AccountLineItemData> payData =FXCollections.observableArrayList();
 	
 	@FXML
@@ -260,6 +261,30 @@ public class PayBillViewController  implements Initializable{
 	        alert.setContentText(isSubmit);
 	        alert.showAndWait();
  }
+	public void setStage(Stage stage) {
+		// TODO Auto-generated method stub
+		this.stage=stage;
+	}
+	public void setVo(PayBillVO m) {
+		// TODO Auto-generated method stub
+		id.setText(""+MainApp.getID());
+		billid.setText(m.getID());
+		account.setText(""+m.getMemberID());
+		operator.setText(""+m.getUserID());
+		totalsum.setText(""+m.getSum());
+	    AccountList items=m.getAccountList();
+	    for(int i=0;i<items.getListLength();i++){
+		   AccountLineItemData a=new AccountLineItemData(items.getItem(i));
+		   payData.add(a);
+	   }
+	   payTable.setItems(payData);
+	   rightB.setVisible(false);
+	   returnB.setVisible(false);
+	   addB.setVisible(false);
+	   updateB.setVisible(false);
+	   deleteB.setVisible(false);
+	}
+
 	
 
 }

@@ -81,7 +81,10 @@ public class LossInfoController implements Initializable{
 
 	public void setVo(LossBillVO m) {
 		// TODO Auto-generated method stub
-		
+		    name.setText(m.getCommodityName());;
+		    num.setText(""+m.getNum());
+			sum.setText(""+m.getSum());
+		    confirm.setVisible(false);
 	}
 
 }

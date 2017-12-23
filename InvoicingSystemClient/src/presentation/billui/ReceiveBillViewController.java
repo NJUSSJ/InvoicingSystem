@@ -26,6 +26,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import javafx.scene.control.Alert.AlertType;
 import vo.AccountVO;
 import vo.MemberVO;
@@ -46,7 +47,7 @@ public class ReceiveBillViewController  implements Initializable{
 	private TextField account;
 	
 	Date time;
-	
+	Stage stage;
     private ObservableList<AccountLineItemData> receiveData =FXCollections.observableArrayList();
 	
 	@FXML
@@ -263,6 +264,30 @@ public class ReceiveBillViewController  implements Initializable{
 	        alert.setContentText(isSubmit);
 	        alert.showAndWait();
  }
+	public void setStage(Stage stage) {
+		// TODO Auto-generated method stub
+		this.stage=stage;
+	}
+	public void setVo(ReceiveBillVO m) {
+		// TODO Auto-generated method stub
+		id.setText(""+MainApp.getID());
+		billid.setText(m.getID());
+		account.setText(""+m.getMemberID());
+		operator.setText(""+m.getUserID());
+		totalsum.setText(""+m.getSum());
+	    AccountList items=m.getAccountList();
+	    for(int i=0;i<items.getListLength();i++){
+		   AccountLineItemData a=new AccountLineItemData(items.getItem(i));
+		   receiveData.add(a);
+	   }
+	   receiveTable.setItems(receiveData);
+	   rightB.setVisible(false);
+	   returnB.setVisible(false);
+	   addB.setVisible(false);
+	   updateB.setVisible(false);
+	   deleteB.setVisible(false);
+	}
+
 	
 
 
