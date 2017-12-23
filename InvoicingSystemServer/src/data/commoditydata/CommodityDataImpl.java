@@ -212,4 +212,40 @@ int limit=result.getInt("limit");
 		return null;
 	}
 
+	@Override
+	public long getLargestIDofCommodity() throws RemoteException {
+		String sql="select * from commodities";
+		
+		ArrayList<CommodityPO> results=new ArrayList<>();
+		
+		try {
+			ResultSet result=DataFactory.statement.executeQuery(sql);
+			while(result.next()) {
+				String name=result.getString("name");
+				String model=result.getString("model");
+				int stocknum=result.getInt("stocknum");
+				double importprice=result.getDouble("importprice");
+				double saleprice=result.getDouble("saleprice");
+				double lateimportprice=result.getDouble("lateimportprice");
+				double latesaleprice=result.getDouble("latesaleprice");
+				long parentid=result.getLong("parentid");
+				long id=result.getLong("id");
+				int limit=result.getInt("limit");
+				CommodityPO tmpPO=new CommodityPO(name, id, model, stocknum, importprice, saleprice, lateimportprice, latesaleprice, parentid,limit);
+				results.add(tmpPO);
+			}
+			
+			long largest=-1;
+			for(int i=0;i<results.size();i++) {
+				if(results.get(i).getID()>largest) {
+					largest=results.get(i).getID();
+				}
+			}
+			return largest;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
 }

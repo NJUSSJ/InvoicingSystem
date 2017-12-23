@@ -221,6 +221,9 @@ public class CashBillViewController  implements Initializable {
 		if(newValue!=null) {
 		item=newValue.getname()+","+newValue.getmoney()+","+newValue.getnote();
 		a=newValue;
+		itemMoney.setText(a.getmoney());
+		itemName.setText(a.getname());
+		itemNote.setText(a.getnote());
 		}
 	}
 	@FXML

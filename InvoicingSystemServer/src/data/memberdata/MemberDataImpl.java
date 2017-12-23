@@ -33,7 +33,7 @@ public class MemberDataImpl implements MemberDataService{
 				String email=result.getString("email");
 				int postcode=result.getInt("postcode");
 				double quota=result.getDouble("quota");
-				double shouldget=result.getDouble("shouleget");
+				double shouldget=result.getDouble("shouldget");
 				double shouldpay=result.getDouble("shouldpay");
 				long defaultoperatorid=result.getLong("defaultoperatorid");
 				
