@@ -5,14 +5,9 @@ import java.sql.Date;
 import java.util.ArrayList;
 
 import businesslogic.memberbl.MemberController;
-import po.CashBillPO;
-import po.OverBillPO;
 import po.PayBillPO;
 import rmi.RemoteHelper;
-import vo.CashBillVO;
-import vo.ImportBillVO;
 import vo.MemberVO;
-import vo.OverBillVO;
 import vo.PayBillVO;
 
 public class PayBill {
@@ -79,6 +74,7 @@ public class PayBill {
 		ArrayList<PayBillVO> temp=new ArrayList<PayBillVO>();
 		try {
 			ArrayList<PayBillPO> payBills=RemoteHelper.getInstance().getPayBillDataService().findPayBillbyTime(time);
+			if(payBills==null||payBills.isEmpty()) return temp;
 			for(int i=0;i<payBills.size();i++){
 				temp.add(toPayBillVO(payBills.get(i)));
 			}

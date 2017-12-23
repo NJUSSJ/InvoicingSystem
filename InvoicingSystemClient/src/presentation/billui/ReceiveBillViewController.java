@@ -245,14 +245,18 @@ public class ReceiveBillViewController  implements Initializable{
 		 SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
 		 String str=sdf.format(time);
 		 DecimalFormat df=new DecimalFormat("#####");
-	     receiveTable.setItems(receiveData);
 		 ArrayList<ReceiveBillVO> tmpList=new ReceiveBillController().findReceiveBillByTime(time);
 		 times=tmpList.size()+1;
 		 billid.setText("SKD-"+str+"-"+df.format(times));
 		 
 		 isSubmit="Succeed Submit";
+		 
+		 receiveData.clear();
+		 aclist=new AccountList();
+		 account.setText("");
+		 totalsum.setText(Double.toString(aclist.getSum()));
 	 }
-     Alert alert = new Alert(AlertType.INFORMATION);
+     		Alert alert = new Alert(AlertType.INFORMATION);
 	        alert.initOwner(MainApp.getPrimaryStage());
 	        alert.setTitle("Information");
 	        alert.setHeaderText("Submit");
