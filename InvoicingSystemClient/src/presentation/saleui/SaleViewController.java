@@ -4,11 +4,13 @@ import java.net.URL;
 import java.sql.Date;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import MainApp.MainApp;
 import businesslogic.billbl.CommodityLineItem;
 import businesslogic.billbl.CommodityList;
+import businesslogic.billbl.ImportBillController;
 import businesslogic.billbl.SaleBillController;
 import businesslogic.commoditybl.CommodityController;
 import businesslogic.memberbl.MemberController;
@@ -29,6 +31,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.control.Alert.AlertType;
 import vo.CommodityVO;
+import vo.ImportBillVO;
 import vo.MemberVO;
 import vo.SaleBillVO;
 
@@ -131,8 +134,22 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
 		String str=sdf.format(time);
 		DecimalFormat df=new DecimalFormat("#####");
+		
+		ArrayList<SaleBillVO> tmpList=new SaleBillController().findSaleBillByTime(time);
+		times=tmpList.size()+1;
+		
+		
 		billid.setText("XSD-"+str+"-"+df.format(times));
-		id.setText("ID:"+MainApp.getID());
+		/*
+		 * set id
+		 */
+		long idLong=MainApp.getID();
+		String idString=idLong+"";
+		while(idString.length()<5) {
+			idString="0"+idString;
+		}
+		id.setText("ID:"+idString);
+		
 		operator.setText(MainApp.getName());
 		commodityTable.getSelectionModel().selectedItemProperty().addListener(
 	            (observable, oldValue, newValue) -> getInf(newValue));
@@ -199,7 +216,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	public void confirm(){
 		memberl=mbs.findMemberByName(member.getText());
 		itemdata=new CommodityItemData(0,a,Integer.parseInt(num.getText()),Double.parseDouble(lastprice.getText()),notea.getText());
-	    item=new CommodityLineItem(Integer.parseInt(num.getText()),a.getID(),Double.parseDouble(lastprice.getText()),a.getImportPrice());
+	    item=new CommodityLineItem(Integer.parseInt(num.getText()),a.getID(),Double.parseDouble(lastprice.getText()),a.getImportPrice(),notea.getText());
 	    comlist.addCommodity(item);
 		commodityData.add(itemdata);
 	    commodityTable.setItems(commodityData);

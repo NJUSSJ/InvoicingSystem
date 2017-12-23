@@ -17,9 +17,9 @@ public class CommodityList {
 	 * @param info:形式为"id,num,salePrice,importPrice,remark id,num,salePrice,importPrice,remark..."的字符串
 	 */
 	public CommodityList(String info){
-		list=new ArrayList<>();
-		String[] commodityInfo=info.split(" ");
-		for(int i=0;i<commodityInfo.length;i++){
+			list=new ArrayList<>();
+			String[] commodityInfo=info.split(" ");
+			for(int i=0;i<commodityInfo.length;i++){
 			String[] details=commodityInfo[i].split(",");
 			int num=Integer.parseInt(details[0]);
 			long id=Long.parseLong(details[1]);
@@ -89,8 +89,10 @@ public class CommodityList {
 	public String toString(){
 		String temp="";
 		for(int i=0;i<list.size();i++){
+			String remark=list.get(i).getRemark();
+			if(remark.equals("")) remark="无";
 			temp+=list.get(i).getNum()+","+list.get(i).getCommodityID()+","+
-		list.get(i).getSalePrice()+","+list.get(i).getImportPrice();
+		list.get(i).getSalePrice()+","+list.get(i).getImportPrice()+","+remark;
 			if(i!=list.size()-1){
 				temp+=" ";
 			}

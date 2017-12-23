@@ -4,11 +4,13 @@ import java.net.URL;
 import java.sql.Date;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import MainApp.MainApp;
 import businesslogic.billbl.CommodityLineItem;
 import businesslogic.billbl.CommodityList;
+import businesslogic.billbl.ImportBillController;
 import businesslogic.billbl.SaleReturnBillController;
 import businesslogic.commoditybl.CommodityController;
 import businesslogic.memberbl.MemberController;
@@ -29,6 +31,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.control.Alert.AlertType;
 import vo.CommodityVO;
+import vo.ImportBillVO;
 import vo.MemberVO;
 import vo.SaleReturnBillVO;
 
@@ -108,7 +111,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	Date time;
 	CommodityItemData itemdata;
 	CommodityLineItem item;
-	CommodityList comlist;
+	CommodityList comlist=new CommodityList();
 	CommodityVO a;
 	MemberVO memberl;
 	CommodityBLService cbs=new CommodityController();
@@ -123,8 +126,20 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
 		String str=sdf.format(time);
 		DecimalFormat df=new DecimalFormat("#####");
-		billid.setText("XSTHD-"+str+"-"+df.format(times));
-		id.setText("ID:"+MainApp.getID());
+		
+		ArrayList<SaleReturnBillVO> tmpList=new SaleReturnBillController().findSaleReturnBillByTime(time);
+		times=tmpList.size()+1;
+		
+		billid.setText("SSTHD-"+str+"-"+df.format(times));
+		/*
+		 * set id
+		 */
+		long idLong=MainApp.getID();
+		String idString=idLong+"";
+		while(idString.length()<5) {
+			idString="0"+idString;
+		}
+		id.setText("ID:"+idString);
 		operator.setText(MainApp.getName());
 		commodityTable.getSelectionModel().selectedItemProperty().addListener(
 	            (observable, oldValue, newValue) -> getInf(newValue));
@@ -140,8 +155,10 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 
 	
 	private void getInf(CommodityItemData newValue) {
-		// TODO Auto-generated method stub
-		item=newValue.getItem();
+		if(newValue!=null) {
+			itemdata=newValue;
+			item=itemdata.getItem();
+		}
 	}
 
 
@@ -149,9 +166,9 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	public void delete(){
 		int selectedIndex = commodityTable.getSelectionModel().getSelectedIndex();
 	   	 if (selectedIndex >= 0) {
-	   		commodityTable.getItems().remove(selectedIndex);
-	           comlist.deleteCommodity(item);
-	           commodityData.remove(selectedIndex);
+	   		   comlist.deleteCommodity(item);
+	   		   commodityTable.getItems().remove(selectedIndex);
+	           
 	           altogether.setText(""+comlist.getImportTotal());
 	   	    } else {
 	   	        // Nothing selected.
@@ -160,7 +177,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	   	        alert.setTitle("No Selection");
 	   	        alert.setHeaderText("No Item Selected");
 	   	        alert.setContentText("Please select an item in the table.");
-                 alert.showAndWait();
+                alert.showAndWait();
 	   	    }
 	}
 	@FXML
@@ -186,11 +203,16 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	@FXML
 	public void confirm(){
 		itemdata=new CommodityItemData(0,a,Integer.parseInt(num.getText()),Double.parseDouble(lastprice.getText()),notea.getText());
-	    item=new CommodityLineItem(Integer.parseInt(num.getText()),a.getID(),Double.parseDouble(lastprice.getText()),a.getImportPrice());
+	    item=new CommodityLineItem(Integer.parseInt(num.getText()),a.getID(),a.getSalePrice(),Double.parseDouble(lastprice.getText()),notea.getText());
 	    comlist.addCommodity(item);
 		commodityData.add(itemdata);
 	    commodityTable.setItems(commodityData);
-	    altogether.setText(""+comlist.getSaleTotal());
+	    altogether.setText(""+comlist.getImportTotal());
+	    
+	    name.setText("");
+	    lastprice.setText("");
+	    num.setText("");
+	    notea.setText("");
 	}
 	@FXML
 	public void logout(){
@@ -204,14 +226,38 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	@FXML
 	public void setBill(){
 		memberl=mbs.findMemberByName(member.getText());
-		SaleReturnBillVO salereturnbill=new SaleReturnBillVO(billid.getText(),MainApp.getID(),memberl.getID(),comlist,
-			comlist.getSaleTotal(),0,time,note.getText());
+		if(memberl==null) {
+			Alert warning=new Alert(AlertType.WARNING);
+			warning.setContentText("供应商不存在");
+			warning.showAndWait();
+			return ;
+		}
+		SaleReturnBillVO sale_returnbill=new SaleReturnBillVO(billid.getText(),MainApp.getID(),memberl.getID(),comlist,comlist.getImportTotal(),0,time,note.getText());
 		 String isSubmit="fail Submit";
-		 if(srbbs.submitSaleReturnBill(salereturnbill)){
-			 times++;
-			 isSubmit="Succeed Submit";
+		 if(srbbs.submitSaleReturnBill(sale_returnbill)){
+			 	SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
+				String str=sdf.format(time);
+				DecimalFormat df=new DecimalFormat("#####");
+				
+				ArrayList<SaleReturnBillVO> tmpList=new SaleReturnBillController().findSaleReturnBillByTime(time);
+				times=tmpList.size()+1;
+				
+				billid.setText("JHD-"+str+"-"+df.format(times));
+			 
+				isSubmit="Succeed Submit";
+				
+				member.setText("");
+				name.setText("");
+				note.setText("");
+				notea.setText("");
+				num.setText("");
+				lastprice.setText("");
+				
+				commodityData.clear();
+				
+			 
 		 }
-	     Alert alert = new Alert(AlertType.INFORMATION);
+		 		Alert alert = new Alert(AlertType.INFORMATION);
 		        alert.initOwner(MainApp.getPrimaryStage());
 		        alert.setTitle("Information");
 		        alert.setHeaderText("Submit");

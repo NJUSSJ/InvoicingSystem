@@ -131,7 +131,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		ArrayList<ImportReturnBillVO> tmpList=new ImportReturnBillController().findImportReturnBillByTime(time);
 		times=tmpList.size()+1;
 		
-		billid.setText("JHD-"+str+"-"+df.format(times));
+		billid.setText("JHTHD-"+str+"-"+df.format(times));
 		/*
 		 * set id
 		 */
@@ -204,7 +204,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	@FXML
 	public void confirm(){
 		itemdata=new CommodityItemData(0,a,Integer.parseInt(num.getText()),Double.parseDouble(lastprice.getText()),notea.getText());
-	    item=new CommodityLineItem(Integer.parseInt(num.getText()),a.getID(),a.getSalePrice(),Double.parseDouble(lastprice.getText()));
+	    item=new CommodityLineItem(Integer.parseInt(num.getText()),a.getID(),a.getSalePrice(),Double.parseDouble(lastprice.getText()),notea.getText());
 	    comlist.addCommodity(item);
 		commodityData.add(itemdata);
 	    commodityTable.setItems(commodityData);

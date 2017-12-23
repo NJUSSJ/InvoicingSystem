@@ -57,7 +57,7 @@ public class CommodityItemData {
 	}
 	public CommodityLineItem getItem() {
 		// TODO Auto-generated method stub
-		CommodityLineItem item=new CommodityLineItem(Integer.parseInt(num.get()), a.getID(), Double.parseDouble(saleprice.get()), Double.parseDouble(importprice.get()));
+		CommodityLineItem item=new CommodityLineItem(Integer.parseInt(num.get()), a.getID(), Double.parseDouble(saleprice.get()), Double.parseDouble(importprice.get()),note.get());
 		return item;
 	}
 }
