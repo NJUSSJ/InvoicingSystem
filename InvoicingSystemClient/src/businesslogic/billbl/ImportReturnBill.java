@@ -133,6 +133,7 @@ public class ImportReturnBill {
 		try {
 			ArrayList<ImportReturnBillPO> importReturnBills=RemoteHelper.getInstance().getImportReturnBillDataService().
 					findImportReturnBillbyTime(time);
+			if(importReturnBills.isEmpty()) return temp;
 			for(int i=0;i<importReturnBills.size();i++){
 				temp.add(toImportReturnBillVO(importReturnBills.get(i)));
 			}

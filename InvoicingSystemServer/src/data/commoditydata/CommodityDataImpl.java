@@ -155,7 +155,7 @@ public class CommodityDataImpl implements CommodityDataService{
 
 	@Override
 	public ArrayList<CommodityPO> findCommoditiesbyField(String field) throws RemoteException {
-		String sql="select * from commodities where name='%"+field+"%'";
+		String sql="select * from commodities where name like '%"+field+"%'";
 		
 		ArrayList<CommodityPO> results=new ArrayList<>();
 		
