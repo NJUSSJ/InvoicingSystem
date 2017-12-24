@@ -7,7 +7,7 @@ import vo.CommodityVO;
 
 public class CommodityList {
 	
-	ArrayList<CommodityLineItem> list;
+	public ArrayList<CommodityLineItem> list;
 	
 	public CommodityList() {
 		list=new ArrayList<>();
@@ -29,6 +29,7 @@ public class CommodityList {
 			list.add(new CommodityLineItem(num,id,salePrice,importPrice,remark));
 		}
 	}
+	
 	/**
 	 * 增加一个item到list中
 	 * 
@@ -36,6 +37,7 @@ public class CommodityList {
 	public void addCommodity(CommodityLineItem item) {
 		list.add(item);
 	}
+	
 	/**
 	 * 从list中删除指定的item
 	 * 

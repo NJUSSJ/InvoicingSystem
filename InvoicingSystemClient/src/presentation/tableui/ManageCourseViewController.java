@@ -10,6 +10,7 @@ import com.sun.prism.paint.Paint.Type;
 import MainApp.MainApp;
 import Utility.DateUtil;
 import businesslogic.billbl.CashBillController;
+import businesslogic.billbl.CommodityLineItem;
 import businesslogic.billbl.CommodityList;
 import businesslogic.billbl.GiftBillController;
 import businesslogic.billbl.ImportBillController;
@@ -385,26 +386,89 @@ public class ManageCourseViewController implements Initializable {
 					java.util.Date utiltime=new java.util.Date();
 					Date nowTime=new Date(utiltime.getTime());
 					
-					CommodityList newlist=new CommodityList(sb.getList().toString());
+					int num=sb.getList().getListSize();//商品种类
+					CommodityList newlist=new CommodityList();
+					for(int i=0;i<num;i++) {
+						CommodityLineItem newcli=sb.getList().list.get(i);
+						newcli.setNum(-newcli.getNum());//取负
+						newlist.addCommodity(newcli);
+					}
 					
-					SaleBillVO newsb=new SaleBillVO("-"+sb.getID(), Long.parseLong(id), sb.getMemberID(), newlist, -sb.getSum(), 1, nowTime, "", 0, 0, 0, 0);
+					SaleBillVO newsb=new SaleBillVO("-"+sb.getID(), Long.parseLong(id), sb.getMemberID(), newlist, -sb.getSum(), 1, nowTime, "", sb.getCoupon(), sb.getDiscount(), -sb.getUltimate());
 					
 				}else if(style.equals("付款单")){
-				        pbbs.checkPayBill(true, id);
+					PayBillVO pb=bill.getPayBillVO();
+					java.util.Date utiltime=new java.util.Date();
+					Date nowTime=new Date(utiltime.getTime());
+					
+					PayBillVO newsb=new PayBillVO("-"+pb.getID(), Long.parseLong(id), pb.getMemberID(), pb.getAccountList(), -pb.getSum(), nowTime, 1);
+					
 				}else if(style.equals("收款单")){
-					rbbs.checkReceiveBill(true, id);
-				}else if(style.equals("报损单")){
-					  lbbs.checkLossBill(true, Long.parseLong(id));
-				}else if(style.equals("报溢单")){
-					obbs.checkOverBill(true, Long.parseLong(id));
+					ReceiveBillVO rb=bill.getReceiveBillVO();
+					java.util.Date utiltime=new java.util.Date();
+					Date nowTime=new Date(utiltime.getTime());
+					
+					ReceiveBillVO newsb=new ReceiveBillVO("-"+rb.getID(), Long.parseLong(id), rb.getMemberID(), rb.getAccountList(), -rb.getSum(), nowTime, 1);
+					
 				}else if(style.equals("现金费用单")){
-					cbbs.checkCashBill(true, id);
+					CashBillVO cb=bill.getCashBillVO();
+					java.util.Date utiltime=new java.util.Date();
+					Date nowTime=new Date(utiltime.getTime());
+					
+					ArrayList<String> newlist=cb.getAccountList();
+					
+					cb.sum=-cb.sum;
+					
+					CashBillVO newsb=cb;
+					cb.setState(1);
+					cb.setTime(nowTime);
+					cb.setUserID(Long.parseLong(id));
+					
 				}else if(style.equals("销售退货单")){
-					srbbs.checkSaleReturnBill(true, id);
+					SaleReturnBillVO srb=bill.getSaleReturnBillVO();
+					java.util.Date utiltime=new java.util.Date();
+					Date nowTime=new Date(utiltime.getTime());
+					
+					int num=srb.getList().getListSize();//商品种类
+					CommodityList newlist=new CommodityList();
+					for(int i=0;i<num;i++) {
+						CommodityLineItem newcli=srb.getList().list.get(i);
+						newcli.setNum(-newcli.getNum());//取负
+						newlist.addCommodity(newcli);
+					}
+					
+					SaleReturnBillVO newsb=new SaleReturnBillVO("-"+srb.getID(), Long.parseLong(id), srb.getMemberID(), newlist, -srb.getSum(), 1, nowTime, "");
+					
 				}else if(style.equals("进货退货单")){
-					irbbs.checkImportReturnBill(true, id);
+					ImportReturnBillVO irb=bill.getImportReturnBillVO();
+					java.util.Date utiltime=new java.util.Date();
+					Date nowTime=new Date(utiltime.getTime());
+					
+					int num=irb.getList().getListSize();//商品种类
+					CommodityList newlist=new CommodityList();
+					for(int i=0;i<num;i++) {
+						CommodityLineItem newcli=irb.getList().list.get(i);
+						newcli.setNum(-newcli.getNum());//取负
+						newlist.addCommodity(newcli);
+					}
+					
+					ImportReturnBillVO newsb=new ImportReturnBillVO("-"+irb.getID(), Long.parseLong(id), irb.getMemberID(), newlist, -irb.getSum(), 1, nowTime, "");
+					
 				}else if(style.equals("进货单")){
-					ibbs.checkImportBill(true, id);
+					ImportBillVO ib=bill.getImportBillVO();
+					java.util.Date utiltime=new java.util.Date();
+					Date nowTime=new Date(utiltime.getTime());
+					
+					int num=ib.getCommodityList().getListSize();//商品种类
+					CommodityList newlist=new CommodityList();
+					for(int i=0;i<num;i++) {
+						CommodityLineItem newcli=ib.getCommodityList().list.get(i);
+						newcli.setNum(-newcli.getNum());//取负
+						newlist.addCommodity(newcli);
+					}
+					
+					ImportBillVO newsb=new ImportBillVO("-"+ib.getID(), Long.parseLong(id), ib.getMemberID(), newlist, -ib.getSum(), 1, nowTime, "");
+					
 				}
 				if(billData.isEmpty()){
 					break;

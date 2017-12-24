@@ -27,6 +27,12 @@ public class BillData {
 	StringProperty state;
 	StringProperty comment;
 	SaleBillVO sb=null;
+	SaleReturnBillVO srb=null;
+	PayBillVO pb=null;
+	ReceiveBillVO rb=null;
+	CashBillVO cb=null;
+	ImportBillVO ib=null;
+	ImportReturnBillVO irb=null;
 	UserBLService ubs=new UserController();
 	public BillData(CashBillVO cashbill){
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
@@ -38,6 +44,7 @@ public class BillData {
 		style.set("现金费用单");
 		choose.set("否");
 		state.set(""+cashbill.getState());
+		cb=cashbill;
 	}
    public BillData(PayBillVO paybill){
 	   SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
@@ -49,6 +56,7 @@ public class BillData {
 		style.set("付款单");
 		choose.set("否");
 		state.set(""+paybill.getState());
+		pb=paybill;
 	}
     public BillData(ReceiveBillVO receivebill){
     	SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
@@ -60,6 +68,7 @@ public class BillData {
 		style.set("收款单");
 		choose.set("否");
 		state.set(""+receivebill.getState());
+		rb=receivebill;
     }
     public BillData(SaleBillVO salebill){
     	SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
@@ -71,7 +80,7 @@ public class BillData {
 		style.set("销售单");
 		choose.set("否");
 		state.set(""+salebill.getState());
-		s=salebill;
+		sb=salebill;
     }
     public BillData(ImportBillVO importbill){
     	SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
@@ -83,6 +92,7 @@ public class BillData {
 		style.set("进货单");
 		choose.set("否");
 		state.set(""+importbill.getState());
+		ib=importbill;
     }
     public BillData(SaleReturnBillVO salereturnbill){
     	SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
@@ -94,6 +104,7 @@ public class BillData {
 		style.set("销售退货单");
 		choose.set("否");
 		state.set(""+salereturnbill.getState());
+		srb=salereturnbill;
     }
     public BillData(ImportReturnBillVO importreturnbill){
     	SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
@@ -105,6 +116,7 @@ public class BillData {
 		style.set("进货退货单");
 		choose.set("否");
 		state.set(""+importreturnbill.getState());
+		irb=importreturnbill;
     }
     public BillData(LossBillVO lossbill){
     	SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
@@ -197,6 +209,24 @@ public class BillData {
 		return state.get();
 	}
 	public SaleBillVO getSaleBillVO() {
-		return s;
+		return sb;
+	}
+	public SaleReturnBillVO getSaleReturnBillVO() {
+		return srb;
+	}
+	public PayBillVO getPayBillVO() {
+		return pb;
+	}
+	public ReceiveBillVO getReceiveBillVO() {
+		return rb;
+	}
+	public ImportBillVO getImportBillVO() {
+		return ib;
+	}
+	public ImportReturnBillVO getImportReturnBillVO() {
+		return irb;
+	}
+	public CashBillVO getCashBillVO() {
+		return cb;
 	}
 }

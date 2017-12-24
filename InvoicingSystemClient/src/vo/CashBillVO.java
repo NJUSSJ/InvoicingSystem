@@ -17,7 +17,7 @@ public class CashBillVO{
 	long accountid;
 	ArrayList<String> items;//条目：条目名+,金额,+备注
 	Date time;
-	double sum;
+	public double sum;
 	int state;
 	String comment;
 	public CashBillVO(String id,long userid,long accountid,ArrayList<String> items,Date time,int state) {
