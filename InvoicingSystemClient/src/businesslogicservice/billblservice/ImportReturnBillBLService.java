@@ -18,4 +18,5 @@ public interface ImportReturnBillBLService {
 	public ArrayList<ImportReturnBillVO> findImportReturnBillsByField(Date begin,Date end,String memberName,String userName);
 	public ArrayList<ImportReturnBillVO> findImportReturnBillsByState(int state);
 	public ArrayList<ImportReturnBillVO> findImportReturnBillsByUser(long userid);
+	public boolean fakeDelete(String id);
 }

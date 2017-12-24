@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import po.LossBillPO;
 import rmi.RemoteHelper;
+import vo.CashBillVO;
 import vo.LossBillVO;
 
 public class LossBill{
@@ -125,5 +126,15 @@ public class LossBill{
 			e.printStackTrace();
 		}
 		return result;
+	}
+	public boolean fakeDelete(long id){
+		LossBillVO vo=findLossBillByID(id);
+		vo.setState(3);
+		try {
+			return RemoteHelper.getInstance().getLossBillDataService().update(vo.toLossBillPO());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 }

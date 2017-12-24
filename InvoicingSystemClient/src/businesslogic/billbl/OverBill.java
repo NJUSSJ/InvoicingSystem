@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import po.OverBillPO;
 import rmi.RemoteHelper;
+import vo.CashBillVO;
 import vo.OverBillVO;
 
 public class OverBill{
@@ -128,5 +129,15 @@ public class OverBill{
 			e.printStackTrace();
 		}
 		return result;
+	}
+	public boolean fakeDelete(long id){
+		OverBillVO vo=findOverBillByID(id);
+		vo.setState(3);
+		try {
+			return RemoteHelper.getInstance().getOverBillDataService().update(vo.toOverBillPO());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 }

@@ -10,6 +10,7 @@ import po.SaleReturnBillPO;
 import rmi.RemoteHelper;
 import vo.CommodityVO;
 import vo.MemberVO;
+import vo.OverBillVO;
 import vo.SaleReturnBillVO;
 
 public class SaleReturnBill{
@@ -149,5 +150,15 @@ public class SaleReturnBill{
 			e.printStackTrace();
 		}
 		return result;
+	}
+	public boolean fakeDelete(String id){
+		SaleReturnBillVO vo=findSaleReturnBillByID(id);
+		vo.setState(3);
+		try {
+			return RemoteHelper.getInstance().getSaleReturnBillDataService().update(vo.toSaleReturnBillPO());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 }

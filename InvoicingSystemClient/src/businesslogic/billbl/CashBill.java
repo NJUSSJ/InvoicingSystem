@@ -136,4 +136,14 @@ public class CashBill{
 		}
 		return null;
 	}
+	public boolean fakeDelete(String id){
+		CashBillVO vo=findCashBillByID(id);
+		vo.setState(3);
+		try {
+			return RemoteHelper.getInstance().getCashBillDataService().update(vo.toCashBillPO());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 }

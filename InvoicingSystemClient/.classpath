@@ -3,6 +3,11 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="src" path="src"/>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="C:/Users/shisj/InvoicingSystem/InvoicingSystemClient/resources/poi-3.17.jar"/>
+=======
+	<classpathentry kind="lib" path="D:/玖/正经事/学/大二上/软工二/InvoicingSystem/InvoicingSystemClient/resources/poi-3.17.jar"/>
+	<classpathentry kind="lib" path="E:/InvoicingSystem/InvoicingSystemClient/resources/poi-3.17.jar"/>
+>>>>>>> ef1105e494e0591934743b442e6bc25accc8356b
 	<classpathentry kind="output" path="bin"/>
 </classpath>

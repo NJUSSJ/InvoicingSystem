@@ -21,4 +21,5 @@ public interface SaleBillBLService {
 	public ArrayList<SaleBillVO> findSaleBillsByUser(long userid);
 	public double handleSale(int rank,CommodityList list);
 	public int handleCoupon(int rank,double sum);
+	public boolean fakeDelete(String id);
 }

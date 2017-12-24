@@ -18,4 +18,5 @@ public interface PayBillBLService {
 	public ArrayList<PayBillVO> findPayBillsByField(Date begin,Date end,String memberName,String userName);
 	public ArrayList<PayBillVO> findPayBillsByState(int state);
 	public ArrayList<PayBillVO> findPayBillsByUser(long userid);
+	public boolean fakeDelete(String id);
 }

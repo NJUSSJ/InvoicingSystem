@@ -15,6 +15,7 @@ import vo.CommodityVO;
 import vo.GiftBillVO;
 import vo.MemberPromotionVO;
 import vo.MemberVO;
+import vo.OverBillVO;
 import vo.PackagePromotionVO;
 import vo.PricePromotionVO;
 import vo.SaleBillVO;
@@ -286,5 +287,15 @@ public class SaleBill{
 			e.printStackTrace();
 		}
 		return result;
+	}
+	public boolean fakeDelete(String id){
+		SaleBillVO vo=findSaleBillByID(id);
+		vo.setState(3);
+		try {
+			return RemoteHelper.getInstance().getSaleBillDataService().update(vo.toSaleBillPO());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 }

@@ -54,4 +54,10 @@ public class WarningBillController implements WarningBillBLService{
 		return warningBillImpl.findWarningBillsByUser(userid);
 	}
 
+	@Override
+	public boolean fakeDelete(long id) {
+		return warningBillImpl.fakeDelete(id);
+	}
+	
+
 }

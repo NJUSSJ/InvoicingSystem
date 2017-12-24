@@ -61,8 +61,12 @@ public class GiftBillController implements GiftBillBLService{
 
 	@Override
 	public GiftBillVO findGiftBillByID(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return giftBillImpl.findGiftBillByID(id);
+	}
+
+	@Override
+	public boolean fakeDelete(long id) {
+		return giftBillImpl.fakeDelete(id);
 	}
 
 }

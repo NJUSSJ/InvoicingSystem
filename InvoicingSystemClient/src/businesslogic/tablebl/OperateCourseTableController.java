@@ -2,10 +2,10 @@ package businesslogic.tablebl;
 
 import java.sql.Date;
 
-import businesslogicservice.tableblservice.OperateCourseTableBLService;
+import businesslogicservice.tableblservice.ManageCourseTableBLService;
 import vo.OperateCourseTableVO;
 
-public class OperateCourseTableController implements OperateCourseTableBLService{
+public class OperateCourseTableController implements ManageCourseTableBLService{
 	OperateCourseTable impl=new OperateCourseTable();
 	@Override
 	public OperateCourseTableVO findByInterval(Date begin, Date end) {

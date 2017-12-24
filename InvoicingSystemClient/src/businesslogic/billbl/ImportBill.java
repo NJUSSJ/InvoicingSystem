@@ -8,6 +8,7 @@ import businesslogic.commoditybl.CommodityController;
 import businesslogic.memberbl.MemberController;
 import po.ImportBillPO;
 import rmi.RemoteHelper;
+import vo.CashBillVO;
 import vo.CommodityVO;
 import vo.ImportBillVO;
 import vo.MemberVO;
@@ -161,5 +162,15 @@ public class ImportBill{
 			e.printStackTrace();
 		}
 		return result;
+	}
+	public boolean fakeDelete(String id){
+		ImportBillVO vo=findImportBillByID(id);
+		vo.setState(3);
+		try {
+			return RemoteHelper.getInstance().getImportBillDataService().update(vo.toImportBillPO());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 }

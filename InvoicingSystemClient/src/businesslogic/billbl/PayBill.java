@@ -8,6 +8,7 @@ import businesslogic.memberbl.MemberController;
 import po.PayBillPO;
 import rmi.RemoteHelper;
 import vo.MemberVO;
+import vo.OverBillVO;
 import vo.PayBillVO;
 
 public class PayBill {
@@ -145,5 +146,15 @@ public class PayBill {
 			e.printStackTrace();
 		}
 		return result;
+	}
+	public boolean fakeDelete(String id){
+		PayBillVO vo=findPayBillByID(id);
+		vo.setState(3);
+		try {
+			return RemoteHelper.getInstance().getPayBillDataService().update(vo.toPayBillPO());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 }

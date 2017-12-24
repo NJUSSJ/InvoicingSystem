@@ -18,4 +18,5 @@ public interface OverBillBLService {
 	public ArrayList<OverBillVO> findOverBillsByField(Date begin,Date end,String userName);
 	public ArrayList<OverBillVO> findOverBillsByState(int state);
 	public ArrayList<OverBillVO> findOverBillsByUser(long id);
+	public boolean fakeDelete(long id);
 }

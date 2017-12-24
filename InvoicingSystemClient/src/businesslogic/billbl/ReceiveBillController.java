@@ -64,4 +64,9 @@ public class ReceiveBillController implements ReceiveBillBLService{
 		return receiveBillImpl.findReceiveBillsByUser(userid);
 	}
 
+	@Override
+	public boolean fakeDelete(String id) {
+		return receiveBillImpl.fakeDelete(id);
+	}
+
 }

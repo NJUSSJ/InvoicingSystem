@@ -17,8 +17,9 @@ public class CashBillVO{
 	long accountid;
 	ArrayList<String> items;//条目：条目名+,金额,+备注
 	Date time;
-	double sum;
+	public double sum;
 	int state;
+	String comment;
 	public CashBillVO(String id,long userid,long accountid,ArrayList<String> items,Date time,int state) {
 		// TODO Auto-generated constructor stub
 		this.id=id;
@@ -63,6 +64,7 @@ public class CashBillVO{
 	public int getState(){
 		return state;
 	}
+	
 	/**
 	 * 
 	 * @return 条目名："条目名,金额,备注"
@@ -73,7 +75,7 @@ public class CashBillVO{
 	public void setUserID(long userid){
 		this.userid=userid;
 	}
-	public void setAccountID(long accountid){
+	public void setMemberID(long accountid){
 		this.accountid=accountid;
 	}
 	public void setState(int state){
