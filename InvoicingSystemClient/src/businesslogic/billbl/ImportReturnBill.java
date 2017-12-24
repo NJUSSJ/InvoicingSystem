@@ -2,24 +2,16 @@ package businesslogic.billbl;
 
 import java.rmi.RemoteException;
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import businesslogic.commoditybl.CommodityController;
 import businesslogic.memberbl.MemberController;
-import businesslogic.promotionbl.PromotionController;
 import businesslogic.userbl.UserController;
 import businesslogic.utilitybl.Utility;
-import po.CashBillPO;
-import po.ImportBillPO;
 import po.ImportReturnBillPO;
 import rmi.RemoteHelper;
-import vo.CashBillVO;
 import vo.CommodityVO;
-import vo.GiftBillVO;
-import vo.ImportBillVO;
 import vo.ImportReturnBillVO;
-import vo.MemberPromotionVO;
 import vo.MemberVO;
 import vo.UserVO;
 import vo.WarningBillVO;
@@ -66,7 +58,7 @@ public class ImportReturnBill {
 					}
 				}
 				int index=(int)(Math.random()*(stockUsers.size()));
-				long stockid=stockUsers.get(index).getID();
+				
 				//修改库存数量,如果少于警戒量则生成报警单
 				CommodityList list=vo.getList();
 				for(int i=0;i<list.getListSize();i++){

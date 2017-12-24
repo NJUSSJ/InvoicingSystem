@@ -1,91 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
-  <children>
-    <SplitPane dividerPositions="0.20040080160320642" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-      <items>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="498.0" prefWidth="341.9998779296875">
-          <children>
-            <Button mnemonicParsing="false" text="登出" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="10.0" />
-            <Label text="ID：" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="220.0" />
-            <Label text="Rank：" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="250.0" />
-            <Circle fill="#93979a" radius="46.0" stroke="#eee4e4" strokeType="INSIDE" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="100.0" />
-          </children>
-        </AnchorPane>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-          <children>
-            <SplitPane dividerPositions="0.3709677419354839" orientation="VERTICAL" prefHeight="398.0" prefWidth="456.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-              <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                  <children>
-                    <Button mnemonicParsing="false" text="新增" AnchorPane.bottomAnchor="11.0" AnchorPane.rightAnchor="22.0" />
-                    <Button layoutX="682.0" layoutY="147.0" mnemonicParsing="false" text="导入" AnchorPane.bottomAnchor="11.0" AnchorPane.rightAnchor="71.0" />
-                    <Label text="名称" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="34.0" />
-                    <Label text="类别" AnchorPane.leftAnchor="262.0" AnchorPane.topAnchor="34.0" />
-                    <Label text="型号" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="64.0" />
-                    <Label text="最近售价" AnchorPane.leftAnchor="262.0" AnchorPane.topAnchor="104.0" />
-                    <Label text="最近进价" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="96.0" />
-                    <Label text="售价" AnchorPane.leftAnchor="262.0" AnchorPane.topAnchor="69.0" />
-                    <Label text="进价" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="129.0" />
-                    <Label text="商品信息" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="5.0" />
-                    <TextField layoutX="71.0" layoutY="32.0" prefHeight="23.0" prefWidth="124.00009999999747" />
-                    <TextField layoutX="71.0" layoutY="63.0" prefHeight="23.0" prefWidth="124.0" />
-                    <TextField layoutX="71.0" layoutY="93.0" prefHeight="23.0" prefWidth="124.0" />
-                    <TextField layoutX="71.0" layoutY="126.0" prefHeight="23.0" prefWidth="124.0" />
-                    <ChoiceBox layoutX="355.0" layoutY="32.0" prefHeight="23.0" prefWidth="136.0" />
-                    <TextField layoutX="355.0" layoutY="101.0" prefHeight="23.0" prefWidth="136.0" />
-                    <TextField layoutX="355.0" layoutY="68.0" prefHeight="23.0" prefWidth="136.0" />
-                  </children>
-                </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                  <children>
-                    <SplitPane dividerPositions="0.501628664495114" orientation="VERTICAL" prefHeight="259.0" prefWidth="454.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                      <items>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                          <children>
-                            <Button mnemonicParsing="false" text="新增" AnchorPane.bottomAnchor="11.0" AnchorPane.rightAnchor="14.0" />
-                            <Button layoutX="687.0" layoutY="117.0" mnemonicParsing="false" text="导入" AnchorPane.bottomAnchor="11.0" AnchorPane.rightAnchor="64.0" />
-                            <Label text="客户信息" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="5.0" />
-                            <Label text="名称" AnchorPane.leftAnchor="13.0" AnchorPane.topAnchor="40.0" />
-                            <Label text="类别" AnchorPane.leftAnchor="263.0" AnchorPane.topAnchor="27.0" />
-                            <Label text="电话" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="70.0" />
-                            <Label text="应付" AnchorPane.leftAnchor="263.0" AnchorPane.topAnchor="69.0" />
-                            <Label layoutX="13.0" layoutY="102.0" text="应收" />
-                            <TextField layoutX="68.0" layoutY="35.0" prefHeight="23.0" prefWidth="124.0" />
-                            <TextField layoutX="68.0" layoutY="69.0" prefHeight="23.0" prefWidth="124.0" />
-                            <TextField layoutX="68.0" layoutY="101.0" prefHeight="23.0" prefWidth="124.0" />
-                            <TextField layoutX="349.0" layoutY="67.0" prefHeight="23.0" prefWidth="136.0" />
-                            <ChoiceBox layoutX="349.0" layoutY="23.0" prefHeight="23.0" prefWidth="136.0" />
-                          </children>
-                        </AnchorPane>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                          <children>
-                            <Button layoutX="689.0" layoutY="116.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="40.0" text="导入" AnchorPane.bottomAnchor="11.0" AnchorPane.rightAnchor="62.0" />
-                            <Button layoutX="737.0" layoutY="116.0" mnemonicParsing="false" text="新增" AnchorPane.bottomAnchor="11.0" AnchorPane.rightAnchor="14.0" />
-                            <Label text="账户信息" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="5.0" />
-                            <Label text="名称" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="44.0" />
-                            <Label text="余额" AnchorPane.leftAnchor="267.0" AnchorPane.topAnchor="49.0" />
-                            <TextField layoutX="68.0" layoutY="41.0" prefHeight="23.0" prefWidth="124.0" />
-                            <TextField layoutX="351.0" layoutY="41.0" prefHeight="23.0" prefWidth="124.0" />
-                          </children>
-                        </AnchorPane>
-                      </items>
-                    </SplitPane>
-                  </children>
-                </AnchorPane>
-              </items>
-            </SplitPane>
-          </children>
-        </AnchorPane>
-      </items>
-    </SplitPane>
-  </children>
+
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141">
+   <children>
+      <Label layoutX="24.0" layoutY="49.0" text="期初建账">
+         <font>
+            <Font name="Arial Unicode MS" size="68.0" />
+         </font>
+      </Label>
+      <Separator layoutY="133.0" prefHeight="3.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="133.0" />
+      <Label layoutX="807.0" layoutY="27.0" text="ID：xxx">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="874.0" layoutY="27.0" text="||  登出">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Button layoutX="874.0" layoutY="22.0" mnemonicParsing="false" opacity="0.0" prefHeight="27.0" prefWidth="69.0" text="Button" />
+      <ScrollPane layoutX="-2.0" layoutY="133.0" prefHeight="467.0" prefWidth="743.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="481.0" prefWidth="743.0">
+               <children>
+                  <TableView layoutX="131.0" layoutY="81.0" prefHeight="487.0" prefWidth="642.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="账本名称" />
+                      <TableColumn prefWidth="75.0" text="建立时间" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+      <Separator layoutX="741.0" layoutY="133.0" orientation="VERTICAL" prefHeight="467.0" prefWidth="5.0" />
+      <Button layoutX="782.0" layoutY="194.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="178.0" text="新 建 账 本">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="782.0" layoutY="256.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="178.0" text="查 看 账 本 商 品 信 息">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="782.0" layoutY="323.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="178.0" text="查 看 账 本 客 户 信 息">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="782.0" layoutY="391.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="178.0" text="查 看 账 本 账 户 信 息">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="782.0" layoutY="459.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="178.0" text="返      回">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+   </children>
 </AnchorPane>

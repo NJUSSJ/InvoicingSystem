@@ -284,6 +284,10 @@ public class PayBillViewController  implements Initializable{
 	   updateB.setVisible(false);
 	   deleteB.setVisible(false);
 	}
+	public void setVO(PayBillVO m) {
+		// TODO Auto-generated method stub
+		
+	}
 
 	
 

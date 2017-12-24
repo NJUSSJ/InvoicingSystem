@@ -99,6 +99,7 @@ public class SaleDetailsTable{
 		try {
 			FileOutputStream fout = new FileOutputStream(path+".xls");
 			wb.write(fout);
+			wb.close();
 			fout.close();
 			return true;
 		} catch (IOException e) {

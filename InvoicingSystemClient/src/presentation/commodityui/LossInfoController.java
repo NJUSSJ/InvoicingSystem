@@ -87,4 +87,9 @@ public class LossInfoController implements Initializable{
 		    confirm.setVisible(false);
 	}
 
+	public void setVO(LossBillVO m) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

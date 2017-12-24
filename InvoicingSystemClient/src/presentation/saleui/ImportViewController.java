@@ -206,7 +206,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	@FXML
 	public void confirm(){
 		itemdata=new CommodityItemData(0,a,Integer.parseInt(num.getText()),Double.parseDouble(lastprice.getText()),notea.getText());
-	    item=new CommodityLineItem(Integer.parseInt(num.getText()),a.getID(),a.getSalePrice(),Double.parseDouble(lastprice.getText()));
+	    item=new CommodityLineItem(Integer.parseInt(num.getText()),a.getID(),a.getSalePrice(),Double.parseDouble(lastprice.getText()),notea.getText());
 	    comlist.addCommodity(item);
 		commodityData.add(itemdata);
 	    commodityTable.setItems(commodityData);
@@ -279,6 +279,27 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		// TODO Auto-generated method stub
 		billid.setText(m.getID());
 		id.setText("ID:"+MainApp.getID());
+		memberl=mbs.findMemberByID(m.getMemberID());
 		operator.setText(""+m.getUserID());
+		altogether.setText(""+m.getSum());
+		member.setText(memberl.getName());
+		note.setText(m.getRemark());
+		comlist=m.getCommodityList();
+		for(int i=0;i<comlist.getListSize();i++){
+			commodityData.add(new CommodityItemData(comlist.get(i)));
+		}
+			commodityTable.setItems(commodityData);
+			rightB.setVisible(false);
+			 addB.setVisible(false);
+			deleteB.setVisible(false);
+			 returnB.setVisible(false);
+			 search.setVisible(false);
 	}
+
+
+	public void setVO(ImportBillVO m) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

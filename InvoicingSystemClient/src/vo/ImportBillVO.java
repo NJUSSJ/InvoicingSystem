@@ -40,6 +40,9 @@ public class ImportBillVO {
 	public String getID() {
 		return id;
 	}
+	public String getRemark() {
+		return remark;
+	}
 	public long getUserID() {
 		return userid;
 	}
@@ -54,6 +57,9 @@ public class ImportBillVO {
 	}
 	public int getNum(){
 		return num;
+	}
+	public int getState(){
+		return state;
 	}
 	public Date getTime(){
 		return time;

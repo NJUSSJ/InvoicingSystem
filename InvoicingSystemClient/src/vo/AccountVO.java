@@ -1,6 +1,5 @@
 package vo;
 
-import javafx.beans.property.StringProperty;
 import po.AccountPO;
 
 public class AccountVO {

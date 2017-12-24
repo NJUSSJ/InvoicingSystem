@@ -58,4 +58,8 @@ public class GiftBillViewController  implements Initializable{
 		}
 		cashTable.setItems(cashData);
 	}
+	public void setVO(GiftBillVO m) {
+		// TODO Auto-generated method stub
+		
+	}
 }

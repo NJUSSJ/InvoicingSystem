@@ -6,13 +6,9 @@ import java.util.ArrayList;
 
 import businesslogic.commoditybl.CommodityController;
 import businesslogic.memberbl.MemberController;
-import po.CashBillPO;
-import po.GiftBillPO;
 import po.ImportBillPO;
 import rmi.RemoteHelper;
-import vo.CashBillVO;
 import vo.CommodityVO;
-import vo.GiftBillVO;
 import vo.ImportBillVO;
 import vo.MemberVO;
 

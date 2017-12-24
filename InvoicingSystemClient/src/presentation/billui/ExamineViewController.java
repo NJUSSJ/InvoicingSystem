@@ -40,7 +40,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import presentation.accountui.SimpleAccountController;
 import presentation.commodityui.LossInfoController;
 import presentation.commodityui.OverInfoController;
 import presentation.saleui.ImportViewController;
