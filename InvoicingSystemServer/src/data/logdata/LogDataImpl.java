@@ -170,6 +170,12 @@ public class LogDataImpl implements LogDataService {
 		return 0;
 	}
 
+	@Override
+	public int getLargestIDofLog() throws RemoteException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 	
 
 }
