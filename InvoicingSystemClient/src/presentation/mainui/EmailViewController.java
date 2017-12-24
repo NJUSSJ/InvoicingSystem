@@ -68,8 +68,7 @@ public class EmailViewController implements Initializable {
 	@FXML
 	private Label id;
 	
-	@FXML
-	private Label logout;
+
 
 	@FXML
 	private Button returnB;
@@ -78,7 +77,8 @@ public class EmailViewController implements Initializable {
 	private Button logoutB;
 	@FXML
 	private Button showDetail;
-public  ObservableList<BillData> billData =FXCollections.observableArrayList();
+
+	public  ObservableList<BillData> billData =FXCollections.observableArrayList();
 	
 	@FXML
 	private TableView<BillData> billTable;
@@ -250,6 +250,7 @@ public  ObservableList<BillData> billData =FXCollections.observableArrayList();
 	public void showDetail(){
 		String id=billitem.getid();
 		String style=billitem.getstyle();
+		int state=Integer.parseInt(billitem.getstate());
 		if(style.equals("œ˙ €µ•")){
 			SaleBillVO m=sbbs.findSaleBillByID(id);
 			try {
@@ -264,7 +265,11 @@ public  ObservableList<BillData> billData =FXCollections.observableArrayList();
 				stage.setScene(scene);
 	            SaleViewController controller=loader.getController();
 	            controller.setStage(stage);
-	            controller.setVO(m);
+	            if(state==1){
+	            	controller.setVo(m);
+	            }else{
+	            	controller.setVO(m);
+	            }
 	            stage.showAndWait();
 	            
 			} catch (Exception e) {
@@ -284,7 +289,11 @@ public  ObservableList<BillData> billData =FXCollections.observableArrayList();
 				stage.setScene(scene);
 	            PayBillViewController controller=loader.getController();
 	            controller.setStage(stage);
-	            controller.setVO(m);
+	            if(state==1){
+	            	controller.setVo(m);
+	            }else{
+	            	controller.setVO(m);
+	            }
 	            stage.showAndWait();
 	            
 			} catch (Exception e) {
@@ -304,7 +313,11 @@ public  ObservableList<BillData> billData =FXCollections.observableArrayList();
 				stage.setScene(scene);
 	            ReceiveBillViewController controller=loader.getController();
 	            controller.setStage(stage);
-	            controller.setVO(m);
+	            if(state==1){
+	            	controller.setVo(m);
+	            }else{
+	            	controller.setVO(m);
+	            }
 	            stage.showAndWait();
 	            
 			} catch (Exception e) {
@@ -324,7 +337,11 @@ public  ObservableList<BillData> billData =FXCollections.observableArrayList();
 				stage.setScene(scene);
 	            LossInfoController controller=loader.getController();
 	            controller.setStage(stage);
-	            controller.setVO(m);
+	            if(state==1){
+	            	controller.setVo(m);
+	            }else{
+	            	controller.setVO(m);
+	            }
 	            stage.showAndWait();
 	            
 			} catch (Exception e) {
@@ -344,7 +361,11 @@ public  ObservableList<BillData> billData =FXCollections.observableArrayList();
 				stage.setScene(scene);
 	            OverInfoController controller=loader.getController();
 	            controller.setStage(stage);
-	            controller.setVO(m);
+	            if(state==1){
+	            	controller.setVo(m);
+	            }else{
+	            	controller.setVO(m);
+	            }
 	            stage.showAndWait();
 	            
 			} catch (Exception e) {
@@ -364,7 +385,7 @@ public  ObservableList<BillData> billData =FXCollections.observableArrayList();
 				stage.setScene(scene);
 	            WarningBillViewController controller=loader.getController();
 	            controller.setStage(stage);
-	            controller.setVO(m);
+	            controller.setVo(m);
 	            stage.showAndWait();
 	            
 			} catch (Exception e) {
@@ -384,7 +405,11 @@ public  ObservableList<BillData> billData =FXCollections.observableArrayList();
 				stage.setScene(scene);
 	            CashBillViewController controller=loader.getController();
 	            controller.setStage(stage);
-	            controller.setVO(m);
+	            if(state==1){
+	            	controller.setVo(m);
+	            }else{
+	            	controller.setVO(m);
+	            }
 	            stage.showAndWait();
 	            
 			} catch (Exception e) {
@@ -404,7 +429,7 @@ public  ObservableList<BillData> billData =FXCollections.observableArrayList();
 				stage.setScene(scene);
 	            GiftBillViewController controller=loader.getController();
 	            controller.setStage(stage);
-	            controller.setVO(m);
+	            	controller.setVo(m); 
 	            stage.showAndWait();
 	            
 			} catch (Exception e) {
@@ -424,7 +449,11 @@ public  ObservableList<BillData> billData =FXCollections.observableArrayList();
 				stage.setScene(scene);
 	            Sale_ReturnViewController controller=loader.getController();
 	            controller.setStage(stage);
-	            controller.setVO(m);
+	            if(state==1){
+	            	controller.setVo(m);
+	            }else{
+	            	controller.setVO(m);
+	            }
 	            stage.showAndWait();
 	            
 			} catch (Exception e) {
@@ -444,7 +473,11 @@ public  ObservableList<BillData> billData =FXCollections.observableArrayList();
 				stage.setScene(scene);
 	            Import_ReturnViewController controller=loader.getController();
 	            controller.setStage(stage);
-	            controller.setVO(m);
+	            if(state==1){
+	            	controller.setVo(m);
+	            }else{
+	            	controller.setVO(m);
+	            }
 	            stage.showAndWait();
 	            
 			} catch (Exception e) {
@@ -464,7 +497,11 @@ public  ObservableList<BillData> billData =FXCollections.observableArrayList();
 				stage.setScene(scene);
 	            ImportViewController controller=loader.getController();
 	            controller.setStage(stage);
-	            controller.setVO(m);
+	            if(state==1){
+	            	controller.setVo(m);
+	            }else{
+	            	controller.setVO(m);
+	            }
 	            stage.showAndWait();
 	            
 			} catch (Exception e) {

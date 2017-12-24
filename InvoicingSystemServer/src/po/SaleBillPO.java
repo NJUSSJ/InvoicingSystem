@@ -72,7 +72,4 @@ public class SaleBillPO implements Serializable {
 	public double getUltimate(){
 		return ultimate;
 	}
-	public double getMoney(){
-		return money;
-	}
 }

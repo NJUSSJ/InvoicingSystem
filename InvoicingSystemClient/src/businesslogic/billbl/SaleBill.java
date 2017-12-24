@@ -29,7 +29,7 @@ public class SaleBill{
 		}
 		CommodityList list=new CommodityList(po.getCommodityList());
 		return new SaleBillVO(po.getID(),po.getUserID(),po.getMemberID(),list,po.getSum(),po.getState(),
-	po.getTime(),po.getRemark(),po.getCoupon(),po.getDiscount(),po.getUltimate(),po.getMoney());
+	po.getTime(),po.getRemark(),po.getCoupon(),po.getDiscount(),po.getUltimate());
 	}
 	public boolean submitSaleBill(SaleBillVO saleBill) {
 		try {

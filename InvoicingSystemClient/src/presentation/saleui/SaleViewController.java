@@ -42,6 +42,8 @@ public class SaleViewController implements Initializable  {
 	@FXML
 	private Button search;
 	@FXML
+	private Button reviseB;
+	@FXML
 	private Label discountbefore;
 	@FXML
 	private Label discountafter;
@@ -63,9 +65,6 @@ public class SaleViewController implements Initializable  {
 	
 	@FXML
 	private TextField member;
-	
-	@FXML
-	private TextField stock;
 	
 	@FXML
 	private TextField lastprice;
@@ -124,7 +123,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	CommodityBLService cbs=new CommodityController();
 	MemberBLService mbs=new MemberController();
 	SaleBillBLService sbbs=new SaleBillController();
-	
+	SaleBillVO unpassbill=null;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
@@ -161,6 +160,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		totalmoneyColumn.setCellValueFactory(cellData ->cellData.getValue().getTotalPrice());
 		modelColumn.setCellValueFactory(cellData ->cellData.getValue().getModel());
 		moneyColumn.setCellValueFactory(cellData ->cellData.getValue().getImportPrice());
+       reviseB.setVisible(false);
 	}
 
 	
@@ -243,10 +243,36 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		MainApp.showSaleMainUI();
 	}
 	@FXML
+	public void revise(){
+		memberl=mbs.findMemberByName(member.getText());
+		if(memberl==null) {
+			Alert warning=new Alert(AlertType.WARNING);
+			warning.setContentText("供应商不存在");
+			warning.showAndWait();
+			return ;
+		}
+		SaleBillVO salebill=new SaleBillVO(billid.getText(),Long.parseLong(id.getText()),memberl.getID(),comlist,
+				comlist.getSaleTotal(),0,time,note.getText(),Integer.parseInt(coupon.getText()),Double.parseDouble(discount.getText()),Double.parseDouble(discountafter.getText()));
+			String isSubmit="fail Submit";
+			sbbs.deleteSaleBill(unpassbill);
+			 if(sbbs.submitSaleBill(salebill)){
+				 isSubmit="Succeed Submit";
+			 }
+		     Alert alert = new Alert(AlertType.INFORMATION);
+			        alert.initOwner(MainApp.getPrimaryStage());
+			        alert.setTitle("Information");
+			        alert.setHeaderText("Submit");
+			        alert.setContentText(isSubmit);
+			        alert.showAndWait();
+
+	}
+	@FXML
 	public void setBill(){
-		 double discountl=(sbbs.handleSale(memberl.getRank(), comlist)/comlist.getSaleTotal());
-		SaleBillVO salebill=new SaleBillVO(billid.getText(),MainApp.getID(),memberl.getID(),comlist,
-			comlist.getSaleTotal(),0,time,note.getText(),Integer.parseInt(coupon.getText()),discountl,Double.parseDouble(discountafter.getText()),Double.parseDouble(haspay.getText()));
+
+		memberl=mbs.findMemberByName(member.getText());
+		SaleBillVO salebill=new SaleBillVO(billid.getText(),Long.parseLong(id.getText()),memberl.getID(),comlist,
+			comlist.getSaleTotal(),0,time,note.getText(),Integer.parseInt(coupon.getText()),Double.parseDouble(discount.getText()),Double.parseDouble(discountafter.getText()));
+
 		String isSubmit="fail Submit";
 		 if(sbbs.submitSaleBill(salebill)){
 			 	SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
@@ -285,7 +311,6 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		discountafter.setText(""+m.getUltimate());
 		discount.setText(""+m.getDiscount());
 		coupon.setText(""+m.getCoupon());
-		haspay.setText(""+m.getMoney());
 		member.setText(memberl.getName());
 		comlist=m.getList();
 		for(int i=0;i<comlist.getListSize();i++){
@@ -302,7 +327,25 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 
 	public void setVO(SaleBillVO m) {
 		// TODO Auto-generated method stub
+		unpassbill=m;
+		billid.setText(m.getID());
+		id.setText("ID:"+MainApp.getID());
+		memberl=mbs.findMemberByID(m.getMemberID());
+		operator.setText(""+m.getUserID());
+		discountbefore.setText(""+m.getSum());
+		discountafter.setText(""+m.getUltimate());
+		discount.setText(""+m.getDiscount());
+		coupon.setText(""+m.getCoupon());
 		
+		member.setText(memberl.getName());
+		comlist=m.getList();
+		for(int i=0;i<comlist.getListSize();i++){
+			commodityData.add(new CommodityItemData(comlist.get(i)));
+		}
+			commodityTable.setItems(commodityData);
+			rightB.setVisible(false);
+			 returnB.setVisible(false);
+			 reviseB.setVisible(true);
 	}
 	
 }
