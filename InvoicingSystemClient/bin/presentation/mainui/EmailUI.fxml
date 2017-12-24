@@ -57,5 +57,10 @@
             <Font size="13.0" />
          </font>
       </Button>
+      <Button fx:id="deleteB" layoutX="759.0" layoutY="227.0" mnemonicParsing="false" onAction="#delete" prefHeight="28.0" prefWidth="168.0" text="删     除">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

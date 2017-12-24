@@ -4,6 +4,5 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="D:/玖/正经事/学/大二上/软工二/InvoicingSystem/InvoicingSystemClient/resources/poi-3.17.jar"/>
-	<classpathentry kind="lib" path="E:/InvoicingSystem/InvoicingSystemClient/resources/poi-3.17.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

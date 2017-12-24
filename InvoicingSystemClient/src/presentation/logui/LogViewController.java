@@ -64,9 +64,12 @@ public class LogViewController implements Initializable {
 	
 	private LogController lcon=new LogController();
 	private UserController ucon=new UserController();
+	
+	int rank;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		long idLong=MainApp.getID();
+		rank=ucon.findUserByID(idLong).getRank();
 		String idString=idLong+"";
 		while(idString.length()<5) {
 			idString="0"+idString;
@@ -86,9 +89,16 @@ public class LogViewController implements Initializable {
 		}
 		logTable.setItems(logData);
 	}
+	
 	@FXML
 	public void back(){
-		MainApp.showAdministerMainUI();
+		if(rank==0){
+			MainApp.showAdministerMainUI();
+		}else if(rank==2){
+			MainApp.showFianceMainUI();
+		}else if(rank==1){
+			MainApp.showManagerMainUI();
+		}
 	}
 	@FXML
 	public void logOut(){
