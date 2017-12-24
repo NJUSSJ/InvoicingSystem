@@ -20,10 +20,10 @@ public class SaleBillPO implements Serializable {
 	int coupon;
 	double discount;
 	double ultimate;
-	double money;
+	//double money;
 	
 	public SaleBillPO(String id,long userid,long memberid,String commodityList,double sum,int state,
-			Date time,int num,String remark,int coupon,double discount,double ultimate,double money) {
+			Date time,int num,String remark,int coupon,double discount,double ultimate) {
 		this.commodityList=commodityList;
 		this.id=id;
 		this.memberid=memberid;
@@ -36,7 +36,7 @@ public class SaleBillPO implements Serializable {
 		this.coupon=coupon;
 		this.discount=discount;
 		this.ultimate=ultimate;
-		this.money=money;
+		//this.money=money;
 	}
 	public String getID(){
 		return id;
@@ -74,7 +74,7 @@ public class SaleBillPO implements Serializable {
 	public double getUltimate(){
 		return ultimate;
 	}
-	public double getMoney(){
+	/*public double getMoney(){
 		return money;
-	}
+	}*/
 }

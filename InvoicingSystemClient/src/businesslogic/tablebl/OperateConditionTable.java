@@ -54,8 +54,11 @@ public class OperateConditionTable{
 		if(saleBills!=null&&!saleBills.isEmpty()){
 			for(SaleBillVO vo:saleBills){
 				saleOriginIncome+=vo.getSum();
-				saleIncome+=vo.getMoney();
-				couponIncome+=vo.getMoney()+vo.getCoupon()-vo.getUltimate();
+				if(vo.getCoupon()>vo.getUltimate()){
+					couponIncome+=vo.getCoupon()-vo.getUltimate();
+				}else{
+					saleIncome+=vo.getUltimate();
+				}
 			}
 		}
 		double overIncome=0;
@@ -100,6 +103,7 @@ public class OperateConditionTable{
 	importReturnIncome,couponIncome,importExpense,lossExpense,giftExpense,saleReturnExpense,profit);
 	}
 	public boolean exportAsExcel(OperateConditionTableVO vo,String path){
+		@SuppressWarnings("resource")
 		HSSFWorkbook wb=new HSSFWorkbook();
 		HSSFSheet sheet=wb.createSheet("经营情况表:"+vo.getBegin()+"~"+vo.getEnd());
 		HSSFRow row=sheet.createRow(0);

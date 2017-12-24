@@ -274,22 +274,25 @@ public class CategoryViewController implements Initializable{
 	        alert.setContentText("Please select another category in the table.");
 	        alert.showAndWait();
 		}else{
-			/*FXMLLoader loader=new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("/presentation/commodityui/CommodityUI.fxml"));
-			AnchorPane commodityUI=loader.load();
-			Scene scene=new Scene(commodityUI);
-			Stage commodityStage=new Stage();
-			commodityStage.setTitle("Commodity");
-			commodityStage.initModality(Modality.WINDOW_MODAL);
-			commodityStage.initOwner(MainApp.getPrimaryStage());
-			commodityStage.setScene(scene);
-			CommodityViewController controller=loader.getController();
-			controller.setStage(commodityStage);
-			controller.setCommoditys(colist);
-         // controller.setparent(categoryVO.getID());
-			//commodityStage.showAndWait();
-			commodityStage.show();*/
-			MainApp.showCommodityUI();
+			try {
+				FXMLLoader loader=new FXMLLoader();
+				loader.setLocation(MainApp.class.getResource("/presentation/commodityui/CommodityUI.fxml"));
+				AnchorPane commodityUI=loader.load();
+				Scene scene=new Scene(commodityUI);
+				Stage commodityStage=new Stage();
+				commodityStage.setTitle("Commodity");
+				commodityStage.initModality(Modality.WINDOW_MODAL);
+				commodityStage.initOwner(MainApp.getPrimaryStage());
+				commodityStage.setScene(scene);
+	            CommodityViewController controller=loader.getController();
+	            controller.setStage(commodityStage);
+	            controller.setCommoditys(colist);
+	           // controller.setparent(categoryVO.getID());
+	            //commodityStage.showAndWait();
+	            commodityStage.show();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 	}
 	}
 }
