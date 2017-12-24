@@ -197,8 +197,11 @@ public class SaleBill{
 			}
 		}
 		//第二步：分析总价降价
-		ArrayList<MemberPromotionVO> memberPromotions=pcon.findMemberPromotions();
 		double min=origin;
+		ArrayList<MemberPromotionVO> memberPromotions=pcon.findMemberPromotions();
+		if(memberPromotions==null) {
+			return min;
+		}
 		for(MemberPromotionVO m:memberPromotions){
 			if(rank<m.getRank()){
 				continue;

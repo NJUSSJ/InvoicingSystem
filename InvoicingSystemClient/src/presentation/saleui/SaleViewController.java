@@ -208,22 +208,28 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
                 alert.showAndWait();
 		}else{
 			lastprice.setText(""+a.getSalePrice());
-			num.setText(0+"");
 		}
 	}
 	@FXML
 	public void confirm(){
 		memberl=mbs.findMemberByName(member.getText());
+		
+		if(memberl==null) {
+			Alert warning =new Alert(AlertType.WARNING);
+			warning.setContentText("该客户不存在！");
+			warning .showAndWait();
+			return ;
+		}
 		itemdata=new CommodityItemData(0,a,Integer.parseInt(num.getText()),Double.parseDouble(lastprice.getText()),notea.getText());
 	    item=new CommodityLineItem(Integer.parseInt(num.getText()),a.getID(),Double.parseDouble(lastprice.getText()),a.getImportPrice(),notea.getText());
 	    comlist.addCommodity(item);
 		commodityData.add(itemdata);
-	    commodityTable.setItems(commodityData);
+	  
 	    discountbefore.setText(""+comlist.getSaleTotal());
-	    double discountl=1.0-(sbbs.handleSale(memberl.getRank(), comlist)/comlist.getSaleTotal());
-        discount.setText(""+discountl);
+	    double discountl=(sbbs.handleSale(memberl.getRank(), comlist)/comlist.getSaleTotal());
+        discount.setText("%"+discountl*100);
         double finalsale=sbbs.handleSale(memberl.getRank(), comlist)-Double.parseDouble(coupon.getText());
-       discountafter.setText(""+finalsale);
+        discountafter.setText(""+finalsale);
 	}
 	@FXML
 	public void logout(){
