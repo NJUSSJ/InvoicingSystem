@@ -26,7 +26,7 @@ public class SaleBillDataImpl implements SaleBillDataService{
 		String sql="insert into salebills (id,userid,memberid,commoditylist,sum,time,state,num,remark,coupon,discount,ultimate)"
 				+ " values "
 				+ "('"+po.getID()+"','"+po.getUserID()+"','"+po.getMemberID()+"','"+po.getCommodityList()+"','"+po.getSum()
-				+"','"+po.getTime()+"','"+po.getState()+"','"+po.getSum()+"','"+po.getNum()+"','"+po.getRemark()+"','"+po.getCoupon()+
+				+"','"+po.getTime()+"','"+po.getState()+"','"+po.getNum()+"','"+po.getRemark()+"','"+po.getCoupon()+
 				"','"+po.getDiscount()+"','"+po.getUltimate()+"')";
 		
 		try {
@@ -200,7 +200,6 @@ public class SaleBillDataImpl implements SaleBillDataService{
 				int coupon=result.getInt("coupon");
 				double discount=result.getDouble("discount");
 				double ultimate=result.getDouble("ultimate");
-				int money=result.getInt("money");
 				SaleBillPO tmpPO=new SaleBillPO(id, userid, memberid, commoditylist, sum, state, time, num, remark, coupon, discount, ultimate);
 				results.add(tmpPO);
 			}

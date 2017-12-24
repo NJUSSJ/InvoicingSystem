@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 
+import org.apache.poi.ddf.EscherColorRef.SysIndexSource;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFFont;
@@ -142,11 +143,14 @@ public class StockInventoryViewController implements Initializable {
 			filepath+=".xls";
 			}
 			SaveFiletoPath(filepath);
+			System.out.println(filepath);
 		}
 		
 	}
 	public void SaveFiletoPath(String filepath) {
 		@SuppressWarnings("resource")
+		
+		
 		HSSFWorkbook wb=new HSSFWorkbook();
 		HSSFSheet sheet=wb.createSheet("sheet1");
 		

@@ -49,8 +49,7 @@ public class SaleViewController implements Initializable  {
 	private Label discountafter;
 	@FXML
 	private TextField coupon;
-	@FXML
-	private TextField haspay;
+	
 	@FXML
 	private Label discount;
 	
@@ -270,8 +269,8 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	public void setBill(){
 
 		memberl=mbs.findMemberByName(member.getText());
-		SaleBillVO salebill=new SaleBillVO(billid.getText(),Long.parseLong(id.getText()),memberl.getID(),comlist,
-			comlist.getSaleTotal(),0,time,note.getText(),Integer.parseInt(coupon.getText()),Double.parseDouble(discount.getText()),Double.parseDouble(discountafter.getText()));
+		SaleBillVO salebill=new SaleBillVO(billid.getText(),MainApp.getID(),memberl.getID(),comlist,
+			comlist.getSaleTotal(),0,time,note.getText(),Integer.parseInt(coupon.getText()),Double.parseDouble(discount.getText().substring(1, discount.getText().length()))/100,Double.parseDouble(discountafter.getText()));
 
 		String isSubmit="fail Submit";
 		 if(sbbs.submitSaleBill(salebill)){

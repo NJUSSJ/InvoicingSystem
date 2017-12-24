@@ -14,5 +14,5 @@ public interface LogDataService extends Remote {
 	public int getLogNum() throws RemoteException;
 	public boolean delete(Date time) throws RemoteException;
 	public boolean update(LogPO po) throws RemoteException;
-
+	public int getLargestIDofLog() throws RemoteException;
 }

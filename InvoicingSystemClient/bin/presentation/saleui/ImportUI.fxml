@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -10,17 +8,16 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.saleui.ImportViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.saleui.ImportViewController">
   <children>
     <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="601.0" fitWidth="1000.0000999999975" layoutX="0.0" layoutY="0.0">
       <image>
-        <Image url="@../../../resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
+        <Image preserveRatio="true" smooth="true" url="@../../../resources/1b256486664e499a9613079e51bbca0b.png" />
       </image>
     </ImageView>
     <Label fx:id="id" layoutX="870.0" layoutY="8.0" prefWidth="65.0" text="ID:XXX">
@@ -55,26 +52,26 @@
     <TextField fx:id="num" layoutX="81.0" layoutY="298.0" prefHeight="23.0" prefWidth="140.0" />
     <TextArea fx:id="notea" layoutX="24.0" layoutY="414.0" prefHeight="106.0" prefWidth="195.0" />
     <Button fx:id="addB" font="$x1" layoutX="157.0" layoutY="532.0" mnemonicParsing="false" onAction="#confirm" prefHeight="24.0" prefWidth="64.0" text="确  认" />
-    <ScrollPane layoutX="231.0" layoutY="231.0" opacity="0.7" prefHeight="328.0" prefWidth="766.0">
+    <ScrollPane layoutX="231.0" layoutY="231.0" opacity="0.7" prefHeight="334.0" prefWidth="769.0">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="340.0" prefWidth="782.0">
           <children>
             <TableView fx:id="commodityTable" opacity="1.0" prefHeight="334.0" prefWidth="782.0">
               <columns>
-                <TableColumn prefWidth="100.0" text="编号" fx:id="idColumn" />
-                <TableColumn prefWidth="100.0" text="名称" fx:id="nameColumn" />
-                <TableColumn prefWidth="75.0" text="型号" fx:id="modelColumn" />
-                <TableColumn prefWidth="75.0" text="数量" fx:id="amountColumn" />
-                <TableColumn prefWidth="75.0" text="单价" fx:id="moneyColumn" />
-                <TableColumn prefWidth="75.0" text="金额" fx:id="totalmoneyColumn" />
-                <TableColumn prefWidth="280.0" text="备注" fx:id="noteColumn" />
+                <TableColumn fx:id="idColumn" prefWidth="100.0" text="编号" />
+                <TableColumn fx:id="nameColumn" prefWidth="100.0" text="名称" />
+                <TableColumn fx:id="modelColumn" prefWidth="75.0" text="型号" />
+                <TableColumn fx:id="amountColumn" prefWidth="75.0" text="数量" />
+                <TableColumn fx:id="moneyColumn" prefWidth="75.0" text="单价" />
+                <TableColumn fx:id="totalmoneyColumn" prefWidth="75.0" text="金额" />
+                <TableColumn fx:id="noteColumn" prefWidth="280.0" text="备注" />
               </columns>
             </TableView>
           </children>
         </AnchorPane>
       </content>
     </ScrollPane>
-    <Button fx:id="rightB" font="$x1" layoutX="820.0" layoutY="566.0" mnemonicParsing="false" onAction="#setBill" prefHeight="30.0" prefWidth="70.0" text="确  认" />
+    <Button fx:id="rightB" font="$x1" layoutX="820.0" layoutY="567.0" mnemonicParsing="false" onAction="#setBill" prefHeight="30.0" prefWidth="70.0" text="确  认" />
     <Button fx:id="returnB" font="$x1" layoutX="902.0" layoutY="567.0" mnemonicParsing="false" onAction="#showSaleMainUI" prefHeight="30.0" prefWidth="70.0" text="返   回" />
     <Label fx:id="billid" layoutX="86.0" layoutY="150.0" prefHeight="15.0" prefWidth="182.0" text="xxx">
       <font>
@@ -89,5 +86,10 @@
     <Label font="$x2" layoutX="234.0" layoutY="573.0" text="金额总计：" />
     <Label fx:id="altogether" font="$x2" layoutX="305.0" layoutY="573.0" text="0.0" />
     <Button fx:id="logout" layoutX="932.0" layoutY="4.0" mnemonicParsing="false" onAction="#logout" opacity="0.0" prefHeight="23.0" prefWidth="65.0" text="Button" />
+      <Button fx:id="reviseB" layoutX="867.0" layoutY="568.0" mnemonicParsing="false" onAction="#revise" prefHeight="30.0" prefWidth="70.0" text="确  认">
+         <font>
+            <Font size="14.0" fx:id="x11" />
+         </font>
+      </Button>
   </children>
 </AnchorPane>

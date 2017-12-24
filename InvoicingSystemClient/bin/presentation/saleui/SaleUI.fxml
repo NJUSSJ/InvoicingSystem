@@ -11,6 +11,8 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
@@ -92,11 +94,10 @@
       </font>
     </Label>
     <Label fx:id="discountbefore" font="$x2" layoutX="932.0" prefWidth="60.0" text="0.0" AnchorPane.bottomAnchor="339.0" />
-    <TextField fx:id="coupon" prefHeight="18.0" prefWidth="90.0" text="" AnchorPane.bottomAnchor="233.0" AnchorPane.leftAnchor="906.0" />
-    <Label fx:id="discount" font="$x2" layoutX="891.0" prefWidth="22.0" text="0" AnchorPane.bottomAnchor="306.0" />
+    <TextField fx:id="coupon" prefHeight="18.0" prefWidth="90.0" promptText="0" text="" AnchorPane.bottomAnchor="233.0" AnchorPane.leftAnchor="906.0" />
+    <Label fx:id="discount" font="$x2" layoutX="891.0" prefWidth="80.0" text="0" AnchorPane.bottomAnchor="306.0" />
     <Label fx:id="billid" font="$x2" layoutX="87.0" layoutY="148.0" prefWidth="217.0" text="xxx" />
     <Button fx:id="logout" layoutX="924.0" layoutY="2.0" mnemonicParsing="false" onAction="#logout" opacity="0.0" prefHeight="39.0" prefWidth="72.0" text="Button" />
-    <TextField fx:id="coupon1" layoutX="940.0" prefHeight="18.0" prefWidth="56.0" text="" AnchorPane.bottomAnchor="193.0" />
-    <Label layoutX="836.0" layoutY="388.0" text="实际需付金额：" />
+    <Button fx:id="reviseB" font="$x1" layoutX="866.0" layoutY="568.0" mnemonicParsing="false" onAction="#revise" prefHeight="19.0" prefWidth="64.0" text="确  认" />
   </children>
 </AnchorPane>

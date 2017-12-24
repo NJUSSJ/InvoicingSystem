@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -9,19 +7,18 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.billui.PayBillViewController">
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.billui.PayBillViewController">
   <children>
     <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0">
       <children>
         <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="600.0" fitWidth="1000.0" layoutX="0.0" layoutY="0.0">
           <image>
-            <Image url="@../../../../../InvoicingSystem/InvoicingSystemClient/resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
+            <Image preserveRatio="true" smooth="true" url="@../../../../../InvoicingSystem/InvoicingSystemClient/resources/1b256486664e499a9613079e51bbca0b.png" />
           </image>
         </ImageView>
         <Label fx:id="id" layoutX="787.0" layoutY="14.0" text="ID:XXX">
@@ -49,9 +46,9 @@
               <children>
                 <TableView fx:id="payTable" prefHeight="350.0" prefWidth="761.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-39.0" AnchorPane.topAnchor="0.0">
                   <columns>
-                    <TableColumn prefWidth="150.39999103546143" text="银行账户" fx:id="nameColoumn" />
-                    <TableColumn minWidth="0.0" prefWidth="163.19996643066406" text="转账金额" fx:id="amountColoumn" />
-                    <TableColumn minWidth="0.0" prefWidth="446.9999755859375" text="备注" fx:id="noteColoumn" />
+                    <TableColumn fx:id="nameColoumn" prefWidth="150.39999103546143" text="银行账户" />
+                    <TableColumn fx:id="amountColoumn" minWidth="0.0" prefWidth="163.19996643066406" text="转账金额" />
+                    <TableColumn fx:id="noteColoumn" minWidth="0.0" prefWidth="446.9999755859375" text="备注" />
                   </columns>
                 </TableView>
               </children>
@@ -75,6 +72,11 @@
         <TextField fx:id="itemName" layoutX="794.0" layoutY="189.0" />
         <TextField fx:id="itemMoney" layoutX="795.0" layoutY="254.0" />
         <TextField fx:id="itemNote" layoutX="794.0" layoutY="322.0" />
+            <Button fx:id="reviseB" layoutX="798.0" layoutY="547.0" mnemonicParsing="false" onAction="#revise" opacity="0.8" prefHeight="39.0" prefWidth="142.0" text=" 确    认">
+               <font>
+                  <Font name="Microsoft YaHei UI Light" size="14.0" fx:id="x21" />
+               </font>
+            </Button>
       </children>
     </AnchorPane>
   </children>
