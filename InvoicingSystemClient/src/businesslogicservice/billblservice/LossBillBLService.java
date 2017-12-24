@@ -18,4 +18,5 @@ public interface LossBillBLService {
 	public ArrayList<LossBillVO> findLossBillsByField(Date begin,Date end,String userName);
 	public ArrayList<LossBillVO> findLossBillsByState(int state);
 	public ArrayList<LossBillVO> findLossBillsByUser(long id);
+	public boolean fakeDelete(long id);
 }

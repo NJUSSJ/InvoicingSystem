@@ -65,4 +65,9 @@ public class ImportReturnBillController implements ImportReturnBillBLService{
 		return importReturnBillImpl.findImportReturnBillsByUser(userid);
 	}
 
+	@Override
+	public boolean fakeDelete(String id) {
+		return importReturnBillImpl.fakeDelete(id);
+	}
+
 }

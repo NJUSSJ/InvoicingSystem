@@ -74,6 +74,11 @@ public class SaleBillController implements SaleBillBLService{
 	public ArrayList<SaleBillVO> findSaleBillsByUser(long userid) {
 		return saleBillImpl.findSaleBillsByUser(userid);
 	}
+
+	@Override
+	public boolean fakeDelete(String id) {
+		return saleBillImpl.fakeDelete(id);
+	}
 	
 	
 

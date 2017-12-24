@@ -16,16 +16,16 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
   <children>
     <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="652.0" fitWidth="799.999977929685" layoutX="1.0" layoutY="-1.0">
       <image>
-        <Image url="@../../../../../InvoicingSystem/InvoicingSystemClient/resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
+        <Image url="@../../../resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
     <Label layoutX="676.0" layoutY="11.0" prefWidth="65.0" text="ID:XXX">
       <font>
-        <Font name="Microsoft YaHei UI Light" size="15.0" fx:id="x1" />
+        <Font size="15.0" fx:id="x1" />
       </font>
     </Label>
     <Label font="$x1" layoutX="743.0" layoutY="10.0" text="|| 登出" />
@@ -53,7 +53,7 @@
     <Label font="$x1" layoutX="18.0" layoutY="165.0" text="时间区间：" />
     <Button layoutX="691.0" layoutY="197.0" mnemonicParsing="false" opacity="0.7" prefHeight="27.0" prefWidth="90.0" text="确认筛选">
       <font>
-        <Font name="Microsoft JhengHei UI Light" size="14.0" />
+        <Font size="14.0" fx:id="x2" />
       </font>
     </Button>
     <Label font="$x1" layoutX="171.0" layoutY="167.0" text="年" />
@@ -71,10 +71,6 @@
     <Label font="$x1" layoutX="348.0" layoutY="162.0" text="~" />
     <Label font="$x1" layoutX="18.0" layoutY="197.0" text="操 作 员 ：" />
     <TextField layoutX="90.0" layoutY="195.0" />
-    <Button layoutX="691.0" layoutY="609.0" mnemonicParsing="false" opacity="0.7" prefHeight="27.0" prefWidth="90.0" text="返   回">
-      <font>
-        <Font name="Microsoft YaHei UI Light" size="14.0" />
-      </font>
-    </Button>
+    <Button font="$x2" layoutX="691.0" layoutY="609.0" mnemonicParsing="false" opacity="0.7" prefHeight="27.0" prefWidth="90.0" text="返   回" />
   </children>
 </AnchorPane>

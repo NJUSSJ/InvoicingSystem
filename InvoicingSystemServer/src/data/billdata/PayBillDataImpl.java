@@ -233,7 +233,7 @@ public class PayBillDataImpl implements PayBillDataService {
 
 	@Override
 	public ArrayList<PayBillPO> findPayBillbyUser(long userid) throws RemoteException {
-		String sql="select * from paybills where userid="+userid+"'";
+		String sql="select * from paybills where userid='"+userid+"'";
 		ArrayList<PayBillPO> results=new ArrayList<>();
 		try {
 			ResultSet result=DataFactory.statement.executeQuery(sql);

@@ -63,5 +63,10 @@ public class LossBillController implements LossBillBLService{
 	public ArrayList<LossBillVO> findLossBillsByUser(long id) {
 		return lossBillImpl.findLossBillsByUser(id);
 	}
+
+	@Override
+	public boolean fakeDelete(long id) {
+		return lossBillImpl.fakeDelete(id);
+	}
 	
 }

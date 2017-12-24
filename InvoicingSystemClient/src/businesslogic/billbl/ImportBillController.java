@@ -64,4 +64,9 @@ public class ImportBillController implements ImportBillBLService{
 		return importBillImpl.findImportBillsByUser(userid);
 	}
 
+	@Override
+	public boolean fakeDelete(String id) {
+		return importBillImpl.fakeDelete(id);
+	}
+
 }

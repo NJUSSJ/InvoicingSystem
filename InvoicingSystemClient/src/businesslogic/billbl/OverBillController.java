@@ -63,5 +63,8 @@ public class OverBillController implements OverBillBLService{
 	public ArrayList<OverBillVO> findOverBillsByUser(long id) {
 		return overBillImpl.findOverBillsByUser(id);
 	}
-
+	@Override
+	public boolean fakeDelete(long id){
+		return overBillImpl.fakeDelete(id);
+	}
 }

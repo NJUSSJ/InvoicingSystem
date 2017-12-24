@@ -8,6 +8,7 @@ import businesslogic.memberbl.MemberController;
 import po.ReceiveBillPO;
 import rmi.RemoteHelper;
 import vo.MemberVO;
+import vo.OverBillVO;
 import vo.ReceiveBillVO;
 
 public class ReceiveBill{
@@ -135,5 +136,15 @@ public class ReceiveBill{
 			e.printStackTrace();
 		}
 		return result;
+	}
+	public boolean fakeDelete(String id){
+		ReceiveBillVO vo=findReceiveBillByID(id);
+		vo.setState(3);
+		try {
+			return RemoteHelper.getInstance().getReceiveBillDataService().update(vo.toReceiveBillPO());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 }

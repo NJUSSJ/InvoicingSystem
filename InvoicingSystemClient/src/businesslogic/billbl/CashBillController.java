@@ -61,7 +61,12 @@ public class CashBillController implements CashBillBLService{
 
 	@Override
 	public CashBillVO findCashBillByID(String id) {
-		return null;
+		return cashBillImpl.findCashBillByID(id);
+	}
+
+	@Override
+	public boolean fakeDelete(String id) {
+		return cashBillImpl.fakeDelete(id);
 	}
 	
 

@@ -64,5 +64,10 @@ public class SaleReturnBillController implements SaleReturnBillBLService{
 	public ArrayList<SaleReturnBillVO> findSaleReturnBillsByUser(long userid) {
 		return saleReturnBillImpl.findSaleReturnBillsByUser(userid);
 	}
+
+	@Override
+	public boolean fakeDelete(String id) {
+		return saleReturnBillImpl.fakeDelete(id);
+	}
 	
 }

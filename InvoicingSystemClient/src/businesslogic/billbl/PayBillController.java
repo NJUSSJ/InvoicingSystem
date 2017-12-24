@@ -64,4 +64,9 @@ public class PayBillController implements PayBillBLService{
 		return payBillImpl.findPayBillsByUser(userid);
 	}
 
+	@Override
+	public boolean fakeDelete(String id) {
+		return payBillImpl.fakeDelete(id);
+	}
+
 }

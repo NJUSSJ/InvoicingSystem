@@ -10,6 +10,7 @@ import businesslogic.userbl.UserController;
 import businesslogic.utilitybl.Utility;
 import po.ImportReturnBillPO;
 import rmi.RemoteHelper;
+import vo.CashBillVO;
 import vo.CommodityVO;
 import vo.ImportReturnBillVO;
 import vo.MemberVO;
@@ -196,5 +197,15 @@ public class ImportReturnBill {
 			e.printStackTrace();
 		}
 		return result;
+	}
+	public boolean fakeDelete(String id){
+		ImportReturnBillVO vo=findImportReturnBillByID(id);
+		vo.setState(3);
+		try {
+			return RemoteHelper.getInstance().getImportReturnBillDataService().update(vo.toImportReturnBillPO());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 }

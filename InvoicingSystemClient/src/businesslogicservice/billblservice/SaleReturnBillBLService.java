@@ -18,4 +18,5 @@ public interface SaleReturnBillBLService {
 	public ArrayList<SaleReturnBillVO> findSaleReturnBillsByField(Date begin,Date end,String memberName,String userName);
 	public ArrayList<SaleReturnBillVO> findSaleReturnBillsByState(int state);
 	public ArrayList<SaleReturnBillVO> findSaleReturnBillsByUser(long userid);
+	public boolean fakeDelete(String id);
 }
