@@ -1,6 +1,7 @@
 package businesslogic.accountbl;
 
 import java.rmi.RemoteException;
+import java.sql.Date;
 import java.util.ArrayList;
 
 import po.AccountPO;
@@ -82,5 +83,17 @@ public class Account{
 			e.printStackTrace();
 		}
 		return temp;
+	}
+	
+	public boolean backUpDataBase(Date time) {
+		
+		try {
+		
+			 return RemoteHelper.getInstance().getAccountDataService().backUpDataBase(time);
+			
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 }

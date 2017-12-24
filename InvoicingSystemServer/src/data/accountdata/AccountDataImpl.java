@@ -175,7 +175,7 @@ public class AccountDataImpl implements AccountDataService {
 	}
 
 	@Override
-	public void backUpDataBase(Date time) throws RemoteException {
+	public boolean backUpDataBase(Date time) throws RemoteException {
 		ArrayList<CommodityPO> commodities=new CommodityDataImpl().findCommodities();
 		ArrayList<AccountPO> accounts=new AccountDataImpl().findAccounts();
 		ArrayList<MemberPO> members=new MemberDataImpl().findMembers();
@@ -235,6 +235,17 @@ public class AccountDataImpl implements AccountDataService {
 			memberList+=(Double.toString(shouldpay)+" ");
 		}
 		memberList=memberList.substring(0,memberList.length());
+		
+		String sql="inset into books (date,commodityList,memberList,accountList) values ('"+time+"','"+commodityList+"','"+memberList+"','"+accountList+"'";
+		
+		try {
+			if(DataFactory.statement.executeUpdate(sql)>0){
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 }

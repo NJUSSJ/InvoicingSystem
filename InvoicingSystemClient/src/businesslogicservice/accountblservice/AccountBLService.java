@@ -1,5 +1,6 @@
 package businesslogicservice.accountblservice;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 import po.AccountPO;
@@ -14,4 +15,5 @@ public interface AccountBLService {
 	public boolean updateAccount(AccountVO accountVO);
 	public AccountVO toAccountVO(AccountPO accountPO);
 	public ArrayList<AccountVO> findAccounts();
+	public boolean backUpDataBase(Date time);
 }
