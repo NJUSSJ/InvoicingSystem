@@ -65,8 +65,6 @@ public class ExamineViewController implements Initializable {
 	@FXML
 	private Label logout;
 	@FXML
-	private Label detail;
-	@FXML
 	private Button passB;
 	
 	@FXML

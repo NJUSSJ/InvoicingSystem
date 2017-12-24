@@ -8,11 +8,15 @@ import java.util.ResourceBundle;
 import MainApp.MainApp;
 import Utility.DateUtil;
 import businesslogic.billbl.LossBillController;
+import businesslogic.billbl.OverBillController;
 import businesslogicservice.billblservice.LossBillBLService;
+import businesslogicservice.billblservice.OverBillBLService;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import vo.LossBillVO;
 import vo.OverBillVO;
@@ -28,12 +32,14 @@ private Stage stage;
 	private Label sum;
 	@FXML
 	private Button confirm;
+	@FXML
+	private Button reviseB;
 	
-	
+	OverBillVO unpassbill=null;
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		
+		reviseB.setVisible(false);
 	}
 	
 	public void setStage(Stage stage) {
@@ -47,6 +53,28 @@ private Stage stage;
 	}
 	
 	@FXML
+	public void revise(){
+		Date today=new Date();
+		java.sql.Date sqlDate=DateUtil.toSQL(today);
+		OverBillVO overbill=new OverBillVO(unpassbill.getID(), MainApp.getID(),name.getText(), sqlDate, 0, Integer.parseInt(num.getText()), Double.parseDouble(sum.getText()));
+		OverBillBLService overbillservice=new OverBillController();
+		overbillservice.deleteOverBill(unpassbill);
+		boolean success=overbillservice.submitOverBill(overbill);
+		if(success) {
+			Alert Information=new Alert(AlertType.INFORMATION);
+			Information.setTitle("SUCCESS");
+			Information.setContentText("发送报溢单成功！");
+			Information.showAndWait();
+			stage.close();
+		}else {
+			Alert Information=new Alert(AlertType.INFORMATION);
+			Information.setTitle("FAILE");
+			Information.setContentText("发送报溢单失败！");
+			Information.showAndWait();
+		}
+		stage.close();
+	}
+	@FXML
 	public void confirm() {
 		/*
 		 * 存储报溢信息
@@ -57,9 +85,21 @@ private Stage stage;
 		idS=idS.replaceAll(":", "");
 		long id=Long.parseLong(idS);
 		java.sql.Date sqlDate=DateUtil.toSQL(today);
-		LossBillVO lossbill=new LossBillVO(id, MainApp.getID(),name.getText(), sqlDate, 0, Integer.parseInt(num.getText()), Double.parseDouble(sum.getText()));
-		LossBillBLService lossbillservice=new LossBillController();
-		lossbillservice.submitLossBill(lossbill);
+		OverBillVO overbill=new OverBillVO(id, MainApp.getID(),name.getText(), sqlDate, 0, Integer.parseInt(num.getText()), Double.parseDouble(sum.getText()));
+		OverBillBLService overbillservice=new OverBillController();
+		boolean success=overbillservice.submitOverBill(overbill);
+		if(success) {
+			Alert Information=new Alert(AlertType.INFORMATION);
+			Information.setTitle("SUCCESS");
+			Information.setContentText("发送报溢单成功！");
+			Information.showAndWait();
+			stage.close();
+		}else {
+			Alert Information=new Alert(AlertType.INFORMATION);
+			Information.setTitle("FAILE");
+			Information.setContentText("发送报溢单失败！");
+			Information.showAndWait();
+		}
 		stage.close();
 	}
 
@@ -73,6 +113,11 @@ private Stage stage;
 
 	public void setVO(OverBillVO m) {
 		// TODO Auto-generated method stub
-		
+		  unpassbill=m;
+		  name.setText(""+m.getCommodityName());
+		  num.setText(""+m.getNum());
+		  sum.setText(""+m.getSum());
+		  confirm.setVisible(false);
+		  reviseB.setVisible(true);
 	}
 }

@@ -80,6 +80,9 @@ public class PayBillViewController  implements Initializable{
 	private Button deleteB;
 	
 	@FXML
+	private Button reviseB;
+	
+	@FXML
 	private TextField itemName;
 	
 	@FXML
@@ -95,6 +98,8 @@ public class PayBillViewController  implements Initializable{
 	AccountLineItemData  alid;
 	
 	static int times=0;
+	
+	PayBillVO unpassbill=null;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
@@ -124,6 +129,8 @@ public class PayBillViewController  implements Initializable{
 		nameColoumn.setCellValueFactory(cellData ->cellData.getValue().getName());
 		amountColoumn.setCellValueFactory(cellData ->cellData.getValue().getMoney());
 		noteColoumn.setCellValueFactory(cellData ->cellData.getValue().getRemark());
+	
+		reviseB.setVisible(false);
 	}
 	@FXML
     public void add(){
@@ -223,6 +230,31 @@ public class PayBillViewController  implements Initializable{
 		}
 	}
 	@FXML
+	public void revise(){
+		 MemberVO tmpMember=new MemberController().findMemberByName(account.getText());
+		 if(tmpMember==null) {
+			 Alert warning=new Alert(AlertType.WARNING);
+				warning.setContentText("Member Does Not Exist!");
+				warning.showAndWait();
+				return ;
+		 }
+		 
+		 PayBillBLService pbs=new PayBillController();
+		 pbs.deletePayBill(unpassbill);
+		 PayBillVO receivebill=new PayBillVO(billid.getText() ,MainApp.getID(),tmpMember.getID(),aclist,aclist.getSum(),time,0);
+		 String isSubmit="fail Submit";
+		 if(pbs.submitPayBill(receivebill)){
+			 isSubmit="Succeed Sumbit";
+		 }
+		 Alert alert = new Alert(AlertType.INFORMATION);
+	        alert.initOwner(MainApp.getPrimaryStage());
+	        alert.setTitle("Information");
+	        alert.setHeaderText("Submit");
+	        alert.setContentText(isSubmit);
+	        alert.showAndWait();
+	}
+	
+	@FXML
  public void rightSet(){
 		/*
 		 * judge member
@@ -285,8 +317,22 @@ public class PayBillViewController  implements Initializable{
 	   deleteB.setVisible(false);
 	}
 	public void setVO(PayBillVO m) {
+		unpassbill=m;
 		// TODO Auto-generated method stub
-		
+		id.setText(""+MainApp.getID());
+		billid.setText(m.getID());
+		account.setText(""+m.getMemberID());
+		operator.setText(""+m.getUserID());
+		totalsum.setText(""+m.getSum());
+	    AccountList items=m.getAccountList();
+	    for(int i=0;i<items.getListLength();i++){
+		   AccountLineItemData a=new AccountLineItemData(items.getItem(i));
+		   payData.add(a);
+	   }
+	   payTable.setItems(payData);
+	   rightB.setVisible(false);
+	   returnB.setVisible(false);
+	   reviseB.setVisible(true);
 	}
 
 	

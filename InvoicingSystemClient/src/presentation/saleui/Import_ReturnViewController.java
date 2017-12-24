@@ -30,7 +30,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.control.Alert.AlertType;
 import vo.CommodityVO;
-import vo.ImportBillVO;
 import vo.ImportReturnBillVO;
 import vo.MemberVO;
 
@@ -40,6 +39,8 @@ public class Import_ReturnViewController implements Initializable {
 	Stage stage;
 	@FXML
 	private Button logout;
+	@FXML
+	private Button reviseB;
 	@FXML
 	private Button search;
 	
@@ -114,7 +115,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	CommodityBLService cbs=new CommodityController();
 	MemberBLService mbs=new MemberController();
 	ImportReturnBillBLService irbbs=new ImportReturnBillController();
-	
+	ImportReturnBillVO unpassbill=null;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
@@ -148,6 +149,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		modelColumn.setCellValueFactory(cellData ->cellData.getValue().getModel());
 		moneyColumn.setCellValueFactory(cellData ->cellData.getValue().getImportPrice());
 		altogether.setText("0");
+		reviseB.setVisible(false);
 	}
 
 	
@@ -216,6 +218,28 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		MainApp.showSaleMainUI();
 	}
 	@FXML
+	public void revise(){
+		memberl=mbs.findMemberByName(member.getText());
+		if(memberl==null) {
+			Alert warning=new Alert(AlertType.WARNING);
+			warning.setContentText("供应商不存在");
+			warning.showAndWait();
+			return ;
+		}
+		ImportReturnBillVO importReturnBill=new ImportReturnBillVO(billid.getText(),MainApp.getID(),memberl.getID(),comlist,comlist.getImportTotal(),0,time,note.getText());
+		 String isSubmit="fail Submit";
+		 irbbs.deleteImportReturnBill(unpassbill);
+		 if(irbbs.submitImportReturnBill(importReturnBill)){
+			 isSubmit="Succeed Submit";
+		 }
+	     Alert alert = new Alert(AlertType.INFORMATION);
+		        alert.initOwner(MainApp.getPrimaryStage());
+		        alert.setTitle("Information");
+		        alert.setHeaderText("Submit");
+		        alert.setContentText(isSubmit);
+		        alert.showAndWait();
+	}
+	@FXML
 	public void setBill(){
 		memberl=mbs.findMemberByName(member.getText());
 		ImportReturnBillVO importReturnBill=new ImportReturnBillVO(billid.getText(),MainApp.getID(),memberl.getID(),comlist,comlist.getImportTotal(),0,time,note.getText());
@@ -263,6 +287,22 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 
 	public void setVO(ImportReturnBillVO m) {
 		// TODO Auto-generated method stub
+		unpassbill=m;
+		billid.setText(m.getID());
+		id.setText("ID:"+MainApp.getID());
+		memberl=mbs.findMemberByID(m.getMemberID());
+		operator.setText(""+m.getUserID());
+		altogether.setText(""+m.getSum());
+		member.setText(memberl.getName());
+		comlist=m.getList();
+		note.setText(m.getRemark());
+		for(int i=0;i<comlist.getListSize();i++){
+			commodityData.add(new CommodityItemData(comlist.get(i)));
+		}
+			commodityTable.setItems(commodityData);
+			rightB.setVisible(false);
+			 returnB.setVisible(false);
+		    reviseB.setVisible(true);
 		
 	}
 }

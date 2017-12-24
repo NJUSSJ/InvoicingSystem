@@ -55,9 +55,6 @@ public class WarningBillViewController implements Initializable{
 		}
 		cashTable.setItems(cashData);
 	}
-	public void setVO(WarningBillVO m) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 	
 }

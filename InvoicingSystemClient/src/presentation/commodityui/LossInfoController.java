@@ -30,12 +30,14 @@ public class LossInfoController implements Initializable{
 	private Label sum;
 	@FXML
 	private Button confirm;
+	@FXML
+	private Button reviseB;
 	
-	
+	LossBillVO unpassbill=null;
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		
+		reviseB.setVisible(false);
 	}
 	
 	public void setStage(Stage stage) {
@@ -48,6 +50,30 @@ public class LossInfoController implements Initializable{
 		this.sum.setText(sum+"");
 	}
 	
+	@FXML
+	public void revise(){
+		Date today=new Date();
+		java.sql.Date sqlDate=DateUtil.toSQL(today);
+		int lossNum=Integer.parseInt(num.getText());
+		double lossSum=Double.parseDouble(sum.getText());
+		LossBillVO lossbill=new LossBillVO(unpassbill.getID(), MainApp.getID(), name.getText(), sqlDate, 0, lossNum, lossSum);
+		LossBillBLService lossbillservice=new LossBillController();
+		lossbillservice.deleteLossBill(unpassbill);
+		boolean success=lossbillservice.submitLossBill(lossbill);
+		if(success) {
+			Alert Information=new Alert(AlertType.INFORMATION);
+			Information.setTitle("SUCCESS");
+			Information.setContentText("发送报损单成功！");
+			Information.showAndWait();
+			stage.close();
+		}else {
+			Alert Information=new Alert(AlertType.INFORMATION);
+			Information.setTitle("FAILE");
+			Information.setContentText("发送报损单失败！");
+			Information.showAndWait();
+		}
+		stage.close();
+	}
 	@FXML
 	public void confirm() {
 		/*
@@ -89,7 +115,12 @@ public class LossInfoController implements Initializable{
 
 	public void setVO(LossBillVO m) {
 		// TODO Auto-generated method stub
-		
+		    unpassbill=m;
+		    name.setText(m.getCommodityName());;
+		    num.setText(""+m.getNum());
+			sum.setText(""+m.getSum());
+		    confirm.setVisible(false);
+		    reviseB.setVisible(true);
 	}
 
 }
