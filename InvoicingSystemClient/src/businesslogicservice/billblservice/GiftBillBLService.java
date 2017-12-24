@@ -18,4 +18,5 @@ public interface GiftBillBLService {
 	public ArrayList<GiftBillVO> findGiftBillsByState(int state);
 	public ArrayList<GiftBillVO> findGiftBillsByUser(long userid);
 	public GiftBillVO findGiftBillByID(long id);
+	public boolean fakeDelete(long id);
 }

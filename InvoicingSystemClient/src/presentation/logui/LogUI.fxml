@@ -16,9 +16,9 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
   <children>
-    <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="652.0" fitWidth="799.999977929685" layoutX="1.0" layoutY="-1.0">
+    <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="600.0" fitWidth="999.0" layoutX="1.0" layoutY="-1.0">
       <image>
         <Image url="@../../../resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
       </image>
@@ -29,17 +29,17 @@
       </font>
     </Label>
     <Label font="$x1" layoutX="743.0" layoutY="10.0" text="|| 登出" />
-    <Separator prefHeight="1.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="145.0" />
-    <Label layoutX="14.0" layoutY="61.0" text="日志查看">
+    <Separator prefHeight="5.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="116.0" />
+    <Label layoutX="14.0" layoutY="25.0" text="日志查看">
       <font>
         <Font size="65.0" />
       </font>
     </Label>
-    <ScrollPane layoutY="232.0" opacity="0.7" prefHeight="367.0" prefWidth="800.0">
+    <ScrollPane layoutX="0.0" layoutY="206.0" opacity="0.7" prefHeight="393.0" prefWidth="800.0000999999975">
       <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="374.0" prefWidth="903.0">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="518.0" prefWidth="889.0">
           <children>
-            <TableView prefHeight="374.0" prefWidth="903.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <TableView prefHeight="514.0" prefWidth="890.0" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columns>
                 <TableColumn prefWidth="201.59998202323914" text="时间" />
                 <TableColumn prefWidth="123.20002746582031" text="操作员" />
@@ -50,27 +50,27 @@
         </AnchorPane>
       </content>
     </ScrollPane>
-    <Label font="$x1" layoutX="18.0" layoutY="165.0" text="时间区间：" />
-    <Button layoutX="691.0" layoutY="197.0" mnemonicParsing="false" opacity="0.7" prefHeight="27.0" prefWidth="90.0" text="确认筛选">
+    <Label font="$x1" layoutX="18.0" layoutY="134.0" text="时间区间：" />
+    <Button layoutX="691.0" layoutY="173.0" mnemonicParsing="false" opacity="0.7" prefHeight="27.0" prefWidth="90.0" text="确认筛选">
       <font>
         <Font size="14.0" fx:id="x2" />
       </font>
     </Button>
-    <Label font="$x1" layoutX="171.0" layoutY="167.0" text="年" />
-    <ChoiceBox layoutX="89.0" layoutY="164.0" prefHeight="23.0" prefWidth="75.0" />
-    <ChoiceBox layoutX="189.0" layoutY="164.0" prefHeight="23.0" prefWidth="50.0" />
-    <Label font="$x1" layoutX="248.0" layoutY="167.0" text="月" />
-    <ChoiceBox layoutX="266.0" layoutY="164.0" prefHeight="23.0" prefWidth="50.0" />
-    <Label font="$x1" layoutX="325.0" layoutY="168.0" text="日" />
-    <ChoiceBox layoutX="373.0" layoutY="164.0" prefHeight="23.0" prefWidth="75.0" />
-    <ChoiceBox layoutX="475.0" layoutY="164.0" prefHeight="23.0" prefWidth="50.0" />
-    <ChoiceBox layoutX="553.0" layoutY="164.0" prefHeight="23.0" prefWidth="50.0" />
-    <Label font="$x1" layoutX="457.0" layoutY="167.0" text="年" />
-    <Label font="$x1" layoutX="535.0" layoutY="167.0" text="月" />
-    <Label font="$x1" layoutX="613.0" layoutY="167.0" text="日" />
-    <Label font="$x1" layoutX="348.0" layoutY="162.0" text="~" />
-    <Label font="$x1" layoutX="18.0" layoutY="197.0" text="操 作 员 ：" />
-    <TextField layoutX="90.0" layoutY="195.0" />
-    <Button font="$x2" layoutX="691.0" layoutY="609.0" mnemonicParsing="false" opacity="0.7" prefHeight="27.0" prefWidth="90.0" text="返   回" />
+    <Label font="$x1" layoutX="171.0" layoutY="136.0" text="年" />
+    <ChoiceBox layoutX="89.0" layoutY="133.0" prefHeight="23.0" prefWidth="75.0" />
+    <ChoiceBox layoutX="189.0" layoutY="133.0" prefHeight="23.0" prefWidth="50.0" />
+    <Label font="$x1" layoutX="248.0" layoutY="136.0" text="月" />
+    <ChoiceBox layoutX="266.0" layoutY="133.0" prefHeight="23.0" prefWidth="50.0" />
+    <Label font="$x1" layoutX="325.0" layoutY="137.0" text="日" />
+    <ChoiceBox layoutX="373.0" layoutY="133.0" prefHeight="23.0" prefWidth="75.0" />
+    <ChoiceBox layoutX="475.0" layoutY="133.0" prefHeight="23.0" prefWidth="50.0" />
+    <ChoiceBox layoutX="553.0" layoutY="133.0" prefHeight="23.0" prefWidth="50.0" />
+    <Label font="$x1" layoutX="457.0" layoutY="136.0" text="年" />
+    <Label font="$x1" layoutX="535.0" layoutY="136.0" text="月" />
+    <Label font="$x1" layoutX="613.0" layoutY="136.0" text="日" />
+    <Label font="$x1" layoutX="348.0" layoutY="131.0" text="~" />
+    <Label font="$x1" layoutX="18.0" layoutY="179.0" text="操 作 员 ：" />
+    <TextField layoutX="90.0" layoutY="177.0" />
+    <Button font="$x2" layoutX="859.0" layoutY="350.0" mnemonicParsing="false" opacity="0.7" prefHeight="27.0" prefWidth="90.0" text="返   回" />
   </children>
 </AnchorPane>

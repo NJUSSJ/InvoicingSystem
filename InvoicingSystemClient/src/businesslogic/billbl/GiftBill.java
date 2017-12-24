@@ -128,5 +128,23 @@ public class GiftBill {
 		}
 		return result;
 	}
+	public GiftBillVO findGiftBillByID(long id){
+		try {
+			return toGiftBillVO(RemoteHelper.getInstance().getGiftBillDataService().findGiftBillbyID(id));
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public boolean fakeDelete(long id){
+		GiftBillVO vo=findGiftBillByID(id);
+		vo.setState(3);
+		try {
+			return RemoteHelper.getInstance().getGiftBillDataService().update(vo.toGiftBillPO());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 
 }

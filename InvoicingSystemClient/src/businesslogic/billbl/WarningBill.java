@@ -104,4 +104,14 @@ public class WarningBill{
 		}
 		return result;
 	}
+	public boolean fakeDelete(long id){
+		WarningBillVO vo=findWarningBillByID(id);
+		vo.setState(3);
+		try {
+			return RemoteHelper.getInstance().getWarningBillDataService().update(vo.toWarningBillPO());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 }
