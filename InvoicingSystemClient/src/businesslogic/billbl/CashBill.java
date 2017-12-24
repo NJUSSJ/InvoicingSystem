@@ -24,6 +24,7 @@ public class CashBill{
 	}
 	public boolean submitCashBill(CashBillVO cashBill) {
 		try {
+			
 			return RemoteHelper.getInstance().getCashBillDataService().insert(cashBill.toCashBillPO());
 		} catch (RemoteException e) {
 			e.printStackTrace();
