@@ -187,7 +187,6 @@ public class CommodityDataImpl implements CommodityDataService{
 	@Override
 	public ArrayList<CommodityPO> findCommoditiesbyParent(long parentid) throws RemoteException {
 		String sql="select * from commodities where parentid='"+parentid+"'";
-		
 		ArrayList<CommodityPO> results=new ArrayList<>();
 		
 		try {
@@ -201,11 +200,12 @@ public class CommodityDataImpl implements CommodityDataService{
 				double lateimportprice=result.getDouble("lateimportprice");
 				double latesaleprice=result.getDouble("latesaleprice");
 				long id=result.getLong("id");
-				int limit=result.getInt("`limit`");
+				int limit=result.getInt("limit");
 				
 				CommodityPO tmpPO=new CommodityPO(name, id, model, stocknum, importprice, saleprice, lateimportprice, latesaleprice, parentid,limit);
 				results.add(tmpPO);
 			}
+			return results;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

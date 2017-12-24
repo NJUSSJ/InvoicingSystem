@@ -4,13 +4,8 @@ import java.rmi.RemoteException;
 import java.sql.Date;
 import java.util.ArrayList;
 
-import businesslogicservice.billblservice.WarningBillBLService;
-import po.PayBillPO;
-import po.ReceiveBillPO;
 import po.WarningBillPO;
 import rmi.RemoteHelper;
-import vo.PayBillVO;
-import vo.ReceiveBillVO;
 import vo.WarningBillVO;
 
 public class WarningBill{

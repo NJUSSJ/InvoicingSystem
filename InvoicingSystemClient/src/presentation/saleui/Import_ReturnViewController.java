@@ -128,7 +128,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		ArrayList<ImportReturnBillVO> tmpList=new ImportReturnBillController().findImportReturnBillByTime(time);
 		times=tmpList.size()+1;
 		
-		billid.setText("JHD-"+str+"-"+df.format(times));
+		billid.setText("JHTHD-"+str+"-"+df.format(times));
 		/*
 		 * set id
 		 */

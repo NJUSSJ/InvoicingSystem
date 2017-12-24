@@ -2,7 +2,6 @@ package vo;
 
 import java.sql.Date;
 
-import businesslogic.billbl.CommodityList;
 import po.OverBillPO;
 
 /**

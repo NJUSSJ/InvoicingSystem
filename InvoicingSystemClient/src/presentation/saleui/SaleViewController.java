@@ -4,6 +4,7 @@ import java.net.URL;
 import java.sql.Date;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import MainApp.MainApp;
@@ -20,6 +21,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -27,7 +29,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.scene.control.Alert.AlertType;
 import vo.CommodityVO;
 import vo.MemberVO;
 import vo.SaleBillVO;
@@ -131,8 +132,22 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
 		String str=sdf.format(time);
 		DecimalFormat df=new DecimalFormat("#####");
+		
+		ArrayList<SaleBillVO> tmpList=new SaleBillController().findSaleBillByTime(time);
+		times=tmpList.size()+1;
+		
+		
 		billid.setText("XSD-"+str+"-"+df.format(times));
-		id.setText("ID:"+MainApp.getID());
+		/*
+		 * set id
+		 */
+		long idLong=MainApp.getID();
+		String idString=idLong+"";
+		while(idString.length()<5) {
+			idString="0"+idString;
+		}
+		id.setText("ID:"+idString);
+		
 		operator.setText(MainApp.getName());
 		commodityTable.getSelectionModel().selectedItemProperty().addListener(
 	            (observable, oldValue, newValue) -> getInf(newValue));
@@ -193,22 +208,28 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
                 alert.showAndWait();
 		}else{
 			lastprice.setText(""+a.getSalePrice());
-			num.setText(0+"");
 		}
 	}
 	@FXML
 	public void confirm(){
 		memberl=mbs.findMemberByName(member.getText());
+		
+		if(memberl==null) {
+			Alert warning =new Alert(AlertType.WARNING);
+			warning.setContentText("该客户不存在！");
+			warning .showAndWait();
+			return ;
+		}
 		itemdata=new CommodityItemData(0,a,Integer.parseInt(num.getText()),Double.parseDouble(lastprice.getText()),notea.getText());
 	    item=new CommodityLineItem(Integer.parseInt(num.getText()),a.getID(),Double.parseDouble(lastprice.getText()),a.getImportPrice(),notea.getText());
 	    comlist.addCommodity(item);
 		commodityData.add(itemdata);
-	    commodityTable.setItems(commodityData);
+	  
 	    discountbefore.setText(""+comlist.getSaleTotal());
-	    double discountl=1.0-(sbbs.handleSale(memberl.getRank(), comlist)/comlist.getSaleTotal());
-        discount.setText(""+discountl);
+	    double discountl=(sbbs.handleSale(memberl.getRank(), comlist)/comlist.getSaleTotal());
+        discount.setText("%"+discountl*100);
         double finalsale=sbbs.handleSale(memberl.getRank(), comlist)-Double.parseDouble(coupon.getText());
-       discountafter.setText(""+finalsale);
+        discountafter.setText(""+finalsale);
 	}
 	@FXML
 	public void logout(){

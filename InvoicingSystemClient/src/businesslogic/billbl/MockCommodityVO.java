@@ -1,7 +1,5 @@
 package businesslogic.billbl;
 
-import java.sql.Time;
-
 import vo.CommodityVO;
 
 public class MockCommodityVO extends CommodityVO {

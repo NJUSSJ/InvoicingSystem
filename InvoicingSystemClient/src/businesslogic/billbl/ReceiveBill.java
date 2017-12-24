@@ -5,14 +5,9 @@ import java.sql.Date;
 import java.util.ArrayList;
 
 import businesslogic.memberbl.MemberController;
-import po.CashBillPO;
-import po.OverBillPO;
 import po.ReceiveBillPO;
 import rmi.RemoteHelper;
-import vo.CashBillVO;
-import vo.ImportBillVO;
 import vo.MemberVO;
-import vo.OverBillVO;
 import vo.ReceiveBillVO;
 
 public class ReceiveBill{

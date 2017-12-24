@@ -2,7 +2,6 @@
 
 import java.rmi.RemoteException;
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import businesslogic.commoditybl.CommodityController;
@@ -10,19 +9,14 @@ import businesslogic.memberbl.MemberController;
 import businesslogic.promotionbl.PromotionController;
 import businesslogic.userbl.UserController;
 import businesslogic.utilitybl.Utility;
-import po.CashBillPO;
-import po.MemberPromotionPO;
-import po.ReceiveBillPO;
 import po.SaleBillPO;
 import rmi.RemoteHelper;
-import vo.CashBillVO;
 import vo.CommodityVO;
 import vo.GiftBillVO;
 import vo.MemberPromotionVO;
 import vo.MemberVO;
 import vo.PackagePromotionVO;
 import vo.PricePromotionVO;
-import vo.ReceiveBillVO;
 import vo.SaleBillVO;
 import vo.UserVO;
 import vo.WarningBillVO;
@@ -203,8 +197,11 @@ public class SaleBill{
 			}
 		}
 		//第二步：分析总价降价
-		ArrayList<MemberPromotionVO> memberPromotions=pcon.findMemberPromotions();
 		double min=origin;
+		ArrayList<MemberPromotionVO> memberPromotions=pcon.findMemberPromotions();
+		if(memberPromotions==null) {
+			return min;
+		}
 		for(MemberPromotionVO m:memberPromotions){
 			if(rank<m.getRank()){
 				continue;
