@@ -23,11 +23,11 @@ public class SaleBillDataImpl implements SaleBillDataService{
 	 */
 	@Override
 	public boolean insert(SaleBillPO po) throws RemoteException {
-		String sql="insert into salebills (id,userid,memberid,commoditylist,sum,time,state,num,remark,coupon,discount,ultimate£¬money)"
+		String sql="insert into salebills (id,userid,memberid,commoditylist,sum,time,state,num,remark,coupon,discount,ultimate)"
 				+ " values "
 				+ "('"+po.getID()+"','"+po.getUserID()+"','"+po.getMemberID()+"','"+po.getCommodityList()+"','"+po.getSum()
 				+"','"+po.getTime()+"','"+po.getState()+"','"+po.getSum()+"','"+po.getNum()+"','"+po.getRemark()+"','"+po.getCoupon()+
-				"','"+po.getDiscount()+"','"+po.getUltimate()+"','"+po.getMoney()+"')";
+				"','"+po.getDiscount()+"','"+po.getUltimate()+"')";
 		
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {
@@ -94,9 +94,9 @@ public class SaleBillDataImpl implements SaleBillDataService{
 				int coupon=result.getInt("coupon");
 				double discount=result.getDouble("discount");
 				double ultimate=result.getDouble("ultimate");
-				int money=result.getInt("money");
 				
-				SaleBillPO tmpPO=new SaleBillPO(id, userid, memberid, commoditylist, sum, state, time, num, remark, coupon, discount, ultimate,money);
+				
+				SaleBillPO tmpPO=new SaleBillPO(id, userid, memberid, commoditylist, sum, state, time, num, remark, coupon, discount, ultimate);
 				
 				return tmpPO;
 			}
@@ -130,9 +130,9 @@ public class SaleBillDataImpl implements SaleBillDataService{
 				int coupon=result.getInt("coupon");
 				double discount=result.getDouble("discount");
 				double ultimate=result.getDouble("ultimate");
-				int money=result.getInt("money");
 				
-				SaleBillPO tmpPO=new SaleBillPO(id, userid, memberid, commoditylist, sum, state, time, num, remark, coupon, discount, ultimate,money);				
+				
+				SaleBillPO tmpPO=new SaleBillPO(id, userid, memberid, commoditylist, sum, state, time, num, remark, coupon, discount, ultimate);				
 				results.add(tmpPO);
 			}
 			return results;
@@ -165,9 +165,9 @@ public class SaleBillDataImpl implements SaleBillDataService{
 				int coupon=result.getInt("coupon");
 				double discount=result.getDouble("discount");
 				double ultimate=result.getDouble("ultimate");
-				int money=result.getInt("money");
 				
-				SaleBillPO tmpPO=new SaleBillPO(id, userid, memberid, commoditylist, sum, state, time, num, remark, coupon, discount, ultimate,money);				results.add(tmpPO);
+				
+				SaleBillPO tmpPO=new SaleBillPO(id, userid, memberid, commoditylist, sum, state, time, num, remark, coupon, discount, ultimate);				results.add(tmpPO);
 			}
 			return results;
 		} catch (SQLException e) {
@@ -201,7 +201,7 @@ public class SaleBillDataImpl implements SaleBillDataService{
 				double discount=result.getDouble("discount");
 				double ultimate=result.getDouble("ultimate");
 				int money=result.getInt("money");
-				SaleBillPO tmpPO=new SaleBillPO(id, userid, memberid, commoditylist, sum, state, time, num, remark, coupon, discount, ultimate,money);
+				SaleBillPO tmpPO=new SaleBillPO(id, userid, memberid, commoditylist, sum, state, time, num, remark, coupon, discount, ultimate);
 				results.add(tmpPO);
 			}
 			return results;
@@ -235,9 +235,8 @@ public class SaleBillDataImpl implements SaleBillDataService{
 				int coupon=result.getInt("coupon");
 				double discount=result.getDouble("discount");
 				double ultimate=result.getDouble("ultimate");
-				int money=result.getInt("money");
 				
-				SaleBillPO tmpPO=new SaleBillPO(id, userid, memberid, commoditylist, sum, state, time, num, remark, coupon, discount, ultimate,money);				if(state==1)
+				SaleBillPO tmpPO=new SaleBillPO(id, userid, memberid, commoditylist, sum, state, time, num, remark, coupon, discount, ultimate);				if(state==1)
 				results.add(tmpPO);
 			}
 			return results;
@@ -267,9 +266,9 @@ public class SaleBillDataImpl implements SaleBillDataService{
 				int coupon=result.getInt("coupon");
 				double discount=result.getDouble("discount");
 				double ultimate=result.getDouble("ultimate");
-				int money=result.getInt("money");
+				
 				long memberid=result.getLong("memberid");
-				SaleBillPO tmpPO=new SaleBillPO(id, userid, memberid, commoditylist, sum, state, time, num, remark, coupon, discount, ultimate,money);				if(state==1)
+				SaleBillPO tmpPO=new SaleBillPO(id, userid, memberid, commoditylist, sum, state, time, num, remark, coupon, discount, ultimate);				if(state==1)
 				results.add(tmpPO);
 			}
 			return results;

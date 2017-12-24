@@ -148,6 +148,8 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		}
 		id.setText("ID:"+idString);
 		
+		
+		commodityTable.setItems(commodityData);
 		operator.setText(MainApp.getName());
 		commodityTable.getSelectionModel().selectedItemProperty().addListener(
 	            (observable, oldValue, newValue) -> getInf(newValue));
@@ -228,7 +230,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	    discountbefore.setText(""+comlist.getSaleTotal());
 	    double discountl=(sbbs.handleSale(memberl.getRank(), comlist)/comlist.getSaleTotal());
         discount.setText("%"+discountl*100);
-        double finalsale=sbbs.handleSale(memberl.getRank(), comlist)-Double.parseDouble(coupon.getText());
+        double finalsale=sbbs.handleSale(memberl.getRank(), comlist);
         discountafter.setText(""+finalsale);
 	}
 	@FXML
@@ -250,7 +252,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 			return ;
 		}
 		SaleBillVO salebill=new SaleBillVO(billid.getText(),Long.parseLong(id.getText()),memberl.getID(),comlist,
-				comlist.getSaleTotal(),0,time,note.getText(),Integer.parseInt(coupon.getText()),Double.parseDouble(discount.getText()),Double.parseDouble(discountafter.getText()),Double.parseDouble(haspay.getText()));
+				comlist.getSaleTotal(),0,time,note.getText(),Integer.parseInt(coupon.getText()),Double.parseDouble(discount.getText()),Double.parseDouble(discountafter.getText()));
 			String isSubmit="fail Submit";
 			sbbs.deleteSaleBill(unpassbill);
 			 if(sbbs.submitSaleBill(salebill)){
@@ -266,12 +268,22 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	}
 	@FXML
 	public void setBill(){
+
 		memberl=mbs.findMemberByName(member.getText());
 		SaleBillVO salebill=new SaleBillVO(billid.getText(),Long.parseLong(id.getText()),memberl.getID(),comlist,
-			comlist.getSaleTotal(),0,time,note.getText(),Integer.parseInt(coupon.getText()),Double.parseDouble(discount.getText()),Double.parseDouble(discountafter.getText()),Double.parseDouble(haspay.getText()));
+			comlist.getSaleTotal(),0,time,note.getText(),Integer.parseInt(coupon.getText()),Double.parseDouble(discount.getText()),Double.parseDouble(discountafter.getText()));
+
 		String isSubmit="fail Submit";
 		 if(sbbs.submitSaleBill(salebill)){
-			 times++;
+			 	SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
+				String str=sdf.format(time);
+				DecimalFormat df=new DecimalFormat("#####");
+				
+				ArrayList<SaleBillVO> tmpList=new SaleBillController().findSaleBillByTime(time);
+				times=tmpList.size()+1;
+				
+				
+				billid.setText("XSD-"+str+"-"+df.format(times));
 			 isSubmit="Succeed Submit";
 		 }
 	     Alert alert = new Alert(AlertType.INFORMATION);
@@ -299,7 +311,6 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		discountafter.setText(""+m.getUltimate());
 		discount.setText(""+m.getDiscount());
 		coupon.setText(""+m.getCoupon());
-		haspay.setText(""+m.getMoney());
 		member.setText(memberl.getName());
 		comlist=m.getList();
 		for(int i=0;i<comlist.getListSize();i++){
@@ -325,7 +336,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		discountafter.setText(""+m.getUltimate());
 		discount.setText(""+m.getDiscount());
 		coupon.setText(""+m.getCoupon());
-		haspay.setText(""+m.getMoney());
+		
 		member.setText(memberl.getName());
 		comlist=m.getList();
 		for(int i=0;i<comlist.getListSize();i++){
