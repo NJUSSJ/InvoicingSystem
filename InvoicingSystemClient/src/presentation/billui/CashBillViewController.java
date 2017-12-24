@@ -93,6 +93,8 @@ public class CashBillViewController  implements Initializable {
 	private double totalSum=0;
 	
 	static int times=0;
+	
+	CashBillVO unpassbill=null;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
@@ -311,23 +313,9 @@ public class CashBillViewController  implements Initializable {
 		 if(ifAccountExisted) {
 			 	CashBillVO cashbill=new CashBillVO(billid.getText(), MainApp.getID(),Long.parseLong(account.getText()) , items, time, 0);
 			 	String isSubmit="fail Submit";
+			 	pbs.deleteCashBill(unpassbill);
 			 	if(pbs.submitCashBill(cashbill)){
-			 		//√ªÃ÷¬€∫√
 			 		isSubmit="Succeed Submit";
-			 		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
-			 		String str=sdf.format(time);
-			 		DecimalFormat df=new DecimalFormat("#####");
-			 		
-			 		ArrayList<CashBillVO> tmpList=new CashBillController().findCashBillByTime(time);
-					times=tmpList.size()+1;
-					if(times>99999) {
-						Alert warning=new Alert(AlertType.WARNING);
-						warning.setContentText("No more than 99999 cashbills a day!");
-						warning.showAndWait();
-					}
-			 		billid.setText("FKD-"+str+"-"+df.format(times));
-			 		cashData.clear();
-			 		account.setText("");
 			 		}
 		 		Alert alert = new Alert(AlertType.INFORMATION);
 		        alert.initOwner(MainApp.getPrimaryStage());
@@ -344,6 +332,7 @@ public class CashBillViewController  implements Initializable {
 	}
 	public void setVO(CashBillVO m) {
 		// TODO Auto-generated method stub
+		unpassbill=m;
 		id.setText(""+MainApp.getID());
 		billid.setText(m.getID());
 		account.setText(""+m.getAccountID());

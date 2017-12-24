@@ -51,7 +51,7 @@ public class CommodityViewController implements Initializable{
 	private TextField search;
 	
 	Stage stage;
-	
+	int style=0;
 	//long parentid;
 	
 	private ObservableList<CommodityData> commodityData =FXCollections.observableArrayList();
@@ -175,11 +175,18 @@ public class CommodityViewController implements Initializable{
 	@FXML
 	public void logout(){
 		MainApp.cancelUser();
+		stage.close();
 		MainApp.showLoginUI();
 	}
 	@FXML
 	public void showStockMain(){
-		MainApp.showStockMainUI();
+		if(style==1) {
+			stage.close();
+		}
+		else {
+			MainApp.showStockMainUI();
+		}
+		
 	}
 	@FXML
 	public void search(){
@@ -235,6 +242,7 @@ public class CommodityViewController implements Initializable{
 	}
 	public void setStage(Stage commodityStage) {
 		stage=commodityStage;
+		this.style=1;
 	}
 	public void setCommoditys(ArrayList<CommodityVO> colist) {
 		commodityData.clear();

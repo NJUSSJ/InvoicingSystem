@@ -29,10 +29,13 @@ public class MemberPromotion {
 		return false;
 	}
 	public ArrayList<MemberPromotionVO> findMemberPromotions(){
-		ArrayList<MemberPromotionVO> temp = null;
+		ArrayList<MemberPromotionVO> temp = new ArrayList<>();
 		try {
 			temp=new ArrayList<MemberPromotionVO>();
 			ArrayList<MemberPromotionPO> mp=RemoteHelper.getInstance().getMemberPromotionDataService().findMemberPromotions();
+			if(mp==null||mp.isEmpty()) {
+				return temp;
+			}
 			for(int i=0;i<mp.size();i++){
 				temp.add(toMemberPromotionVO(mp.get(i)));
 			}

@@ -4,10 +4,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import businesslogic.billbl.CommodityList;
+import businesslogic.memberbl.MemberController;
+import businesslogicservice.memberblservice.MemberBLService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -22,6 +25,8 @@ public class GiftBillViewController  implements Initializable{
 	@FXML
 	private Label memberid;
 	Stage stage;
+	GiftBillVO unpassbill=null;
+	MemberBLService mbs=new MemberController();
  private ObservableList<CommodityItemData> cashData =FXCollections.observableArrayList();
 		
 		@FXML
@@ -40,7 +45,6 @@ public class GiftBillViewController  implements Initializable{
 		nameColoumn.setCellValueFactory(cellData ->cellData.getValue().getNameProperty());
 		numColoumn.setCellValueFactory(cellData ->cellData.getValue().getNumProperty());
 		idColoumn.setCellValueFactory(cellData ->cellData.getValue().getidProperty());
-	   
 	}
 	public void setStage(Stage stage) {
 		// TODO Auto-generated method stub
@@ -50,16 +54,12 @@ public class GiftBillViewController  implements Initializable{
 		// TODO Auto-generated method stub
 		ID.setText(""+m.getID());
 		userid.setText(""+m.getUserID());
-		memberid.setText(""+m.getMemberID());
+		memberid.setText(mbs.findMemberByID(m.getMemberID()).getName());
 		CommodityList list=m.getCommodityList();
 		for(int i=0;i<list.getListSize();i++){
 			CommodityItemData data=new CommodityItemData(list.get(0));
 			cashData.add(data);
 		}
 		cashTable.setItems(cashData);
-	}
-	public void setVO(GiftBillVO m) {
-		// TODO Auto-generated method stub
-		
 	}
 }

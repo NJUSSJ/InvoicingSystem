@@ -71,6 +71,8 @@ public class ReceiveBillViewController  implements Initializable{
 	@FXML
 	private Button addB;
 	
+	@FXML
+	private Button reviseB;
 	
 	@FXML
 	private Button updateB;
@@ -94,6 +96,8 @@ public class ReceiveBillViewController  implements Initializable{
 	AccountLineItemData  alid;
 	
 	static int times=0;
+	
+	ReceiveBillVO unpassbill=null;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
@@ -124,6 +128,8 @@ public class ReceiveBillViewController  implements Initializable{
 		nameColoumn.setCellValueFactory(cellData ->cellData.getValue().getName());
 		amountColoumn.setCellValueFactory(cellData ->cellData.getValue().getMoney());
 		noteColoumn.setCellValueFactory(cellData ->cellData.getValue().getRemark());
+
+	reviseB.setVisible(false);
 	}
 	@FXML
     public void add(){
@@ -226,6 +232,30 @@ public class ReceiveBillViewController  implements Initializable{
 		
 	}
 	@FXML
+	public void revise(){
+		 MemberVO tmpMember=new MemberController().findMemberByName(account.getText());
+		 if(tmpMember==null) {
+			 Alert warning=new Alert(AlertType.WARNING);
+				warning.setContentText("Member Does Not Exist!");
+				warning.showAndWait();
+				return ;
+		 }
+		 
+		 ReceiveBillBLService pbs=new ReceiveBillController();
+		 pbs.deleteReceiveBill(unpassbill);
+		 ReceiveBillVO receivebill=new ReceiveBillVO(billid.getText() ,MainApp.getID(),tmpMember.getID(),aclist,aclist.getSum(),time,0);
+		 String isSubmit="fail Submit";
+		 if(pbs.submitReceiveBill(receivebill)){
+			 isSubmit="Succeed Submit";
+		 }
+  		Alert alert = new Alert(AlertType.INFORMATION);
+	        alert.initOwner(MainApp.getPrimaryStage());
+	        alert.setTitle("Information");
+	        alert.setHeaderText("Submit");
+	        alert.setContentText(isSubmit);
+	        alert.showAndWait();
+	}
+	@FXML
  public void rightSet(){
 		/*
 		 * judge member
@@ -289,7 +319,22 @@ public class ReceiveBillViewController  implements Initializable{
 	}
 	public void setVO(ReceiveBillVO m) {
 		// TODO Auto-generated method stub
-		
+		unpassbill=m;
+		id.setText(""+MainApp.getID());
+		billid.setText(m.getID());
+		account.setText(""+m.getMemberID());
+		operator.setText(""+m.getUserID());
+		totalsum.setText(""+m.getSum());
+	    AccountList items=m.getAccountList();
+	    for(int i=0;i<items.getListLength();i++){
+		   AccountLineItemData a=new AccountLineItemData(items.getItem(i));
+		   receiveData.add(a);
+	   }
+	   receiveTable.setItems(receiveData);
+	  reviseB.setVisible(true);
+	   addB.setVisible(false);
+	   updateB.setVisible(false);
+	   deleteB.setVisible(false);
 	}
 
 	

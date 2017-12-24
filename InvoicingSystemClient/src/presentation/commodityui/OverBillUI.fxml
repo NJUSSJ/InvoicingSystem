@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="450.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.commodityui.OverInfoController">
+<AnchorPane prefHeight="450.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.commodityui.OverInfoController">
   <!-- TODO Add Nodes -->
   <children>
     <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="450.0" fitWidth="422.9999915527369" layoutX="0.0" layoutY="0.0">
       <image>
-        <Image url="@../../../../../InvoicingSystem/InvoicingSystemClient/resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
+        <Image preserveRatio="true" smooth="true" url="@../../../../../InvoicingSystem/InvoicingSystemClient/resources/1b256486664e499a9613079e51bbca0b.png" />
       </image>
     </ImageView>
     <Separator layoutX="0.0" layoutY="70.0" prefWidth="200.0" />
@@ -36,5 +37,6 @@
     <Label fx:id="sum" layoutX="230.0" layoutY="245.0" text="Label" />
     <Label fx:id="num" layoutX="230.0" layoutY="185.0" text="Label" />
     <Button fx:id="confirm" layoutX="102.0" layoutY="317.0" mnemonicParsing="false" onAction="#confirm" opacity="0.7" prefHeight="39.0" prefWidth="180.0" text="确认生产报溢单" />
+      <Button fx:id="reviseB" layoutX="102.0" layoutY="337.0" mnemonicParsing="false" onAction="#revise" opacity="0.7" prefHeight="39.0" prefWidth="180.0" text="确认生产报溢单" />
   </children>
 </AnchorPane>
