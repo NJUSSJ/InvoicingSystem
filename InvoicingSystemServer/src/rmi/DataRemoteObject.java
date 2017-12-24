@@ -1007,9 +1007,8 @@ public class DataRemoteObject extends UnicastRemoteObject implements UserDataSer
 	}
 
 	@Override
-	public void backUpDataBase(Date time) throws RemoteException {
-		// TODO Auto-generated method stub
-		
+	public boolean backUpDataBase(Date time) throws RemoteException {
+		return false;
 	}
 	
 }
