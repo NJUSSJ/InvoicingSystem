@@ -565,8 +565,6 @@ public class MainApp extends Application {
    public static long getID(){
 	   return  MainApp.tempUser.getID();
    }
-   
- 
 	
 	/**
      * Returns the main stage.
@@ -691,5 +689,4 @@ public class MainApp extends Application {
 		}
 
 	}
-
 }

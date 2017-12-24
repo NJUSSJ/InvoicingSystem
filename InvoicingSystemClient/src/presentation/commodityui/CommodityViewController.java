@@ -237,6 +237,7 @@ public class CommodityViewController implements Initializable{
 		stage=commodityStage;
 	}
 	public void setCommoditys(ArrayList<CommodityVO> colist) {
+		commodityData.clear();
 		for(CommodityVO a:colist){
 			commodityData.add(new CommodityData(a));
 		}

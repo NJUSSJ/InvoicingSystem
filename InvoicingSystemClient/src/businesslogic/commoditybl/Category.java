@@ -96,7 +96,7 @@ public class Category {
 		ArrayList<CommodityVO> temp=null;
 		try {
 			temp=new ArrayList<CommodityVO>();
-			ArrayList<CommodityPO> commodity = RemoteHelper.getInstance().getCommodityDataService().findCommoditiesbyParent(vo.getParentID());
+			ArrayList<CommodityPO> commodity = RemoteHelper.getInstance().getCommodityDataService().findCommoditiesbyParent(vo.getID());
 			CommodityController controller=new CommodityController();
 			if(commodity==null){
 				return null;

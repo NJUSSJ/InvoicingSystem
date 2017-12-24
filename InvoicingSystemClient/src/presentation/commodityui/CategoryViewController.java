@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import MainApp.MainApp;
-import businesslogic.commoditybl.Category;
 import businesslogic.commoditybl.CommodityController;
 import businesslogicservice.commodityblservice.CommodityBLService;
 import javafx.collections.FXCollections;
@@ -229,26 +228,18 @@ public class CategoryViewController implements Initializable{
 	@FXML
 	public void enterSon(){
 	volist=cbs.findDownCategory(categoryVO);
-	ArrayList<CommodityVO> colist=cbs.findDownCommodity(categoryVO);
-	if(volist==null||volist.size()==0){
-		if(colist==null||colist.size()==0){
+	//ArrayList<CommodityVO> colist=cbs.findDownCommodity(categoryVO);
+		if(volist==null||volist.size()==0){
 			Alert alert = new Alert(AlertType.WARNING);
-	        alert.initOwner(MainApp.getPrimaryStage());
-	        alert.setTitle("No commodity under this category");
-	        alert.setHeaderText("No commodity under this category");
-	        alert.setContentText("No commodity under this category.");
+	     	alert.initOwner(MainApp.getPrimaryStage());
+	        alert.setTitle("No category under this category");
+	        alert.setHeaderText("No category under this category");
+	        alert.setContentText("No category under this category.");
 	        alert.showAndWait();
-		}
-		else if(colist.size()>0){
-			showCommodity();
+	        return;
 		}else{
-		/*categoryData.clear();
-		categoryTable.setItems(categoryData);*/
-			System.out.println("error");
-		}
-	}else{
-		categoryData.clear();
-		for(CategoryVO s:volist){
+			categoryData.clear();
+			for(CategoryVO s:volist){
 			categoryData.add(new CategoryData(s));
 			categoryTable.setItems(categoryData);
 		}
@@ -274,8 +265,7 @@ public class CategoryViewController implements Initializable{
 	}
 	@FXML
 	public void showCommodity(){
-		ArrayList<CommodityVO> colist;
-		colist=cbs.findDownCommodity(categoryVO);
+		ArrayList<CommodityVO> colist=cbs.findDownCommodity(categoryVO);
 		if(colist==null||colist.size()==0){
 			Alert alert = new Alert(AlertType.WARNING);
 	        alert.initOwner(MainApp.getPrimaryStage());
@@ -298,7 +288,8 @@ public class CategoryViewController implements Initializable{
 	            controller.setStage(commodityStage);
 	            controller.setCommoditys(colist);
 	           // controller.setparent(categoryVO.getID());
-	            commodityStage.showAndWait();
+	            //commodityStage.showAndWait();
+	            commodityStage.show();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
