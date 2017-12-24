@@ -1,7 +1,5 @@
 package businesslogic.billbl;
 
-import static org.junit.Assert.assertEquals;
-
 import java.sql.Date;
 
 import org.junit.Test;

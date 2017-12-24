@@ -10,7 +10,6 @@ import java.util.ResourceBundle;
 import MainApp.MainApp;
 import businesslogic.billbl.CommodityLineItem;
 import businesslogic.billbl.CommodityList;
-import businesslogic.billbl.ImportBillController;
 import businesslogic.billbl.SaleReturnBillController;
 import businesslogic.commoditybl.CommodityController;
 import businesslogic.memberbl.MemberController;
@@ -22,6 +21,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -29,9 +29,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.scene.control.Alert.AlertType;
 import vo.CommodityVO;
-import vo.ImportBillVO;
 import vo.MemberVO;
 import vo.SaleReturnBillVO;
 
@@ -203,11 +201,9 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	@FXML
 	public void confirm(){
 		itemdata=new CommodityItemData(0,a,Integer.parseInt(num.getText()),Double.parseDouble(lastprice.getText()),notea.getText());
-<<<<<<< HEAD
-	    item=new CommodityLineItem(Integer.parseInt(num.getText()),a.getID(),a.getSalePrice(),Double.parseDouble(lastprice.getText()),notea.getText());
-=======
+
 	    item=new CommodityLineItem(Integer.parseInt(num.getText()),a.getID(),Double.parseDouble(lastprice.getText()),a.getImportPrice(),notea.getText());
->>>>>>> 57408fdf8ced87c8adb838c18478381407b12678
+
 	    comlist.addCommodity(item);
 		commodityData.add(itemdata);
 	    commodityTable.setItems(commodityData);

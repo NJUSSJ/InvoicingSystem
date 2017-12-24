@@ -4,12 +4,8 @@ import java.rmi.RemoteException;
 import java.sql.Date;
 import java.util.ArrayList;
 
-import po.CashBillPO;
-import po.ImportBillPO;
 import po.OverBillPO;
 import rmi.RemoteHelper;
-import vo.CashBillVO;
-import vo.ImportBillVO;
 import vo.OverBillVO;
 
 public class OverBill{

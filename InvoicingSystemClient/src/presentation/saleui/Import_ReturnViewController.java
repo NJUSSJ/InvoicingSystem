@@ -30,7 +30,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.control.Alert.AlertType;
 import vo.CommodityVO;
-import vo.ImportBillVO;
 import vo.ImportReturnBillVO;
 import vo.MemberVO;
 

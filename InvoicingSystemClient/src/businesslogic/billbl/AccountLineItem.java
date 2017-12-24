@@ -1,7 +1,5 @@
 package businesslogic.billbl;
 
-import javafx.beans.property.StringProperty;
-
 public class AccountLineItem {
 	long accountid;
 	double money;

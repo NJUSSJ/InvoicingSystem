@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import businesslogicservice.billblservice.WarningBillBLService;
 import po.WarningBillPO;
-import vo.PayBillVO;
 import vo.WarningBillVO;
 
 public class WarningBillController implements WarningBillBLService{

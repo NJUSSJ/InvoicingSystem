@@ -3,7 +3,6 @@ package businesslogic.tablebl;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -13,8 +12,6 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.HorizontalAlignment;
 
-import businesslogic.billbl.CommodityLineItem;
-import businesslogic.billbl.CommodityList;
 import businesslogic.billbl.GiftBillController;
 import businesslogic.billbl.ImportBillController;
 import businesslogic.billbl.ImportReturnBillController;
@@ -22,9 +19,6 @@ import businesslogic.billbl.LossBillController;
 import businesslogic.billbl.OverBillController;
 import businesslogic.billbl.SaleBillController;
 import businesslogic.billbl.SaleReturnBillController;
-import businesslogic.commoditybl.CommodityController;
-import businesslogicservice.tableblservice.OperateConditionTableBLService;
-import vo.CommodityVO;
 import vo.GiftBillVO;
 import vo.ImportBillVO;
 import vo.ImportReturnBillVO;
