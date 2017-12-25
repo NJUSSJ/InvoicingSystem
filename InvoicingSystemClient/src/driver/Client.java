@@ -4,7 +4,6 @@ import java.rmi.RemoteException;
 
 import stubs.AccountBLService_Stub;
 import stubs.AccountDatabaseServiceMySqlImpl_Stub;
-import stubs.BillDatabaseServiceMySqlImpl_Stub;
 import stubs.CommodityBLService_Stub;
 import stubs.CommodityDatabaseServiceMySqlImpl_Stub;
 import stubs.LogBLService_Stub;
@@ -15,7 +14,6 @@ import stubs.PromotionBLService_Stub;
 import stubs.PromotionDataServiceMySqlImpl_Stub;
 
 import stubs.TableBLService_Stub;
-import stubs.TableDatabaseServiceMySqlImpl_Stub;
 import stubs.UserBLService_Stub;
 import stubs.UserDatabaseServiceMySqlImpl_Stub;
 
