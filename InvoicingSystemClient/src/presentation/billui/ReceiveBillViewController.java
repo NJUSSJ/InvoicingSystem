@@ -13,7 +13,9 @@ import businesslogic.billbl.AccountLineItem;
 import businesslogic.billbl.AccountList;
 import businesslogic.billbl.ReceiveBill;
 import businesslogic.billbl.ReceiveBillController;
+import businesslogic.logbl.LogController;
 import businesslogic.memberbl.MemberController;
+import businesslogic.utilitybl.Utility;
 import businesslogicservice.accountblservice.AccountBLService;
 import businesslogicservice.billblservice.ReceiveBillBLService;
 import javafx.collections.FXCollections;
@@ -29,6 +31,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.control.Alert.AlertType;
 import vo.AccountVO;
+import vo.LogVO;
 import vo.MemberVO;
 import vo.ReceiveBillVO;
 
@@ -100,7 +103,6 @@ public class ReceiveBillViewController  implements Initializable{
 	ReceiveBillVO unpassbill=null;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
 		java.util.Date utiltime=new java.util.Date();
 		time=new Date(utiltime.getTime());
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
@@ -221,7 +223,6 @@ public class ReceiveBillViewController  implements Initializable{
     	MainApp.showLoginUI();
     }
 	private void getInf(AccountLineItemData newValue) {
-		// TODO Auto-generated method stub
 		if(newValue!=null) {
 			ali=newValue.getVO();
 			alid=newValue;
@@ -247,6 +248,11 @@ public class ReceiveBillViewController  implements Initializable{
 		 String isSubmit="fail Submit";
 		 if(pbs.submitReceiveBill(receivebill)){
 			 isSubmit="Succeed Submit";
+			//记录日志
+				LogController logController=new LogController();
+				long logID=logController.findLargestID()+1;
+ 	        LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"submitReceiveBill:"+receivebill.getID(),MainApp.getID());
+ 	        logController.addLog(logVO);
 		 }
   		Alert alert = new Alert(AlertType.INFORMATION);
 	        alert.initOwner(MainApp.getPrimaryStage());
@@ -272,7 +278,11 @@ public class ReceiveBillViewController  implements Initializable{
 	 ReceiveBillVO receivebill=new ReceiveBillVO(billid.getText() ,MainApp.getID(),tmpMember.getID(),aclist,aclist.getSum(),time,0);
 	 String isSubmit="fail Submit";
 	 if(pbs.submitReceiveBill(receivebill)){
-		 
+		//记录日志
+			LogController logController=new LogController();
+			long logID=logController.findLargestID()+1;
+	        LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"submitReceiveBill:"+receivebill.getID(),MainApp.getID());
+	        logController.addLog(logVO);
 		 SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
 		 String str=sdf.format(time);
 		 DecimalFormat df=new DecimalFormat("#####");
@@ -332,8 +342,23 @@ public class ReceiveBillViewController  implements Initializable{
 	   }
 	   receiveTable.setItems(receiveData);
 	  reviseB.setVisible(true);
+	   rightB.setVisible(false);
+	   returnB.setVisible(false);
+	}
+	public void red(ReceiveBillVO m) {
+		// TODO Auto-generated method stub
+		id.setText(""+MainApp.getID());
+		account.setText(""+m.getMemberID());
+		operator.setText(""+m.getUserID());
+		totalsum.setText(""+m.getSum());
+	    AccountList items=m.getAccountList();
+	    for(int i=0;i<items.getListLength();i++){
+		   AccountLineItemData a=new AccountLineItemData(items.getItem(i));
+		   receiveData.add(a);
+	   }
+	   receiveTable.setItems(receiveData);
 	   addB.setVisible(false);
-	   updateB.setVisible(false);
+	   returnB.setVisible(false);
 	   deleteB.setVisible(false);
 	}
 

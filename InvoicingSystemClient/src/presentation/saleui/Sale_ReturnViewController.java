@@ -12,7 +12,9 @@ import businesslogic.billbl.CommodityLineItem;
 import businesslogic.billbl.CommodityList;
 import businesslogic.billbl.SaleReturnBillController;
 import businesslogic.commoditybl.CommodityController;
+import businesslogic.logbl.LogController;
 import businesslogic.memberbl.MemberController;
+import businesslogic.utilitybl.Utility;
 import businesslogicservice.billblservice.SaleReturnBillBLService;
 import businesslogicservice.commodityblservice.CommodityBLService;
 import businesslogicservice.memberblservice.MemberBLService;
@@ -30,6 +32,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import vo.CommodityVO;
+import vo.LogVO;
 import vo.MemberVO;
 import vo.SaleReturnBillVO;
 
@@ -106,8 +109,8 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	static int times=0;
 	
 	Date time;
-	CommodityItemData itemdata;
-	CommodityLineItem item;
+	CommodityItemData itemdata=null;
+	CommodityLineItem item=null;
 	CommodityList comlist=new CommodityList();
 	CommodityVO a;
 	MemberVO memberl;
@@ -115,6 +118,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	MemberBLService mbs=new MemberController();
 	SaleReturnBillBLService srbbs=new SaleReturnBillController();
 	SaleReturnBillVO unpassbill=null;
+	int ishas=0;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
@@ -149,6 +153,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		moneyColumn.setCellValueFactory(cellData ->cellData.getValue().getImportPrice());
 	    altogether.setText("0");
 	    reviseB.setVisible(false);
+	    commodityTable.setItems(commodityData);
 	}
 
 	
@@ -156,6 +161,12 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		if(newValue!=null) {
 			itemdata=newValue;
 			item=itemdata.getItem();
+			item=newValue.getItem();
+			name.setText(newValue.getName().get());
+			num.setText(""+item.getNum());
+			lastprice.setText(""+item.getSalePrice());
+			notea.setText(item.getRemark());
+			ishas=1;
 		}
 	}
 
@@ -200,13 +211,17 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	}
 	@FXML
 	public void confirm(){
-		itemdata=new CommodityItemData(0,a,Integer.parseInt(num.getText()),Double.parseDouble(lastprice.getText()),notea.getText());
-
-	    item=new CommodityLineItem(Integer.parseInt(num.getText()),a.getID(),Double.parseDouble(lastprice.getText()),a.getImportPrice(),notea.getText());
-
-	    comlist.addCommodity(item);
-		commodityData.add(itemdata);
-	    commodityTable.setItems(commodityData);
+		if(ishas==0){
+			itemdata=new CommodityItemData(0,a,Integer.parseInt(num.getText()),Double.parseDouble(lastprice.getText()),notea.getText());
+		    item=new CommodityLineItem(Integer.parseInt(num.getText()),a.getID(),Double.parseDouble(lastprice.getText()),a.getImportPrice(),notea.getText());
+		    comlist.addCommodity(item);
+			commodityData.add(itemdata);
+			}else{
+				ishas=0;
+				itemdata.setNum(num.getText());
+				comlist.deleteCommodity(item);
+				comlist.addCommodity(itemdata.getItem());
+			}
 	    altogether.setText(""+comlist.getImportTotal());
 	    
 	    name.setText("");
@@ -238,6 +253,12 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 			 srbbs.deleteSaleReturnBill(unpassbill);
 			 if(srbbs.submitSaleReturnBill(salereturnbill)){
 				 isSubmit="Succeed Submit";
+				//记录日志
+					LogController logController=new LogController();
+					long logID=logController.findLargestID()+1;
+	 	        LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"submitSaleReturnBill:"+salereturnbill.getID(),MainApp.getID());
+	 	        logController.addLog(logVO);
+	 	        //
 			 }
 		     Alert alert = new Alert(AlertType.INFORMATION);
 			        alert.initOwner(MainApp.getPrimaryStage());
@@ -258,6 +279,12 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		SaleReturnBillVO sale_returnbill=new SaleReturnBillVO(billid.getText(),MainApp.getID(),memberl.getID(),comlist,comlist.getImportTotal(),0,time,note.getText());
 		 String isSubmit="fail Submit";
 		 if(srbbs.submitSaleReturnBill(sale_returnbill)){
+			 //记录日志
+				LogController logController=new LogController();
+				long logID=logController.findLargestID()+1;
+				LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"submitSaleReturnBill:"+sale_returnbill.getID(),MainApp.getID());
+				logController.addLog(logVO);
+	        //
 			 	SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
 				String str=sdf.format(time);
 				DecimalFormat df=new DecimalFormat("#####");
@@ -277,8 +304,6 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 				lastprice.setText("");
 				
 				commodityData.clear();
-				
-			 
 		 }
 		 		Alert alert = new Alert(AlertType.INFORMATION);
 		        alert.initOwner(MainApp.getPrimaryStage());
@@ -290,13 +315,11 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 
 
 	public void setStage(Stage stage) {
-		// TODO Auto-generated method stub
 		this.stage=stage;
 	}
 
 
 	public void setVo(SaleReturnBillVO m) {
-		// TODO Auto-generated method stub
 		billid.setText(m.getID());
 		id.setText("ID:"+MainApp.getID());
 		memberl=mbs.findMemberByID(m.getMemberID());
@@ -318,7 +341,6 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 
 
 	public void setVO(SaleReturnBillVO m) {
-		// TODO Auto-generated method stub
 		unpassbill=m;
 		billid.setText(m.getID());
 		id.setText("ID:"+MainApp.getID());
@@ -335,10 +357,31 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 			rightB.setVisible(false);
 			returnB.setVisible(false);
 			reviseB.setVisible(true);
-		
+	}
+
+
+
+	public void red(SaleReturnBillVO m) {
+		// TODO Auto-generated method stub
+		id.setText("ID:"+MainApp.getID());
+		memberl=mbs.findMemberByID(m.getMemberID());
+		operator.setText(""+m.getUserID());
+		altogether.setText(""+m.getSum());
+		member.setText(memberl.getName());
+		comlist=m.getList();
+		for(int i=0;i<comlist.getListSize();i++){
+			commodityData.add(new CommodityItemData(comlist.get(i)));
+		}
+			commodityTable.setItems(commodityData);
+            
+			 returnB.setVisible(false);
+			 search.setVisible(false);
+			 deleteB.setVisible(false);
+             
+
 	}
 	
-	
+
 }
 
 

@@ -12,7 +12,9 @@ import businesslogic.billbl.CommodityLineItem;
 import businesslogic.billbl.CommodityList;
 import businesslogic.billbl.ImportBillController;
 import businesslogic.commoditybl.CommodityController;
+import businesslogic.logbl.LogController;
 import businesslogic.memberbl.MemberController;
+import businesslogic.utilitybl.Utility;
 import businesslogicservice.billblservice.ImportBillBLService;
 import businesslogicservice.commodityblservice.CommodityBLService;
 import businesslogicservice.memberblservice.MemberBLService;
@@ -31,6 +33,7 @@ import javafx.stage.Stage;
 import javafx.scene.control.Alert.AlertType;
 import vo.CommodityVO;
 import vo.ImportBillVO;
+import vo.LogVO;
 import vo.MemberVO;
 
 public class ImportViewController implements Initializable {
@@ -83,7 +86,7 @@ public class ImportViewController implements Initializable {
 	@FXML
 	private Button returnB;
 	Stage stage;
-private ObservableList<CommodityItemData> commodityData =FXCollections.observableArrayList();
+	private ObservableList<CommodityItemData> commodityData =FXCollections.observableArrayList();
 	
 	@FXML
 	private TableView<CommodityItemData> commodityTable;
@@ -107,8 +110,8 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	static int times=0;
 	
 	Date time;
-	CommodityItemData itemdata;
-	CommodityLineItem item;
+	CommodityItemData itemdata=null;
+	CommodityLineItem item=null;
 	CommodityList comlist=new CommodityList();
 	CommodityVO a;
 	MemberVO memberl;
@@ -116,9 +119,9 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	MemberBLService mbs=new MemberController();
 	ImportBillBLService ibbs=new ImportBillController();
 	ImportBillVO unpassbill=null;
+	int ishas=0;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
 		java.util.Date utiltime=new java.util.Date();
 		time=new Date(utiltime.getTime());
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
@@ -151,27 +154,28 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		moneyColumn.setCellValueFactory(cellData ->cellData.getValue().getImportPrice());
 	    altogether.setText("0");
 	    reviseB.setVisible(false);
+	    commodityTable.setItems(commodityData);
 	}
 
 	
 	private void getInf(CommodityItemData newValue) {
-		// TODO Auto-generated method stub
 		if(newValue!=null) {
 			itemdata=newValue;
 			item=itemdata.getItem();
+			name.setText(newValue.getName().get());
+			num.setText(""+item.getNum());
+			lastprice.setText(""+item.getImportPrice());
+			notea.setText(item.getRemark());
+			ishas=1;
 		}
-			
-		
 	}
-
 
 	@FXML
 	public void delete(){
 		int selectedIndex = commodityTable.getSelectionModel().getSelectedIndex();
 	   	 if (selectedIndex >= 0) {
 	   		   comlist.deleteCommodity(item);
-	   		   commodityTable.getItems().remove(selectedIndex);
-	           
+	   		   commodityTable.getItems().remove(selectedIndex); 
 	           altogether.setText(""+comlist.getImportTotal());
 	   	    } else {
 	   	        // Nothing selected.
@@ -205,13 +209,18 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	}
 	@FXML
 	public void confirm(){
-		itemdata=new CommodityItemData(0,a,Integer.parseInt(num.getText()),Double.parseDouble(lastprice.getText()),notea.getText());
-	    item=new CommodityLineItem(Integer.parseInt(num.getText()),a.getID(),a.getSalePrice(),Double.parseDouble(lastprice.getText()),notea.getText());
-	    comlist.addCommodity(item);
-		commodityData.add(itemdata);
-	    commodityTable.setItems(commodityData);
+		if(ishas==0){
+			itemdata=new CommodityItemData(0,a,Integer.parseInt(num.getText()),Double.parseDouble(lastprice.getText()),notea.getText());
+		    item=new CommodityLineItem(Integer.parseInt(num.getText()),a.getID(),Double.parseDouble(lastprice.getText()),a.getImportPrice(),notea.getText());
+		    comlist.addCommodity(item);
+			commodityData.add(itemdata);
+			}else{
+				ishas=0;
+				itemdata.setNum(num.getText());
+				comlist.deleteCommodity(item);
+				comlist.addCommodity(itemdata.getItem());
+			}
 	    altogether.setText(""+comlist.getImportTotal());
-	    
 	    name.setText("");
 	    lastprice.setText("");
 	    num.setText("");
@@ -240,6 +249,12 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		 ibbs.deleteImportBill(unpassbill);
 		 if(ibbs.submitImportBill(importbill)){
 			 isSubmit="succeed Submit";
+			//记录日志
+				LogController logController=new LogController();
+				long logID=logController.findLargestID()+1;
+	        LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"submitImportBill:"+importbill.getID(),MainApp.getID());
+	        logController.addLog(logVO);
+	        //
 		 }
 		 		Alert alert = new Alert(AlertType.INFORMATION);
 		        alert.initOwner(MainApp.getPrimaryStage());
@@ -261,27 +276,31 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		ImportBillVO importbill=new ImportBillVO(billid.getText(),MainApp.getID(),memberl.getID(),comlist,comlist.getImportTotal(),0,time,note.getText());
 		 String isSubmit="fail Submit";
 		 if(ibbs.submitImportBill(importbill)){
-			 	SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
-				String str=sdf.format(time);
-				DecimalFormat df=new DecimalFormat("#####");
-				
-				ArrayList<ImportBillVO> tmpList=new ImportBillController().findImportBillByTime(time);
-				times=tmpList.size()+1;
-				
-				billid.setText("JHD-"+str+"-"+df.format(times));
+			 //记录日志
+			 LogController logController=new LogController();
+			 long logID=logController.findLargestID()+1;
+			 LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"submitImportBill:"+importbill.getID(),MainApp.getID());
+			 logController.addLog(logVO);
+			 //
+			 SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
+			 String str=sdf.format(time);
+			 DecimalFormat df=new DecimalFormat("#####");
 			 
-				isSubmit="Succeed Submit";
+			 ArrayList<ImportBillVO> tmpList=new ImportBillController().findImportBillByTime(time);
+			 times=tmpList.size()+1;
 				
-				member.setText("");
-				name.setText("");
-				note.setText("");
-				notea.setText("");
-				num.setText("");
-				lastprice.setText("");
-				
-				commodityData.clear();
-				
+			 billid.setText("JHD-"+str+"-"+df.format(times));
 			 
+			 isSubmit="Succeed Submit";
+				
+			 member.setText("");
+			 name.setText("");
+			 note.setText("");
+			 notea.setText("");
+			 num.setText("");
+			 lastprice.setText("");
+				
+			 commodityData.clear();
 		 }
 		 		Alert alert = new Alert(AlertType.INFORMATION);
 		        alert.initOwner(MainApp.getPrimaryStage());
@@ -293,13 +312,11 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 
 
 	public void setStage(Stage stage) {
-		// TODO Auto-generated method stub
 		this.stage=stage;
 	}
 
 
 	public void setVo(ImportBillVO m) {
-		// TODO Auto-generated method stub
 		billid.setText(m.getID());
 		id.setText("ID:"+MainApp.getID());
 		memberl=mbs.findMemberByID(m.getMemberID());
@@ -321,7 +338,6 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 
 
 	public void setVO(ImportBillVO m) {
-		// TODO Auto-generated method stub
 		unpassbill=m;
 		billid.setText(m.getID());
 		id.setText("ID:"+MainApp.getID());
@@ -338,6 +354,25 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 			rightB.setVisible(false);
 			returnB.setVisible(false);
 			reviseB.setVisible(true);
+	}
+
+
+	public void red(ImportBillVO m) {
+		// TODO Auto-generated method stub
+		id.setText("ID:"+MainApp.getID());
+		memberl=mbs.findMemberByID(m.getMemberID());
+		operator.setText(""+m.getUserID());
+		altogether.setText(""+m.getSum());
+		member.setText(memberl.getName());
+		note.setText(m.getRemark());
+		comlist=m.getCommodityList();
+		for(int i=0;i<comlist.getListSize();i++){
+			commodityData.add(new CommodityItemData(comlist.get(i)));
+		}
+			commodityTable.setItems(commodityData);
+			 returnB.setVisible(false);
+			 search.setVisible(false);
+			 deleteB.setVisible(false);
 	}
 
 }

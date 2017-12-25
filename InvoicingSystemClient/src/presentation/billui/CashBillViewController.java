@@ -10,6 +10,8 @@ import java.util.ResourceBundle;
 import MainApp.MainApp;
 import businesslogic.accountbl.AccountController;
 import businesslogic.billbl.CashBillController;
+import businesslogic.logbl.LogController;
+import businesslogic.utilitybl.Utility;
 import businesslogicservice.accountblservice.AccountBLService;
 import businesslogicservice.billblservice.CashBillBLService;
 import javafx.collections.FXCollections;
@@ -25,6 +27,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import vo.AccountVO;
 import vo.CashBillVO;
+import vo.LogVO;
 import javafx.scene.control.Alert.AlertType;
 
 public class CashBillViewController  implements Initializable {
@@ -112,7 +115,6 @@ public class CashBillViewController  implements Initializable {
 		ArrayList<CashBillVO> tmpList=new CashBillController().findCashBillByTime(time);
 		times=tmpList.size()+1;
 		
-		reviseB.setVisible(false);
 		
 		billid.setText("FKD-"+str+"-"+df.format(times));
 		
@@ -130,6 +132,7 @@ public class CashBillViewController  implements Initializable {
 		nameColoumn.setCellValueFactory(cellData ->cellData.getValue().getName());
 		amountColoumn.setCellValueFactory(cellData ->cellData.getValue().getMoney());
 		noteColoumn.setCellValueFactory(cellData ->cellData.getValue().getNote());
+		reviseB.setVisible(false);
 	}
 	@FXML
     public void add(){
@@ -252,6 +255,12 @@ public class CashBillViewController  implements Initializable {
 		 	String isSubmit="fail Submit";
 		 	if(pbs.submitCashBill(cashbill)){
 		 		isSubmit="Succeed Submit";
+		 		//¼ÇÂ¼ÈÕÖ¾
+				LogController logController=new LogController();
+				long logID=logController.findLargestID()+1;
+    	        LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"submitCashBill:"+cashbill.getID(),MainApp.getID());
+    	        logController.addLog(logVO);
+    	        //
 		 		}
 	 		Alert alert = new Alert(AlertType.INFORMATION);
 	        alert.initOwner(MainApp.getPrimaryStage());
@@ -349,5 +358,25 @@ public class CashBillViewController  implements Initializable {
 	   returnB.setVisible(false);
 	   reviseB.setVisible(true);
 	}
+	public void red(CashBillVO m) {
+		// TODO Auto-generated method stub
+		id.setText(""+MainApp.getID());
+		account.setText(""+m.getAccountID());
+		operator.setText(""+m.getUserID());
+		totalsum.setText(""+m.getSum());
+	   ArrayList<String> items=m.getAccountList();
+	   for(String it:items){
+		   String[] its=it.split(",");
+		   ItemData a=new ItemData(its[0],its[1],its[2]);
+		   cashData.add(a);
+	   }
+	   cashTable.setItems(cashData);
+	   deleteB.setVisible(false);
+	   returnB.setVisible(false);
+	   addB.setVisible(false);
+	   
+		
+	}
+	
 }
 

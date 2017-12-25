@@ -44,12 +44,12 @@ public class Log{
 		}
 		return temp;
 	}
-	public ArrayList<LogVO> findLogByType(String type) {
+	public ArrayList<LogVO> findLogByType(String field) {
 		ArrayList<LogVO> temp=null;
 		ArrayList<LogPO> logs;
 		try {
 			temp=new ArrayList<LogVO>();
-			logs = RemoteHelper.getInstance().getLogDataService().findLogbyType(type);
+			logs = RemoteHelper.getInstance().getLogDataService().findLogbyType(field);
 			for(int i=0;i<logs.size();i++){
 			temp.add(toLogVO(logs.get(i)));
 			}
@@ -64,5 +64,13 @@ public class Log{
 			return null;
 		}
 		return new LogVO(logPO.getID(),logPO.getTime(),logPO.getType(),logPO.getUserID());
+	}
+	public long findLargestID(){
+		try {
+			return RemoteHelper.getInstance().getLogDataService().getLargestIDofLog();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return 0;
 	}
 }

@@ -2,13 +2,15 @@ package presentation.tableui;
 
 import java.net.URL;
 import java.sql.Date;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import com.sun.prism.paint.Paint.Type;
-
 import MainApp.MainApp;
 import Utility.DateUtil;
+import businesslogic.billbl.AccountLineItem;
+import businesslogic.billbl.AccountList;
 import businesslogic.billbl.CashBillController;
 import businesslogic.billbl.CommodityLineItem;
 import businesslogic.billbl.CommodityList;
@@ -19,11 +21,8 @@ import businesslogic.billbl.LossBillController;
 import businesslogic.billbl.OverBillController;
 import businesslogic.billbl.PayBillController;
 import businesslogic.billbl.ReceiveBillController;
-import businesslogic.billbl.SaleBill;
 import businesslogic.billbl.SaleBillController;
 import businesslogic.billbl.SaleReturnBillController;
-import businesslogic.billbl.WarningBillController;
-import businesslogic.tablebl.OperateCourseTable;
 import businesslogic.tablebl.OperateCourseTableController;
 import businesslogicservice.billblservice.CashBillBLService;
 import businesslogicservice.billblservice.GiftBillBLService;
@@ -35,13 +34,14 @@ import businesslogicservice.billblservice.PayBillBLService;
 import businesslogicservice.billblservice.ReceiveBillBLService;
 import businesslogicservice.billblservice.SaleBillBLService;
 import businesslogicservice.billblservice.SaleReturnBillBLService;
-import businesslogicservice.billblservice.WarningBillBLService;
 import businesslogicservice.tableblservice.ManageCourseTableBLService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -50,9 +50,17 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import presentation.accountui.AccountData;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import presentation.billui.BillData;
-import vo.AccountVO;
+import presentation.billui.CashBillViewController;
+import presentation.billui.PayBillViewController;
+import presentation.billui.ReceiveBillViewController;
+import presentation.saleui.ImportViewController;
+import presentation.saleui.Import_ReturnViewController;
+import presentation.saleui.SaleViewController;
+import presentation.saleui.Sale_ReturnViewController;
 import vo.CashBillVO;
 import vo.GiftBillVO;
 import vo.ImportBillVO;
@@ -64,13 +72,11 @@ import vo.PayBillVO;
 import vo.ReceiveBillVO;
 import vo.SaleBillVO;
 import vo.SaleReturnBillVO;
-import vo.WarningBillVO;
 
 public class ManageCourseViewController implements Initializable {
 
 	@FXML
 	private Label id;
-	
 	@FXML
 	private Label logout;
 	
@@ -293,8 +299,7 @@ public class ManageCourseViewController implements Initializable {
 			Date start=DateUtil.toSQL(startYear.getSelectionModel().getSelectedItem(),startMonth.getSelectionModel().getSelectedItem(),startDay.getSelectionModel().getSelectedItem());		
 			Date end=DateUtil.toSQL(endYear.getSelectionModel().getSelectedItem(), endMonth.getSelectionModel().getSelectedItem(), endDay.getSelectionModel().getSelectedItem());
 			oct=mctbl.findByInterval(start, end);
-		}
-		if(billType.getSelectionModel().getSelectedItem()!=null&&!user.getText().equals("")&&!member.getText().equals("")) {
+		}else{
 			ManageCourseTableBLService mctbl=new OperateCourseTableController();
 			Date start=DateUtil.toSQL(startYear.getSelectionModel().getSelectedItem(),startMonth.getSelectionModel().getSelectedItem(),startDay.getSelectionModel().getSelectedItem());		
 			Date end=DateUtil.toSQL(endYear.getSelectionModel().getSelectedItem(), endMonth.getSelectionModel().getSelectedItem(), endDay.getSelectionModel().getSelectedItem());
@@ -376,16 +381,20 @@ public class ManageCourseViewController implements Initializable {
 	
 	@FXML
 	public void reverse() {
-		for(BillData bill:billData){
-			if(bill.getchoose().equals("是")){
-				String style=bill.getstyle();
-				String id=bill.getid();
-				billData.remove(bill);
+			if(data.getchoose().equals("是")){
+				String style=data.getstyle();
+				String id=data.getid();
 				if(style.equals("销售单")){
-					SaleBillVO sb=bill.getSaleBillVO();
+					SaleBillVO sb=data.getSaleBillVO();
 					java.util.Date utiltime=new java.util.Date();
 					Date nowTime=new Date(utiltime.getTime());
-					
+					SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
+					String str=sdf.format(nowTime);
+					DecimalFormat df=new DecimalFormat("#####");
+					ArrayList<SaleBillVO> tmpList=new SaleBillController().findSaleBillByTime(nowTime);
+					int times=tmpList.size()+1;
+					String thisid="XSD-"+str+"-"+df.format(times);
+				
 					int num=sb.getList().getListSize();//商品种类
 					CommodityList newlist=new CommodityList();
 					for(int i=0;i<num;i++) {
@@ -393,42 +402,77 @@ public class ManageCourseViewController implements Initializable {
 						newcli.setNum(-newcli.getNum());//取负
 						newlist.addCommodity(newcli);
 					}
-					
-					SaleBillVO newsb=new SaleBillVO("-"+sb.getID(), Long.parseLong(id), sb.getMemberID(), newlist, -sb.getSum(), 1, nowTime, "", sb.getCoupon(), sb.getDiscount(), -sb.getUltimate());
-					
+			    	SaleBillVO newsb=new SaleBillVO(thisid, Long.parseLong(id), sb.getMemberID(), newlist, -sb.getSum(), 1, nowTime, "", sb.getCoupon(), sb.getDiscount(), -sb.getUltimate());
+			        sbbs.submitSaleBill(newsb);
 				}else if(style.equals("付款单")){
-					PayBillVO pb=bill.getPayBillVO();
+					PayBillVO pb=data.getPayBillVO();
 					java.util.Date utiltime=new java.util.Date();
 					Date nowTime=new Date(utiltime.getTime());
-					
-					PayBillVO newsb=new PayBillVO("-"+pb.getID(), Long.parseLong(id), pb.getMemberID(), pb.getAccountList(), -pb.getSum(), nowTime, 1);
-					
+					SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
+					String str=sdf.format(nowTime);
+					DecimalFormat df=new DecimalFormat("#####");
+					ArrayList<PayBillVO> tmpList=new PayBillController().findPayBillByTime(nowTime);
+					int times=tmpList.size()+1;
+					String thisid="PKD-"+str+"-"+df.format(times);
+					int num=pb.getAccountList().getListLength();//商品种类
+					AccountList newlist=new AccountList();
+					for(int i=0;i<num;i++) {
+						AccountLineItem newcli=pb.getAccountList().getItem(i);
+						newcli.setMoney(-newcli.getMoney());//取负
+						newlist.addAccount(newcli);
+					}
+					PayBillVO newsb=new PayBillVO(thisid, Long.parseLong(id), pb.getMemberID(),newlist, -pb.getSum(), nowTime, 1);
+					pbbs.submitPayBill(newsb);
 				}else if(style.equals("收款单")){
-					ReceiveBillVO rb=bill.getReceiveBillVO();
+					ReceiveBillVO rb=data.getReceiveBillVO();
 					java.util.Date utiltime=new java.util.Date();
 					Date nowTime=new Date(utiltime.getTime());
-					
-					ReceiveBillVO newsb=new ReceiveBillVO("-"+rb.getID(), Long.parseLong(id), rb.getMemberID(), rb.getAccountList(), -rb.getSum(), nowTime, 1);
-					
+					SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
+					String str=sdf.format(nowTime);
+					DecimalFormat df=new DecimalFormat("#####");
+					ArrayList<ReceiveBillVO> tmpList=new ReceiveBillController().findReceiveBillByTime(nowTime);
+					int times=tmpList.size()+1;
+					String thisid="SKD-"+str+"-"+df.format(times);
+					int num=rb.getAccountList().getListLength();//商品种类
+					AccountList newlist=new AccountList();
+					for(int i=0;i<num;i++) {
+						AccountLineItem newcli=rb.getAccountList().getItem(i);
+						newcli.setMoney(-newcli.getMoney());//取负
+						newlist.addAccount(newcli);
+					}
+					ReceiveBillVO newsb=new ReceiveBillVO(thisid, Long.parseLong(id), rb.getMemberID(), newlist, -rb.getSum(), nowTime, 1);
+					rbbs.submitReceiveBill(newsb);
 				}else if(style.equals("现金费用单")){
-					CashBillVO cb=bill.getCashBillVO();
+					CashBillVO cb=data.getCashBillVO();
 					java.util.Date utiltime=new java.util.Date();
 					Date nowTime=new Date(utiltime.getTime());
+					SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
+					String str=sdf.format(nowTime);
+					DecimalFormat df=new DecimalFormat("#####");
+					ArrayList<CashBillVO> tmpList=new CashBillController().findCashBillByTime(nowTime);
+					int times=tmpList.size()+1;
+					String thisid="XJFYD-"+str+"-"+df.format(times);
+				   //zhuyi
+					ArrayList<String> oldlist=cb.getAccountList();
+					ArrayList<String> newlist= new ArrayList<String>();
+					for(int i=0;i<newlist.size();i++){
+						String[] temp=newlist.get(i).split(",");
+						String enterline=temp[0]+","+"-"+temp[1]+","+temp[2];
+						newlist.add(enterline);
+					}
 					
-					ArrayList<String> newlist=cb.getAccountList();
-					
-					cb.sum=-cb.sum;
-					
-					CashBillVO newsb=cb;
-					cb.setState(1);
-					cb.setTime(nowTime);
-					cb.setUserID(Long.parseLong(id));
-					
+					CashBillVO newsb=new CashBillVO(thisid,cb.getUserID(),cb.getAccountID(),newlist,nowTime,1);
+					cbbs.submitCashBill(newsb);
 				}else if(style.equals("销售退货单")){
-					SaleReturnBillVO srb=bill.getSaleReturnBillVO();
+					SaleReturnBillVO srb=data.getSaleReturnBillVO();
 					java.util.Date utiltime=new java.util.Date();
 					Date nowTime=new Date(utiltime.getTime());
-					
+					SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
+					String str=sdf.format(nowTime);
+					DecimalFormat df=new DecimalFormat("#####");
+					ArrayList<SaleReturnBillVO> tmpList=new SaleReturnBillController().findSaleReturnBillByTime(nowTime);
+					int times=tmpList.size()+1;
+					String thisid="XSTHD-"+str+"-"+df.format(times);
 					int num=srb.getList().getListSize();//商品种类
 					CommodityList newlist=new CommodityList();
 					for(int i=0;i<num;i++) {
@@ -437,13 +481,18 @@ public class ManageCourseViewController implements Initializable {
 						newlist.addCommodity(newcli);
 					}
 					
-					SaleReturnBillVO newsb=new SaleReturnBillVO("-"+srb.getID(), Long.parseLong(id), srb.getMemberID(), newlist, -srb.getSum(), 1, nowTime, "");
-					
+					SaleReturnBillVO newsb=new SaleReturnBillVO(thisid, Long.parseLong(id), srb.getMemberID(), newlist, -srb.getSum(), 1, nowTime, "");
+					srbbs.submitSaleReturnBill(newsb);
 				}else if(style.equals("进货退货单")){
-					ImportReturnBillVO irb=bill.getImportReturnBillVO();
+					ImportReturnBillVO irb=data.getImportReturnBillVO();
 					java.util.Date utiltime=new java.util.Date();
 					Date nowTime=new Date(utiltime.getTime());
-					
+					SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
+					String str=sdf.format(nowTime);
+					DecimalFormat df=new DecimalFormat("#####");
+					ArrayList<ImportReturnBillVO> tmpList=new ImportReturnBillController().findImportReturnBillByTime(nowTime);
+					int times=tmpList.size()+1;
+					String thisid="JHTHD-"+str+"-"+df.format(times);
 					int num=irb.getList().getListSize();//商品种类
 					CommodityList newlist=new CommodityList();
 					for(int i=0;i<num;i++) {
@@ -452,13 +501,18 @@ public class ManageCourseViewController implements Initializable {
 						newlist.addCommodity(newcli);
 					}
 					
-					ImportReturnBillVO newsb=new ImportReturnBillVO("-"+irb.getID(), Long.parseLong(id), irb.getMemberID(), newlist, -irb.getSum(), 1, nowTime, "");
-					
+					ImportReturnBillVO newsb=new ImportReturnBillVO(thisid, Long.parseLong(id), irb.getMemberID(), newlist, -irb.getSum(), 1, nowTime, "");
+					irbbs.submitImportReturnBill(newsb);
 				}else if(style.equals("进货单")){
-					ImportBillVO ib=bill.getImportBillVO();
+					ImportBillVO ib=data.getImportBillVO();
 					java.util.Date utiltime=new java.util.Date();
 					Date nowTime=new Date(utiltime.getTime());
-					
+					SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
+					String str=sdf.format(nowTime);
+					DecimalFormat df=new DecimalFormat("#####");
+					ArrayList<ImportBillVO> tmpList=new ImportBillController().findImportBillByTime(nowTime);
+					int times=tmpList.size()+1;
+					String thisid="JHD-"+str+"-"+df.format(times);
 					int num=ib.getCommodityList().getListSize();//商品种类
 					CommodityList newlist=new CommodityList();
 					for(int i=0;i<num;i++) {
@@ -467,19 +521,158 @@ public class ManageCourseViewController implements Initializable {
 						newlist.addCommodity(newcli);
 					}
 					
-					ImportBillVO newsb=new ImportBillVO("-"+ib.getID(), Long.parseLong(id), ib.getMemberID(), newlist, -ib.getSum(), 1, nowTime, "");
-					
+					ImportBillVO newsb=new ImportBillVO(thisid, Long.parseLong(id), ib.getMemberID(), newlist, -ib.getSum(), 1, nowTime, "");
+					ibbs.submitImportBill(newsb);
 				}
-				if(billData.isEmpty()){
-					break;
-				}
-			}
+			
 		}
 	}
 
 	@FXML
 	public void reverseAndCopy() {
-		
+		String id=data.getid();
+		String style=data.getstyle();
+		if(style.equals("销售单")){
+			SaleBillVO m=sbbs.findSaleBillByID(id);
+			try {
+				FXMLLoader loader=new FXMLLoader();
+				loader.setLocation(MainApp.class.getResource("/presentation/saleui/SaleUI.fxml"));
+				AnchorPane salebillUI=loader.load();
+				Scene scene=new Scene(salebillUI);
+				Stage stage=new Stage();
+				stage.setTitle("SaleUI");
+				stage.initModality(Modality.WINDOW_MODAL);
+				stage.initOwner(MainApp.getPrimaryStage());
+				stage.setScene(scene);
+	            SaleViewController controller=loader.getController();
+	            controller.setStage(stage);
+	            controller.red(m);
+	            stage.showAndWait();
+	            
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(style.equals("付款单")){
+			PayBillVO m=pbbs.findPayBillByID(id);
+			try {
+				FXMLLoader loader=new FXMLLoader();
+				loader.setLocation(MainApp.class.getResource("/presentation/billui/PayBillUI.fxml"));
+				AnchorPane paybillUI=loader.load();
+				Scene scene=new Scene(paybillUI);
+				Stage stage=new Stage();
+				stage.setTitle("PayUI");
+				stage.initModality(Modality.WINDOW_MODAL);
+				stage.initOwner(MainApp.getPrimaryStage());
+				stage.setScene(scene);
+	            PayBillViewController controller=loader.getController();
+	            controller.setStage(stage);
+	            controller.red(m);
+	            stage.showAndWait();
+	            
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(style.equals("收款单")){
+			ReceiveBillVO m=rbbs.findReceiveBillByID(id);
+			try {
+				FXMLLoader loader=new FXMLLoader();
+				loader.setLocation(MainApp.class.getResource("/presentation/billui/ReceiveBillUI.fxml"));
+				AnchorPane receivebillUI=loader.load();
+				Scene scene=new Scene(receivebillUI);
+				Stage stage=new Stage();
+				stage.setTitle("ReceiveUI");
+				stage.initModality(Modality.WINDOW_MODAL);
+				stage.initOwner(MainApp.getPrimaryStage());
+				stage.setScene(scene);
+	            ReceiveBillViewController controller=loader.getController();
+	            controller.setStage(stage);
+	            controller.red(m);
+	            stage.showAndWait();
+	            
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(style.equals("现金费用单")){
+			try {
+				CashBillVO m=cbbs.findCashBillByID(id);
+				FXMLLoader loader=new FXMLLoader();
+				loader.setLocation(MainApp.class.getResource("/presentation/billui/CahBillUI.fxml"));
+				AnchorPane cashbillUI=loader.load();
+				Scene scene=new Scene(cashbillUI);
+				Stage stage=new Stage();
+				stage.setTitle("cashUI");
+				stage.initModality(Modality.WINDOW_MODAL);
+				stage.initOwner(MainApp.getPrimaryStage());
+				stage.setScene(scene);
+	            CashBillViewController controller=loader.getController();
+	            controller.setStage(stage);
+	            controller.red(m);
+	            stage.showAndWait();
+	            
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(style.equals("销售退货单")){
+			try {
+				SaleReturnBillVO m=srbbs.findSaleReturnBillByID(id);
+				FXMLLoader loader=new FXMLLoader();
+				loader.setLocation(MainApp.class.getResource("/presentation/saleui/Sale_ReturnUI.fxml"));
+				AnchorPane salebillUI=loader.load();
+				Scene scene=new Scene(salebillUI);
+				Stage stage=new Stage();
+				stage.setTitle("PayUI");
+				stage.initModality(Modality.WINDOW_MODAL);
+				stage.initOwner(MainApp.getPrimaryStage());
+				stage.setScene(scene);
+	            Sale_ReturnViewController controller=loader.getController();
+	            controller.setStage(stage);
+	            controller.red(m);
+	            stage.showAndWait();
+	            
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(style.equals("进货退货单")){
+			try {
+				ImportReturnBillVO m=irbbs.findImportReturnBillByID(id);
+				FXMLLoader loader=new FXMLLoader();
+				loader.setLocation(MainApp.class.getResource("/presentation/saleui/Import_Return.fxml"));
+				AnchorPane imbillUI=loader.load();
+				Scene scene=new Scene(imbillUI);
+				Stage stage=new Stage();
+				stage.setTitle("importreturnUI");
+				stage.initModality(Modality.WINDOW_MODAL);
+				stage.initOwner(MainApp.getPrimaryStage());
+				stage.setScene(scene);
+	            Import_ReturnViewController controller=loader.getController();
+	            controller.setStage(stage);
+	            controller.red(m);
+	            stage.showAndWait();
+	            
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(style.equals("进货单")){
+			try {
+				ImportBillVO m=ibbs.findImportBillByID(id);
+				FXMLLoader loader=new FXMLLoader();
+				loader.setLocation(MainApp.class.getResource("/presentation/saleui/ImportBillUI.fxml"));
+				AnchorPane paybillUI=loader.load();
+				Scene scene=new Scene(paybillUI);
+				Stage stage=new Stage();
+				stage.setTitle("ImportUI");
+				stage.initModality(Modality.WINDOW_MODAL);
+				stage.initOwner(MainApp.getPrimaryStage());
+				stage.setScene(scene);
+	            ImportViewController controller=loader.getController();
+	            controller.setStage(stage);
+	            controller.red(m);
+	            stage.showAndWait();
+	            
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 }

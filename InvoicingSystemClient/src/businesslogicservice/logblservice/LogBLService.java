@@ -9,6 +9,7 @@ public interface LogBLService {
 	public boolean addLog(LogVO logVO);
 	public ArrayList<LogVO> findLogs();
 	public ArrayList<LogVO> findLogByUserID(long userid);
-	public ArrayList<LogVO> findLogByType(String type);
+	public ArrayList<LogVO> findLogByField(String field);
 	public LogVO toLogVO(LogPO logPO);
+	public long findLargestID();
 }
