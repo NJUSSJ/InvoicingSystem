@@ -120,6 +120,7 @@ public class AccountBookViewController implements Initializable {
 			Alert alert=new Alert(AlertType.WARNING);
 			alert.setContentText("请选择一套账本！");
 			alert.showAndWait();
+			return ;
 		}
 		ObservableList<AccoutBookCommodityData> list=FXCollections.observableArrayList();
 		String commodityList=bookdata.getCommodityProperty().get();
@@ -150,8 +151,39 @@ public class AccountBookViewController implements Initializable {
 	}
 	@FXML
 	public void showAccount(){
+		if(bookdata==null) {
+			Alert alert=new Alert(AlertType.WARNING);
+			alert.setContentText("请选择一套账本！");
+			alert.showAndWait();
+			return ;
+		}
 		
+		ObservableList<AccountBookAccountData> list=FXCollections.observableArrayList();
+		String accountList=bookdata.getAccountProperty().get();
+		String accounts[]=accountList.split(" ");
+		for(int i=0;i<accounts.length;i++) {
+			String item[]=accounts[i].split(",");
+			AccountBookAccountData tmpData=new AccountBookAccountData(item[0], item[1]);
+			list.add(tmpData);
+		}
 		
+		try {
+			FXMLLoader loader=new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/presentation/accountui/AccountBookAccountUI.fxml"));
+			AnchorPane accountUI=loader.load();
+			Scene scene=new Scene(accountUI);
+			Stage accountStage=new Stage();
+			accountStage.setTitle("期初客户信息查看");
+			accountStage.initModality(Modality.WINDOW_MODAL);
+			accountStage.initOwner(MainApp.getPrimaryStage());
+			accountStage.setScene(scene);
+			AccountBookAccountController controller=loader.getController();
+			controller.setList(list);
+            accountStage.showAndWait();
+            
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	@FXML
 	public void showMember(){
@@ -159,6 +191,7 @@ public class AccountBookViewController implements Initializable {
 			Alert alert=new Alert(AlertType.WARNING);
 			alert.setContentText("请选择一套账本！");
 			alert.showAndWait();
+			return ;
 		}
 		ObservableList<AccountBookMemberData> list=FXCollections.observableArrayList();
 		String memberList=bookdata.getMemberProperty().get();
