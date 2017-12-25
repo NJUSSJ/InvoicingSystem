@@ -12,7 +12,9 @@ import businesslogic.billbl.CommodityLineItem;
 import businesslogic.billbl.CommodityList;
 import businesslogic.billbl.SaleReturnBillController;
 import businesslogic.commoditybl.CommodityController;
+import businesslogic.logbl.LogController;
 import businesslogic.memberbl.MemberController;
+import businesslogic.utilitybl.Utility;
 import businesslogicservice.billblservice.SaleReturnBillBLService;
 import businesslogicservice.commodityblservice.CommodityBLService;
 import businesslogicservice.memberblservice.MemberBLService;
@@ -30,6 +32,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import vo.CommodityVO;
+import vo.LogVO;
 import vo.MemberVO;
 import vo.SaleReturnBillVO;
 
@@ -250,6 +253,12 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 			 srbbs.deleteSaleReturnBill(unpassbill);
 			 if(srbbs.submitSaleReturnBill(salereturnbill)){
 				 isSubmit="Succeed Submit";
+				//记录日志
+					LogController logController=new LogController();
+					long logID=logController.findLargestID()+1;
+	 	        LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"submitSaleReturnBill:"+salereturnbill.getID(),MainApp.getID());
+	 	        logController.addLog(logVO);
+	 	        //
 			 }
 		     Alert alert = new Alert(AlertType.INFORMATION);
 			        alert.initOwner(MainApp.getPrimaryStage());
@@ -270,6 +279,12 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		SaleReturnBillVO sale_returnbill=new SaleReturnBillVO(billid.getText(),MainApp.getID(),memberl.getID(),comlist,comlist.getImportTotal(),0,time,note.getText());
 		 String isSubmit="fail Submit";
 		 if(srbbs.submitSaleReturnBill(sale_returnbill)){
+			 //记录日志
+				LogController logController=new LogController();
+				long logID=logController.findLargestID()+1;
+				LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"submitSaleReturnBill:"+sale_returnbill.getID(),MainApp.getID());
+				logController.addLog(logVO);
+	        //
 			 	SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
 				String str=sdf.format(time);
 				DecimalFormat df=new DecimalFormat("#####");
@@ -289,8 +304,6 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 				lastprice.setText("");
 				
 				commodityData.clear();
-				
-			 
 		 }
 		 		Alert alert = new Alert(AlertType.INFORMATION);
 		        alert.initOwner(MainApp.getPrimaryStage());
@@ -302,13 +315,11 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 
 
 	public void setStage(Stage stage) {
-		// TODO Auto-generated method stub
 		this.stage=stage;
 	}
 
 
 	public void setVo(SaleReturnBillVO m) {
-		// TODO Auto-generated method stub
 		billid.setText(m.getID());
 		id.setText("ID:"+MainApp.getID());
 		memberl=mbs.findMemberByID(m.getMemberID());
@@ -330,7 +341,6 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 
 
 	public void setVO(SaleReturnBillVO m) {
-		// TODO Auto-generated method stub
 		unpassbill=m;
 		billid.setText(m.getID());
 		id.setText("ID:"+MainApp.getID());
@@ -347,8 +357,8 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 			rightB.setVisible(false);
 			returnB.setVisible(false);
 			reviseB.setVisible(true);
-		
 	}
+
 
 
 	public void red(SaleReturnBillVO m) {
@@ -371,7 +381,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 
 	}
 	
-	
+
 }
 
 

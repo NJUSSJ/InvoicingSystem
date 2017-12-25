@@ -1,9 +1,13 @@
 package presentation.commodityui;
 
 import java.net.URL;
+import java.sql.Date;
 import java.util.ResourceBundle;
 
+import MainApp.MainApp;
 import businesslogic.commoditybl.CommodityController;
+import businesslogic.logbl.LogController;
+import businesslogic.utilitybl.Utility;
 import businesslogicservice.commodityblservice.CommodityBLService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,6 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import vo.CategoryVO;
+import vo.LogVO;
 
 public class SimpleCategoryController implements Initializable{
 	@FXML
@@ -80,12 +85,22 @@ public class SimpleCategoryController implements Initializable{
 			}
 			categoryVO=new CategoryVO(Long.parseLong(id),nameText,Long.parseLong(parentidText));
 			cbs.addCategory(categoryVO);
+			//记录日志
+			LogController logController=new LogController();
+			long logID=logController.findLargestID()+1;
+	        LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"addCategory:"+categoryVO.getID(),MainApp.getID());
+	        logController.addLog(logVO);
 			if(Long.parseLong(parentidText)==-1){
 				list.add(new CategoryData(categoryVO));
 			}
 		}else{
 			categoryVO=new CategoryVO(Long.parseLong(idText),nameText,Long.parseLong(parentidText));
 			cbs.updateCategory(categoryVO);
+			//记录日志
+			LogController logController=new LogController();
+			long logID=logController.findLargestID()+1;
+	        LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"updateCategory:"+categoryVO.getID(),MainApp.getID());
+	        logController.addLog(logVO);
 			data.setName(nameText);
 		}
 		stage.close();

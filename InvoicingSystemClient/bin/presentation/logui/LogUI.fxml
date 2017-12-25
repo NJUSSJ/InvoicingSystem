@@ -28,7 +28,7 @@
         <Font size="15.0" fx:id="x1" />
       </font>
     </Label>
-    <Label fx:id="logout" font="$x1" layoutX="743.0" layoutY="10.0" text="|| 登出" />
+    <Label fx:id="logout" font="$x1" layoutX="743.0" layoutY="10.0" onMouseClicked="#logOut" text="|| 登出" />
     <Separator prefHeight="5.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="116.0" />
     <Label layoutX="14.0" layoutY="25.0" text="日志查看">
       <font>

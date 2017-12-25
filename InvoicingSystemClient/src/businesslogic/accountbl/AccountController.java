@@ -1,5 +1,6 @@
 package businesslogic.accountbl;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 import businesslogicservice.accountblservice.AccountBLService;
@@ -41,6 +42,11 @@ public class AccountController implements AccountBLService{
 	@Override
 	public ArrayList<AccountVO> findAccounts() {
 		return accountImpl.findAccounts();
+	}
+
+	@Override
+	public boolean backUpDataBase(Date time) {
+		return accountImpl.backUpDataBase(time);
 	}
 	
 	

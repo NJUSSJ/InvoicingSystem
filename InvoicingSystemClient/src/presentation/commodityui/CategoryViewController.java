@@ -2,11 +2,14 @@ package presentation.commodityui;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import MainApp.MainApp;
 import businesslogic.commoditybl.CommodityController;
+import businesslogic.logbl.LogController;
+import businesslogic.utilitybl.Utility;
 import businesslogicservice.commodityblservice.CommodityBLService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,6 +29,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import vo.CategoryVO;
 import vo.CommodityVO;
+import vo.LogVO;
 
 public class CategoryViewController implements Initializable{
 	@FXML
@@ -170,6 +174,12 @@ public class CategoryViewController implements Initializable{
 		long parentid= categoryVO.getParentID();
 		int selectedIndex = categoryTable.getSelectionModel().getSelectedIndex();
 			if (selectedIndex >= 0) {
+				//¼ÇÂ¼ÈÕÖ¾
+				LogController logController=new LogController();
+				long logID=logController.findLargestID()+1;
+    	        LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"deteleCategory:"+categoryVO.getID(),MainApp.getID());
+    	        logController.addLog(logVO);
+    	        //
 				cbs.deleteCategory(categoryVO);
 				categoryTable.getItems().remove(selectedIndex);
 				if(categoryData.isEmpty()){

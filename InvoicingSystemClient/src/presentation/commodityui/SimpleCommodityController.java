@@ -1,9 +1,12 @@
 package presentation.commodityui;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 import MainApp.MainApp;
 import businesslogic.commoditybl.CommodityController;
+import businesslogic.logbl.LogController;
+import businesslogic.utilitybl.Utility;
 import businesslogicservice.commodityblservice.CommodityBLService;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -14,6 +17,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import vo.CategoryVO;
 import vo.CommodityVO;
+import vo.LogVO;
 
 public class SimpleCommodityController {
 	Stage stage;
@@ -77,6 +81,12 @@ public class SimpleCommodityController {
 						,Double.parseDouble(saleprice.getText()),parentCategory.getID(),
 						Integer.parseInt(warning.getText()));
 				cbs.addCommodity(commodityVO);
+				//记录日志
+				LogController logController=new LogController();
+				long logID=logController.findLargestID()+1;
+    	        LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"addCommodity:"+commodityVO.getID(),MainApp.getID());
+    	        logController.addLog(logVO);
+    	        //
 				list.add(new CommodityData(commodityVO));
 			}else{
 				Alert alert = new Alert(AlertType.WARNING);
@@ -92,6 +102,12 @@ public class SimpleCommodityController {
 					Double.parseDouble(saleprice.getText()),Double.parseDouble(importprice.getText()),
 					Double.parseDouble(saleprice.getText()),Long.parseLong(parent.getText()),Integer.parseInt(warning.getText()));
 			cbs.updateCommodity(commodityVO);
+			//记录日志
+			LogController logController=new LogController();
+			long logID=logController.findLargestID()+1;
+	        LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"updateCommodity:"+commodityVO.getID(),MainApp.getID());
+	        logController.addLog(logVO);
+	        //
 			data.setVO(commodityVO);
 		}
 		stage.close();

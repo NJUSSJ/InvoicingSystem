@@ -10,32 +10,32 @@ public class LogController implements LogBLService{
 	Log logImpl=new Log();
 	@Override
 	public boolean addLog(LogVO logVO) {
-		// TODO 自动生成的方法存根
 		return logImpl.addLog(logVO);
 	}
 
 	@Override
 	public ArrayList<LogVO> findLogs() {
-		// TODO 自动生成的方法存根
 		return logImpl.findLogs();
 	}
 
 	@Override
 	public ArrayList<LogVO> findLogByUserID(long userid) {
-		// TODO 自动生成的方法存根
 		return logImpl.findLogByUserID(userid);
 	}
 
 	@Override
-	public ArrayList<LogVO> findLogByType(String type) {
-		// TODO 自动生成的方法存根
-		return logImpl.findLogByType(type);
+	public ArrayList<LogVO> findLogByField(String field) {
+		return logImpl.findLogByType(field);
 	}
 
 	@Override
 	public LogVO toLogVO(LogPO logPO) {
-		// TODO 自动生成的方法存根
 		return logImpl.toLogVO(logPO);
+	}
+
+	@Override
+	public long findLargestID() {
+		return logImpl.findLargestID();
 	}
 	
 }

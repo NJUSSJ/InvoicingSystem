@@ -2,11 +2,14 @@ package presentation.commodityui;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import MainApp.MainApp;
 import businesslogic.commoditybl.CommodityController;
+import businesslogic.logbl.LogController;
+import businesslogic.utilitybl.Utility;
 import businesslogicservice.commodityblservice.CommodityBLService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,6 +28,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import vo.CommodityVO;
+import vo.LogVO;
 
 public class CommodityViewController implements Initializable{
 	@FXML
@@ -140,6 +144,12 @@ public class CommodityViewController implements Initializable{
    public void delete(){
 		int selectedIndex = commodityTable.getSelectionModel().getSelectedIndex();
 	   	 	if (selectedIndex >= 0) {
+	   	 	//¼ÇÂ¼ÈÕÖ¾
+				LogController logController=new LogController();
+				long logID=logController.findLargestID()+1;
+    	        LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"deleteCommodity:"+commodityVO.getID(),MainApp.getID());
+    	        logController.addLog(logVO);
+    	        //
 	   	 		cbs.deleteCommodity(commodityVO);
 	   	 		commodityTable.getItems().remove(selectedIndex);
 	   	    } else { 

@@ -1,9 +1,11 @@
 package presentation.memberui;
 
 import java.net.URL;
+import java.sql.Date;
 import java.util.ResourceBundle;
 
 import MainApp.MainApp;
+import businesslogic.logbl.LogController;
 import businesslogic.memberbl.MemberController;
 import businesslogic.utilitybl.Utility;
 import businesslogicservice.memberblservice.MemberBLService;
@@ -15,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import vo.LogVO;
 import vo.MemberVO;
 
 public class SimpleMemberController implements Initializable{
@@ -95,6 +98,12 @@ public class SimpleMemberController implements Initializable{
 				Double.parseDouble(quota.getText()),MainApp.getID());
 			mbs.updateMember(memberVO);
 			memberData.setMemberVO(memberVO);
+			//记录日志
+			LogController logController=new LogController();
+			long logID=logController.findLargestID()+1;
+	        LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"updateMember:"+memberVO.getID(),MainApp.getID());
+	        logController.addLog(logVO);
+	        //
 			stage.close();
 		}else{
 			long largest=-1;
@@ -112,6 +121,12 @@ public class SimpleMemberController implements Initializable{
 					addressField.getText(),emailField.getText(),0.0,0.0,0.0,MainApp.getID());
 			mbs.addMember(memberVO);
 			list.add(new MemberData(memberVO));
+			//记录日志
+			LogController logController=new LogController();
+			long logID=logController.findLargestID()+1;
+	        LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"addMember:"+memberVO.getID(),MainApp.getID());
+	        logController.addLog(logVO);
+	        //
 			stage.close();
 		}
 		

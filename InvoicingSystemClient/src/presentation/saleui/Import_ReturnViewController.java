@@ -12,7 +12,9 @@ import businesslogic.billbl.CommodityLineItem;
 import businesslogic.billbl.CommodityList;
 import businesslogic.billbl.ImportReturnBillController;
 import businesslogic.commoditybl.CommodityController;
+import businesslogic.logbl.LogController;
 import businesslogic.memberbl.MemberController;
+import businesslogic.utilitybl.Utility;
 import businesslogicservice.billblservice.ImportReturnBillBLService;
 import businesslogicservice.commodityblservice.CommodityBLService;
 import businesslogicservice.memberblservice.MemberBLService;
@@ -31,6 +33,7 @@ import javafx.stage.Stage;
 import javafx.scene.control.Alert.AlertType;
 import vo.CommodityVO;
 import vo.ImportReturnBillVO;
+import vo.LogVO;
 import vo.MemberVO;
 
 public class Import_ReturnViewController implements Initializable {
@@ -119,7 +122,6 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	int ishas=0;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
 		java.util.Date utiltime=new java.util.Date();
 		time=new Date(utiltime.getTime());
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
@@ -166,8 +168,9 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 				lastprice.setText(""+item.getImportPrice());
 				notea.setText(item.getRemark());
 				ishas=1;
-			
-		}
+			}
+
+	
 	}
 
 
@@ -252,6 +255,12 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		 irbbs.deleteImportReturnBill(unpassbill);
 		 if(irbbs.submitImportReturnBill(importReturnBill)){
 			 isSubmit="Succeed Submit";
+			//记录日志
+				LogController logController=new LogController();
+				long logID=logController.findLargestID()+1;
+	        LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"submitImportReturnBill:"+importReturnBill.getID(),MainApp.getID());
+	        logController.addLog(logVO);
+	        //
 		 }
 	     Alert alert = new Alert(AlertType.INFORMATION);
 		        alert.initOwner(MainApp.getPrimaryStage());
@@ -268,6 +277,12 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		 if(irbbs.submitImportReturnBill(importReturnBill)){
 			 times++;
 			 isSubmit="Succeed Submit";
+			//记录日志
+				LogController logController=new LogController();
+				long logID=logController.findLargestID()+1;
+ 	        LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"submitImportReturnBill:"+importReturnBill.getID(),MainApp.getID());
+ 	        logController.addLog(logVO);
+ 	        //
 		 }
 	     Alert alert = new Alert(AlertType.INFORMATION);
 		        alert.initOwner(MainApp.getPrimaryStage());
@@ -279,13 +294,11 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 
 
 	public void setStage(Stage stage) {
-		// TODO Auto-generated method stub
 		this.stage=stage;
 	}
 
 
 	public void setVo(ImportReturnBillVO m) {
-		// TODO Auto-generated method stub
 		billid.setText(m.getID());
 		id.setText("ID:"+MainApp.getID());
 		memberl=mbs.findMemberByID(m.getMemberID());
@@ -307,7 +320,6 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 
 
 	public void setVO(ImportReturnBillVO m) {
-		// TODO Auto-generated method stub
 		unpassbill=m;
 		billid.setText(m.getID());
 		id.setText("ID:"+MainApp.getID());

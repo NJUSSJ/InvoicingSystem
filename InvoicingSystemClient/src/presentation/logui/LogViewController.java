@@ -64,9 +64,12 @@ public class LogViewController implements Initializable {
 	
 	private LogController lcon=new LogController();
 	private UserController ucon=new UserController();
+	
+	int rank;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		long idLong=MainApp.getID();
+		rank=ucon.findUserByID(idLong).getRank();
 		String idString=idLong+"";
 		while(idString.length()<5) {
 			idString="0"+idString;
@@ -77,18 +80,22 @@ public class LogViewController implements Initializable {
 		timeColumn.setCellValueFactory(cellData ->cellData.getValue().getTime());
 		nameColumn.setCellValueFactory(cellData ->cellData.getValue().getName());
 		typeColumn.setCellValueFactory(cellData ->cellData.getValue().getType());
-	    //volist=lcon.findLogs();
-		volist.add(new LogVO(0, new Date(new java.util.Date().getTime()), "faq", 2));
-		volist.add(new LogVO(0, new Date(new java.util.Date().getTime()), "leather", 3));
-		volist.add(new LogVO(0, new Date(new java.util.Date().getTime()), "faq", 4));
+	    volist=lcon.findLogs();
 	    for(LogVO log:volist){
 			logData.add(new LogData(log));
 		}
 		logTable.setItems(logData);
 	}
+	
 	@FXML
 	public void back(){
-		MainApp.showAdministerMainUI();
+		if(rank==0){
+			MainApp.showAdministerMainUI();
+		}else if(rank==2){
+			MainApp.showFianceMainUI();
+		}else if(rank==1){
+			MainApp.showManagerMainUI();
+		}
 	}
 	@FXML
 	public void logOut(){
@@ -105,11 +112,7 @@ public class LogViewController implements Initializable {
 		String endDText=endDay.getText();
 		String userName=operator.getText();
 		String operateType=type.getText();
-		//volist=lcon.findLogs();
-		volist=new ArrayList<LogVO>();
-		volist.add(new LogVO(0, new Date(new java.util.Date().getTime()), "faq", 2));
-		volist.add(new LogVO(0, new Date(new java.util.Date().getTime()), "leather", 3));
-		volist.add(new LogVO(0, new Date(new java.util.Date().getTime()), "faq", 4));
+		volist=lcon.findLogs();
 		if(userName!=null&&userName.length()>0){
 			volist=findByUsername(userName,volist);
 		}

@@ -13,7 +13,9 @@ import businesslogic.billbl.AccountLineItem;
 import businesslogic.billbl.AccountList;
 import businesslogic.billbl.PayBillController;
 import businesslogic.billbl.ReceiveBillController;
+import businesslogic.logbl.LogController;
 import businesslogic.memberbl.MemberController;
+import businesslogic.utilitybl.Utility;
 import businesslogicservice.accountblservice.AccountBLService;
 import businesslogicservice.billblservice.PayBillBLService;
 import javafx.collections.FXCollections;
@@ -29,6 +31,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import vo.AccountVO;
+import vo.LogVO;
 import vo.MemberVO;
 import vo.PayBillVO;
 import vo.ReceiveBillVO;
@@ -241,10 +244,16 @@ public class PayBillViewController  implements Initializable{
 		 
 		 PayBillBLService pbs=new PayBillController();
 		 pbs.deletePayBill(unpassbill);
-		 PayBillVO receivebill=new PayBillVO(billid.getText() ,MainApp.getID(),tmpMember.getID(),aclist,aclist.getSum(),time,0);
+		 PayBillVO paybill=new PayBillVO(billid.getText() ,MainApp.getID(),tmpMember.getID(),aclist,aclist.getSum(),time,0);
 		 String isSubmit="fail Submit";
-		 if(pbs.submitPayBill(receivebill)){
+		 if(pbs.submitPayBill(paybill)){
 			 isSubmit="Succeed Sumbit";
+			//记录日志
+				LogController logController=new LogController();
+				long logID=logController.findLargestID()+1;
+ 	        LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"submitPayBill:"+paybill.getID(),MainApp.getID());
+ 	        logController.addLog(logVO);
+ 	        //
 		 }
 		 Alert alert = new Alert(AlertType.INFORMATION);
 	        alert.initOwner(MainApp.getPrimaryStage());
@@ -268,10 +277,15 @@ public class PayBillViewController  implements Initializable{
 	 }
 	 
 	 PayBillBLService pbs=new PayBillController();
-	 PayBillVO receivebill=new PayBillVO(billid.getText() ,MainApp.getID(),tmpMember.getID(),aclist,aclist.getSum(),time,0);
+	 PayBillVO paybill=new PayBillVO(billid.getText() ,MainApp.getID(),tmpMember.getID(),aclist,aclist.getSum(),time,0);
 	 String isSubmit="fail Submit";
-	 if(pbs.submitPayBill(receivebill)){
-		 
+	 if(pbs.submitPayBill(paybill)){
+		 //记录日志
+		 LogController logController=new LogController();
+		 long logID=logController.findLargestID()+1;
+		 LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"submitPayBill:"+paybill.getID(),MainApp.getID());
+		 logController.addLog(logVO);
+		 //
 		 SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
 		 String str=sdf.format(time);
 		 DecimalFormat df=new DecimalFormat("#####");

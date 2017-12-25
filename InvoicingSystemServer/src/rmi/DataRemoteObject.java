@@ -999,5 +999,16 @@ public class DataRemoteObject extends UnicastRemoteObject implements UserDataSer
 	public long getLargestIDofCommodity() throws RemoteException {
 		return commodityService.getLargestIDofCommodity();
 	}
+
+	@Override
+	public int getLargestIDofLog() throws RemoteException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public boolean backUpDataBase(Date time) throws RemoteException {
+		return false;
+	}
 	
 }

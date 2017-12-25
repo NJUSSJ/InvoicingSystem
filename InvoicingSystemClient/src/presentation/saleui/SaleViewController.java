@@ -12,7 +12,9 @@ import businesslogic.billbl.CommodityLineItem;
 import businesslogic.billbl.CommodityList;
 import businesslogic.billbl.SaleBillController;
 import businesslogic.commoditybl.CommodityController;
+import businesslogic.logbl.LogController;
 import businesslogic.memberbl.MemberController;
+import businesslogic.utilitybl.Utility;
 import businesslogicservice.billblservice.SaleBillBLService;
 import businesslogicservice.commodityblservice.CommodityBLService;
 import businesslogicservice.memberblservice.MemberBLService;
@@ -30,6 +32,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import vo.CommodityVO;
+import vo.LogVO;
 import vo.MemberVO;
 import vo.SaleBillVO;
 
@@ -49,8 +52,7 @@ public class SaleViewController implements Initializable  {
 	private Label discountafter;
 	@FXML
 	private TextField coupon;
-	@FXML
-	private TextField haspay;
+	
 	@FXML
 	private Label discount;
 	
@@ -177,6 +179,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 			ishas=1;
 			itemdata=newValue;
 		}
+
 	}
 
 
@@ -277,6 +280,12 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 			sbbs.deleteSaleBill(unpassbill);
 			 if(sbbs.submitSaleBill(salebill)){
 				 isSubmit="Succeed Submit";
+				//记录日志
+					LogController logController=new LogController();
+					long logID=logController.findLargestID()+1;
+	 	        LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"submitSaleBill:"+salebill.getID(),MainApp.getID());
+	 	        logController.addLog(logVO);
+	 	        //
 			 }
 		     Alert alert = new Alert(AlertType.INFORMATION);
 			        alert.initOwner(MainApp.getPrimaryStage());
@@ -290,11 +299,18 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	public void setBill(){
 
 		memberl=mbs.findMemberByName(member.getText());
-		SaleBillVO salebill=new SaleBillVO(billid.getText(),Long.parseLong(id.getText()),memberl.getID(),comlist,
-			comlist.getSaleTotal(),0,time,note.getText(),Integer.parseInt(coupon.getText()),Double.parseDouble(discount.getText()),Double.parseDouble(discountafter.getText()));
+		SaleBillVO salebill=new SaleBillVO(billid.getText(),MainApp.getID(),memberl.getID(),comlist,
+			comlist.getSaleTotal(),0,time,note.getText(),Integer.parseInt(coupon.getText()),Double.parseDouble(discount.getText().substring(1, discount.getText().length()))/100,Double.parseDouble(discountafter.getText()));
 
 		String isSubmit="fail Submit";
 		 if(sbbs.submitSaleBill(salebill)){
+			//记录日志
+				LogController logController=new LogController();
+				long logID=logController.findLargestID()+1;
+				LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"submitSaleBill:"+salebill.getID(),MainApp.getID());
+				logController.addLog(logVO);
+	        //
+			 
 			 	SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
 				String str=sdf.format(time);
 				DecimalFormat df=new DecimalFormat("#####");

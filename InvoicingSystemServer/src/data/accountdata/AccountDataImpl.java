@@ -1,15 +1,31 @@
 package data.accountdata;
+import java.io.BufferedReader;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 /**
  * @author shisj
  */
 import java.rmi.RemoteException;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.mysql.fabric.xmlrpc.base.Member;
+
+import data.commoditydata.CategoryDataImpl;
+import data.commoditydata.CommodityDataImpl;
 import data.datafactory.DataFactory;
+import data.memberdata.MemberDataImpl;
 import dataservice.accountdataservice.AccountDataService;
 import po.AccountPO;
+import po.CommodityPO;
+import po.MemberPO;
 
 public class AccountDataImpl implements AccountDataService {
 
@@ -156,6 +172,80 @@ public class AccountDataImpl implements AccountDataService {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	public boolean backUpDataBase(Date time) throws RemoteException {
+		ArrayList<CommodityPO> commodities=new CommodityDataImpl().findCommodities();
+		ArrayList<AccountPO> accounts=new AccountDataImpl().findAccounts();
+		ArrayList<MemberPO> members=new MemberDataImpl().findMembers();
+		
+		String commodityList="";
+		for(int i=0;i<commodities.size();i++) {
+			//顺序：id,name,importPrice,salePrice,model,parent
+			long id=commodities.get(i).getID();
+			commodityList+=(Long.toString(id)+",");
+			String name=commodities.get(i).getName();
+			commodityList+=(name+",");
+			double importprice=commodities.get(i).getImportPrice();
+			commodityList+=(Double.toString(importprice)+",");
+			double saleprice=commodities.get(i).getSalePrice();
+			commodityList+=(Double.toString(saleprice)+",");
+			String model=commodities.get(i).getModel();
+			commodityList+=(model+",");
+			long parentid=commodities.get(i).getParentID();
+			String parent=new CategoryDataImpl().findCategorybyID(parentid).getName();
+			commodityList+=parent+" ";
+			
+		}
+		commodityList=commodityList.substring(0, commodityList.length());
+		
+		String accountList="";
+		for(int i=0;i<accounts.size();i++) {
+			//顺序：id,deposit
+			long id=accounts.get(i).getID();
+			accountList+=(Long.toString(id)+",");
+			double deposit=accounts.get(i).getDeposit();
+			accountList+=(Double.toString(deposit)+" ");
+		}
+		accountList=accountList.substring(0,accountList.length());
+		
+		String memberList="";
+		for(int i=0;i<members.size();i++) {
+			//顺序：分类, name, tel, shouldget,shoulepay
+			int cate=members.get(i).getCategory();
+			String category="";
+			if(cate==0) {
+				category="供应商";
+			}else {
+				category="客户";
+			}
+			memberList+=category+",";
+			
+			String name=members.get(i).getName();
+			memberList+=name+",";
+			
+			int tel=members.get(i).getPhoneNum();
+			memberList+=(Integer.toString(tel)+",");
+			
+			double shouldget=members.get(i).getShouldGet();
+			memberList+=(Double.toString(shouldget)+",");
+			
+			double shouldpay=members.get(i).getShouldPay();
+			memberList+=(Double.toString(shouldpay)+" ");
+		}
+		memberList=memberList.substring(0,memberList.length());
+		
+		String sql="inset into books (date,commodityList,memberList,accountList) values ('"+time+"','"+commodityList+"','"+memberList+"','"+accountList+"'";
+		
+		try {
+			if(DataFactory.statement.executeUpdate(sql)>0){
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 }
