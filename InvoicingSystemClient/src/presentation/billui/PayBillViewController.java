@@ -334,6 +334,22 @@ public class PayBillViewController  implements Initializable{
 	   returnB.setVisible(false);
 	   reviseB.setVisible(true);
 	}
+	public void red(PayBillVO m) {
+		// TODO Auto-generated method stub
+		id.setText(""+MainApp.getID());
+		account.setText(""+m.getMemberID());
+		operator.setText(""+m.getUserID());
+		totalsum.setText(""+m.getSum());
+	    AccountList items=m.getAccountList();
+	    for(int i=0;i<items.getListLength();i++){
+		   AccountLineItemData a=new AccountLineItemData(items.getItem(i));
+		   payData.add(a);
+	   }
+	   payTable.setItems(payData);
+	   deleteB.setVisible(false);
+	   returnB.setVisible(false);
+	   addB.setVisible(false);
+	}
 
 	
 

@@ -115,7 +115,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	Stage stage;
 	
 	Date time;
-	CommodityItemData itemdata;
+	CommodityItemData itemdata=null;
 	CommodityLineItem item=null;
 	CommodityList comlist=new CommodityList();
 	CommodityVO a;
@@ -124,6 +124,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	MemberBLService mbs=new MemberController();
 	SaleBillBLService sbbs=new SaleBillController();
 	SaleBillVO unpassbill=null;
+	int ishas=0;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
@@ -161,12 +162,21 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		modelColumn.setCellValueFactory(cellData ->cellData.getValue().getModel());
 		moneyColumn.setCellValueFactory(cellData ->cellData.getValue().getImportPrice());
        reviseB.setVisible(false);
+       commodityTable.setItems(commodityData);
 	}
 
 	
 	private void getInf(CommodityItemData newValue) {
 		// TODO Auto-generated method stub
-		item=newValue.getItem();
+		if(newValue!=null){
+			item=newValue.getItem();
+			name.setText(newValue.getName().get());
+			num.setText(""+item.getNum());
+			lastprice.setText(""+item.getSalePrice());
+			notea.setText(item.getRemark());
+			ishas=1;
+			itemdata=newValue;
+		}
 	}
 
 
@@ -222,11 +232,21 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 			warning .showAndWait();
 			return ;
 		}
+		if(ishas==0){
 		itemdata=new CommodityItemData(0,a,Integer.parseInt(num.getText()),Double.parseDouble(lastprice.getText()),notea.getText());
 	    item=new CommodityLineItem(Integer.parseInt(num.getText()),a.getID(),Double.parseDouble(lastprice.getText()),a.getImportPrice(),notea.getText());
 	    comlist.addCommodity(item);
 		commodityData.add(itemdata);
-	  
+		}else{
+			ishas=0;
+			itemdata.setNum(num.getText());
+			comlist.deleteCommodity(item);
+			comlist.addCommodity(itemdata.getItem());
+		}
+		 name.setText("");
+		    lastprice.setText("");
+		    num.setText("");
+		    notea.setText("");
 	    discountbefore.setText(""+comlist.getSaleTotal());
 	    double discountl=(sbbs.handleSale(memberl.getRank(), comlist)/comlist.getSaleTotal());
         discount.setText("%"+discountl*100);
@@ -284,6 +304,13 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 				
 				
 				billid.setText("XSD-"+str+"-"+df.format(times));
+				 name.setText("");
+				    lastprice.setText("");
+				    num.setText("");
+				    notea.setText("");
+				    commodityData.clear();
+				    member.setText("");
+				    note.setText("");
 			 isSubmit="Succeed Submit";
 		 }
 	     Alert alert = new Alert(AlertType.INFORMATION);
@@ -346,6 +373,30 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 			rightB.setVisible(false);
 			 returnB.setVisible(false);
 			 reviseB.setVisible(true);
+	}
+
+
+	public void red(SaleBillVO m) {
+		// TODO Auto-generated method stub
+		id.setText("ID:"+MainApp.getID());
+		memberl=mbs.findMemberByID(m.getMemberID());
+		operator.setText(""+m.getUserID());
+		discountbefore.setText(""+m.getSum());
+		discountafter.setText(""+m.getUltimate());
+		discount.setText(""+m.getDiscount());
+		coupon.setText(""+m.getCoupon());
+		
+		member.setText(memberl.getName());
+		comlist=m.getList();
+		for(int i=0;i<comlist.getListSize();i++){
+			commodityData.add(new CommodityItemData(comlist.get(i)));
+		}
+			commodityTable.setItems(commodityData);
+            
+			 returnB.setVisible(false);
+			 search.setVisible(false);
+			 deleteB.setVisible(false);
+             
 	}
 	
 }

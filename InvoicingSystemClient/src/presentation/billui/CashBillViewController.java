@@ -112,7 +112,6 @@ public class CashBillViewController  implements Initializable {
 		ArrayList<CashBillVO> tmpList=new CashBillController().findCashBillByTime(time);
 		times=tmpList.size()+1;
 		
-		reviseB.setVisible(false);
 		
 		billid.setText("FKD-"+str+"-"+df.format(times));
 		
@@ -130,6 +129,7 @@ public class CashBillViewController  implements Initializable {
 		nameColoumn.setCellValueFactory(cellData ->cellData.getValue().getName());
 		amountColoumn.setCellValueFactory(cellData ->cellData.getValue().getMoney());
 		noteColoumn.setCellValueFactory(cellData ->cellData.getValue().getNote());
+		reviseB.setVisible(false);
 	}
 	@FXML
     public void add(){
@@ -349,5 +349,25 @@ public class CashBillViewController  implements Initializable {
 	   returnB.setVisible(false);
 	   reviseB.setVisible(true);
 	}
+	public void red(CashBillVO m) {
+		// TODO Auto-generated method stub
+		id.setText(""+MainApp.getID());
+		account.setText(""+m.getAccountID());
+		operator.setText(""+m.getUserID());
+		totalsum.setText(""+m.getSum());
+	   ArrayList<String> items=m.getAccountList();
+	   for(String it:items){
+		   String[] its=it.split(",");
+		   ItemData a=new ItemData(its[0],its[1],its[2]);
+		   cashData.add(a);
+	   }
+	   cashTable.setItems(cashData);
+	   deleteB.setVisible(false);
+	   returnB.setVisible(false);
+	   addB.setVisible(false);
+	   
+		
+	}
+	
 }
 

@@ -76,4 +76,8 @@ public class CommodityItemData {
 		CommodityLineItem item=new CommodityLineItem(Integer.parseInt(num.get()), a.getID(), Double.parseDouble(saleprice.get()), Double.parseDouble(importprice.get()),note.get());
 		return item;
 	}
+	public void setNum(String text) {
+		// TODO Auto-generated method stub
+		num.set(text);
+	}
 }

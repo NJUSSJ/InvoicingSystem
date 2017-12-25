@@ -107,8 +107,8 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	static int times=0;
 	
 	Date time;
-	CommodityItemData itemdata;
-	CommodityLineItem item;
+	CommodityItemData itemdata=null;
+	CommodityLineItem item=null;
 	CommodityList comlist=new CommodityList();
 	CommodityVO a;
 	MemberVO memberl;
@@ -116,6 +116,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	MemberBLService mbs=new MemberController();
 	ImportBillBLService ibbs=new ImportBillController();
 	ImportBillVO unpassbill=null;
+	int ishas=0;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
@@ -151,6 +152,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		moneyColumn.setCellValueFactory(cellData ->cellData.getValue().getImportPrice());
 	    altogether.setText("0");
 	    reviseB.setVisible(false);
+	    commodityTable.setItems(commodityData);
 	}
 
 	
@@ -159,6 +161,11 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		if(newValue!=null) {
 			itemdata=newValue;
 			item=itemdata.getItem();
+			name.setText(newValue.getName().get());
+			num.setText(""+item.getNum());
+			lastprice.setText(""+item.getImportPrice());
+			notea.setText(item.getRemark());
+			ishas=1;
 		}
 			
 		
@@ -205,13 +212,18 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	}
 	@FXML
 	public void confirm(){
-		itemdata=new CommodityItemData(0,a,Integer.parseInt(num.getText()),Double.parseDouble(lastprice.getText()),notea.getText());
-	    item=new CommodityLineItem(Integer.parseInt(num.getText()),a.getID(),a.getSalePrice(),Double.parseDouble(lastprice.getText()),notea.getText());
-	    comlist.addCommodity(item);
-		commodityData.add(itemdata);
-	    commodityTable.setItems(commodityData);
+		if(ishas==0){
+			itemdata=new CommodityItemData(0,a,Integer.parseInt(num.getText()),Double.parseDouble(lastprice.getText()),notea.getText());
+		    item=new CommodityLineItem(Integer.parseInt(num.getText()),a.getID(),Double.parseDouble(lastprice.getText()),a.getImportPrice(),notea.getText());
+		    comlist.addCommodity(item);
+			commodityData.add(itemdata);
+			}else{
+				ishas=0;
+				itemdata.setNum(num.getText());
+				comlist.deleteCommodity(item);
+				comlist.addCommodity(itemdata.getItem());
+			}
 	    altogether.setText(""+comlist.getImportTotal());
-	    
 	    name.setText("");
 	    lastprice.setText("");
 	    num.setText("");
@@ -338,6 +350,25 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 			rightB.setVisible(false);
 			returnB.setVisible(false);
 			reviseB.setVisible(true);
+	}
+
+
+	public void red(ImportBillVO m) {
+		// TODO Auto-generated method stub
+		id.setText("ID:"+MainApp.getID());
+		memberl=mbs.findMemberByID(m.getMemberID());
+		operator.setText(""+m.getUserID());
+		altogether.setText(""+m.getSum());
+		member.setText(memberl.getName());
+		note.setText(m.getRemark());
+		comlist=m.getCommodityList();
+		for(int i=0;i<comlist.getListSize();i++){
+			commodityData.add(new CommodityItemData(comlist.get(i)));
+		}
+			commodityTable.setItems(commodityData);
+			 returnB.setVisible(false);
+			 search.setVisible(false);
+			 deleteB.setVisible(false);
 	}
 
 }
