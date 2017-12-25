@@ -12,7 +12,9 @@ import businesslogic.billbl.CommodityLineItem;
 import businesslogic.billbl.CommodityList;
 import businesslogic.billbl.SaleBillController;
 import businesslogic.commoditybl.CommodityController;
+import businesslogic.logbl.LogController;
 import businesslogic.memberbl.MemberController;
+import businesslogic.utilitybl.Utility;
 import businesslogicservice.billblservice.SaleBillBLService;
 import businesslogicservice.commodityblservice.CommodityBLService;
 import businesslogicservice.memberblservice.MemberBLService;
@@ -30,6 +32,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import vo.CommodityVO;
+import vo.LogVO;
 import vo.MemberVO;
 import vo.SaleBillVO;
 
@@ -164,7 +167,6 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 
 	
 	private void getInf(CommodityItemData newValue) {
-		// TODO Auto-generated method stub
 		item=newValue.getItem();
 	}
 
@@ -256,6 +258,12 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 			sbbs.deleteSaleBill(unpassbill);
 			 if(sbbs.submitSaleBill(salebill)){
 				 isSubmit="Succeed Submit";
+				//记录日志
+					LogController logController=new LogController();
+					long logID=logController.findLargestID()+1;
+	 	        LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"submitSaleBill:"+salebill.getID(),MainApp.getID());
+	 	        logController.addLog(logVO);
+	 	        //
 			 }
 		     Alert alert = new Alert(AlertType.INFORMATION);
 			        alert.initOwner(MainApp.getPrimaryStage());
@@ -274,6 +282,13 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 
 		String isSubmit="fail Submit";
 		 if(sbbs.submitSaleBill(salebill)){
+			//记录日志
+				LogController logController=new LogController();
+				long logID=logController.findLargestID()+1;
+				LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"submitSaleBill:"+salebill.getID(),MainApp.getID());
+				logController.addLog(logVO);
+	        //
+			 
 			 	SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
 				String str=sdf.format(time);
 				DecimalFormat df=new DecimalFormat("#####");

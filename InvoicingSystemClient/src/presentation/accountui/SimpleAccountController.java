@@ -1,8 +1,13 @@
 package presentation.accountui;
 
 import java.net.URL;
+import java.sql.Date;
 import java.util.ResourceBundle;
+
+import MainApp.MainApp;
 import businesslogic.accountbl.AccountController;
+import businesslogic.logbl.LogController;
+import businesslogic.utilitybl.Utility;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import vo.AccountVO;
+import vo.LogVO;
 
 public class SimpleAccountController implements Initializable  {
 	private  Stage stage;
@@ -31,9 +37,7 @@ public class SimpleAccountController implements Initializable  {
 	AccountData data;
 	ObservableList<AccountData> list;
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		
+	public void initialize(URL location, ResourceBundle resources) {	
 	}
 	@FXML
 	public void rightSet(){
@@ -55,7 +59,11 @@ public class SimpleAccountController implements Initializable  {
 				
 				AccountData tmpData=new AccountData(tmpVO);
 				list.add(tmpData);
-				
+				//记录日志
+				LogController logController=new LogController();
+				long logID=logController.findLargestID()+1;
+    	        LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"addAccount:"+tmpVO.getID(),MainApp.getID());
+    	        logController.addLog(logVO);
 				stage.close();
 			} catch (NumberFormatException e) {
 				Alert warning=new Alert(AlertType.WARNING);
@@ -80,6 +88,11 @@ public class SimpleAccountController implements Initializable  {
 					data.setDeposit(Double.parseDouble(deposit)+"");
 					data.setID(id);
 					data.setName(name);
+					//记录日志
+					LogController logController=new LogController();
+					long logID=logController.findLargestID()+1;
+	    	        LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"updateAccount:"+tmpVO.getID(),MainApp.getID());
+	    	        logController.addLog(logVO);
 				}
 				else {
 					Alert warning=new Alert(AlertType.WARNING);

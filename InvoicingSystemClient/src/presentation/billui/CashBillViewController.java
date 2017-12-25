@@ -10,6 +10,8 @@ import java.util.ResourceBundle;
 import MainApp.MainApp;
 import businesslogic.accountbl.AccountController;
 import businesslogic.billbl.CashBillController;
+import businesslogic.logbl.LogController;
+import businesslogic.utilitybl.Utility;
 import businesslogicservice.accountblservice.AccountBLService;
 import businesslogicservice.billblservice.CashBillBLService;
 import javafx.collections.FXCollections;
@@ -25,6 +27,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import vo.AccountVO;
 import vo.CashBillVO;
+import vo.LogVO;
 import javafx.scene.control.Alert.AlertType;
 
 public class CashBillViewController  implements Initializable {
@@ -252,6 +255,12 @@ public class CashBillViewController  implements Initializable {
 		 	String isSubmit="fail Submit";
 		 	if(pbs.submitCashBill(cashbill)){
 		 		isSubmit="Succeed Submit";
+		 		//¼ÇÂ¼ÈÕÖ¾
+				LogController logController=new LogController();
+				long logID=logController.findLargestID()+1;
+    	        LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"submitCashBill:"+cashbill.getID(),MainApp.getID());
+    	        logController.addLog(logVO);
+    	        //
 		 		}
 	 		Alert alert = new Alert(AlertType.INFORMATION);
 	        alert.initOwner(MainApp.getPrimaryStage());

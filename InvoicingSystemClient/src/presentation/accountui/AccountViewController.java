@@ -2,11 +2,14 @@ package presentation.accountui;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import MainApp.MainApp;
 import businesslogic.accountbl.AccountController;
+import businesslogic.logbl.LogController;
+import businesslogic.utilitybl.Utility;
 import businesslogicservice.accountblservice.AccountBLService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,6 +31,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import vo.AccountVO;
+import vo.LogVO;
 
 public class AccountViewController implements Initializable {
 	@FXML
@@ -160,7 +164,12 @@ public class AccountViewController implements Initializable {
     	        
     	        AccountVO tmpVO=new AccountVO(id, deposit, name);
     	        abs.deleteAccount(tmpVO);
-    			
+    			//¼ÇÂ¼ÈÕÖ¾
+    	        LogController logController=new LogController();
+    	        long logID=logController.findLargestID()+1;
+    	        LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"deteleAccount:"+tmpVO.getID(),MainApp.getID());
+    	        logController.addLog(logVO);
+    	        //
     	    } else {
     	        // Nothing selected.
     	        Alert alert = new Alert(AlertType.WARNING);

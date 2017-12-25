@@ -2,10 +2,13 @@ package presentation.memberui;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import MainApp.MainApp;
+import businesslogic.logbl.LogController;
 import businesslogic.memberbl.MemberController;
+import businesslogic.utilitybl.Utility;
 import businesslogicservice.memberblservice.MemberBLService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,6 +26,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import vo.LogVO;
 import vo.MemberVO;
 
 public class MemberViewController implements Initializable {
@@ -192,6 +196,12 @@ public class MemberViewController implements Initializable {
 		int selectedIndex = memberTable.getSelectionModel().getSelectedIndex();
 
    	 	if (selectedIndex >= 0) {
+   	 	//¼ÇÂ¼ÈÕÖ¾
+			LogController logController=new LogController();
+			long logID=logController.findLargestID()+1;
+	        LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"deleteMember:"+me.getID(),MainApp.getID());
+	        logController.addLog(logVO);
+	        //
    	 		mbs.deleteMember(me);
    	 		memberTable.getItems().remove(selectedIndex);
    	    } else {

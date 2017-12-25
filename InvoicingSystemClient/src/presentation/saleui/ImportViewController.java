@@ -12,7 +12,9 @@ import businesslogic.billbl.CommodityLineItem;
 import businesslogic.billbl.CommodityList;
 import businesslogic.billbl.ImportBillController;
 import businesslogic.commoditybl.CommodityController;
+import businesslogic.logbl.LogController;
 import businesslogic.memberbl.MemberController;
+import businesslogic.utilitybl.Utility;
 import businesslogicservice.billblservice.ImportBillBLService;
 import businesslogicservice.commodityblservice.CommodityBLService;
 import businesslogicservice.memberblservice.MemberBLService;
@@ -31,6 +33,7 @@ import javafx.stage.Stage;
 import javafx.scene.control.Alert.AlertType;
 import vo.CommodityVO;
 import vo.ImportBillVO;
+import vo.LogVO;
 import vo.MemberVO;
 
 public class ImportViewController implements Initializable {
@@ -83,7 +86,7 @@ public class ImportViewController implements Initializable {
 	@FXML
 	private Button returnB;
 	Stage stage;
-private ObservableList<CommodityItemData> commodityData =FXCollections.observableArrayList();
+	private ObservableList<CommodityItemData> commodityData =FXCollections.observableArrayList();
 	
 	@FXML
 	private TableView<CommodityItemData> commodityTable;
@@ -118,7 +121,6 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	ImportBillVO unpassbill=null;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
 		java.util.Date utiltime=new java.util.Date();
 		time=new Date(utiltime.getTime());
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
@@ -155,23 +157,18 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 
 	
 	private void getInf(CommodityItemData newValue) {
-		// TODO Auto-generated method stub
 		if(newValue!=null) {
 			itemdata=newValue;
 			item=itemdata.getItem();
 		}
-			
-		
 	}
-
 
 	@FXML
 	public void delete(){
 		int selectedIndex = commodityTable.getSelectionModel().getSelectedIndex();
 	   	 if (selectedIndex >= 0) {
 	   		   comlist.deleteCommodity(item);
-	   		   commodityTable.getItems().remove(selectedIndex);
-	           
+	   		   commodityTable.getItems().remove(selectedIndex); 
 	           altogether.setText(""+comlist.getImportTotal());
 	   	    } else {
 	   	        // Nothing selected.
@@ -240,6 +237,12 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		 ibbs.deleteImportBill(unpassbill);
 		 if(ibbs.submitImportBill(importbill)){
 			 isSubmit="succeed Submit";
+			//记录日志
+				LogController logController=new LogController();
+				long logID=logController.findLargestID()+1;
+	        LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"submitImportBill:"+importbill.getID(),MainApp.getID());
+	        logController.addLog(logVO);
+	        //
 		 }
 		 		Alert alert = new Alert(AlertType.INFORMATION);
 		        alert.initOwner(MainApp.getPrimaryStage());
@@ -261,27 +264,31 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		ImportBillVO importbill=new ImportBillVO(billid.getText(),MainApp.getID(),memberl.getID(),comlist,comlist.getImportTotal(),0,time,note.getText());
 		 String isSubmit="fail Submit";
 		 if(ibbs.submitImportBill(importbill)){
-			 	SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
-				String str=sdf.format(time);
-				DecimalFormat df=new DecimalFormat("#####");
-				
-				ArrayList<ImportBillVO> tmpList=new ImportBillController().findImportBillByTime(time);
-				times=tmpList.size()+1;
-				
-				billid.setText("JHD-"+str+"-"+df.format(times));
+			 //记录日志
+			 LogController logController=new LogController();
+			 long logID=logController.findLargestID()+1;
+			 LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"submitImportBill:"+importbill.getID(),MainApp.getID());
+			 logController.addLog(logVO);
+			 //
+			 SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
+			 String str=sdf.format(time);
+			 DecimalFormat df=new DecimalFormat("#####");
 			 
-				isSubmit="Succeed Submit";
+			 ArrayList<ImportBillVO> tmpList=new ImportBillController().findImportBillByTime(time);
+			 times=tmpList.size()+1;
 				
-				member.setText("");
-				name.setText("");
-				note.setText("");
-				notea.setText("");
-				num.setText("");
-				lastprice.setText("");
-				
-				commodityData.clear();
-				
+			 billid.setText("JHD-"+str+"-"+df.format(times));
 			 
+			 isSubmit="Succeed Submit";
+				
+			 member.setText("");
+			 name.setText("");
+			 note.setText("");
+			 notea.setText("");
+			 num.setText("");
+			 lastprice.setText("");
+				
+			 commodityData.clear();
 		 }
 		 		Alert alert = new Alert(AlertType.INFORMATION);
 		        alert.initOwner(MainApp.getPrimaryStage());
@@ -293,13 +300,11 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 
 
 	public void setStage(Stage stage) {
-		// TODO Auto-generated method stub
 		this.stage=stage;
 	}
 
 
 	public void setVo(ImportBillVO m) {
-		// TODO Auto-generated method stub
 		billid.setText(m.getID());
 		id.setText("ID:"+MainApp.getID());
 		memberl=mbs.findMemberByID(m.getMemberID());
@@ -321,7 +326,6 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 
 
 	public void setVO(ImportBillVO m) {
-		// TODO Auto-generated method stub
 		unpassbill=m;
 		billid.setText(m.getID());
 		id.setText("ID:"+MainApp.getID());
