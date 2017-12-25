@@ -6,6 +6,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class AccountBookData {
+	StringProperty name=new SimpleStringProperty();
 	StringProperty time=new SimpleStringProperty();
 	StringProperty commodityList=new SimpleStringProperty();
 	StringProperty accountList=new SimpleStringProperty();
@@ -17,6 +18,7 @@ public class AccountBookData {
 		this.commodityList.set(commodityList);
 		this.accountList.set(accountList);
 		this.memberList.set(memberList);
+		this.name.set(time+" ÆÚ³õÕËÄ¿");
 	}
 	
 	public StringProperty getTimeProperty() {
@@ -33,5 +35,9 @@ public class AccountBookData {
 	
 	public StringProperty getMemberProperty() {
 		return memberList;
+	}
+	
+	public StringProperty getNameProperty() {
+		return name;
 	}
 }

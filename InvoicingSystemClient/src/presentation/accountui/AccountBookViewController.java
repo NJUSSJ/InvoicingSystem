@@ -1,6 +1,7 @@
 package presentation.accountui;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import MainApp.MainApp;
@@ -35,16 +36,16 @@ public class AccountBookViewController implements Initializable {
 	@FXML
 	private Button showMember;
 	
-public  ObservableList<BookData> bookData =FXCollections.observableArrayList();
+	public  ObservableList<AccountBookData> bookData =FXCollections.observableArrayList();
 	
 	@FXML
-	private TableView<BookData> bookTable;
+	private TableView<AccountBookData> bookTable;
 	
 	@FXML
-	private TableColumn<BookData,String> nameColoumn;
+	private TableColumn<AccountBookData,String> nameColoumn;
 	
 	@FXML
-	private TableColumn<BookData,String> dateColoumn;
+	private TableColumn<AccountBookData,String> dateColoumn;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -55,13 +56,21 @@ public  ObservableList<BookData> bookData =FXCollections.observableArrayList();
 			idString="0"+idString;
 		}
 		id.setText("ID:"+idString);
+		
+		ArrayList<AccountBookData> data=new AccountController().retore();
+		for(int i=0;i<data.size();i++) {
+			bookData.add(data.get(i));
+		}
+		bookTable.setItems(bookData);
 		bookTable.getSelectionModel().selectedItemProperty().addListener(
 	            (observable, oldValue, newValue) -> getInf(newValue));
 		nameColoumn.setCellValueFactory(cellData ->cellData.getValue().getNameProperty());
-    	dateColoumn.setCellValueFactory(cellData ->cellData.getValue().getDateProperty());
+    	dateColoumn.setCellValueFactory(cellData ->cellData.getValue().getTimeProperty());
 	   
+    	
+    	
 }
-	private void getInf(BookData newValue) {
+	private void getInf(AccountBookData newValue) {
 		// TODO Auto-generated method stub
 	
 	}
@@ -87,6 +96,12 @@ public  ObservableList<BookData> bookData =FXCollections.observableArrayList();
 			Alert alert=new Alert(AlertType.INFORMATION);
 			alert.setContentText("’À±æΩ®¡¢ ß∞‹£°");
 			alert.showAndWait();
+		}
+		
+		bookData.clear();
+		ArrayList<AccountBookData> data=new AccountController().retore();
+		for(int i=0;i<data.size();i++) {
+			bookData.add(data.get(i));
 		}
 		
 	}

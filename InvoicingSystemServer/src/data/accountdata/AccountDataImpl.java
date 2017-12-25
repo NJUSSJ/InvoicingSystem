@@ -259,7 +259,7 @@ public class AccountDataImpl implements AccountDataService {
 			}
 			return results;
 		} catch (SQLException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		
 		return null;

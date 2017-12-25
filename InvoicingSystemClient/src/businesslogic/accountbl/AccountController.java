@@ -5,8 +5,7 @@ import java.util.ArrayList;
 
 import businesslogicservice.accountblservice.AccountBLService;
 import po.AccountPO;
-import po.BookPO;
-import presentation.accountui.BookData;
+import presentation.accountui.AccountBookData;
 import vo.AccountVO;
 
 public class AccountController implements AccountBLService{
@@ -52,7 +51,7 @@ public class AccountController implements AccountBLService{
 	}
 
 	@Override
-	public ArrayList<BookData> retore() {
+	public ArrayList<AccountBookData> retore() {
 		return accountImpl.restore();
 	}
 	

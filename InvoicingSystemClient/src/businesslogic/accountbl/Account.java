@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import po.AccountPO;
 import po.BookPO;
-import presentation.accountui.BookData;
+import presentation.accountui.AccountBookData;
 import rmi.RemoteHelper;
 import vo.AccountVO;
 
@@ -102,7 +102,22 @@ public class Account{
 	/*
 	 * Restore
 	 */
-	public ArrayList<BookData> restore(){
+	public ArrayList<AccountBookData> restore(){
+		
+		ArrayList<AccountBookData> result=new ArrayList<>();
+		try {
+			ArrayList<BookPO> temp= RemoteHelper.getInstance().getAccountDataService().restore();
+			if(temp.isEmpty()) return result;
+			
+			for(int i=0;i<temp.size();i++) {
+				AccountBookData tmpData=new AccountBookData(temp.get(i).getDate(), temp.get(i).getCommodity(), temp.get(i).getAccount(), temp.get(i).getMember());
+				result.add(tmpData);
+			}
+			return result;
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
 		return null;
 	}
 }

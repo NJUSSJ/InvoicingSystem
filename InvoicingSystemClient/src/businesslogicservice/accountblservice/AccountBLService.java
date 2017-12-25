@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 
 import po.AccountPO;
-import presentation.accountui.BookData;
+import presentation.accountui.AccountBookData;
 import vo.AccountVO;
 
 public interface AccountBLService {
@@ -17,5 +17,5 @@ public interface AccountBLService {
 	public AccountVO toAccountVO(AccountPO accountPO);
 	public ArrayList<AccountVO> findAccounts();
 	public boolean backUpDataBase(Date time);
-	public ArrayList<BookData> retore();
+	public ArrayList<AccountBookData> retore();
 }
