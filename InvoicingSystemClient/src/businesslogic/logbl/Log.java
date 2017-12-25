@@ -67,6 +67,7 @@ public class Log{
 	}
 	public long findLargestID(){
 		try {
+			//System.out.println(RemoteHelper.getInstance().getLogDataService().getLargestIDofLog());
 			return RemoteHelper.getInstance().getLogDataService().getLargestIDofLog();
 		} catch (RemoteException e) {
 			e.printStackTrace();
