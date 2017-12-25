@@ -15,9 +15,14 @@
 
 <AnchorPane prefHeight="250.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.accountui.SimpleAccountController">
   <children>
-    <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="250.0" fitWidth="400.0" layoutX="0.0" layoutY="0.0">
+    <ImageView id="timgBLDQZZNV.jpg" fitHeight="250.0" fitWidth="400.0000999999975" layoutX="0.0" layoutY="0.0">
       <image>
-        <Image url="@../../../../../InvoicingSystem/InvoicingSystemClient/resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
+        <Image url="@../../../resources/timgBLDQZZNV.jpg" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
+    <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="250.0" fitWidth="400.0" layoutX="0.0" layoutY="0.0" opacity="0.0">
+      <image>
+        <Image url="@../../../resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
     <Label layoutX="6.0" layoutY="13.0" text="账户新添/修改">

@@ -16,9 +16,9 @@
   <children>
     <AnchorPane layoutX="-6.0" layoutY="-14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0">
       <children>
-        <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="600.0000999999975" fitWidth="1000.0000999999975" layoutX="6.0" layoutY="14.0">
+        <ImageView id="timgBLDQZZNV.jpg" fitHeight="600.0" fitWidth="1006.0" layoutX="0.0" layoutY="14.0">
           <image>
-            <Image url="@../../../../../InvoicingSystem/InvoicingSystemClient/resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
+            <Image url="@../../../resources/timgBLDQZZNV.jpg" preserveRatio="true" smooth="true" />
           </image>
         </ImageView>
         <Label layoutX="14.0" layoutY="39.0" prefHeight="102.99990000000253" prefWidth="607.0" text="进货销售人员主页面">
@@ -33,17 +33,21 @@
         </Label>
         <Label fx:id="logout" font="$x1" layoutX="941.0" layoutY="21.0" onMouseClicked="#showLoginUI" text="|| 登出" />
         <Separator prefHeight="3.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="130.0" />
-        <Label layoutX="144.0" layoutY="339.0" text="客户管理" />
-        <Label layoutX="390.0" layoutY="546.0" text="邮箱" />
+        <Label layoutX="144.0" layoutY="339.0" text="客户管理">
+          <font>
+            <Font name="System Bold" size="17.0" fx:id="x2" />
+          </font>
+        </Label>
+        <Label font="$x2" layoutX="390.0" layoutY="546.0" text="邮箱" />
         <ImageView fx:id="email" fitHeight="125.0" fitWidth="131.0" layoutX="336.0" layoutY="389.0" onMouseClicked="#showEmailUI">
           <image>
             <Image url="@../../../resources/Mail_Search_512px_1178165_easyicon.net.png" />
           </image>
         </ImageView>
-        <Label layoutX="371.0" layoutY="339.0" text="制定进货单" />
-        <Label layoutX="127.0" layoutY="546.0" text="制定进货退货单" />
-        <Label layoutX="592.0" layoutY="339.0" text="制定销售单" />
-        <Label layoutX="810.0" layoutY="339.0" text="制定销售退货单" />
+        <Label font="$x2" layoutX="371.0" layoutY="339.0" text="制定进货单" />
+        <Label font="$x2" layoutX="119.0" layoutY="546.0" text="制定进货退货单" />
+        <Label font="$x2" layoutX="592.0" layoutY="339.0" text="制定销售单" />
+        <Label font="$x2" layoutX="810.0" layoutY="339.0" text="制定销售退货单" />
         <ImageView fx:id="member" fitHeight="125.0" fitWidth="145.0" layoutX="96.0" layoutY="188.0" onMouseClicked="#showMemberUI">
           <image>
             <Image url="@../../../resources/business_Card_185px_1197724_easyicon.net.png" />
@@ -51,22 +55,22 @@
         </ImageView>
         <ImageView id="Bill_paid_335px_1188543_easyicon.net.gif" fitHeight="145.99990000000253" fitWidth="131.0" layoutX="342.0" layoutY="178.0">
           <image>
-            <Image url="@../../../../../InvoicingSystem/InvoicingSystemClient/resources/Bill_paid_335px_1188543_easyicon.net.gif" preserveRatio="true" smooth="true" />
+            <Image url="@../../../resources/Bill_paid_335px_1188543_easyicon.net.gif" preserveRatio="true" smooth="true" />
           </image>
         </ImageView>
         <ImageView id="Bill_paid_335px_1188543_easyicon.net.gif" fitHeight="145.99990000000253" fitWidth="131.0" layoutX="564.0" layoutY="178.0">
           <image>
-            <Image url="@../../../../../InvoicingSystem/InvoicingSystemClient/resources/Bill_paid_335px_1188543_easyicon.net.gif" preserveRatio="true" smooth="true" />
+            <Image url="@../../../resources/Bill_paid_335px_1188543_easyicon.net.gif" preserveRatio="true" smooth="true" />
           </image>
         </ImageView>
         <ImageView id="Bill_paid_335px_1188543_easyicon.net - 1.gif" fitHeight="153.0" fitWidth="126.0" layoutX="117.0" layoutY="385.0">
           <image>
-            <Image url="@../../../../../InvoicingSystem/InvoicingSystemClient/resources/Bill_paid_335px_1188543_easyicon.net%20-%201.gif" preserveRatio="true" smooth="true" />
+            <Image url="@../../../resources/Bill_paid_335px_1188543_easyicon.net%20-%201.gif" preserveRatio="true" smooth="true" />
           </image>
         </ImageView>
         <ImageView id="Bill_paid_335px_1188543_easyicon.net - 1.gif" fitHeight="153.0" fitWidth="126.0" layoutX="800.0" layoutY="171.0">
           <image>
-            <Image url="@../../../../../InvoicingSystem/InvoicingSystemClient/resources/Bill_paid_335px_1188543_easyicon.net%20-%201.gif" preserveRatio="true" smooth="true" />
+            <Image url="@../../../resources/Bill_paid_335px_1188543_easyicon.net%20-%201.gif" preserveRatio="true" smooth="true" />
           </image>
         </ImageView>
         <Button fx:id="memberButton" layoutX="87.0" layoutY="177.0" mnemonicParsing="false" onAction="#showMemberUI" opacity="0.0" prefHeight="151.0" prefWidth="163.0" text="Button" />

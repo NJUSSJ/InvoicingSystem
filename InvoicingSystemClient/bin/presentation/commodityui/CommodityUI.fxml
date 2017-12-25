@@ -19,9 +19,14 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.commodityui.CommodityViewController">
   <children>
+    <ImageView id="timgBLDQZZNV.jpg" fitHeight="600.0" fitWidth="1000.0" layoutX="0.0" layoutY="0.0">
+      <image>
+        <Image url="@../../../resources/timgBLDQZZNV.jpg" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
     <Label fx:id="id" layoutX="814.0" layoutY="11.0" text="ID:XXX">
       <font>
-        <Font size="14.0" fx:id="x1" />
+        <Font name="Microsoft YaHei UI Light" size="16.0" fx:id="x1" />
       </font>
     </Label>
     <Label font="$x1" layoutX="881.0" layoutY="10.0" text="|| 登录" />

@@ -2,6 +2,7 @@
 
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
@@ -9,13 +10,18 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.accountui.AccountBookMemberController">
   <!-- TODO Add Nodes -->
   <children>
+    <ImageView id="timgBLDQZZNV.jpg" fitHeight="401.0" fitWidth="599.0" layoutX="1.0" layoutY="0.0">
+      <image>
+        <Image url="@../../../resources/timgBLDQZZNV.jpg" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
     <Separator layoutX="0.0" layoutY="54.0" prefWidth="247.9998779296875" />
     <Label layoutX="8.0" layoutY="15.0" text="期初客户信息查看">
       <font>
         <Font name="System Bold" size="30.0" />
       </font>
     </Label>
-    <ScrollPane layoutX="0.0" layoutY="72.0" prefHeight="329.0" prefWidth="600.0">
+    <ScrollPane layoutX="0.0" layoutY="72.0" opacity="0.7" prefHeight="329.0" prefWidth="600.0">
       <content>
         <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="484.0" prefWidth="586.0">
           <children>
@@ -24,8 +30,8 @@
                 <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="92.0" text="类别" fx:id="category" />
                 <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="94.0" text="姓名" fx:id="name" />
                 <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="206.0" text="联系方式" fx:id="tel" />
-                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="94.0" text="上年应收" fx:id="shouldget" />
-                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="96.0" text="上年应付" fx:id="shouldpay" />
+                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="94.0" text="应收" fx:id="shouldget" />
+                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="96.0" text="应付" fx:id="shouldpay" />
               </columns>
             </TableView>
           </children>

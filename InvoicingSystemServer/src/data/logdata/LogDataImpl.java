@@ -123,7 +123,7 @@ public class LogDataImpl implements LogDataService {
 	@Override
 	public ArrayList<LogPO> findLogbyType(String type) throws RemoteException {
 		
-		String sql="select * from logs where type="+type;
+		String sql="select * from logs where type like '%"+type+"%'";
 		
 		ArrayList<LogPO> results=new ArrayList<>();
 		

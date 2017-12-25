@@ -14,9 +14,9 @@
 
 <AnchorPane minWidth="387.0001220703125" prefHeight="537.0001220703125" prefWidth="387.0001220703125" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.memberui.SimpleMemberController">
   <children>
-    <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="569.0001220703125" fitWidth="387.0001220703125" layoutX="0.0" layoutY="-1.0">
+    <ImageView id="timgBLDQZZNV.jpg" fitHeight="576.0" fitWidth="387.0001220703125" layoutX="0.0" layoutY="0.0">
       <image>
-        <Image url="@../../../resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
+        <Image url="@../../../resources/timgBLDQZZNV.jpg" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
     <Label layoutX="14.0" layoutY="14.0" text="客户新增/修改">

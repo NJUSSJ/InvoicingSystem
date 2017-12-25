@@ -14,9 +14,14 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.mainui.FianceMainViewController">
   <children>
-    <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="601.0" fitWidth="1000.0000999999975" layoutX="0.0" layoutY="0.0">
+    <ImageView id="timgBLDQZZNV.jpg" fitHeight="601.0" fitWidth="1000.0" layoutX="0.0" layoutY="0.0">
       <image>
-        <Image url="@../../../../../InvoicingSystem/InvoicingSystemClient/resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
+        <Image url="@../../../resources/timgBLDQZZNV.jpg" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
+    <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="601.0" fitWidth="1000.0000999999975" layoutX="0.0" layoutY="0.0" opacity="0.0">
+      <image>
+        <Image url="@../../../resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
     <Label layoutX="7.0" layoutY="30.0" text="财务人员主界面">
@@ -31,11 +36,15 @@
       </font>
     </Label>
     <Label fx:id="logout" font="$x1" layoutX="932.0" layoutY="14.0" onMouseClicked="#showLoginUI" text="|| 登出" />
-    <Label layoutX="106.0" layoutY="366.0" text="期初建账" />
-    <Label layoutX="279.0" layoutY="366.0" text="银行账户管理" />
-    <Label layoutX="471.0" layoutY="366.0" text="查看经营历程表" />
-    <Label layoutX="667.0" layoutY="366.0" text="查看经营情况表" />
-    <Label layoutX="850.0" layoutY="366.0" text="查看销售明细表" />
+    <Label layoutX="88.0" layoutY="366.0" text="期初建账">
+      <font>
+        <Font name="System Bold" size="18.0" fx:id="x2" />
+      </font>
+    </Label>
+    <Label font="$x2" layoutX="261.0" layoutY="366.0" text="银行账户管理" />
+    <Label font="$x2" layoutX="455.0" layoutY="366.0" text="查看经营历程表" />
+    <Label font="$x2" layoutX="649.0" layoutY="366.0" text="查看经营情况表" />
+    <Label font="$x2" layoutX="832.0" layoutY="366.0" text="查看销售明细表" />
     <ImageView fx:id="accountBook" fitHeight="124.0" fitWidth="99.0" layoutX="74.0" layoutY="211.0" onMouseClicked="#showaccountBookUI">
       <image>
         <Image url="@../../../resources/notebook_585px_1209136_easyicon.net.png" />
@@ -51,7 +60,7 @@
         <Image url="@../../../resources/tables_732px_1153607_easyicon.net.png" />
       </image>
     </ImageView>
-    <Label layoutX="112.0" layoutY="551.0" text="邮箱" />
+    <Label font="$x2" layoutX="106.0" layoutY="551.0" text="邮箱" />
     <ImageView fx:id="manageSituation" fitHeight="124.0" fitWidth="120.0" layoutX="649.0" layoutY="207.0" onMouseClicked="#showManageSituationUI">
       <image>
         <Image url="@../../../resources/tables_732px_1153607_easyicon.net.png" />
@@ -67,9 +76,9 @@
         <Image url="@../../../resources/Mail_Search_512px_1178165_easyicon.net.png" />
       </image>
     </ImageView>
-    <Label layoutX="285.0" layoutY="551.0" text="制定收款单" />
-    <Label layoutX="483.0" layoutY="551.0" text="制定付款单" />
-    <Label layoutX="685.0" layoutY="551.0" text="日志查看" />
+    <Label font="$x2" layoutX="270.0" layoutY="555.0" text="制定收款单" />
+    <Label font="$x2" layoutX="483.0" layoutY="551.0" text="制定付款单" />
+    <Label font="$x2" layoutX="676.0" layoutY="550.0" text="日志查看" />
     <ImageView fx:id="log" fitHeight="116.0" fitWidth="120.0" layoutX="667.0" layoutY="420.0" onMouseClicked="#showLogUI">
       <image>
         <Image url="@../../../resources/diary_350px_1146911_easyicon.net.png" />
@@ -85,7 +94,7 @@
         <Image url="@../../../resources/bill_1270px_1200280_easyicon.net.png" />
       </image>
     </ImageView>
-    <Label layoutX="852.0" layoutY="550.0" text="制定现金费用单" />
+    <Label font="$x2" layoutX="831.0" layoutY="551.0" text="制定现金费用单" />
     <Button fx:id="AccountButton" layoutX="239.0" layoutY="207.0" mnemonicParsing="false" onAction="#showaccountUI" opacity="0.0" prefHeight="124.0" prefWidth="136.0" text="Button" />
     <Button fx:id="accountBookButton" layoutX="64.0" layoutY="211.0" mnemonicParsing="false" onAction="#showaccountBookUI" opacity="0.0" prefHeight="124.0" prefWidth="120.0" text="Button" />
     <Button fx:id="manageCourseButton" layoutX="453.0" layoutY="207.0" mnemonicParsing="false" onAction="#showManageCourseUI" opacity="0.0" prefHeight="124.0" prefWidth="120.0" text="Button" />
@@ -97,7 +106,7 @@
     <Button fx:id="emailButton" layoutX="67.0" layoutY="420.0" mnemonicParsing="false" onAction="#showEmailUI" opacity="0.0" prefHeight="123.9998779296875" prefWidth="127.0" text="Button" />
     <ImageView id="payment_method_545px_1208153_easyicon.net.gif" fitHeight="141.0" fitWidth="138.0" layoutX="455.0" layoutY="399.0">
       <image>
-        <Image url="@../../../../../InvoicingSystem/InvoicingSystemClient/resources/payment_method_545px_1208153_easyicon.net.gif" preserveRatio="true" smooth="true" />
+        <Image url="@../../../resources/payment_method_545px_1208153_easyicon.net.gif" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
     <Button id="emailButton" fx:id="payBillButton" layoutX="460.0" layoutY="413.0" mnemonicParsing="false" onAction="#showpayBillUI" opacity="0.0" prefHeight="123.9998779296875" prefWidth="127.0" text="Button" />

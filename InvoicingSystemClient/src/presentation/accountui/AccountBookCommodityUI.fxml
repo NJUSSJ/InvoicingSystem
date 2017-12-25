@@ -2,6 +2,7 @@
 
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
@@ -9,13 +10,18 @@
 <AnchorPane prefHeight="399.9999000000025" prefWidth="636.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.accountui.AccountBookCommodityController">
   <!-- TODO Add Nodes -->
   <children>
+    <ImageView id="timgBLDQZZNV.jpg" fitHeight="400.0" fitWidth="635.0" layoutX="1.0" layoutY="0.0">
+      <image>
+        <Image url="@../../../resources/timgBLDQZZNV.jpg" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
     <Separator layoutX="0.0" layoutY="54.0" prefWidth="248.0" />
     <Label layoutX="8.0" layoutY="17.0" text="期初商品信息查看">
       <font>
         <Font name="System Bold" size="30.0" />
       </font>
     </Label>
-    <ScrollPane layoutX="0.0" layoutY="75.0" prefHeight="324.9999000000025" prefWidth="636.0">
+    <ScrollPane layoutX="0.0" layoutY="75.0" opacity="0.7" prefHeight="324.9999000000025" prefWidth="636.0">
       <content>
         <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="439.0" prefWidth="621.0">
           <children>

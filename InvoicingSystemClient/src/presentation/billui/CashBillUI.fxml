@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -7,19 +9,28 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.effect.Light.Distant?>
 <?import javafx.scene.effect.Lighting?>
 <?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.billui.CashBillViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.billui.CashBillViewController">
   <children>
-    <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="600.0" fitWidth="1000.0" layoutX="0.0" layoutY="-1.0">
+    <ImageView id="timgBLDQZZNV.jpg" fitHeight="600.0" fitWidth="1000.0" layoutX="0.0" layoutY="0.0">
       <image>
-        <Image preserveRatio="true" smooth="true" url="@../../../resources/1b256486664e499a9613079e51bbca0b.png" />
+        <Image url="@../../../resources/timgBLDQZZNV.jpg" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
+    <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="600.0" fitWidth="1000.0" layoutX="0.0" layoutY="-1.0" opacity="0.0">
+      <image>
+        <Image url="@../../../resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
     <Label fx:id="id" layoutX="856.0" layoutY="15.0" prefWidth="60.000099999997474" text="ID:XXX">
@@ -47,9 +58,9 @@
           <children>
             <TableView fx:id="cashTable" prefHeight="350.0" prefWidth="761.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-39.0" AnchorPane.topAnchor="0.0">
               <columns>
-                <TableColumn fx:id="nameColoumn" prefWidth="150.39999103546143" resizable="false" sortable="true" text="条目名" visible="true" />
-                <TableColumn fx:id="amountColoumn" minWidth="0.0" prefWidth="163.19996643066406" resizable="false" sortable="true" text="金额" visible="true" />
-                <TableColumn fx:id="noteColoumn" minWidth="0.0" prefWidth="446.9999755859375" resizable="false" sortable="true" text="备注" visible="true" />
+                <TableColumn prefWidth="150.39999103546143" resizable="false" sortable="true" text="条目名" visible="true" fx:id="nameColoumn" />
+                <TableColumn minWidth="0.0" prefWidth="163.19996643066406" resizable="false" sortable="true" text="金额" visible="true" fx:id="amountColoumn" />
+                <TableColumn minWidth="0.0" prefWidth="446.9999755859375" resizable="false" sortable="true" text="备注" visible="true" fx:id="noteColoumn" />
               </columns>
             </TableView>
           </children>
@@ -87,20 +98,17 @@
     <TextField fx:id="itemName" layoutX="795.0" layoutY="158.0" opacity="0.6" prefHeight="30.0" />
     <TextField fx:id="itemMoney" layoutX="795.0" layoutY="222.0" opacity="0.6" prefHeight="30.0" />
     <TextField fx:id="itemNote" layoutX="795.0" layoutY="287.0" opacity="0.6" prefHeight="30.0" />
-      <Button fx:id="reviseB" layoutX="796.0" layoutY="548.0" mnemonicParsing="false" onAction="#rivise" opacity="0.77" prefHeight="30.0" prefWidth="164.0" text=" 确    认">
-         <effect>
-            <Lighting diffuseConstant="2.0" surfaceScale="2.7977099236641223" fx:id="x31">
-               <bumpInput>
-                  <Shadow />
-               </bumpInput>
-               <light>
-                  <Light.Distant />
-               </light>
-            </Lighting>
-         </effect>
-         <font>
-            <Font name="Microsoft YaHei UI Light" size="14.0" fx:id="x41" />
-         </font>
-      </Button>
+    <Button fx:id="reviseB" font="$x4" layoutX="796.0" layoutY="548.0" mnemonicParsing="false" onAction="#rivise" opacity="0.77" prefHeight="30.0" prefWidth="164.0" text=" 确    认">
+      <effect>
+        <Lighting diffuseConstant="2.0" surfaceScale="2.7977099236641223" fx:id="x31">
+          <bumpInput>
+            <Shadow />
+          </bumpInput>
+          <light>
+            <javafx.scene.effect.Light.Distant />
+          </light>
+        </Lighting>
+      </effect>
+    </Button>
   </children>
 </AnchorPane>

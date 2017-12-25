@@ -14,9 +14,14 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.mainui.AdministerMainViewController">
   <children>
-    <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="685.0000999999975" fitWidth="999.0" layoutX="1.0" layoutY="0.0">
+    <ImageView id="timgBLDQZZNV.jpg" fitHeight="685.0001220703125" fitWidth="1025.0001220703125" layoutX="0.0" layoutY="0.0">
       <image>
-        <Image url="@../../../../../InvoicingSystem/InvoicingSystemClient/resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
+        <Image url="@../../../resources/timgBLDQZZNV.jpg" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
+    <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="685.0000999999975" fitWidth="999.0" layoutX="1.0" layoutY="0.0" opacity="0.0">
+      <image>
+        <Image url="@../../../resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
     <Label layoutX="1.0" layoutY="38.0" prefHeight="105.0" prefWidth="391.0" text="管理员主界面">
@@ -30,9 +35,13 @@
       </font>
     </Label>
     <Label fx:id="logout" font="$x1" layoutX="902.0" layoutY="22.0" onMouseClicked="#showLoginUI" text="||  登出" />
-    <Separator prefHeight="3.0" prefWidth="1000.0" AnchorPane.leftAnchor="-6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="131.0" />
-    <Label layoutX="154.0" layoutY="434.0" text="用户管理" />
-    <Label layoutX="446.0" layoutY="434.0" text="日记查看" />
+    <Separator prefHeight="4.0" prefWidth="391.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="633.0" AnchorPane.topAnchor="131.0" />
+    <Label layoutX="150.0" layoutY="428.0" text="用户管理">
+      <font>
+        <Font name="System Bold" size="20.0" fx:id="x2" />
+      </font>
+    </Label>
+    <Label font="$x2" layoutX="441.0" layoutY="428.0" text="日记查看" />
     <ImageView fx:id="userChange" fitHeight="185.0" fitWidth="192.0" layoutX="96.0" layoutY="194.0">
       <image>
         <Image url="@../../../resources/user_setting_512px_1174239_easyicon.net.png" />
