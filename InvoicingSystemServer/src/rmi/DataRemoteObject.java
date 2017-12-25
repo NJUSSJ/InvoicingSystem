@@ -46,6 +46,7 @@ import dataservice.promotiondataservice.PackagePromotionDataService;
 import dataservice.promotiondataservice.PricePromotionDataService;
 import dataservice.userdataservice.UserDataService;
 import po.AccountPO;
+import po.BookPO;
 import po.CashBillPO;
 import po.CategoryPO;
 import po.CommodityPO;
@@ -1001,14 +1002,19 @@ public class DataRemoteObject extends UnicastRemoteObject implements UserDataSer
 	}
 
 	@Override
-	public int getLargestIDofLog() throws RemoteException {
+	public long getLargestIDofLog() throws RemoteException {
 		// TODO Auto-generated method stub
-		return 0;
+		return logService.getLargestIDofLog();
 	}
 
 	@Override
 	public boolean backUpDataBase(Date time) throws RemoteException {
-		return false;
+		return accountService.backUpDataBase(time);
+	}
+
+	@Override
+	public ArrayList<BookPO> restore() throws RemoteException {
+		return accountService.restore();
 	}
 	
 }

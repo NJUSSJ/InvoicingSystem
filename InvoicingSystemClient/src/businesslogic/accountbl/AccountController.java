@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 import businesslogicservice.accountblservice.AccountBLService;
 import po.AccountPO;
+import po.BookPO;
+import presentation.accountui.BookData;
 import vo.AccountVO;
 
 public class AccountController implements AccountBLService{
@@ -47,6 +49,11 @@ public class AccountController implements AccountBLService{
 	@Override
 	public boolean backUpDataBase(Date time) {
 		return accountImpl.backUpDataBase(time);
+	}
+
+	@Override
+	public ArrayList<BookData> retore() {
+		return accountImpl.restore();
 	}
 	
 	

@@ -171,8 +171,33 @@ public class LogDataImpl implements LogDataService {
 	}
 
 	@Override
-	public int getLargestIDofLog() throws RemoteException {
-		// TODO Auto-generated method stub
+	public long getLargestIDofLog() throws RemoteException {
+		String sql="select * from logs";
+		ArrayList<LogPO> results=new ArrayList<>();
+		try {
+			ResultSet result=DataFactory.statement.executeQuery(sql);
+			
+			while(result.next()) {
+				long id=result.getLong("id");
+				Date time=result.getDate("time");
+				String type=result.getString("type");
+				long userid=result.getLong("userid");
+				
+				LogPO tmpLog=new LogPO(id, time, type, userid);
+				
+				results.add(tmpLog);
+			}
+			
+			long largest=-1;
+			for(int i=0;i<results.size();i++) {
+				if(results.get(i).getID()>largest) {
+					largest=results.get(i).getID();
+				}
+			}
+			return largest;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return 0;
 	}
 

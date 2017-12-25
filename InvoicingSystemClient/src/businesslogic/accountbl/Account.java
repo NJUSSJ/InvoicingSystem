@@ -5,6 +5,8 @@ import java.sql.Date;
 import java.util.ArrayList;
 
 import po.AccountPO;
+import po.BookPO;
+import presentation.accountui.BookData;
 import rmi.RemoteHelper;
 import vo.AccountVO;
 
@@ -83,7 +85,9 @@ public class Account{
 		}
 		return temp;
 	}
-	
+	/*
+	 * backUP
+	 */
 	public boolean backUpDataBase(Date time) {
 		
 		try {
@@ -94,5 +98,11 @@ public class Account{
 			e.printStackTrace();
 		}
 		return false;
+	}
+	/*
+	 * Restore
+	 */
+	public ArrayList<BookData> restore(){
+		return null;
 	}
 }

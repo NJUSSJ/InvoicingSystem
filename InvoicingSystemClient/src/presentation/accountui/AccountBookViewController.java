@@ -4,10 +4,14 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import MainApp.MainApp;
+import Utility.DateUtil;
+import businesslogic.accountbl.AccountController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -18,7 +22,7 @@ public class AccountBookViewController implements Initializable {
 	private Label id;
 	
 	@FXML
-	private Label logout;
+	private Button logout;
 
 	@FXML
 	private Button returnB;
@@ -74,6 +78,16 @@ public  ObservableList<BookData> bookData =FXCollections.observableArrayList();
 	
 	@FXML
 	public void SetNewBook(){
+		boolean ifSuccess=new AccountController().backUpDataBase(DateUtil.toSQL(new java.util.Date() ));
+		if(ifSuccess) {
+			Alert alert=new Alert(AlertType.INFORMATION);
+			alert.setContentText("账本建立成功！");
+			alert.showAndWait();
+		}else {
+			Alert alert=new Alert(AlertType.INFORMATION);
+			alert.setContentText("账本建立失败！");
+			alert.showAndWait();
+		}
 		
 	}
 	@FXML
