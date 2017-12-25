@@ -43,15 +43,15 @@
                 <TableColumn prefWidth="100.0" text="编号" fx:id="idColoumn" />
                 <TableColumn prefWidth="69.59998321533203" text="分类" fx:id="categoryColoumn" />
                 <TableColumn prefWidth="53.5999755859375" text="级别" fx:id="rankColoumn" />
-                <TableColumn prefWidth="76.800048828125" text="姓名" fx:id="nameColoumn" />
-                <TableColumn prefWidth="108.800048828125" text="电话" fx:id="telephoneColoumn" />
-                <TableColumn prefWidth="280.0" text="地址" fx:id="addressColoumn" />
-                <TableColumn prefWidth="74.39996337890625" text="邮编" fx:id="postcodeColoumn" />
-                <TableColumn prefWidth="180.0" text="电子邮箱" fx:id="emailColoumn" />
+                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="91.800048828125" text="姓名" fx:id="nameColoumn" />
+                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="157.800048828125" text="电话" fx:id="telephoneColoumn" />
+                <TableColumn maxWidth="5000.0" minWidth="0.0" prefWidth="217.0" text="地址" fx:id="addressColoumn" />
+                <TableColumn maxWidth="5000.0" minWidth="0.0" prefWidth="84.39996337890625" text="邮编" fx:id="postcodeColoumn" />
+                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="158.0" text="电子邮箱" fx:id="emailColoumn" />
                 <TableColumn prefWidth="75.0" text="应收额度" fx:id="quotaColoumn" />
                 <TableColumn prefWidth="75.0" text="应收" fx:id="shouldgetColoumn" />
                 <TableColumn prefWidth="75.0" text="应付" fx:id="shouldpayColoumn" />
-                <TableColumn prefWidth="75.0" text="默认业务员" fx:id="operatorColoumn" />
+                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="92.0" text="默认业务员" fx:id="operatorColoumn" />
               </columns>
             </TableView>
           </children>

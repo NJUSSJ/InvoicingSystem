@@ -2,7 +2,6 @@ package po;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.ArrayList;
 
 public class CashBillPO implements Serializable{
 	/**

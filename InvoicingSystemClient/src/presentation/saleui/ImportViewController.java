@@ -358,7 +358,6 @@ public class ImportViewController implements Initializable {
 
 
 	public void red(ImportBillVO m) {
-		// TODO Auto-generated method stub
 		id.setText("ID:"+MainApp.getID());
 		memberl=mbs.findMemberByID(m.getMemberID());
 		operator.setText(""+m.getUserID());

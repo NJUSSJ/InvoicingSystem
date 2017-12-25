@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="399.9999000000025" prefWidth="636.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.accountui.AccountBookCommodityController">
+  <!-- TODO Add Nodes -->
+  <children>
+    <Separator layoutX="0.0" layoutY="54.0" prefWidth="248.0" />
+    <Label layoutX="8.0" layoutY="17.0" text="期初商品信息查看">
+      <font>
+        <Font name="System Bold" size="30.0" />
+      </font>
+    </Label>
+    <ScrollPane layoutX="0.0" layoutY="75.0" prefHeight="324.9999000000025" prefWidth="636.0">
+      <content>
+        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="439.0" prefWidth="621.0">
+          <children>
+            <TableView fx:id="commodityTable" prefHeight="439.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="ID" fx:id="id" />
+                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="146.0" text="名称" fx:id="name" />
+                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="97.0" text="型号" fx:id="model" />
+                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="95.0" text="进价" fx:id="importprice" />
+                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="91.0" text="售价" fx:id="saleprice" />
+                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="115.0" text="分类" fx:id="parent" />
+              </columns>
+            </TableView>
+          </children>
+        </AnchorPane>
+      </content>
+    </ScrollPane>
+  </children>
+</AnchorPane>

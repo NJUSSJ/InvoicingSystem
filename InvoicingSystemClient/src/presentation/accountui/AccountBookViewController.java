@@ -1,5 +1,6 @@
 package presentation.accountui;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -10,9 +11,14 @@ import businesslogic.accountbl.AccountController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -47,6 +53,8 @@ public class AccountBookViewController implements Initializable {
 	@FXML
 	private TableColumn<AccountBookData,String> dateColoumn;
 	
+	public AccountBookData bookdata;
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
@@ -71,8 +79,9 @@ public class AccountBookViewController implements Initializable {
     	
 }
 	private void getInf(AccountBookData newValue) {
-		// TODO Auto-generated method stub
-	
+		if(newValue!=null) {
+			bookdata=newValue;
+		}
 	}
 	@FXML
 	public void logout(){
@@ -107,14 +116,76 @@ public class AccountBookViewController implements Initializable {
 	}
 	@FXML
 	public void showCommodity(){
+		if(bookdata==null) {
+			Alert alert=new Alert(AlertType.WARNING);
+			alert.setContentText("请选择一套账本！");
+			alert.showAndWait();
+		}
+		ObservableList<AccoutBookCommodityData> list=FXCollections.observableArrayList();
+		String commodityList=bookdata.getCommodityProperty().get();
+		String commoditys[]=commodityList.split(" ");
+		for(int i=0;i<commoditys.length;i++) {
+			String item[]=commoditys[i].split(",");
+			AccoutBookCommodityData tmpdata=new AccoutBookCommodityData(item[0], item[1], item[4], item[2], item[3], item[5]);
+			list.add(tmpdata);
+		}
 		
+		try {
+			FXMLLoader loader=new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/presentation/accountui/AccountBookCommodityUI.fxml"));
+			AnchorPane accountUI=loader.load();
+			Scene scene=new Scene(accountUI);
+			Stage accountStage=new Stage();
+			accountStage.setTitle("期初商品信息查看");
+			accountStage.initModality(Modality.WINDOW_MODAL);
+			accountStage.initOwner(MainApp.getPrimaryStage());
+			accountStage.setScene(scene);
+			AccountBookCommodityController controller=loader.getController();
+			controller.setList(list);
+            accountStage.showAndWait();
+            
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	@FXML
 	public void showAccount(){
 		
+		
 	}
 	@FXML
 	public void showMember(){
+		if(bookdata==null) {
+			Alert alert=new Alert(AlertType.WARNING);
+			alert.setContentText("请选择一套账本！");
+			alert.showAndWait();
+		}
+		ObservableList<AccountBookMemberData> list=FXCollections.observableArrayList();
+		String memberList=bookdata.getMemberProperty().get();
+		String members[]=memberList.split(" ");
+		for(int i=0;i<members.length;i++) {
+			String item[]=members[i].split(",");
+			AccountBookMemberData tmpData=new AccountBookMemberData(item[0], item[1], item[2], item[3], item[4]);
+			list.add(tmpData);
+			
+			try {
+				FXMLLoader loader=new FXMLLoader();
+				loader.setLocation(MainApp.class.getResource("/presentation/accountui/AccountBookMemberUI.fxml"));
+				AnchorPane accountUI=loader.load();
+				Scene scene=new Scene(accountUI);
+				Stage accountStage=new Stage();
+				accountStage.setTitle("期初客户信息查看");
+				accountStage.initModality(Modality.WINDOW_MODAL);
+				accountStage.initOwner(MainApp.getPrimaryStage());
+				accountStage.setScene(scene);
+				AccountBookMemberController controller=loader.getController();
+				controller.setList(list);
+	            accountStage.showAndWait();
+	            
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 		
 	}
 }
