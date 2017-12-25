@@ -216,8 +216,8 @@ public class AccountDataImpl implements AccountDataService {
 			String name=members.get(i).getName();
 			memberList+=name+",";
 			
-			int tel=members.get(i).getPhoneNum();
-			memberList+=(Integer.toString(tel)+",");
+			long tel=members.get(i).getPhoneNum();
+			memberList+=(Long.toString(tel)+",");
 			
 			double shouldget=members.get(i).getShouldGet();
 			memberList+=(Double.toString(shouldget)+",");

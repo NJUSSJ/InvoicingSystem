@@ -13,7 +13,10 @@ public class AccountList {
 			String[] temp=items[i].split(",");
 			Long id=Long.parseLong(temp[0]);
 			double money=Double.parseDouble(temp[1]);
-			String remark=temp[2];
+			String remark="";
+			if(temp.length>2){
+				remark=temp[2];
+			}
 			list.add(new AccountLineItem(id,money,remark));
 		}
 	}
