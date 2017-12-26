@@ -78,7 +78,7 @@ public class ManageCourseViewController implements Initializable {
 	@FXML
 	private Label id;
 	@FXML
-	private Label logout;
+	private Button logout;
 	
 	@FXML
 	private ChoiceBox<String> startYear;
@@ -276,6 +276,20 @@ public class ManageCourseViewController implements Initializable {
 				}
 			}
 		});
+	}
+	
+	@FXML
+	public void showtheMain(){
+		if(MainApp.getRank()==2){
+			MainApp.showFianceMainUI();
+		}else{
+			MainApp.showManagerMainUI();
+		}
+	}
+	@FXML
+	public void logout(){
+		MainApp.cancelUser();
+		MainApp.showLoginUI();
 	}
 	
 	private void getInf(BillData newValue) {
