@@ -134,7 +134,6 @@ public class PayBill {
 				result.add(toPayBillVO(po));
 			}
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		

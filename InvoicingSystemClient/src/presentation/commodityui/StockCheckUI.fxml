@@ -34,7 +34,7 @@
         <Font size="65.0" />
       </font>
     </Label>
-    <ScrollPane layoutY="185.0" opacity="0.7" prefHeight="417.0" prefWidth="827.0">
+    <ScrollPane layoutX="0.0" layoutY="196.0" opacity="0.7" prefHeight="406.0" prefWidth="827.0">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="470.0" prefWidth="899.0">
           <children>

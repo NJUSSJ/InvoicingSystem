@@ -84,6 +84,7 @@ public class WarningBill{
 		ArrayList<WarningBillVO> result=new ArrayList<WarningBillVO>();
 		try {
 			ArrayList<WarningBillPO> bills=RemoteHelper.getInstance().getWarningBillDataService().findWarningBillbyState(state);
+			if(bills.isEmpty()) return result;
 			for(WarningBillPO po:bills){
 				result.add(toWarningBillVO(po));
 			}
