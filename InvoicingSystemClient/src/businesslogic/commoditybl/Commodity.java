@@ -140,9 +140,22 @@ public class Commodity{
 				for(int i=0;i<list.getListSize();i++){
 					CommodityLineItem item=list.get(i);
 					CommodityVO cvo=ccon.findCommodityByID(item.getCommodityID());
-					StockCheckInfoVO vo=new StockCheckInfoVO(item.getCommodityID(),cvo.getName(),cvo.getModel(),
+					boolean existed=false;
+					for(StockCheckInfoVO vo:result){
+						if(vo.getName().equals(cvo.getName())){
+							existed=true;
+							vo.setOutStockNum(vo.getOutStockNum()+item.getNum());
+							vo.setOutSum(vo.getOutSum()+item.getNum()*item.getSalePrice());
+							vo.setSaleNum(vo.getSaleNum()+item.getNum());
+							vo.setSaleSum(vo.getSaleSum()+item.getNum()*item.getSalePrice());
+							break;
+						}
+					}
+					if(!existed){
+						StockCheckInfoVO vo=new StockCheckInfoVO(item.getCommodityID(),cvo.getName(),cvo.getModel(),
 							item.getNum(),0,item.getNum()*item.getSalePrice(),0,item.getNum(),0,item.getNum()*item.getSalePrice(),0); 
-					result.add(vo);
+						result.add(vo);
+					}
 				}
 			}
 		}
@@ -152,9 +165,21 @@ public class Commodity{
 				for(int i=0;i<list.getListSize();i++){
 					CommodityLineItem item=list.get(i);
 					CommodityVO cvo=ccon.findCommodityByID(item.getCommodityID());
-					StockCheckInfoVO vo=new StockCheckInfoVO(item.getCommodityID(),cvo.getName(),cvo.getModel(),
-							0,list.getNum(),0,item.getNum()*item.getImportPrice(),0,list.getNum(),0,item.getNum()*item.getImportPrice());
-					result.add(vo);
+					boolean existed=false;
+					for(StockCheckInfoVO vo:result){
+						if(vo.getName().equals(cvo.getName())){
+							existed=true;
+							vo.setInStockNum(vo.getInStockNum()+item.getNum());
+							vo.setInSum(vo.getInSum()+item.getNum()*item.getImportPrice());
+							vo.setImportNum(vo.getImportNum()+item.getNum());
+							vo.setImportSum(vo.getImportSum()+item.getNum()*item.getImportPrice());
+						}
+					}
+					if(!existed){
+						StockCheckInfoVO vo=new StockCheckInfoVO(item.getCommodityID(),cvo.getName(),cvo.getModel(),
+							0,item.getNum(),0,item.getNum()*item.getImportPrice(),0,item.getNum(),0,item.getNum()*item.getImportPrice());
+						result.add(vo);
+						}
 				}
 			}
 		}
@@ -164,9 +189,19 @@ public class Commodity{
 				for(int i=0;i<list.getListSize();i++){
 					CommodityLineItem item=list.get(i);
 					CommodityVO cvo=ccon.findCommodityByID(item.getCommodityID());
-					StockCheckInfoVO vo=new StockCheckInfoVO(item.getCommodityID(),cvo.getName(),cvo.getModel(),
+					boolean existed=false;
+					for(StockCheckInfoVO vo:result){
+						if(vo.getName().equals(cvo.getName())){
+							existed=true;
+							vo.setOutStockNum(vo.getOutStockNum()+item.getNum());
+							vo.setOutSum(vo.getOutSum()+item.getNum()*item.getSalePrice());
+							break;
+						}
+					}if(!existed){
+						StockCheckInfoVO vo=new StockCheckInfoVO(item.getCommodityID(),cvo.getName(),cvo.getModel(),
 							item.getNum(),0,item.getNum()*item.getSalePrice(),0,0,0,0,0); 
-					result.add(vo);
+						result.add(vo);
+					}
 				}
 			}
 		}
@@ -176,9 +211,19 @@ public class Commodity{
 				for(int i=0;i<list.getListSize();i++){
 					CommodityLineItem item=list.get(i);
 					CommodityVO cvo=ccon.findCommodityByID(item.getCommodityID());
-					StockCheckInfoVO vo=new StockCheckInfoVO(item.getCommodityID(),cvo.getName(),cvo.getModel(),
-							0,list.getNum(),0,item.getNum()*item.getImportPrice(),0,0,0,0);
-					result.add(vo);
+					boolean existed=false;
+					for(StockCheckInfoVO vo:result){
+						if(vo.getName().equals(cvo.getName())){
+							existed=true;
+							vo.setInStockNum(vo.getInStockNum()+item.getNum());
+							vo.setInSum(vo.getInSum()+item.getNum()*item.getImportPrice());
+						}
+					}
+					if(!existed){
+						StockCheckInfoVO vo=new StockCheckInfoVO(item.getCommodityID(),cvo.getName(),cvo.getModel(),
+							0,item.getNum(),0,item.getNum()*item.getImportPrice(),0,0,0,0);
+						result.add(vo);
+					}
 				}
 			}
 		}
