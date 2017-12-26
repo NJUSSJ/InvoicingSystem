@@ -134,8 +134,8 @@ public class LogDataImpl implements LogDataService {
 				long id=result.getLong("id");
 				Date time=result.getDate("time");
 				long userid=result.getLong("userid");
-				
-				LogPO tmpLog=new LogPO(id, time, type, userid);
+				String tmpType=result.getString("type");
+				LogPO tmpLog=new LogPO(id, time, tmpType, userid);
 				
 				results.add(tmpLog);
 			}

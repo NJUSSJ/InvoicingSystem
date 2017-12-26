@@ -122,7 +122,7 @@ public class PayBillViewController  implements Initializable{
 		long idLong=MainApp.getID();
 		String idString=idLong+"";
 		while(idString.length()<5) {
-			idString="0"+idString;
+			idString="0"+idString; 
 		}
 		id.setText("ID:"+idString);
 		
@@ -146,6 +146,7 @@ public class PayBillViewController  implements Initializable{
        		 Alert warning=new Alert(AlertType.WARNING);
     			 warning.setContentText("Account Does Not Exist!");
     			 warning.showAndWait();
+    			 return;
        	 }
        	 double money=Double.parseDouble(itemMoney.getText());
        	 String note=itemNote.getText();
@@ -176,6 +177,7 @@ public class PayBillViewController  implements Initializable{
 	       		 Alert warning=new Alert(AlertType.WARNING);
 	    			 warning.setContentText("Account Does Not Exist!");
 	    			 warning.showAndWait();
+	    			 return;
 	       	 }
 	       	 double money=Double.parseDouble(itemMoney.getText());
 	       	 	 String note=itemNote.getText();

@@ -78,6 +78,9 @@ public class SimpleMemberController implements Initializable{
 		addressField.setText(memberVO.getAddress());
 		postcodeField.setText(Integer.toString(memberVO.getPostCode()));
 		telephoneField.setText(Long.toString(memberVO.getPhoneNum()));
+		shouldget.setText(memberVO.getShouldGet()+"");
+		shouldpay.setText(memberVO.getShouldPay()+"");
+		quota.setText(memberVO.getQuota()+"");
 		style=1;
 	}
     public void cancel(){

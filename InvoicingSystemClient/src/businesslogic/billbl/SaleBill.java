@@ -243,12 +243,15 @@ public class SaleBill{
 	public ArrayList<SaleBillVO> findSaleBillsByInterval(Date begin,Date end){
 		ArrayList<SaleBillVO> bills=findSaleBills();
 		ArrayList<SaleBillVO> result=new ArrayList<SaleBillVO>();
+		if(bills==null){
+			return null;
+		}
 		for(SaleBillVO each:bills){
 			if(each.getTime().after(begin)&&each.getTime().before(end)){
 				bills.add(each);
 			}
 		}
-		return bills;	
+		return result;	
 	}
 	public ArrayList<SaleBillVO> findSaleBillsByState(int state){
 		ArrayList<SaleBillVO> result=new ArrayList<SaleBillVO>();

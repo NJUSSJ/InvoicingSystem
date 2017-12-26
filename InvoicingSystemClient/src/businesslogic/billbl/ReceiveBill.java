@@ -104,6 +104,9 @@ public class ReceiveBill{
 		ArrayList<ReceiveBillPO> bills;
 		try {
 			bills = RemoteHelper.getInstance().getReceiveBillDataService().findReceiveBillbyState(state);
+			if(bills==null){
+				return null;
+			}
 			for(ReceiveBillPO po:bills){
 				result.add(toReceiveBillVO(po));
 			}
@@ -117,6 +120,9 @@ public class ReceiveBill{
 		ArrayList<ReceiveBillVO> result=new ArrayList<ReceiveBillVO>();
 		try {
 			ArrayList<ReceiveBillPO> bills=RemoteHelper.getInstance().getReceiveBillDataService().findReceiveBillbyField(userName, memberName);
+			if(bills==null){
+				return null;
+			}
 			for(ReceiveBillPO po:bills){
 				result.add(toReceiveBillVO(po));
 			}
@@ -129,6 +135,9 @@ public class ReceiveBill{
 		ArrayList<ReceiveBillVO> result=new ArrayList<ReceiveBillVO>();
 		try {
 			ArrayList<ReceiveBillPO> bills=RemoteHelper.getInstance().getReceiveBillDataService().findReceiveBillbyUser(userid);
+			if(bills==null){
+				return null;
+			}
 			for(ReceiveBillPO po:bills){
 				result.add(toReceiveBillVO(po));
 			}

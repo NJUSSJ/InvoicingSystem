@@ -63,7 +63,7 @@ public class ExamineViewController implements Initializable {
 	@FXML
 	private Label id;
 	@FXML
-	private Label logout;
+	private Button logout;
 	@FXML
 	private Button passB;
 	
@@ -150,6 +150,7 @@ public class ExamineViewController implements Initializable {
 	public void pass(){
 		for(BillData bill:billData){
 			if(bill.getchoose().equals("ÊÇ")){
+				//System.out.println(bill.getchoose()+"/"+bill.getid());
 				String style=bill.getstyle();
 				String id=bill.getid();
 				billData.remove(bill);
