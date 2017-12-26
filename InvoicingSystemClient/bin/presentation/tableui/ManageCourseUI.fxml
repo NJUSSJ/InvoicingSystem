@@ -13,14 +13,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.tableui.ManageCourseViewController">
   <children>
     <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="602.0" fitWidth="999.0000999999975" layoutX="1.0" layoutY="0.0">
       <image>
         <Image preserveRatio="true" smooth="true" url="@../../../../../InvoicingSystem/InvoicingSystemClient/resources/1b256486664e499a9613079e51bbca0b.png" />
       </image>
     </ImageView>
-    <Label layoutX="814.0" layoutY="11.0" prefWidth="64.0" text="ID:XXX">
+    <Label fx:id="id" layoutX="814.0" layoutY="11.0" prefWidth="64.0" text="ID:XXX">
       <font>
         <Font size="14.0" fx:id="x1" />
       </font>
@@ -37,15 +37,15 @@
     <Label layoutX="24.0" layoutY="160.0" text="单据类型：" />
     <Label layoutX="587.0" layoutY="158.0" text="业 务 员：" />
     <Label layoutX="310.0" layoutY="160.0" text="客  户：" />
-    <ChoiceBox layoutX="91.0" layoutY="157.0" prefHeight="23.0" prefWidth="153.0" />
-    <TextField layoutX="359.0" layoutY="156.0" prefHeight="23.0" prefWidth="154.0" />
-    <TextField layoutX="649.0" layoutY="156.0" prefHeight="23.0" prefWidth="154.0" />
-    <ChoiceBox layoutX="72.0" layoutY="125.0" prefHeight="23.0" prefWidth="72.0" />
-    <ChoiceBox layoutX="169.0" layoutY="125.0" prefHeight="23.0" prefWidth="55.0" />
-    <ChoiceBox layoutX="242.0" layoutY="125.0" prefHeight="23.0" prefWidth="55.0" />
-    <ChoiceBox layoutX="349.0" layoutY="125.0" prefHeight="23.0" prefWidth="72.0" />
-    <ChoiceBox layoutX="450.0" layoutY="125.0" prefHeight="23.0" prefWidth="55.0" />
-    <ChoiceBox layoutX="524.0" layoutY="125.0" prefHeight="23.0" prefWidth="55.0" />
+    <ChoiceBox fx:id="billType" layoutX="91.0" layoutY="157.0" prefHeight="23.0" prefWidth="153.0" />
+    <TextField fx:id="member" layoutX="359.0" layoutY="156.0" prefHeight="23.0" prefWidth="154.0" />
+    <TextField fx:id="user" layoutX="649.0" layoutY="156.0" prefHeight="23.0" prefWidth="154.0" />
+    <ChoiceBox fx:id="startYear" layoutX="72.0" layoutY="125.0" prefHeight="23.0" prefWidth="72.0" />
+    <ChoiceBox fx:id="startMonth" layoutX="169.0" layoutY="125.0" prefHeight="23.0" prefWidth="55.0" />
+    <ChoiceBox fx:id="startDay" layoutX="242.0" layoutY="125.0" prefHeight="23.0" prefWidth="55.0" />
+    <ChoiceBox fx:id="endYear" layoutX="349.0" layoutY="125.0" prefHeight="23.0" prefWidth="72.0" />
+    <ChoiceBox fx:id="endMonth" layoutX="450.0" layoutY="125.0" prefHeight="23.0" prefWidth="55.0" />
+    <ChoiceBox fx:id="endDay" layoutX="524.0" layoutY="125.0" prefHeight="23.0" prefWidth="55.0" />
     <Label layoutX="151.0" layoutY="129.0" text="年" />
     <Label layoutX="227.0" layoutY="129.0" text="月" />
     <Label layoutX="297.0" layoutY="129.0" text="日" />
@@ -56,25 +56,24 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="411.0" prefWidth="847.0">
           <children>
-            <TableView prefHeight="417.0" prefWidth="854.0">
+            <TableView fx:id="billTable" prefHeight="417.0" prefWidth="854.0">
               <columns>
-                <TableColumn prefWidth="150.0" text="时间" />
-                <TableColumn prefWidth="120.0" text="单据类型" />
-                <TableColumn prefWidth="120.0" text="客户" />
-                <TableColumn prefWidth="120.0" text="业务员" />
-                <TableColumn prefWidth="333.0" text="备注" />
+                <TableColumn fx:id="timeColoumn" prefWidth="150.0" text="时间" />
+                <TableColumn fx:id="typeColoumn" prefWidth="120.0" text="单据类型" />
+                <TableColumn fx:id="memberColoumn" prefWidth="120.0" text="客户" />
+                <TableColumn fx:id="userColoumn" prefWidth="120.0" text="业务员" />
+                <TableColumn fx:id="commentColoumn" prefWidth="333.0" text="备注" />
               </columns>
             </TableView>
           </children>
         </AnchorPane>
       </content>
     </ScrollPane>
-    <Button layoutX="861.0" layoutY="536.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="120.0" text="返      回" />
-    <Button layoutX="861.0" layoutY="495.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="120.0" text="导出为Excel" />
+    <Button fx:id="returnA" layoutX="861.0" layoutY="536.0" mnemonicParsing="false" onAction="#showtheMain" prefHeight="23.0" prefWidth="120.0" text="返      回" />
     <Separator layoutX="846.0" layoutY="120.0" orientation="VERTICAL" prefHeight="478.0" prefWidth="6.0" />
-      <Button layoutX="612.0" layoutY="188.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="100.0" text="清      空" />
-      <Button layoutX="729.0" layoutY="188.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="100.0" text="查      找" />
-      <Button layoutX="861.0" layoutY="456.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="120.0" text="红冲并复制" />
-      <Button layoutX="861.0" layoutY="418.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="120.0" text="红      冲" />
+      <Button fx:id="search" layoutX="729.0" layoutY="188.0" mnemonicParsing="false" onAction="#searchBill" prefHeight="23.0" prefWidth="100.0" text="查      找" />
+      <Button fx:id="reverseAndCopy" layoutX="861.0" layoutY="493.0" mnemonicParsing="false" onAction="#reverseAndCopy" prefHeight="23.0" prefWidth="120.0" text="红冲并复制" />
+      <Button fx:id="reverse" layoutX="861.0" layoutY="455.0" mnemonicParsing="false" onAction="#reverse" prefHeight="23.0" prefWidth="120.0" text="红      冲" />
+      <Button fx:id="logout" layoutX="887.0" layoutY="9.0" mnemonicParsing="false" onAction="#logout" prefHeight="23.0" prefWidth="60.0" visible="false" />
   </children>
 </AnchorPane>

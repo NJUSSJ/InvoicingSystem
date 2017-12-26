@@ -113,11 +113,11 @@ public class LogViewController implements Initializable {
 		String userName=operator.getText();
 		String operateType=type.getText();
 		volist=lcon.findLogs();
+		if(operateType!=null&&operateType.length()>0){
+			volist=lcon.findLogByField(operateType);
+		}
 		if(userName!=null&&userName.length()>0){
 			volist=findByUsername(userName,volist);
-		}
-		if(operateType!=null&&operateType.length()>0){
-			volist=findByType(operateType,volist);
 		}
 		int inputNum=0;
 		if(beginYText!=null&&beginYText.length()>0){
@@ -208,7 +208,7 @@ public class LogViewController implements Initializable {
 		}
 		return result;
 	}
-	public ArrayList<LogVO> findByType(String type,ArrayList<LogVO> list){
+	/*public ArrayList<LogVO> findByType(String type,ArrayList<LogVO> list){
 		ArrayList<LogVO> result=new ArrayList<LogVO>();
 		for(LogVO vo:list){
 			//System.out.println(vo.getType()+"=="+type);
@@ -217,5 +217,5 @@ public class LogViewController implements Initializable {
 			}
 		}
 		return result;
-	}
+	}*/
 }

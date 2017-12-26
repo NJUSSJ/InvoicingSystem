@@ -50,6 +50,9 @@ public class Log{
 		try {
 			temp=new ArrayList<LogVO>();
 			logs = RemoteHelper.getInstance().getLogDataService().findLogbyType(field);
+			if(logs==null){
+				return null;
+			}
 			for(int i=0;i<logs.size();i++){
 			temp.add(toLogVO(logs.get(i)));
 			}
