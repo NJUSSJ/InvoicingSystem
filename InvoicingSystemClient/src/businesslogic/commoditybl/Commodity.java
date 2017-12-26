@@ -21,6 +21,11 @@ import vo.StockCheckInfoVO;
 import vo.StockInventoryInfoVO;
 
 public class Commodity{
+	/**
+	 * 增加商品
+	 * @param commodityVO 商品vo
+	 * @return 添加商品结果
+	 */
 	public boolean addCommodity(CommodityVO commodityVO){
 		try {
 			return RemoteHelper.getInstance().getCommodityDataService().insert(commodityVO.toCommodityPO());
@@ -30,6 +35,11 @@ public class Commodity{
 		return false;
 		
 	}
+	/**
+	 * 删除商品
+	 * @param commodityVO 商品vo
+	 * @return 删除结果
+	 */
 	public boolean deleteCommodity(CommodityVO commodityVO){
 		try {
 			return RemoteHelper.getInstance().getCommodityDataService().delete(commodityVO.toCommodityPO());
@@ -39,6 +49,11 @@ public class Commodity{
 		return false;
 		
 	}
+	/**
+	 * 更新商品
+	 * @param commodityVO 商品vo
+	 * @return 更新结果
+	 */
 	public boolean updateCommodity(CommodityVO commodityVO){
 		try {
 			return RemoteHelper.getInstance().getCommodityDataService().update(commodityVO.toCommodityPO());
@@ -47,6 +62,11 @@ public class Commodity{
 		}
 		return false;
 	}
+	/**
+	 * 根据商品名称查找单个商品
+	 * @param name 商品名称
+	 * @return 查找到的商品vo，如果为空则返回null
+	 */
 	public CommodityVO findCommodityByName(String name){
 		try {
 			return toCommodityVO(RemoteHelper.getInstance().getCommodityDataService().findCommoditybyName(name));
@@ -56,6 +76,11 @@ public class Commodity{
 		return null;
 		
 	}
+	/**
+	 * 根据商品id查找单个商品
+	 * @param id 商品id
+	 * @return 查找到的商品vo，如果为空则返回null
+	 */
 	public CommodityVO findCommodityByID(long id){
 		try {
 			return toCommodityVO(RemoteHelper.getInstance().getCommodityDataService().findCommoditybyID(id));
@@ -64,6 +89,11 @@ public class Commodity{
 		}
 		return null;
 	}
+	/**
+	 * 根据关键字模糊查找多个商品
+	 * @param field 关键字
+	 * @return 查找结果，如果为空,返回空list
+	 */
 	public ArrayList<CommodityVO> findCommodityByField(String field) {
 		ArrayList<CommodityVO> temp = new ArrayList<CommodityVO>();
 		try {
@@ -80,6 +110,11 @@ public class Commodity{
 		
 		return temp;
 	}
+	/**
+	 * 
+	 * @param commodityPO 商品po
+	 * @return 该po转换为vo的结果，如果是null则返回null
+	 */
 	public CommodityVO toCommodityVO(CommodityPO commodityPO){
 		if(commodityPO==null){
 			return null;
@@ -99,44 +134,52 @@ public class Commodity{
 		ArrayList<StockCheckInfoVO> result=new ArrayList<StockCheckInfoVO>();
 		CommodityController ccon=new CommodityController();
 		CommodityList list;
-		for(SaleBillVO bill:saleBills){
-			list=bill.getList();
-			for(int i=0;i<list.getListSize();i++){
-				CommodityLineItem item=list.get(i);
-				CommodityVO cvo=ccon.findCommodityByID(item.getCommodityID());
-				StockCheckInfoVO vo=new StockCheckInfoVO(item.getCommodityID(),cvo.getName(),cvo.getModel(),
-			item.getNum(),0,item.getNum()*item.getSalePrice(),0,item.getNum(),0,item.getNum()*item.getSalePrice(),0); 
-				result.add(vo);
+		if(saleBills!=null&&!saleBills.isEmpty()){
+			for(SaleBillVO bill:saleBills){
+				list=bill.getList();
+				for(int i=0;i<list.getListSize();i++){
+					CommodityLineItem item=list.get(i);
+					CommodityVO cvo=ccon.findCommodityByID(item.getCommodityID());
+					StockCheckInfoVO vo=new StockCheckInfoVO(item.getCommodityID(),cvo.getName(),cvo.getModel(),
+							item.getNum(),0,item.getNum()*item.getSalePrice(),0,item.getNum(),0,item.getNum()*item.getSalePrice(),0); 
+					result.add(vo);
+				}
 			}
 		}
-		for(ImportBillVO bill:importBills){
-			list=bill.getCommodityList();
-			for(int i=0;i<list.getListSize();i++){
-				CommodityLineItem item=list.get(i);
-				CommodityVO cvo=ccon.findCommodityByID(item.getCommodityID());
-				StockCheckInfoVO vo=new StockCheckInfoVO(item.getCommodityID(),cvo.getName(),cvo.getModel(),
-			0,list.getNum(),0,item.getNum()*item.getImportPrice(),0,list.getNum(),0,item.getNum()*item.getImportPrice());
-				result.add(vo);
+		if(importBills!=null&&!importBills.isEmpty()){
+			for(ImportBillVO bill:importBills){
+				list=bill.getCommodityList();
+				for(int i=0;i<list.getListSize();i++){
+					CommodityLineItem item=list.get(i);
+					CommodityVO cvo=ccon.findCommodityByID(item.getCommodityID());
+					StockCheckInfoVO vo=new StockCheckInfoVO(item.getCommodityID(),cvo.getName(),cvo.getModel(),
+							0,list.getNum(),0,item.getNum()*item.getImportPrice(),0,list.getNum(),0,item.getNum()*item.getImportPrice());
+					result.add(vo);
+				}
 			}
 		}
-		for(ImportReturnBillVO bill:importReturnBills){
-			list=bill.getList();
-			for(int i=0;i<list.getListSize();i++){
-				CommodityLineItem item=list.get(i);
-				CommodityVO cvo=ccon.findCommodityByID(item.getCommodityID());
-				StockCheckInfoVO vo=new StockCheckInfoVO(item.getCommodityID(),cvo.getName(),cvo.getModel(),
-			item.getNum(),0,item.getNum()*item.getSalePrice(),0,0,0,0,0); 
-				result.add(vo);
+		if(importReturnBills!=null&&!importReturnBills.isEmpty()){
+			for(ImportReturnBillVO bill:importReturnBills){
+				list=bill.getList();
+				for(int i=0;i<list.getListSize();i++){
+					CommodityLineItem item=list.get(i);
+					CommodityVO cvo=ccon.findCommodityByID(item.getCommodityID());
+					StockCheckInfoVO vo=new StockCheckInfoVO(item.getCommodityID(),cvo.getName(),cvo.getModel(),
+							item.getNum(),0,item.getNum()*item.getSalePrice(),0,0,0,0,0); 
+					result.add(vo);
+				}
 			}
 		}
-		for(SaleReturnBillVO bill:saleReturnBills){
-			list=bill.getList();
-			for(int i=0;i<list.getListSize();i++){
-				CommodityLineItem item=list.get(i);
-				CommodityVO cvo=ccon.findCommodityByID(item.getCommodityID());
-				StockCheckInfoVO vo=new StockCheckInfoVO(item.getCommodityID(),cvo.getName(),cvo.getModel(),
-			0,list.getNum(),0,item.getNum()*item.getImportPrice(),0,0,0,0);
-				result.add(vo);
+		if(saleReturnBills!=null&&!saleReturnBills.isEmpty()){
+			for(SaleReturnBillVO bill:saleReturnBills){
+				list=bill.getList();
+				for(int i=0;i<list.getListSize();i++){
+					CommodityLineItem item=list.get(i);
+					CommodityVO cvo=ccon.findCommodityByID(item.getCommodityID());
+					StockCheckInfoVO vo=new StockCheckInfoVO(item.getCommodityID(),cvo.getName(),cvo.getModel(),
+							0,list.getNum(),0,item.getNum()*item.getImportPrice(),0,0,0,0);
+					result.add(vo);
+				}
 			}
 		}
 		return result;
@@ -148,16 +191,19 @@ public class Commodity{
 		ArrayList<StockInventoryInfoVO> result=new ArrayList<StockInventoryInfoVO>();
 		ArrayList<CommodityVO> comVOs=findCommodities();
 		int line=0;
-		for(CommodityVO com:comVOs){
-			line++;
-			StockInventoryInfoVO vo=new StockInventoryInfoVO(line,com.getName(),com.getModel(),
-					com.getStockNum(),com.getSalePrice());
-			result.add(vo);
- 		}
+		if(comVOs!=null&&!comVOs.isEmpty()){
+			for(CommodityVO com:comVOs){
+				line++;
+				StockInventoryInfoVO vo=new StockInventoryInfoVO(line,com.getName(),com.getModel(),
+						com.getStockNum(),com.getSalePrice());
+				result.add(vo);
+			}
+		}
 		return result;
 	}
 	/**
-	 * 返回所有商品
+	 * 
+	 * @return 所有商品集合的list，如果为空则返回null
 	 */
 	public ArrayList<CommodityVO> findCommodities(){
 		ArrayList<CommodityVO> result=new ArrayList<CommodityVO>();
@@ -174,6 +220,10 @@ public class Commodity{
 		}
 		return result;
 	}
+	/**
+	 * 
+	 * @return 返回数据库中商品id的最大值,出错时返回-2
+	 */
 	public long findLargestIDofCommodity(){
 		try {
 			return RemoteHelper.getInstance().getCommodityDataService().getLargestIDofCommodity();

@@ -10,6 +10,11 @@ import vo.CategoryVO;
 import vo.CommodityVO;
 
 public class Category {
+	/**
+	 * 增加商品分类
+	 * @param categoryVO 商品分类vo
+	 * @return  增加商品的结果
+	 */
 	public boolean addCategory(CategoryVO categoryVO){
 		try {
 			return RemoteHelper.getInstance().getCategoryDataService().insert(categoryVO.toCategoryPO());
@@ -18,6 +23,11 @@ public class Category {
 		}
 		return false;
 	}
+	/**
+	 * 删除商品分类
+	 * @param categoryVO 商品分类vo
+	 * @return 删除商品的结果
+	 */
 	public boolean deleteCategory(CategoryVO categoryVO){
 		try {
 			return RemoteHelper.getInstance().getCategoryDataService().delete(categoryVO.toCategoryPO());
@@ -26,6 +36,11 @@ public class Category {
 		}
 		return false;
 	}
+	/**
+	 * 更新商品分类
+	 * @param categoryVO 商品分类vo
+	 * @return 更新商品的结果
+	 */
 	public boolean updateCategory(CategoryVO categoryVO){
 		try {
 			return RemoteHelper.getInstance().getCategoryDataService().update(categoryVO.toCategoryPO());
@@ -34,6 +49,11 @@ public class Category {
 		}
 		return false;
 	}
+	/**
+	 * 根据id查找单个商品分类
+	 * @param id 商品分类id
+	 * @return 查找到的商品分类vo，如果没有则返回null
+	 */
 	public CategoryVO findCategoryByID(long id){
 		try {
 			return toCategoryVO(RemoteHelper.getInstance().getCategoryDataService().findCategorybyID(id));
@@ -42,6 +62,11 @@ public class Category {
 		}
 		return null;
 	}
+	/**
+	 * 根据商品分类名称查找单个商品分类
+	 * @param name 商品分类名称
+	 * @return 查找到的商品分类，如果查不到则返回null
+	 */
 	public CategoryVO findCategoryByName(String name){
 		try {
 			return toCategoryVO(RemoteHelper.getInstance().getCategoryDataService().findCategorybyName(name));
@@ -50,6 +75,11 @@ public class Category {
 		}
 		return null;
 	}
+	/**
+	 * 将商品分类po转化为商品分类vo
+	 * @param categoryPO 商品分类po
+	 * @return 转化的vo，如果为null则返回bull
+	 */
 	public CategoryVO toCategoryVO(CategoryPO categoryPO){
 		if(categoryPO==null){
 			return null;
@@ -57,7 +87,7 @@ public class Category {
 		return new CategoryVO(categoryPO.getID(),categoryPO.getName(),categoryPO.getParentID());
 	}
 	/**
-	 * 
+	 * 查找商品分类的父类及父类的兄弟
 	 * @param vo:传入的商品分类vo
 	 * @return 商品分类的上一级
 	 */
@@ -76,6 +106,11 @@ public class Category {
 		}
 		return temp;
 	}
+	/**
+	 * 查找商品分类的子类
+	 * @param vo 商品分类vo
+	 * @return 商品的子类，如果为null则返回null
+	 */
 	public ArrayList<CategoryVO> findDownCategory(CategoryVO vo) {
 		ArrayList<CategoryVO> temp = null;
 		try {
