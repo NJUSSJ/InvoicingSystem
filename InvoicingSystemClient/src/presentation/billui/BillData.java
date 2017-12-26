@@ -16,6 +16,7 @@ import vo.PayBillVO;
 import vo.ReceiveBillVO;
 import vo.SaleBillVO;
 import vo.SaleReturnBillVO;
+import vo.UserVO;
 import vo.WarningBillVO;
 
 public class BillData {
