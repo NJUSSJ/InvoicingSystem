@@ -78,5 +78,21 @@ public class User {
 		}
 		return temp;
 	}
+	
+	public ArrayList<UserVO> findUserbyFiled(String field){
+		ArrayList<UserVO> results=new ArrayList<>();
+		try {
+			ArrayList<UserPO> users=RemoteHelper.getInstance().getUserDataService().findUserbyField(field);
+			if(users.isEmpty()||users==null) return results;
+			for(int i=0;i<users.size();i++) {
+				results.add(toUserVO(users.get(i)));
+			}
+			return results;
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		return results;
+	}
 
 }

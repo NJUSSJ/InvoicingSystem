@@ -96,7 +96,7 @@ public class SimpleMemberController implements Initializable{
 		if(style==1){
 			memberVO=new MemberVO(memberVO.getID(),Integer.parseInt(rankField.getText()),
 				Integer.parseInt(postcodeField.getText()),Integer.parseInt(categoryField.getText()),
-				nameField.getText(),Integer.parseInt(telephoneField.getText()),addressField.getText(),
+				nameField.getText(),Long.parseLong(telephoneField.getText()),addressField.getText(),
 				emailField.getText(),Double.parseDouble(shouldpay.getText()),Double.parseDouble(shouldget.getText()),
 				Double.parseDouble(quota.getText()),MainApp.getID());
 			mbs.updateMember(memberVO);

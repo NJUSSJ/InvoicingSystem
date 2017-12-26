@@ -22,7 +22,7 @@
         <Image url="@../../../resources/timgBLDQZZNV.jpg" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <Label fx:id="id" layoutX="837.0" layoutY="14.0" prefWidth="63.0" text="ID:XXX">
+    <Label fx:id="id" layoutX="817.0" layoutY="14.0" prefWidth="90.0" text="ID:XXX">
       <font>
         <Font name="Microsoft YaHei UI Light" size="16.0" fx:id="x3" />
       </font>

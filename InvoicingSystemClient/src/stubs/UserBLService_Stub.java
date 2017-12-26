@@ -54,4 +54,10 @@ public class UserBLService_Stub implements UserBLService{
 		return null;
 	}
 
+	@Override
+	public ArrayList<UserVO> findUsersbyField(String field) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

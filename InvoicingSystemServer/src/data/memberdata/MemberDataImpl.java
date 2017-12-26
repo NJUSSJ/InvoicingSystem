@@ -28,7 +28,7 @@ public class MemberDataImpl implements MemberDataService{
 				int rank=result.getInt("rank");
 				int category=result.getInt("category");
 				String name_=result.getString("name");
-				int phonenumber=result.getInt("phonenumber");
+				long phonenumber=result.getLong("phonenumber");
 				String address=result.getString("address");
 				String email=result.getString("email");
 				int postcode=result.getInt("postcode");
@@ -123,7 +123,7 @@ public class MemberDataImpl implements MemberDataService{
 				int rank=result.getInt("rank");
 				int category=result.getInt("category");
 				String name_=result.getString("name");
-				int phonenumber=result.getInt("phonenumber");
+				long phonenumber=result.getLong("phonenumber");
 				String address=result.getString("address");
 				String email=result.getString("email");
 				int postcode=result.getInt("postcode");
@@ -164,7 +164,7 @@ public class MemberDataImpl implements MemberDataService{
 				int rank=result.getInt("rank");
 				int category=result.getInt("category");
 				String name_=result.getString("name");
-				int phonenumber=result.getInt("phonenumber");
+				long phonenumber=result.getLong("phonenumber");
 				String address=result.getString("address");
 				String email=result.getString("email");
 				int postcode=result.getInt("postcode");
@@ -197,7 +197,7 @@ public class MemberDataImpl implements MemberDataService{
 				int rank=result.getInt("rank");
 				int category=result.getInt("category");
 				String name_=result.getString("name");
-				int phonenumber=result.getInt("phonenumber");
+				long phonenumber=result.getLong("phonenumber");
 				String address=result.getString("address");
 				String email=result.getString("email");
 				int postcode=result.getInt("postcode");
