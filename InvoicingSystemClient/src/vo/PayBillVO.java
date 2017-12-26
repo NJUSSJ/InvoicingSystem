@@ -31,7 +31,7 @@ public class PayBillVO {
 		this.sum=accountList.getSum();
 	}
 	public PayBillPO toPayBillPO(){
-		return new PayBillPO(id,memberid,userid,accountList.toString(),sum,time,state);
+		return new PayBillPO(id,userid,memberid,accountList.toString(),sum,time,state);
 	}
 	
 	public String getID() {

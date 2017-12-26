@@ -85,7 +85,7 @@ public class PayBillDataImpl implements PayBillDataService {
 				
 				long userid=result.getLong("userid");
 				long memberid=result.getLong("memberid");
-				String accountlist=result.getString("commoditylist");
+				String accountlist=result.getString("accountlist");
 				double sum=result.getDouble("sum");
 				Date time=result.getDate("time");
 				int state=result.getInt("state");
@@ -115,7 +115,7 @@ public class PayBillDataImpl implements PayBillDataService {
 				String id=result.getString("id");
 				long userid=result.getLong("userid");
 				long memberid=result.getLong("memberid");
-				String accountlist=result.getString("commoditylist");
+				String accountlist=result.getString("accountlist");
 				double sum=result.getDouble("sum");
 				Date time=result.getDate("time");
 				int state=result.getInt("state");
@@ -148,7 +148,7 @@ public class PayBillDataImpl implements PayBillDataService {
 				String id=result.getString("id");
 				long userid=result.getLong("userid");
 				long memberid=result.getLong("memberid");
-				String accountlist=result.getString("commoditylist");
+				String accountlist=result.getString("accountlist");
 				double sum=result.getDouble("sum");
 				int state=result.getInt("state");
 				
@@ -180,7 +180,7 @@ public class PayBillDataImpl implements PayBillDataService {
 				String id=result.getString("id");
 				long userid=result.getLong("userid");
 				long memberid=result.getLong("memberid");
-				String accountlist=result.getString("commoditylist");
+				String accountlist=result.getString("accountlist");
 				double sum=result.getDouble("sum");
 				Date time=result.getDate("time");
 				
@@ -211,7 +211,7 @@ public class PayBillDataImpl implements PayBillDataService {
 			while(result.next()) {
 				String id=result.getString("id");
 				
-				String accountlist=result.getString("commoditylist");
+				String accountlist=result.getString("accountlist");
 				double sum=result.getDouble("sum");
 				Date time=result.getDate("time");
 				int state=result.getInt("state");
@@ -241,7 +241,7 @@ public class PayBillDataImpl implements PayBillDataService {
 			while(result.next()) {
 				String id=result.getString("id");
 				
-				String accountlist=result.getString("commoditylist");
+				String accountlist=result.getString("accountlist");
 				double sum=result.getDouble("sum");
 				Date time=result.getDate("time");
 				int state=result.getInt("state");

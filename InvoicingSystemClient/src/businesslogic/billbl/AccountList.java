@@ -44,11 +44,9 @@ public class AccountList {
 		return temp;
 	}
 	public int getListLength() {
-		// TODO Auto-generated method stub
 		return list.size();
 	}
 	public AccountLineItem getItem(int i) {
-		// TODO Auto-generated method stub
 		return list.get(i);
 	}
 }

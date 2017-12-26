@@ -50,14 +50,6 @@ public class SimpleCategoryController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		if(style==1){
-			long largest=-1;
-			for(int i=0;i<list.size();i++) {
-				if(Long.parseLong(list.get(i).getID().get())>largest)
-					largest=Long.parseLong(list.get(i).getID().get());
-			}
-			id.setText(largest+1+"");
-		}
 	}
 	public void setStage(Stage categoryStage) {
 		stage=categoryStage;
@@ -65,6 +57,8 @@ public class SimpleCategoryController implements Initializable{
 	public void setParentID(long parentID) {
 		parentid.setText(Long.toString(parentID));
 		style=1;
+		long idNum=cbs.findLargestIDofCategory()+1;
+		id.setText(idNum+"");
 	}
 	public void cancel(){
 		stage.close();
@@ -74,16 +68,12 @@ public class SimpleCategoryController implements Initializable{
 		String nameText=name.getText();
 		String parentidText=parentid.getText();
 		if(style==1){
-			long largest=-1;
-			for(int i=0;i<list.size();i++) {
-				if(Long.parseLong(list.get(i).getID().get())>largest)
-					largest=Long.parseLong(list.get(i).getID().get());
-			}
-			String id=largest+1+"";
+			long idNum=cbs.findLargestIDofCategory()+1;
+			/*String id=idNum+"";
 			while(id.length()<5) {
 				id="0"+id;
-			}
-			categoryVO=new CategoryVO(Long.parseLong(id),nameText,Long.parseLong(parentidText));
+			}*/
+			categoryVO=new CategoryVO(idNum,nameText,Long.parseLong(parentidText));
 			cbs.addCategory(categoryVO);
 			//¼ÇÂ¼ÈÕÖ¾
 			LogController logController=new LogController();

@@ -144,6 +144,7 @@ public class ReceiveBillViewController  implements Initializable{
         		 Alert warning=new Alert(AlertType.WARNING);
      			 warning.setContentText("Account Does Not Exist!");
      			 warning.showAndWait();
+     			 return;
         	 }
         	 double money=Double.parseDouble(itemMoney.getText());
         	 String note=itemNote.getText();
@@ -175,6 +176,7 @@ public class ReceiveBillViewController  implements Initializable{
        		 Alert warning=new Alert(AlertType.WARNING);
     			 warning.setContentText("Account Does Not Exist!");
     			 warning.showAndWait();
+    			 return;
        	 }
        	 double money=Double.parseDouble(itemMoney.getText());
        	 	 String note=itemNote.getText();
@@ -305,11 +307,9 @@ public class ReceiveBillViewController  implements Initializable{
 	        alert.showAndWait();
  }
 	public void setStage(Stage stage) {
-		// TODO Auto-generated method stub
 		this.stage=stage;
 	}
 	public void setVo(ReceiveBillVO m) {
-		// TODO Auto-generated method stub
 		id.setText(""+MainApp.getID());
 		billid.setText(m.getID());
 		account.setText(""+m.getMemberID());
@@ -328,7 +328,6 @@ public class ReceiveBillViewController  implements Initializable{
 	   deleteB.setVisible(false);
 	}
 	public void setVO(ReceiveBillVO m) {
-		// TODO Auto-generated method stub
 		unpassbill=m;
 		id.setText(""+MainApp.getID());
 		billid.setText(m.getID());
@@ -346,7 +345,6 @@ public class ReceiveBillViewController  implements Initializable{
 	   returnB.setVisible(false);
 	}
 	public void red(ReceiveBillVO m) {
-		// TODO Auto-generated method stub
 		id.setText(""+MainApp.getID());
 		account.setText(""+m.getMemberID());
 		operator.setText(""+m.getUserID());
@@ -361,9 +359,4 @@ public class ReceiveBillViewController  implements Initializable{
 	   returnB.setVisible(false);
 	   deleteB.setVisible(false);
 	}
-
-	
-
-
-	
 }

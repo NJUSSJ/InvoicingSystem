@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 
 import businesslogic.userbl.UserController;
 import businesslogicservice.userblservice.UserBLService;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import vo.CashBillVO;
 import vo.GiftBillVO;
@@ -18,14 +19,14 @@ import vo.SaleReturnBillVO;
 import vo.WarningBillVO;
 
 public class BillData {
-	StringProperty time;
-	StringProperty member;
-	StringProperty id;
-	StringProperty operator;
-	StringProperty style;
-	StringProperty choose;
-	StringProperty state;
-	StringProperty comment;
+	StringProperty time=new SimpleStringProperty();
+	StringProperty member=new SimpleStringProperty();
+	StringProperty id=new SimpleStringProperty();
+	StringProperty operator=new SimpleStringProperty();
+	StringProperty style=new SimpleStringProperty();
+	StringProperty choose=new SimpleStringProperty();
+	StringProperty state=new SimpleStringProperty();
+	StringProperty comment=new SimpleStringProperty();
 	SaleBillVO sb=null;
 	SaleReturnBillVO srb=null;
 	PayBillVO pb=null;

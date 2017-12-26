@@ -40,7 +40,12 @@ public class PayBill {
 				MemberVO member=mcon.findMemberByID(vo.getMemberID());
 				double money=member.getShouldGet()-vo.getSum();
 				member.setShouldGet(money);
-				double quota=Math.pow(10, (money+"").length()-1)*Integer.parseInt((money+"").substring(0, 1));
+				double quota;
+				if(money<0){
+					money=-money;
+				}
+				String moneystr=money+"";
+				quota=Math.pow(10,moneystr.indexOf("."));
 				member.setQuota(quota);
 				mcon.updateMember(member);
 			}else{
