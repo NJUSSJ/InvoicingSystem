@@ -21,7 +21,7 @@
   <children>
     <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="606.0" fitWidth="999.00022207031" layoutX="1.0" layoutY="0.0">
       <image>
-        <Image url="@../../../../../InvoicingSystem/InvoicingSystemClient/resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
+        <Image url="@../../../resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
     <Label layoutX="20.0" layoutY="44.0" text="用户管理">
@@ -29,15 +29,19 @@
         <Font size="65.0" />
       </font>
     </Label>
-    <Label fx:id="id" layoutX="798.0" layoutY="24.0" prefWidth="74.0" text="ID：xxx">
+    <Label fx:id="id" layoutX="848.0" layoutY="20.0" prefWidth="74.0" text="ID：xxx">
+      <font>
+        <Font name="Microsoft YaHei UI Light" size="16.0" fx:id="x2" />
+      </font>
+    </Label>
+    <Label fx:id="logout" font="$x2" layoutX="923.0" layoutY="19.0" onMouseClicked="#louout" text="||  登出" />
+    <Separator prefHeight="3.0" prefWidth="1000.0" AnchorPane.leftAnchor="-6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="128.0" />
+    <Separator layoutX="771.0" layoutY="130.0" orientation="VERTICAL" prefHeight="473.0" prefWidth="7.0" />
+    <Button fx:id="addB" layoutX="810.0" layoutY="172.0" mnemonicParsing="false" onAction="#addUser" prefHeight="28.0" prefWidth="150.0" text="新     增">
       <font>
         <Font size="13.0" fx:id="x1" />
       </font>
-    </Label>
-    <Label fx:id="logout" font="$x1" layoutX="873.0" layoutY="23.0" onMouseClicked="#louout" text="||  登出" />
-    <Separator prefHeight="3.0" prefWidth="1000.0" AnchorPane.leftAnchor="-6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="128.0" />
-    <Separator layoutX="771.0" layoutY="130.0" orientation="VERTICAL" prefHeight="473.0" prefWidth="7.0" />
-    <Button fx:id="addB" font="$x1" layoutX="810.0" layoutY="172.0" mnemonicParsing="false" onAction="#addUser" prefHeight="28.0" prefWidth="150.0" text="新     增" />
+    </Button>
     <Button fx:id="updateB" font="$x1" layoutX="810.0" layoutY="222.0" mnemonicParsing="false" onAction="#updateAccount" prefHeight="28.0" prefWidth="150.0" text="修     改" />
     <Button fx:id="deleteB" font="$x1" layoutX="810.0" layoutY="274.0" mnemonicParsing="false" onAction="#deleteUser" prefHeight="28.0" prefWidth="150.0" text="删     除" />
     <Button fx:id="returnB" font="$x1" layoutX="810.0" layoutY="325.0" mnemonicParsing="false" onAction="#showAdministerMainUI" prefHeight="28.0" prefWidth="150.0" text="返      回" />

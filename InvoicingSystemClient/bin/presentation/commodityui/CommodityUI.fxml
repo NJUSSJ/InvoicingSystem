@@ -36,7 +36,7 @@
         <Font size="65.0" />
       </font>
     </Label>
-    <ScrollPane layoutX="0.0" layoutY="178.0" prefHeight="414.00010681152344" prefWidth="793.0">
+    <ScrollPane layoutX="0.0" layoutY="186.0" opacity="0.7" prefHeight="407.0" prefWidth="793.0">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="460.0" prefWidth="797.0">
           <children>
@@ -76,7 +76,7 @@
     </ImageView>
     <Label font="$x2" layoutX="59.0" layoutY="155.0" text="查询：" />
     <TextField fx:id="search" layoutX="113.0" layoutY="151.0" prefHeight="23.0" prefWidth="203.0" />
-    <Button fx:id="rightB" layoutX="667.0" layoutY="151.0" mnemonicParsing="false" onAction="#search" prefHeight="23.0" prefWidth="72.0" text="确    认" />
+    <Button fx:id="rightB" layoutX="650.0" layoutY="151.0" mnemonicParsing="false" onAction="#search" prefHeight="27.0" prefWidth="89.0" text="确    认" />
     <Button fx:id="logout" layoutX="874.0" layoutY="8.0" mnemonicParsing="false" onAction="#logout" opacity="0.0" text="Button" />
   </children>
 </AnchorPane>

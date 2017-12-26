@@ -3,7 +3,9 @@
  */
 package runner;
 
+import java.net.InetAddress;
 import java.net.MalformedURLException;
+import java.net.UnknownHostException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -19,19 +21,23 @@ public class ClientRunner {
 	}
 	
 	public void linkToServer() {
+		String localhost=null;
+		try {
+			localhost=InetAddress.getLocalHost().getHostAddress();
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		}
 		try {
 			remoteHelper=RemoteHelper.getInstance();
 			//ÉèÖÃ¶Ë¿Ú
-			remoteHelper.setRemote(Naming.lookup("rmi://localhost:8889/BulbManagement"));
+			remoteHelper.setRemote(Naming.lookup("rmi://"+localhost+":8889/BulbManagement"));
 			System.out.println("linked");
 			
 		} catch (RemoteException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (NotBoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
