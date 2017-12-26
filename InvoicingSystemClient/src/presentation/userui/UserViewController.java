@@ -146,15 +146,19 @@ public class UserViewController implements Initializable {
 			userData.add(new UserData(a));
 			userTable.setItems(userData);
 		}else{
-		a=abs.findUserbyName(find);
-		if(a==null) {
+		ArrayList<UserVO> usersFound=abs.findUsersbyField(find);
+		if(usersFound.isEmpty()) {
 			Alert info=new Alert(AlertType.INFORMATION);
 			info.setTitle("Information");
 			info.setContentText("Find no mathch!");
 			info.showAndWait();
 			return;
 		}
-		userData.add(new UserData(a));
+		userData.clear();
+		for(int i=0;i<usersFound.size();i++) {
+			userData.add(new UserData(usersFound.get(i)));
+		}
+		
 		userTable.setItems(userData);
 		}
 		
@@ -206,7 +210,16 @@ public class UserViewController implements Initializable {
 	    public void updateAccount(){
 	    	try {
 	    		UserData tmpData=userTable.getSelectionModel().getSelectedItem();
+	    		if(tmpData==null) {
+	    			 Alert alert = new Alert(AlertType.WARNING);
+	     	        alert.initOwner(MainApp.getPrimaryStage());
+	     	        alert.setTitle("No Selection");
+	     	        alert.setHeaderText("No User Selected");
+	     	        alert.setContentText("Please select an User in the table.");
 
+	     	        alert.showAndWait();
+	     	        return ;
+	    		}
 				FXMLLoader loader=new FXMLLoader();
 				loader.setLocation(MainApp.class.getResource("/presentation/userui/UserModifyUI.fxml"));
 				AnchorPane userUI=loader.load();

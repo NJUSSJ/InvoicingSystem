@@ -44,6 +44,11 @@ public class UserController implements UserBLService {
 		return userImpl.findUsers();
 	}
 
+	@Override
+	public ArrayList<UserVO> findUsersbyField(String field) {
+		return userImpl.findUserbyFiled(field);
+	}
+
 	
 
 }

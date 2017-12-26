@@ -161,7 +161,7 @@ public class UserDataImpl implements UserDataService {
 	 */
 	@Override
 	public ArrayList<UserPO> findUserbyField(String field) throws RemoteException {
-		String sql="SELECT * FROM users where name like '%"+field+"%";
+		String sql="SELECT * FROM users where username like '%"+field+"%'";
 		ArrayList<UserPO> results=new ArrayList<>();
 		//Ö´ÐÐÊý¾Ý¿âsqlÓï¾ä
 		try {
@@ -180,11 +180,10 @@ public class UserDataImpl implements UserDataService {
 			}
 			return results;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		return  null;
+		return  results;
 	}
 
 	

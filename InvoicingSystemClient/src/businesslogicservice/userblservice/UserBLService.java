@@ -14,4 +14,5 @@ public UserVO findUserByID(long id);
 public boolean updateUser (UserVO a);
 public UserVO toUserVO(UserPO userPO);
 public ArrayList<UserVO> findUsers();
+public ArrayList<UserVO> findUsersbyField(String field);
 }

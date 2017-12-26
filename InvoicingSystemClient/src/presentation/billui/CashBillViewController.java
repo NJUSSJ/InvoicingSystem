@@ -261,6 +261,7 @@ public class CashBillViewController  implements Initializable {
     	        LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"submitCashBill:"+cashbill.getID(),MainApp.getID());
     	        logController.addLog(logVO);
     	        //
+    	        cashData.clear();
 		 		}
 	 		Alert alert = new Alert(AlertType.INFORMATION);
 	        alert.initOwner(MainApp.getPrimaryStage());
