@@ -248,7 +248,7 @@ public class SaleBill{
 		}
 		for(SaleBillVO each:bills){
 			if(each.getTime().after(begin)&&each.getTime().before(end)){
-				bills.add(each);
+				result.add(each);
 			}
 		}
 		return result;	
