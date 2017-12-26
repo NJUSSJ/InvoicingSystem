@@ -9,14 +9,14 @@ public class MemberVO {
 	int category;
 	long defaultOperatorID;
 	String name;
-	int phoneNum;
+	long phoneNum;
 	String address;
 	String eMail;
 	double shouldPay;
 	double shouldGet;
 	double quota;//”¶ ’∂Ó∂»
 	
-	public MemberVO(long id,int rank,int postCode,int category,String name,int phoneNum,
+	public MemberVO(long id,int rank,int postCode,int category,String name,long phoneNum,
 	String address,String eMail,double shouldPay,double shouldGet,double quota,long defaultOperatorID){
 		this.id=id;
 		this.rank=rank;
@@ -54,7 +54,7 @@ public class MemberVO {
 	public String getName() {
 		return name;
 	}
-	public int getPhoneNum(){
+	public long getPhoneNum(){
 		return phoneNum;
 	}
 	public String getAddress(){
