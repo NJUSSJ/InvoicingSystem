@@ -35,6 +35,7 @@ public class RemoteHelper {
 				e.printStackTrace();
 			}
 			LocateRegistry.createRegistry(8889);
+			System.out.println(localhost);
 			String addressName="rmi://"+localhost+":8889/BulbManagement";
 			Naming.bind(addressName, dataRemoteObject);
 			
