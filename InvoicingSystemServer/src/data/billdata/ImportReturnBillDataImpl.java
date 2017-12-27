@@ -263,7 +263,7 @@ String sql="select * from importreturnbills where id='"+id+"'";
 				long memberid=result.getLong("memberid");
 				ImportReturnBillPO tmpPO=new ImportReturnBillPO(id, userid, memberid, commoditylist, sum, time, state, num, remark);
 				
-				if(state==1)
+				if(state==1||state==2)
 				results.add(tmpPO);
 				
 			}

@@ -459,7 +459,7 @@ public class EmailViewController implements Initializable {
 			try {
 				CashBillVO m=cbbs.findCashBillByID(id);
 				FXMLLoader loader=new FXMLLoader();
-				loader.setLocation(MainApp.class.getResource("/presentation/billui/CahBillUI.fxml"));
+				loader.setLocation(MainApp.class.getResource("/presentation/billui/CashBillUI.fxml"));
 				AnchorPane cashbillUI=loader.load();
 				Scene scene=new Scene(cashbillUI);
 				Stage stage=new Stage();
@@ -551,7 +551,7 @@ public class EmailViewController implements Initializable {
 			try {
 				ImportBillVO m=ibbs.findImportBillByID(id);
 				FXMLLoader loader=new FXMLLoader();
-				loader.setLocation(MainApp.class.getResource("/presentation/saleui/ImportBillUI.fxml"));
+				loader.setLocation(MainApp.class.getResource("/presentation/saleui/ImportUI.fxml"));
 				AnchorPane paybillUI=loader.load();
 				Scene scene=new Scene(paybillUI);
 				Stage stage=new Stage();

@@ -183,7 +183,7 @@ public class ManageCourseViewController implements Initializable {
 		endMonth.setItems(FXCollections.observableArrayList("1","2","3","4","5","6","7","9","10","11","12"));
 		endDay.setItems(FXCollections.observableArrayList("1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"));	
 	
-		billType.setItems(FXCollections.observableArrayList("销售单","销售退货单","进货单","进货退货单","付款单","收款单","现金费用单","赠送单","报溢单","报损单"));
+		billType.setItems(FXCollections.observableArrayList("Sale","SaleReturn","Import","ImportReturn","Pay","Receive","Cash","Gift","Over","Loss"));
 	
 		timeColoumn.setCellValueFactory(cellData ->cellData.getValue().getTimeProperty());
 		typeColoumn.setCellValueFactory(cellData ->cellData.getValue().getstyleProperty());
@@ -294,6 +294,9 @@ public class ManageCourseViewController implements Initializable {
 	
 	private void getInf(BillData newValue) {
 		// TODO Auto-generated method stub
+		if(newValue==null) {
+			return;
+		}
 		if(newValue.getchooseProperty().get().equals("否")){
 			newValue.setChoose("是");
 		}else{

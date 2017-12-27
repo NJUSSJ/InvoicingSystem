@@ -249,7 +249,7 @@ public class PayBillDataImpl implements PayBillDataService {
 				
 				PayBillPO tmpPO=new PayBillPO(id, userid, memberid, accountlist, sum, time, state);
 				
-				if(state==1)
+				if(state==1||state==2)
 				results.add(tmpPO);
 				
 				

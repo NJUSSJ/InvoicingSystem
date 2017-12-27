@@ -239,7 +239,7 @@ public class GiftBillDataImpl implements GiftBillDataService {
 				int state=result.getInt("state");
 				long memberid=result.getLong("memberid");
 				GiftBillPO tmpPO=new GiftBillPO(id, userid, memberid, giftlist, time, state);
-				if(state==1)
+				if(state==1||state==2)
 				results.add(tmpPO);
 			}
 			

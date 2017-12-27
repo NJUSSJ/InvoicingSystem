@@ -234,7 +234,7 @@ public class OverBillDataImpl implements OverBillDataService {
 				double sum=result.getDouble("sum");
 				OverBillPO tmpPO=new OverBillPO(id, userid, commodityname, time, state,num,sum);
 							
-				if(state==1)
+				if(state==1||state==2)
 				results.add(tmpPO);
 			}
 			return results;

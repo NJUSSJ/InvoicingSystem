@@ -153,7 +153,6 @@ public class ExamineViewController implements Initializable {
 				//System.out.println(bill.getchoose()+"/"+bill.getid());
 				String style=bill.getstyle();
 				String id=bill.getid();
-				billData.remove(bill);
 				if(style.equals("销售单")){
 						sbbs.checkSaleBill(true, id);
 				}else if(style.equals("付款单")){
@@ -182,6 +181,7 @@ public class ExamineViewController implements Initializable {
 				}
 			}
 		}
+		
 		
 	}
 	@FXML

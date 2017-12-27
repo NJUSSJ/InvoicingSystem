@@ -55,7 +55,7 @@ public class ImportBillDataImpl implements ImportBillDataService {
 				return true;
 			}
 		} catch (SQLException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		return false;
 	}
@@ -268,7 +268,7 @@ public class ImportBillDataImpl implements ImportBillDataService {
 				long memberid=result.getLong("memberid");
 				ImportBillPO tmpPO=new ImportBillPO(id, userid, memberid, commoditylist, sum, time, state, num, remark);
 				
-				if(state==1)
+				if(state==1||state==2)
 				results.add(tmpPO);
 				
 			}

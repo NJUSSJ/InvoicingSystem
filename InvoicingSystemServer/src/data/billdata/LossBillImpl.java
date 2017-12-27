@@ -238,7 +238,7 @@ public class LossBillImpl implements LossBillDataService {
 			
 				LossBillPO tmpPO=new LossBillPO(id, userid, commodityname, time, state, num,sum);
 				
-				if(state==1)
+				if(state==1||state==2)
 				results.add(tmpPO);
 			}
 			return results;
