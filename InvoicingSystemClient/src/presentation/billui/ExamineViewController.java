@@ -1,5 +1,6 @@
 package presentation.billui;
 
+import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -114,6 +115,8 @@ public class ExamineViewController implements Initializable {
 	
 	BillData data=null;
     BillData billitem;
+    TaskCellFactory tcf=new TaskCellFactory();
+    
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
@@ -124,17 +127,15 @@ public class ExamineViewController implements Initializable {
 		styleColumn.setCellValueFactory(cellData ->cellData.getValue().getstyleProperty());
 		operatorColumn.setCellValueFactory(cellData ->cellData.getValue().getoperatorProperty());
 		chooseColumn.setCellValueFactory(cellData ->cellData.getValue().getchooseProperty());
+		chooseColumn.setCellFactory(tcf);
 		search();
+		
+		billTable.setItems(billData);
 	}
 	private void getInf(BillData newValue) {
-		// TODO Auto-generated method stub
-		if(newValue.getchooseProperty().get().equals("否")){
-			newValue.setChoose("是");
-		}else{
-			newValue.setChoose("否");
-		}
 		if(newValue!=null){
 			data=newValue;
+			tcf.setData(newValue);
 		}
 	}
 	@FXML
@@ -176,19 +177,14 @@ public class ExamineViewController implements Initializable {
 				}else if(style.equals("进货单")){
 					ibbs.checkImportBill(true, id);
 				}
-				if(billData.isEmpty()){
-					break;
-				}
 			}
 		}
-		
-		
+		search();
 	}
 	@FXML
 	public void notpass(){
 		for(BillData bill:billData){
 			if(bill.getchoose().equals("是")){
-				billData.remove(bill);
 				String style=bill.getstyle();
 				String id=bill.getid();
 				if(style.equals("销售单")){
@@ -219,7 +215,7 @@ public class ExamineViewController implements Initializable {
 			}
           }
 		}
-		billTable.setItems(billData);
+		search();
 	}
 	@FXML
 	public void showDetail(){
@@ -349,7 +345,7 @@ public class ExamineViewController implements Initializable {
 			try {
 				CashBillVO m=cbbs.findCashBillByID(id);
 				FXMLLoader loader=new FXMLLoader();
-				loader.setLocation(MainApp.class.getResource("/presentation/billui/CahBillUI.fxml"));
+				loader.setLocation(MainApp.class.getResource("/presentation/billui/CashBillUI.fxml"));
 				AnchorPane cashbillUI=loader.load();
 				Scene scene=new Scene(cashbillUI);
 				Stage stage=new Stage();
@@ -429,7 +425,7 @@ public class ExamineViewController implements Initializable {
 			try {
 				ImportBillVO m=ibbs.findImportBillByID(id);
 				FXMLLoader loader=new FXMLLoader();
-				loader.setLocation(MainApp.class.getResource("/presentation/saleui/ImportBillUI.fxml"));
+				loader.setLocation(MainApp.class.getResource("/presentation/saleui/ImportUI.fxml"));
 				AnchorPane paybillUI=loader.load();
 				Scene scene=new Scene(paybillUI);
 				Stage stage=new Stage();
@@ -526,7 +522,6 @@ public class ExamineViewController implements Initializable {
 		    		billData.add(billitem);
 		    	}
 		    }
-		    billTable.setItems(billData);
 	}
 
 }

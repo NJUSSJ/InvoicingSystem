@@ -316,6 +316,12 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 			deleteB.setVisible(false);
 			 returnB.setVisible(false);
 			 search.setVisible(false);
+			 name.setEditable(false);
+				member.setEditable(false);
+				lastprice.setEditable(false);
+				note.setEditable(false);
+				 num.setEditable(false);
+				 notea.setEditable(false);
 	}
 
 

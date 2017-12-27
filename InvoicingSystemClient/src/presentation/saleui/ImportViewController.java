@@ -334,6 +334,12 @@ public class ImportViewController implements Initializable {
 			deleteB.setVisible(false);
 			 returnB.setVisible(false);
 			 search.setVisible(false);
+			 name.setEditable(false);
+				lastprice.setEditable(false);
+				note.setEditable(false);
+				 num.setEditable(false);
+				 notea.setEditable(false);
+				 member.setEditable(false);
 	}
 
 
