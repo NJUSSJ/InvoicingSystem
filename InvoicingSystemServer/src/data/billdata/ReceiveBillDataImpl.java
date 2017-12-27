@@ -250,7 +250,7 @@ public class ReceiveBillDataImpl implements ReceiveBillDataService{
 				
 				ReceiveBillPO tmpPO=new ReceiveBillPO(id, userid, memberid, accountlist, sum, time, state);
 				
-				if(state==1)
+				if(state==1||state==2)
 				results.add(tmpPO);
 				
 				

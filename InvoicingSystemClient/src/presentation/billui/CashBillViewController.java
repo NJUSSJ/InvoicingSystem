@@ -303,6 +303,10 @@ public class CashBillViewController  implements Initializable {
 	   addB.setVisible(false);
 	   updateB.setVisible(false);
 	   deleteB.setVisible(false);
+	   itemName.setEditable(false);
+		 itemMoney.setEditable(false);
+		itemNote.setEditable(false);
+			account.setEditable(false);
 	}
 	public void rivise(){
 		 CashBillBLService pbs=new CashBillController();
@@ -375,8 +379,7 @@ public class CashBillViewController  implements Initializable {
 	   deleteB.setVisible(false);
 	   returnB.setVisible(false);
 	   addB.setVisible(false);
-	   
-		
+	  
 	}
 	
 }

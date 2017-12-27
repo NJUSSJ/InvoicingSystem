@@ -331,6 +331,10 @@ public class PayBillViewController  implements Initializable{
 	   addB.setVisible(false);
 	   updateB.setVisible(false);
 	   deleteB.setVisible(false);
+	   itemName.setEditable(false);
+		 itemMoney.setEditable(false);
+		itemNote.setEditable(false);
+			account.setEditable(false);
 	}
 	public void setVO(PayBillVO m) {
 		unpassbill=m;

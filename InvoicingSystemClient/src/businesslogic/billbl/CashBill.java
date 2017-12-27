@@ -94,6 +94,9 @@ public class CashBill{
 	}
 	public ArrayList<CashBillVO> findCashBillsByField(Date begin,Date end,String userName){
 		ArrayList<CashBillVO> result=new ArrayList<CashBillVO>();
+		if(userName==null||userName.length()<=0) {
+			return findCashBillsByInterval(begin,end);
+		}
 		try {
 			ArrayList<CashBillPO> bills=RemoteHelper.getInstance().getCashBillDataService().findCashBillbyField(userName);
 			for(CashBillPO po:bills){

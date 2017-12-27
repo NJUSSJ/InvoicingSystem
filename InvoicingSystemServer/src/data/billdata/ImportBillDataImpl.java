@@ -55,7 +55,7 @@ public class ImportBillDataImpl implements ImportBillDataService {
 				return true;
 			}
 		} catch (SQLException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		return false;
 	}

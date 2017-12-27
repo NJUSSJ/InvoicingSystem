@@ -239,7 +239,7 @@ String sql="delete from salereturnbills where id='"+po.getID()+"')";
 				long memberid=result.getLong("memberid");
 				
 				SaleReturnBillPO tmpPO=new SaleReturnBillPO(id, userid, memberid, commoditylist, sum, state, time, num, remark);
-				if(state==1)
+				if(state==1||state==2)
 				results.add(tmpPO);
 			}
 			return results;

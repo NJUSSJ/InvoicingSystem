@@ -1,8 +1,3 @@
-/MainApp/
-/Utility/
-/businesslogic/
-/businesslogicservice/
-/data/
 /dataservice/
 /driver/
 /po/
@@ -11,3 +6,4 @@
 /runner/
 /stubs/
 /vo/
+/businesslogicservice/

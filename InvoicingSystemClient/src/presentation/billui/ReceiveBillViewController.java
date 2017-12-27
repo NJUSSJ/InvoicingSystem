@@ -326,6 +326,10 @@ public class ReceiveBillViewController  implements Initializable{
 	   addB.setVisible(false);
 	   updateB.setVisible(false);
 	   deleteB.setVisible(false);
+	   itemName.setEditable(false);
+		 itemMoney.setEditable(false);
+		itemNote.setEditable(false);
+			account.setEditable(false);
 	}
 	public void setVO(ReceiveBillVO m) {
 		unpassbill=m;

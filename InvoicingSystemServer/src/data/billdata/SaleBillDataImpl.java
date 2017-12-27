@@ -267,7 +267,8 @@ public class SaleBillDataImpl implements SaleBillDataService{
 				double ultimate=result.getDouble("ultimate");
 				
 				long memberid=result.getLong("memberid");
-				SaleBillPO tmpPO=new SaleBillPO(id, userid, memberid, commoditylist, sum, state, time, num, remark, coupon, discount, ultimate);				if(state==1)
+				SaleBillPO tmpPO=new SaleBillPO(id, userid, memberid, commoditylist, sum, state, time, num, remark, coupon, discount, ultimate);				
+				if(state==1||state==2)
 				results.add(tmpPO);
 			}
 			return results;
