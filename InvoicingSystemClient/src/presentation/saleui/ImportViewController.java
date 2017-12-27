@@ -339,6 +339,7 @@ public class ImportViewController implements Initializable {
 				note.setEditable(false);
 				 num.setEditable(false);
 				 notea.setEditable(false);
+				 member.setEditable(false);
 	}
 
 
