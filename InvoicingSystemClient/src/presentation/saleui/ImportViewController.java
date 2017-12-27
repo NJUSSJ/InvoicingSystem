@@ -130,7 +130,6 @@ public class ImportViewController implements Initializable {
 		
 		ArrayList<ImportBillVO> tmpList=new ImportBillController().findImportBillByTime(time);
 		times=tmpList.size()+1;
-		
 		billid.setText("JHD-"+str+"-"+df.format(times));
 		/*
 		 * set id

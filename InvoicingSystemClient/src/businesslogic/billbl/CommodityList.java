@@ -18,16 +18,21 @@ public class CommodityList {
 	 */
 	public CommodityList(String info){
 			list=new ArrayList<>();
-			String[] commodityInfo=info.split(" ");
+			String[] commodityInfo=info.split("  ");
 			for(int i=0;i<commodityInfo.length;i++){
-			String[] details=commodityInfo[i].split(",");
-			int num=Integer.parseInt(details[0]);
-			long id=Long.parseLong(details[1]);
-			double salePrice=Double.parseDouble(details[2]);
-			double importPrice=Double.parseDouble(details[3]);
-			String remark=details[4];
-			list.add(new CommodityLineItem(num,id,salePrice,importPrice,remark));
-		}
+				if(commodityInfo[i]!=null&&commodityInfo[i].length()>0){
+				String[] details=commodityInfo[i].split(",");
+				int num=Integer.parseInt(details[0]);
+				long id=Long.parseLong(details[1]);
+				double salePrice=Double.parseDouble(details[2]);
+				double importPrice=Double.parseDouble(details[3]);
+				String remark="";
+				if(details.length>=4){
+					remark=details[4];
+				}
+				list.add(new CommodityLineItem(num,id,salePrice,importPrice,remark));
+				}
+			}
 	}
 	
 	/**

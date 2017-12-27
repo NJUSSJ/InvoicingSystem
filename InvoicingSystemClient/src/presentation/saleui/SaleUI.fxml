@@ -27,7 +27,7 @@
     </ImageView>
     <Label fx:id="id" layoutX="866.0" layoutY="9.0" prefWidth="64.0" text="ID:XXX">
       <font>
-        <Font name="Microsoft YaHei UI Light" size="16.0" fx:id="x3" />
+        <Font size="16.0" fx:id="x3" />
       </font>
     </Label>
     <Label font="$x3" layoutX="934.0" layoutY="9.0" text="|| 登出" />
@@ -47,7 +47,7 @@
     </Label>
     <Label font="$x1" layoutX="335.0" layoutY="151.0" text="备 注：" />
     <Label font="$x1" layoutX="28.0" layoutY="203.0" text="操作员：" />
-    <Label font="$x1" layoutX="28.0" layoutY="173.0" text="供应商：" />
+    <Label font="$x1" layoutX="28.0" layoutY="173.0" text="销售商：" />
     <TextField fx:id="member" layoutX="85.0" layoutY="171.0" />
     <TextField fx:id="note" layoutX="335.0" layoutY="173.0" prefHeight="48.0" prefWidth="332.0" />
     <Label fx:id="operator" font="$x1" layoutX="85.0" layoutY="203.0" text="xxx" />

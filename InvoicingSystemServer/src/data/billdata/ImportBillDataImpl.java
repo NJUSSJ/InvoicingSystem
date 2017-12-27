@@ -68,7 +68,7 @@ public class ImportBillDataImpl implements ImportBillDataService {
 	 */
 	@Override
 	public boolean update(ImportBillPO po) throws RemoteException {
-		String sql="update importbills set state='"+po.getState()+"'where id="+po.getID();
+		String sql="update importbills set state='"+po.getState()+"' where id= '"+po.getID()+"'";
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {
 				return true;
@@ -268,11 +268,10 @@ public class ImportBillDataImpl implements ImportBillDataService {
 				long memberid=result.getLong("memberid");
 				ImportBillPO tmpPO=new ImportBillPO(id, userid, memberid, commoditylist, sum, time, state, num, remark);
 				
-				if(state==1)
+				if(state==1||state==2)
 				results.add(tmpPO);
 				
 			}
-			
 			return results;
 		} catch (SQLException e) {
 			e.printStackTrace();

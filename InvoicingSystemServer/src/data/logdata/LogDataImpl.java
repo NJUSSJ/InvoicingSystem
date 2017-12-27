@@ -126,7 +126,6 @@ public class LogDataImpl implements LogDataService {
 		String sql="select * from logs where type like '%"+type+"%'";
 		
 		ArrayList<LogPO> results=new ArrayList<>();
-		
 		try {
 			ResultSet result=DataFactory.statement.executeQuery(sql);
 			

@@ -128,13 +128,13 @@ public class ExamineViewController implements Initializable {
 	}
 	private void getInf(BillData newValue) {
 		// TODO Auto-generated method stub
+		if(newValue!=null){
+			data=newValue;
+		}
 		if(newValue.getchooseProperty().get().equals("·ñ")){
 			newValue.setChoose("ÊÇ");
 		}else{
 			newValue.setChoose("·ñ");
-		}
-		if(newValue!=null){
-			data=newValue;
 		}
 	}
 	@FXML

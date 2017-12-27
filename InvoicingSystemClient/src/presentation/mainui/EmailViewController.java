@@ -133,6 +133,7 @@ public class EmailViewController implements Initializable {
 	operatorColoumn.setCellValueFactory(cellData ->cellData.getValue().getoperatorProperty());
 	stateColoumn.setCellValueFactory(cellData ->cellData.getValue().getstateProperty());
     findAll();
+    billTable.setItems(billData);
 	}
 	
 	@FXML
@@ -221,11 +222,12 @@ public class EmailViewController implements Initializable {
 		}
 	}
 	private void findAll() {
-		// TODO Auto-generated method stub
+		System.out.println(MainApp.getID());
 		cashlist=cbbs.findCashBillsByUser(MainApp.getID());
 	    paylist=pbbs.findPayBillsByUser(MainApp.getID());
 	    receivelist=rbbs.findReceiveBillsByUser(MainApp.getID());
 	    importlist=ibbs.findImportBillsByUser(MainApp.getID());
+	    System.out.println(importlist.size());
 	    importreturnlist=irbbs.findImportReturnBillsByUser(MainApp.getID());
 	    salelist=sbbs.findSaleBillsByUser(MainApp.getID());
 	    salereturnlist=srbbs.findSaleReturnBillsByUser(MainApp.getID());
@@ -299,12 +301,10 @@ public class EmailViewController implements Initializable {
 	    		billData.add(billitem);
 	    	}
 	    }
-	      
 	}
 	
 	
 	private void getInf(BillData newValue) {
-		// TODO Auto-generated method stub
 		if(newValue!=null){
 			billitem=newValue;
 		}
@@ -551,7 +551,7 @@ public class EmailViewController implements Initializable {
 			try {
 				ImportBillVO m=ibbs.findImportBillByID(id);
 				FXMLLoader loader=new FXMLLoader();
-				loader.setLocation(MainApp.class.getResource("/presentation/saleui/ImportBillUI.fxml"));
+				loader.setLocation(MainApp.class.getResource("/presentation/saleui/ImportUI.fxml"));
 				AnchorPane paybillUI=loader.load();
 				Scene scene=new Scene(paybillUI);
 				Stage stage=new Stage();
