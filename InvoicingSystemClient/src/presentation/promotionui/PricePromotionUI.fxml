@@ -29,7 +29,6 @@
         </Button>
         <Button fx:id="add" font="$x1" layoutX="34.0" layoutY="223.0" mnemonicParsing="false" onAction="#add" prefHeight="37.0" prefWidth="130.0" text="增加" />
         <Button fx:id="back" font="$x1" layoutX="34.0" layoutY="161.0" mnemonicParsing="false" onAction="#back" prefHeight="37.0" prefWidth="130.0" text="返回" />
-        <Label fx:id="id" font="$x1" layoutX="34.0" layoutY="-5.0" prefWidth="100.0" text="Label" />
       </children>
     </AnchorPane>
     <ScrollPane opacity="0.7" prefHeight="494.0" prefWidth="783.0000999999975" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="217.0" AnchorPane.topAnchor="105.0">
@@ -48,5 +47,7 @@
       </content>
     </ScrollPane>
     <Separator layoutX="0.0" layoutY="93.0" prefWidth="769.0" />
+    <Label fx:id="id" font="$x1" layoutX="435.0" layoutY="70.0" prefWidth="100.0" text="Label" />
+    <Label id="id" font="$x1" layoutX="335.0" layoutY="70.0" prefWidth="100.0" text="操作员：" />
   </children>
 </AnchorPane>

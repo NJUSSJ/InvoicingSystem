@@ -58,7 +58,7 @@ public class ImportReturnBillDataImpl implements ImportReturnBillDataService {
 	 */
 	@Override
 	public boolean update(ImportReturnBillPO po) throws RemoteException {
-		String sql="update importreturnbills set state='"+po.getState()+"'where id="+po.getID();
+		String sql="update importreturnbills set state='"+po.getState()+"'where id='"+po.getID()+"'";
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {
 				return true;
