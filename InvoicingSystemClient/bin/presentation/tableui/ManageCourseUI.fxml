@@ -59,9 +59,9 @@
     <Label layoutX="587.0" layoutY="129.0" text="日" />
     <ScrollPane layoutX="0.0" layoutY="234.0" opacity="0.7" prefHeight="367.0" prefWidth="846.0">
       <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1000.0" prefWidth="847.0">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="2000.0" prefWidth="847.0">
           <children>
-            <TableView fx:id="billTable" prefHeight="417.0" prefWidth="854.0">
+            <TableView fx:id="billTable" prefHeight="2000.0" prefWidth="847.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columns>
                 <TableColumn prefWidth="150.0" text="时间" fx:id="timeColoumn" />
                 <TableColumn prefWidth="120.0" text="单据类型" fx:id="typeColoumn" />
@@ -76,7 +76,7 @@
     </ScrollPane>
     <Button fx:id="returnA" layoutX="861.0" layoutY="536.0" mnemonicParsing="false" onAction="#showtheMain" prefHeight="23.0" prefWidth="120.0" text="返      回" />
     <Separator layoutX="846.0" layoutY="120.0" orientation="VERTICAL" prefHeight="478.0" prefWidth="6.0" />
-    <Button fx:id="search" layoutX="719.0" layoutY="195.0" minHeight="23.0" mnemonicParsing="false" onAction="#searchBill" prefHeight="27.0" prefWidth="83.0" text="查      找" />
+    <Button fx:id="search" layoutX="719.0" layoutY="199.0" minHeight="23.0" mnemonicParsing="false" onAction="#searchBill" prefHeight="27.0" prefWidth="83.0" text="查      找" />
     <Button fx:id="reverseAndCopy" layoutX="861.0" layoutY="493.0" mnemonicParsing="false" onAction="#reverseAndCopy" prefHeight="23.0" prefWidth="120.0" text="红冲并复制" />
     <Button fx:id="reverse" layoutX="861.0" layoutY="455.0" mnemonicParsing="false" onAction="#reverse" prefHeight="23.0" prefWidth="120.0" text="红      冲" />
     <Button fx:id="logout" layoutX="887.0" layoutY="9.0" mnemonicParsing="false" onAction="#logout" prefHeight="23.0" prefWidth="60.0" visible="false" />

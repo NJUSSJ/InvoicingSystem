@@ -336,15 +336,18 @@ public class MainApp extends Application {
 			alert.getButtonTypes().setAll(buttonTypeMember, buttonTypePrice, buttonTypePackage, buttonTypeCancel);
 
 			Optional<ButtonType> result = alert.showAndWait();
-			String type;
+			String type=null;
 			if (result.get() == buttonTypeMember){
 			    type="Member";
 			} else if (result.get() == buttonTypePackage) {
 			    type="Package";
 			} else if (result.get() == buttonTypePrice) {
 			    type="Price";
-			} else {
+			} else if(result.get()==buttonTypePackage) {
 				type="Package";
+			}else {
+				type="Cancel";
+				return ;
 			}
 			FXMLLoader loader=new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("/presentation/promotionui/"+type+"PromotionUI.fxml"));

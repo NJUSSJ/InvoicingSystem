@@ -57,6 +57,14 @@ public class CashBillDataImpl implements CashBillDataService{
 	 */
 	@Override
 	public boolean update(CashBillPO po) throws RemoteException {
+		String sql="update cashbills set state='"+po.getState()+"' where id= '"+po.getID()+"'";
+		try {
+			if(DataFactory.statement.executeUpdate(sql)>0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return false;
 	}
 

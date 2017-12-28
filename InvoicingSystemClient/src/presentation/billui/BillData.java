@@ -45,7 +45,12 @@ public class BillData {
 		operator.set(ubs.findUserByID(cashbill.getUserID()).getUsername());
 		style.set("现金费用单");
 		choose.set("否");
-		state.set(""+cashbill.getState());
+		if(cashbill.getState()==1) {
+			state.set("通过");
+		}else if(cashbill.getState()==2) {
+			state.set("未通过");
+		}
+		
 		cb=cashbill;
 	}
    public BillData(PayBillVO paybill){
@@ -57,7 +62,11 @@ public class BillData {
 		operator.set(ubs.findUserByID(paybill.getUserID()).getUsername());
 		style.set("付款单");
 		choose.set("否");
-		state.set(""+paybill.getState());
+		if(paybill.getState()==1) {
+			state.set("通过");
+		}else if(paybill.getState()==2) {
+			state.set("未通过");
+		}
 		pb=paybill;
 	}
     public BillData(ReceiveBillVO receivebill){
@@ -69,7 +78,11 @@ public class BillData {
 		operator.set(ubs.findUserByID(receivebill.getUserID()).getUsername());
 		style.set("收款单");
 		choose.set("否");
-		state.set(""+receivebill.getState());
+		if(receivebill.getState()==1) {
+			state.set("通过");
+		}else if(receivebill.getState()==2) {
+			state.set("未通过");
+		}
 		rb=receivebill;
     }
     public BillData(SaleBillVO salebill){
@@ -81,7 +94,11 @@ public class BillData {
 		operator.set(ubs.findUserByID(salebill.getUserID()).getUsername());
 		style.set("销售单");
 		choose.set("否");
-		state.set(""+salebill.getState());
+		if(salebill.getState()==1) {
+			state.set("通过");
+		}else if(salebill.getState()==2) {
+			state.set("未通过");
+		}
 		sb=salebill;
     }
     public BillData(ImportBillVO importbill){
@@ -93,7 +110,11 @@ public class BillData {
 		operator.set(ubs.findUserByID(importbill.getUserID()).getUsername());
 		style.set("进货单");
 		choose.set("否");
-		state.set(""+importbill.getState());
+		if(importbill.getState()==1) {
+			state.set("通过");
+		}else if(importbill.getState()==2) {
+			state.set("未通过");
+		}
 		ib=importbill;
     }
     public BillData(SaleReturnBillVO salereturnbill){
@@ -105,7 +126,11 @@ public class BillData {
 		operator.set(ubs.findUserByID(salereturnbill.getUserID()).getUsername());
 		style.set("销售退货单");
 		choose.set("否");
-		state.set(""+salereturnbill.getState());
+		if(salereturnbill.getState()==1) {
+			state.set("通过");
+		}else if(salereturnbill.getState()==2) {
+			state.set("未通过");
+		}
 		srb=salereturnbill;
     }
     public BillData(ImportReturnBillVO importreturnbill){
@@ -117,7 +142,11 @@ public class BillData {
 		operator.set(ubs.findUserByID(importreturnbill.getUserID()).getUsername());
 		style.set("进货退货单");
 		choose.set("否");
-		state.set(""+importreturnbill.getState());
+		if(importreturnbill.getState()==1) {
+			state.set("通过");
+		}else if(importreturnbill.getState()==2) {
+			state.set("未通过");
+		}
 		irb=importreturnbill;
     }
     public BillData(LossBillVO lossbill){
@@ -129,7 +158,11 @@ public class BillData {
 		operator.set(ubs.findUserByID(lossbill.getUserID()).getUsername());
 		style.set("报损单");
 		choose.set("否");
-		state.set(""+lossbill.getState());
+		if(lossbill.getState()==1) {
+			state.set("通过");
+		}else if(lossbill.getState()==2) {
+			state.set("未通过");
+		}
     }
     public BillData(GiftBillVO giftbill){
     	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
@@ -140,7 +173,11 @@ public class BillData {
 		operator.set(ubs.findUserByID(giftbill.getUserID()).getUsername());
 		style.set("赠送单");
 		choose.set("否");
-		state.set(""+giftbill.getState());
+		if(giftbill.getState()==1) {
+			state.set("通过");
+		}else if(giftbill.getState()==2) {
+			state.set("未通过");
+		}
     }
     public BillData(OverBillVO overbill){
     	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
@@ -151,7 +188,11 @@ public class BillData {
 		operator.set(ubs.findUserByID( overbill.getUserID()).getUsername());
 		style.set("报溢单");
 		choose.set("否");
-		state.set(""+overbill.getState());
+		if(overbill.getState()==1) {
+			state.set("通过");
+		}else if(overbill.getState()==2) {
+			state.set("未通过");
+		}
     }
     public BillData(WarningBillVO warningbill){
     	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
@@ -162,7 +203,11 @@ public class BillData {
 		operator.set(ubs.findUserByID( warningbill.getUserID()).getUsername());
 		style.set("报警单");
 		choose.set("否");
-		state.set(""+warningbill.getState());
+		if(warningbill.getState()==1) {
+			state.set("通过");
+		}else if(warningbill.getState()==2) {
+			state.set("未通过");
+		}
     }
     
     public StringProperty getTimeProperty() {

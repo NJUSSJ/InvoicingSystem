@@ -58,9 +58,9 @@
     <Label layoutX="587.0" layoutY="129.0" text="日" />
     <ScrollPane layoutY="219.0" opacity="0.7" prefHeight="382.0" prefWidth="826.0">
       <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1000.0" prefWidth="847.0">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="4000.0" prefWidth="847.0">
           <children>
-            <TableView fx:id="commodityTable" prefHeight="417.0" prefWidth="853.0">
+            <TableView fx:id="commodityTable" prefHeight="4000.0" prefWidth="847.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columns>
                 <TableColumn prefWidth="150.0" text="时间" fx:id="dateColoumn" />
                 <TableColumn prefWidth="150.0" text="商品名" fx:id="nameColoumn" />
