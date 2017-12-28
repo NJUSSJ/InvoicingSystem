@@ -94,8 +94,11 @@ public class LossBill{
 		ArrayList<LossBillVO> result=new ArrayList<LossBillVO>();
 		try {
 			ArrayList<LossBillPO> bills=RemoteHelper.getInstance().getLossBillDataService().findLossBillbyField(userName);
+			if(bills==null)return null;
 			for(LossBillPO po:bills){
-				result.add(toLossBillVO(po));
+				if(po.getTime().before(end)&&(po.getTime().after(begin))){
+					result.add(toLossBillVO(po));
+				}
 			}
 		} catch (RemoteException e) {
 			e.printStackTrace();

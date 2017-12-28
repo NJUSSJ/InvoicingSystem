@@ -132,7 +132,9 @@ public class SaleReturnBill{
 		try {
 			ArrayList<SaleReturnBillPO> bills=RemoteHelper.getInstance().getSaleReturnBillDataService().findSaleReturnBillbyField(userName, memberName);
 			for(SaleReturnBillPO po:bills){
-				result.add(toSaleReturnBillVO(po));
+				if(po.getTime().before(end)&&po.getTime().after(begin)){
+					result.add(toSaleReturnBillVO(po));
+				}
 			}
 		} catch (RemoteException e) {
 			e.printStackTrace();

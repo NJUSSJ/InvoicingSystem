@@ -129,8 +129,11 @@ public class ImportBill{
 		try {
 			ArrayList<ImportBillPO> bills=RemoteHelper.getInstance().getImportBillDataService().
 					findImportBillsByField(userName, memberName);
+			if(bills==null)return null;
 			for(ImportBillPO po:bills){
-				result.add(toImportBillVO(po));
+				if(po.getTime().before(end)&&po.getTime().after(begin)){
+					result.add(toImportBillVO(po));
+				}
 			}
 		} catch (RemoteException e) {
 			e.printStackTrace();

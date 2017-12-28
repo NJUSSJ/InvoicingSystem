@@ -135,7 +135,9 @@ public class ReceiveBill{
 				return null;
 			}
 			for(ReceiveBillPO po:bills){
-				result.add(toReceiveBillVO(po));
+				if(po.getTime().before(end)&&po.getTime().after(begin)){
+					result.add(toReceiveBillVO(po));
+				}
 			}
 		} catch (RemoteException e) {
 			e.printStackTrace();

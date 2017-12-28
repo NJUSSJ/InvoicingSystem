@@ -105,8 +105,11 @@ public class CashBill{
 		}
 		try {
 			ArrayList<CashBillPO> bills=RemoteHelper.getInstance().getCashBillDataService().findCashBillbyField(userName);
+			if(bills==null)return null;
 			for(CashBillPO po:bills){
-				result.add(toCashBillVO(po));
+				if(po.getTime().before(end)&&po.getTime().after(begin)){
+					result.add(toCashBillVO(po));
+				}
 			}
 		} catch (RemoteException e) {
 			e.printStackTrace();

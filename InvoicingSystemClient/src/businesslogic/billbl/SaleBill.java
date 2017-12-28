@@ -273,8 +273,13 @@ public class SaleBill{
 		ArrayList<SaleBillVO> result=new ArrayList<SaleBillVO>();
 		try {
 			ArrayList<SaleBillPO> bills=RemoteHelper.getInstance().getSaleBillDataService().findSaleBillbyField(commodityName, userName, memberName);
+			if(bills==null){
+				return null;
+			}
 			for(SaleBillPO po:bills){
-				result.add(toSaleBillVO(po));
+				if(po.getTime().before(end)&&po.getTime().after(begin)){
+					result.add(toSaleBillVO(po));
+				}
 			}
 		} catch (RemoteException e) {
 			e.printStackTrace();

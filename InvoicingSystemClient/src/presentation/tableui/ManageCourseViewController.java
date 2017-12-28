@@ -179,7 +179,7 @@ public class ManageCourseViewController implements Initializable {
 		startMonth.setItems(FXCollections.observableArrayList("1","2","3","4","5","6","7","9","10","11","12"));
 		startDay.setItems(FXCollections.observableArrayList("1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"));
 		
-		endYear.setItems(FXCollections.observableArrayList("2017","2016","2015","2014","2013","2012","2011","2010","2009","2008","2007","2006","2005","2004","2003","2002","2001","2000","1999","1998","1997"));
+		endYear.setItems(FXCollections.observableArrayList("2018","2017","2016","2015","2014","2013","2012","2011","2010","2009","2008","2007","2006","2005","2004","2003","2002","2001","2000","1999","1998","1997"));
 		endMonth.setItems(FXCollections.observableArrayList("1","2","3","4","5","6","7","9","10","11","12"));
 		endDay.setItems(FXCollections.observableArrayList("1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"));	
 	
@@ -419,7 +419,7 @@ public class ManageCourseViewController implements Initializable {
 						newcli.setNum(-newcli.getNum());//取负
 						newlist.addCommodity(newcli);
 					}
-			    	SaleBillVO newsb=new SaleBillVO(thisid, Long.parseLong(id), sb.getMemberID(), newlist, -sb.getSum(), 1, nowTime, "", sb.getCoupon(), sb.getDiscount(), -sb.getUltimate());
+			    	SaleBillVO newsb=new SaleBillVO(thisid,sb.getUserID(), sb.getMemberID(), newlist, -sb.getSum(), 1, nowTime, "", sb.getCoupon(), sb.getDiscount(), -sb.getUltimate());
 			        sbbs.submitSaleBill(newsb);
 				}else if(style.equals("付款单")){
 					PayBillVO pb=data.getPayBillVO();
@@ -438,7 +438,7 @@ public class ManageCourseViewController implements Initializable {
 						newcli.setMoney(-newcli.getMoney());//取负
 						newlist.addAccount(newcli);
 					}
-					PayBillVO newsb=new PayBillVO(thisid, Long.parseLong(id), pb.getMemberID(),newlist, -pb.getSum(), nowTime, 1);
+					PayBillVO newsb=new PayBillVO(thisid,pb.getUserID(), pb.getMemberID(),newlist, -pb.getSum(), nowTime, 1);
 					pbbs.submitPayBill(newsb);
 				}else if(style.equals("收款单")){
 					ReceiveBillVO rb=data.getReceiveBillVO();
@@ -457,7 +457,7 @@ public class ManageCourseViewController implements Initializable {
 						newcli.setMoney(-newcli.getMoney());//取负
 						newlist.addAccount(newcli);
 					}
-					ReceiveBillVO newsb=new ReceiveBillVO(thisid, Long.parseLong(id), rb.getMemberID(), newlist, -rb.getSum(), nowTime, 1);
+					ReceiveBillVO newsb=new ReceiveBillVO(thisid, rb.getUserID(), rb.getMemberID(), newlist, -rb.getSum(), nowTime, 1);
 					rbbs.submitReceiveBill(newsb);
 				}else if(style.equals("现金费用单")){
 					CashBillVO cb=data.getCashBillVO();
@@ -498,7 +498,7 @@ public class ManageCourseViewController implements Initializable {
 						newlist.addCommodity(newcli);
 					}
 					
-					SaleReturnBillVO newsb=new SaleReturnBillVO(thisid, Long.parseLong(id), srb.getMemberID(), newlist, -srb.getSum(), 1, nowTime, "");
+					SaleReturnBillVO newsb=new SaleReturnBillVO(thisid,srb.getUserID(), srb.getMemberID(), newlist, -srb.getSum(), 1, nowTime, "");
 					srbbs.submitSaleReturnBill(newsb);
 				}else if(style.equals("进货退货单")){
 					ImportReturnBillVO irb=data.getImportReturnBillVO();
@@ -518,7 +518,7 @@ public class ManageCourseViewController implements Initializable {
 						newlist.addCommodity(newcli);
 					}
 					
-					ImportReturnBillVO newsb=new ImportReturnBillVO(thisid, Long.parseLong(id), irb.getMemberID(), newlist, -irb.getSum(), 1, nowTime, "");
+					ImportReturnBillVO newsb=new ImportReturnBillVO(thisid,irb.getUserID(), irb.getMemberID(), newlist, -irb.getSum(), 1, nowTime, "");
 					irbbs.submitImportReturnBill(newsb);
 				}else if(style.equals("进货单")){
 					ImportBillVO ib=data.getImportBillVO();
@@ -538,7 +538,7 @@ public class ManageCourseViewController implements Initializable {
 						newlist.addCommodity(newcli);
 					}
 					
-					ImportBillVO newsb=new ImportBillVO(thisid, Long.parseLong(id), ib.getMemberID(), newlist, -ib.getSum(), 1, nowTime, "");
+					ImportBillVO newsb=new ImportBillVO(thisid,ib.getUserID(), ib.getMemberID(), newlist, -ib.getSum(), 1, nowTime, "");
 					ibbs.submitImportBill(newsb);
 				}
 			
@@ -613,7 +613,7 @@ public class ManageCourseViewController implements Initializable {
 			try {
 				CashBillVO m=cbbs.findCashBillByID(id);
 				FXMLLoader loader=new FXMLLoader();
-				loader.setLocation(MainApp.class.getResource("/presentation/billui/CahBillUI.fxml"));
+				loader.setLocation(MainApp.class.getResource("/presentation/billui/CashBillUI.fxml"));
 				AnchorPane cashbillUI=loader.load();
 				Scene scene=new Scene(cashbillUI);
 				Stage stage=new Stage();
@@ -673,7 +673,7 @@ public class ManageCourseViewController implements Initializable {
 			try {
 				ImportBillVO m=ibbs.findImportBillByID(id);
 				FXMLLoader loader=new FXMLLoader();
-				loader.setLocation(MainApp.class.getResource("/presentation/saleui/ImportBillUI.fxml"));
+				loader.setLocation(MainApp.class.getResource("/presentation/saleui/ImportUI.fxml"));
 				AnchorPane paybillUI=loader.load();
 				Scene scene=new Scene(paybillUI);
 				Stage stage=new Stage();

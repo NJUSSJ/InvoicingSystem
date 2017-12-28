@@ -35,7 +35,7 @@ public class BillData {
 	CashBillVO cb=null;
 	ImportBillVO ib=null;
 	ImportReturnBillVO irb=null;
-	UserBLService ubs=new UserController();
+	UserController ubs=new UserController();
 	public BillData(CashBillVO cashbill){
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
 		String str=sdf.format(cashbill.getTime());
@@ -166,36 +166,28 @@ public class BillData {
     }
     
     public StringProperty getTimeProperty() {
-		// TODO Auto-generated method stub
 		return time;
 	}
     public StringProperty getMemberProperty() {
-		// TODO Auto-generated method stub
 		return member;
 	}
 	public StringProperty getidProperty() {
-		// TODO Auto-generated method stub
 		return id;
 	}
 	public StringProperty getstateProperty() {
-		// TODO Auto-generated method stub
 		return state;
 	}
 
 	public StringProperty getstyleProperty() {
-		// TODO Auto-generated method stub
 		return style;
 	}
 	public StringProperty getoperatorProperty() {
-		// TODO Auto-generated method stub
 		return operator;
 	}
 	public StringProperty getchooseProperty() {
-		// TODO Auto-generated method stub
 		return choose;
 	}
 	public void setChoose(String string) {
-		// TODO Auto-generated method stub
 		choose.set(string);
 	}
 	public String getchoose(){

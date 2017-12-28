@@ -129,7 +129,9 @@ public class PayBill {
 		try {
 			ArrayList<PayBillPO> bills=RemoteHelper.getInstance().getPayBillDataService().findPayBillbyField(userName, memberName);
 			for(PayBillPO po:bills){
-				result.add(toPayBillVO(po));
+				if(po.getTime().before(end)&&po.getTime().after(begin)){
+					result.add(toPayBillVO(po));
+				}
 			}
 		} catch (RemoteException e) {
 			e.printStackTrace();

@@ -164,8 +164,11 @@ public class ImportReturnBill {
 		try {
 			ArrayList<ImportReturnBillPO> bills=RemoteHelper.getInstance().getImportReturnBillDataService().
 					findImportReturnBillbyField(userName, memberName);
+			if(bills==null)return null;
 			for(ImportReturnBillPO po:bills){
-				result.add(toImportReturnBillVO(po));
+				if(po.getTime().before(end)&&po.getTime().after(begin)){
+					result.add(toImportReturnBillVO(po));
+				}
 			}
 		} catch (RemoteException e) {
 			e.printStackTrace();

@@ -95,8 +95,11 @@ public class GiftBill {
 		try {
 			ArrayList<GiftBillPO> bills=RemoteHelper.getInstance().getGiftBillDataService().
 					findGiftBillsByField(userName, memberName);
+			if(bills==null)return null;
 			for(GiftBillPO po:bills){
-				result.add(toGiftBillVO(po));
+				if(po.getTime().before(end)&&po.getTime().after(begin)){
+					result.add(toGiftBillVO(po));
+				}
 			}
 		} catch (RemoteException e) {
 			e.printStackTrace();
