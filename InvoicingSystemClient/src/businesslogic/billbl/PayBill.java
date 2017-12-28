@@ -42,12 +42,7 @@ public class PayBill {
 				MemberVO member=mcon.findMemberByID(vo.getMemberID());
 				double money=member.getShouldGet()-vo.getSum();
 				member.setShouldGet(money);
-				double quota;
-				if(money<0){
-					money=-money;
-				}
-				String moneystr=money+"";
-				quota=Math.pow(10,moneystr.indexOf("."));
+				double quota=member.getShouldGet()-member.getShouldPay();
 				member.setQuota(quota);
 				mcon.updateMember(member);
 				//减少账户里的金额
@@ -167,6 +162,7 @@ public class PayBill {
 	public boolean fakeDelete(String id){
 		PayBillVO vo=findPayBillByID(id);
 		vo.setState(3);
+		System.out.println(id+"----fakedelete");
 		try {
 			return RemoteHelper.getInstance().getPayBillDataService().update(vo.toPayBillPO());
 		} catch (RemoteException e) {

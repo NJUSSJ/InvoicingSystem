@@ -1,8 +1,13 @@
 package po;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class WarningBillPO {
+public class WarningBillPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	long id;
 	long userid;
 	String commodityList;
@@ -10,7 +15,6 @@ public class WarningBillPO {
 	int state;
 	
 	public WarningBillPO(long id,long userid,String commodityList,Date time,int state) {
-		// TODO Auto-generated constructor stub
 		this.id=id;
 		this.userid=userid;
 		this.commodityList=commodityList;

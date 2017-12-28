@@ -92,6 +92,7 @@ public class ImportReturnBill {
 				MemberVO member=memberCon.findMemberByID(vo.getMemberID());
 				double money=vo.getSum()+member.getShouldPay();
 				member.setShouldPay(money);
+				member.setQuota(member.getShouldGet()-member.getShouldPay());
 				memberCon.updateMember(member);
 			}else{
 				vo.setState(2);

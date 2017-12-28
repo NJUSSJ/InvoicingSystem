@@ -20,16 +20,16 @@ public class WarningBillDataImpl implements WarningBillDataService {
 	 */
 	@Override
 	public boolean insert(WarningBillPO po) throws RemoteException {
-		String sql="insert into warningbills (id,userid,commoditylist,time)"
+		String sql="insert into warningbills (id,userid,commoditylist,time,state)"
 				+ " values "
-				+ "('"+po.getID()+"','"+po.getUserID()+"','"+po.getCommodityList()+"','"+po.getTime()+"')";
+				+ "('"+po.getID()+"','"+po.getUserID()+"','"+po.getCommodityList()+"','"+po.getTime()+"','"+po.getState()+"')";
 		
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {
 				return true;
 			}
 		} catch (SQLException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		return false;
 	}
@@ -46,7 +46,7 @@ public class WarningBillDataImpl implements WarningBillDataService {
 				return true;
 			}
 		} catch (SQLException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		return false;
 	}
@@ -56,7 +56,7 @@ public class WarningBillDataImpl implements WarningBillDataService {
 	 */
 	@Override
 	public boolean update(WarningBillPO po) throws RemoteException {
-		String sql="update salebills set state='"+po.getState()+"' where id=="+po.getID()+"'";
+		String sql="update warningbills set state='"+po.getState()+"' where id='"+po.getID()+"'";
 		
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {
