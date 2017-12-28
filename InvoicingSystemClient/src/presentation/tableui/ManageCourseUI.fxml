@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
@@ -8,24 +10,27 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.tableui.ManageCourseViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.tableui.ManageCourseViewController">
   <children>
     <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="602.0" fitWidth="999.0000999999975" layoutX="1.0" layoutY="0.0">
       <image>
-        <Image preserveRatio="true" smooth="true" url="@../../../../../InvoicingSystem/InvoicingSystemClient/resources/1b256486664e499a9613079e51bbca0b.png" />
+        <Image url="@../../../resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
     <Label fx:id="id" layoutX="814.0" layoutY="11.0" prefWidth="64.0" text="ID:XXX">
       <font>
-        <Font size="14.0" fx:id="x1" />
+        <Font name="Microsoft YaHei UI Light" size="16.0" fx:id="x1" />
       </font>
     </Label>
-    <Label font="$x1" layoutX="881.0" layoutY="10.0" text="|| 登出" />
+    <Label font="$x1" layoutX="881.0" layoutY="11.0" onMouseClicked="#logout" text="|| 登出" />
     <Separator prefHeight="1.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="117.0" />
     <Label layoutX="14.0" layoutY="39.0" text="经营历程表">
       <font>
@@ -34,12 +39,12 @@
     </Label>
     <Label layoutX="24.0" layoutY="129.0" text="时间：" />
     <Label layoutX="322.0" layoutY="129.0" prefHeight="15.0" prefWidth="24.0" text="~" />
-    <Label layoutX="24.0" layoutY="160.0" text="单据类型：" />
-    <Label layoutX="587.0" layoutY="158.0" text="业 务 员：" />
-    <Label layoutX="310.0" layoutY="160.0" text="客  户：" />
-    <ChoiceBox fx:id="billType" layoutX="91.0" layoutY="157.0" prefHeight="23.0" prefWidth="153.0" />
-    <TextField fx:id="member" layoutX="359.0" layoutY="156.0" prefHeight="23.0" prefWidth="154.0" />
-    <TextField fx:id="user" layoutX="649.0" layoutY="156.0" prefHeight="23.0" prefWidth="154.0" />
+    <Label layoutX="24.0" layoutY="173.0" text="单据类型：" />
+    <Label layoutX="579.0" layoutY="167.0" text="业 务 员：" />
+    <Label layoutX="312.0" layoutY="168.0" text="客  户：" />
+    <ChoiceBox fx:id="billType" layoutX="108.0" layoutY="167.0" prefHeight="23.0" prefWidth="153.0" />
+    <TextField fx:id="member" layoutX="366.0" layoutY="165.0" prefHeight="23.0" prefWidth="154.0" />
+    <TextField fx:id="user" layoutX="648.0" layoutY="165.0" prefHeight="23.0" prefWidth="154.0" />
     <ChoiceBox fx:id="startYear" layoutX="72.0" layoutY="125.0" prefHeight="23.0" prefWidth="72.0" />
     <ChoiceBox fx:id="startMonth" layoutX="169.0" layoutY="125.0" prefHeight="23.0" prefWidth="55.0" />
     <ChoiceBox fx:id="startDay" layoutX="242.0" layoutY="125.0" prefHeight="23.0" prefWidth="55.0" />
@@ -52,17 +57,17 @@
     <Label layoutX="430.0" layoutY="129.0" text="年" />
     <Label layoutX="509.0" layoutY="129.0" text="月" />
     <Label layoutX="587.0" layoutY="129.0" text="日" />
-    <ScrollPane layoutY="221.0" opacity="0.7" prefHeight="380.0" prefWidth="846.0">
+    <ScrollPane layoutX="0.0" layoutY="234.0" opacity="0.7" prefHeight="367.0" prefWidth="846.0">
       <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="411.0" prefWidth="847.0">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1000.0" prefWidth="847.0">
           <children>
             <TableView fx:id="billTable" prefHeight="417.0" prefWidth="854.0">
               <columns>
-                <TableColumn fx:id="timeColoumn" prefWidth="150.0" text="时间" />
-                <TableColumn fx:id="typeColoumn" prefWidth="120.0" text="单据类型" />
-                <TableColumn fx:id="memberColoumn" prefWidth="120.0" text="客户" />
-                <TableColumn fx:id="userColoumn" prefWidth="120.0" text="业务员" />
-                <TableColumn fx:id="commentColoumn" prefWidth="333.0" text="备注" />
+                <TableColumn prefWidth="150.0" text="时间" fx:id="timeColoumn" />
+                <TableColumn prefWidth="120.0" text="单据类型" fx:id="typeColoumn" />
+                <TableColumn prefWidth="120.0" text="客户" fx:id="memberColoumn" />
+                <TableColumn prefWidth="120.0" text="业务员" fx:id="userColoumn" />
+                <TableColumn prefWidth="333.0" text="备注" fx:id="commentColoumn" />
               </columns>
             </TableView>
           </children>
@@ -71,9 +76,9 @@
     </ScrollPane>
     <Button fx:id="returnA" layoutX="861.0" layoutY="536.0" mnemonicParsing="false" onAction="#showtheMain" prefHeight="23.0" prefWidth="120.0" text="返      回" />
     <Separator layoutX="846.0" layoutY="120.0" orientation="VERTICAL" prefHeight="478.0" prefWidth="6.0" />
-      <Button fx:id="search" layoutX="729.0" layoutY="188.0" mnemonicParsing="false" onAction="#searchBill" prefHeight="23.0" prefWidth="100.0" text="查      找" />
-      <Button fx:id="reverseAndCopy" layoutX="861.0" layoutY="493.0" mnemonicParsing="false" onAction="#reverseAndCopy" prefHeight="23.0" prefWidth="120.0" text="红冲并复制" />
-      <Button fx:id="reverse" layoutX="861.0" layoutY="455.0" mnemonicParsing="false" onAction="#reverse" prefHeight="23.0" prefWidth="120.0" text="红      冲" />
-      <Button fx:id="logout" layoutX="887.0" layoutY="9.0" mnemonicParsing="false" onAction="#logout" prefHeight="23.0" prefWidth="60.0" visible="false" />
+    <Button fx:id="search" layoutX="719.0" layoutY="195.0" minHeight="23.0" mnemonicParsing="false" onAction="#searchBill" prefHeight="27.0" prefWidth="83.0" text="查      找" />
+    <Button fx:id="reverseAndCopy" layoutX="861.0" layoutY="493.0" mnemonicParsing="false" onAction="#reverseAndCopy" prefHeight="23.0" prefWidth="120.0" text="红冲并复制" />
+    <Button fx:id="reverse" layoutX="861.0" layoutY="455.0" mnemonicParsing="false" onAction="#reverse" prefHeight="23.0" prefWidth="120.0" text="红      冲" />
+    <Button fx:id="logout" layoutX="887.0" layoutY="9.0" mnemonicParsing="false" onAction="#logout" prefHeight="23.0" prefWidth="60.0" visible="false" />
   </children>
 </AnchorPane>

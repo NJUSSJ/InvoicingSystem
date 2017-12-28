@@ -20,17 +20,17 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.tableui.ManageSituationViewController">
   <children>
-    <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="600.0" fitWidth="1001.0000999999975" layoutX="-1.0">
+    <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="600.0" fitWidth="1001.0000999999975" layoutX="0.0" layoutY="0.0">
       <image>
         <Image url="@../../../resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <Label fx:id="id" layoutX="814.0" layoutY="11.0" prefWidth="70.0" text="ID:XXX">
+    <Label fx:id="id" layoutX="828.0" layoutY="11.0" prefWidth="70.0" text="ID:XXX">
       <font>
-        <Font size="14.0" fx:id="x1" />
+        <Font name="Microsoft YaHei UI Light" size="16.0" fx:id="x3" />
       </font>
     </Label>
-    <Label font="$x1" layoutX="881.0" layoutY="11.0" text="|| 登出" />
+    <Label font="$x3" layoutX="898.0" layoutY="11.0" text="|| 登出" />
     <Separator prefHeight="4.0" prefWidth="1001.0001220703125" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="130.0">
       <effect>
         <Lighting diffuseConstant="0.7633587786259542">
@@ -88,7 +88,11 @@
         </Lighting>
       </effect>
     </Separator>
-    <Label font="$x1" layoutX="59.0" layoutY="218.0" text="销售收入：" />
+    <Label layoutX="59.0" layoutY="218.0" text="销售收入：">
+      <font>
+        <Font size="14.0" fx:id="x1" />
+      </font>
+    </Label>
     <Label font="$x1" layoutX="59.0" layoutY="248.0" text="商品收入：" />
     <Label font="$x1" layoutX="60.0" layoutY="359.0" text="折让后总收入：" />
     <Label font="$x1" layoutX="60.0" layoutY="387.0" text="折让：" />
@@ -114,12 +118,12 @@
     <Label layoutX="552.0" layoutY="285.0" text="商品赠出支出" />
     <Label fx:id="giftExpense" layoutX="646.0" layoutY="288.0" text="" />
     <Label fx:id="lossExpense" layoutX="646.0" layoutY="254.0" text="" />
-    <Label layoutX="140.0" layoutY="251.0" text="商品报溢收入" />
+    <Label layoutX="140.0" layoutY="247.0" text="商品报溢收入" />
     <Label fx:id="commodityOverIncome" layoutX="304.0" layoutY="250.0" text="" />
     <Label layoutX="140.0" layoutY="284.0" text="进货退货差价收入" />
-    <Label layoutX="140.0" layoutY="320.0" prefHeight="15.0" prefWidth="144.0" text="代金券与实际收款差额收入" />
+    <Label layoutX="80.0" layoutY="319.0" prefHeight="20.0" prefWidth="195.0" text="代金券与实际收款差额收入" />
     <Label fx:id="couponIncome" layoutX="304.0" layoutY="319.0" text="" />
     <Label fx:id="importReturnIncome" layoutX="304.0" layoutY="283.0" text="" />
-    <Button fx:id="logout" layoutX="888.0" layoutY="10.0" mnemonicParsing="false" onAction="#logout" opacity="0.0" prefHeight="15.0" prefWidth="84.0" />
+    <Button fx:id="logout" layoutX="902.0" layoutY="10.0" mnemonicParsing="false" onAction="#logout" opacity="0.0" prefHeight="15.0" prefWidth="84.0" />
   </children>
 </AnchorPane>

@@ -60,7 +60,7 @@ public class ReceiveBillDataImpl implements ReceiveBillDataService{
 	 */
 	@Override
 	public boolean update(ReceiveBillPO po) throws RemoteException {
-		String sql="update receivebills set state='"+po.getState()+"'";
+		String sql="update receivebills set state='"+po.getState()+"' where id='"+po.getID()+"'";
 		
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {

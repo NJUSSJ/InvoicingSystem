@@ -37,7 +37,7 @@ public class BillData {
 	ImportReturnBillVO irb=null;
 	UserController ubs=new UserController();
 	public BillData(CashBillVO cashbill){
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 		String str=sdf.format(cashbill.getTime());
 		time.set(str);
 		member.set(""+cashbill.getAccountID());
@@ -49,7 +49,7 @@ public class BillData {
 		cb=cashbill;
 	}
    public BillData(PayBillVO paybill){
-	   SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
+	   SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 	   String str=sdf.format(paybill.getTime());
 	   time.set(str);
 	   member.set(""+paybill.getMemberID());
@@ -61,7 +61,7 @@ public class BillData {
 		pb=paybill;
 	}
     public BillData(ReceiveBillVO receivebill){
-    	SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
+    	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 		String str=sdf.format(receivebill.getTime());
 		time.set(str);
 		member.set(""+receivebill.getMemberID());
@@ -73,7 +73,7 @@ public class BillData {
 		rb=receivebill;
     }
     public BillData(SaleBillVO salebill){
-    	SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
+    	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 		String str=sdf.format(salebill.getTime());
 		time.set(str);
 		member.set(""+salebill.getMemberID());
@@ -85,7 +85,7 @@ public class BillData {
 		sb=salebill;
     }
     public BillData(ImportBillVO importbill){
-    	SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
+    	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 		String str=sdf.format(importbill.getTime());
 		time.set(str);
 		member.set(""+importbill.getMemberID());
@@ -97,7 +97,7 @@ public class BillData {
 		ib=importbill;
     }
     public BillData(SaleReturnBillVO salereturnbill){
-    	SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
+    	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 		String str=sdf.format(salereturnbill.getTime());
 		time.set(str);
 		member.set(""+salereturnbill.getMemberID());
@@ -109,7 +109,7 @@ public class BillData {
 		srb=salereturnbill;
     }
     public BillData(ImportReturnBillVO importreturnbill){
-    	SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
+    	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 		String str=sdf.format(importreturnbill.getTime());
 		time.set(str);
 		member.set(""+importreturnbill.getMemberID());
@@ -121,7 +121,7 @@ public class BillData {
 		irb=importreturnbill;
     }
     public BillData(LossBillVO lossbill){
-    	SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
+    	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 		String str=sdf.format(lossbill.getTime());
 		time.set(str);
 		member.set("");
@@ -132,7 +132,7 @@ public class BillData {
 		state.set(""+lossbill.getState());
     }
     public BillData(GiftBillVO giftbill){
-    	SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
+    	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 		String str=sdf.format(giftbill.getTime());
 		time.set(str);
 		member.set(""+giftbill.getMemberID());
@@ -143,7 +143,7 @@ public class BillData {
 		state.set(""+giftbill.getState());
     }
     public BillData(OverBillVO overbill){
-    	SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
+    	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 		String str=sdf.format(overbill.getTime());
 		time.set(str);
 		member.set("");
@@ -154,7 +154,7 @@ public class BillData {
 		state.set(""+overbill.getState());
     }
     public BillData(WarningBillVO warningbill){
-    	SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
+    	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 		String str=sdf.format(warningbill.getTime());
 		time.set(str);
 		member.set("");

@@ -59,7 +59,7 @@ public class PayBillDataImpl implements PayBillDataService {
 	 */
 	@Override
 	public boolean update(PayBillPO po) throws RemoteException {
-		String sql="update paybills set state='"+po.getState()+"'";
+		String sql="update paybills set state='"+po.getState()+"' where id='"+po.getID()+"'";
 		
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {
