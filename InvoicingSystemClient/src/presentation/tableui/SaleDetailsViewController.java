@@ -9,7 +9,10 @@ import java.util.ResourceBundle;
 import MainApp.MainApp;
 import Utility.DateUtil;
 import businesslogic.billbl.CommodityList;
+import businesslogic.commoditybl.CommodityController;
+import businesslogic.memberbl.MemberController;
 import businesslogic.tablebl.SaleDetailsTableController;
+import businesslogic.userbl.UserController;
 import businesslogicservice.tableblservice.SaleDetailsTableBLService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,8 +28,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
+import vo.CommodityVO;
+import vo.MemberVO;
 import vo.SaleBillVO;
 import vo.SaleDetailsTableVO;
+import vo.UserVO;
 
 public class SaleDetailsViewController  implements Initializable {
 	@FXML
@@ -93,7 +99,6 @@ public  ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	SaleDetailsTableBLService dtbs=new SaleDetailsTableController();
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
 		long idLong=MainApp.getID();
 		String idString=idLong+"";
 		while(idString.length()<5) {
@@ -103,11 +108,15 @@ public  ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		startYear.setItems(FXCollections.observableArrayList("2018","2017","2016","2015","2014","2013","2012","2011","2010","2009","2008","2007","2006","2005","2004","2003","2002","2001","2000","1999","1998","1997"));
 		startMonth.setItems(FXCollections.observableArrayList("1","2","3","4","5","6","7","9","10","11","12"));
 		startDay.setItems(FXCollections.observableArrayList("1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"));
-		
+		startYear.setValue("2017");
+		startMonth.setValue("9");
+		startDay.setValue("1");
 		endYear.setItems(FXCollections.observableArrayList("2018","2017","2016","2015","2014","2013","2012","2011","2010","2009","2008","2007","2006","2005","2004","2003","2002","2001","2000","1999","1998","1997"));
 		endMonth.setItems(FXCollections.observableArrayList("1","2","3","4","5","6","7","9","10","11","12"));
 		endDay.setItems(FXCollections.observableArrayList("1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"));	
-	
+		endYear.setValue("2018");
+		endMonth.setValue("9");
+		endDay.setValue("1");
 	    nameColoumn.setCellValueFactory(cellData ->cellData.getValue().getNameProperty());
 		numColoumn.setCellValueFactory(cellData ->cellData.getValue().getNumProperty());
 		modelColoumn.setCellValueFactory(cellData ->cellData.getValue().getModelProperty());
@@ -137,6 +146,42 @@ public  ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 				}
 			}
 		}else{
+			if(memberl!=null&&memberl.length()>0){
+				MemberVO memberVO=new MemberController().findMemberByName(memberl);
+				if(memberVO==null){
+					Alert alert = new Alert(AlertType.WARNING);
+		   	        alert.initOwner(MainApp.getPrimaryStage());
+		   	        alert.setTitle("No member found");
+		   	        alert.setHeaderText("No member found");
+		   	        alert.setContentText("No member found:"+memberl);
+	                alert.showAndWait();
+	                return;
+				}
+			}
+			if(operatorn!=null&&operatorn.length()>0){
+				UserVO userVO=new UserController().findUserbyName(operatorn);
+				if(userVO==null){
+					Alert alert = new Alert(AlertType.WARNING);
+		   	        alert.initOwner(MainApp.getPrimaryStage());
+		   	        alert.setTitle("No user found");
+		   	        alert.setHeaderText("No user found");
+		   	        alert.setContentText("No user found:"+operatorn);
+	                alert.showAndWait();
+	                return;
+				}
+			}
+			if(goods!=null&&goods.length()>0){
+				CommodityVO commodityVO=new CommodityController().findCommodityByName(goods);
+				if(commodityVO==null){
+					Alert alert = new Alert(AlertType.WARNING);
+		   	        alert.initOwner(MainApp.getPrimaryStage());
+		   	        alert.setTitle("No commodity found");
+		   	        alert.setHeaderText("No commodity found");
+		   	        alert.setContentText("No commodity found:"+goods);
+	                alert.showAndWait();
+	                return;
+				}
+			}
 			sdtable=dtbs.findByField(start, end, goods, memberl, operatorn);
 			salelist=sdtable.getList();
 			for(SaleBillVO a:salelist){
@@ -182,7 +227,22 @@ public  ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 			filepath+=".xls";
 			}
 			if(sdtable!=null){
-			dtbs.exportAsExcel(sdtable,filepath);
+				boolean exportSuccess=dtbs.exportAsExcel(sdtable,filepath);
+				if(exportSuccess){
+					Alert alert = new Alert(AlertType.INFORMATION);
+		   	        alert.initOwner(MainApp.getPrimaryStage());
+		   	        alert.setTitle("Export Success");
+		   	        alert.setHeaderText("Export Success");
+		   	        alert.setContentText("Export Success.");
+	                alert.showAndWait();
+				}else{
+					Alert alert = new Alert(AlertType.WARNING);
+		   	        alert.initOwner(MainApp.getPrimaryStage());
+		   	        alert.setTitle("Export failure");
+		   	        alert.setHeaderText("Export failure");
+		   	        alert.setContentText("Export failure.");
+	                alert.showAndWait();
+				}
 			}else{
 				    Alert alert = new Alert(AlertType.WARNING);
 		   	        alert.initOwner(MainApp.getPrimaryStage());

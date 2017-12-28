@@ -6,15 +6,16 @@ import java.text.SimpleDateFormat;
 import businesslogic.billbl.CommodityLineItem;
 import businesslogic.commoditybl.CommodityController;
 import businesslogicservice.commodityblservice.CommodityBLService;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import vo.CommodityVO;
 public class CommodityItemData {
-StringProperty name;
-StringProperty date;
-StringProperty model;
-StringProperty price;
-StringProperty num;
-StringProperty totalprice;
+StringProperty name=new SimpleStringProperty();
+StringProperty date=new SimpleStringProperty();
+StringProperty model=new SimpleStringProperty();
+StringProperty price=new SimpleStringProperty();
+StringProperty num=new SimpleStringProperty();
+StringProperty totalprice=new SimpleStringProperty();
 CommodityVO commodity=null;
 Date its=null;
 CommodityBLService cbs=new CommodityController();
@@ -26,7 +27,7 @@ public CommodityItemData(CommodityLineItem a,Date b){
 	num.set(""+a.getNum());
 	totalprice.set(""+a.getNum()*a.getSalePrice());
 	SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
-	String str=sdf.format(a);
+	String str=sdf.format(b);
 	date.set(""+str);
 }
 public StringProperty getNameProperty(){

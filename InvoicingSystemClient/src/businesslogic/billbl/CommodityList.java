@@ -18,7 +18,7 @@ public class CommodityList {
 	 */
 	public CommodityList(String info){
 			list=new ArrayList<>();
-			String[] commodityInfo=info.split("  ");
+			String[] commodityInfo=info.split(" ");
 			for(int i=0;i<commodityInfo.length;i++){
 				if(commodityInfo[i]!=null&&commodityInfo[i].length()>0){
 				String[] details=commodityInfo[i].split(",");

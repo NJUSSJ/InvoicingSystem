@@ -37,7 +37,11 @@ public class SaleDetailsTable{
 	 */
 	public SaleDetailsTableVO findByField(Date begin, Date end,String commodityName,
 			String memberName,String userName) {
-		ArrayList<SaleBillVO> bills=new SaleBillController().findSaleBillsByField(begin, end, commodityName, memberName, userName);
+		String commodityid=commodityName;
+		if(commodityName!=null&&commodityName.length()>0){
+			commodityid=new CommodityController().findCommodityByName(commodityName).getID()+"";
+		}
+		ArrayList<SaleBillVO> bills=new SaleBillController().findSaleBillsByField(begin, end, commodityid, memberName, userName);
 		return new SaleDetailsTableVO(begin,end,bills);
 	}
 	/**
@@ -97,7 +101,10 @@ public class SaleDetailsTable{
 			
 		}
 		try {
-			FileOutputStream fout = new FileOutputStream(path+".xls");
+			if(!path.endsWith(".xls")){
+				path+=".xls";
+			}
+			FileOutputStream fout = new FileOutputStream(path);
 			wb.write(fout);
 			wb.close();
 			fout.close();

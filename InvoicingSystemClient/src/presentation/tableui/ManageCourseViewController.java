@@ -178,11 +178,15 @@ public class ManageCourseViewController implements Initializable {
 		startYear.setItems(FXCollections.observableArrayList("2018","2017","2016","2015","2014","2013","2012","2011","2010","2009","2008","2007","2006","2005","2004","2003","2002","2001","2000","1999","1998","1997"));
 		startMonth.setItems(FXCollections.observableArrayList("1","2","3","4","5","6","7","9","10","11","12"));
 		startDay.setItems(FXCollections.observableArrayList("1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"));
-		
+		startYear.setValue("2017");
+		startMonth.setValue("9");
+		startDay.setValue("1");
 		endYear.setItems(FXCollections.observableArrayList("2018","2017","2016","2015","2014","2013","2012","2011","2010","2009","2008","2007","2006","2005","2004","2003","2002","2001","2000","1999","1998","1997"));
 		endMonth.setItems(FXCollections.observableArrayList("1","2","3","4","5","6","7","9","10","11","12"));
 		endDay.setItems(FXCollections.observableArrayList("1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"));	
-	
+		endYear.setValue("2018");
+		endMonth.setValue("9");
+		endDay.setValue("1");
 		billType.setItems(FXCollections.observableArrayList("Sale","SaleReturn","Import","ImportReturn","Pay","Receive","Cash","Gift","Over","Loss"));
 	
 		timeColoumn.setCellValueFactory(cellData ->cellData.getValue().getTimeProperty());
@@ -270,7 +274,6 @@ public class ManageCourseViewController implements Initializable {
 
 			@Override
 			public void handle(KeyEvent e) {
-				// TODO Auto-generated method stub
 				if(e.getCode().equals(KeyCode.ENTER)) {
 					searchBill();
 				}
@@ -293,7 +296,6 @@ public class ManageCourseViewController implements Initializable {
 	}
 	
 	private void getInf(BillData newValue) {
-		// TODO Auto-generated method stub
 		if(newValue==null) {
 			return;
 		}
@@ -309,7 +311,6 @@ public class ManageCourseViewController implements Initializable {
 
 	@FXML
 	public void searchBill() {
-		// TODO Auto-generated method stub
 		OperateCourseTableVO oct=new OperateCourseTableVO();
 		if(billType.getSelectionModel().getSelectedItem()==null&&user.getText().equals("")&&member.getText().equals("")) {
 			ManageCourseTableBLService mctbl=new OperateCourseTableController();

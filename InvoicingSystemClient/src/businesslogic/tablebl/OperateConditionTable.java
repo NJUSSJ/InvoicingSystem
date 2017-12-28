@@ -166,7 +166,10 @@ public class OperateConditionTable{
 		row.createCell(12).setCellValue(vo.getProfit());
 		
 		try {
-			FileOutputStream fout = new FileOutputStream(path+".xls");
+			if(!path.endsWith(".xls")){
+				path+=".xls";
+			}
+			FileOutputStream fout = new FileOutputStream(path);
 			wb.write(fout);
 			fout.close();
 			return true;
