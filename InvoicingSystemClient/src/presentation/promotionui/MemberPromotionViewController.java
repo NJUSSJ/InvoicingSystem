@@ -58,7 +58,7 @@ public class MemberPromotionViewController implements Initializable{
 		while(idString.length()<5) {
 			idString="0"+idString;
 		}
-		id.setText("ID:"+idString);
+		id.setText(""+idString);
 		ArrayList<MemberPromotionVO> list=pcon.findMemberPromotions();
 		for(MemberPromotionVO m:list){
 			promotionData.add(new MemberPromotionData(m));
@@ -104,6 +104,7 @@ public class MemberPromotionViewController implements Initializable{
 			promotionStage.setScene(scene);
             SimpleMemberPromotionController controller=loader.getController();
             controller.setStage(promotionStage);
+            controller.setList(promotionData);
             promotionStage.showAndWait();
             
 		} catch (IOException e) {

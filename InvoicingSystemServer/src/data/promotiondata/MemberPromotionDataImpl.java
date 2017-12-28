@@ -17,9 +17,10 @@ public class MemberPromotionDataImpl implements MemberPromotionDataService{
 
 	@Override
 	public boolean insert(MemberPromotionPO po) throws RemoteException {
-		String sql="insert into memberpromotions (id,rank,gifts,coupon) "
+		
+		String sql="insert into memberpromotions (id,rank,gifts,coupon,discount) "
 				+ "values "
-				+ "('"+po.getID()+"','"+po.getRank()+"','"+po.getGiftlist()+"','"+po.getCoupon()+"')";
+				+ "('"+po.getID()+"','"+po.getRank()+"','"+po.getGifts()+"','"+po.getCoupon()+"','"+po.getDiscount()+"')";
 		
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {
@@ -47,7 +48,7 @@ public class MemberPromotionDataImpl implements MemberPromotionDataService{
 
 	@Override
 	public boolean update(MemberPromotionPO po) throws RemoteException {
-		String sql="update memberpromotions set id='"+po.getID()+"',rank='"+po.getRank()+"',gifts='"+po.getGiftlist()+"',coupon='"+po.getCoupon()+"'";
+		String sql="update memberpromotions set id='"+po.getID()+"',rank='"+po.getRank()+"',gifts='"+po.getGifts()+"',coupon='"+po.getCoupon()+"'";
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {
 				return true;
