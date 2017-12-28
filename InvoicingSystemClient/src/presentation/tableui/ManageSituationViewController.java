@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 
 import MainApp.MainApp;
 import Utility.DateUtil;
+import businesslogic.tablebl.OperateConditionTableController;
 import businesslogic.tablebl.OperateCourseTableController;
 import businesslogicservice.tableblservice.ManageConditionTableBLService;
 import businesslogicservice.tableblservice.ManageCourseTableBLService;
@@ -94,7 +95,7 @@ public class ManageSituationViewController implements Initializable {
 	private Label profit;
 	
 	OperateConditionTableVO oct=null;
-	ManageConditionTableBLService octbl=null;
+	ManageConditionTableBLService octbl=new OperateConditionTableController();
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

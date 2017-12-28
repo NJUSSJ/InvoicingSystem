@@ -220,14 +220,13 @@ public class EmailViewController implements Initializable {
 			ibbs.deleteImportBill(tempbill);
 		}
 		}
+		billData.remove(billitem);
 	}
 	private void findAll() {
-		System.out.println(MainApp.getID());
 		cashlist=cbbs.findCashBillsByUser(MainApp.getID());
 	    paylist=pbbs.findPayBillsByUser(MainApp.getID());
 	    receivelist=rbbs.findReceiveBillsByUser(MainApp.getID());
 	    importlist=ibbs.findImportBillsByUser(MainApp.getID());
-	    System.out.println(importlist.size());
 	    importreturnlist=irbbs.findImportReturnBillsByUser(MainApp.getID());
 	    salelist=sbbs.findSaleBillsByUser(MainApp.getID());
 	    salereturnlist=srbbs.findSaleReturnBillsByUser(MainApp.getID());

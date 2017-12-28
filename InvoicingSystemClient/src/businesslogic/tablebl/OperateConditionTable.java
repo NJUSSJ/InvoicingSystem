@@ -105,7 +105,7 @@ public class OperateConditionTable{
 	public boolean exportAsExcel(OperateConditionTableVO vo,String path){
 		@SuppressWarnings("resource")
 		HSSFWorkbook wb=new HSSFWorkbook();
-		HSSFSheet sheet=wb.createSheet("经营情况表:"+vo.getBegin()+"~"+vo.getEnd());
+		HSSFSheet sheet=wb.createSheet("经营情况表 "+vo.getBegin()+"~"+vo.getEnd());
 		HSSFRow row=sheet.createRow(0);
 		
 		HSSFCellStyle style = wb.createCellStyle();

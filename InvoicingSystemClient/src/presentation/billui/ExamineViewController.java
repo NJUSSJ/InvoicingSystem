@@ -133,20 +133,10 @@ public class ExamineViewController implements Initializable {
 		billTable.setItems(billData);
 	}
 	private void getInf(BillData newValue) {
-<<<<<<< HEAD
-		// TODO Auto-generated method stub
-		if(newValue!=null){
-			data=newValue;
-		}
-		if(newValue.getchooseProperty().get().equals("·ñ")){
-			newValue.setChoose("ÊÇ");
-		}else{
-			newValue.setChoose("·ñ");
-=======
+
 		if(newValue!=null){
 			data=newValue;
 			tcf.setData(newValue);
->>>>>>> e728c49324987aa3c378a36a3331cb2d88ea0bab
 		}
 	}
 	@FXML

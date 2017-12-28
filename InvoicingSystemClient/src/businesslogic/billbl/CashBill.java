@@ -4,8 +4,10 @@ import java.rmi.RemoteException;
 import java.sql.Date;
 import java.util.ArrayList;
 
+import businesslogic.accountbl.AccountController;
 import po.CashBillPO;
 import rmi.RemoteHelper;
+import vo.AccountVO;
 import vo.CashBillVO;
 
 public class CashBill{
@@ -37,6 +39,10 @@ public class CashBill{
 				getCashBillDataService().findCashBillbyID(id));
 			if(pass){
 			cashBillVO.setState(1);
+			AccountController acon=new AccountController();
+			AccountVO accountVO=acon.findAccountByID(cashBillVO.getAccountID());
+			accountVO.setDeposit(accountVO.getDeposit()-cashBillVO.getSum());
+			acon.updateAccount(accountVO);
 			}else{
 			cashBillVO.setState(2);
 			}

@@ -113,7 +113,9 @@ public class SaleBill{
 						giftList.addCommodity(new CommodityLineItem(num,giftid,salePrice,importPrice,""));
 					}
 				}
+				if(giftList.getListSize()>0){
 				gcon.submitGiftBill(new GiftBillVO(billid,stockid,vo.getMemberID(),giftList,new Date(Utility.getNow().getTime()),0));
+				}
 			}else{
 				vo.setState(2);
 			}

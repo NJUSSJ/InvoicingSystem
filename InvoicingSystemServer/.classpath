@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="src" path="src"/>
-<<<<<<< HEAD
-	<classpathentry kind="lib" path="D:/mysql-connector-java-5.1.44/mysql-connector-java-5.1.44/mysql-connector-java-5.1.44-bin.jar"/>
-=======
-<<<<<<< HEAD
-	<classpathentry kind="lib" path="D:/InvoicingSystem/InvoicingSystemClient/resources/mysql-connector-java-5.1.44-bin.jar"/>
-=======
-	<classpathentry kind="lib" path="E:/InvoicingSystem/InvoicingSystemClient/resources/mysql-connector-java-5.1.44-bin.jar"/>
->>>>>>> da0109bc1ca92390fcb9365c405961feb0d9a54f
->>>>>>> e728c49324987aa3c378a36a3331cb2d88ea0bab
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="lib" path="D:/玖/正经事/学/大二上/软工二/pop6/InvoicingSystem/InvoicingSystemClient/resources/mysql-connector-java-5.1.44-bin.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

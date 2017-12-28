@@ -47,7 +47,7 @@ public class SaleDetailsTable{
 	 */
 	public boolean exportAsExcel(SaleDetailsTableVO vo, String path) {
 		HSSFWorkbook wb=new HSSFWorkbook();
-		HSSFSheet sheet=wb.createSheet("销售明细表:"+vo.getBegin()+"~"+vo.getEnd());
+		HSSFSheet sheet=wb.createSheet("销售明细表 "+vo.getBegin()+"~"+vo.getEnd());
 		HSSFRow row=sheet.createRow(0);
 		
 		HSSFCellStyle style = wb.createCellStyle();

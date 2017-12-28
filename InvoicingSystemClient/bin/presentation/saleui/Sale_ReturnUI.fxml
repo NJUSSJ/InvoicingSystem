@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -8,16 +10,19 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.saleui.Sale_ReturnViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.saleui.Sale_ReturnViewController">
   <children>
     <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="599.0" fitWidth="1000.0" layoutX="0.0" layoutY="0.0">
       <image>
-        <Image preserveRatio="true" smooth="true" url="@../../../../../InvoicingSystem/InvoicingSystemClient/resources/1b256486664e499a9613079e51bbca0b.png" />
+        <Image url="@../../../resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
     <Label fx:id="id" layoutX="814.0" layoutY="11.0" prefWidth="64.0" text="ID:XXX">
@@ -38,7 +43,7 @@
     <Label font="$x1" layoutX="10.0" layoutY="151.0" text="单据编号：" />
     <Label font="$x1" layoutX="445.0" layoutY="177.0" text="备 注：" />
     <Label font="$x1" layoutX="24.0" layoutY="206.0" text="操作员：" />
-    <Label font="$x1" layoutX="24.0" layoutY="179.0" text="供应商：" />
+    <Label font="$x1" layoutX="24.0" layoutY="179.0" text="销售商：" />
     <TextField fx:id="member" layoutX="85.0" layoutY="175.0" />
     <TextField fx:id="note" layoutX="508.0" layoutY="175.0" prefHeight="49.0" prefWidth="269.0" />
     <Label fx:id="operator" font="$x1" layoutX="85.0" layoutY="206.0" prefWidth="126.0" text="xxx" />
@@ -54,13 +59,13 @@
           <children>
             <TableView fx:id="commodityTable" prefHeight="338.0" prefWidth="755.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columns>
-                <TableColumn fx:id="idColumn" prefWidth="100.0" text="编号" />
-                <TableColumn fx:id="nameColumn" prefWidth="100.0" text="名称" />
-                <TableColumn fx:id="modelColumn" prefWidth="75.0" text="型号" />
-                <TableColumn fx:id="amountColumn" prefWidth="75.0" text="数量" />
-                <TableColumn fx:id="moneyColumn" prefWidth="75.0" text="单价" />
-                <TableColumn fx:id="totalmoneyColumn" prefWidth="75.0" text="金额" />
-                <TableColumn fx:id="noteColumn" prefWidth="280.0" text="备注" />
+                <TableColumn prefWidth="100.0" text="编号" fx:id="idColumn" />
+                <TableColumn prefWidth="100.0" text="名称" fx:id="nameColumn" />
+                <TableColumn prefWidth="75.0" text="型号" fx:id="modelColumn" />
+                <TableColumn prefWidth="75.0" text="数量" fx:id="amountColumn" />
+                <TableColumn prefWidth="75.0" text="单价" fx:id="moneyColumn" />
+                <TableColumn prefWidth="75.0" text="金额" fx:id="totalmoneyColumn" />
+                <TableColumn prefWidth="280.0" text="备注" fx:id="noteColumn" />
               </columns>
             </TableView>
           </children>
@@ -82,10 +87,6 @@
     <TextField fx:id="name" layoutX="85.0" layoutY="261.0" prefHeight="23.0" prefWidth="140.0" />
     <Button fx:id="search" font="$x1" layoutX="14.0" layoutY="529.0" mnemonicParsing="false" onAction="#search" prefHeight="24.0" prefWidth="70.0" text="查   询" />
     <Button fx:id="deleteB" font="$x1" layoutX="87.0" layoutY="529.0" mnemonicParsing="false" onAction="#delete" prefHeight="24.0" prefWidth="70.0" text="删   除" />
-      <Button fx:id="reviseB" layoutX="878.0" layoutY="567.0" mnemonicParsing="false" onAction="#revise" prefHeight="19.0" prefWidth="64.0" text="确  认">
-         <font>
-            <Font size="14.0" fx:id="x11" />
-         </font>
-      </Button>
+    <Button fx:id="reviseB" font="$x1" layoutX="878.0" layoutY="567.0" mnemonicParsing="false" onAction="#revise" prefHeight="19.0" prefWidth="64.0" text="确  认" />
   </children>
 </AnchorPane>

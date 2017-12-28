@@ -299,8 +299,14 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	public void setBill(){
 
 		memberl=mbs.findMemberByName(member.getText());
+		int couponValue;
+		if(coupon.getText()==null||coupon.getText().length()<=0){
+			couponValue=0;
+		}else{
+			couponValue=Integer.parseInt(coupon.getText());
+		}
 		SaleBillVO salebill=new SaleBillVO(billid.getText(),MainApp.getID(),memberl.getID(),comlist,
-			comlist.getSaleTotal(),0,time,note.getText(),Integer.parseInt(coupon.getText()),Double.parseDouble(discount.getText().substring(1, discount.getText().length()))/100,Double.parseDouble(discountafter.getText()));
+			comlist.getSaleTotal(),0,time,note.getText(),couponValue,Double.parseDouble(discount.getText().substring(1, discount.getText().length()))/100,Double.parseDouble(discountafter.getText()));
 
 		String isSubmit="fail Submit";
 		 if(sbbs.submitSaleBill(salebill)){

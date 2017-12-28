@@ -4,9 +4,11 @@ import java.rmi.RemoteException;
 import java.sql.Date;
 import java.util.ArrayList;
 
+import businesslogic.accountbl.AccountController;
 import businesslogic.memberbl.MemberController;
 import po.PayBillPO;
 import rmi.RemoteHelper;
+import vo.AccountVO;
 import vo.MemberVO;
 import vo.OverBillVO;
 import vo.PayBillVO;
@@ -48,6 +50,15 @@ public class PayBill {
 				quota=Math.pow(10,moneystr.indexOf("."));
 				member.setQuota(quota);
 				mcon.updateMember(member);
+				//减少账户里的金额
+				AccountController acon=new AccountController();
+				AccountList accountList=vo.getAccountList();
+				for(int j=0;j<accountList.getListLength();j++){
+					AccountLineItem lineItem=accountList.getItem(j);
+					AccountVO accountVO=acon.findAccountByID(lineItem.getAccountID());
+					accountVO.setDeposit(accountVO.getDeposit()-lineItem.getMoney());
+					acon.updateAccount(accountVO);
+				}
 			}else{
 				vo.setState(2);
 			}
