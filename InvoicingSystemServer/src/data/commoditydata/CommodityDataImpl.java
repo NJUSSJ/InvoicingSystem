@@ -148,7 +148,7 @@ public class CommodityDataImpl implements CommodityDataService{
 				return true;
 			}
 		} catch (SQLException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		return false;
 	}

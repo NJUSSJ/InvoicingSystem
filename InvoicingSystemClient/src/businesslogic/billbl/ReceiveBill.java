@@ -39,6 +39,7 @@ public class ReceiveBill{
 				MemberVO member=memberCon.findMemberByID(vo.getMemberID());
 				double money=member.getShouldPay()-vo.getSum();
 				member.setShouldPay(money);
+				member.setQuota(member.getShouldGet()-member.getShouldPay());
 				memberCon.updateMember(member);
 				//增加账户里的金额
 				AccountController acon=new AccountController();

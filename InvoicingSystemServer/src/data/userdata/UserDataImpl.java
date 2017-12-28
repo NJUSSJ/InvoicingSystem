@@ -36,7 +36,6 @@ public class UserDataImpl implements UserDataService {
 				}
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -69,7 +68,6 @@ public class UserDataImpl implements UserDataService {
 				}
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -148,7 +146,6 @@ public class UserDataImpl implements UserDataService {
 			
 			return results;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

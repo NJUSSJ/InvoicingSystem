@@ -96,6 +96,7 @@ public class SaleBill{
 				MemberVO member=memberCon.findMemberByID(vo.getMemberID());
 				double money=vo.getSum()+member.getShouldPay();
 				member.setShouldPay(money);
+				member.setQuota(member.getShouldGet()-member.getShouldPay());
 				memberCon.updateMember(member);
 				//根据通过的销售单生成一份库存赠送单
 				ArrayList<MemberPromotionVO> memberPros=pcon.findMemberPromotionByRank(member.getRank());

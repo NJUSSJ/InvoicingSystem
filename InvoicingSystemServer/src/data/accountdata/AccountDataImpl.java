@@ -46,7 +46,6 @@ public class AccountDataImpl implements AccountDataService {
 				
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
@@ -65,7 +64,6 @@ public class AccountDataImpl implements AccountDataService {
 				return true;
 			}
 		} catch (SQLException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return false;
@@ -84,7 +82,6 @@ public class AccountDataImpl implements AccountDataService {
 				return true;
 			}
 		} catch (SQLException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return false;
@@ -132,7 +129,6 @@ public class AccountDataImpl implements AccountDataService {
 			}
 			return results;
 		} catch (SQLException e) {
-		
 			e.printStackTrace();
 		}
 		return null;
@@ -159,7 +155,6 @@ public class AccountDataImpl implements AccountDataService {
 			}
 			return results;
 		} catch (SQLException e) {
-		
 			e.printStackTrace();
 		}
 		return null;

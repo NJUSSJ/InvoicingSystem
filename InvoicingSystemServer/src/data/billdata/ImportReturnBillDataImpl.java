@@ -48,7 +48,7 @@ public class ImportReturnBillDataImpl implements ImportReturnBillDataService {
 				return true;
 			}
 		} catch (SQLException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		return false;
 	}

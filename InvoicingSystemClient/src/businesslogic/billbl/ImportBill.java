@@ -43,7 +43,7 @@ public class ImportBill{
 				MemberVO member=memberCon.findMemberByID(vo.getMemberID());
 				double money=vo.getSum()+member.getShouldGet();
 				member.setShouldGet(money);
-				double quota=Math.pow(10, (money+"").length()-1)*Integer.parseInt((money+"").substring(0, 1));
+				double quota=member.getShouldGet()-member.getShouldPay();
 				member.setQuota(quota);
 				memberCon.updateMember(member);
 				//修改库存数量，最近进价
