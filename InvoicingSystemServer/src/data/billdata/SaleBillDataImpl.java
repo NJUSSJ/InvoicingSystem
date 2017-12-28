@@ -61,7 +61,7 @@ public class SaleBillDataImpl implements SaleBillDataService{
 	 */
 	@Override
 	public boolean update(SaleBillPO po) throws RemoteException {
-		String sql="update salebills set state='"+po.getState()+"' where id="+po.getID()+"'";
+		String sql="update salebills set state='"+po.getState()+"' where id='"+po.getID()+"'";
 		
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {
@@ -213,11 +213,41 @@ public class SaleBillDataImpl implements SaleBillDataService{
 	@Override
 	public ArrayList<SaleBillPO> findSaleBillbyField(String commodity, String user, String member)
 			throws RemoteException {
-		long userid=new UserDataImpl().findUserbyName(user).getID();
-		long memberid=new MemberDataImpl().findMemberbyName(member).getID();
-		
-		String sql="select * from salebills where userid='"+userid+"' and memberid='"+memberid+"' and commoditylist like '%"+commodity+"%'";
-		
+		boolean ce=true;
+		boolean ue=true;
+		boolean me=true;
+		long userid=-1,memberid=-1;
+		String sql="";
+		if(commodity==null||commodity.length()<=0){
+			ce=false;
+		}
+		if(user==null||user.length()<=0){
+			ue=false;
+		}else{
+			userid=new UserDataImpl().findUserbyName(user).getID();
+		}
+		if(member==null||member.length()<=0){
+			me=false;
+		}else{
+			memberid=new MemberDataImpl().findMemberbyName(member).getID();
+		}
+		if(ue&&me&&ce){
+			sql="select * from salebills where userid='"+userid+"' and memberid='"+memberid+"' and commoditylist like '%,"+commodity+",%'";
+		}else if(!ue&&me&&ce){
+			sql="select * from salebills where memberid='"+memberid+"' and commoditylist like '%,"+commodity+",%'";
+		}else if(ue&&!me&&ce){
+			sql="select * from salebills where userid='"+userid+"' and commoditylist like '%,"+commodity+",%'";
+		}else if(ue&&me&&!ce){
+			sql="select * from salebills where userid='"+userid+"' and memberid='"+memberid+"'";
+		}else if(!ue&&!me&&ce){
+			sql="select * from salebills where commoditylist like '%,"+commodity+",%'";
+		}else if(!ue&&me&&!ce){
+			sql="select * from salebills where memberid='"+memberid+"'";
+		}else if(ue&&!me&&!ce){
+			sql="select * from salebills where userid='"+userid+"'";
+		}else{
+			sql="select * from salebills";
+		}
 		ArrayList<SaleBillPO> results=new ArrayList<>();
 		try {
 			ResultSet result=DataFactory.statement.executeQuery(sql);
@@ -231,11 +261,14 @@ public class SaleBillDataImpl implements SaleBillDataService{
 				int num=result.getInt("num");
 				String remark=result.getString("remark");
 				
+				long usertmpid=result.getLong("userid");
+				long membertmpid=result.getLong("memberid");
+				
 				int coupon=result.getInt("coupon");
 				double discount=result.getDouble("discount");
 				double ultimate=result.getDouble("ultimate");
-				
-				SaleBillPO tmpPO=new SaleBillPO(id, userid, memberid, commoditylist, sum, state, time, num, remark, coupon, discount, ultimate);				if(state==1)
+				SaleBillPO tmpPO=new SaleBillPO(id, usertmpid, membertmpid, commoditylist, sum, state, time, num, remark, coupon, discount, ultimate);				
+				if(state==1||state==3)
 				results.add(tmpPO);
 			}
 			return results;

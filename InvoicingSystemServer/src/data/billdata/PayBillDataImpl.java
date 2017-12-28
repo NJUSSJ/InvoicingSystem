@@ -200,10 +200,29 @@ public class PayBillDataImpl implements PayBillDataService {
 
 	@Override
 	public ArrayList<PayBillPO> findPayBillbyField(String user,String member) throws RemoteException {
-
-		long userid=new UserDataImpl().findUserbyName(user).getID();
-		long memberid=new MemberDataImpl().findMemberbyName(member).getID();
-		String sql="select * from paybills where userid="+userid+"' and memberid='"+memberid+"'";
+		boolean ue=true;
+		boolean me=true;
+		long userid=-1,memberid=-1;
+		String sql="";
+		if(user==null||user.length()<=0){
+			ue=false;
+		}else{
+			userid=new UserDataImpl().findUserbyName(user).getID();
+		}
+		if(member==null||member.length()<=0){
+			me=false;
+		}else{
+			memberid=new MemberDataImpl().findMemberbyName(member).getID();
+		}
+		if(ue&&me){
+			sql="select * from paybills where userid="+userid+"' and memberid='"+memberid+"'";
+		}else if(!ue&&me){
+			sql="select * from paybills where memberid='"+memberid+"'";
+		}else if(ue&&!me){
+			sql="select * from paybills where userid="+userid+"'";
+		}else{
+			sql="select * from paybills";
+		}
 		ArrayList<PayBillPO> results=new ArrayList<>();
 		try {
 			ResultSet result=DataFactory.statement.executeQuery(sql);
@@ -216,12 +235,13 @@ public class PayBillDataImpl implements PayBillDataService {
 				Date time=result.getDate("time");
 				int state=result.getInt("state");
 				
-				PayBillPO tmpPO=new PayBillPO(id, userid, memberid, accountlist, sum, time, state);
+				long usertmpid=result.getLong("userid");
+				long membertmpid=result.getLong("memberid");
 				
-				if(state==1)
+				PayBillPO tmpPO=new PayBillPO(id, usertmpid, membertmpid, accountlist, sum, time, state);
+				
+				if(state==1||state==3)
 				results.add(tmpPO);
-				
-				
 			}
 			return results;
 		} catch (SQLException e) {

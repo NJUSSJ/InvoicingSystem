@@ -188,6 +188,7 @@ public class OverBillDataImpl implements OverBillDataService {
 
 	@Override
 	public ArrayList<OverBillPO> findOverBillbyField(String user) throws RemoteException {
+		if(user==null||user.length()<=0)return findOverBills();
 		long userid=new UserDataImpl().findUserbyName(user).getID();
 		
 		String sql="select * from overbills where userid='"+userid+"'";
@@ -205,7 +206,7 @@ public class OverBillDataImpl implements OverBillDataService {
 				double sum=result.getDouble("sum");
 				OverBillPO tmpPO=new OverBillPO(id, userid, commodityname, time, state,num,sum);
 							
-				if(state==1)
+				if(state==1||state==3)
 				results.add(tmpPO);
 			}
 			return results;

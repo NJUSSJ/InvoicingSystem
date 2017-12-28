@@ -119,7 +119,6 @@ public class EmailViewController implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
 		long idLong=MainApp.getID();
 		String idString=idLong+"";
 		while(idString.length()<5) {

@@ -172,6 +172,7 @@ public class WarningBillDataImpl implements WarningBillDataService {
 
 	@Override
 	public ArrayList<WarningBillPO> findWarningBillbyField(String user) throws RemoteException {
+		if(user==null)return null;
 		long userid=new UserDataImpl().findUserbyName(user).getID();
 		
 		String sql="select * from warningbills";

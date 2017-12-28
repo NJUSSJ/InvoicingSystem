@@ -917,7 +917,7 @@ public class DataRemoteObject extends UnicastRemoteObject implements UserDataSer
 	@Override
 	public ArrayList<ImportReturnBillPO> findImportReturnBillbyField(String user, String member)
 			throws RemoteException {
-		return findImportReturnBillbyField(user, member);
+		return importreturnbillservice.findImportReturnBillbyField(user, member);
 	}
 
 	@Override
@@ -1003,7 +1003,6 @@ public class DataRemoteObject extends UnicastRemoteObject implements UserDataSer
 
 	@Override
 	public long getLargestIDofLog() throws RemoteException {
-		// TODO Auto-generated method stub
 		return logService.getLargestIDofLog();
 	}
 

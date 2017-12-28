@@ -192,11 +192,27 @@ public class GiftBillDataImpl implements GiftBillDataService {
 
 	@Override
 	public ArrayList<GiftBillPO> findGiftBillsByField(String user, String member) throws RemoteException{
-		long userid=new UserDataImpl().findUserbyName(user).getID();
-		long memberid=new MemberDataImpl().findMemberbyName(member).getID();
-		
-		String sql="select * from giftbills where userid='"+userid+"' and memberid="+memberid+"'";
-		
+		boolean ue=true;
+		boolean me=true;
+		long userid=-1,memberid=-1;
+		String sql="";
+		if(user==null||user.length()<=0){
+			ue=false;
+		}else{
+			userid=new UserDataImpl().findUserbyName(user).getID();
+		}
+		if(member==null||member.length()<=0){
+			memberid=new MemberDataImpl().findMemberbyName(member).getID();
+		}
+		if(ue&&me){
+			sql="select * from giftbills where userid='"+userid+"' and memberid='"+memberid+"'";
+		}else if(!ue&&me){
+			sql="select * from giftbills where memberid='"+memberid+"'";
+		}else if(ue&&!me){
+			sql="select * from giftbills where userid='"+userid+"'";
+		}else{
+			sql="select * from giftbills";
+		}
 		ArrayList<GiftBillPO> results=new ArrayList<>();
 		
 		try {
@@ -207,8 +223,12 @@ public class GiftBillDataImpl implements GiftBillDataService {
 				Date time=result.getDate("time");
 				String giftlist=result.getString("giftlist");
 				int state=result.getInt("state");
-				GiftBillPO tmpPO=new GiftBillPO(id, userid, memberid, giftlist, time, state);
-				if(state==1)
+				
+				long usertmpid=result.getLong("userid");
+				long membertmpid=result.getLong("memberid");
+				
+				GiftBillPO tmpPO=new GiftBillPO(id, usertmpid, membertmpid, giftlist, time, state);
+				if(state==1||state==3)
 				results.add(tmpPO);
 			}
 			

@@ -190,6 +190,7 @@ public class LossBillImpl implements LossBillDataService {
 
 	@Override
 	public ArrayList<LossBillPO> findLossBillbyField(String user) throws RemoteException {
+		if(user==null||user.length()<=0)return findLossBills();
 		long userid=new UserDataImpl().findUserbyName(user).getID();
 		
 		String sql="select * from lossbills where userid='"+userid+"'";
@@ -208,7 +209,7 @@ public class LossBillImpl implements LossBillDataService {
 			
 				LossBillPO tmpPO=new LossBillPO(id, userid, commodityname, time, state, num,sum);
 				
-				if(state==1)
+				if(state==1||state==3)
 				results.add(tmpPO);
 			}
 			return results;

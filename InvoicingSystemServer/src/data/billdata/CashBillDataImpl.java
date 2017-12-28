@@ -177,6 +177,7 @@ public class CashBillDataImpl implements CashBillDataService{
 
 	@Override
 	public ArrayList<CashBillPO> findCashBillbyField(String  user) throws RemoteException {
+		if(user==null||user.length()<=0)return findCashBills();
 		long userid=new UserDataImpl().findUserbyName(user).getID();
 		String sql="select * from cashbills where userid='"+userid+"'";
 		
@@ -193,7 +194,7 @@ public class CashBillDataImpl implements CashBillDataService{
 				long accountid=result.getLong("accountid");
 				CashBillPO tmpPO=new CashBillPO(id, userid, accountid, items, state, time, sum);
 				
-				if(state==1)
+				if(state==1||state==3)
 				results.add(tmpPO);
 			}
 			

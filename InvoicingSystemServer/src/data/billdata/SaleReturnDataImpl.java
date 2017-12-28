@@ -190,12 +190,29 @@ String sql="delete from salereturnbills where id='"+po.getID()+"')";
 
 	@Override
 	public ArrayList<SaleReturnBillPO> findSaleReturnBillbyField(String user, String member) throws RemoteException {
-		long userid=new UserDataImpl().findUserbyName(user).getID();
-		
-		long memberid=new MemberDataImpl().findMemberbyName(member).getID();
-		
-		String sql="select * from salebills where userid='"+userid+"' and memberid='"+memberid+"'";
-		
+		boolean ue=true;
+		boolean me=true;
+		long userid=-1,memberid=-1;
+		String sql="";
+		if(user==null||user.length()<=0){
+			ue=false;
+		}else{
+			userid=new UserDataImpl().findUserbyName(user).getID();
+		}
+		if(member==null||member.length()<=0){
+			me=false;
+		}else{
+			memberid=new MemberDataImpl().findMemberbyName(member).getID();
+		}
+		if(ue&&me){
+			sql="select * from salereturnbills where userid='"+userid+"' and memberid='"+memberid+"'";
+		}else if(!ue&&me){
+			sql="select * from salereturnbills where memberid='"+memberid+"'";
+		}else if(ue&&!me){
+			sql="select * from salereturnbills where userid='"+userid+"'";
+		}else{
+			sql="select * from salereturnbills";
+		}
 		ArrayList<SaleReturnBillPO> results=new ArrayList<>();
 		try {
 			ResultSet result=DataFactory.statement.executeQuery(sql);
@@ -209,8 +226,11 @@ String sql="delete from salereturnbills where id='"+po.getID()+"')";
 				int num=result.getInt("num");
 				String remark=result.getString("remark");
 				
-				SaleReturnBillPO tmpPO=new SaleReturnBillPO(id, userid, memberid, commoditylist, sum, state, time, num, remark);
-				if(state==1)
+				long usertmpid=result.getLong("userid");
+				long membertmpid=result.getLong("memberid");
+				
+				SaleReturnBillPO tmpPO=new SaleReturnBillPO(id, usertmpid, membertmpid, commoditylist, sum, state, time, num, remark);
+				if(state==1||state==3)
 				results.add(tmpPO);
 			}
 			return results;
@@ -222,7 +242,7 @@ String sql="delete from salereturnbills where id='"+po.getID()+"')";
 
 	@Override
 	public ArrayList<SaleReturnBillPO> findSaleReturnBillbyUser(long userid) throws RemoteException {
-		String sql="select * from salebills where userid='"+userid+"'";
+		String sql="select * from salereturnbills where userid='"+userid+"'";
 		
 		ArrayList<SaleReturnBillPO> results=new ArrayList<>();
 		try {
