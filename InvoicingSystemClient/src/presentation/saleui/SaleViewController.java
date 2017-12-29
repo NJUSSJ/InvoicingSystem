@@ -188,8 +188,9 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	public void delete(){
 		int selectedIndex = commodityTable.getSelectionModel().getSelectedIndex();
 	   	 if (selectedIndex >= 0) {
+	   		 comlist.deleteCommodity(item);
 	   		 commodityTable.getItems().remove(selectedIndex);
-	         comlist.deleteCommodity(item);
+	         
 	          
 	         discountbefore.setText(""+comlist.getSaleTotal());
 	         double discountl=sbbs.handleSale(memberl.getRank(), comlist)/comlist.getSaleTotal();
