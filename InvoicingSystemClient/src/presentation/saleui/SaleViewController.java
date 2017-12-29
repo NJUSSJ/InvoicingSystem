@@ -333,6 +333,9 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 				    commodityData.clear();
 				    member.setText("");
 				    note.setText("");
+				   discountbefore.setText("");
+				   discount.setText("");
+				   discountafter.setText("");
 			 isSubmit="Succeed Submit";
 		 }
 	     Alert alert = new Alert(AlertType.INFORMATION);
@@ -345,13 +348,11 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 
 
 	public void setStage(Stage stage) {
-		// TODO Auto-generated method stub
 		this.stage=stage;
 	}
 
 
 	public void setVo(SaleBillVO m) {
-		// TODO Auto-generated method stub
 		billid.setText(m.getID());
 		id.setText("ID:"+MainApp.getID());
 		memberl=mbs.findMemberByID(m.getMemberID());

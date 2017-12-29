@@ -14,7 +14,7 @@ public class CommodityList {
 	}
 	/**
 	 * 
-	 * @param info:形式为"id,num,salePrice,importPrice,remark id,num,salePrice,importPrice,remark..."的字符串
+	 * @param info:形式为"num,id,salePrice,importPrice,remark num,id,salePrice,importPrice,remark..."的字符串
 	 */
 	public CommodityList(String info){
 			list=new ArrayList<>();
@@ -91,7 +91,7 @@ public class CommodityList {
 		return num;	
 	}
 	/**
-	 * @return 形式为"id,num,salePrice,importPrice id,num,salePrice,importPrice..."的字符串
+	 * @return 形式为"num,id,salePrice,importPrice num,id,salePrice,importPrice..."的字符串
 	 */
 	public String toString(){
 		String temp="";

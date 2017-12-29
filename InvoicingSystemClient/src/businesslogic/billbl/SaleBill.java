@@ -184,7 +184,8 @@ public class SaleBill{
 			boolean pass=true;
 			String[] temp=p.getList().toString().split(" ");
 			for(String each:temp){
-				long id=Long.parseLong(each.substring(0, each.indexOf(",")));
+				String[] commodityInfo=each.split(",");
+				long id=Long.parseLong(commodityInfo[1]);
 				if(!list.hasCommodity(id)){
 					pass=false;
 					break;
@@ -193,27 +194,28 @@ public class SaleBill{
 			if(pass){
 				for(String each:temp){
 					String[] info=each.split(",");
-					int num=Integer.parseInt(info[1]);
-					double salePrice=Double.parseDouble(info[2]);
-					origin=origin-num*salePrice*(1-p.getDiscount());//减去每件商品折扣掉的钱
+					long commodityID=Long.parseLong(info[1]);
+					for(int k=0;k<list.getListSize();k++){
+						if(list.get(k).getCommodityID()==commodityID){
+							CommodityLineItem tmpLineItem=list.get(k);
+							origin=origin-tmpLineItem.getNum()*tmpLineItem.getSalePrice()*(1.0-p.getDiscount());//减去每件商品折扣掉的钱
+							break;
+						}
+					}
 				}
 				
 			}
 		}
 		//第二步：分析总价降价
 		double min=origin;
-		ArrayList<MemberPromotionVO> memberPromotions=pcon.findMemberPromotions();
+		ArrayList<MemberPromotionVO> memberPromotions=pcon.findMemberPromotionByRank(rank);
 		if(memberPromotions==null) {
 			return min;
 		}
 		for(MemberPromotionVO m:memberPromotions){
-			if(rank<m.getRank()){
-				continue;
-			}else{
-				double temp=origin*m.getDiscount();
-				if(temp<min){
-					min=temp;
-				}
+			double temp=origin*m.getDiscount();
+			if(temp<min){
+				min=temp;
 			}
 		}
 		return min;

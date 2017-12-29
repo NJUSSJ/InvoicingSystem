@@ -26,7 +26,7 @@ public CommodityItemData(CommodityLineItem a,Date b){
 	price.set(""+a.getSalePrice());
 	num.set(""+a.getNum());
 	totalprice.set(""+a.getNum()*a.getSalePrice());
-	SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
+	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 	String str=sdf.format(b);
 	date.set(""+str);
 }
