@@ -163,7 +163,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		noteColumn.setCellValueFactory(cellData ->cellData.getValue().getNote());
 		totalmoneyColumn.setCellValueFactory(cellData ->cellData.getValue().getTotalPrice());
 		modelColumn.setCellValueFactory(cellData ->cellData.getValue().getModel());
-		moneyColumn.setCellValueFactory(cellData ->cellData.getValue().getImportPrice());
+		moneyColumn.setCellValueFactory(cellData ->cellData.getValue().getSalePrice());
        reviseB.setVisible(false);
        commodityTable.setItems(commodityData);
 	}
@@ -174,7 +174,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 			item=newValue.getItem();
 			name.setText(newValue.getName().get());
 			num.setText(""+item.getNum());
-			lastprice.setText(""+item.getSalePrice());
+			lastprice.setText(""+newValue.getSalePrice().get());
 			notea.setText(item.getRemark());
 			ishas=1;
 			itemdata=newValue;
@@ -186,9 +186,18 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	@FXML
 	public void delete(){
 		int selectedIndex = commodityTable.getSelectionModel().getSelectedIndex();
+<<<<<<< HEAD
 	   	 if (selectedIndex >= 0) { 		 
 	         comlist.deleteCommodity(item);
 	         commodityTable.getItems().remove(selectedIndex);
+=======
+	   	 if (selectedIndex >= 0) {
+
+	   		 
+	         comlist.deleteCommodity(item);
+	         commodityTable.getItems().remove(selectedIndex);
+
+>>>>>>> 80c71f9dfefc728b0ff21e611a557eb3fc582a43
 	         discountbefore.setText(""+comlist.getSaleTotal());
 	         double discountl=sbbs.handleSale(memberl.getRank(), comlist)/comlist.getSaleTotal();
 	         if(comlist.getSaleTotal()==0) {
@@ -246,21 +255,26 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		}
 	
 		if(ishas==0){
-		itemdata=new CommodityItemData(0,a,Integer.parseInt(num.getText()),Double.parseDouble(lastprice.getText()),notea.getText());
+		itemdata=new CommodityItemData(1,a,Integer.parseInt(num.getText()),Double.parseDouble(lastprice.getText()),notea.getText());
 	    item=new CommodityLineItem(Integer.parseInt(num.getText()),a.getID(),Double.parseDouble(lastprice.getText()),a.getImportPrice(),notea.getText());
 	    comlist.addCommodity(item);
 		commodityData.add(itemdata);
 		}else{
 			ishas=0;
-			itemdata.setNum(num.getText());
+			commodityData.remove(itemdata);
 			comlist.deleteCommodity(item);
-			comlist.addCommodity(itemdata.getItem());
+			itemdata=new CommodityItemData(1,a,Integer.parseInt(num.getText()),Double.parseDouble(lastprice.getText()),notea.getText());
+		    item=new CommodityLineItem(Integer.parseInt(num.getText()),a.getID(),Double.parseDouble(lastprice.getText()),a.getImportPrice(),notea.getText());
+			
+		    commodityData.add(itemdata);
+			
+			comlist.addCommodity(item);
 		}
 		
 		 name.setText("");
-		    lastprice.setText("");
-		    num.setText("");
-		    notea.setText("");
+		 lastprice.setText("");
+		 num.setText("");
+		 notea.setText("");
 		    
 	    discountbefore.setText(""+comlist.getSaleTotal());
 	    double discountl=(sbbs.handleSale(memberl.getRank(), comlist)/comlist.getSaleTotal());
