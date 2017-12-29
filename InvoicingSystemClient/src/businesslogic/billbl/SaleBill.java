@@ -281,7 +281,9 @@ public class SaleBill{
 			}
 			for(SaleBillPO po:bills){
 				if(po.getTime().before(end)&&po.getTime().after(begin)){
-					result.add(toSaleBillVO(po));
+					if(po.getState()==1||po.getState()==3){
+						result.add(toSaleBillVO(po));
+					}
 				}
 			}
 		} catch (RemoteException e) {

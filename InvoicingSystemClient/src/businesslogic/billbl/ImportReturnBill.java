@@ -168,7 +168,9 @@ public class ImportReturnBill {
 			if(bills==null)return null;
 			for(ImportReturnBillPO po:bills){
 				if(po.getTime().before(end)&&po.getTime().after(begin)){
-					result.add(toImportReturnBillVO(po));
+					if(po.getState()==1||po.getState()==3){
+						result.add(toImportReturnBillVO(po));
+					}
 				}
 			}
 		} catch (RemoteException e) {

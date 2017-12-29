@@ -111,10 +111,15 @@ public class PayBill {
 	}
 	public ArrayList<PayBillVO> findPayBillsByInterval(Date begin,Date end){
 		ArrayList<PayBillVO> bills=findPayBills();
+		if(bills==null){
+			return null;
+		}
 		ArrayList<PayBillVO> result=new ArrayList<PayBillVO>();
 		for(PayBillVO each:bills){
 			if(each.getTime().after(begin)&&each.getTime().before(end)){
-				result.add(each);
+				if(each.getState()==1||each.getState()==3){
+					result.add(each);
+				}
 			}
 		}
 		return bills;

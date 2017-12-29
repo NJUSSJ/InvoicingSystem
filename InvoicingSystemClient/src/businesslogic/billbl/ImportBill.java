@@ -116,10 +116,13 @@ public class ImportBill{
 	}
 	public ArrayList<ImportBillVO> findImportBillsByInterval(Date begin,Date end){
 		ArrayList<ImportBillVO> bills=findImportBills();
+		if(bills==null)return null;
 		ArrayList<ImportBillVO> result=new ArrayList<ImportBillVO>();
 		for(ImportBillVO each:bills){
 			if(each.getTime().after(begin)&&each.getTime().before(end)){
-				result.add(each);
+				if(each.getState()==1||each.getState()==3){
+					result.add(each);
+				}
 			}
 		}
 		return bills;

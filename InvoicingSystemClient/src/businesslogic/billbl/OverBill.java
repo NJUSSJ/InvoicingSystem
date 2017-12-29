@@ -83,10 +83,13 @@ public class OverBill{
 	}
 	public ArrayList<OverBillVO> findOverBillsByInterval(Date begin,Date end){
 		ArrayList<OverBillVO> bills=findOverBills();
+		if(bills==null)return null;
 		ArrayList<OverBillVO> result=new ArrayList<OverBillVO>();
 		for(OverBillVO each:bills){
 			if(each.getTime().after(begin)&&each.getTime().before(end)){
-				result.add(each);
+				if(each.getState()==1||each.getState()==3){
+					result.add(each);
+				}
 			}
 		}
 		return bills;
