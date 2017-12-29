@@ -90,10 +90,13 @@ public class CashBill{
 	}
 	public ArrayList<CashBillVO> findCashBillsByInterval(Date begin,Date end){
 		ArrayList<CashBillVO> bills=findCashBills();
+		if(bills==null)return null;
 		ArrayList<CashBillVO> result=new ArrayList<CashBillVO>();
 		for(CashBillVO each:bills){
 			if(each.getTime().after(begin)&&each.getTime().before(end)){
-				result.add(each);
+				if(each.getState()==1||each.getState()==3){
+					result.add(each);
+				}
 			}
 		}
 		return result;

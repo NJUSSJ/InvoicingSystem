@@ -103,10 +103,15 @@ public class ReceiveBill{
 	}
 	public ArrayList<ReceiveBillVO> findReceiveBillsByInterval(Date begin,Date end){
 		ArrayList<ReceiveBillVO> bills=findReceiveBills();
+		if(bills==null){
+			return null;
+		}
 		ArrayList<ReceiveBillVO> result=new ArrayList<ReceiveBillVO>();
 		for(ReceiveBillVO each:bills){
 			if(each.getTime().after(begin)&&each.getTime().before(end)){
-				result.add(each);
+				if(each.getState()==1||each.getState()==3){
+					result.add(each);
+				}
 			}
 		}
 		return bills;

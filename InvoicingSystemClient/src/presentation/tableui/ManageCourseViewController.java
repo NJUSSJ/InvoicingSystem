@@ -195,11 +195,9 @@ public class ManageCourseViewController implements Initializable {
 		userColoumn.setCellValueFactory(cellData ->cellData.getValue().getoperatorProperty());
 		commentColoumn.setCellValueFactory(cellData ->cellData.getValue().getoperatorProperty());
 		
-			billTable.setItems(billData);
-		
-			billTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> getInf(newValue));
-			billData.clear();
-		    cashlist=cbbs.findCashBillsByState(0);
+		billTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> getInf(newValue));
+		 billData.clear();
+		    /*cashlist=cbbs.findCashBillsByState(0);
 		    paylist=pbbs.findPayBillsByState(0);
 		    receivelist=rbbs.findReceiveBillsByState(0);
 		    importlist=ibbs.findImportBillsByState(0);
@@ -208,7 +206,7 @@ public class ManageCourseViewController implements Initializable {
 		    salereturnlist=srbbs.findSaleReturnBillsByState(0);
 		    giftlist=gbbs.findGiftBillsByState(0);
 		    losslist=lbbs.findLossBillsByState(0);
-		    overlist=obbs.findOverBillsByState(0);
+		    overlist=obbs.findOverBillsByState(0);*/
 		    
 		    if(cashlist!=null&&!cashlist.isEmpty()){
 		    	for(CashBillVO a:cashlist){
@@ -270,9 +268,7 @@ public class ManageCourseViewController implements Initializable {
 		    		billData.add(billitem);
 		    	}
 		    }
-		    
-		    
-		    
+		    billTable.setItems(billData);
 		    
 	    search.setOnKeyPressed(new EventHandler<KeyEvent>() {
 

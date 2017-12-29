@@ -3,7 +3,6 @@ package presentation.billui;
 import java.text.SimpleDateFormat;
 
 import businesslogic.userbl.UserController;
-import businesslogicservice.userblservice.UserBLService;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import vo.CashBillVO;
@@ -16,7 +15,6 @@ import vo.PayBillVO;
 import vo.ReceiveBillVO;
 import vo.SaleBillVO;
 import vo.SaleReturnBillVO;
-import vo.UserVO;
 import vo.WarningBillVO;
 
 public class BillData {
