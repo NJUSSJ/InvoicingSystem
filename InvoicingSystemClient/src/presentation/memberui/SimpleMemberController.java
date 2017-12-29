@@ -120,7 +120,7 @@ public class SimpleMemberController implements Initializable{
 			}
 			memberVO=new MemberVO(Long.parseLong(id),Integer.parseInt(rankField.getText()),
 					Integer.parseInt(postcodeField.getText()),Integer.parseInt(categoryField.getText()),
-					nameField.getText(),Integer.parseInt(telephoneField.getText()),
+					nameField.getText(),Long.parseLong(telephoneField.getText()),
 					addressField.getText(),emailField.getText(),0.0,0.0,0.0,MainApp.getID());
 			mbs.addMember(memberVO);
 			list.add(new MemberData(memberVO));

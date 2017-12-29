@@ -282,6 +282,9 @@ public class PayBillViewController  implements Initializable{
 	 PayBillVO paybill=new PayBillVO(billid.getText() ,MainApp.getID(),tmpMember.getID(),aclist,aclist.getSum(),time,0);
 	 String isSubmit="fail Submit";
 	 if(pbs.submitPayBill(paybill)){
+		 itemMoney.setText("");
+		 itemName.setText("");
+		 itemNote.setText("");
 		 //¼ÇÂ¼ÈÕÖ¾
 		 LogController logController=new LogController();
 		 long logID=logController.findLargestID()+1;

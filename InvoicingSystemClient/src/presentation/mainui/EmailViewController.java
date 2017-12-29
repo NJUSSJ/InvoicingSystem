@@ -312,7 +312,13 @@ public class EmailViewController implements Initializable {
 	public void showDetail(){
 		String id=billitem.getid();
 		String style=billitem.getstyle();
-		int state=Integer.parseInt(billitem.getstate());
+		int state=0;
+		if(billitem.getstate().equals("通过")) {
+			state=1;
+		}else if(billitem.getstate().equals("不通过")) {
+			state=2;
+		}
+		
 		if(style.equals("销售单")){
 			SaleBillVO m=sbbs.findSaleBillByID(id);
 			try {

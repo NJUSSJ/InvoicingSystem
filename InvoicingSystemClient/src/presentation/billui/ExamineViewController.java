@@ -370,6 +370,7 @@ public class ExamineViewController implements Initializable {
 		}else if(style.equals("ÔùËÍµ¥")){
 			try {
 				GiftBillVO m=gbbs.findGiftBillByID(Long.parseLong(id));
+				System.out.println(m.getCommodityList().toString());
 				FXMLLoader loader=new FXMLLoader();
 				loader.setLocation(MainApp.class.getResource("/presentation/billui/GiftBillUI.fxml"));
 				AnchorPane giftbillUI=loader.load();

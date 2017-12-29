@@ -57,7 +57,7 @@ public class GiftBillViewController  implements Initializable{
 		memberid.setText(mbs.findMemberByID(m.getMemberID()).getName());
 		CommodityList list=m.getCommodityList();
 		for(int i=0;i<list.getListSize();i++){
-			CommodityItemData data=new CommodityItemData(list.get(0));
+			CommodityItemData data=new CommodityItemData(list.get(i));
 			cashData.add(data);
 		}
 		cashTable.setItems(cashData);

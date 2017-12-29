@@ -3,13 +3,14 @@ package presentation.billui;
 import businesslogic.billbl.CommodityLineItem;
 import businesslogic.commoditybl.CommodityController;
 import businesslogicservice.commodityblservice.CommodityBLService;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import vo.CommodityVO;
 
 public class CommodityItemData {
-StringProperty name;
-StringProperty id;
-StringProperty num;
+StringProperty name=new SimpleStringProperty();
+StringProperty id=new SimpleStringProperty();
+StringProperty num=new SimpleStringProperty();
 CommodityBLService cbs=new CommodityController();
 CommodityVO item=null;
 public CommodityItemData(CommodityLineItem a){
