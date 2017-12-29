@@ -1,3 +1,17 @@
-/vo/
-/presentation/
+/MainApp/
+/Utility/
 /businesslogic/
+/businesslogicservice/
+/data/
+/dataservice/
+/driver/
+/po/
+/presentation/
+<<<<<<< HEAD
+/businesslogic/
+=======
+/rmi/
+/runner/
+/stubs/
+/vo/
+>>>>>>> d0051e028649547933832e46406d1089433f9806
