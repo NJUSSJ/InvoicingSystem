@@ -8,18 +8,18 @@ public class PackagePromotionPO implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	long id;
-	String commodityid;
+	String commoditylist;
 	double discount;
-	public PackagePromotionPO(long id,String commodityid,double discount){
+	public PackagePromotionPO(long id,String commoditylist,double discount){
 		this.id=id;
-		this.commodityid=commodityid;
+		this.commoditylist=commoditylist;
 		this.discount=discount;
 	}
 	public long getID(){
 		return id;
 	}
-	public String getCommodityID(){
-		return commodityid;
+	public String getCommoditylist(){
+		return commoditylist;
 	}
 	public double getDiscount(){
 		return discount;
