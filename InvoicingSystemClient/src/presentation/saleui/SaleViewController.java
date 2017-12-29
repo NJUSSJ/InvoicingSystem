@@ -187,15 +187,24 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	public void delete(){
 		int selectedIndex = commodityTable.getSelectionModel().getSelectedIndex();
 	   	 if (selectedIndex >= 0) {
-	   		commodityTable.getItems().remove(selectedIndex);
-	           comlist.deleteCommodity(item);
-	           commodityData.remove(selectedIndex);
-	          discountbefore.setText(""+comlist.getSaleTotal());
-	          double discountl=sbbs.handleSale(memberl.getRank(), comlist)/comlist.getSaleTotal();
-	           discount.setText(""+discountl);
-	           double finalsale=sbbs.handleSale(memberl.getRank(), comlist)-Double.parseDouble(coupon.getText());
-	          discountafter.setText(""+finalsale);
-	   	      
+	   		 commodityTable.getItems().remove(selectedIndex);
+	         comlist.deleteCommodity(item);
+	          
+	         discountbefore.setText(""+comlist.getSaleTotal());
+	         double discountl=sbbs.handleSale(memberl.getRank(), comlist)/comlist.getSaleTotal();
+	         if(comlist.getSaleTotal()==0) {
+	        	  discount.setText("100%");
+	         }else {
+	        	 discount.setText("%"+discountl*100);
+	         }
+	        
+	         double finalsale=sbbs.handleSale(memberl.getRank(), comlist);
+	         discountafter.setText(""+finalsale);
+	         name.setText("");
+			 lastprice.setText("");
+			 num.setText("");
+			 notea.setText("");
+	         ishas=0;
 	   	 } else {
 	   	        // Nothing selected.
 	   	        Alert alert = new Alert(AlertType.WARNING);
@@ -227,6 +236,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	}
 	@FXML
 	public void confirm(){
+		
 		memberl=mbs.findMemberByName(member.getText());
 		
 		if(memberl==null) {
@@ -235,6 +245,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 			warning .showAndWait();
 			return ;
 		}
+	
 		if(ishas==0){
 		itemdata=new CommodityItemData(0,a,Integer.parseInt(num.getText()),Double.parseDouble(lastprice.getText()),notea.getText());
 	    item=new CommodityLineItem(Integer.parseInt(num.getText()),a.getID(),Double.parseDouble(lastprice.getText()),a.getImportPrice(),notea.getText());
@@ -246,10 +257,12 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 			comlist.deleteCommodity(item);
 			comlist.addCommodity(itemdata.getItem());
 		}
+		
 		 name.setText("");
 		    lastprice.setText("");
 		    num.setText("");
 		    notea.setText("");
+		    
 	    discountbefore.setText(""+comlist.getSaleTotal());
 	    double discountl=(sbbs.handleSale(memberl.getRank(), comlist)/comlist.getSaleTotal());
         discount.setText("%"+discountl*100);
@@ -299,6 +312,14 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	public void setBill(){
 
 		memberl=mbs.findMemberByName(member.getText());
+		
+		if(memberl==null) {
+			Alert warning =new Alert(AlertType.WARNING);
+			warning.setContentText("该客户不存在！");
+			warning .showAndWait();
+			return ;
+		}
+	
 		int couponValue;
 		if(coupon.getText()==null||coupon.getText().length()<=0){
 			couponValue=0;
