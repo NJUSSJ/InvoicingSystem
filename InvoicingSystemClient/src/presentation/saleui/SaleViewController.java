@@ -170,7 +170,6 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 
 	
 	private void getInf(CommodityItemData newValue) {
-		// TODO Auto-generated method stub
 		if(newValue!=null){
 			item=newValue.getItem();
 			name.setText(newValue.getName().get());
@@ -188,10 +187,11 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	public void delete(){
 		int selectedIndex = commodityTable.getSelectionModel().getSelectedIndex();
 	   	 if (selectedIndex >= 0) {
-	   		 comlist.deleteCommodity(item);
-	   		 commodityTable.getItems().remove(selectedIndex);
-	         
-	          
+
+	   		 
+	         comlist.deleteCommodity(item);
+	         commodityTable.getItems().remove(selectedIndex);
+
 	         discountbefore.setText(""+comlist.getSaleTotal());
 	         double discountl=sbbs.handleSale(memberl.getRank(), comlist)/comlist.getSaleTotal();
 	         if(comlist.getSaleTotal()==0) {
@@ -414,7 +414,6 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 
 
 	public void setVO(SaleBillVO m) {
-		// TODO Auto-generated method stub
 		unpassbill=m;
 		billid.setText(m.getID());
 		id.setText("ID:"+MainApp.getID());
@@ -441,7 +440,6 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 
 
 	public void red(SaleBillVO m) {
-		// TODO Auto-generated method stub
 		id.setText("ID:"+MainApp.getID());
 		memberl=mbs.findMemberByID(m.getMemberID());
 		operator.setText(""+m.getUserID());

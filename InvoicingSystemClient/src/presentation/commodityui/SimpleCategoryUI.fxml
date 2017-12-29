@@ -27,7 +27,7 @@
     <Separator prefHeight="3.0" prefWidth="400.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="53.0" />
     <Label layoutX="62.0" layoutY="83.0" text="ID：">
       <font>
-        <Font name="Microsoft YaHei UI Light" size="16.0" fx:id="x1" />
+        <Font size="16.0" fx:id="x1" />
       </font>
     </Label>
     <Label fx:id="id" font="$x1" layoutX="118.0" layoutY="83.0" text="xxx" />
@@ -35,11 +35,11 @@
     <TextField fx:id="name" layoutX="114.0" layoutY="119.0" prefHeight="36.0" />
     <Label font="$x1" layoutX="37.0" layoutY="169.0" text="父节点：" />
     <Label fx:id="parentid" font="$x1" layoutX="120.0" layoutY="169.0" text="xxx" />
-    <Button fx:id="reutrnB" layoutX="118.0" layoutY="201.0" mnemonicParsing="false" onAction="#cancel" opacity="0.8" prefHeight="35.0" prefWidth="80.0" text="取    消">
+    <Button fx:id="reutrnB" layoutX="248.0" layoutY="201.0" mnemonicParsing="false" onAction="#cancel" opacity="0.8" prefHeight="35.0" prefWidth="80.0" text="取    消">
       <font>
-        <Font name="Microsoft YaHei UI Light" size="13.0" fx:id="x2" />
+        <Font size="13.0" fx:id="x2" />
       </font>
     </Button>
-    <Button fx:id="rightB" font="$x2" layoutX="225.0" layoutY="201.0" mnemonicParsing="false" onAction="#setCategory" opacity="0.8" prefHeight="34.9998779296875" prefWidth="80.0" text="确    认" />
+    <Button fx:id="rightB" font="$x2" layoutX="78.0" layoutY="201.0" mnemonicParsing="false" onAction="#setCategory" opacity="0.8" prefHeight="34.9998779296875" prefWidth="80.0" text="确    认" />
   </children>
 </AnchorPane>

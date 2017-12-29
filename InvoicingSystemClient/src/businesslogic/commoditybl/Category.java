@@ -93,6 +93,9 @@ public class Category {
 	 */
 	public ArrayList<CategoryVO> findUpCategory(CategoryVO vo) {
 		ArrayList<CategoryVO> temp=null;
+		if(vo==null){
+			return null;
+		}
 		try {
 			temp=new ArrayList<CategoryVO>();
 			CategoryPO parent=RemoteHelper.getInstance().getCategoryDataService().findCategorybyID(vo.getParentID());
@@ -113,6 +116,9 @@ public class Category {
 	 */
 	public ArrayList<CategoryVO> findDownCategory(CategoryVO vo) {
 		ArrayList<CategoryVO> temp = null;
+		if(vo==null){
+			return null;
+		}
 		try {
 			temp=new ArrayList<CategoryVO>();
 			ArrayList<CategoryPO> category = RemoteHelper.getInstance().getCategoryDataService().findCategorybyParent(vo.getID());
@@ -129,6 +135,9 @@ public class Category {
 	}
 	public ArrayList<CommodityVO> findDownCommodity(CategoryVO vo) {
 		ArrayList<CommodityVO> temp=null;
+		if(vo==null){
+			return null;
+		}
 		try {
 			temp=new ArrayList<CommodityVO>();
 			ArrayList<CommodityPO> commodity = RemoteHelper.getInstance().getCommodityDataService().findCommoditiesbyParent(vo.getID());
