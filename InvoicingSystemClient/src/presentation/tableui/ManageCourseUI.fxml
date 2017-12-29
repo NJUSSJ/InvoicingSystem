@@ -67,7 +67,7 @@
                 <TableColumn prefWidth="120.0" text="单据类型" fx:id="typeColoumn" />
                 <TableColumn prefWidth="120.0" text="客户" fx:id="memberColoumn" />
                 <TableColumn prefWidth="120.0" text="业务员" fx:id="userColoumn" />
-                <TableColumn prefWidth="333.0" text="备注" fx:id="commentColoumn" />
+                <TableColumn prefWidth="333.0" text="单据编号" fx:id="commentColoumn" />
               </columns>
             </TableView>
           </children>

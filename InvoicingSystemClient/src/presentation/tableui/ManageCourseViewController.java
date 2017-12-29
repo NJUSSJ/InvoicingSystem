@@ -193,7 +193,7 @@ public class ManageCourseViewController implements Initializable {
 		typeColoumn.setCellValueFactory(cellData ->cellData.getValue().getstyleProperty());
 		memberColoumn.setCellValueFactory(cellData ->cellData.getValue().getMemberProperty());
 		userColoumn.setCellValueFactory(cellData ->cellData.getValue().getoperatorProperty());
-		commentColoumn.setCellValueFactory(cellData ->cellData.getValue().getoperatorProperty());
+		commentColoumn.setCellValueFactory(cellData ->cellData.getValue().getidProperty());
 		
 		billTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> getInf(newValue));
 		 billData.clear();
