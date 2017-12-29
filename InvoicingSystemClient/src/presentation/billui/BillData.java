@@ -40,7 +40,7 @@ public class BillData {
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 		String str=sdf.format(cashbill.getTime());
 		time.set(str);
-		member.set(""+cashbill.getAccountID());
+		member.set(" ");
 		id.set(cashbill.getID());
 		operator.set(ubs.findUserByID(cashbill.getUserID()).getUsername());
 		style.set("现金费用单");

@@ -195,8 +195,10 @@ public class ManageCourseViewController implements Initializable {
 		userColoumn.setCellValueFactory(cellData ->cellData.getValue().getoperatorProperty());
 		commentColoumn.setCellValueFactory(cellData ->cellData.getValue().getoperatorProperty());
 		
-		billTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> getInf(newValue));
-		 billData.clear();
+			billTable.setItems(billData);
+		
+			billTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> getInf(newValue));
+			billData.clear();
 		    cashlist=cbbs.findCashBillsByState(0);
 		    paylist=pbbs.findPayBillsByState(0);
 		    receivelist=rbbs.findReceiveBillsByState(0);
@@ -268,7 +270,9 @@ public class ManageCourseViewController implements Initializable {
 		    		billData.add(billitem);
 		    	}
 		    }
-		    billTable.setItems(billData);
+		    
+		    
+		    
 		    
 	    search.setOnKeyPressed(new EventHandler<KeyEvent>() {
 
