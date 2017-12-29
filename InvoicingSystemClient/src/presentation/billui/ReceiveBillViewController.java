@@ -310,7 +310,6 @@ public class ReceiveBillViewController  implements Initializable{
 		this.stage=stage;
 	}
 	public void setVo(ReceiveBillVO m) {
-		id.setText(""+MainApp.getID());
 		billid.setText(m.getID());
 		account.setText(""+m.getMemberID());
 		operator.setText(""+m.getUserID());
@@ -327,13 +326,14 @@ public class ReceiveBillViewController  implements Initializable{
 	   updateB.setVisible(false);
 	   deleteB.setVisible(false);
 	   itemName.setEditable(false);
-		 itemMoney.setEditable(false);
-		itemNote.setEditable(false);
-			account.setEditable(false);
+	   itemMoney.setEditable(false);
+	   itemNote.setEditable(false);
+	   account.setEditable(false);
+	   logout.setVisible(false);
+	   id.setVisible(false);
 	}
 	public void setVO(ReceiveBillVO m) {
 		unpassbill=m;
-		id.setText(""+MainApp.getID());
 		billid.setText(m.getID());
 		account.setText(""+m.getMemberID());
 		operator.setText(""+m.getUserID());
@@ -347,6 +347,8 @@ public class ReceiveBillViewController  implements Initializable{
 	  reviseB.setVisible(true);
 	   rightB.setVisible(false);
 	   returnB.setVisible(false);
+	   logout.setVisible(false);
+	   id.setVisible(false);
 	}
 	public void red(ReceiveBillVO m) {
 		id.setText(""+MainApp.getID());
@@ -362,5 +364,7 @@ public class ReceiveBillViewController  implements Initializable{
 	   addB.setVisible(false);
 	   returnB.setVisible(false);
 	   deleteB.setVisible(false);
+	   logout.setVisible(false);
+	   id.setVisible(false);
 	}
 }

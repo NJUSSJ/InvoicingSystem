@@ -41,7 +41,8 @@ public class Sale_ReturnViewController implements Initializable{
 	private Label id;
 	@FXML
 	private Label altogether;
-	
+	@FXML
+	private Label log;
 	@FXML
 	private Button logout;
 	@FXML
@@ -343,6 +344,9 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 				note.setEditable(false);
 				 num.setEditable(false);
 				 notea.setEditable(false);
+				  logout.setVisible(false);
+				   id.setVisible(false);
+				   log.setVisible(false);
 	}
 
 
@@ -363,6 +367,9 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 			rightB.setVisible(false);
 			returnB.setVisible(false);
 			reviseB.setVisible(true);
+			  logout.setVisible(false);
+			   id.setVisible(false);
+			   log.setVisible(false);
 	}
 
 
@@ -383,6 +390,9 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 			 returnB.setVisible(false);
 			 search.setVisible(false);
 			 deleteB.setVisible(false);
+			  logout.setVisible(false);
+			   id.setVisible(false);
+			   log.setVisible(false);
              
 
 	}

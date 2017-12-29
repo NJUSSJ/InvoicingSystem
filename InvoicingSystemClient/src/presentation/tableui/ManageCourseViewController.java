@@ -42,12 +42,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -197,16 +199,6 @@ public class ManageCourseViewController implements Initializable {
 		
 		billTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> getInf(newValue));
 		 billData.clear();
-		    /*cashlist=cbbs.findCashBillsByState(0);
-		    paylist=pbbs.findPayBillsByState(0);
-		    receivelist=rbbs.findReceiveBillsByState(0);
-		    importlist=ibbs.findImportBillsByState(0);
-		    importreturnlist=irbbs.findImportReturnBillsByState(0);
-		    salelist=sbbs.findSaleBillsByState(0);
-		    salereturnlist=srbbs.findSaleReturnBillsByState(0);
-		    giftlist=gbbs.findGiftBillsByState(0);
-		    losslist=lbbs.findLossBillsByState(0);
-		    overlist=obbs.findOverBillsByState(0);*/
 		    
 		    if(cashlist!=null&&!cashlist.isEmpty()){
 		    	for(CashBillVO a:cashlist){
@@ -296,14 +288,7 @@ public class ManageCourseViewController implements Initializable {
 	}
 	
 	private void getInf(BillData newValue) {
-		if(newValue==null) {
-			return;
-		}
-		if(newValue.getchooseProperty().get().equals("否")){
-			newValue.setChoose("是");
-		}else{
-			newValue.setChoose("否");
-		}
+		
 		if(newValue!=null){
 			data=newValue;
 		}
@@ -399,7 +384,6 @@ public class ManageCourseViewController implements Initializable {
 	
 	@FXML
 	public void reverse() {
-			if(data.getchoose().equals("是")){
 				String style=data.getstyle();
 				String id=data.getid();
 				if(style.equals("销售单")){
@@ -422,6 +406,9 @@ public class ManageCourseViewController implements Initializable {
 					}
 			    	SaleBillVO newsb=new SaleBillVO(thisid,sb.getUserID(), sb.getMemberID(), newlist, -sb.getSum(), 1, nowTime, "", sb.getCoupon(), sb.getDiscount(), -sb.getUltimate());
 			        sbbs.submitSaleBill(newsb);
+			        Alert warning=new Alert(AlertType.INFORMATION);
+					 warning.setContentText("Can't reverse the lossbill!");
+					 warning.showAndWait();
 				}else if(style.equals("付款单")){
 					PayBillVO pb=data.getPayBillVO();
 					java.util.Date utiltime=new java.util.Date();
@@ -441,6 +428,9 @@ public class ManageCourseViewController implements Initializable {
 					}
 					PayBillVO newsb=new PayBillVO(thisid,pb.getUserID(), pb.getMemberID(),newlist, -pb.getSum(), nowTime, 1);
 					pbbs.submitPayBill(newsb);
+					  Alert warning=new Alert(AlertType.INFORMATION);
+						 warning.setContentText("Can't reverse the lossbill!");
+						 warning.showAndWait();
 				}else if(style.equals("收款单")){
 					ReceiveBillVO rb=data.getReceiveBillVO();
 					java.util.Date utiltime=new java.util.Date();
@@ -460,6 +450,9 @@ public class ManageCourseViewController implements Initializable {
 					}
 					ReceiveBillVO newsb=new ReceiveBillVO(thisid, rb.getUserID(), rb.getMemberID(), newlist, -rb.getSum(), nowTime, 1);
 					rbbs.submitReceiveBill(newsb);
+					  Alert warning=new Alert(AlertType.INFORMATION);
+						 warning.setContentText("Can't reverse the lossbill!");
+						 warning.showAndWait();
 				}else if(style.equals("现金费用单")){
 					CashBillVO cb=data.getCashBillVO();
 					java.util.Date utiltime=new java.util.Date();
@@ -470,17 +463,19 @@ public class ManageCourseViewController implements Initializable {
 					ArrayList<CashBillVO> tmpList=new CashBillController().findCashBillByTime(nowTime);
 					int times=tmpList.size()+1;
 					String thisid="XJFYD-"+str+"-"+df.format(times);
-				   //zhuyi
 					ArrayList<String> oldlist=cb.getAccountList();
 					ArrayList<String> newlist= new ArrayList<String>();
-					for(int i=0;i<newlist.size();i++){
-						String[] temp=newlist.get(i).split(",");
+					for(int i=0;i<oldlist.size();i++){
+						String[] temp=oldlist.get(i).split(",");
 						String enterline=temp[0]+","+"-"+temp[1]+","+temp[2];
 						newlist.add(enterline);
 					}
 					
 					CashBillVO newsb=new CashBillVO(thisid,cb.getUserID(),cb.getAccountID(),newlist,nowTime,1);
 					cbbs.submitCashBill(newsb);
+					  Alert warning=new Alert(AlertType.INFORMATION);
+						 warning.setContentText("Can't reverse the lossbill!");
+						 warning.showAndWait();
 				}else if(style.equals("销售退货单")){
 					SaleReturnBillVO srb=data.getSaleReturnBillVO();
 					java.util.Date utiltime=new java.util.Date();
@@ -501,6 +496,9 @@ public class ManageCourseViewController implements Initializable {
 					
 					SaleReturnBillVO newsb=new SaleReturnBillVO(thisid,srb.getUserID(), srb.getMemberID(), newlist, -srb.getSum(), 1, nowTime, "");
 					srbbs.submitSaleReturnBill(newsb);
+					  Alert warning=new Alert(AlertType.INFORMATION);
+						 warning.setContentText("Can't reverse the lossbill!");
+						 warning.showAndWait();
 				}else if(style.equals("进货退货单")){
 					ImportReturnBillVO irb=data.getImportReturnBillVO();
 					java.util.Date utiltime=new java.util.Date();
@@ -521,6 +519,9 @@ public class ManageCourseViewController implements Initializable {
 					
 					ImportReturnBillVO newsb=new ImportReturnBillVO(thisid,irb.getUserID(), irb.getMemberID(), newlist, -irb.getSum(), 1, nowTime, "");
 					irbbs.submitImportReturnBill(newsb);
+					  Alert warning=new Alert(AlertType.INFORMATION);
+						 warning.setContentText("Can't reverse the lossbill!");
+						 warning.showAndWait();
 				}else if(style.equals("进货单")){
 					ImportBillVO ib=data.getImportBillVO();
 					java.util.Date utiltime=new java.util.Date();
@@ -541,9 +542,27 @@ public class ManageCourseViewController implements Initializable {
 					
 					ImportBillVO newsb=new ImportBillVO(thisid,ib.getUserID(), ib.getMemberID(), newlist, -ib.getSum(), 1, nowTime, "");
 					ibbs.submitImportBill(newsb);
+					  Alert warning=new Alert(AlertType.INFORMATION);
+						 warning.setContentText("Can't reverse the lossbill!");
+						 warning.showAndWait();
+				}else if(style.equals("赠送单")) {
+					Alert warning=new Alert(AlertType.WARNING);
+					 warning.setContentText("Can't reverse the giftbill!");
+					 warning.showAndWait();
+				}else if(style.equals("报警单")) {
+					Alert warning=new Alert(AlertType.WARNING);
+					 warning.setContentText("Can't reverse the warningbill!");
+					 warning.showAndWait();
+				}else if(style.equals("报损单")) {
+					Alert warning=new Alert(AlertType.WARNING);
+					 warning.setContentText("Can't reverse the lossbill!");
+					 warning.showAndWait();
+				}else if(style.equals("报溢单")) {
+					Alert warning=new Alert(AlertType.WARNING);
+					 warning.setContentText("Can't reverse the overbill!");
+					 warning.showAndWait();
 				}
 			
-		}
 	}
 
 	@FXML
@@ -690,6 +709,22 @@ public class ManageCourseViewController implements Initializable {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(style.equals("赠送单")) {
+			Alert warning=new Alert(AlertType.WARNING);
+			 warning.setContentText("Can't reverse the giftbill!");
+			 warning.showAndWait();
+		}else if(style.equals("报警单")) {
+			Alert warning=new Alert(AlertType.WARNING);
+			 warning.setContentText("Can't reverse the warningbill!");
+			 warning.showAndWait();
+		}else if(style.equals("报损单")) {
+			Alert warning=new Alert(AlertType.WARNING);
+			 warning.setContentText("Can't reverse the lossbill!");
+			 warning.showAndWait();
+		}else if(style.equals("报溢单")) {
+			Alert warning=new Alert(AlertType.WARNING);
+			 warning.setContentText("Can't reverse the overbill!");
+			 warning.showAndWait();
 		}
 	}
 	

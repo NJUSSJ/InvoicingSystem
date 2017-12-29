@@ -232,6 +232,10 @@ public class PayBillViewController  implements Initializable{
 			 itemMoney.setText(alid.getMoney().get());
 			 itemName.setText(alid.getName().get());
 			 itemNote.setText(alid.getRemark().get());
+		}else {
+			 itemMoney.setText("");
+			 itemName.setText("");
+			 itemNote.setText("");
 		}
 	}
 	@FXML
@@ -318,7 +322,6 @@ public class PayBillViewController  implements Initializable{
 	}
 	public void setVo(PayBillVO m) {
 		// TODO Auto-generated method stub
-		id.setText(""+MainApp.getID());
 		billid.setText(m.getID());
 		account.setText(""+m.getMemberID());
 		operator.setText(""+m.getUserID());
@@ -335,14 +338,15 @@ public class PayBillViewController  implements Initializable{
 	   updateB.setVisible(false);
 	   deleteB.setVisible(false);
 	   itemName.setEditable(false);
-		 itemMoney.setEditable(false);
-		itemNote.setEditable(false);
-			account.setEditable(false);
+	   itemMoney.setEditable(false);
+	   itemNote.setEditable(false);
+	   account.setEditable(false);
+	   logout.setVisible(false);
+	   id.setVisible(false);
 	}
 	public void setVO(PayBillVO m) {
 		unpassbill=m;
 		// TODO Auto-generated method stub
-		id.setText(""+MainApp.getID());
 		billid.setText(m.getID());
 		account.setText(""+m.getMemberID());
 		operator.setText(""+m.getUserID());
@@ -355,11 +359,12 @@ public class PayBillViewController  implements Initializable{
 	   payTable.setItems(payData);
 	   rightB.setVisible(false);
 	   returnB.setVisible(false);
+	   logout.setVisible(false);
+	   id.setVisible(false);
 	   reviseB.setVisible(true);
 	}
 	public void red(PayBillVO m) {
 		// TODO Auto-generated method stub
-		id.setText(""+MainApp.getID());
 		account.setText(""+m.getMemberID());
 		operator.setText(""+m.getUserID());
 		totalsum.setText(""+m.getSum());
@@ -372,6 +377,8 @@ public class PayBillViewController  implements Initializable{
 	   deleteB.setVisible(false);
 	   returnB.setVisible(false);
 	   addB.setVisible(false);
+	   logout.setVisible(false);
+	   id.setVisible(false);
 	}
 
 	

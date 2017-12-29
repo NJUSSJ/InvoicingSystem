@@ -48,7 +48,7 @@ public class CashBillViewController  implements Initializable {
 	Stage stage;
 	ArrayList<String> items=new ArrayList<>();
 	
-	ItemData a;;
+	ItemData a=null;
 	
 	String item;
 	
@@ -166,7 +166,6 @@ public class CashBillViewController  implements Initializable {
 	@FXML
     public void update(){
 		try {
-			items.remove(item);
 			String name=itemName.getText();
 			String money=itemMoney.getText();
 			String note=itemNote.getText();
@@ -177,6 +176,7 @@ public class CashBillViewController  implements Initializable {
 					warning.showAndWait();
 					return ;
 			 }
+			items.remove(item);
 			totalSum=totalSum-Double.parseDouble(a.getmoney());
 			item=name+","+money+","+note;
 			items.add(item);
@@ -231,6 +231,10 @@ public class CashBillViewController  implements Initializable {
 		itemMoney.setText(a.getmoney());
 		itemName.setText(a.getname());
 		itemNote.setText(a.getnote());
+		}else {
+			itemMoney.setText("");
+			itemName.setText("");
+			itemNote.setText("");
 		}
 	}
 	@FXML
@@ -286,27 +290,29 @@ public class CashBillViewController  implements Initializable {
 
 	public void setVo(CashBillVO m) {
 		// TODO Auto-generated method stub
-		id.setText(""+MainApp.getID());
 		billid.setText(m.getID());
 		account.setText(""+m.getAccountID());
 		operator.setText(""+m.getUserID());
 		totalsum.setText(""+m.getSum());
+		totalSum=m.getSum();
 	   ArrayList<String> items=m.getAccountList();
 	   for(String it:items){
 		   String[] its=it.split(",");
 		   ItemData a=new ItemData(its[0],its[1],its[2]);
 		   cashData.add(a);
 	   }
-	   cashTable.setItems(cashData);
-	   rightB.setVisible(false);
-	   returnB.setVisible(false);
-	   addB.setVisible(false);
-	   updateB.setVisible(false);
-	   deleteB.setVisible(false);
-	   itemName.setEditable(false);
-		 itemMoney.setEditable(false);
+	    cashTable.setItems(cashData);
+	    rightB.setVisible(false);
+	    returnB.setVisible(false);
+	    addB.setVisible(false);
+	    updateB.setVisible(false);
+	    deleteB.setVisible(false);
+	    itemName.setEditable(false);
+		itemMoney.setEditable(false);
 		itemNote.setEditable(false);
-			account.setEditable(false);
+		account.setEditable(false);
+		logout.setVisible(false);
+		id.setVisible(false);
 	}
 	public void rivise(){
 		 CashBillBLService pbs=new CashBillController();
@@ -347,8 +353,8 @@ public class CashBillViewController  implements Initializable {
 	public void setVO(CashBillVO m) {
 		// TODO Auto-generated method stub
 		unpassbill=m;
-		id.setText(""+MainApp.getID());
 		billid.setText(m.getID());
+		totalSum=m.getSum();
 		account.setText(""+m.getAccountID());
 		operator.setText(""+m.getUserID());
 		totalsum.setText(""+m.getSum());
@@ -362,13 +368,15 @@ public class CashBillViewController  implements Initializable {
 	   rightB.setVisible(false);
 	   returnB.setVisible(false);
 	   reviseB.setVisible(true);
+		logout.setVisible(false);
+		id.setVisible(false);
 	}
 	public void red(CashBillVO m) {
 		// TODO Auto-generated method stub
-		id.setText(""+MainApp.getID());
 		account.setText(""+m.getAccountID());
 		operator.setText(""+m.getUserID());
 		totalsum.setText(""+m.getSum());
+		totalSum=m.getSum();
 	   ArrayList<String> items=m.getAccountList();
 	   for(String it:items){
 		   String[] its=it.split(",");
@@ -379,6 +387,8 @@ public class CashBillViewController  implements Initializable {
 	   deleteB.setVisible(false);
 	   returnB.setVisible(false);
 	   addB.setVisible(false);
+	   logout.setVisible(false);
+	   id.setVisible(false);
 	  
 	}
 	

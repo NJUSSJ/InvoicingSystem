@@ -39,7 +39,8 @@ import vo.MemberVO;
 public class ImportViewController implements Initializable {
 	@FXML
 	private Label id;
-	
+	@FXML
+	private Label log;
 	@FXML
 	private Button logout;
 	@FXML
@@ -339,6 +340,9 @@ public class ImportViewController implements Initializable {
 				 num.setEditable(false);
 				 notea.setEditable(false);
 				 member.setEditable(false);
+				  logout.setVisible(false);
+				   id.setVisible(false);
+				   log.setVisible(false);
 	}
 
 
@@ -359,6 +363,9 @@ public class ImportViewController implements Initializable {
 			rightB.setVisible(false);
 			returnB.setVisible(false);
 			reviseB.setVisible(true);
+			  logout.setVisible(false);
+			   id.setVisible(false);
+			   log.setVisible(false);
 	}
 
 
@@ -376,7 +383,10 @@ public class ImportViewController implements Initializable {
 			commodityTable.setItems(commodityData);
 			 returnB.setVisible(false);
 			 search.setVisible(false);
-			 deleteB.setVisible(false);
+			 deleteB.setVisible(false); 
+			 logout.setVisible(false);
+			   id.setVisible(false);
+			   log.setVisible(false);
 	}
 
 }
