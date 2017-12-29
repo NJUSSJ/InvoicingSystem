@@ -82,6 +82,7 @@ public class PackagePromotionViewController implements Initializable{
 			promotionStage.setScene(scene);
             SimplePackagePromotionController controller=loader.getController();
             controller.setStage(promotionStage);
+            controller.setList(promotionData);
             promotionStage.showAndWait();
             
 		} catch (IOException e) {
@@ -89,7 +90,9 @@ public class PackagePromotionViewController implements Initializable{
 		}
 	}
 	private void getInf(PackagePromotionData newValue) {
-		packagePromotionVO=newValue.getVO();
+		if(newValue!=null){
+			packagePromotionVO=newValue.getVO();
+		}
 	}
 	@FXML
 	public void delete(){

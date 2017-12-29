@@ -9,6 +9,8 @@ import businesslogic.billbl.CommodityList;
 import businesslogic.commoditybl.CommodityController;
 import businesslogic.promotionbl.PromotionController;
 import businesslogic.utilitybl.Utility;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -37,6 +39,11 @@ public class SimplePricePromotionController {
 	private CommodityController ccon=new CommodityController();
 	private Stage stage;
 	private CommodityList list=new CommodityList();
+	private ObservableList<PricePromotionData> tableList;
+	public void setList(ObservableList<PricePromotionData> tableList){
+		this.tableList=tableList;
+	}
+	
 	@FXML
 	public void add(){
 		String priceText=pricelineField.getText();
@@ -47,6 +54,7 @@ public class SimplePricePromotionController {
 			int coupon=Integer.parseInt(couponText);
 			PricePromotionVO vo=new PricePromotionVO(id,priceline,list,coupon);
 			pcon.addPricePromotion(vo);
+			tableList.add(new PricePromotionData(vo));
 			Alert alert = new Alert(AlertType.WARNING);
 	        alert.initOwner(MainApp.getPrimaryStage());
 	        alert.setTitle("Add success");

@@ -48,6 +48,6 @@ public class PackagePromotion {
 			return null;
 		}
 		return new PackagePromotionVO(packagePromotionPO.getID(),
-		new CommodityList(packagePromotionPO.getCommodityID()),packagePromotionPO.getDiscount());	
+		new CommodityList(packagePromotionPO.getCommoditylist()),packagePromotionPO.getDiscount());	
 	}
 }

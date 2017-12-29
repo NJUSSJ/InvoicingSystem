@@ -85,6 +85,7 @@ public class PricePromotionViewController implements Initializable{
 			promotionStage.setScene(scene);
             SimplePricePromotionController controller=loader.getController();
             controller.setStage(promotionStage);
+            controller.setList(promotionData);
             promotionStage.showAndWait();
             
 		} catch (IOException e) {
@@ -92,7 +93,9 @@ public class PricePromotionViewController implements Initializable{
 		}
 	}
 	private void getInf(PricePromotionData newValue) {
-		pricePromotionVO=newValue.getVO();
+		if(newValue!=null){
+			pricePromotionVO=newValue.getVO();
+		}
 	}
 	@FXML
 	public void delete(){
