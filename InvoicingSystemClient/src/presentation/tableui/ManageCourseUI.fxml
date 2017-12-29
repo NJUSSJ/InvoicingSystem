@@ -25,9 +25,9 @@
         <Image url="@../../../resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <Label fx:id="id" layoutX="814.0" layoutY="11.0" prefWidth="64.0" text="ID:XXX">
+    <Label fx:id="id" layoutX="795.0" layoutY="11.0" prefWidth="82.99990000000253" text="ID:XXX">
       <font>
-        <Font name="Microsoft YaHei UI Light" size="16.0" fx:id="x1" />
+        <Font size="16.0" fx:id="x1" />
       </font>
     </Label>
     <Label font="$x1" layoutX="881.0" layoutY="11.0" onMouseClicked="#logout" text="|| 登出" />
