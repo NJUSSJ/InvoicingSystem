@@ -1,19 +1,17 @@
 package presentation.promotionui;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import MainApp.MainApp;
 import businesslogic.billbl.CommodityLineItem;
 import businesslogic.billbl.CommodityList;
 import businesslogic.commoditybl.CommodityController;
 import businesslogic.promotionbl.PromotionController;
 import businesslogic.utilitybl.Utility;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import vo.CommodityVO;
 import vo.MemberPromotionVO;
@@ -39,6 +37,7 @@ public class SimpleMemberPromotionController {
 	CommodityList list=new CommodityList();
 	PromotionController pcon=new PromotionController();
 	CommodityController ccon=new CommodityController();
+	ObservableList<MemberPromotionData> promotioonList;
 	@FXML
 	public void add(){
 		String rankText=rank.getText();
@@ -51,14 +50,29 @@ public class SimpleMemberPromotionController {
 			int rankValue=Integer.parseInt(rankText);
 			int couponValue=Integer.parseInt(couponText);
 			MemberPromotionVO vo=new MemberPromotionVO(id,rankValue,discountValue,list,couponValue);
-			pcon.addMemberPromotion(vo);
-			Alert alert = new Alert(AlertType.WARNING);
-	        alert.initOwner(MainApp.getPrimaryStage());
-	        alert.setTitle("Add success");
-	        alert.setHeaderText("Add Success");
-	        alert.setContentText("Add promotion successfully");
-	        alert.showAndWait();
-	        stage.close();
+			
+			
+			if(pcon.addMemberPromotion(vo)) {
+				MemberPromotionData tmpData=new MemberPromotionData(vo);
+				
+				promotioonList.add(tmpData);
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.initOwner(MainApp.getPrimaryStage());
+				alert.setTitle("Add success");
+				alert.setHeaderText("Add Success");
+				alert.setContentText("Add promotion successfully");
+				alert.showAndWait();
+				stage.close();
+			}else {
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.initOwner(MainApp.getPrimaryStage());
+				alert.setTitle("Add Failed");
+				alert.setHeaderText("Add Failed");
+				alert.setContentText("Add Failed");
+				alert.showAndWait();
+			}
+			
+			
 		}else{
 			Alert alert = new Alert(AlertType.WARNING);
 	        alert.initOwner(MainApp.getPrimaryStage());
@@ -94,7 +108,8 @@ public class SimpleMemberPromotionController {
 	        alert.setContentText("Can't find the gift");
 	        alert.showAndWait();
 		}
-		
+		gift.setText("");
+		number.setText("");
 	}
 	@FXML
 	public void back(){
@@ -102,5 +117,8 @@ public class SimpleMemberPromotionController {
 	}
 	public void setStage(Stage stage){
 		this.stage=stage;
+	}
+	public void setList(ObservableList<MemberPromotionData> list) {
+		this.promotioonList=list;
 	}
 }

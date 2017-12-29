@@ -53,7 +53,7 @@ public class PackagePromotionViewController implements Initializable{
 		while(idString.length()<5) {
 			idString="0"+idString;
 		}
-		id.setText("ID:"+idString);
+		id.setText(""+idString);
 		ArrayList<PackagePromotionVO> list=pcon.findPackagePromotions();
 		for(PackagePromotionVO p:list){
 			promotionData.add(new PackagePromotionData(p));

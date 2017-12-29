@@ -55,7 +55,7 @@ public class PricePromotionViewController implements Initializable{
 		while(idString.length()<5) {
 			idString="0"+idString;
 		}
-		id.setText("ID:"+idString);
+		id.setText(""+idString);
 		ArrayList<PricePromotionVO> list=pcon.findPricePromotions();
 		for(PricePromotionVO p:list){
 			promotionData.add(new PricePromotionData(p));

@@ -10,13 +10,13 @@ public class MemberPromotionPO implements Serializable{
 	long id;
 	int rank;
 	double discount;
-	String giftlist;//ÔùÆ·
+	String gifts;//ÔùÆ·
 	int coupon;
-	public MemberPromotionPO(long id,int rank,double discount,String giftlist,int coupon){
+	public MemberPromotionPO(long id,int rank,double discount,String gifts,int coupon){
 		this.id=id;
 		this.rank=rank;
 		this.discount=discount;
-		this.giftlist=giftlist;
+		this.gifts=gifts;
 		this.coupon=coupon;
 	}
 	public long getID(){
@@ -28,8 +28,8 @@ public class MemberPromotionPO implements Serializable{
 	public double getDiscount(){
 		return discount;
 	}
-	public String getGiftlist(){
-		return giftlist;
+	public String getGifts(){
+		return gifts;
 	}
 	public int getCoupon(){
 		return coupon;
