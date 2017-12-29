@@ -25,7 +25,7 @@
         <Image url="@../../../resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <Label fx:id="id" layoutX="866.0" layoutY="9.0" prefWidth="64.0" text="ID:XXX">
+    <Label fx:id="id" layoutX="852.0" layoutY="9.0" prefWidth="80.0" text="ID:XXX">
       <font>
         <Font size="16.0" fx:id="x3" />
       </font>
@@ -88,12 +88,12 @@
     <Label font="$x1" layoutX="33.0" layoutY="337.0" text="单  价：" />
     <Button fx:id="deleteB" font="$x1" layoutX="90.0" layoutY="525.0" mnemonicParsing="false" onAction="#delete" prefHeight="19.0" prefWidth="64.0" text="删  除" />
     <Button fx:id="search" font="$x1" layoutX="20.0" layoutY="525.0" mnemonicParsing="false" onAction="#search" prefHeight="19.0" prefWidth="64.0" text="查  询" />
-    <Label fx:id="discountafter" layoutX="934.0" prefWidth="51.0" text="0.0" AnchorPane.bottomAnchor="271.0">
+    <Label fx:id="discountafter" layoutX="934.0" prefWidth="64.0" text="0.0" AnchorPane.bottomAnchor="271.0">
       <font>
         <Font size="13.0" fx:id="x2" />
       </font>
     </Label>
-    <Label fx:id="discountbefore" font="$x2" layoutX="932.0" prefWidth="60.0" text="0.0" AnchorPane.bottomAnchor="339.0" />
+    <Label fx:id="discountbefore" font="$x2" layoutX="932.0" prefWidth="70.0" text="0.0" AnchorPane.bottomAnchor="339.0" />
     <TextField fx:id="coupon" prefHeight="18.0" prefWidth="90.0" promptText="0" text="" AnchorPane.bottomAnchor="233.0" AnchorPane.leftAnchor="906.0" />
     <Label fx:id="discount" font="$x2" layoutX="891.0" prefWidth="80.0" text="0" AnchorPane.bottomAnchor="306.0" />
     <Label fx:id="billid" font="$x2" layoutX="87.0" layoutY="148.0" prefWidth="217.0" text="xxx" />

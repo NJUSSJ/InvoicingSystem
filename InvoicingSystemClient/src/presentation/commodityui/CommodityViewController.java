@@ -185,6 +185,7 @@ public class CommodityViewController implements Initializable{
 	@FXML
 	public void logout(){
 		MainApp.cancelUser();
+		if(stage!=null)
 		stage.close();
 		MainApp.showLoginUI();
 	}
