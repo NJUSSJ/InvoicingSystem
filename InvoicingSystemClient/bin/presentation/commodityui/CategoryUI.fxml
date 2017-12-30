@@ -9,11 +9,13 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.text.Font?>
 
@@ -21,18 +23,24 @@
   <children>
     <ImageView id="timgBLDQZZNV.jpg" fitHeight="603.0" fitWidth="1000.0" layoutX="0.0" layoutY="0.0">
       <image>
-        <Image url="@../../../resources/timgBLDQZZNV.jpg" preserveRatio="true" smooth="true" />
+        <Image url="@../../../resources/finalBG.jpg" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <Label fx:id="id" layoutX="835.0" layoutY="11.0" prefWidth="80.0" text="ID:XXX">
+    <Label fx:id="id" layoutX="802.0" layoutY="11.0" prefWidth="113.0" text="ID:XXX">
+      <effect>
+        <Reflection fx:id="x4" />
+      </effect>
       <font>
-        <Font name="Microsoft YaHei UI Light" size="15.0" fx:id="x2" />
+        <Font name="方正兰亭超细黑简体" size="18.0" fx:id="x3" />
       </font>
     </Label>
-    <Separator prefHeight="1.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="145.0" />
-    <Label layoutX="14.0" layoutY="61.0" text="商品分类管理">
+    <Separator prefHeight="1.0" prefWidth="1000.0" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="145.0" />
+    <Label layoutX="576.0" layoutY="61.0" text="商品分类管理">
+      <effect>
+        <Reflection fraction="0.3" topOffset="-10.0" />
+      </effect>
       <font>
-        <Font size="65.0" />
+        <Font name="方正兰亭超细黑简体" size="65.0" />
       </font>
     </Label>
     <ScrollPane layoutY="180.0" opacity="0.8" prefHeight="423.0" prefWidth="750.0">
@@ -53,31 +61,58 @@
     <VBox id="VBox" alignment="CENTER" layoutX="795.0" layoutY="180.0" spacing="20.0">
       <children>
         <Button fx:id="addB" mnemonicParsing="false" onAction="#addCategory" opacity="0.8" prefHeight="39.0" prefWidth="170.0" text="新 增 分 类">
+          <effect>
+            <Lighting diffuseConstant="1.4603174603174602" specularConstant="0.7126984126984126" surfaceScale="1.579365079365079" fx:id="x1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <contentInput>
+                <Reflection />
+              </contentInput>
+              <light>
+                <javafx.scene.effect.Light.Distant />
+              </light>
+            </Lighting>
+          </effect>
           <font>
-            <Font name="Microsoft JhengHei UI Light" size="13.0" fx:id="x1" />
+            <Font name="方正兰亭超细黑简体" size="16.0" fx:id="x2" />
           </font>
         </Button>
-        <Button fx:id="deleteB" font="$x1" mnemonicParsing="false" onAction="#deleteCategory" opacity="0.8" prefHeight="39.0" prefWidth="170.0" text="删 除 分 类" />
-        <Button fx:id="updateB" font="$x1" mnemonicParsing="false" onAction="#updateCategory" opacity="0.8" prefHeight="39.0" prefWidth="170.0" text="修 改 分 类" />
-        <Button fx:id="returnFather" font="$x1" mnemonicParsing="false" onAction="#returnFather" opacity="0.8" prefHeight="39.0" prefWidth="170.0" text="返回父分类" />
-        <Button fx:id="enterSon" font="$x1" mnemonicParsing="false" onAction="#enterSon" opacity="0.8" prefHeight="39.0" prefWidth="170.0" text="进入子分类" />
-        <Button fx:id="enterCommodity" font="$x1" mnemonicParsing="false" onAction="#showCommodity" opacity="0.8" prefHeight="39.0" prefWidth="170.0" text="进入商品管理界面" />
-        <Button fx:id="returnB" font="$x1" mnemonicParsing="false" onAction="#showStockMainUI" opacity="0.8" prefHeight="39.0" prefWidth="170.0" text="返     回" />
+        <Button fx:id="deleteB" effect="$x1" font="$x2" mnemonicParsing="false" onAction="#deleteCategory" opacity="0.8" prefHeight="39.0" prefWidth="170.0" text="删 除 分 类" />
+        <Button fx:id="updateB" effect="$x1" font="$x2" mnemonicParsing="false" onAction="#updateCategory" opacity="0.8" prefHeight="39.0" prefWidth="170.0" text="修 改 分 类" />
+        <Button fx:id="returnFather" effect="$x1" font="$x2" mnemonicParsing="false" onAction="#returnFather" opacity="0.8" prefHeight="39.0" prefWidth="170.0" text="返回父分类" />
+        <Button fx:id="enterSon" effect="$x1" font="$x2" mnemonicParsing="false" onAction="#enterSon" opacity="0.8" prefHeight="39.0" prefWidth="170.0" text="进入子分类" />
+        <Button fx:id="enterCommodity" effect="$x1" font="$x2" mnemonicParsing="false" onAction="#showCommodity" opacity="0.8" prefHeight="39.0" prefWidth="170.0" text="进入商品管理界面" />
+        <Button fx:id="returnB" effect="$x1" font="$x2" mnemonicParsing="false" onAction="#showStockMainUI" opacity="0.8" prefHeight="39.0" prefWidth="170.0" text="返     回" />
       </children>
     </VBox>
-    <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="14.0" layoutY="150.0">
-      <image>
-        <Image url="@../../../resources/search_1486px_1202802_easyicon.net.png" />
-      </image>
-    </ImageView>
-    <Label font="$x2" layoutX="64.0" layoutY="155.0" text="查询：" />
-    <TextField fx:id="search" layoutX="114.0" layoutY="151.0" />
-    <Button fx:id="rightB" font="$x2" layoutX="330.0" layoutY="150.0" mnemonicParsing="false" onAction="#search" opacity="0.8" prefHeight="27.0" prefWidth="91.0" text="确   认" />
-    <Button fx:id="logout" layoutX="902.0" layoutY="2.0" mnemonicParsing="false" onAction="#logout" opacity="0.0" prefHeight="39.0" prefWidth="73.0" text="||   登出">
+    <Label font="$x3" layoutX="338.0" layoutY="153.0" text="查询：">
+      <effect>
+        <Reflection />
+      </effect>
+    </Label>
+    <TextField fx:id="search" layoutX="389.0" layoutY="151.0" />
+    <Button fx:id="rightB" font="$x3" layoutX="581.0" layoutY="147.0" mnemonicParsing="false" onAction="#search" opacity="0.8" prefHeight="27.0" prefWidth="91.0" text="确   认">
+      <effect>
+        <Lighting diffuseConstant="1.4285714285714286" specularConstant="0.6968253968253968" surfaceScale="1.261904761904762">
+          <bumpInput>
+            <Shadow />
+          </bumpInput>
+          <contentInput>
+            <Reflection fraction="0.3531746031746032" />
+          </contentInput>
+          <light>
+            <javafx.scene.effect.Light.Distant />
+          </light>
+        </Lighting>
+      </effect>
+    </Button>
+    <Button fx:id="logout" layoutX="902.0" layoutY="2.0" mnemonicParsing="false" onAction="#logout" opacity="0.0" prefHeight="39.000099999997474" prefWidth="73.0" text="||   登出">
       <font>
         <Font size="13.0" />
       </font>
     </Button>
-    <Label font="$x2" layoutX="915.0" layoutY="11.0" text="||  登出" />
+    <Label effect="$x4" font="$x3" layoutX="928.0" layoutY="12.0" text="登出" />
+    <Line endX="100.0" layoutX="901.0" layoutY="126.0" opacity="0.42" startX="-331.0" startY="0.0" />
   </children>
 </AnchorPane>

@@ -9,29 +9,37 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.memberui.MemberViewController">
   <children>
-    <ImageView id="timgBLDQZZNV.jpg" fitHeight="600.0" fitWidth="1000.0" layoutX="0.0" layoutY="0.0">
+    <ImageView id="timgBLDQZZNV.jpg" fitHeight="600.0" fitWidth="1000.0" layoutX="1.0" layoutY="0.0">
       <image>
-        <Image url="@../../../resources/timgBLDQZZNV.jpg" preserveRatio="true" smooth="true" />
+        <Image url="@../../../resources/finalBG.jpg" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <Label fx:id="id" layoutX="817.0" layoutY="14.0" prefWidth="90.0" text="ID:XXX">
+    <Label fx:id="id" layoutX="787.0" layoutY="14.0" minHeight="18.0" prefHeight="18.0" prefWidth="121.0" text="ID:XXX">
+      <effect>
+        <Reflection fx:id="x1" />
+      </effect>
       <font>
-        <Font name="Microsoft YaHei UI Light" size="16.0" fx:id="x3" />
+        <Font name="方正兰亭超细黑简体" size="18.0" fx:id="x2" />
       </font>
     </Label>
-    <Label font="$x3" layoutX="908.0" layoutY="14.0" text="|| 登出" />
-    <Separator prefHeight="1.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="145.0" />
-    <Label layoutX="14.0" layoutY="61.0" text="客户管理">
+    <Label effect="$x1" font="$x2" layoutX="908.0" layoutY="14.0" text="登出" />
+    <Separator prefHeight="1.0" prefWidth="1000.0" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="145.0" />
+    <Label layoutX="673.0" layoutY="68.0" text="客户管理">
+      <effect>
+        <Reflection fraction="0.4166666666666667" />
+      </effect>
       <font>
-        <Font size="65.0" />
+        <Font name="方正兰亭超细黑简体" size="65.0" />
       </font>
     </Label>
     <ScrollPane layoutY="185.0" opacity="0.7" prefHeight="413.0" prefWidth="875.0">
@@ -58,22 +66,40 @@
         </AnchorPane>
       </content>
     </ScrollPane>
-    <Button fx:id="addB" layoutX="896.0" layoutY="169.0" mnemonicParsing="false" onAction="#add" prefHeight="31.0" prefWidth="90.0" text="新  增">
+    <Button fx:id="addB" layoutX="896.0" layoutY="347.0" mnemonicParsing="false" onAction="#add" prefHeight="31.0" prefWidth="90.0" text="新  增">
+      <effect>
+        <Lighting diffuseConstant="1.619047619047619" specularConstant="0.5380952380952381" specularExponent="26.03174603174603" surfaceScale="1.4206349206349203" fx:id="x3">
+          <bumpInput>
+            <Shadow />
+          </bumpInput>
+          <contentInput>
+            <Reflection />
+          </contentInput>
+          <light>
+            <javafx.scene.effect.Light.Distant />
+          </light>
+        </Lighting>
+      </effect>
       <font>
-        <Font size="13.0" fx:id="x2" />
+        <Font name="方正兰亭超细黑简体" size="16.0" fx:id="x4" />
       </font>
     </Button>
-    <Button fx:id="deleteB" font="$x2" layoutX="896.0" layoutY="213.0" mnemonicParsing="false" onAction="#delete" prefHeight="31.0" prefWidth="90.0" text="删  除" />
-    <Button fx:id="updateB" font="$x2" layoutX="896.0" layoutY="256.0" mnemonicParsing="false" onAction="#update" prefHeight="31.0" prefWidth="90.0" text="修 改" />
-    <Button fx:id="returnB" font="$x2" layoutX="896.0" layoutY="300.0" mnemonicParsing="false" onAction="#showSaleMainUI" prefHeight="31.0" prefWidth="90.0" text="返 回" />
-    <Button fx:id="rightB" font="$x2" layoutX="308.0" layoutY="154.0" mnemonicParsing="false" onAction="#search" prefHeight="23.0" prefWidth="62.999900000002526" text="确 认" />
-    <Label layoutX="9.0" layoutY="156.0" text="查 询：">
-      <font>
-        <Font size="14.0" fx:id="x1" />
-      </font>
+    <Button fx:id="deleteB" effect="$x3" font="$x4" layoutX="896.0" layoutY="408.0" mnemonicParsing="false" onAction="#delete" prefHeight="31.0" prefWidth="90.0" text="删  除" />
+    <Button fx:id="updateB" effect="$x3" font="$x4" layoutX="896.0" layoutY="465.0" mnemonicParsing="false" onAction="#update" prefHeight="31.0" prefWidth="90.0" text="修 改" />
+    <Button fx:id="returnB" effect="$x3" font="$x4" layoutX="896.0" layoutY="521.0" mnemonicParsing="false" onAction="#showSaleMainUI" prefHeight="31.0" prefWidth="90.0" text="返 回" />
+    <Button fx:id="rightB" font="$x4" layoutX="606.0" layoutY="152.0" mnemonicParsing="false" onAction="#search" prefHeight="23.0" prefWidth="62.999900000002526" text="确 认">
+      <effect>
+        <Reflection fraction="0.4642857142857143" />
+      </effect>
+    </Button>
+    <Label font="$x4" layoutX="334.0" layoutY="154.0" text="查 询：">
+      <effect>
+        <Reflection />
+      </effect>
     </Label>
-    <TextField fx:id="search" layoutX="61.0" layoutY="154.0" prefHeight="23.0" prefWidth="210.0" />
-    <Button fx:id="logout" layoutX="876.0" layoutY="38.0" mnemonicParsing="false" onAction="#logout" opacity="0.0" prefHeight="31.0" prefWidth="63.0" text="Button" />
+    <TextField fx:id="search" layoutX="387.0" layoutY="153.0" prefHeight="23.0" prefWidth="210.0" />
+    <Button fx:id="logout" layoutX="896.0" layoutY="13.0" mnemonicParsing="false" onAction="#logout" opacity="0.0" prefHeight="31.0" prefWidth="63.0" text="Button" />
     <Separator layoutY="144.0" orientation="VERTICAL" prefHeight="458.0" prefWidth="1.0" AnchorPane.rightAnchor="120.0" />
+    <Line endX="100.0" layoutX="904.0" layoutY="140.0" opacity="0.42" startX="-238.0" startY="0.0" />
   </children>
 </AnchorPane>

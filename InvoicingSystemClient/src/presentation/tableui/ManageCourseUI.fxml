@@ -10,6 +10,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -22,26 +23,39 @@
   <children>
     <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="602.0" fitWidth="999.0000999999975" layoutX="1.0" layoutY="0.0">
       <image>
-        <Image url="@../../../resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
+        <Image url="@../../../resources/finalBG.jpg" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <Label fx:id="id" layoutX="795.0" layoutY="11.0" prefWidth="82.99990000000253" text="ID:XXX">
+    <Label fx:id="id" layoutX="771.0" layoutY="11.0" prefWidth="107.0" text="ID:XXX">
+      <effect>
+        <Reflection fx:id="x1" />
+      </effect>
       <font>
-        <Font size="16.0" fx:id="x1" />
+        <Font name="方正兰亭超细黑简体" size="18.0" fx:id="x2" />
       </font>
     </Label>
-    <Label font="$x1" layoutX="881.0" layoutY="11.0" onMouseClicked="#logout" text="|| 登出" />
+    <Label effect="$x1" font="$x2" layoutX="881.0" layoutY="11.0" onMouseClicked="#logout" text="登出" />
     <Separator prefHeight="1.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="117.0" />
-    <Label layoutX="14.0" layoutY="39.0" text="经营历程表">
+    <Label layoutX="640.0" layoutY="45.0" text="经营历程表">
+      <effect>
+        <Reflection fraction="0.43253968253968256" topOffset="-10.0" />
+      </effect>
       <font>
-        <Font size="65.0" />
+        <Font name="方正兰亭超细黑简体" size="65.0" />
       </font>
     </Label>
-    <Label layoutX="24.0" layoutY="129.0" text="时间：" />
-    <Label layoutX="322.0" layoutY="129.0" prefHeight="15.0" prefWidth="24.0" text="~" />
-    <Label layoutX="24.0" layoutY="173.0" text="单据类型：" />
-    <Label layoutX="579.0" layoutY="167.0" text="业 务 员：" />
-    <Label layoutX="312.0" layoutY="168.0" text="客  户：" />
+    <Label layoutX="24.0" layoutY="127.0" text="时间：">
+      <effect>
+        <Reflection fraction="0.4722222222222223" fx:id="x3" />
+      </effect>
+      <font>
+        <Font name="方正兰亭超细黑简体" size="15.0" fx:id="x4" />
+      </font>
+    </Label>
+    <Label effect="$x3" font="$x4" layoutX="322.0" layoutY="128.0" prefHeight="15.0" prefWidth="24.0" text="~" />
+    <Label effect="$x3" font="$x4" layoutX="24.0" layoutY="168.0" text="单据类型：" />
+    <Label effect="$x3" font="$x4" layoutX="579.0" layoutY="167.0" text="业 务 员：" />
+    <Label effect="$x3" font="$x4" layoutX="332.0" layoutY="168.0" text="客户：" />
     <ChoiceBox fx:id="billType" layoutX="108.0" layoutY="167.0" prefHeight="23.0" prefWidth="153.0" />
     <TextField fx:id="member" layoutX="366.0" layoutY="165.0" prefHeight="23.0" prefWidth="154.0" />
     <TextField fx:id="user" layoutX="648.0" layoutY="165.0" prefHeight="23.0" prefWidth="154.0" />
@@ -51,12 +65,12 @@
     <ChoiceBox fx:id="endYear" layoutX="349.0" layoutY="125.0" prefHeight="23.0" prefWidth="72.0" />
     <ChoiceBox fx:id="endMonth" layoutX="450.0" layoutY="125.0" prefHeight="23.0" prefWidth="55.0" />
     <ChoiceBox fx:id="endDay" layoutX="524.0" layoutY="125.0" prefHeight="23.0" prefWidth="55.0" />
-    <Label layoutX="151.0" layoutY="129.0" text="年" />
-    <Label layoutX="227.0" layoutY="129.0" text="月" />
-    <Label layoutX="297.0" layoutY="129.0" text="日" />
-    <Label layoutX="430.0" layoutY="129.0" text="年" />
-    <Label layoutX="509.0" layoutY="129.0" text="月" />
-    <Label layoutX="587.0" layoutY="129.0" text="日" />
+    <Label effect="$x3" font="$x4" layoutX="151.0" layoutY="128.0" text="年" />
+    <Label effect="$x3" font="$x4" layoutX="227.0" layoutY="128.0" text="月" />
+    <Label effect="$x3" font="$x4" layoutX="297.0" layoutY="128.0" text="日" />
+    <Label effect="$x3" font="$x4" layoutX="431.0" layoutY="129.0" text="年" />
+    <Label effect="$x3" font="$x4" layoutX="509.0" layoutY="129.0" text="月" />
+    <Label effect="$x3" font="$x4" layoutX="587.0" layoutY="129.0" text="日" />
     <ScrollPane layoutX="0.0" layoutY="234.0" opacity="0.7" prefHeight="367.0" prefWidth="846.0">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="2000.0" prefWidth="847.0">
@@ -74,11 +88,25 @@
         </AnchorPane>
       </content>
     </ScrollPane>
-    <Button fx:id="returnA" layoutX="861.0" layoutY="536.0" mnemonicParsing="false" onAction="#showtheMain" prefHeight="23.0" prefWidth="120.0" text="返      回" />
+    <Button fx:id="returnA" font="$x2" layoutX="861.0" layoutY="518.0" mnemonicParsing="false" onAction="#showtheMain" prefHeight="41.0" prefWidth="120.0001220703125" text="返      回">
+      <effect>
+        <Lighting diffuseConstant="1.4603174603174602" specularConstant="0.680952380952381" specularExponent="25.07936507936508" surfaceScale="1.8174603174603174" fx:id="x5">
+          <bumpInput>
+            <Shadow />
+          </bumpInput>
+          <contentInput>
+            <Reflection fraction="0.5277777777777777" />
+          </contentInput>
+          <light>
+            <javafx.scene.effect.Light.Distant />
+          </light>
+        </Lighting>
+      </effect>
+    </Button>
     <Separator layoutX="846.0" layoutY="120.0" orientation="VERTICAL" prefHeight="478.0" prefWidth="6.0" />
-    <Button fx:id="search" layoutX="719.0" layoutY="199.0" minHeight="23.0" mnemonicParsing="false" onAction="#searchBill" prefHeight="27.0" prefWidth="83.0" text="查      找" />
-    <Button fx:id="reverseAndCopy" layoutX="861.0" layoutY="493.0" mnemonicParsing="false" onAction="#reverseAndCopy" prefHeight="23.0" prefWidth="120.0" text="红冲并复制" />
-    <Button fx:id="reverse" layoutX="861.0" layoutY="455.0" mnemonicParsing="false" onAction="#reverse" prefHeight="23.0" prefWidth="120.0" text="红      冲" />
+    <Button fx:id="search" effect="$x5" font="$x4" layoutX="719.0" layoutY="199.0" minHeight="23.0" mnemonicParsing="false" onAction="#searchBill" prefHeight="27.0" prefWidth="83.0" text="查      找" />
+    <Button fx:id="reverseAndCopy" effect="$x5" font="$x2" layoutX="861.0" layoutY="452.0" mnemonicParsing="false" onAction="#reverseAndCopy" prefHeight="41.0" prefWidth="119.99990000000253" text="红冲并复制" />
+    <Button fx:id="reverse" effect="$x5" font="$x2" layoutX="861.0" layoutY="389.0" mnemonicParsing="false" onAction="#reverse" prefHeight="40.0" prefWidth="121.0" text="红      冲" />
     <Button fx:id="logout" layoutX="887.0" layoutY="9.0" mnemonicParsing="false" onAction="#logout" prefHeight="23.0" prefWidth="60.0" visible="false" />
   </children>
 </AnchorPane>

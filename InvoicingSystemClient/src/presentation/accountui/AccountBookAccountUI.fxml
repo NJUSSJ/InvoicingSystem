@@ -2,9 +2,11 @@
 
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="412.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.accountui.AccountBookAccountController">
@@ -12,13 +14,16 @@
   <children>
     <ImageView id="timgBLDQZZNV.jpg" fitHeight="400.0" fitWidth="411.0" layoutX="1.0" layoutY="0.0">
       <image>
-        <Image url="@../../../resources/timgBLDQZZNV.jpg" preserveRatio="true" smooth="true" />
+        <Image url="@../../../resources/finalBG2.jpg" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <Separator layoutX="0.0" layoutY="66.0" prefWidth="247.0" />
-    <Label layoutX="7.0" layoutY="23.0" text="期初账户信息查看">
+    <Separator layoutX="0.0" layoutY="66.0" prefWidth="247.0" visible="false" />
+    <Label layoutX="172.0" layoutY="27.0" text="期初账户信息查看">
+      <effect>
+        <Reflection fraction="0.49603174603174605" />
+      </effect>
       <font>
-        <Font name="System Bold" size="30.0" />
+        <Font name="方正兰亭超细黑简体" size="30.0" />
       </font>
     </Label>
     <ScrollPane layoutX="0.0" layoutY="81.0" opacity="0.7" prefHeight="319.0" prefWidth="412.0">
@@ -35,5 +40,6 @@
         </AnchorPane>
       </content>
     </ScrollPane>
+    <Line endX="120.0" endY="0.0" layoutX="292.0" layoutY="60.0" opacity="0.42" startX="-124.0" startY="1.0" />
   </children>
 </AnchorPane>

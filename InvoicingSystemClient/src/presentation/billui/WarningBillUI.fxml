@@ -7,9 +7,11 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.text.Font?>
 
@@ -17,23 +19,26 @@
   <children>
     <ImageView id="timgBLDQZZNV.jpg" fitHeight="600.0" fitWidth="400.0" layoutX="0.0" layoutY="0.0">
       <image>
-        <Image url="@../../../resources/timgBLDQZZNV.jpg" preserveRatio="true" smooth="true" />
+        <Image url="@../../../resources/finalBG.jpg" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <Label layoutX="5.0" layoutY="13.0" text="报警单">
+    <Label layoutX="230.0" layoutY="16.0" text="报警单">
+      <effect>
+        <Reflection fraction="0.34523809523809523" />
+      </effect>
       <font>
-        <Font size="52.0" />
+        <Font name="方正兰亭超细黑简体" size="52.0" />
       </font>
     </Label>
-    <Separator prefHeight="6.0" prefWidth="400.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="74.0" />
-    <Label layoutX="77.0" layoutY="112.0" text="单据编号：">
+    <Separator prefHeight="6.0" prefWidth="400.0" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="74.0" />
+    <Label layoutX="48.0" layoutY="107.0" text="单据编号：">
       <font>
-        <Font size="13.0" fx:id="x1" />
+        <Font name="方正兰亭超细黑简体" size="18.0" fx:id="x1" />
       </font>
     </Label>
-    <Label fx:id="ID" font="$x1" layoutX="161.0" layoutY="112.0" text="xxx" />
-    <Label font="$x1" layoutX="77.0" layoutY="150.0" text="操作员：" />
-    <Label fx:id="userid" font="$x1" layoutX="161.0" layoutY="150.0" text="xxx" />
+    <Label fx:id="ID" font="$x1" layoutX="132.0" layoutY="107.0" text="xxx" />
+    <Label font="$x1" layoutX="48.0" layoutY="145.0" text="操作员：" />
+    <Label fx:id="userid" font="$x1" layoutX="132.0" layoutY="145.0" text="xxx" />
     <ScrollPane layoutX="0.0" layoutY="183.0" opacity="0.7" prefHeight="417.0" prefWidth="400.0">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="410.0" prefWidth="399.0000999999975">
@@ -52,5 +57,6 @@
         </AnchorPane>
       </content>
     </ScrollPane>
+    <Line endX="100.0" layoutX="302.0" layoutY="77.0" opacity="0.42" startX="-100.0" />
   </children>
 </AnchorPane>

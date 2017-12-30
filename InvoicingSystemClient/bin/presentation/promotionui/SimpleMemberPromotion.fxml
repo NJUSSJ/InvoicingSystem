@@ -2,30 +2,60 @@
 
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.promotionui.SimpleMemberPromotionController">
   <!-- TODO Add Nodes -->
   <children>
-    <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="313.0" fitWidth="410.5" layoutX="0.0" layoutY="0.0">
+    <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="313.0" fitWidth="410.5" layoutX="0.0" layoutY="-1.0">
       <image>
-        <Image url="@../../../../../InvoicingSystem/InvoicingSystemClient/resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
+        <Image url="@../../../resources/finalBG.jpg" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
     <TextField fx:id="rank" layoutX="112.0" layoutY="88.0" prefWidth="219.0" />
     <TextField fx:id="coupon" layoutX="112.0" layoutY="124.0" prefWidth="219.0" />
-    <TextField id="number" fx:id="gift" layoutX="112.0" layoutY="190.0" prefWidth="98.0" />
+    <TextField id="number" fx:id="gift" layoutX="110.0" layoutY="190.0" prefHeight="26.0" prefWidth="100.0" />
     <TextField fx:id="number" layoutX="256.0" layoutY="190.0" prefHeight="26.0" prefWidth="74.9998779296875" />
-    <Label layoutX="35.0" layoutY="91.0" text="客户等级：" />
-    <Label layoutX="20.0" layoutY="126.0" text="代金券金额：" />
-    <Label layoutX="64.0" layoutY="193.0" text="赠品：" />
-    <Label layoutX="213.0" layoutY="193.0" text="数量：" />
+    <Label layoutX="32.0" layoutY="86.0" text="客户等级：">
+      <font>
+        <Font name="方正兰亭超细黑简体" size="18.0" fx:id="x1" />
+      </font>
+    </Label>
+    <Label font="$x1" layoutX="15.0" layoutY="122.0" text="代金券金额：" />
+    <Label font="$x1" layoutX="59.0" layoutY="191.0" text="赠品：" />
+    <Label font="$x1" layoutX="213.0" layoutY="193.0" text="数量：" />
     <TextField fx:id="discount" layoutX="112.0" layoutY="157.0" prefWidth="219.0" />
-    <Label layoutX="65.0" layoutY="157.0" text="折扣：" />
-    <Button id="back" fx:id="add" layoutX="60.0" layoutY="248.0" mnemonicParsing="false" onAction="#add" text="确认" />
-    <Button fx:id="back" layoutX="144.0" layoutY="248.0" mnemonicParsing="false" onAction="#back" text="返回" />
-    <Button fx:id="addGift" layoutX="236.0" layoutY="248.0" mnemonicParsing="false" onAction="#addGift" text="添加赠品" />
+    <Label font="$x1" layoutX="59.0" layoutY="155.0" text="折扣：" />
+    <Button id="back" fx:id="add" font="$x1" layoutX="61.0" layoutY="248.0" mnemonicParsing="false" onAction="#add" prefHeight="42.000099999997474" prefWidth="108.0" text="确认">
+      <effect>
+        <Lighting diffuseConstant="1.619047619047619" specularConstant="0.7285714285714286" surfaceScale="1.8968253968253967" fx:id="x2">
+          <bumpInput>
+            <Shadow />
+          </bumpInput>
+          <contentInput>
+            <Reflection />
+          </contentInput>
+          <light>
+            <javafx.scene.effect.Light.Distant />
+          </light>
+        </Lighting>
+      </effect>
+    </Button>
+    <Button fx:id="back" effect="$x2" font="$x1" layoutX="232.0" layoutY="248.0" mnemonicParsing="false" onAction="#back" prefHeight="41.999900000002526" prefWidth="108.0" text="返回" />
+    <Button fx:id="addGift" effect="$x2" font="$x1" layoutX="338.0" layoutY="187.0" mnemonicParsing="false" onAction="#addGift" prefHeight="33.0" text="添加" />
+    <Label layoutX="180.0" layoutY="23.0" prefHeight="41.999900000002526" prefWidth="219.0" text="制订客户促销">
+      <effect>
+        <Reflection fraction="0.3611111111111111" />
+      </effect>
+      <font>
+        <Font name="方正兰亭超细黑简体" size="35.0" />
+      </font>
+    </Label>
+    <Line endX="100.0" layoutX="314.0" layoutY="66.0" opacity="0.42" startX="-141.0" startY="-1.0" />
   </children>
 </AnchorPane>

@@ -19,7 +19,6 @@ public class CommodityItemData {
 	CommodityVO a;
 	CommodityBLService cbs=new CommodityController();
 	public CommodityItemData(int style,CommodityVO commodity,int num,double price,String note) {
-		// TODO Auto-generated constructor stub
 		a=commodity;
 		this.num.set(""+num);
 		commodityid.set(""+commodity.getID());
@@ -43,9 +42,6 @@ public class CommodityItemData {
 		importprice.set(""+item.getImportPrice());
 		num.set(""+item.getNum());
 		totalprice.set(""+item.getImportPrice()*item.getNum());
-		
-		
-		// TODO Auto-generated constructor stub
 	}
 	public StringProperty getId(){
 		return commodityid;
@@ -72,12 +68,10 @@ public class CommodityItemData {
 		return note;
 	}
 	public CommodityLineItem getItem() {
-		// TODO Auto-generated method stub
 		CommodityLineItem item=new CommodityLineItem(Integer.parseInt(num.get()), a.getID(), Double.parseDouble(saleprice.get()), Double.parseDouble(importprice.get()),note.get());
 		return item;
 	}
 	public void setNum(String text) {
-		// TODO Auto-generated method stub
 		num.set(text);
 	}
 }

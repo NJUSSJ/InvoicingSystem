@@ -8,11 +8,13 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.text.Font?>
 
@@ -20,20 +22,30 @@
   <children>
     <ImageView id="timgBLDQZZNV.jpg" fitHeight="600.0" fitWidth="1025.0" layoutX="0.0" layoutY="0.0">
       <image>
-        <Image url="@../../../resources/timgBLDQZZNV.jpg" preserveRatio="true" smooth="true" />
+        <Image url="@../../../resources/finalBG.jpg" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <Label layoutX="27.0" layoutY="53.0" text="审 批 单 据">
+    <Label layoutX="628.0" layoutY="53.0" text="审 批 单 据">
+      <effect>
+        <Reflection fraction="0.3055555555555556" topOffset="-10.0" />
+      </effect>
       <font>
-        <Font size="72.0" />
+        <Font name="方正兰亭超细黑简体" size="72.0" />
       </font>
     </Label>
-    <Label fx:id="id" layoutX="863.0" layoutY="18.0" text="ID：xxx">
+    <Label fx:id="id" layoutX="802.0" layoutY="18.0" minHeight="19.0" prefHeight="19.0" prefWidth="125.0" text="ID：xxx">
+      <effect>
+        <Reflection fraction="0.2420634920634921" />
+      </effect>
       <font>
-        <Font name="Microsoft YaHei UI Light" size="16.0" fx:id="x1" />
+        <Font name="方正兰亭超细黑简体" size="20.0" fx:id="x1" />
       </font>
     </Label>
-    <Label font="$x1" layoutX="934.0" layoutY="18.0" text="||  登出" />
+    <Label font="$x1" layoutX="934.0" layoutY="18.0" text="登出">
+      <effect>
+        <Reflection />
+      </effect>
+    </Label>
     <Separator prefHeight="3.0" prefWidth="1000.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="139.0" />
     <ScrollPane layoutX="0.0" layoutY="140.0" opacity="0.7" prefHeight="460.0" prefWidth="764.0">
       <content>
@@ -55,13 +67,71 @@
       </content>
     </ScrollPane>
     <Button fx:id="passB" layoutX="787.0" layoutY="225.0" mnemonicParsing="false" onAction="#pass" opacity="0.7" prefHeight="40.0" prefWidth="200.0" text="通    过">
+      <effect>
+        <Lighting diffuseConstant="1.5555555555555556">
+          <bumpInput>
+            <Shadow />
+          </bumpInput>
+          <contentInput>
+            <Reflection fraction="0.6071428571428571" />
+          </contentInput>
+          <light>
+            <javafx.scene.effect.Light.Distant />
+          </light>
+        </Lighting>
+      </effect>
       <font>
-        <Font name="Microsoft YaHei UI Light" size="13.0" fx:id="x2" />
+        <Font name="方正兰亭超细黑简体" size="18.0" fx:id="x2" />
       </font>
     </Button>
-    <Button fx:id="notpassB" font="$x2" layoutX="787.0" layoutY="296.0" mnemonicParsing="false" onAction="#notpass" opacity="0.7" prefHeight="40.0" prefWidth="200.0" text="不   通    过" />
-    <Button fx:id="detailB" font="$x2" layoutX="787.0" layoutY="160.0" mnemonicParsing="false" onAction="#showDetail" opacity="0.7" prefHeight="40.0" prefWidth="200.0" text="详  细  信  息" />
-    <Button fx:id="returnB" font="$x2" layoutX="787.0" layoutY="360.0" mnemonicParsing="false" onAction="#showManagerMainUI" opacity="0.7" prefHeight="40.0" prefWidth="200.0" text="返    回" />
-    <Button fx:id="logout" layoutX="934.0" layoutY="15.0" mnemonicParsing="false" onAction="#logout" opacity="0.0" prefHeight="28.0" prefWidth="70.0" text="Button" />
+    <Button fx:id="notpassB" font="$x2" layoutX="787.0" layoutY="296.0" mnemonicParsing="false" onAction="#notpass" opacity="0.7" prefHeight="40.0" prefWidth="200.0" text="不  通  过">
+      <effect>
+        <Reflection fraction="0.4880952380952382">
+          <input>
+            <Lighting diffuseConstant="1.5714285714285712">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant />
+              </light>
+            </Lighting>
+          </input>
+        </Reflection>
+      </effect>
+    </Button>
+    <Button fx:id="detailB" font="$x2" layoutX="787.0" layoutY="160.0" mnemonicParsing="false" onAction="#showDetail" opacity="0.7" prefHeight="40.0" prefWidth="200.0" text="详  细  信  息">
+      <effect>
+        <Reflection fraction="0.4880952380952381">
+          <input>
+            <Lighting diffuseConstant="1.5238095238095237">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant />
+              </light>
+            </Lighting>
+          </input>
+        </Reflection>
+      </effect>
+    </Button>
+    <Button fx:id="returnB" font="$x2" layoutX="787.0" layoutY="360.0" mnemonicParsing="false" onAction="#showManagerMainUI" opacity="0.7" prefHeight="40.0" prefWidth="200.0" text="返    回">
+      <effect>
+        <Lighting diffuseConstant="1.5873015873015874">
+          <bumpInput>
+            <Shadow />
+          </bumpInput>
+          <contentInput>
+            <Reflection />
+          </contentInput>
+          <light>
+            <javafx.scene.effect.Light.Distant />
+          </light>
+        </Lighting>
+      </effect>
+    </Button>
+    <Button fx:id="logout" layoutX="919.0" layoutY="14.0" mnemonicParsing="false" onAction="#logout" opacity="0.0" prefHeight="28.0" prefWidth="70.0" text="Button" />
+    <Line endX="100.0" layoutX="925.0" layoutY="128.0" opacity="0.42" startX="-308.0" startY="0.0" />
   </children>
 </AnchorPane>

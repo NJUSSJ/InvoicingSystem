@@ -7,9 +7,11 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.text.Font?>
 
@@ -17,22 +19,29 @@
   <children>
     <ImageView id="timgBLDQZZNV.jpg" fitHeight="605.0000999999975" fitWidth="401.0" layoutX="0.0" layoutY="-1.0">
       <image>
-        <Image url="@../../../resources/timgBLDQZZNV.jpg" preserveRatio="true" smooth="true" />
+        <Image url="@../../../resources/finalBG2.jpg" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <Label layoutX="14.0" layoutY="14.0" text="赠送单">
+    <Label layoutX="231.0" layoutY="14.0" text="赠送单">
+      <effect>
+        <Reflection fraction="0.6785714285714286" topOffset="-10.0" />
+      </effect>
       <font>
-        <Font size="52.0" />
+        <Font name="方正兰亭超细黑简体" size="52.0" />
       </font>
     </Label>
-    <Separator prefHeight="6.0" prefWidth="400.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="74.0" />
-    <Label layoutX="77.0" layoutY="94.0" text="单据编号：">
+    <Separator prefHeight="6.0" prefWidth="400.0" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="74.0" />
+    <Label layoutX="58.0" layoutY="90.0" text="单据编号：">
+      <font>
+        <Font name="方正兰亭超细黑简体" size="18.0" fx:id="x2" />
+      </font>
+    </Label>
+    <Label fx:id="memberid" layoutX="160.0" layoutY="121.0" text="xxx">
       <font>
         <Font size="13.0" fx:id="x1" />
       </font>
     </Label>
-    <Label fx:id="memberid" font="$x1" layoutX="160.0" layoutY="121.0" text="xxx" />
-    <Label font="$x1" layoutX="77.0" layoutY="150.0" text="操作员：" />
+    <Label font="$x2" layoutX="67.0" layoutY="147.0" text="操作员：" />
     <Label fx:id="userid" font="$x1" layoutX="161.0" layoutY="150.0" text="xxx" />
     <ScrollPane layoutX="0.0" layoutY="183.0" opacity="0.7" prefHeight="421.0" prefWidth="400.0000999999975">
       <content>
@@ -52,7 +61,8 @@
         </AnchorPane>
       </content>
     </ScrollPane>
-    <Label font="$x1" layoutX="78.0" layoutY="121.0" text="客户：" />
+    <Label font="$x2" layoutX="78.0" layoutY="118.0" text="客户：" />
     <Label fx:id="ID" font="$x1" layoutX="160.0" layoutY="94.0" text="xxx" />
+    <Line endX="100.0" layoutX="302.0" layoutY="70.0" opacity="0.42" startX="-100.0" />
   </children>
 </AnchorPane>

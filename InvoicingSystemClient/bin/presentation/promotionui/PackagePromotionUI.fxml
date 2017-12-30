@@ -2,9 +2,11 @@
 
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane minWidth="971.0" prefHeight="606.999755859375" prefWidth="1004.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.promotionui.PackagePromotionViewController">
@@ -12,20 +14,43 @@
   <children>
     <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="606.9998779296875" fitWidth="1004.0" layoutX="0.0" layoutY="0.0">
       <image>
-        <Image url="@../../../resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
+        <Image url="@../../../resources/finalBG.jpg" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <Label fx:id="id" layoutX="469.0" layoutY="74.0" prefWidth="106.0" text="Label">
+    <Label fx:id="id" layoutX="416.0" layoutY="79.0" prefWidth="106.0" text="Label">
+      <effect>
+        <Reflection fx:id="x3" />
+      </effect>
       <font>
-        <Font size="18.0" fx:id="x1" />
+        <Font name="方正兰亭超细黑简体" size="18.0" fx:id="x4" />
       </font>
     </Label>
-    <Button fx:id="add" font="$x1" layoutX="850.0" layoutY="142.0" mnemonicParsing="false" onAction="#add" prefHeight="46.0" prefWidth="106.0" text="增加" />
-    <Button fx:id="delete" font="$x1" layoutX="850.0" layoutY="219.0" mnemonicParsing="false" onAction="#delete" prefHeight="46.0" prefWidth="106.0" text="删除" />
-    <Button fx:id="back" font="$x1" layoutX="850.0" layoutY="301.0" mnemonicParsing="false" onAction="#back" prefHeight="46.0" prefWidth="106.0" text="返回" />
-    <Label layoutX="14.0" layoutY="33.0" text="特价包促销策略">
+    <Button fx:id="add" layoutX="850.0" layoutY="327.0" mnemonicParsing="false" onAction="#add" prefHeight="57.0" prefWidth="125.0" text="增   加">
+      <effect>
+        <Lighting diffuseConstant="1.6031746031746033" specularConstant="0.7444444444444445" surfaceScale="2.6111111111111107" fx:id="x1">
+          <bumpInput>
+            <Shadow />
+          </bumpInput>
+          <contentInput>
+            <Reflection />
+          </contentInput>
+          <light>
+            <javafx.scene.effect.Light.Distant />
+          </light>
+        </Lighting>
+      </effect>
       <font>
-        <Font name="System Bold" size="50.0" />
+        <Font name="方正兰亭超细黑简体" size="25.0" fx:id="x2" />
+      </font>
+    </Button>
+    <Button fx:id="delete" effect="$x1" font="$x2" layoutX="850.0" layoutY="404.0" mnemonicParsing="false" onAction="#delete" prefHeight="57.0" prefWidth="125.0" text="删   除" />
+    <Button fx:id="back" effect="$x1" font="$x2" layoutX="850.0" layoutY="486.0" mnemonicParsing="false" onAction="#back" prefHeight="57.0" prefWidth="125.0" text="返   回" />
+    <Label layoutX="522.0" layoutY="19.0" text="商品组合促销策略">
+      <effect>
+        <Reflection fraction="0.43253968253968256" />
+      </effect>
+      <font>
+        <Font name="方正兰亭超细黑简体" size="60.0" />
       </font>
     </Label>
     <Separator layoutX="0.0" layoutY="97.0" prefWidth="437.0" />
@@ -43,6 +68,7 @@
         </AnchorPane>
       </content>
     </ScrollPane>
-    <Label id="id" font="$x1" layoutX="396.0" layoutY="74.0" prefWidth="106.0" text="操作员：" />
+    <Label id="id" effect="$x3" font="$x4" layoutX="338.0" layoutY="79.0" prefWidth="106.0" text="操作员：" />
+    <Line endX="100.0" layoutX="905.0" layoutY="82.0" opacity="0.42" startX="-386.0" startY="0.0" />
   </children>
 </AnchorPane>

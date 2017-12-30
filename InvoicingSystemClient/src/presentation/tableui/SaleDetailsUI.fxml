@@ -10,11 +10,13 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.text.Font?>
 
@@ -22,26 +24,36 @@
   <children>
     <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="600.0" fitWidth="998.9998779296875" layoutX="0.0" layoutY="0.0">
       <image>
-        <Image url="@../../../resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
+        <Image url="@../../../resources/finalBG.jpg" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <Label fx:id="id" layoutX="814.0" layoutY="11.0" prefWidth="72.0" text="ID:XXX">
+    <Label fx:id="id" layoutX="774.0" layoutY="11.0" prefWidth="112.0" text="ID:XXX">
+      <effect>
+        <Reflection fx:id="x1" />
+      </effect>
       <font>
-        <Font name="Microsoft YaHei UI Light" size="16.0" fx:id="x1" />
+        <Font name="方正兰亭超细黑简体" size="18.0" fx:id="x2" />
       </font>
     </Label>
-    <Label font="$x1" layoutX="881.0" layoutY="10.0" text="|| 登出" />
-    <Separator prefHeight="1.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="117.0" />
-    <Label layoutX="14.0" layoutY="39.0" text="销售明细表">
+    <Label effect="$x1" font="$x2" layoutX="906.0" layoutY="11.0" text="登出" />
+    <Separator prefHeight="1.0" prefWidth="1000.0" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="117.0" />
+    <Label layoutX="617.0" layoutY="43.0" text="销售明细表">
+      <effect>
+        <Reflection fraction="0.36904761904761907" topOffset="-10.0" />
+      </effect>
       <font>
-        <Font size="65.0" />
+        <Font name="方正兰亭超细黑简体" size="65.0" />
       </font>
     </Label>
-    <Label layoutX="24.0" layoutY="129.0" text="时间：" />
-    <Label layoutX="322.0" layoutY="129.0" prefHeight="15.0" prefWidth="24.0" text="~" />
-    <Label layoutX="24.0" layoutY="160.0" text="商 品 名：" />
-    <Label layoutX="24.0" layoutY="191.0" text="业 务 员：" />
-    <Label layoutX="349.0" layoutY="160.0" text="客  户：" />
+    <Label layoutX="22.0" layoutY="128.0" text="时间：">
+      <font>
+        <Font name="方正兰亭超细黑简体" size="15.0" fx:id="x3" />
+      </font>
+    </Label>
+    <Label font="$x3" layoutX="320.0" layoutY="128.0" prefHeight="15.0" prefWidth="24.0" text="~" />
+    <Label font="$x3" layoutX="24.0" layoutY="161.0" text="商 品 名：" />
+    <Label font="$x3" layoutX="24.0" layoutY="192.0" text="业 务 员：" />
+    <Label font="$x3" layoutX="349.0" layoutY="161.0" text="客  户：" />
     <TextField fx:id="member" layoutX="405.0" layoutY="159.0" prefHeight="23.0" prefWidth="154.0" />
     <TextField fx:id="operator" layoutX="91.0" layoutY="189.0" prefHeight="23.0" prefWidth="154.0" />
     <ChoiceBox fx:id="startYear" layoutX="72.0" layoutY="125.0" prefHeight="23.0" prefWidth="72.0" />
@@ -50,12 +62,12 @@
     <ChoiceBox fx:id="endYear" layoutX="349.0" layoutY="125.0" prefHeight="23.0" prefWidth="72.0" />
     <ChoiceBox fx:id="endMonth" layoutX="448.0" layoutY="125.0" prefHeight="23.0" prefWidth="55.0" />
     <ChoiceBox fx:id="endDay" layoutX="524.0" layoutY="125.0" prefHeight="23.0" prefWidth="55.0" />
-    <Label layoutX="151.0" layoutY="129.0" text="年" />
-    <Label layoutX="227.0" layoutY="129.0" text="月" />
-    <Label layoutX="297.0" layoutY="129.0" text="日" />
-    <Label layoutX="430.0" layoutY="129.0" text="年" />
-    <Label layoutX="509.0" layoutY="129.0" text="月" />
-    <Label layoutX="587.0" layoutY="129.0" text="日" />
+    <Label font="$x3" layoutX="149.0" layoutY="128.0" text="年" />
+    <Label font="$x3" layoutX="225.0" layoutY="128.0" text="月" />
+    <Label font="$x3" layoutX="295.0" layoutY="127.0" text="日" />
+    <Label font="$x3" layoutX="428.0" layoutY="128.0" text="年" />
+    <Label font="$x3" layoutX="507.0" layoutY="128.0" text="月" />
+    <Label font="$x3" layoutX="585.0" layoutY="128.0" text="日" />
     <ScrollPane layoutY="219.0" opacity="0.7" prefHeight="382.0" prefWidth="826.0">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="4000.0" prefWidth="847.0">
@@ -74,12 +86,28 @@
         </AnchorPane>
       </content>
     </ScrollPane>
-    <Button fx:id="confirmB" layoutX="705.0" layoutY="187.0" mnemonicParsing="false" onAction="#search" prefHeight="23.0" prefWidth="100.0" text="确      认" />
-    <Button fx:id="cleanB" layoutX="593.0" layoutY="187.0" mnemonicParsing="false" onAction="#clean" prefHeight="23.0" prefWidth="100.0" text="清      空" />
-    <Button fx:id="excelB" layoutX="854.0" layoutY="220.0" mnemonicParsing="false" onAction="#excel" prefHeight="23.0" prefWidth="120.0" text="导出为Excel" />
+    <Button fx:id="confirmB" font="$x2" layoutX="705.0" layoutY="187.0" mnemonicParsing="false" onAction="#search" prefHeight="23.0" prefWidth="100.0" text="确      认" />
+    <Button fx:id="cleanB" font="$x2" layoutX="593.0" layoutY="187.0" mnemonicParsing="false" onAction="#clean" prefHeight="23.0" prefWidth="100.0" text="清      空" />
+    <Button fx:id="excelB" font="$x2" layoutX="842.0" layoutY="437.0" mnemonicParsing="false" onAction="#excel" prefHeight="56.0" prefWidth="142.9998779296875" text="导出为Excel">
+      <effect>
+        <Reflection fx:id="x4">
+          <input>
+            <Lighting diffuseConstant="1.4761904761904763" specularConstant="0.5063492063492063" specularExponent="21.904761904761905" surfaceScale="2.1349206349206353">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant />
+              </light>
+            </Lighting>
+          </input>
+        </Reflection>
+      </effect>
+    </Button>
     <Separator layoutX="825.0" layoutY="120.0" orientation="VERTICAL" prefHeight="478.0" prefWidth="6.0" />
     <TextField fx:id="commodityname" layoutX="92.0" layoutY="159.0" prefHeight="23.0" prefWidth="154.0" />
-    <Button fx:id="logoutB" layoutX="874.0" layoutY="8.0" mnemonicParsing="false" onAction="#logout" opacity="0.0" prefHeight="43.0" prefWidth="85.0" text="Button" />
-    <Button fx:id="returnB" layoutX="854.0" layoutY="269.0" mnemonicParsing="false" onAction="#showtheMain" prefHeight="23.0" prefWidth="120.0" text="返     回" />
+    <Button fx:id="logoutB" layoutX="882.0" layoutY="10.0" mnemonicParsing="false" onAction="#logout" opacity="0.0" prefHeight="42.999900000002526" prefWidth="85.0" text="Button" />
+    <Button fx:id="returnB" effect="$x4" font="$x2" layoutX="842.0" layoutY="516.0" mnemonicParsing="false" onAction="#showtheMain" prefHeight="51.0" prefWidth="143.00009999999747" text="返     回" />
+    <Line endX="100.0" layoutX="906.0" layoutY="112.0" opacity="0.42" startX="-299.0" startY="-1.0" />
   </children>
 </AnchorPane>

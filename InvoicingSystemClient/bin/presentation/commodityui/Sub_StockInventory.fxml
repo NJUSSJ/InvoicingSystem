@@ -2,9 +2,11 @@
 
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.commodityui.Sub_StockInventoryController">
@@ -12,29 +14,50 @@
   <children>
     <ImageView id="timgBLDQZZNV.jpg" fitHeight="300.0" fitWidth="400.0" layoutX="0.0" layoutY="0.0">
       <image>
-        <Image url="@../../../resources/timgBLDQZZNV.jpg" preserveRatio="true" smooth="true" />
+        <Image url="@../../../resources/finalBG.jpg" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <Button fx:id="Confirm" layoutX="44.0" layoutY="236.0" mnemonicParsing="false" onAction="#handleConfirm" prefWidth="104.9998779296875" text="确认">
+    <Button fx:id="Confirm" layoutX="44.0" layoutY="236.0" mnemonicParsing="false" onAction="#handleConfirm" prefHeight="40.0" prefWidth="125.0" text="确认">
+      <effect>
+        <Lighting diffuseConstant="1.8253968253968254" specularConstant="0.553968253968254" surfaceScale="2.611111111111111" fx:id="x4">
+          <bumpInput>
+            <Shadow />
+          </bumpInput>
+          <contentInput>
+            <Reflection fraction="0.3611111111111111" />
+          </contentInput>
+          <light>
+            <javafx.scene.effect.Light.Distant />
+          </light>
+        </Lighting>
+      </effect>
       <font>
-        <Font name="Microsoft YaHei UI Light" size="15.0" fx:id="x1" />
+        <Font name="方正兰亭超细黑简体" size="22.0" fx:id="x2" />
       </font>
     </Button>
-    <Button fx:id="Cancel" font="$x1" layoutX="206.0" layoutY="235.0" mnemonicParsing="false" onAction="#handleCancel" prefWidth="105.0" text="取消" />
-    <Separator layoutX="0.0" layoutY="77.0" prefWidth="200.0" />
+    <Button fx:id="Cancel" effect="$x4" font="$x2" layoutX="206.0" layoutY="235.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="40.0" prefWidth="133.0" text="取消" />
+    <Separator layoutX="0.0" layoutY="77.0" prefWidth="200.0" visible="false" />
     <Label layoutX="14.0" layoutY="41.0" prefHeight="18.0" text="">
       <font>
         <Font name="Microsoft MHei" size="25.0" />
       </font>
     </Label>
-    <Label layoutX="14.0" layoutY="38.0" text="盘点">
+    <Label layoutX="254.0" layoutY="24.0" prefHeight="54.999900000002526" prefWidth="115.0" text="盘点">
+      <effect>
+        <Reflection topOffset="-10.0" fx:id="x3" />
+      </effect>
       <font>
-        <Font name="Microsoft JhengHei Light" size="30.0" />
+        <Font name="方正兰亭超细黑简体" size="50.0" />
       </font>
     </Label>
-    <Label font="$x1" layoutX="44.0" layoutY="118.0" text="系统库存数量：" />
-    <Label font="$x1" layoutX="44.0" layoutY="180.0" text="今日盘点数量：" />
+    <Label effect="$x3" layoutX="44.0" layoutY="118.0" text="系统库存数量：">
+      <font>
+        <Font size="15.0" fx:id="x1" />
+      </font>
+    </Label>
+    <Label effect="$x3" font="$x1" layoutX="44.0" layoutY="180.0" text="今日盘点数量：" />
     <Label fx:id="SystemNum" font="$x1" layoutX="171.0" layoutY="118.0" prefWidth="69.0" text="0" />
     <TextField fx:id="ActualNum" layoutX="168.0" layoutY="177.0" prefWidth="142.9998779296875" />
+    <Line endX="99.0" endY="-1.0" layoutX="300.0" layoutY="79.0" opacity="0.42" startX="-78.0" startY="-1.0" />
   </children>
 </AnchorPane>

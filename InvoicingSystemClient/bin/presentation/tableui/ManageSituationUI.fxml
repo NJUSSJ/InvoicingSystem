@@ -15,6 +15,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.text.Font?>
 
@@ -22,16 +23,19 @@
   <children>
     <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="600.0" fitWidth="1001.0000999999975" layoutX="0.0" layoutY="0.0">
       <image>
-        <Image url="@../../../resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
+        <Image url="@../../../resources/finalBG.jpg" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <Label fx:id="id" layoutX="828.0" layoutY="11.0" prefWidth="70.0" text="ID:XXX">
+    <Label fx:id="id" layoutX="790.0" layoutY="11.0" prefWidth="108.0" text="ID:XXX">
+      <effect>
+        <Reflection fraction="0.1865079365079365" fx:id="x1" />
+      </effect>
       <font>
-        <Font name="Microsoft YaHei UI Light" size="16.0" fx:id="x3" />
+        <Font name="方正兰亭超细黑简体" size="18.0" fx:id="x2" />
       </font>
     </Label>
-    <Label font="$x3" layoutX="898.0" layoutY="11.0" text="|| 登出" />
-    <Separator prefHeight="4.0" prefWidth="1001.0001220703125" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="130.0">
+    <Label effect="$x1" font="$x2" layoutX="898.0" layoutY="11.0" text="登出" />
+    <Separator prefHeight="4.0" prefWidth="1001.0001220703125" visible="false" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="130.0">
       <effect>
         <Lighting diffuseConstant="0.7633587786259542">
           <bumpInput>
@@ -43,27 +47,45 @@
         </Lighting>
       </effect>
     </Separator>
-    <Label layoutX="10.0" layoutY="51.0" text="经营情况表">
+    <Label effect="$x1" layoutX="629.0" layoutY="47.0" text="经营情况表">
       <font>
-        <Font size="65.0" />
+        <Font name="方正兰亭超细黑简体" size="65.0" />
       </font>
     </Label>
-    <Label layoutX="25.0" layoutY="145.0" text="时间：" />
-    <Label layoutX="328.0" layoutY="145.0" prefHeight="15.0" prefWidth="24.0" text="~" />
+    <Label effect="$x1" layoutX="25.0" layoutY="145.0" text="时间：">
+      <font>
+        <Font name="方正兰亭超细黑简体" size="15.0" fx:id="x3" />
+      </font>
+    </Label>
+    <Label effect="$x1" font="$x3" layoutX="328.0" layoutY="145.0" prefHeight="15.0" prefWidth="24.0" text="~" />
     <ChoiceBox fx:id="startYear" layoutX="73.0" layoutY="141.0" opacity="0.7" prefHeight="23.0" prefWidth="72.0" />
     <ChoiceBox fx:id="startMonth" layoutX="167.0" layoutY="141.0" opacity="0.7" prefHeight="23.0" prefWidth="55.0" />
     <ChoiceBox fx:id="startDay" layoutX="244.0" layoutY="141.0" opacity="0.7" prefHeight="23.0" prefWidth="55.0" />
     <ChoiceBox fx:id="endYear" layoutX="354.0" layoutY="141.0" opacity="0.7" prefHeight="23.0" prefWidth="72.0" />
     <ChoiceBox fx:id="endMonth" layoutX="449.0" layoutY="141.0" opacity="0.7" prefHeight="23.0" prefWidth="55.0" />
     <ChoiceBox fx:id="endDay" layoutX="527.0" layoutY="141.0" opacity="0.7" prefHeight="23.0" prefWidth="55.0" />
-    <Label layoutX="150.0" layoutY="145.0" text="年" />
-    <Label layoutX="228.0" layoutY="145.0" text="月" />
-    <Label layoutX="304.0" layoutY="145.0" text="日" />
-    <Label layoutX="432.0" layoutY="145.0" text="年" />
-    <Label layoutX="510.0" layoutY="145.0" text="月" />
-    <Label layoutX="587.0" layoutY="145.0" text="日" />
-    <Button fx:id="returnA" layoutX="814.0" layoutY="535.0" mnemonicParsing="false" onAction="#showtheMain" opacity="0.7" prefHeight="37.0" prefWidth="144.0" text="返      回" />
-    <Button fx:id="deriveToExcel" layoutX="814.0" layoutY="476.0" mnemonicParsing="false" onAction="#excel" opacity="0.7" prefHeight="37.0" prefWidth="144.0" text="导出为Excel" />
+    <Label effect="$x1" font="$x3" layoutX="150.0" layoutY="145.0" text="年" />
+    <Label effect="$x1" font="$x3" layoutX="228.0" layoutY="145.0" text="月" />
+    <Label effect="$x1" font="$x3" layoutX="304.0" layoutY="145.0" text="日" />
+    <Label effect="$x1" font="$x3" layoutX="432.0" layoutY="145.0" text="年" />
+    <Label effect="$x1" font="$x3" layoutX="510.0" layoutY="145.0" text="月" />
+    <Label effect="$x1" font="$x3" layoutX="587.0" layoutY="145.0" text="日" />
+    <Button fx:id="returnA" font="$x2" layoutX="814.0" layoutY="515.0" mnemonicParsing="false" onAction="#showtheMain" opacity="0.7" prefHeight="56.999900000002526" prefWidth="157.9998779296875" text="返      回">
+      <effect>
+        <Lighting diffuseConstant="1.5873015873015874" specularConstant="0.6968253968253968" specularExponent="32.698412698412696" surfaceScale="2.373015873015873" fx:id="x4">
+          <bumpInput>
+            <Shadow />
+          </bumpInput>
+          <contentInput>
+            <Reflection />
+          </contentInput>
+          <light>
+            <javafx.scene.effect.Light.Distant />
+          </light>
+        </Lighting>
+      </effect>
+    </Button>
+    <Button fx:id="deriveToExcel" effect="$x4" font="$x2" layoutX="814.0" layoutY="442.0" mnemonicParsing="false" onAction="#excel" opacity="0.7" prefHeight="57.0" prefWidth="158.0" text="导出为Excel" />
     <Separator layoutX="791.0" layoutY="130.0" orientation="VERTICAL" prefHeight="469.0" prefWidth="2.0">
       <effect>
         <Lighting diffuseConstant="0.7786259541984732">
@@ -88,42 +110,43 @@
         </Lighting>
       </effect>
     </Separator>
-    <Label layoutX="59.0" layoutY="218.0" text="销售收入：">
-      <font>
-        <Font size="14.0" fx:id="x1" />
-      </font>
+    <Label font="$x2" layoutX="59.0" layoutY="227.0" text="销售收入：" underline="true" wrapText="false">
+      <effect>
+        <Reflection fraction="0.32936507936507936" fx:id="x5" />
+      </effect>
     </Label>
-    <Label font="$x1" layoutX="59.0" layoutY="248.0" text="商品收入：" />
-    <Label font="$x1" layoutX="60.0" layoutY="359.0" text="折让后总收入：" />
-    <Label font="$x1" layoutX="60.0" layoutY="387.0" text="折让：" />
-    <Label layoutX="426.0" layoutY="188.0" text="二、支出类">
+    <Label effect="$x5" font="$x2" layoutX="59.0" layoutY="278.0" text="商品收入：" underline="true" wrapText="false" />
+    <Label effect="$x5" font="$x2" layoutX="60.0" layoutY="457.0" text="折让后总收入：" underline="true" wrapText="false" />
+    <Label effect="$x5" font="$x2" layoutX="60.0" layoutY="508.0" text="折让：" underline="true" wrapText="false" />
+    <Label effect="$x5" font="$x2" layoutX="426.0" layoutY="188.0" text="二、支出类" underline="true" wrapText="false" />
+    <Label effect="$x5" font="$x2" layoutX="455.0" layoutY="228.0" text="销售成本：" underline="true" wrapText="false" />
+    <Label effect="$x5" font="$x2" layoutX="456.0" layoutY="278.0" text="商品类支出：" underline="true" wrapText="false" />
+    <Label effect="$x5" font="$x2" layoutX="455.0" layoutY="396.0" text="总支出：" underline="true" wrapText="false" />
+    <Label effect="$x5" font="$x2" layoutX="29.0" layoutY="184.0" text="一、收入类" underline="true" wrapText="false" />
+    <Label effect="$x5" font="$x2" layoutX="425.0" layoutY="453.0" text="三、利润" underline="true" wrapText="false" />
+    <Label effect="$x5" font="$x2" layoutX="455.0" layoutY="509.0" text="利润：" underline="true" wrapText="false" />
+    <Label fx:id="saleIncome" effect="$x5" font="$x2" layoutX="167.0" layoutY="226.0" text="label" underline="true" wrapText="false" />
+    <Label fx:id="incomeAfterDiscount" effect="$x5" font="$x2" layoutX="168.0" layoutY="457.0" text="label" underline="true" wrapText="false" />
+    <Label fx:id="discount" effect="$x5" font="$x2" layoutX="167.0" layoutY="508.0" text="label" underline="true" wrapText="false" />
+    <Label fx:id="saleCost" effect="$x5" font="$x2" layoutX="563.0" layoutY="226.0" text="label" underline="true" wrapText="false" />
+    <Label effect="$x5" font="$x2" layoutX="552.0" layoutY="279.0" text="商品报损支出" underline="true" wrapText="false" />
+    <Label fx:id="totalCost" effect="$x5" font="$x2" layoutX="563.0" layoutY="396.0" text="label" underline="true" wrapText="false" />
+    <Label fx:id="profit" effect="$x5" font="$x2" layoutX="567.0" layoutY="509.0" text="label" underline="true" wrapText="false" />
+    <Button fx:id="refer" layoutX="688.0" layoutY="141.0" mnemonicParsing="false" onAction="#refer" opacity="0.7" prefHeight="23.0" prefWidth="70.0" text="查  找">
       <font>
-        <Font name="System Bold Italic" size="14.0" fx:id="x2" />
+        <Font name="方正兰亭超细黑简体" size="16.0" />
       </font>
-    </Label>
-    <Label font="$x1" layoutX="455.0" layoutY="219.0" text="销售成本：" />
-    <Label font="$x1" layoutX="456.0" layoutY="250.0" text="商品类支出：" />
-    <Label font="$x1" layoutX="455.0" layoutY="317.0" text="总支出：" />
-    <Label font="$x2" layoutX="29.0" layoutY="184.0" text="一、收入类" />
-    <Label font="$x2" layoutX="425.0" layoutY="355.0" text="三、利润" />
-    <Label font="$x1" layoutX="455.0" layoutY="388.0" text="利润：" />
-    <Label fx:id="saleIncome" layoutX="167.0" layoutY="217.0" text="" />
-    <Label fx:id="incomeAfterDiscount" layoutX="167.0" layoutY="358.0" text="" />
-    <Label fx:id="discount" layoutX="167.0" layoutY="387.0" text="" />
-    <Label fx:id="saleCost" layoutX="563.0" layoutY="217.0" text="" />
-    <Label layoutX="552.0" layoutY="252.0" text="商品报损支出" />
-    <Label fx:id="totalCost" layoutX="563.0" layoutY="317.0" text="" />
-    <Label fx:id="profit" layoutX="563.0" layoutY="387.0" text="" />
-    <Button fx:id="refer" layoutX="688.0" layoutY="141.0" mnemonicParsing="false" onAction="#refer" opacity="0.7" prefHeight="23.0" prefWidth="70.0" text="查  找" />
-    <Label layoutX="552.0" layoutY="285.0" text="商品赠出支出" />
-    <Label fx:id="giftExpense" layoutX="646.0" layoutY="288.0" text="" />
-    <Label fx:id="lossExpense" layoutX="646.0" layoutY="254.0" text="" />
-    <Label layoutX="140.0" layoutY="247.0" text="商品报溢收入" />
-    <Label fx:id="commodityOverIncome" layoutX="304.0" layoutY="250.0" text="" />
-    <Label layoutX="140.0" layoutY="284.0" text="进货退货差价收入" />
-    <Label layoutX="80.0" layoutY="319.0" prefHeight="20.0" prefWidth="195.0" text="代金券与实际收款差额收入" />
-    <Label fx:id="couponIncome" layoutX="304.0" layoutY="319.0" text="" />
-    <Label fx:id="importReturnIncome" layoutX="304.0" layoutY="283.0" text="" />
+    </Button>
+    <Label effect="$x5" font="$x2" layoutX="552.0" layoutY="341.0" text="商品赠出支出" underline="true" wrapText="false" />
+    <Label fx:id="giftExpense" effect="$x5" font="$x2" layoutX="664.0" layoutY="341.0" text="label" underline="true" wrapText="false" />
+    <Label fx:id="lossExpense" effect="$x5" font="$x2" layoutX="664.0" layoutY="279.0" text="label" underline="true" wrapText="false" />
+    <Label effect="$x5" font="$x2" layoutX="146.0" layoutY="278.0" text="商品报溢收入" underline="true" wrapText="false" />
+    <Label fx:id="commodityOverIncome" effect="$x5" font="$x2" layoutX="304.0" layoutY="279.0" text="label" underline="true" wrapText="false" />
+    <Label effect="$x5" font="$x2" layoutX="140.0" layoutY="340.0" text="进货退货差价收入" underline="true" wrapText="false" />
+    <Label effect="$x5" font="$x2" layoutX="74.0" layoutY="398.0" prefHeight="20.999900000002526" prefWidth="222.0" text="代金券与实际收款差额收入" underline="true" wrapText="false" />
+    <Label fx:id="couponIncome" effect="$x5" font="$x2" layoutX="304.0" layoutY="398.0" text="label" underline="true" wrapText="false" />
+    <Label fx:id="importReturnIncome" effect="$x5" font="$x2" layoutX="304.0" layoutY="339.0" text="label" underline="true" wrapText="false" />
     <Button fx:id="logout" layoutX="902.0" layoutY="10.0" mnemonicParsing="false" onAction="#logout" opacity="0.0" prefHeight="15.0" prefWidth="84.0" />
+    <Line endX="100.0" layoutX="902.0" layoutY="114.0" opacity="0.42" startX="-289.0" startY="1.0" />
   </children>
 </AnchorPane>

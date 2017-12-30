@@ -10,11 +10,13 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.text.Font?>
 
@@ -22,41 +24,68 @@
   <children>
     <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="601.0" fitWidth="1000.0" layoutX="0.0" layoutY="0.0">
       <image>
-        <Image url="@../../../resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
+        <Image url="@../../../resources/finalBG.jpg" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <Label fx:id="id" layoutX="839.0" layoutY="12.0" prefWidth="70.0" text="ID:XXX">
+    <Label fx:id="id" layoutX="796.0" layoutY="14.0" minHeight="13.000099182128906" prefHeight="23.0" prefWidth="118.0" text="ID:XXX">
+      <effect>
+        <Reflection fx:id="x1" />
+      </effect>
       <font>
-        <Font name="Microsoft YaHei UI Light" size="16.0" fx:id="x3" />
+        <Font name="方正兰亭超细黑简体" size="18.0" fx:id="x2" />
       </font>
     </Label>
-    <Label fx:id="log" font="$x3" layoutX="914.0" layoutY="11.0" text="|| 登出" />
+    <Label fx:id="log" effect="$x1" font="$x2" layoutX="921.0" layoutY="13.0" prefHeight="26.0" prefWidth="58.0" text="登出" />
     <Separator prefHeight="1.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="145.0" />
-    <Label layoutX="14.0" layoutY="61.0" text="进货退货单据">
+    <Label layoutX="557.0" layoutY="69.0" text="进货退货单据">
+      <effect>
+        <Reflection fraction="0.5119047619047619" topOffset="-10.0" />
+      </effect>
       <font>
-        <Font size="65.0" />
+        <Font name="方正兰亭超细黑简体" size="65.0" />
       </font>
     </Label>
     <Separator layoutX="231.0" layoutY="231.0" orientation="VERTICAL" prefHeight="334.0" prefWidth="6.0" />
     <Separator prefHeight="3.2" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="562.0" />
     <Separator prefHeight="3.2" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="231.0" />
     <Label layoutX="14.0" layoutY="148.0" text="单据编号：">
+      <effect>
+        <Reflection fx:id="x3" />
+      </effect>
       <font>
-        <Font size="14.0" fx:id="x1" />
+        <Font name="方正兰亭超细黑简体" size="15.0" fx:id="x4" />
       </font>
     </Label>
-    <Label font="$x1" layoutX="312.0" layoutY="149.0" text="备 注：" />
-    <Label font="$x1" layoutX="28.0" layoutY="205.0" text="操作员：" />
-    <Label font="$x1" layoutX="28.0" layoutY="177.0" text="供应商：" />
+    <Label effect="$x3" font="$x4" layoutX="359.0" layoutY="149.0" text="备 注：" />
+    <Label effect="$x3" font="$x4" layoutX="28.0" layoutY="205.0" text="操作员：" />
+    <Label effect="$x3" font="$x4" layoutX="28.0" layoutY="177.0" text="供应商：" />
     <TextField fx:id="member" layoutX="85.0" layoutY="174.0" />
     <TextField fx:id="note" layoutX="359.0" layoutY="167.0" prefHeight="54.0" prefWidth="381.0" />
-    <Label fx:id="operator" font="$x1" layoutX="85.0" layoutY="205.0" prefWidth="194.0" text="xxx" />
-    <Label font="$x1" layoutX="14.0" layoutY="263.0" text="商品名称：" />
-    <Label font="$x1" layoutX="14.0" layoutY="376.0" text="备  注：" />
-    <Label font="$x1" layoutX="14.0" layoutY="300.0" text="数  量：" />
+    <Label fx:id="operator" effect="$x3" font="$x4" layoutX="85.0" layoutY="205.0" prefWidth="194.0" text="xxx" />
+    <Label effect="$x3" font="$x4" layoutX="14.0" layoutY="263.0" text="商品名称：" />
+    <Label effect="$x3" font="$x4" layoutX="14.0" layoutY="376.0" text="备  注：" />
+    <Label effect="$x3" font="$x4" layoutX="14.0" layoutY="300.0" text="数  量：" />
     <TextField fx:id="num" layoutX="79.0" layoutY="298.0" prefHeight="23.0" prefWidth="140.0" />
     <TextArea fx:id="notea" layoutX="27.0" layoutY="402.0" prefHeight="118.0" prefWidth="192.0" />
-    <Button fx:id="addB" font="$x1" layoutX="161.0" layoutY="529.0" mnemonicParsing="false" onAction="#confirm" prefHeight="19.0" prefWidth="64.0" text="确  认" />
+    <Button fx:id="addB" layoutX="161.0" layoutY="530.0" mnemonicParsing="false" onAction="#confirm" prefHeight="19.0" prefWidth="64.0" text="确  认">
+      <effect>
+        <Reflection fx:id="x5">
+          <input>
+            <Lighting diffuseConstant="1.6666666666666665" specularConstant="0.42698412698412697" specularExponent="27.936507936507937" surfaceScale="2.2936507936507935">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant />
+              </light>
+            </Lighting>
+          </input>
+        </Reflection>
+      </effect>
+      <font>
+        <Font name="方正兰亭超细黑简体" size="14.0" fx:id="x6" />
+      </font>
+    </Button>
     <ScrollPane layoutX="231.0" layoutY="231.0" opacity="0.7" prefHeight="328.0" prefWidth="766.0">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="340.0" prefWidth="782.0">
@@ -76,21 +105,18 @@
         </AnchorPane>
       </content>
     </ScrollPane>
-    <Button fx:id="rightB" font="$x1" layoutX="773.0" layoutY="566.0" mnemonicParsing="false" onAction="#setBill" prefHeight="26.0" prefWidth="65.0" text="确  认" />
-    <Button fx:id="returnB" font="$x1" layoutX="860.0" layoutY="566.0" mnemonicParsing="false" onAction="#showSaleMainUI" prefHeight="26.0" prefWidth="65.0" text="返   回" />
-    <Label font="$x1" layoutX="14.0" layoutY="336.0" text="单  价：" />
+    <Button fx:id="rightB" effect="$x5" font="$x6" layoutX="773.0" layoutY="567.0" mnemonicParsing="false" onAction="#setBill" prefHeight="26.0" prefWidth="65.0" text="确  认" />
+    <Button fx:id="returnB" effect="$x5" font="$x6" layoutX="860.0" layoutY="567.0" mnemonicParsing="false" onAction="#showSaleMainUI" prefHeight="25.9998779296875" prefWidth="65.00009999999747" text="返   回" />
+    <Label effect="$x3" font="$x4" layoutX="14.0" layoutY="336.0" text="单  价：" />
     <TextField fx:id="lastprice" layoutX="81.0" layoutY="334.0" prefHeight="23.0" prefWidth="140.0" />
     <TextField fx:id="name" layoutX="81.0" layoutY="261.0" prefHeight="23.0" prefWidth="140.0" />
-    <Button fx:id="deleteB" font="$x1" layoutX="91.0" layoutY="529.0" mnemonicParsing="false" onAction="#delete" prefHeight="19.0" prefWidth="64.0" text="删  除" />
-    <Button fx:id="search" font="$x1" layoutX="20.0" layoutY="529.0" mnemonicParsing="false" onAction="#search" prefHeight="19.0" prefWidth="64.0" text="查  询" />
-    <Label layoutX="237.0" layoutY="573.0" text="金额总计：">
-      <font>
-        <Font size="13.0" fx:id="x2" />
-      </font>
-    </Label>
-    <Label fx:id="altogether" font="$x2" layoutX="302.0" layoutY="572.0" text="0.0" />
-    <Label fx:id="billid" layoutX="85.0" layoutY="147.0" prefWidth="194.0" text="xxx" />
-    <Button fx:id="logout" layoutX="914.0" layoutY="9.0" mnemonicParsing="false" onAction="#logout" opacity="0.0" prefHeight="29.0" prefWidth="65.0" text="Button" />
-    <Button fx:id="reviseB" font="$x1" layoutX="807.0" layoutY="568.0" mnemonicParsing="false" onAction="#revise" prefHeight="26.0" prefWidth="65.0" text="确  认" />
+    <Button fx:id="deleteB" effect="$x5" font="$x6" layoutX="91.0" layoutY="530.0" mnemonicParsing="false" onAction="#delete" prefHeight="19.0" prefWidth="64.0" text="删  除" />
+    <Button fx:id="search" effect="$x5" font="$x6" layoutX="20.0" layoutY="530.0" mnemonicParsing="false" onAction="#search" prefHeight="19.0" prefWidth="64.0" text="查  询" />
+    <Label effect="$x3" font="$x4" layoutX="557.0" layoutY="569.0" text="金额总计：" />
+    <Label fx:id="altogether" effect="$x3" font="$x4" layoutX="632.0" layoutY="570.0" text="0.0" />
+    <Label fx:id="billid" effect="$x3" font="$x4" layoutX="85.0" layoutY="147.0" prefWidth="194.0" text="xxx" />
+    <Button fx:id="logout" layoutX="914.0" layoutY="12.0" mnemonicParsing="false" onAction="#logout" opacity="0.0" prefHeight="29.0" prefWidth="65.0" text="Button" />
+    <Button fx:id="reviseB" effect="$x5" font="$x6" layoutX="807.0" layoutY="569.0" mnemonicParsing="false" onAction="#revise" prefHeight="26.0" prefWidth="65.0" text="确  认" />
+    <Line endX="100.0" layoutX="900.0" layoutY="134.0" opacity="0.42" startX="-358.0" startY="0.0" />
   </children>
 </AnchorPane>

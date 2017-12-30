@@ -18,6 +18,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.text.Font?>
 
@@ -25,31 +26,44 @@
   <children>
     <ImageView id="timgBLDQZZNV.jpg" fitHeight="600.0" fitWidth="1000.0" layoutX="0.0" layoutY="0.0">
       <image>
-        <Image url="@../../../resources/timgBLDQZZNV.jpg" preserveRatio="true" smooth="true" />
+        <Image url="@../../../resources/finalBG.jpg" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="600.0" fitWidth="1000.0" layoutX="0.0" layoutY="-1.0" opacity="0.0">
-      <image>
-        <Image url="@../../../resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
-      </image>
-    </ImageView>
-    <Label fx:id="id" layoutX="856.0" layoutY="15.0" prefWidth="60.000099999997474" text="ID:XXX">
+    <Label fx:id="id" layoutX="785.0" layoutY="8.0" prefHeight="23.000099182128906" prefWidth="121.0" text="ID:XXX">
+      <effect>
+        <Reflection fraction="0.43253968253968256" />
+      </effect>
       <font>
-        <Font name="Microsoft YaHei UI Light" size="15.0" fx:id="x1" />
+        <Font name="方正兰亭超细黑简体" size="20.0" fx:id="x6" />
       </font>
     </Label>
-    <Label fx:id="logout" font="$x1" layoutX="927.0" layoutY="14.0" onMouseClicked="#logout" text="|| 登出" />
+    <Label fx:id="logout" font="$x6" layoutX="928.0" layoutY="9.0" onMouseClicked="#logout" text="登出">
+      <effect>
+        <Reflection fraction="0.48809523809523814" />
+      </effect>
+    </Label>
     <Separator prefHeight="3.2" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="123.0" />
-    <Label layoutX="10.0" layoutY="35.0" text="制定现金费用单">
+    <Label layoutX="474.0" layoutY="40.0" text="制定现金费用单">
+      <effect>
+        <Reflection fraction="0.28968253968253965" topOffset="-10.0" />
+      </effect>
       <font>
-        <Font size="65.0" />
+        <Font name="方正兰亭超细黑简体" size="65.0" />
       </font>
     </Label>
-    <Label font="$x1" layoutX="15.0" layoutY="130.0" text="单据编号：" />
-    <Label fx:id="billid" font="$x1" layoutX="104.0" layoutY="130.0" text="XJFYD-yyyyMMdd-xxxxx" />
-    <Label font="$x1" layoutX="15.0" layoutY="158.0" text="银行账户：" />
+    <Label layoutX="15.0" layoutY="130.0" text="单据编号：">
+      <font>
+        <Font name="方正兰亭超细黑简体" size="15.0" fx:id="x7" />
+      </font>
+    </Label>
+    <Label fx:id="billid" layoutX="104.0" layoutY="130.0" text="XJFYD-yyyyMMdd-xxxxx">
+      <font>
+        <Font size="15.0" fx:id="x1" />
+      </font>
+    </Label>
+    <Label font="$x7" layoutX="15.0" layoutY="158.0" text="银行账户：" />
     <TextField fx:id="account" layoutX="104.0" layoutY="155.0" opacity="0.6" />
-    <Label font="$x1" layoutX="323.0" layoutY="158.0" text="操作员：" />
+    <Label font="$x7" layoutX="323.0" layoutY="158.0" text="操作员：" />
     <Label fx:id="operator" font="$x1" layoutX="390.0" layoutY="158.0" prefWidth="75.0" text="XXX" />
     <Separator layoutX="778.0" layoutY="128.0" orientation="VERTICAL" prefHeight="471.0" prefWidth="7.0" />
     <ScrollPane layoutX="1.0" layoutY="189.0" opacity="0.7" prefHeight="350.0" prefWidth="777.0">
@@ -69,46 +83,114 @@
     </ScrollPane>
     <Label layoutX="500.0" layoutY="153.0" prefHeight="27.0" prefWidth="52.0" text="总额：">
       <font>
-        <Font name="Microsoft JhengHei UI Light" size="17.0" fx:id="x2" />
+        <Font name="方正兰亭超细黑简体" size="17.0" />
       </font>
     </Label>
-    <Label fx:id="totalsum" font="$x2" layoutX="559.0" layoutY="155.0" prefHeight="26.0" prefWidth="83.0" text="xxx" />
+    <Label fx:id="totalsum" layoutX="559.0" layoutY="155.0" prefHeight="26.0" prefWidth="83.0" text="xxx">
+      <font>
+        <Font size="17.0" fx:id="x2" />
+      </font>
+    </Label>
     <Button fx:id="addB" layoutX="796.0" layoutY="340.0" mnemonicParsing="false" onAction="#add" opacity="0.77" prefHeight="30.0" prefWidth="164.0" text="新    增">
       <effect>
-        <Lighting diffuseConstant="2.0" surfaceScale="2.7977099236641223" fx:id="x3">
-          <bumpInput>
-            <Shadow />
-          </bumpInput>
-          <light>
-            <javafx.scene.effect.Light.Distant />
-          </light>
-        </Lighting>
+        <Reflection fraction="0.5912698412698413">
+          <input>
+            <Lighting diffuseConstant="2.0" surfaceScale="2.7977099236641223">
+              <bumpInput>
+                <Shadow fx:id="x3" />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant />
+              </light>
+            </Lighting>
+          </input>
+        </Reflection>
       </effect>
       <font>
-        <Font name="Microsoft YaHei UI Light" size="14.0" fx:id="x4" />
+        <Font name="方正兰亭超细黑简体" size="18.0" fx:id="x4" />
       </font>
     </Button>
-    <Button fx:id="deleteB" effect="$x3" font="$x4" layoutX="796.0" layoutY="434.0" mnemonicParsing="false" onAction="#delete" opacity="0.77" prefHeight="31.0" prefWidth="163.9998779296875" text="删    除" />
-    <Button fx:id="returnB" effect="$x3" font="$x4" layoutX="465.0" layoutY="547.0" mnemonicParsing="false" onAction="#showFianceMainUI" opacity="0.77" prefHeight="30.0" prefWidth="142.0" text=" 返    回" />
-    <Button fx:id="updateB" effect="$x3" font="$x4" layoutX="796.0" layoutY="387.0" mnemonicParsing="false" onAction="#update" opacity="0.77" prefHeight="30.000099999997474" prefWidth="164.0" text="修    改" />
-    <Button fx:id="rightB" effect="$x3" font="$x4" layoutX="626.0" layoutY="548.0" mnemonicParsing="false" onAction="#rightSet" opacity="0.77" prefHeight="30.0" prefWidth="142.0" text=" 确    认" />
-    <Label font="$x1" layoutX="796.0" layoutY="135.0" text="条目名：" />
-    <Label font="$x1" layoutX="796.0" layoutY="201.0" text="金额：" />
-    <Label font="$x1" layoutX="796.0" layoutY="266.0" text="备注：" />
+    <Button fx:id="deleteB" font="$x4" layoutX="796.0" layoutY="434.0" mnemonicParsing="false" onAction="#delete" opacity="0.77" prefHeight="31.0" prefWidth="163.9998779296875" text="删    除">
+      <effect>
+        <Reflection>
+          <input>
+            <Lighting bumpInput="$x3" diffuseConstant="2.0" surfaceScale="2.7977099236641223">
+              <light>
+                <javafx.scene.effect.Light.Distant />
+              </light>
+            </Lighting>
+          </input>
+        </Reflection>
+      </effect>
+    </Button>
+    <Button fx:id="returnB" layoutX="465.0" layoutY="547.0" mnemonicParsing="false" onAction="#showFianceMainUI" opacity="0.77" prefHeight="30.0" prefWidth="142.0" text=" 返    回">
+      <effect>
+        <Reflection>
+          <input>
+            <Lighting bumpInput="$x3" diffuseConstant="2.0" surfaceScale="2.7977099236641223">
+              <light>
+                <javafx.scene.effect.Light.Distant />
+              </light>
+            </Lighting>
+          </input>
+        </Reflection>
+      </effect>
+      <font>
+        <Font name="方正兰亭超细黑简体" size="14.0" fx:id="x5" />
+      </font>
+    </Button>
+    <Button fx:id="updateB" font="$x4" layoutX="796.0" layoutY="387.0" mnemonicParsing="false" onAction="#update" opacity="1.0" prefHeight="30.000099999997474" prefWidth="164.0" text="修    改">
+      <effect>
+        <Reflection fraction="0.4722222222222222">
+          <input>
+            <Lighting bumpInput="$x3" diffuseConstant="2.0" surfaceScale="2.7977099236641223">
+              <light>
+                <javafx.scene.effect.Light.Distant />
+              </light>
+            </Lighting>
+          </input>
+        </Reflection>
+      </effect>
+    </Button>
+    <Button fx:id="rightB" font="$x5" layoutX="626.0" layoutY="548.0" mnemonicParsing="false" onAction="#rightSet" opacity="0.77" prefHeight="30.0" prefWidth="142.0" text=" 确认提交">
+      <effect>
+        <Reflection>
+          <input>
+            <Lighting bumpInput="$x3" diffuseConstant="2.0" surfaceScale="2.7977099236641223">
+              <light>
+                <javafx.scene.effect.Light.Distant />
+              </light>
+            </Lighting>
+          </input>
+        </Reflection>
+      </effect>
+    </Button>
+    <Label font="$x4" layoutX="796.0" layoutY="135.0" text="条目名：" />
+    <Label font="$x4" layoutX="796.0" layoutY="201.0" text="金额：">
+      <effect>
+        <Reflection fraction="0.41269841269841256" />
+      </effect>
+    </Label>
+    <Label font="$x4" layoutX="796.0" layoutY="266.0" text="备注：" />
     <TextField fx:id="itemName" layoutX="795.0" layoutY="158.0" opacity="0.6" prefHeight="30.0" />
     <TextField fx:id="itemMoney" layoutX="795.0" layoutY="222.0" opacity="0.6" prefHeight="30.0" />
     <TextField fx:id="itemNote" layoutX="795.0" layoutY="287.0" opacity="0.6" prefHeight="30.0" />
     <Button fx:id="reviseB" font="$x4" layoutX="796.0" layoutY="548.0" mnemonicParsing="false" onAction="#rivise" opacity="0.77" prefHeight="30.0" prefWidth="164.0" text=" 确    认">
       <effect>
-        <Lighting diffuseConstant="2.0" surfaceScale="2.7977099236641223" fx:id="x31">
-          <bumpInput>
-            <Shadow />
-          </bumpInput>
-          <light>
-            <javafx.scene.effect.Light.Distant />
-          </light>
-        </Lighting>
+        <Reflection>
+          <input>
+            <Lighting diffuseConstant="2.0" surfaceScale="2.7977099236641223">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant />
+              </light>
+            </Lighting>
+          </input>
+        </Reflection>
       </effect>
     </Button>
+    <Line endX="100.0" layoutX="900.0" layoutY="108.0" opacity="0.42" startX="-438.0" startY="1.0" />
   </children>
 </AnchorPane>

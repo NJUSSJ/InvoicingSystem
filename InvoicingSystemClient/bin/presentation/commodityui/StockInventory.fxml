@@ -8,9 +8,11 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.text.Font?>
 
@@ -18,19 +20,25 @@
   <children>
     <ImageView id="timgBLDQZZNV.jpg" fitHeight="606.0" fitWidth="999.0" layoutX="1.0" layoutY="1.0">
       <image>
-        <Image url="@../../../resources/timgBLDQZZNV.jpg" preserveRatio="true" smooth="true" />
+        <Image url="@../../../resources/finalBG.jpg" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <Label fx:id="ID" layoutX="814.0" layoutY="11.0" prefWidth="76.0" text="ID:XXX">
+    <Label fx:id="ID" layoutX="812.0" layoutY="11.0" prefWidth="97.0" text="ID:XXX">
+      <effect>
+        <Reflection fx:id="x1" />
+      </effect>
       <font>
-        <Font name="Microsoft YaHei UI Light" size="16.0" fx:id="x1" />
+        <Font name="方正兰亭超细黑简体" size="18.0" fx:id="x2" />
       </font>
     </Label>
-    <Label fx:id="LogOut" font="$x1" layoutX="898.0" layoutY="10.0" text="|| 登出" />
-    <Separator prefHeight="1.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="145.0" />
-    <Label layoutX="14.0" layoutY="61.0" text="库存盘点">
+    <Label fx:id="LogOut" effect="$x1" font="$x2" layoutX="924.0" layoutY="11.0" text="登出" />
+    <Separator prefHeight="1.0" prefWidth="1000.0" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="145.0" />
+    <Label layoutX="682.0" layoutY="54.0" text="库存盘点">
+      <effect>
+        <Reflection topOffset="-10.0" />
+      </effect>
       <font>
-        <Font size="65.0" />
+        <Font name="方正兰亭超细黑简体" size="65.0" />
       </font>
     </Label>
     <ScrollPane layoutY="185.0" opacity="0.7" prefHeight="417.0" prefWidth="827.0">
@@ -51,13 +59,27 @@
       </content>
     </ScrollPane>
     <Separator layoutX="823.0" layoutY="148.0" orientation="VERTICAL" prefHeight="459.0" prefWidth="6.0" />
-    <Button fx:id="Export" layoutY="239.0" mnemonicParsing="false" onAction="#handleExport" opacity="0.7" prefHeight="35.0" prefWidth="131.0" text="导出为Excel" AnchorPane.rightAnchor="19.0">
+    <Button fx:id="Export" layoutY="460.0" mnemonicParsing="false" onAction="#handleExport" opacity="0.7" prefHeight="35.0" prefWidth="131.0" text="导出为Excel" AnchorPane.rightAnchor="17.0">
+      <effect>
+        <Lighting diffuseConstant="1.746031746031746" specularConstant="0.5222222222222221" surfaceScale="2.6904761904761902" fx:id="x3">
+          <bumpInput>
+            <Shadow />
+          </bumpInput>
+          <contentInput>
+            <Reflection />
+          </contentInput>
+          <light>
+            <javafx.scene.effect.Light.Distant />
+          </light>
+        </Lighting>
+      </effect>
       <font>
-        <Font name="Microsoft YaHei UI Light" size="15.0" fx:id="x2" />
+        <Font name="方正兰亭超细黑简体" size="16.0" fx:id="x4" />
       </font>
     </Button>
-    <Button fx:id="Return" font="$x2" layoutY="289.0" mnemonicParsing="false" onAction="#Return" opacity="0.7" prefHeight="35.0" prefWidth="131.0" text="返    回" AnchorPane.rightAnchor="19.0" />
-    <Label fx:id="todayDate" font="$x1" layoutX="7.0" layoutY="155.0" text="日期：XXXX-XX-XX" />
-    <Button fx:id="Invent" font="$x2" layoutX="852.0" layoutY="185.0" mnemonicParsing="false" onAction="#Invent" opacity="0.7" prefHeight="34.0001220703125" prefWidth="130.00009999999747" text="盘点" />
+    <Button fx:id="Return" effect="$x3" font="$x4" layoutY="510.0" mnemonicParsing="false" onAction="#Return" opacity="0.7" prefHeight="35.0" prefWidth="131.0" text="返    回" AnchorPane.rightAnchor="17.0" />
+    <Label fx:id="todayDate" effect="$x1" font="$x2" layoutX="358.0" layoutY="155.0" text="日期：XXXX-XX-XX" />
+    <Button fx:id="Invent" effect="$x3" font="$x4" layoutX="851.0" layoutY="406.0" mnemonicParsing="false" onAction="#Invent" opacity="0.7" prefHeight="34.0001220703125" prefWidth="130.00009999999747" text="盘   点" />
+    <Line endX="100.0" layoutX="900.0" layoutY="126.0" opacity="0.42" startX="-231.0" startY="0.0" />
   </children>
 </AnchorPane>

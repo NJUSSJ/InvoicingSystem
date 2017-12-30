@@ -10,6 +10,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -20,19 +21,22 @@
   <children>
     <ImageView id="timgBLDQZZNV.jpg" fitHeight="600.0" fitWidth="999.0" layoutX="1.0" layoutY="0.0">
       <image>
-        <Image url="@../../../resources/timgBLDQZZNV.jpg" preserveRatio="true" smooth="true" />
+        <Image url="@../../../resources/finalBG.jpg" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <Label fx:id="id" layoutX="834.0" layoutY="14.0" prefWidth="65.0" text="ID:XXX">
+    <Label fx:id="id" layoutX="809.0" layoutY="14.0" prefWidth="90.0" text="ID:XXX">
       <font>
-        <Font name="Microsoft YaHei UI Light" size="16.0" fx:id="x3" />
+        <Font name="方正兰亭超细黑简体" size="18.0" fx:id="x1" />
       </font>
     </Label>
-    <Label fx:id="logout" font="$x3" layoutX="901.0" layoutY="13.0" onMouseClicked="#logOut" text="|| 登出" />
+    <Label fx:id="logout" font="$x1" layoutX="919.0" layoutY="14.0" onMouseClicked="#logOut" text="登出" />
     <Separator prefHeight="5.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="116.0" />
-    <Label layoutX="14.0" layoutY="25.0" text="日志查看">
+    <Label layoutX="701.0" layoutY="37.0" text="日志查看">
+      <effect>
+        <Reflection topOffset="-10.0" />
+      </effect>
       <font>
-        <Font size="65.0" />
+        <Font name="方正兰亭超细黑简体" size="65.0" />
       </font>
     </Label>
     <ScrollPane layoutX="0.0" layoutY="208.0" opacity="0.7" prefHeight="391.0" prefWidth="866.0">
@@ -52,24 +56,37 @@
     </ScrollPane>
     <Label layoutX="20.0" layoutY="179.0" text="时间区间：">
       <font>
-        <Font size="15.0" fx:id="x1" />
+        <Font name="方正兰亭超细黑简体" size="15.0" fx:id="x2" />
       </font>
     </Label>
     <Button fx:id="rightB" layoutX="741.0" layoutY="174.0" mnemonicParsing="false" onAction="#search" opacity="0.7" prefHeight="27.0" prefWidth="90.0" text="确认筛选">
+      <effect>
+        <Lighting diffuseConstant="1.5714285714285714" specularConstant="0.5063492063492063" surfaceScale="2.6904761904761902" fx:id="x3">
+          <bumpInput>
+            <Shadow />
+          </bumpInput>
+          <contentInput>
+            <Reflection />
+          </contentInput>
+          <light>
+            <javafx.scene.effect.Light.Distant />
+          </light>
+        </Lighting>
+      </effect>
       <font>
-        <Font size="14.0" fx:id="x2" />
+        <Font name="方正兰亭超细黑简体" size="16.0" fx:id="x4" />
       </font>
     </Button>
-    <Label font="$x1" layoutX="173.0" layoutY="179.0" text="年" />
-    <Label font="$x1" layoutX="254.0" layoutY="179.0" text="月" />
-    <Label font="$x1" layoutX="348.0" layoutY="179.0" text="日" />
-    <Label font="$x1" layoutX="494.0" layoutY="179.0" text="年" />
-    <Label font="$x1" layoutX="597.0" layoutY="179.0" text="月" />
-    <Label font="$x1" layoutX="695.0" layoutY="179.0" text="日" />
-    <Label font="$x1" layoutX="374.0" layoutY="178.0" text="~" />
-    <Label font="$x1" layoutX="20.0" layoutY="145.0" text="操 作 员 ：" />
+    <Label font="$x2" layoutX="173.0" layoutY="179.0" text="年" />
+    <Label font="$x2" layoutX="254.0" layoutY="179.0" text="月" />
+    <Label font="$x2" layoutX="348.0" layoutY="179.0" text="日" />
+    <Label font="$x2" layoutX="494.0" layoutY="179.0" text="年" />
+    <Label font="$x2" layoutX="597.0" layoutY="179.0" text="月" />
+    <Label font="$x2" layoutX="695.0" layoutY="179.0" text="日" />
+    <Label font="$x2" layoutX="374.0" layoutY="178.0" text="~" />
+    <Label font="$x2" layoutX="20.0" layoutY="145.0" text="操 作 员 ：" />
     <TextField fx:id="operator" layoutX="92.0" layoutY="143.0" />
-    <Button fx:id="returnB" font="$x2" layoutX="890.0" layoutY="175.0" mnemonicParsing="false" onAction="#back" opacity="0.7" prefHeight="27.0" prefWidth="90.0" text="返   回" />
+    <Button fx:id="returnB" effect="$x3" font="$x4" layoutX="890.0" layoutY="516.0" mnemonicParsing="false" onAction="#back" opacity="0.7" prefHeight="27.0" prefWidth="90.0" text="返   回" />
     <TextField fx:id="beginYear" layoutX="92.0" layoutY="179.0" prefHeight="18.0" prefWidth="75.0" />
     <TextField fx:id="endYear" layoutX="395.0" layoutY="179.0" prefHeight="18.0" prefWidth="90.0" />
     <TextField fx:id="beginMonth" layoutX="197.0" layoutY="179.0" prefHeight="18.0" prefWidth="49.9998779296875" />
@@ -77,6 +94,6 @@
     <TextField fx:id="endDay" layoutX="623.0" layoutY="179.0" prefHeight="18.0" prefWidth="63.0" />
     <TextField fx:id="beginDay" layoutX="279.0" layoutY="178.0" prefHeight="18.999900000002526" prefWidth="61.0" />
     <TextField fx:id="type" layoutX="388.0" layoutY="142.0" prefWidth="200.0" />
-    <Label font="$x1" layoutX="299.0" layoutY="144.0" text="操作类型：" />
+    <Label font="$x2" layoutX="299.0" layoutY="144.0" text="操作类型：" />
   </children>
 </AnchorPane>

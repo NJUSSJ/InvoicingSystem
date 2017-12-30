@@ -4,81 +4,156 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.mainui.SaleMainViewController">
   <children>
-    <AnchorPane layoutX="-6.0" layoutY="-14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0">
+    <AnchorPane layoutX="-5.0" layoutY="-14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0">
       <children>
-        <ImageView id="timgBLDQZZNV.jpg" fitHeight="600.0" fitWidth="1006.0" layoutX="0.0" layoutY="14.0">
+        <ImageView id="timgBLDQZZNV.jpg" fitHeight="600.0" fitWidth="1006.0" layoutX="1.0" layoutY="14.0" opacity="0.42">
           <image>
-            <Image url="@../../../resources/timgBLDQZZNV.jpg" preserveRatio="true" smooth="true" />
+            <Image url="@../../../resources/finalBG.jpg" preserveRatio="true" smooth="true" />
           </image>
         </ImageView>
-        <Label layoutX="14.0" layoutY="39.0" prefHeight="102.99990000000253" prefWidth="607.0" text="进货销售人员主页面">
+        <Label layoutX="380.0" layoutY="47.0" prefHeight="102.99990000000253" prefWidth="607.0" text="进货销售人员主页面">
+          <effect>
+            <Reflection fraction="0.4682539682539683" topOffset="-40.0" />
+          </effect>
           <font>
-            <Font size="65.0" />
+            <Font name="方正兰亭超细黑简体" size="65.0" />
           </font>
         </Label>
-        <Label fx:id="id" layoutX="870.0" layoutY="21.0" prefWidth="71.0" text="ID：xxx">
+        <Label fx:id="id" layoutX="817.0" layoutY="21.0" prefHeight="22.0" prefWidth="119.0" text="ID：xxx">
+          <effect>
+            <Reflection />
+          </effect>
           <font>
-            <Font name="Microsoft YaHei UI Light" size="15.0" fx:id="x1" />
+            <Font name="方正兰亭超细黑简体" size="20.0" fx:id="x1" />
           </font>
         </Label>
-        <Label fx:id="logout" font="$x1" layoutX="941.0" layoutY="21.0" onMouseClicked="#showLoginUI" text="|| 登出" />
-        <Separator prefHeight="3.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="130.0" />
-        <Label layoutX="144.0" layoutY="339.0" text="客户管理">
-          <font>
-            <Font name="System Bold" size="17.0" fx:id="x2" />
-          </font>
+        <Label fx:id="logout" font="$x1" layoutX="941.0" layoutY="21.0" onMouseClicked="#showLoginUI" text="登出">
+          <effect>
+            <Reflection />
+          </effect>
         </Label>
-        <Label font="$x2" layoutX="390.0" layoutY="546.0" text="邮箱" />
-        <ImageView fx:id="email" fitHeight="125.0" fitWidth="131.0" layoutX="336.0" layoutY="389.0" onMouseClicked="#showEmailUI">
+        <Separator prefHeight="3.0" prefWidth="1000.0" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="130.0" />
+        <Label font="$x1" layoutX="609.0" layoutY="570.0" text="客户管理" underline="true">
+          <effect>
+            <Reflection />
+          </effect>
+        </Label>
+        <Label font="$x1" layoutX="850.0" layoutY="570.0" text="邮箱" underline="true">
+          <effect>
+            <Reflection />
+          </effect>
+        </Label>
+        <ImageView fx:id="email" fitHeight="136.0" fitWidth="139.0001220703125" layoutX="800.0" layoutY="420.0" onMouseClicked="#showEmailUI">
+          <effect>
+            <InnerShadow>
+              <input>
+                <Reflection fraction="0.16269841269841268" topOffset="-10.0" />
+              </input>
+            </InnerShadow>
+          </effect>
           <image>
             <Image url="@../../../resources/Mail_Search_512px_1178165_easyicon.net.png" />
           </image>
         </ImageView>
-        <Label font="$x2" layoutX="371.0" layoutY="339.0" text="制定进货单" />
-        <Label font="$x2" layoutX="119.0" layoutY="546.0" text="制定进货退货单" />
-        <Label font="$x2" layoutX="592.0" layoutY="339.0" text="制定销售单" />
-        <Label font="$x2" layoutX="810.0" layoutY="339.0" text="制定销售退货单" />
-        <ImageView fx:id="member" fitHeight="125.0" fitWidth="145.0" layoutX="96.0" layoutY="188.0" onMouseClicked="#showMemberUI">
+        <Label font="$x1" layoutX="358.0" layoutY="357.0" text="制定进货单" underline="true">
+          <effect>
+            <Reflection />
+          </effect>
+        </Label>
+        <Label font="$x1" layoutX="340.0" layoutY="570.0" text="制定进货退货单" underline="true">
+          <effect>
+            <Reflection />
+          </effect>
+        </Label>
+        <Label font="$x1" layoutX="594.0" layoutY="357.0" text="制定销售单" underline="true">
+          <effect>
+            <Reflection />
+          </effect>
+        </Label>
+        <Label font="$x1" layoutX="796.0" layoutY="357.0" text="制定销售退货单" underline="true">
+          <effect>
+            <Reflection />
+          </effect>
+        </Label>
+        <ImageView fx:id="member" fitHeight="125.0" fitWidth="145.0" layoutX="576.0" layoutY="420.0" onMouseClicked="#showMemberUI">
+          <effect>
+            <InnerShadow height="28.906976744186043" radius="17.412790697674417" width="42.74418604651162">
+              <input>
+                <Reflection fraction="0.2" topOpacity="0.3" />
+              </input>
+            </InnerShadow>
+          </effect>
           <image>
             <Image url="@../../../resources/business_Card_185px_1197724_easyicon.net.png" />
           </image>
         </ImageView>
-        <ImageView id="Bill_paid_335px_1188543_easyicon.net.gif" fitHeight="145.99990000000253" fitWidth="131.0" layoutX="342.0" layoutY="178.0">
+        <ImageView id="Bill_paid_335px_1188543_easyicon.net.gif" fitHeight="145.99990000000253" fitWidth="131.0" layoutX="342.0" layoutY="180.0">
+          <effect>
+            <InnerShadow>
+              <input>
+                <Reflection fraction="0.2" topOpacity="0.3" />
+              </input>
+            </InnerShadow>
+          </effect>
           <image>
             <Image url="@../../../resources/Bill_paid_335px_1188543_easyicon.net.gif" preserveRatio="true" smooth="true" />
           </image>
         </ImageView>
-        <ImageView id="Bill_paid_335px_1188543_easyicon.net.gif" fitHeight="145.99990000000253" fitWidth="131.0" layoutX="564.0" layoutY="178.0">
+        <ImageView id="Bill_paid_335px_1188543_easyicon.net.gif" fitHeight="145.99990000000253" fitWidth="131.0" layoutX="576.0" layoutY="180.0">
+          <effect>
+            <InnerShadow>
+              <input>
+                <Reflection fraction="0.2" topOpacity="0.3" />
+              </input>
+            </InnerShadow>
+          </effect>
           <image>
             <Image url="@../../../resources/Bill_paid_335px_1188543_easyicon.net.gif" preserveRatio="true" smooth="true" />
           </image>
         </ImageView>
-        <ImageView id="Bill_paid_335px_1188543_easyicon.net - 1.gif" fitHeight="153.0" fitWidth="126.0" layoutX="117.0" layoutY="385.0">
+        <ImageView id="Bill_paid_335px_1188543_easyicon.net - 1.gif" fitHeight="153.0001220703125" fitWidth="131.0" layoutX="344.0" layoutY="397.0">
+          <effect>
+            <Reflection fraction="0.2793650793650794" topOffset="-40.0" topOpacity="0.3">
+              <input>
+                <InnerShadow />
+              </input>
+            </Reflection>
+          </effect>
           <image>
             <Image url="@../../../resources/Bill_paid_335px_1188543_easyicon.net%20-%201.gif" preserveRatio="true" smooth="true" />
           </image>
         </ImageView>
-        <ImageView id="Bill_paid_335px_1188543_easyicon.net - 1.gif" fitHeight="153.0" fitWidth="126.0" layoutX="800.0" layoutY="171.0">
+        <ImageView id="Bill_paid_335px_1188543_easyicon.net - 1.gif" fitHeight="153.00009999999747" fitWidth="131.0" layoutX="800.0" layoutY="174.0">
+          <effect>
+            <Reflection fraction="0.2" topOffset="-4.0" topOpacity="0.3" />
+          </effect>
           <image>
             <Image url="@../../../resources/Bill_paid_335px_1188543_easyicon.net%20-%201.gif" preserveRatio="true" smooth="true" />
           </image>
         </ImageView>
-        <Button fx:id="memberButton" layoutX="87.0" layoutY="177.0" mnemonicParsing="false" onAction="#showMemberUI" opacity="0.0" prefHeight="151.0" prefWidth="163.0" text="Button" />
-        <Button fx:id="importBillButton" layoutX="320.0" layoutY="177.0" mnemonicParsing="false" onAction="#showImportUI" opacity="0.0" prefHeight="151.0" prefWidth="163.0" text="Button" />
-        <Button fx:id="saleButton" layoutX="548.0" layoutY="173.0" mnemonicParsing="false" onAction="#showSaleUI" opacity="0.0" prefHeight="151.0" prefWidth="163.0" text="Button" />
-        <Button fx:id="saleReturnButton" layoutX="778.0" layoutY="170.0" mnemonicParsing="false" onAction="#showSaleReturnUI" opacity="0.0" prefHeight="151.0" prefWidth="163.0" text="Button" />
-        <Button fx:id="importReturnButton" layoutX="93.0" layoutY="385.0" mnemonicParsing="false" onAction="#showImportReturnUI" opacity="0.0" prefHeight="151.0" prefWidth="163.0" text="Button" />
-        <Button fx:id="emailButton" layoutX="320.0" layoutY="384.0" mnemonicParsing="false" onAction="#showEmailUI" opacity="0.0" prefHeight="151.0" prefWidth="163.0" text="Button" />
+        <Button fx:id="memberButton" layoutX="567.0" layoutY="409.0" mnemonicParsing="false" onAction="#showMemberUI" opacity="0.0" prefHeight="151.0" prefWidth="163.0" text="Button" />
+        <Button fx:id="importBillButton" layoutX="332.0" layoutY="178.0" mnemonicParsing="false" onAction="#showImportUI" opacity="0.0" prefHeight="151.0" prefWidth="163.0" text="Button" />
+        <Button fx:id="saleButton" layoutX="567.0" layoutY="178.0" mnemonicParsing="false" onAction="#showSaleUI" opacity="0.0" prefHeight="151.0" prefWidth="163.0" text="Button" />
+        <Button fx:id="saleReturnButton" layoutX="782.0" layoutY="173.0" mnemonicParsing="false" onAction="#showSaleReturnUI" opacity="0.0" prefHeight="151.0" prefWidth="163.0" text="Button" />
+        <Button fx:id="importReturnButton" layoutX="326.0" layoutY="397.0" mnemonicParsing="false" onAction="#showImportReturnUI" opacity="0.0" prefHeight="151.0" prefWidth="163.0" text="Button">
+          <effect>
+            <Reflection fraction="0.2" topOpacity="0.3" />
+          </effect>
+        </Button>
+        <Button fx:id="emailButton" layoutX="788.0" layoutY="419.0" mnemonicParsing="false" onAction="#showEmailUI" opacity="0.0" prefHeight="151.0" prefWidth="163.0" text="Button" />
+        <Line endX="100.0" layoutX="906.0" layoutY="132.0" opacity="0.42" startX="-550.0" startY="-2.0" />
       </children>
     </AnchorPane>
   </children>

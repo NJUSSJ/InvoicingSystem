@@ -10,6 +10,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.text.Font?>
 
@@ -17,29 +18,27 @@
   <children>
     <ImageView id="timgBLDQZZNV.jpg" fitHeight="250.0" fitWidth="400.0000999999975" layoutX="0.0" layoutY="0.0">
       <image>
-        <Image url="@../../../resources/timgBLDQZZNV.jpg" preserveRatio="true" smooth="true" />
+        <Image url="@../../../resources/finalBG.jpg" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="250.0" fitWidth="400.0" layoutX="0.0" layoutY="0.0" opacity="0.0">
-      <image>
-        <Image url="@../../../resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
-      </image>
-    </ImageView>
-    <Label layoutX="6.0" layoutY="13.0" text="账户新添/修改">
+    <Label layoutX="164.0" layoutY="13.0" text="账户新添/修改">
+      <effect>
+        <Reflection fraction="0.28174603174603174" />
+      </effect>
       <font>
-        <Font size="32.0" />
+        <Font name="方正兰亭超细黑简体" size="32.0" />
       </font>
     </Label>
-    <Separator prefHeight="4.0" prefWidth="212.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="188.0" AnchorPane.topAnchor="53.0" />
+    <Separator prefHeight="4.0" prefWidth="212.0" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="188.0" AnchorPane.topAnchor="53.0" />
     <Label layoutX="32.0" layoutY="126.0" text="名称：">
       <font>
-        <Font name="Microsoft YaHei UI Light" size="15.0" fx:id="x1" />
+        <Font size="15.0" fx:id="x1" />
       </font>
     </Label>
     <Label font="$x1" layoutX="32.0" layoutY="170.0" text="金额：" />
     <TextField fx:id="nameField" layoutX="95.0" layoutY="122.0" prefHeight="29.0" prefWidth="242.0" />
     <TextField fx:id="accountField" layoutX="95.0" layoutY="166.0" prefHeight="29.0" prefWidth="242.0" />
-    <Button fx:id="cancelB" layoutX="95.0" layoutY="207.0" mnemonicParsing="false" onAction="#cancelSet" prefHeight="30.0" prefWidth="80.0" text="取  消">
+    <Button fx:id="cancelB" layoutX="257.0" layoutY="206.0" mnemonicParsing="false" onAction="#cancelSet" prefHeight="30.0" prefWidth="80.0" text="取  消">
       <effect>
         <Lighting diffuseConstant="2.0" surfaceScale="2.8740458015267176" fx:id="x2">
           <bumpInput>
@@ -51,11 +50,12 @@
         </Lighting>
       </effect>
       <font>
-        <Font name="Microsoft YaHei UI Light" size="13.0" fx:id="x3" />
+        <Font name="方正兰亭超细黑简体" size="18.0" fx:id="x3" />
       </font>
     </Button>
-    <Button fx:id="rightB" effect="$x2" font="$x3" layoutX="257.0" layoutY="207.0" mnemonicParsing="false" onAction="#rightSet" prefHeight="30.0" prefWidth="80.0" text="确  认" />
+    <Button fx:id="rightB" effect="$x2" font="$x3" layoutX="73.0" layoutY="207.0" mnemonicParsing="false" onAction="#rightSet" prefHeight="30.0" prefWidth="80.0" text="确  认" />
     <Label font="$x1" layoutX="47.0" layoutY="82.0" text="ID：" />
     <TextField fx:id="idField" layoutX="95.0" layoutY="77.0" prefHeight="28.000099999997474" prefWidth="242.0" />
+    <Line endX="100.0" layoutX="297.0" layoutY="48.0" opacity="0.42" startX="-143.0" startY="1.0" />
   </children>
 </AnchorPane>

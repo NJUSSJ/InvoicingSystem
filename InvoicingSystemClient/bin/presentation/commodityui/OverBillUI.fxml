@@ -5,11 +5,13 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.text.Font?>
 
@@ -18,34 +20,47 @@
   <children>
     <ImageView id="timgBLDQZZNV.jpg" fitHeight="479.0" fitWidth="400.0" layoutX="0.0" layoutY="0.0">
       <image>
-        <Image url="@../../../resources/timgBLDQZZNV.jpg" preserveRatio="true" smooth="true" />
+        <Image url="@../../../resources/finalBG.jpg" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <Separator layoutX="0.0" layoutY="70.0" prefWidth="200.0" />
-    <Label layoutX="12.0" layoutY="31.0" text="库存报溢信息">
+    <Separator layoutX="0.0" layoutY="70.0" prefWidth="200.0" visible="false" />
+    <Label layoutX="177.0" layoutY="25.0" text="库存报溢信息">
+      <effect>
+        <Reflection />
+      </effect>
       <font>
-        <Font name="Microsoft YaHei UI Light" size="30.0" />
+        <Font name="方正兰亭超细黑简体" size="35.0" />
       </font>
     </Label>
-    <Label layoutX="86.0" layoutY="134.0" text="报溢商品名称：">
+    <Label layoutX="144.0" layoutY="135.0" text="报溢商品名称：">
       <font>
-        <Font name="Microsoft YaHei UI Light" size="15.0" fx:id="x1" />
+        <Font name="方正兰亭超细黑简体" size="18.0" fx:id="x1" />
       </font>
     </Label>
-    <Label layoutX="116.0" layoutY="185.0" text="报溢数量：">
+    <Label font="$x1" layoutX="174.0" layoutY="186.0" text="报溢数量：" />
+    <Label font="$x1" layoutX="174.0" layoutY="246.0" text="报溢总价：" />
+    <Label fx:id="name" font="$x1" layoutX="288.0" layoutY="135.0" text="Label" />
+    <Label fx:id="sum" font="$x1" layoutX="288.0" layoutY="246.0" text="Label" />
+    <Label fx:id="num" font="$x1" layoutX="288.0" layoutY="186.0" text="Label" />
+    <Button fx:id="confirm" layoutX="115.0" layoutY="337.0" mnemonicParsing="false" onAction="#confirm" opacity="0.7" prefHeight="39.0" prefWidth="180.0" text="确认生产报溢单">
+      <effect>
+        <Lighting diffuseConstant="1.6349206349206349" specularConstant="0.5857142857142856" surfaceScale="2.214285714285714" fx:id="x2">
+          <bumpInput>
+            <Shadow />
+          </bumpInput>
+          <contentInput>
+            <Reflection />
+          </contentInput>
+          <light>
+            <javafx.scene.effect.Light.Distant />
+          </light>
+        </Lighting>
+      </effect>
       <font>
-        <Font name="Microsoft JhengHei UI Light" size="15.0" />
+        <Font name="方正兰亭超细黑简体" size="16.0" fx:id="x3" />
       </font>
-    </Label>
-    <Label font="$x1" layoutX="116.0" layoutY="245.0" text="报溢总价：" />
-    <Label fx:id="name" layoutX="230.0" layoutY="134.0" text="Label">
-      <font>
-        <Font name="System Bold" size="15.0" fx:id="x2" />
-      </font>
-    </Label>
-    <Label fx:id="sum" font="$x2" layoutX="230.0" layoutY="245.0" text="Label" />
-    <Label fx:id="num" font="$x2" layoutX="230.0" layoutY="185.0" text="Label" />
-    <Button fx:id="confirm" layoutX="102.0" layoutY="317.0" mnemonicParsing="false" onAction="#confirm" opacity="0.7" prefHeight="39.0" prefWidth="180.0" text="确认生产报溢单" />
-    <Button fx:id="reviseB" layoutX="102.0" layoutY="337.0" mnemonicParsing="false" onAction="#revise" opacity="0.7" prefHeight="39.0" prefWidth="180.0" text="确认生产报溢单" />
+    </Button>
+    <Button fx:id="reviseB" effect="$x2" font="$x3" layoutX="115.0" layoutY="357.0" mnemonicParsing="false" onAction="#revise" opacity="0.7" prefHeight="39.0" prefWidth="180.0" text="确认生产报溢单" />
+    <Line endX="100.0" layoutX="300.0" layoutY="65.0" opacity="0.42" startX="-133.0" startY="-1.0" />
   </children>
 </AnchorPane>

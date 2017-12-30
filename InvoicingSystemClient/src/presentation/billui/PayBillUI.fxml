@@ -9,11 +9,13 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.text.Font?>
 
@@ -23,31 +25,44 @@
       <children>
         <ImageView id="timgBLDQZZNV.jpg" fitHeight="600.0" fitWidth="1000.0" layoutX="0.0" layoutY="0.0">
           <image>
-            <Image url="@../../../resources/timgBLDQZZNV.jpg" preserveRatio="true" smooth="true" />
+            <Image url="@../../../resources/finalBG.jpg" preserveRatio="true" smooth="true" />
           </image>
         </ImageView>
-        <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="600.0" fitWidth="1000.0" layoutX="0.0" layoutY="0.0" opacity="0.0">
-          <image>
-            <Image url="@../../../resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
-          </image>
-        </ImageView>
-        <Label fx:id="id" layoutX="787.0" layoutY="14.0" text="ID:XXX">
+        <Label fx:id="id" layoutX="744.0" layoutY="14.0" prefWidth="103.0" text="ID:XXX">
+          <effect>
+            <Reflection />
+          </effect>
           <font>
-            <Font name="Microsoft YaHei UI Light" size="16.0" fx:id="x1" />
+            <Font name="方正兰亭超细黑简体" size="18.0" fx:id="x3" />
           </font>
         </Label>
-        <Label fx:id="logout" font="$x1" layoutX="863.0" layoutY="14.0" onMouseClicked="#logout" text="|| 登出" />
-        <Separator prefHeight="3.2" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="123.0" />
-        <Label layoutX="14.0" layoutY="44.0" text="制定付款单">
+        <Label fx:id="logout" font="$x3" layoutX="869.0" layoutY="14.0" onMouseClicked="#logout" text="登出">
+          <effect>
+            <Reflection />
+          </effect>
+        </Label>
+        <Separator prefHeight="3.2" prefWidth="1000.0" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="123.0" />
+        <Label layoutX="619.0" layoutY="44.0" text="制定付款单">
+          <effect>
+            <Reflection fraction="0.36111111111111116" />
+          </effect>
           <font>
-            <Font size="65.0" />
+            <Font name="方正兰亭超细黑简体" size="65.0" />
           </font>
         </Label>
-        <Label font="$x1" layoutX="16.0" layoutY="129.0" text="单据编号：" />
-        <Label fx:id="billid" font="$x1" layoutX="109.0" layoutY="129.0" text="FKD-yyyyMMdd-xxxxx" />
-        <Label font="$x1" layoutX="48.0" layoutY="154.0" text="客户：" />
+        <Label layoutX="16.0" layoutY="129.0" text="单据编号：">
+          <font>
+            <Font name="方正兰亭超细黑简体" size="16.0" fx:id="x2" />
+          </font>
+        </Label>
+        <Label fx:id="billid" layoutX="109.0" layoutY="129.0" text="FKD-yyyyMMdd-xxxxx">
+          <font>
+            <Font size="16.0" fx:id="x1" />
+          </font>
+        </Label>
+        <Label font="$x2" layoutX="48.0" layoutY="157.0" text="客户：" />
         <TextField fx:id="account" layoutX="109.0" layoutY="157.0" />
-        <Label font="$x1" layoutX="326.0" layoutY="160.0" text="操作员：" />
+        <Label font="$x2" layoutX="326.0" layoutY="160.0" text="操作员：" />
         <Label fx:id="operator" font="$x1" layoutX="406.0" layoutY="160.0" prefWidth="64.0" text="XXX" />
         <Separator layoutX="778.0" layoutY="128.0" orientation="VERTICAL" prefHeight="471.0" prefWidth="7.0" />
         <ScrollPane layoutX="1.0" layoutY="189.0" opacity="0.7" prefHeight="350.0" prefWidth="777.0">
@@ -65,24 +80,120 @@
             </AnchorPane>
           </content>
         </ScrollPane>
-        <Label font="$x1" layoutX="17.0" layoutY="559.0" text="总额汇总：" />
+        <Label font="$x2" layoutX="17.0" layoutY="559.0" text="总额汇总：" />
         <Label fx:id="totalsum" font="$x1" layoutX="109.0" layoutY="559.0" prefWidth="64.0" text="xxx" />
-        <Button fx:id="addB" layoutX="798.0" layoutY="366.0" mnemonicParsing="false" onAction="#add" opacity="0.8" prefHeight="39.0" prefWidth="142.0" text="新    增">
-          <font>
-            <Font name="Microsoft YaHei UI Light" size="14.0" fx:id="x2" />
-          </font>
+        <Button fx:id="addB" font="$x3" layoutX="798.0" layoutY="365.0" mnemonicParsing="false" onAction="#add" opacity="0.8" prefHeight="39.0" prefWidth="142.0" text="新    增">
+          <effect>
+            <Lighting diffuseConstant="1.619047619047619" specularConstant="2.0" specularExponent="33.65079365079365" surfaceScale="2.4603174603174613">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <contentInput>
+                <Reflection fraction="0.6547619047619048" />
+              </contentInput>
+              <light>
+                <javafx.scene.effect.Light.Distant />
+              </light>
+            </Lighting>
+          </effect>
         </Button>
-        <Button fx:id="deleteB" font="$x2" layoutX="798.0" layoutY="466.0" mnemonicParsing="false" onAction="#delete" opacity="0.8" prefHeight="39.0" prefWidth="142.0" text="删    除" />
-        <Button fx:id="returnB" font="$x2" layoutX="436.0" layoutY="547.0" mnemonicParsing="false" onAction="#showFianceMainUI" opacity="0.8" prefHeight="39.0" prefWidth="142.0" text=" 返    回" />
-        <Button fx:id="updateB" font="$x2" layoutX="798.0" layoutY="416.0" mnemonicParsing="false" onAction="#update" opacity="0.8" prefHeight="39.0" prefWidth="142.0" text="修    改" />
-        <Button fx:id="rightB" font="$x2" layoutX="603.0" layoutY="547.0" mnemonicParsing="false" onAction="#rightSet" opacity="0.8" prefHeight="39.0" prefWidth="142.0" text=" 确    认" />
-        <Label font="$x1" layoutX="798.0" layoutY="159.0" text="银行账户：" />
-        <Label font="$x1" layoutX="798.0" layoutY="223.0" text="转账金额：" />
-        <Label font="$x1" layoutX="798.0" layoutY="291.0" text="备注：" />
+        <Button fx:id="deleteB" font="$x3" layoutX="798.0" layoutY="466.0" mnemonicParsing="false" onAction="#delete" opacity="0.8" prefHeight="39.0" prefWidth="142.0" text="删    除">
+          <effect>
+            <Lighting diffuseConstant="1.7142857142857144" specularConstant="1.3952380952380954" specularExponent="38.095238095238095" surfaceScale="2.7698412698412698">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <contentInput>
+                <Reflection />
+              </contentInput>
+              <light>
+                <javafx.scene.effect.Light.Distant />
+              </light>
+            </Lighting>
+          </effect>
+        </Button>
+        <Button fx:id="returnB" font="$x3" layoutX="436.0" layoutY="547.0" mnemonicParsing="false" onAction="#showFianceMainUI" opacity="0.8" prefHeight="39.0" prefWidth="142.0" text=" 返    回">
+          <effect>
+            <Reflection>
+              <input>
+                <Lighting diffuseConstant="1.603174603174603" specularConstant="1.4746031746031745" specularExponent="32.06349206349206" surfaceScale="3.2460317460317456">
+                  <bumpInput>
+                    <Shadow />
+                  </bumpInput>
+                  <light>
+                    <javafx.scene.effect.Light.Distant />
+                  </light>
+                </Lighting>
+              </input>
+            </Reflection>
+          </effect>
+        </Button>
+        <Button fx:id="updateB" font="$x3" layoutX="798.0" layoutY="416.0" mnemonicParsing="false" onAction="#update" opacity="0.8" prefHeight="39.0" prefWidth="142.0" text="修    改">
+          <effect>
+            <Lighting diffuseConstant="1.5873015873015872" specularConstant="1.8714285714285714" specularExponent="36.19047619047619" surfaceScale="2.6111111111111107">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <contentInput>
+                <Reflection />
+              </contentInput>
+              <light>
+                <javafx.scene.effect.Light.Distant />
+              </light>
+            </Lighting>
+          </effect>
+        </Button>
+        <Button fx:id="rightB" font="$x3" layoutX="603.0" layoutY="547.0" mnemonicParsing="false" onAction="#rightSet" opacity="0.8" prefHeight="39.0" prefWidth="142.0" text=" 确    认">
+          <effect>
+            <Reflection>
+              <input>
+                <Lighting diffuseConstant="1.8412698412698412" specularConstant="0.7285714285714285" specularExponent="25.07936507936508" surfaceScale="3.325396825396825">
+                  <bumpInput>
+                    <Shadow />
+                  </bumpInput>
+                  <light>
+                    <javafx.scene.effect.Light.Distant />
+                  </light>
+                </Lighting>
+              </input>
+            </Reflection>
+          </effect>
+        </Button>
+        <Label font="$x2" layoutX="798.0" layoutY="159.0" text="银行账户：">
+          <effect>
+            <Reflection />
+          </effect>
+        </Label>
+        <Label font="$x2" layoutX="798.0" layoutY="223.0" text="转账金额：">
+          <effect>
+            <Reflection />
+          </effect>
+        </Label>
+        <Label font="$x2" layoutX="798.0" layoutY="291.0" text="备注：">
+          <effect>
+            <Reflection />
+          </effect>
+        </Label>
         <TextField fx:id="itemName" layoutX="794.0" layoutY="189.0" />
         <TextField fx:id="itemMoney" layoutX="795.0" layoutY="254.0" />
         <TextField fx:id="itemNote" layoutX="794.0" layoutY="322.0" />
-        <Button fx:id="reviseB" font="$x2" layoutX="798.0" layoutY="547.0" mnemonicParsing="false" onAction="#revise" opacity="0.8" prefHeight="39.0" prefWidth="142.0" text=" 确    认" />
+        <Button fx:id="reviseB" font="$x3" layoutX="798.0" layoutY="547.0" mnemonicParsing="false" onAction="#revise" opacity="0.8" prefHeight="39.0" prefWidth="142.0" text=" 确    认">
+          <effect>
+            <Reflection>
+              <input>
+                <Lighting diffuseConstant="1.6507936507936507" specularConstant="1.3" specularExponent="28.571428571428573" surfaceScale="2.460317460317461">
+                  <bumpInput>
+                    <Shadow />
+                  </bumpInput>
+                  <light>
+                    <javafx.scene.effect.Light.Distant />
+                  </light>
+                </Lighting>
+              </input>
+            </Reflection>
+          </effect>
+        </Button>
+        <Line endX="100.0" layoutX="897.0" layoutY="111.0" opacity="0.42" startX="-288.0" startY="0.0" />
       </children>
     </AnchorPane>
   </children>

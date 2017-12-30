@@ -18,33 +18,34 @@
   <children>
     <ImageView id="timgBLDQZZNV.jpg" fitHeight="706.0001220703125" fitWidth="1022.0" layoutX="0.0" layoutY="0.0">
       <image>
-        <Image url="@../../../resources/timgBLDQZZNV.jpg" preserveRatio="true" smooth="true" />
+        <Image url="@../../../resources/finalBG2.jpg" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="706.0000999999975" fitWidth="1000.0" layoutX="0.0" layoutY="0.0" opacity="0.0">
-      <image>
-        <Image url="@../../../resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
-      </image>
-    </ImageView>
-    <Label layoutX="302.0" layoutY="144.0" text="Welcome To BulbManage" textFill="#ffc633">
+    <Label layoutX="584.0" layoutY="144.0" text="Welcome To BulbManage" textFill="#ffc633">
+      <effect>
+        <Reflection bottomOpacity="0.11904761904761904" fraction="0.7341269841269842" topOffset="-10.0" topOpacity="0.47619047619047616" />
+      </effect>
       <font>
         <Font name="Bauhaus 93" size="35.0" />
       </font>
     </Label>
-    <Label layoutX="303.0" layoutY="214.0" text="Username">
+    <Label layoutX="585.0" layoutY="248.0" text="Username：">
       <font>
         <Font name="Arial Rounded MT Bold" size="20.0" fx:id="x1" />
       </font>
     </Label>
-    <Label font="$x1" layoutX="303.0" layoutY="314.0" text="Password" />
-    <TextField fx:id="username" layoutX="303.0" layoutY="247.0" prefHeight="52.000099999997474" prefWidth="397.0" />
-    <Button fx:id="SignButton" font="$x1" layoutX="302.0" layoutY="428.0" mnemonicParsing="false" onAction="#Login" opacity="0.99" prefHeight="53.0" prefWidth="397.0" text="Sign in">
+    <Label font="$x1" layoutX="584.0" layoutY="369.0" text="Password：" />
+    <TextField fx:id="username" layoutX="585.0" layoutY="292.0" prefHeight="52.000099999997474" prefWidth="397.0" />
+    <Button fx:id="SignButton" font="$x1" layoutX="584.0" layoutY="484.0" mnemonicParsing="false" onAction="#Login" opacity="0.99" prefHeight="53.0" prefWidth="397.0" text="Sign in">
       <effect>
         <Reflection />
       </effect>
     </Button>
-    <PasswordField fx:id="password" layoutX="303.0" layoutY="346.0" prefHeight="53.0" prefWidth="397.0" />
-    <ImageView id="light_bulb_310px_1204967_easyicon.net.png" fitHeight="106.99990000000253" fitWidth="78.0" layoutX="461.0" layoutY="23.0">
+    <PasswordField fx:id="password" layoutX="585.0" layoutY="413.0" prefHeight="53.0" prefWidth="397.0" />
+    <ImageView id="light_bulb_310px_1204967_easyicon.net.png" fitHeight="106.99990000000253" fitWidth="78.0" layoutX="743.0" layoutY="23.0">
+      <effect>
+        <Glow />
+      </effect>
       <image>
         <Image url="@../../../resources/light_bulb_310px_1204967_easyicon.net.png" preserveRatio="true" smooth="true" />
       </image>
