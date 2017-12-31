@@ -135,7 +135,9 @@ public class ImportBill{
 			if(bills==null)return null;
 			for(ImportBillPO po:bills){
 				if(po.getTime().before(end)&&po.getTime().after(begin)){
-					result.add(toImportBillVO(po));
+					if(po.getState()==1||po.getState()==3){
+						result.add(toImportBillVO(po));
+					}
 				}
 			}
 		} catch (RemoteException e) {
@@ -171,7 +173,7 @@ public class ImportBill{
 	}
 	public boolean fakeDelete(String id){
 		ImportBillVO vo=findImportBillByID(id);
-		vo.setState(3);
+		vo.setState(vo.getState()+2);
 		try {
 			return RemoteHelper.getInstance().getImportBillDataService().update(vo.toImportBillPO());
 		} catch (RemoteException e) {

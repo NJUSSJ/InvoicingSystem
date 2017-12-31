@@ -130,7 +130,9 @@ public class PayBill {
 			ArrayList<PayBillPO> bills=RemoteHelper.getInstance().getPayBillDataService().findPayBillbyField(userName, memberName);
 			for(PayBillPO po:bills){
 				if(po.getTime().before(end)&&po.getTime().after(begin)){
-					result.add(toPayBillVO(po));
+					if(po.getState()==1||po.getState()==3){
+						result.add(toPayBillVO(po));
+					}
 				}
 			}
 		} catch (RemoteException e) {
@@ -166,8 +168,7 @@ public class PayBill {
 	}
 	public boolean fakeDelete(String id){
 		PayBillVO vo=findPayBillByID(id);
-		vo.setState(3);
-		System.out.println(id+"----fakedelete");
+		vo.setState(vo.getState()+2);
 		try {
 			return RemoteHelper.getInstance().getPayBillDataService().update(vo.toPayBillPO());
 		} catch (RemoteException e) {

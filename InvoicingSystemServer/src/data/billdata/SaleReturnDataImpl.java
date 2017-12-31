@@ -24,7 +24,7 @@ public class SaleReturnDataImpl implements SaleReturnBillDataService {
 		String sql="insert into salereturnbills (id,userid,memberid,commoditylist,sum,time,state,num,remark)"
 				+ " values "
 				+ "('"+po.getID()+"','"+po.getUserID()+"','"+po.getMemberID()+"','"+po.getCommodityList()+"','"+po.getSum()
-				+"','"+po.getTime()+"','"+po.getState()+"','"+po.getSum()+"','"+po.getNum()+"','"+po.getRemark()+"')";
+				+"','"+po.getTime()+"','"+po.getState()+"','"+po.getNum()+"','"+po.getRemark()+"')";
 		
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {
@@ -41,7 +41,7 @@ public class SaleReturnDataImpl implements SaleReturnBillDataService {
 	 */
 	@Override
 	public boolean delete(SaleReturnBillPO po) throws RemoteException {
-String sql="delete from salereturnbills where id='"+po.getID()+"')";
+String sql="delete from salereturnbills where id='"+po.getID()+"'";
 		
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {
@@ -58,7 +58,7 @@ String sql="delete from salereturnbills where id='"+po.getID()+"')";
 	 */
 	@Override
 	public boolean update(SaleReturnBillPO po) throws RemoteException {
-		String sql="update salereturnbills set state='"+po.getState()+"' where id=="+po.getID()+"'";
+		String sql="update salereturnbills set state='"+po.getState()+"' where id='"+po.getID()+"'";
 		
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {

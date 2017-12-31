@@ -107,7 +107,7 @@ public class WarningBill{
 	}
 	public boolean fakeDelete(long id){
 		WarningBillVO vo=findWarningBillByID(id);
-		vo.setState(3);
+		vo.setState(vo.getState()+2);
 		try {
 			return RemoteHelper.getInstance().getWarningBillDataService().update(vo.toWarningBillPO());
 		} catch (RemoteException e) {

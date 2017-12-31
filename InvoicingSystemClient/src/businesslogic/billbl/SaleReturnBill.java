@@ -108,7 +108,9 @@ public class SaleReturnBill{
 		ArrayList<SaleReturnBillVO> result=new ArrayList<SaleReturnBillVO>();
 		for(SaleReturnBillVO each:bills){
 			if(each.getTime().after(begin)&&each.getTime().before(end)){
-				result.add(each);
+				if(each.getState()==1||each.getState()==3){
+					result.add(each);
+				}
 			}
 		}
 		return bills;
@@ -157,7 +159,7 @@ public class SaleReturnBill{
 	}
 	public boolean fakeDelete(String id){
 		SaleReturnBillVO vo=findSaleReturnBillByID(id);
-		vo.setState(3);
+		vo.setState(vo.getState()+2);
 		try {
 			return RemoteHelper.getInstance().getSaleReturnBillDataService().update(vo.toSaleReturnBillPO());
 		} catch (RemoteException e) {

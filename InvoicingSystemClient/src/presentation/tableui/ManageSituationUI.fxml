@@ -21,7 +21,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.tableui.ManageSituationViewController">
   <children>
-    <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="600.0" fitWidth="1001.0000999999975" layoutX="0.0" layoutY="0.0">
+    <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="600.0" fitWidth="1001.0000999999975" layoutX="2.0" layoutY="0.0">
       <image>
         <Image url="@../../../resources/finalBG.jpg" preserveRatio="true" smooth="true" />
       </image>
@@ -119,34 +119,40 @@
     <Label effect="$x5" font="$x2" layoutX="60.0" layoutY="457.0" text="折让后总收入：" underline="true" wrapText="false" />
     <Label effect="$x5" font="$x2" layoutX="60.0" layoutY="508.0" text="折让：" underline="true" wrapText="false" />
     <Label effect="$x5" font="$x2" layoutX="426.0" layoutY="188.0" text="二、支出类" underline="true" wrapText="false" />
-    <Label effect="$x5" font="$x2" layoutX="455.0" layoutY="228.0" text="销售成本：" underline="true" wrapText="false" />
+    <Label effect="$x5" font="$x2" layoutX="455.0" layoutY="228.0" text="进货成本：" underline="true" wrapText="false" />
     <Label effect="$x5" font="$x2" layoutX="456.0" layoutY="278.0" text="商品类支出：" underline="true" wrapText="false" />
-    <Label effect="$x5" font="$x2" layoutX="455.0" layoutY="396.0" text="总支出：" underline="true" wrapText="false" />
+    <Label effect="$x5" font="$x2" layoutX="455.0" layoutY="407.0" text="总支出：" underline="true" wrapText="false" />
     <Label effect="$x5" font="$x2" layoutX="29.0" layoutY="184.0" text="一、收入类" underline="true" wrapText="false" />
     <Label effect="$x5" font="$x2" layoutX="425.0" layoutY="453.0" text="三、利润" underline="true" wrapText="false" />
-    <Label effect="$x5" font="$x2" layoutX="455.0" layoutY="509.0" text="利润：" underline="true" wrapText="false" />
-    <Label fx:id="saleIncome" effect="$x5" font="$x2" layoutX="167.0" layoutY="226.0" text="label" underline="true" wrapText="false" />
-    <Label fx:id="incomeAfterDiscount" effect="$x5" font="$x2" layoutX="168.0" layoutY="457.0" text="label" underline="true" wrapText="false" />
-    <Label fx:id="discount" effect="$x5" font="$x2" layoutX="167.0" layoutY="508.0" text="label" underline="true" wrapText="false" />
-    <Label fx:id="saleCost" effect="$x5" font="$x2" layoutX="563.0" layoutY="226.0" text="label" underline="true" wrapText="false" />
-    <Label effect="$x5" font="$x2" layoutX="552.0" layoutY="279.0" text="商品报损支出" underline="true" wrapText="false" />
-    <Label fx:id="totalCost" effect="$x5" font="$x2" layoutX="563.0" layoutY="396.0" text="label" underline="true" wrapText="false" />
-    <Label fx:id="profit" effect="$x5" font="$x2" layoutX="567.0" layoutY="509.0" text="label" underline="true" wrapText="false" />
+    <Label effect="$x5" font="$x2" layoutX="458.0" layoutY="509.0" text="利润：" underline="true" wrapText="false" />
+    <Label fx:id="saleIncome" effect="$x5" font="$x2" layoutX="167.0" layoutY="227.0" prefWidth="174.0" text="" underline="true" wrapText="false" />
+    <Label fx:id="incomeAfterDiscount" effect="$x5" font="$x2" layoutX="196.0" layoutY="457.0" prefWidth="126.0" text="" underline="true" wrapText="false" />
+    <Label fx:id="discount" effect="$x5" font="$x2" layoutX="167.0" layoutY="507.0" prefHeight="21.0" prefWidth="126.0" text="" underline="true" wrapText="false" />
+    <Label fx:id="saleCost" effect="$x5" font="$x2" layoutX="565.0" layoutY="231.0" minHeight="17.0" prefHeight="17.0" prefWidth="142.0" text="" underline="true" wrapText="false" />
+    <Label effect="$x5" font="$x2" layoutX="562.0" layoutY="278.0" text="商品报损支出" underline="true" wrapText="false" />
+    <Label fx:id="totalCost" effect="$x5" font="$x2" layoutX="558.0" layoutY="407.0" prefWidth="142.0" text="" underline="true" wrapText="false" />
+    <Label fx:id="profit" effect="$x5" font="$x2" layoutX="567.0" layoutY="509.0" prefWidth="118.0" text="" underline="true" wrapText="false" />
     <Button fx:id="refer" layoutX="688.0" layoutY="141.0" mnemonicParsing="false" onAction="#refer" opacity="0.7" prefHeight="23.0" prefWidth="70.0" text="查  找">
       <font>
         <Font name="方正兰亭超细黑简体" size="16.0" />
       </font>
     </Button>
-    <Label effect="$x5" font="$x2" layoutX="552.0" layoutY="341.0" text="商品赠出支出" underline="true" wrapText="false" />
-    <Label fx:id="giftExpense" effect="$x5" font="$x2" layoutX="664.0" layoutY="341.0" text="label" underline="true" wrapText="false" />
-    <Label fx:id="lossExpense" effect="$x5" font="$x2" layoutX="664.0" layoutY="279.0" text="label" underline="true" wrapText="false" />
+    <Label effect="$x5" font="$x2" layoutX="563.0" layoutY="339.0" text="商品赠出支出" underline="true" wrapText="false" />
+    <Label fx:id="giftExpense" effect="$x5" font="$x2" layoutX="679.0" layoutY="340.0" minHeight="17.0" prefHeight="17.0" prefWidth="108.0" text="" underline="true" wrapText="false" />
+    <Label fx:id="lossExpense" effect="$x5" font="$x2" layoutX="679.0" layoutY="279.0" prefWidth="108.0" text="" underline="true" wrapText="false" />
     <Label effect="$x5" font="$x2" layoutX="146.0" layoutY="278.0" text="商品报溢收入" underline="true" wrapText="false" />
-    <Label fx:id="commodityOverIncome" effect="$x5" font="$x2" layoutX="304.0" layoutY="279.0" text="label" underline="true" wrapText="false" />
-    <Label effect="$x5" font="$x2" layoutX="140.0" layoutY="340.0" text="进货退货差价收入" underline="true" wrapText="false" />
-    <Label effect="$x5" font="$x2" layoutX="74.0" layoutY="398.0" prefHeight="20.999900000002526" prefWidth="222.0" text="代金券与实际收款差额收入" underline="true" wrapText="false" />
-    <Label fx:id="couponIncome" effect="$x5" font="$x2" layoutX="304.0" layoutY="398.0" text="label" underline="true" wrapText="false" />
-    <Label fx:id="importReturnIncome" effect="$x5" font="$x2" layoutX="304.0" layoutY="339.0" text="label" underline="true" wrapText="false" />
+    <Label fx:id="commodityOverIncome" effect="$x5" font="$x2" layoutX="304.0" layoutY="279.0" prefWidth="126.0" text="" underline="true" wrapText="false" />
+    <Label effect="$x5" font="$x2" layoutX="145.0" layoutY="340.0" text="进货退货收入" underline="true" wrapText="false" />
+    <Label effect="$x5" font="$x2" layoutX="61.0" layoutY="398.0" prefHeight="20.999900000002526" prefWidth="222.0" text="代金券与实际收款差额收入" underline="true" wrapText="false" />
+    <Label fx:id="couponIncome" effect="$x5" font="$x2" layoutX="304.0" layoutY="398.0" prefWidth="126.0" text="" underline="true" wrapText="false" />
+    <Label fx:id="importReturnIncome" effect="$x5" font="$x2" layoutX="304.0" layoutY="336.0" prefHeight="23.0" prefWidth="126.0" text="" underline="true" wrapText="false" />
     <Button fx:id="logout" layoutX="902.0" layoutY="10.0" mnemonicParsing="false" onAction="#logout" opacity="0.0" prefHeight="15.0" prefWidth="84.0" />
     <Line endX="100.0" layoutX="902.0" layoutY="114.0" opacity="0.42" startX="-289.0" startY="1.0" />
+    <Label font="$x2" layoutX="454.0" layoutY="370.0" text="销售退货:" underline="true">
+      <effect>
+        <Reflection fx:id="x6" />
+      </effect>
+    </Label>
+    <Label fx:id="saleReturn" effect="$x6" font="$x2" layoutX="557.0" layoutY="370.0" prefWidth="142.0" text="" underline="true" />
   </children>
 </AnchorPane>

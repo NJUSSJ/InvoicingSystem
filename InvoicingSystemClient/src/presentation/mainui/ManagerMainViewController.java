@@ -23,8 +23,8 @@ public class ManagerMainViewController implements Initializable {
 	private ImageView manageSituation;
 	@FXML
 	private ImageView saleDetails;
-	@FXML
-	private ImageView email;
+	/*@FXML
+	private ImageView email;*/
 	@FXML
 	private ImageView log;
 	@FXML
@@ -39,8 +39,8 @@ public class ManagerMainViewController implements Initializable {
 	private Button manageSituationButton;
 	@FXML
 	private Button saleDetailsButton;
-	@FXML
-	private Button emailButton;
+	/*@FXML
+	private Button emailButton;*/
 	@FXML
 	private Button logButton;
 	
@@ -58,10 +58,10 @@ public class ManagerMainViewController implements Initializable {
 	public void showLogUI(){
 		MainApp.showLogUI();
 	}
-	@FXML
+	/*@FXML
 	public void showEmailUI(){
 		MainApp.showEmailUI();
-	}
+	}*/
 	@FXML
 	public void showManageCourseUI(){
 		MainApp.showManageCourseUI();

@@ -122,7 +122,6 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	int ishas=0;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
 		java.util.Date utiltime=new java.util.Date();
 		time=new Date(utiltime.getTime());
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
@@ -132,7 +131,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		ArrayList<SaleReturnBillVO> tmpList=new SaleReturnBillController().findSaleReturnBillByTime(time);
 		times=tmpList.size()+1;
 		
-		billid.setText("SSTHD-"+str+"-"+df.format(times));
+		billid.setText("XSTHD-"+str+"-"+df.format(times));
 		/*
 		 * set id
 		 */
@@ -149,7 +148,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		amountColumn.setCellValueFactory(cellData ->cellData.getValue().getNum());
 		idColumn.setCellValueFactory(cellData ->cellData.getValue().getId());
 		noteColumn.setCellValueFactory(cellData ->cellData.getValue().getNote());
-		totalmoneyColumn.setCellValueFactory(cellData ->cellData.getValue().getTotalPrice());
+		totalmoneyColumn.setCellValueFactory(cellData ->cellData.getValue().getSaleTotalPrice());
 		modelColumn.setCellValueFactory(cellData ->cellData.getValue().getModel());
 		moneyColumn.setCellValueFactory(cellData ->cellData.getValue().getImportPrice());
 	    altogether.setText("0");
@@ -179,7 +178,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	   		   comlist.deleteCommodity(item);
 	   		   commodityTable.getItems().remove(selectedIndex);
 	           
-	           altogether.setText(""+comlist.getImportTotal());
+	           altogether.setText(""+comlist.getSaleTotal());
 	   	    } else {
 	   	        // Nothing selected.
 	   	        Alert alert = new Alert(AlertType.WARNING);
@@ -223,7 +222,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 				comlist.deleteCommodity(item);
 				comlist.addCommodity(itemdata.getItem());
 			}
-	    altogether.setText(""+comlist.getImportTotal());
+	    altogether.setText(""+comlist.getSaleTotal());
 	    
 	    name.setText("");
 	    lastprice.setText("");
@@ -260,6 +259,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	 	        LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"submitSaleReturnBill:"+salereturnbill.getID(),MainApp.getID());
 	 	        logController.addLog(logVO);
 	 	        //
+	 	        stage.close();
 			 }
 		     Alert alert = new Alert(AlertType.INFORMATION);
 			        alert.initOwner(MainApp.getPrimaryStage());
@@ -293,7 +293,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 				ArrayList<SaleReturnBillVO> tmpList=new SaleReturnBillController().findSaleReturnBillByTime(time);
 				times=tmpList.size()+1;
 				
-				billid.setText("JHD-"+str+"-"+df.format(times));
+				billid.setText("XSTHD-"+str+"-"+df.format(times));
 			 
 				isSubmit="Succeed Submit";
 				
@@ -305,6 +305,8 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 				lastprice.setText("");
 				
 				commodityData.clear();
+				comlist=new CommodityList();
+		 	    altogether.setText("0");
 		 }
 		 		Alert alert = new Alert(AlertType.INFORMATION);
 		        alert.initOwner(MainApp.getPrimaryStage());
@@ -375,7 +377,6 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 
 
 	public void red(SaleReturnBillVO m) {
-		// TODO Auto-generated method stub
 		id.setText("ID:"+MainApp.getID());
 		memberl=mbs.findMemberByID(m.getMemberID());
 		operator.setText(""+m.getUserID());

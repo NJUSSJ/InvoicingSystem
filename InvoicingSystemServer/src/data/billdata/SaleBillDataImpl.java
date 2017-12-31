@@ -44,7 +44,7 @@ public class SaleBillDataImpl implements SaleBillDataService{
 	 */
 	@Override
 	public boolean delete(SaleBillPO po) throws RemoteException {
-		String sql="delete from salebills where id='"+po.getID()+"')";
+		String sql="delete from salebills where id='"+po.getID()+"'";
 		
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {

@@ -149,7 +149,7 @@ public class ImportViewController implements Initializable {
 		amountColumn.setCellValueFactory(cellData ->cellData.getValue().getNum());
 		idColumn.setCellValueFactory(cellData ->cellData.getValue().getId());
 		noteColumn.setCellValueFactory(cellData ->cellData.getValue().getNote());
-		totalmoneyColumn.setCellValueFactory(cellData ->cellData.getValue().getTotalPrice());
+		totalmoneyColumn.setCellValueFactory(cellData ->cellData.getValue().getImportTotalPrice());
 		modelColumn.setCellValueFactory(cellData ->cellData.getValue().getModel());
 		moneyColumn.setCellValueFactory(cellData ->cellData.getValue().getImportPrice());
 	    altogether.setText("0");
@@ -255,6 +255,7 @@ public class ImportViewController implements Initializable {
 	        LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"submitImportBill:"+importbill.getID(),MainApp.getID());
 	        logController.addLog(logVO);
 	        //
+	        stage.close();
 		 }
 		 		Alert alert = new Alert(AlertType.INFORMATION);
 		        alert.initOwner(MainApp.getPrimaryStage());
@@ -301,6 +302,8 @@ public class ImportViewController implements Initializable {
 			 lastprice.setText("");
 				
 			 commodityData.clear();
+			 comlist=new CommodityList();
+	 	     altogether.setText("0");
 		 }
 		 		Alert alert = new Alert(AlertType.INFORMATION);
 		        alert.initOwner(MainApp.getPrimaryStage());

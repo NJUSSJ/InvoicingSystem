@@ -94,12 +94,13 @@ public class ManageSituationViewController implements Initializable {
 	@FXML
 	private Label profit;
 	
+	@FXML
+	private Label saleReturn;
 	OperateConditionTableVO oct=null;
 	ManageConditionTableBLService octbl=new OperateConditionTableController();
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
 		long idLong=MainApp.getID();
 		String idString=idLong+"";
 		while(idString.length()<5) {
@@ -147,14 +148,13 @@ public class ManageSituationViewController implements Initializable {
 	
 	@FXML
 	public void refer() {
-		// TODO Auto-generated method stub
 		Date start=DateUtil.toSQL(startYear.getSelectionModel().getSelectedItem(),startMonth.getSelectionModel().getSelectedItem(),startDay.getSelectionModel().getSelectedItem());		
 		Date end=DateUtil.toSQL(endYear.getSelectionModel().getSelectedItem(), endMonth.getSelectionModel().getSelectedItem(), endDay.getSelectionModel().getSelectedItem());
 		
 		oct=octbl.findByInterval(start, end);
 		
 	
-		saleIncome.setText(""+oct.getSaleIncome());
+		saleIncome.setText(""+oct.getSaleOriginIncome());
 		commodityOverIncome.setText(""+oct.getOverIncome());
 		importReturnIncome.setText(""+oct.getImportReturnIncome());
 		couponIncome.setText(""+oct.getCouponIncome());
@@ -165,6 +165,7 @@ public class ManageSituationViewController implements Initializable {
 		giftExpense.setText(""+oct.getGiftExpense());
 		totalCost.setText(""+oct.getExpense());
 		profit.setText(""+oct.getProfit());
+		saleReturn.setText(""+oct.getSaleReturnExpense());
 		
 	}
 	

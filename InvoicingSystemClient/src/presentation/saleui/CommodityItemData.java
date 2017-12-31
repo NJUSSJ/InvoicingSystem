@@ -61,8 +61,15 @@ public class CommodityItemData {
 	public StringProperty getImportPrice(){
 		return importprice;
 	}
-	public StringProperty getTotalPrice(){
-		return totalprice;
+	public StringProperty getImportTotalPrice(){
+		double price=Double.parseDouble(importprice.get());
+		int number=Integer.parseInt(num.get());
+		return new SimpleStringProperty(price*number+"");
+	}
+	public StringProperty getSaleTotalPrice(){
+		double price=Double.parseDouble(saleprice.get());
+		int number=Integer.parseInt(num.get());
+		return new SimpleStringProperty(price*number+"");
 	}
 	public StringProperty getNote(){
 		return note;

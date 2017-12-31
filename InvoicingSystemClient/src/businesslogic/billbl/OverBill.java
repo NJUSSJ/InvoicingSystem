@@ -105,7 +105,9 @@ public class OverBill{
 			if(bills==null)return null;
 			for(OverBillPO po:bills){
 				if(po.getTime().before(end)&&po.getTime().after(begin)){
-					result.add(toOverBillVO(po));
+					if(po.getState()==1||po.getState()==3){
+						result.add(toOverBillVO(po));
+					}
 				}
 			}
 		} catch (RemoteException e) {
@@ -140,7 +142,7 @@ public class OverBill{
 	}
 	public boolean fakeDelete(long id){
 		OverBillVO vo=findOverBillByID(id);
-		vo.setState(3);
+		vo.setState(vo.getState()+2);
 		try {
 			return RemoteHelper.getInstance().getOverBillDataService().update(vo.toOverBillPO());
 		} catch (RemoteException e) {

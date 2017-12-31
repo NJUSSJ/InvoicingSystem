@@ -107,11 +107,33 @@ public class SaleBill{
 				for(MemberPromotionVO memberPro:memberPros){
 					CommodityList proList=memberPro.getGifts();
 					for(int i=0;i<proList.getListSize();i++){
-						num=proList.get(i).getNum();
 						giftid=proList.get(i).getCommodityID();
+						num=proList.get(i).getNum();
+						if(giftList.hasCommodity(giftid)){
+							CommodityLineItem item=giftList.findCommodity(giftid);
+							item.setNum(item.getNum()+num);
+						}else{
 						salePrice=ccon.findCommodityByID(giftid).getSalePrice();
 						importPrice=ccon.findCommodityByID(giftid).getImportPrice();
 						giftList.addCommodity(new CommodityLineItem(num,giftid,salePrice,importPrice,""));
+						}
+					}
+				}
+				
+				ArrayList<PricePromotionVO> pricePros=pcon.findPricePromotions();
+				for(PricePromotionVO pricePro:pricePros){
+					CommodityList proList=pricePro.getGifts();
+					for(int i=0;i<proList.getListSize();i++){
+						giftid=proList.get(i).getCommodityID();
+						num=proList.get(i).getNum();
+						if(giftList.hasCommodity(giftid)){
+							CommodityLineItem item=giftList.findCommodity(giftid);
+							item.setNum(item.getNum()+num);
+						}else{
+						salePrice=ccon.findCommodityByID(giftid).getSalePrice();
+						importPrice=ccon.findCommodityByID(giftid).getImportPrice();
+						giftList.addCommodity(new CommodityLineItem(num,giftid,salePrice,importPrice,""));
+						}
 					}
 				}
 				if(giftList.getListSize()>0){
@@ -253,7 +275,9 @@ public class SaleBill{
 		}
 		for(SaleBillVO each:bills){
 			if(each.getTime().after(begin)&&each.getTime().before(end)){
-				result.add(each);
+				if(each.getState()==1||each.getState()==3){
+					result.add(each);
+				}
 			}
 		}
 		return result;	
@@ -305,7 +329,7 @@ public class SaleBill{
 	}
 	public boolean fakeDelete(String id){
 		SaleBillVO vo=findSaleBillByID(id);
-		vo.setState(3);
+		vo.setState(vo.getState()+2);
 		try {
 			return RemoteHelper.getInstance().getSaleBillDataService().update(vo.toSaleBillPO());
 		} catch (RemoteException e) {
