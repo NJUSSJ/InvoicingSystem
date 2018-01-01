@@ -6,10 +6,14 @@ import org.junit.After;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class SaleDetailsTableControllerTest {
+import Utility.DateUtil;
+import runner.ClientRunner;
 
+public class SaleDetailsTableControllerTest {
+	SaleDetailsTableController controller =new SaleDetailsTableController();
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
+		new ClientRunner();
 	}
 
 	@After
@@ -18,17 +22,18 @@ public class SaleDetailsTableControllerTest {
 
 	@Test
 	public void testFindByDate() {
-		fail("Not yet implemented");
+		java.sql.Date begin=DateUtil.toSQL("2017", "2", "1");
+		java.sql.Date end=DateUtil.toSQL("2018", "1", "2");
+		assertEquals(6,controller.findByDate(begin, end).getList().size());
 	}
 
 	@Test
 	public void testFindByField() {
-		fail("Not yet implemented");
+		java.sql.Date begin=DateUtil.toSQL("2017", "2", "1");
+		java.sql.Date end=DateUtil.toSQL("2018", "1", "2");
+		assertEquals(6,controller.findByField(begin, end, "", "", "").getList().size());
+		
 	}
 
-	@Test
-	public void testExportAsExcel() {
-		fail("Not yet implemented");
-	}
 
 }

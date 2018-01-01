@@ -6,10 +6,14 @@ import org.junit.After;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class OperateCourseTableControllerTest {
+import Utility.DateUtil;
+import runner.ClientRunner;
 
+public class OperateCourseTableControllerTest {
+	OperateCourseTableController controller =new OperateCourseTableController();
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
+		new ClientRunner();
 	}
 
 	@After
@@ -18,12 +22,16 @@ public class OperateCourseTableControllerTest {
 
 	@Test
 	public void testFindByInterval() {
-		fail("Not yet implemented");
+		java.sql.Date begin=DateUtil.toSQL("2017", "2", "1");
+		java.sql.Date end=DateUtil.toSQL("2018", "1", "2");
+		assertEquals(1,controller.findByInterval(begin, end).getGiftBillList().size());
 	}
 
 	@Test
 	public void testFindByField() {
-		fail("Not yet implemented");
+		java.sql.Date begin=DateUtil.toSQL("2017", "2", "1");
+		java.sql.Date end=DateUtil.toSQL("2018", "1", "2");
+		assertEquals(1,controller.findByField(begin, end, "Gift","","").getGiftBillList().size());
 	}
 
 }

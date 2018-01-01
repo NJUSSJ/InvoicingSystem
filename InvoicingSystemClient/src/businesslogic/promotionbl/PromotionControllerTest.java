@@ -33,6 +33,7 @@ public class PromotionControllerTest {
 		list.addCommodity(item);
 	MemberPromotionVO promotion=new	MemberPromotionVO(Long.parseLong("5"),1,0.8,list,50);
 		assertEquals(true,controller.addMemberPromotion(promotion));
+		controller.deleteMemberPromotion(promotion);
 	}
 
 	@Test
@@ -42,6 +43,7 @@ public class PromotionControllerTest {
 		list.addCommodity(item);
 		 PackagePromotionVO promotion =new  PackagePromotionVO(Long.parseLong("6"),list,0.8);
 		 assertEquals(true,controller.addPackagePromotion(promotion));
+		 controller.deletePackagePromotion(promotion);
 	}
 
 	@Test
@@ -51,6 +53,7 @@ public class PromotionControllerTest {
 		list.addCommodity(item);
 		PricePromotionVO promotion=new	PricePromotionVO(Long.parseLong("7"),80000,list,50);
 			assertEquals(true,controller.addPricePromotion(promotion));
+			controller.deletePricePromotion(promotion);
 	}
 
 	@Test
@@ -59,7 +62,8 @@ public class PromotionControllerTest {
 		CommodityLineItem item=new CommodityLineItem(3, 1, 45000, 30000, "нч");
 		list.addCommodity(item);
 	MemberPromotionVO promotion=new	MemberPromotionVO(Long.parseLong("5"),1,0.8,list,50);
-		assertEquals(true,controller.deleteMemberPromotion(promotion));
+		controller.addMemberPromotion(promotion);
+	assertEquals(true,controller.deleteMemberPromotion(promotion));
 
 	}
 
@@ -69,6 +73,7 @@ public class PromotionControllerTest {
 		CommodityLineItem item=new CommodityLineItem(3, 1, 45000, 30000, "нч");
 		list.addCommodity(item);
 		 PackagePromotionVO promotion =new  PackagePromotionVO(Long.parseLong("6"),list,0.8);
+		controller.addPackagePromotion(promotion);
 		 assertEquals(true,controller.deletePackagePromotion(promotion));
 
 	}
@@ -79,6 +84,7 @@ public class PromotionControllerTest {
 		CommodityLineItem item=new CommodityLineItem(3, 1, 45000, 30000, "нч");
 		list.addCommodity(item);
 		PricePromotionVO promotion=new	PricePromotionVO(Long.parseLong("7"),80000,list,50);
+		controller.addPricePromotion(promotion);
 		assertEquals(true,controller.deletePricePromotion(promotion));
 
 	}

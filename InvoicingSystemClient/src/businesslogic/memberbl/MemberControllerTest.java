@@ -26,6 +26,7 @@ public class MemberControllerTest {
 	public void testAddMember() {
 		MemberVO member=new MemberVO(Long.parseLong("0011"), 1,1001, 1, "Ð¡ºì", Long.parseLong("33333333333"), "ÄÏ´ó", "2@qq.com", 2,2, 2,Long.parseLong("1"));
 		assertEquals(true,controller.addMember(member));
+		controller.deleteMember(member);
 	}
 
 	@Test
