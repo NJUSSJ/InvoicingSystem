@@ -94,7 +94,7 @@ public class SaleBill{
 				}
 				//修改销售单里进货商的应付
 				MemberVO member=memberCon.findMemberByID(vo.getMemberID());
-				double money=vo.getSum()+member.getShouldPay();
+				double money=vo.getUltimate()+member.getShouldPay();
 				member.setShouldPay(money);
 				member.setQuota(member.getShouldGet()-member.getShouldPay());
 				memberCon.updateMember(member);
@@ -122,17 +122,19 @@ public class SaleBill{
 				
 				ArrayList<PricePromotionVO> pricePros=pcon.findPricePromotions();
 				for(PricePromotionVO pricePro:pricePros){
-					CommodityList proList=pricePro.getGifts();
-					for(int i=0;i<proList.getListSize();i++){
-						giftid=proList.get(i).getCommodityID();
-						num=proList.get(i).getNum();
-						if(giftList.hasCommodity(giftid)){
-							CommodityLineItem item=giftList.findCommodity(giftid);
-							item.setNum(item.getNum()+num);
-						}else{
-						salePrice=ccon.findCommodityByID(giftid).getSalePrice();
-						importPrice=ccon.findCommodityByID(giftid).getImportPrice();
-						giftList.addCommodity(new CommodityLineItem(num,giftid,salePrice,importPrice,""));
+					if(vo.getUltimate()>=pricePro.getPriceline()){
+						CommodityList proList=pricePro.getGifts();
+						for(int i=0;i<proList.getListSize();i++){
+							giftid=proList.get(i).getCommodityID();
+							num=proList.get(i).getNum();
+							if(giftList.hasCommodity(giftid)){
+								CommodityLineItem item=giftList.findCommodity(giftid);
+								item.setNum(item.getNum()+num);
+							}else{
+								salePrice=ccon.findCommodityByID(giftid).getSalePrice();
+								importPrice=ccon.findCommodityByID(giftid).getImportPrice();
+								giftList.addCommodity(new CommodityLineItem(num,giftid,salePrice,importPrice,""));
+							}
 						}
 					}
 				}
