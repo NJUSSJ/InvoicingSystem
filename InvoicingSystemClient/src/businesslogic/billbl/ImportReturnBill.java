@@ -90,7 +90,7 @@ public class ImportReturnBill {
 				}
 				//修改进货退货单里供应商的应付
 				MemberVO member=memberCon.findMemberByID(vo.getMemberID());
-				double money=vo.getSum()+member.getShouldPay();
+				double money=vo.getList().getImportTotal()+member.getShouldPay();
 				member.setShouldPay(money);
 				member.setQuota(member.getShouldGet()-member.getShouldPay());
 				memberCon.updateMember(member);

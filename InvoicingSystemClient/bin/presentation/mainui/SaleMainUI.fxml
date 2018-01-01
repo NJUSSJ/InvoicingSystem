@@ -50,7 +50,7 @@
             <Reflection />
           </effect>
         </Label>
-        <Label font="$x1" layoutX="850.0" layoutY="570.0" text="邮箱" underline="true">
+        <Label font="$x1" layoutX="824.0" layoutY="570.0" text="通知消息" underline="true">
           <effect>
             <Reflection />
           </effect>
@@ -89,7 +89,7 @@
         </Label>
         <ImageView fx:id="member" fitHeight="125.0" fitWidth="145.0" layoutX="576.0" layoutY="420.0" onMouseClicked="#showMemberUI">
           <effect>
-            <InnerShadow height="28.906976744186043" radius="17.412790697674417" width="42.74418604651162">
+            <InnerShadow height="35.825581395348834" radius="19.142441860465112" width="42.74418604651162">
               <input>
                 <Reflection fraction="0.2" topOpacity="0.3" />
               </input>

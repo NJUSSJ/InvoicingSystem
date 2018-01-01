@@ -41,7 +41,7 @@ public class ImportBill{
 				//修改进货单里供货商的应收和应收额度
 				MemberController memberCon=new MemberController();
 				MemberVO member=memberCon.findMemberByID(vo.getMemberID());
-				double money=vo.getSum()+member.getShouldGet();
+				double money=vo.getCommodityList().getImportTotal()+member.getShouldGet();
 				member.setShouldGet(money);
 				double quota=member.getShouldGet()-member.getShouldPay();
 				member.setQuota(quota);

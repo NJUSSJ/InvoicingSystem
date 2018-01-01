@@ -38,7 +38,7 @@ public class SaleReturnBill{
 				//修改销售退货单里进货商的应收和应收额度
 				MemberController memberCon=new MemberController();
 				MemberVO member=memberCon.findMemberByID(vo.getMemberID());
-				double money=vo.getSum()+member.getShouldGet();
+				double money=vo.getList().getSaleTotal()+member.getShouldGet();
 				member.setShouldGet(money);
 				double quota=member.getShouldGet()-member.getShouldPay();
 				member.setQuota(quota);

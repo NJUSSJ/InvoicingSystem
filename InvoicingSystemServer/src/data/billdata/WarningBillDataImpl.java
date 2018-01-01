@@ -198,7 +198,7 @@ public class WarningBillDataImpl implements WarningBillDataService {
 
 	@Override
 	public ArrayList<WarningBillPO> findWarningBillbyUser(long userid) throws RemoteException {
-		String sql="select * from warningbills";
+		String sql="select * from warningbills where userid='"+userid+"'";
 		ArrayList<WarningBillPO> results=new ArrayList<>();
 		try {
 			ResultSet result=DataFactory.statement.executeQuery(sql);
