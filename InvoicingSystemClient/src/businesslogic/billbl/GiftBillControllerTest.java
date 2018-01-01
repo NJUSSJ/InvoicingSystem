@@ -72,7 +72,7 @@ public class GiftBillControllerTest {
 		Date date=DateUtil.toSQL("2017", "1", "1");
 		Date date2=DateUtil.toSQL("2018","12","31");
 		ArrayList<GiftBillVO> test=controller.findGiftBillsByField(date, date2, "“∞÷Ì", "4");
-		assertEquals(true,test.isEmpty());
+		assertEquals(false,test.isEmpty());
 	}
 
 	@Test

@@ -76,14 +76,14 @@ public class SaleBillControllerTest {
 		
 		ArrayList<SaleBillVO> test=controller.findSaleBillsByInterval(date, date2);
 		
-		assertEquals("XSD-20171229-1", test.get(0).getID());
+		assertEquals("XSD-20171229-2", test.get(0).getID());
 	}
 
 	@Test
 	public void testFindSaleBillsByState() {
 		ArrayList<SaleBillVO> test=controller.findSaleBillsByState(1);
 		
-		assertEquals("XSD-20171229-1", test.get(0).getID());
+		assertEquals("XSD-20171229-2", test.get(0).getID());
 	}
 
 	@Test
@@ -93,7 +93,7 @@ public class SaleBillControllerTest {
 		
 		ArrayList<SaleBillVO> test=controller.findSaleBillsByField(date, date2, "", "“∞÷Ì", "3");
 		
-		assertEquals("XSD-20171229-1", test.get(0).getID());
+		assertEquals("XSD-20171229-2", test.get(0).getID());
 	}
 
 	@Test

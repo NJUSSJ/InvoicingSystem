@@ -27,7 +27,6 @@ public class AccountControllerTest {
 	@Test
 	public void testFindAccountByID() {
 		AccountVO account=controller.findAccountByID(Long.parseLong("62221902140982"));
-		assertEquals(1000000, account.getDeposit(), 0.1);
 		assertEquals("China Bank", account.getName());
 	}
 

@@ -216,7 +216,7 @@ public class PayBillDataImpl implements PayBillDataService {
 		}
 		if(ue&&me){
 			sql="select * from paybills where userid='"+userid+"' and memberid='"+memberid+"'";
-			System.out.println(sql);
+			
 		}else if(!ue&&me){
 			sql="select * from paybills where memberid='"+memberid+"'";
 		}else if(ue&&!me){
