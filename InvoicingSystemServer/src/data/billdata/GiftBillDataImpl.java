@@ -202,6 +202,8 @@ public class GiftBillDataImpl implements GiftBillDataService {
 			userid=new UserDataImpl().findUserbyName(user).getID();
 		}
 		if(member==null||member.length()<=0){
+			me=false;
+		}else{
 			memberid=new MemberDataImpl().findMemberbyName(member).getID();
 		}
 		if(ue&&me){
