@@ -96,12 +96,15 @@ public class CashBillControllerTest {
 
 	@Test
 	public void testFindCashBillByID() {
-		fail("Not yet implemented");
+		CashBillVO test=controller.findCashBillByID("XJFYD-20171229-4");
+		assertEquals(test.getAccountID(), Long.parseLong("62221902140982"));
 	}
 
 	@Test
 	public void testFakeDelete() {
-		fail("Not yet implemented");
+		boolean ifSuccess=controller.fakeDelete("XJFYD-20171229-4");
+		assertEquals(true, ifSuccess);
+		controller.checkCashBill(true, "XJFYD-20171229-4");
 	}
 
 }
