@@ -6,10 +6,13 @@ import org.junit.After;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class OperateConditionTableControllerTest {
+import runner.ClientRunner;
 
+public class OperateConditionTableControllerTest {
+	OperateConditionTableController controller=new OperateConditionTableController();
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
+		new ClientRunner();
 	}
 
 	@After
