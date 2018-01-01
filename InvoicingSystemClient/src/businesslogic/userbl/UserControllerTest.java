@@ -55,7 +55,7 @@ public class UserControllerTest {
 
 	@Test
 	public void testFindUsers() {
-		assertEquals(7,controller.findUsers().size());
+		assertEquals(6,controller.findUsers().size());
 	}
 
 	@Test

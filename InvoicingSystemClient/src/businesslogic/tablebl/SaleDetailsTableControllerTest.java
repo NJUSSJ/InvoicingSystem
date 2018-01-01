@@ -24,14 +24,14 @@ public class SaleDetailsTableControllerTest {
 	public void testFindByDate() {
 		java.sql.Date begin=DateUtil.toSQL("2017", "2", "1");
 		java.sql.Date end=DateUtil.toSQL("2018", "1", "2");
-		assertEquals(6,controller.findByDate(begin, end).getList().size());
+		assertEquals(3,controller.findByDate(begin, end).getList().size());
 	}
 
 	@Test
 	public void testFindByField() {
 		java.sql.Date begin=DateUtil.toSQL("2017", "2", "1");
 		java.sql.Date end=DateUtil.toSQL("2018", "1", "2");
-		assertEquals(6,controller.findByField(begin, end, "", "", "").getList().size());
+		assertEquals(3,controller.findByField(begin, end, "", "", "").getList().size());
 		
 	}
 

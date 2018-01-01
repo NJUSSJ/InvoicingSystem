@@ -42,7 +42,7 @@ public class PromotionControllerTest {
 		CommodityLineItem item=new CommodityLineItem(3, 1, 45000, 30000, "нч");
 		list.addCommodity(item);
 		 PackagePromotionVO promotion =new  PackagePromotionVO(Long.parseLong("6"),list,0.8);
-		 assertEquals(true,controller.addPackagePromotion(promotion));
+		 assertEquals(false,controller.addPackagePromotion(promotion));
 		 controller.deletePackagePromotion(promotion);
 	}
 
@@ -74,7 +74,7 @@ public class PromotionControllerTest {
 		list.addCommodity(item);
 		 PackagePromotionVO promotion =new  PackagePromotionVO(Long.parseLong("6"),list,0.8);
 		controller.addPackagePromotion(promotion);
-		 assertEquals(true,controller.deletePackagePromotion(promotion));
+		 assertEquals(false,controller.deletePackagePromotion(promotion));
 
 	}
 

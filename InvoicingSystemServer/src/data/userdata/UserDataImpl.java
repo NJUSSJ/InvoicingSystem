@@ -83,7 +83,7 @@ public class UserDataImpl implements UserDataService {
 		String sql="INSERT INTO users(id,username,password,rank) VALUES ('"+po.getID()
 		+"','"+po.getUserName()+"','"+po.getPassword()+"',"+po.getRank()+")";
 		try {
-			if(DataFactory.statement.execute(sql)){
+			if(DataFactory.statement.executeUpdate(sql)>0){
 				return true;
 			}
 		} catch (SQLException e) {
@@ -99,7 +99,7 @@ public class UserDataImpl implements UserDataService {
 	public boolean delete(UserPO po) throws RemoteException {
 		String sql="DELETE FROM users WHERE id="+po.getID();
 		try {
-			if(DataFactory.statement.execute(sql)){
+			if(DataFactory.statement.executeUpdate(sql)>0){
 				return true;
 			}
 		} catch (SQLException e) {
@@ -116,7 +116,7 @@ public class UserDataImpl implements UserDataService {
 		String sql="UPDATE users SET username='"+po.getUserName()+"',password='"
 				+po.getPassword()+"',rank='"+po.getRank()+"' WHERE id='"+po.getID()+"'";
 		try {
-			if(DataFactory.statement.execute(sql)){
+			if(DataFactory.statement.executeUpdate(sql)>0){
 				return true;
 			}
 		} catch (SQLException e) {

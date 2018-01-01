@@ -34,6 +34,7 @@ public class MemberControllerTest {
 		MemberVO member=new MemberVO(Long.parseLong("0011"), 1,1001, 1, "小红", Long.parseLong("33333333333"), "南大", "2@qq.com", 2,2, 2,Long.parseLong("1"));
 		controller.addMember(member);
 		assertEquals(Long.parseLong("0011"),controller.findMemberByName("小红").getID());
+		controller.deleteMember(member);
 	}
 	
 	@Test
@@ -42,6 +43,7 @@ public class MemberControllerTest {
 		controller.addMember(member);
 		MemberVO memberl=new MemberVO(Long.parseLong("0011"), 2,1001, 1, "小红", Long.parseLong("33333333333"), "南大", "2@qq.com", 2,2, 2,Long.parseLong("1"));
 		assertEquals(true,controller.updateMember(memberl));
+		controller.deleteMember(memberl);
 	}
 
 	@Test
@@ -49,6 +51,7 @@ public class MemberControllerTest {
 		MemberVO member=new MemberVO(Long.parseLong("0011"), 1,1001, 1, "小红", Long.parseLong("33333333333"), "南大", "2@qq.com", 2,2, 2,Long.parseLong("1"));
 		controller.addMember(member);
 		assertEquals(Long.parseLong("0011"),controller.findMemberByID(Long.parseLong("0011")).getID());
+		controller.deleteMember(member);
 	}
 	
 	@Test

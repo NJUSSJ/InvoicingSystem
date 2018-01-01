@@ -215,7 +215,8 @@ public class PayBillDataImpl implements PayBillDataService {
 			memberid=new MemberDataImpl().findMemberbyName(member).getID();
 		}
 		if(ue&&me){
-			sql="select * from paybills where userid="+userid+"' and memberid='"+memberid+"'";
+			sql="select * from paybills where userid='"+userid+"' and memberid='"+memberid+"'";
+			System.out.println(sql);
 		}else if(!ue&&me){
 			sql="select * from paybills where memberid='"+memberid+"'";
 		}else if(ue&&!me){

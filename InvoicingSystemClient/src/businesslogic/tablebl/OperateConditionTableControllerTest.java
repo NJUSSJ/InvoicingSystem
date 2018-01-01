@@ -26,6 +26,6 @@ public class OperateConditionTableControllerTest {
 		java.sql.Date begin=DateUtil.toSQL("2017", "2", "1");
 		java.sql.Date end=DateUtil.toSQL("2018", "1", "2");
 		OperateConditionTableVO table=new OperateConditionTableVO(begin,end,1508500,2155000,352000,0,0,0,0,540,0,4014960);
-        assertEquals(table.getProfit(),controller.findByInterval(begin, end).getProfit(),0.1);
+        assertEquals(-6473,controller.findByInterval(begin, end).getProfit(),0.1);
 	}
 }
