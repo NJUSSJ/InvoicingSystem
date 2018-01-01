@@ -43,12 +43,12 @@
       </effect>
     </Label>
     <Separator prefHeight="3.0" prefWidth="1000.0" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="130.0" />
-    <Label font="$x1" layoutX="438.0" layoutY="568.0" text="审批单据" underline="true">
+    <Label font="$x1" layoutX="628.0" layoutY="568.0" text="审批单据" underline="true">
       <effect>
         <Reflection />
       </effect>
     </Label>
-    <Label font="$x1" layoutX="221.0" layoutY="357.0" text="查看销售明细表" underline="true">
+    <Label font="$x1" layoutX="406.0" layoutY="568.0" text="查看销售明细表" underline="true">
       <effect>
         <Reflection />
       </effect>
@@ -68,12 +68,7 @@
         <Reflection />
       </effect>
     </Label>
-    <Label font="$x1" layoutX="622.0" layoutY="568.0" text="通知消息" underline="true">
-      <effect>
-        <Reflection />
-      </effect>
-    </Label>
-    <ImageView fx:id="examine" fitHeight="125.0" fitWidth="121.0" layoutX="417.0" layoutY="422.0" onMouseClicked="#showexamineUI">
+    <ImageView fx:id="examine" fitHeight="125.0" fitWidth="121.0" layoutX="605.0" layoutY="421.0" onMouseClicked="#showexamineUI">
       <effect>
         <Reflection fraction="0.2" topOpacity="0.3" />
       </effect>
@@ -81,7 +76,7 @@
         <Image url="@../../../resources/Approval_107px_1190720_easyicon.net.png" />
       </image>
     </ImageView>
-    <ImageView fx:id="saleDetails" fitHeight="125.0" fitWidth="121.0" layoutX="230.0" layoutY="189.0" onMouseClicked="#showSaleDetailsUI">
+    <ImageView fx:id="saleDetails" fitHeight="125.0" fitWidth="121.0" layoutX="417.0" layoutY="421.0" onMouseClicked="#showSaleDetailsUI">
       <effect>
         <Reflection fraction="0.2" topOpacity="0.3" />
       </effect>
@@ -122,18 +117,6 @@
         <Image url="@../../../resources/tables_732px_1153607_easyicon.net.png" />
       </image>
     </ImageView>
-    <ImageView fx:id="email" fitHeight="125.00000081786857" fitWidth="135.0001220703125" layoutX="600.0" layoutY="429.0" onMouseClicked="#showEmailUI">
-      <effect>
-        <InnerShadow>
-          <input>
-            <Reflection bottomOpacity="0.07936507936507936" fraction="0.3031746031746032" topOffset="-10.0" topOpacity="0.22857142857142856" />
-          </input>
-        </InnerShadow>
-      </effect>
-      <image>
-        <Image url="@../../../resources/Mail_Search_512px_1178165_easyicon.net.png" />
-      </image>
-    </ImageView>
     <Button fx:id="promotion" layoutX="798.0" layoutY="185.0" mnemonicParsing="false" onAction="#showStrategyUI" opacity="0.0" prefHeight="149.0" prefWidth="145.9998779296875" text="Button" />
     <ImageView id="strategy_545px_1208206_easyicon.net.gif" fitHeight="148.99990000000253" fitWidth="146.0" layoutX="800.0" layoutY="172.0">
       <effect>
@@ -149,9 +132,8 @@
     </ImageView>
     <Button id="promotion" fx:id="manageCourseButton" layoutX="603.0" layoutY="185.0" mnemonicParsing="false" onAction="#showManageCourseUI" opacity="0.0" prefHeight="149.0" prefWidth="145.9998779296875" text="Button" />
     <Button id="promotion" fx:id="manageSituationButton" layoutX="403.0" layoutY="177.0" mnemonicParsing="false" onAction="#showManageSituationUI" opacity="0.0" prefHeight="149.0" prefWidth="145.9998779296875" text="Button" />
-    <Button id="promotion" fx:id="saleDetailsButton" layoutX="230.0" layoutY="177.0" mnemonicParsing="false" onAction="#showSaleDetailsUI" opacity="0.0" prefHeight="149.0" prefWidth="145.9998779296875" text="Button" />
-    <Button id="promotion" fx:id="exmineButton" layoutX="405.0" layoutY="410.0" mnemonicParsing="false" onAction="#showexamineUI" opacity="0.0" prefHeight="149.0" prefWidth="145.9998779296875" text="Button" />
-    <Button id="promotion" fx:id="emailButton" layoutX="593.0" layoutY="409.0" mnemonicParsing="false" onAction="#showEmailUI" opacity="0.0" prefHeight="149.0" prefWidth="145.9998779296875" text="Button" />
+    <Button id="promotion" fx:id="saleDetailsButton" layoutX="417.0" layoutY="409.0" mnemonicParsing="false" onAction="#showSaleDetailsUI" opacity="0.0" prefHeight="149.0" prefWidth="145.9998779296875" text="Button" />
+    <Button id="promotion" fx:id="exmineButton" layoutX="593.0" layoutY="409.0" mnemonicParsing="false" onAction="#showexamineUI" opacity="0.0" prefHeight="149.0" prefWidth="145.9998779296875" text="Button" />
     <Button id="promotion" fx:id="logButton" layoutX="800.0" layoutY="409.0" mnemonicParsing="false" onAction="#showLogUI" opacity="0.0" prefHeight="149.0" prefWidth="145.9998779296875" text="Button">
       <effect>
         <Reflection />

@@ -175,7 +175,7 @@ public class WarningBillDataImpl implements WarningBillDataService {
 		if(user==null)return null;
 		long userid=new UserDataImpl().findUserbyName(user).getID();
 		
-		String sql="select * from warningbills";
+		String sql="select * from warningbills where userid='"+userid+"'";
 		ArrayList<WarningBillPO> results=new ArrayList<>();
 		try {
 			ResultSet result=DataFactory.statement.executeQuery(sql);
@@ -209,7 +209,9 @@ public class WarningBillDataImpl implements WarningBillDataService {
 				String commoditylist=result.getString("commoditylist");
 				int state=result.getInt("state");
 				WarningBillPO tmpPO=new WarningBillPO(id, userid, commoditylist, time, state);
-				results.add(tmpPO);
+				if(tmpPO.getState()==1||tmpPO.getState()==2){
+					results.add(tmpPO);
+				}
 			}
 			
 			return results;

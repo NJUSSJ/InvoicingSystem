@@ -158,67 +158,31 @@ public class EmailViewController implements Initializable {
 	public void delete(){
 		String style=billitem.getstyle();
 		String id=billitem.getid();
-		String state=billitem.getstate();
-		if(state.equals("1")){
+		//String state=billitem.getstate();
 		if(style.equals("销售单")){
 			sbbs.fakeDelete(id);
-	}else if(style.equals("付款单")){
-	        pbbs.fakeDelete(id);
-	}else if(style.equals("收款单")){
-		   rbbs.fakeDelete(id);
-	}else if(style.equals("报损单")){
-		  lbbs.fakeDelete(Long.parseLong(id));
-	}else if(style.equals("报溢单")){
-		obbs.fakeDelete( Long.parseLong(id));
-	}else if(style.equals("报警单")){
-		wbbs.fakeDelete(Long.parseLong(id));
-	}else if(style.equals("现金费用单")){
-		cbbs.fakeDelete(id);
-	}else if(style.equals("赠送单")){
-		gbbs.fakeDelete(Long.parseLong(id));
-	}else if(style.equals("销售退货单")){
-		srbbs.fakeDelete(id);
-	}else if(style.equals("进货退货单")){
-		irbbs.fakeDelete(id);
-	}else if(style.equals("进货单")){
-		ibbs.fakeDelete( id);
-	}
-		}else{
-			if(style.equals("销售单")){
-			SaleBillVO tempbill=sbbs.findSaleBillByID(id);
-			sbbs.deleteSaleBill(tempbill);
 		}else if(style.equals("付款单")){
-		    PayBillVO tempbill=pbbs.findPayBillByID(id);
-		    pbbs.deletePayBill(tempbill);
+	        pbbs.fakeDelete(id);
 		}else if(style.equals("收款单")){
-			ReceiveBillVO tempbill=rbbs.findReceiveBillByID(id);
-			rbbs.deleteReceiveBill(tempbill);
+			rbbs.fakeDelete(id);
 		}else if(style.equals("报损单")){
-			  LossBillVO tempbill=lbbs.findLossBillByID(Long.parseLong(id));
-			  lbbs.deleteLossBill(tempbill);
+			lbbs.fakeDelete(Long.parseLong(id));
 		}else if(style.equals("报溢单")){
-			OverBillVO tempbill=obbs.findOverBillByID( Long.parseLong(id));
-			obbs.deleteOverBill(tempbill);
+			obbs.fakeDelete( Long.parseLong(id));
 		}else if(style.equals("报警单")){
-			WarningBillVO tempbill=wbbs.findWarningBillByID(Long.parseLong(id));
-			wbbs.deleteWarningBill(tempbill);
+			wbbs.fakeDelete(Long.parseLong(id));
 		}else if(style.equals("现金费用单")){
-		    CashBillVO tempbill=cbbs.findCashBillByID(id);
-		    cbbs.deleteCashBill(tempbill);
+			cbbs.fakeDelete(id);
 		}else if(style.equals("赠送单")){
-			GiftBillVO tempbill=gbbs.findGiftBillByID(Long.parseLong(id));
-			gbbs.deleteGiftBill(tempbill);
+			gbbs.fakeDelete(Long.parseLong(id));
 		}else if(style.equals("销售退货单")){
-			SaleReturnBillVO tempbill=srbbs.findSaleReturnBillByID(id);
-			srbbs.deleteSaleReturnBill(tempbill);
+			srbbs.fakeDelete(id);
 		}else if(style.equals("进货退货单")){
-			ImportReturnBillVO tempbill=irbbs.findImportReturnBillByID(id);
-			irbbs.deleteImportReturnBill(tempbill);
+			irbbs.fakeDelete(id);
 		}else if(style.equals("进货单")){
-			ImportBillVO tempbill=ibbs.findImportBillByID(id);
-			ibbs.deleteImportBill(tempbill);
+			ibbs.fakeDelete( id);
 		}
-		}
+		
 		billData.remove(billitem);
 	}
 	private void findAll() {

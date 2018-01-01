@@ -80,7 +80,7 @@ public class OperateConditionTableVO {
 	 * @return ×ÜÖ§³ö
 	 */
 	public double getExpense(){
-		return importExpense+lossExpense+giftExpense+giftExpense;
+		return importExpense+lossExpense+giftExpense+saleReturnExpense;
 	}
 	/**
 	 * 

@@ -100,7 +100,9 @@ public class LossBill{
 			if(bills==null)return null;
 			for(LossBillPO po:bills){
 				if(po.getTime().before(end)&&(po.getTime().after(begin))){
-					result.add(toLossBillVO(po));
+					if(po.getState()==1||po.getState()==3){
+						result.add(toLossBillVO(po));
+					}
 				}
 			}
 		} catch (RemoteException e) {
@@ -135,7 +137,7 @@ public class LossBill{
 	}
 	public boolean fakeDelete(long id){
 		LossBillVO vo=findLossBillByID(id);
-		vo.setState(3);
+		vo.setState(vo.getState()+2);
 		try {
 			return RemoteHelper.getInstance().getLossBillDataService().update(vo.toLossBillPO());
 		} catch (RemoteException e) {

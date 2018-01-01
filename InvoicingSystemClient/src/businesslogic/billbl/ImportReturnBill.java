@@ -155,7 +155,9 @@ public class ImportReturnBill {
 		ArrayList<ImportReturnBillVO> result=new ArrayList<ImportReturnBillVO>();
 		for(ImportReturnBillVO each:bills){
 			if(each.getTime().after(begin)&&each.getTime().before(end)){
-				result.add(each);
+				if(each.getState()==1||each.getState()==3){
+					result.add(each);
+				}
 			}
 		}
 		return bills;
@@ -206,7 +208,7 @@ public class ImportReturnBill {
 	}
 	public boolean fakeDelete(String id){
 		ImportReturnBillVO vo=findImportReturnBillByID(id);
-		vo.setState(3);
+		vo.setState(vo.getState()+2);
 		try {
 			return RemoteHelper.getInstance().getImportReturnBillDataService().update(vo.toImportReturnBillPO());
 		} catch (RemoteException e) {

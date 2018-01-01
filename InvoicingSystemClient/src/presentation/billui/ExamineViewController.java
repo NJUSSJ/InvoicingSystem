@@ -34,10 +34,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -119,7 +121,6 @@ public class ExamineViewController implements Initializable {
     
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
 		long idLong=MainApp.getID();
 		String idString=idLong+"";
 		while(idString.length()<5) {
@@ -157,11 +158,15 @@ public class ExamineViewController implements Initializable {
 	public void pass(){
 		for(BillData bill:billData){
 			if(bill.getchoose().equals("是")){
-				//System.out.println(bill.getchoose()+"/"+bill.getid());
 				String style=bill.getstyle();
 				String id=bill.getid();
 				if(style.equals("销售单")){
-						sbbs.checkSaleBill(true, id);
+						boolean success=sbbs.checkSaleBill(true, id);
+						if(!success){
+							Alert warning=new Alert(AlertType.WARNING);
+							warning.setContentText("销售单通过失败！请检查是否存在商品数量不足");
+							warning.showAndWait();
+						}
 				}else if(style.equals("付款单")){
 				        pbbs.checkPayBill(true, id);
 				}else if(style.equals("收款单")){

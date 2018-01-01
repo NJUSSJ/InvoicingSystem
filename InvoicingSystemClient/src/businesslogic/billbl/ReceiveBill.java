@@ -142,7 +142,9 @@ public class ReceiveBill{
 			}
 			for(ReceiveBillPO po:bills){
 				if(po.getTime().before(end)&&po.getTime().after(begin)){
-					result.add(toReceiveBillVO(po));
+					if(po.getState()==1||po.getState()==3){
+						result.add(toReceiveBillVO(po));
+					}
 				}
 			}
 		} catch (RemoteException e) {
@@ -167,7 +169,7 @@ public class ReceiveBill{
 	}
 	public boolean fakeDelete(String id){
 		ReceiveBillVO vo=findReceiveBillByID(id);
-		vo.setState(3);
+		vo.setState(vo.getState()+2);
 		try {
 			return RemoteHelper.getInstance().getReceiveBillDataService().update(vo.toReceiveBillPO());
 		} catch (RemoteException e) {

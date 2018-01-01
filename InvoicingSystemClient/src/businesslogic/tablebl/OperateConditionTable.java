@@ -54,7 +54,7 @@ public class OperateConditionTable{
 		if(saleBills!=null&&!saleBills.isEmpty()){
 			for(SaleBillVO vo:saleBills){
 				saleOriginIncome+=vo.getSum();
-				if(vo.getCoupon()>vo.getUltimate()){
+				if(vo.getCoupon()>vo.getUltimate()&&vo.getUltimate()>=0){
 					couponIncome+=vo.getCoupon()-vo.getUltimate();
 				}else{
 					saleIncome+=vo.getUltimate();

@@ -161,7 +161,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		amountColumn.setCellValueFactory(cellData ->cellData.getValue().getNum());
 		idColumn.setCellValueFactory(cellData ->cellData.getValue().getId());
 		noteColumn.setCellValueFactory(cellData ->cellData.getValue().getNote());
-		totalmoneyColumn.setCellValueFactory(cellData ->cellData.getValue().getTotalPrice());
+		totalmoneyColumn.setCellValueFactory(cellData ->cellData.getValue().getSaleTotalPrice());
 		modelColumn.setCellValueFactory(cellData ->cellData.getValue().getModel());
 		moneyColumn.setCellValueFactory(cellData ->cellData.getValue().getSalePrice());
        reviseB.setVisible(false);
@@ -292,7 +292,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 			warning.showAndWait();
 			return ;
 		}
-		SaleBillVO salebill=new SaleBillVO(billid.getText(),Long.parseLong(id.getText()),memberl.getID(),comlist,
+		SaleBillVO salebill=new SaleBillVO(billid.getText(),Long.parseLong(id.getText().substring(3)),memberl.getID(),comlist,
 				comlist.getSaleTotal(),0,time,note.getText(),Integer.parseInt(coupon.getText()),Double.parseDouble(discount.getText()),Double.parseDouble(discountafter.getText()));
 			String isSubmit="fail Submit";
 			sbbs.deleteSaleBill(unpassbill);
@@ -304,6 +304,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	 	        LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"submitSaleBill:"+salebill.getID(),MainApp.getID());
 	 	        logController.addLog(logVO);
 	 	        //
+	 	        stage.close();
 			 }
 		     Alert alert = new Alert(AlertType.INFORMATION);
 			        alert.initOwner(MainApp.getPrimaryStage());
@@ -362,6 +363,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 				   discountbefore.setText("");
 				   discount.setText("");
 				   discountafter.setText("");
+				   comlist=new CommodityList();
 			 isSubmit="Succeed Submit";
 		 }
 	     Alert alert = new Alert(AlertType.INFORMATION);

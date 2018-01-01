@@ -111,7 +111,9 @@ public class CashBill{
 			if(bills==null)return null;
 			for(CashBillPO po:bills){
 				if(po.getTime().before(end)&&po.getTime().after(begin)){
-					result.add(toCashBillVO(po));
+					if(po.getState()==1||po.getState()==3){
+						result.add(toCashBillVO(po));
+					}
 				}
 			}
 		} catch (RemoteException e) {
@@ -154,7 +156,7 @@ public class CashBill{
 	}
 	public boolean fakeDelete(String id){
 		CashBillVO vo=findCashBillByID(id);
-		vo.setState(3);
+		vo.setState(vo.getState()+2);
 		try {
 			return RemoteHelper.getInstance().getCashBillDataService().update(vo.toCashBillPO());
 		} catch (RemoteException e) {

@@ -42,7 +42,7 @@ public class ImportReturnBillDataImpl implements ImportReturnBillDataService {
 	 */
 	@Override
 	public boolean delete(ImportReturnBillPO po) throws RemoteException {
-		String sql="delete from importreturnbills where id="+po.getID();
+		String sql="delete from importreturnbills where id='"+po.getID()+"'";
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {
 				return true;

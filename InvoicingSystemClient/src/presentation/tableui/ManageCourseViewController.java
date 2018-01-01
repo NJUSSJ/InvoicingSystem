@@ -407,7 +407,7 @@ public class ManageCourseViewController implements Initializable {
 			    	SaleBillVO newsb=new SaleBillVO(thisid,sb.getUserID(), sb.getMemberID(), newlist, -sb.getSum(), 1, nowTime, "", sb.getCoupon(), sb.getDiscount(), -sb.getUltimate());
 			        sbbs.submitSaleBill(newsb);
 			        Alert warning=new Alert(AlertType.INFORMATION);
-					 warning.setContentText("Can't reverse the lossbill!");
+					 warning.setContentText("红冲销售单"+thisid+"成功！");
 					 warning.showAndWait();
 				}else if(style.equals("付款单")){
 					PayBillVO pb=data.getPayBillVO();
@@ -429,7 +429,7 @@ public class ManageCourseViewController implements Initializable {
 					PayBillVO newsb=new PayBillVO(thisid,pb.getUserID(), pb.getMemberID(),newlist, -pb.getSum(), nowTime, 1);
 					pbbs.submitPayBill(newsb);
 					  Alert warning=new Alert(AlertType.INFORMATION);
-						 warning.setContentText("Can't reverse the lossbill!");
+					  warning.setContentText("红冲付款单"+thisid+"成功！");
 						 warning.showAndWait();
 				}else if(style.equals("收款单")){
 					ReceiveBillVO rb=data.getReceiveBillVO();
@@ -451,7 +451,7 @@ public class ManageCourseViewController implements Initializable {
 					ReceiveBillVO newsb=new ReceiveBillVO(thisid, rb.getUserID(), rb.getMemberID(), newlist, -rb.getSum(), nowTime, 1);
 					rbbs.submitReceiveBill(newsb);
 					  Alert warning=new Alert(AlertType.INFORMATION);
-						 warning.setContentText("Can't reverse the lossbill!");
+					  warning.setContentText("红冲收款单"+thisid+"成功！");
 						 warning.showAndWait();
 				}else if(style.equals("现金费用单")){
 					CashBillVO cb=data.getCashBillVO();
@@ -474,7 +474,7 @@ public class ManageCourseViewController implements Initializable {
 					CashBillVO newsb=new CashBillVO(thisid,cb.getUserID(),cb.getAccountID(),newlist,nowTime,1);
 					cbbs.submitCashBill(newsb);
 					  Alert warning=new Alert(AlertType.INFORMATION);
-						 warning.setContentText("Can't reverse the lossbill!");
+					  warning.setContentText("红冲现金费用单"+thisid+"成功！");
 						 warning.showAndWait();
 				}else if(style.equals("销售退货单")){
 					SaleReturnBillVO srb=data.getSaleReturnBillVO();
@@ -497,7 +497,7 @@ public class ManageCourseViewController implements Initializable {
 					SaleReturnBillVO newsb=new SaleReturnBillVO(thisid,srb.getUserID(), srb.getMemberID(), newlist, -srb.getSum(), 1, nowTime, "");
 					srbbs.submitSaleReturnBill(newsb);
 					  Alert warning=new Alert(AlertType.INFORMATION);
-						 warning.setContentText("Can't reverse the lossbill!");
+					  warning.setContentText("销售退货单"+thisid+"成功！");
 						 warning.showAndWait();
 				}else if(style.equals("进货退货单")){
 					ImportReturnBillVO irb=data.getImportReturnBillVO();
@@ -520,7 +520,7 @@ public class ManageCourseViewController implements Initializable {
 					ImportReturnBillVO newsb=new ImportReturnBillVO(thisid,irb.getUserID(), irb.getMemberID(), newlist, -irb.getSum(), 1, nowTime, "");
 					irbbs.submitImportReturnBill(newsb);
 					  Alert warning=new Alert(AlertType.INFORMATION);
-						 warning.setContentText("Can't reverse the lossbill!");
+					  warning.setContentText("红冲进货退货单"+thisid+"成功！");
 						 warning.showAndWait();
 				}else if(style.equals("进货单")){
 					ImportBillVO ib=data.getImportBillVO();
@@ -543,7 +543,7 @@ public class ManageCourseViewController implements Initializable {
 					ImportBillVO newsb=new ImportBillVO(thisid,ib.getUserID(), ib.getMemberID(), newlist, -ib.getSum(), 1, nowTime, "");
 					ibbs.submitImportBill(newsb);
 					  Alert warning=new Alert(AlertType.INFORMATION);
-						 warning.setContentText("Can't reverse the lossbill!");
+					  warning.setContentText("红冲进货单"+thisid+"成功！");
 						 warning.showAndWait();
 				}else if(style.equals("赠送单")) {
 					Alert warning=new Alert(AlertType.WARNING);

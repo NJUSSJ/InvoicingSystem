@@ -11,6 +11,7 @@ import MainApp.MainApp;
 import businesslogic.billbl.CommodityLineItem;
 import businesslogic.billbl.CommodityList;
 import businesslogic.billbl.ImportReturnBillController;
+import businesslogic.billbl.SaleReturnBillController;
 import businesslogic.commoditybl.CommodityController;
 import businesslogic.logbl.LogController;
 import businesslogic.memberbl.MemberController;
@@ -35,6 +36,7 @@ import vo.CommodityVO;
 import vo.ImportReturnBillVO;
 import vo.LogVO;
 import vo.MemberVO;
+import vo.SaleReturnBillVO;
 
 public class Import_ReturnViewController implements Initializable {
 	@FXML
@@ -150,7 +152,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		amountColumn.setCellValueFactory(cellData ->cellData.getValue().getNum());
 		idColumn.setCellValueFactory(cellData ->cellData.getValue().getId());
 		noteColumn.setCellValueFactory(cellData ->cellData.getValue().getNote());
-		totalmoneyColumn.setCellValueFactory(cellData ->cellData.getValue().getTotalPrice());
+		totalmoneyColumn.setCellValueFactory(cellData ->cellData.getValue().getImportTotalPrice());
 		modelColumn.setCellValueFactory(cellData ->cellData.getValue().getModel());
 		moneyColumn.setCellValueFactory(cellData ->cellData.getValue().getImportPrice());
 		altogether.setText("0");
@@ -160,8 +162,6 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 
 	
 	private void getInf(CommodityItemData newValue) {
-		// TODO Auto-generated method stub
-		
 			if(newValue!=null) {
 				itemdata=newValue;
 				item=itemdata.getItem();
@@ -263,6 +263,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	        LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"submitImportReturnBill:"+importReturnBill.getID(),MainApp.getID());
 	        logController.addLog(logVO);
 	        //
+	        stage.close();
 		 }
 	     Alert alert = new Alert(AlertType.INFORMATION);
 		        alert.initOwner(MainApp.getPrimaryStage());
@@ -285,6 +286,17 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
  	        LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"submitImportReturnBill:"+importReturnBill.getID(),MainApp.getID());
  	        logController.addLog(logVO);
  	        //
+ 	        SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
+			String str=sdf.format(time);
+			DecimalFormat df=new DecimalFormat("#####");
+			
+			ArrayList<ImportReturnBillVO> tmpList=new ImportReturnBillController().findImportReturnBillByTime(time);
+			times=tmpList.size()+1;
+			
+			billid.setText("JHTHD-"+str+"-"+df.format(times));
+ 	        comlist=new CommodityList();
+ 	        altogether.setText("0");
+ 	        commodityData.clear();
 		 }
 	     Alert alert = new Alert(AlertType.INFORMATION);
 		        alert.initOwner(MainApp.getPrimaryStage());
@@ -354,7 +366,6 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 
 
 	public void red(ImportReturnBillVO m) {
-		// TODO Auto-generated method stub
 		id.setText("ID:"+MainApp.getID());
 		memberl=mbs.findMemberByID(m.getMemberID());
 		operator.setText(""+m.getUserID());
