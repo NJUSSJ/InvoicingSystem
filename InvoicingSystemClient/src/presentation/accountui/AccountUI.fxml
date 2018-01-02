@@ -15,31 +15,40 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="presentation.accountui.AccountViewController">
   <children>
     <ImageView id="timgBLDQZZNV.jpg" fitHeight="604.0" fitWidth="1000.0" layoutX="0.0" layoutY="0.0">
+      <effect>
+        <Reflection />
+      </effect>
       <image>
-        <Image url="@../../../resources/timgBLDQZZNV.jpg" preserveRatio="true" smooth="true" />
+        <Image url="@../../../resources/finalBG.jpg" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <ImageView id="1b256486664e499a9613079e51bbca0b.png" fitHeight="604.0" fitWidth="1000.0" layoutX="0.0" layoutY="0.0" opacity="0.0">
-      <image>
-        <Image url="@../../../resources/1b256486664e499a9613079e51bbca0b.png" preserveRatio="true" smooth="true" />
-      </image>
-    </ImageView>
-    <Label fx:id="id" layoutX="874.0" layoutY="15.0" text="ID:XXX">
+    <Label fx:id="id" layoutX="801.0" layoutY="14.0" minHeight="18.0" prefHeight="26.0" prefWidth="128.0" text="ID:XXX">
+      <effect>
+        <Reflection />
+      </effect>
       <font>
-        <Font name="Microsoft YaHei UI Light" size="15.0" fx:id="x1" />
+        <Font name="方正兰亭超细黑简体" size="18.0" fx:id="x1" />
       </font>
     </Label>
-    <Label fx:id="logout" font="$x1" layoutX="936.0" layoutY="14.0" onMouseClicked="#logout" text="|| 登出" />
-    <Separator prefHeight="3.2" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="133.0" />
-    <Label layoutX="10.0" layoutY="48.0" text="账户管理" textFill="#110000">
+    <Label fx:id="logout" font="$x1" layoutX="931.0" layoutY="16.0" onMouseClicked="#logout" text="登出">
+      <effect>
+        <Reflection />
+      </effect>
+    </Label>
+    <Separator prefHeight="3.2" prefWidth="1000.0" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="133.0" />
+    <Label layoutX="663.0" layoutY="48.0" text="账户管理" textFill="#110000">
+      <effect>
+        <Reflection fraction="0.34523809523809523" />
+      </effect>
       <font>
-        <Font name="System Italic" size="65.0" />
+        <Font name="方正兰亭超细黑简体" size="65.0" />
       </font>
     </Label>
     <Separator layoutX="750.0" layoutY="135.0" orientation="VERTICAL" prefHeight="465.0" prefWidth="5.0" />
@@ -61,32 +70,46 @@
         </AnchorPane>
       </content>
     </ScrollPane>
-    <Label layoutX="39.0" layoutY="141.0" prefHeight="23.0001220703125" prefWidth="57.0" text="查找：">
-      <font>
-        <Font name="Microsoft YaHei UI Light" size="18.0" />
-      </font>
+    <Label font="$x1" layoutX="39.0" layoutY="141.0" prefHeight="23.0001220703125" prefWidth="57.0" text="查找：">
+      <effect>
+        <Reflection />
+      </effect>
     </Label>
     <TextField fx:id="search" layoutX="92.0" layoutY="139.0" opacity="0.6" prefHeight="30.0" prefWidth="297.0" />
-    <Button fx:id="rightB" font="$x1" layoutX="429.0" layoutY="139.0" mnemonicParsing="false" onAction="#searchAccount" prefHeight="30.0" prefWidth="57.0" text="确认">
+    <Button fx:id="rightB" layoutX="429.0" layoutY="139.0" mnemonicParsing="false" onAction="#searchAccount" prefHeight="30.000106811523438" prefWidth="65.0" text="确 认">
       <effect>
         <Lighting diffuseConstant="2.0" specularConstant="0.42213740458015264" specularExponent="13.282442748091603" surfaceScale="2.5687022900763354" fx:id="x2">
           <bumpInput>
-            <Shadow />
+            <Shadow fx:id="x3" />
           </bumpInput>
           <light>
-            <javafx.scene.effect.Light.Distant color="#dfdfdf" />
+            <javafx.scene.effect.Light.Distant>
+              <color>
+                <Color blue="0.875" green="0.875" red="0.875" fx:id="x4" />
+              </color>
+            </javafx.scene.effect.Light.Distant>
           </light>
         </Lighting>
       </effect>
+      <font>
+        <Font name="方正兰亭超细黑简体" size="15.0" />
+      </font>
     </Button>
-    <Button fx:id="updateB" effect="$x2" font="$x1" layoutX="783.0" layoutY="142.0" mnemonicParsing="false" onAction="#updateAccount" opacity="1.0" prefHeight="46.0" prefWidth="184.0" text="修  改" />
-    <Button fx:id="addB" effect="$x2" font="$x1" layoutX="782.0" layoutY="215.0" mnemonicParsing="false" onAction="#addAccount" opacity="1.0" prefHeight="46.000099999997474" prefWidth="184.0" text="新  增" />
-    <Button fx:id="deleteB" effect="$x2" font="$x1" layoutX="782.0" layoutY="287.0" mnemonicParsing="false" onAction="#deleteAccount" opacity="1.0" prefHeight="47.0" prefWidth="184.0" text="删  除" />
-    <ImageView fitHeight="23.0" fitWidth="22.0" layoutX="10.0" layoutY="144.0">
-      <image>
-        <Image url="@../../../resources/QQ图片20171128222124.png" />
-      </image>
-    </ImageView>
-    <Button fx:id="returnB" effect="$x2" font="$x1" layoutX="782.0" layoutY="356.0" mnemonicParsing="false" onAction="#showFianceMainUI" opacity="1.0" prefHeight="47.0" prefWidth="184.0" text="返  回" />
+    <Button fx:id="updateB" font="$x1" layoutX="784.0" layoutY="263.0" mnemonicParsing="false" onAction="#updateAccount" opacity="1.0" prefHeight="46.0" prefWidth="184.0" text="修  改">
+      <effect>
+        <Reflection fx:id="x5">
+          <input>
+            <Lighting bumpInput="$x3" diffuseConstant="2.0" specularConstant="0.42213740458015264" specularExponent="13.282442748091603" surfaceScale="2.5687022900763354">
+              <light>
+                <javafx.scene.effect.Light.Distant color="$x4" />
+              </light>
+            </Lighting>
+          </input>
+        </Reflection>
+      </effect>
+    </Button>
+    <Button fx:id="addB" effect="$x5" font="$x1" layoutX="783.0" layoutY="336.0" mnemonicParsing="false" onAction="#addAccount" opacity="1.0" prefHeight="46.000099999997474" prefWidth="184.0" text="新  增" />
+    <Button fx:id="deleteB" effect="$x5" font="$x1" layoutX="783.0" layoutY="408.0" mnemonicParsing="false" onAction="#deleteAccount" opacity="1.0" prefHeight="47.0" prefWidth="184.0" text="删  除" />
+    <Button fx:id="returnB" effect="$x5" font="$x1" layoutX="783.0" layoutY="477.0" mnemonicParsing="false" onAction="#showFianceMainUI" opacity="1.0" prefHeight="47.0" prefWidth="184.0" text="返  回" />
   </children>
 </AnchorPane>
