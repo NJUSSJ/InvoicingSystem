@@ -171,23 +171,33 @@ public class CategoryViewController implements Initializable{
 	public void deleteCategory(){
 		volist=cbs.findDownCategory(categoryVO);
 		if(volist==null||volist.size()==0){
-		long parentid= categoryVO.getParentID();
-		int selectedIndex = categoryTable.getSelectionModel().getSelectedIndex();
-			if (selectedIndex >= 0) {
-				//记录日志
-				LogController logController=new LogController();
-				long logID=logController.findLargestID()+1;
-    	        LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"deteleCategory:"+categoryVO.getID(),MainApp.getID());
-    	        logController.addLog(logVO);
-    	        //
-				cbs.deleteCategory(categoryVO);
-				categoryTable.getItems().remove(selectedIndex);
-				if(categoryData.isEmpty()){
-					if(parentid!=-1){
-						returnFather();
+			ArrayList<CommodityVO> comlist=cbs.findDownCommodity(categoryVO);
+			if(comlist==null||comlist.size()==0){
+				long parentid= categoryVO.getParentID();
+				int selectedIndex = categoryTable.getSelectionModel().getSelectedIndex();
+				if (selectedIndex >= 0) {
+					//记录日志
+					LogController logController=new LogController();
+					long logID=logController.findLargestID()+1;
+					LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"deteleCategory:"+categoryVO.getID(),MainApp.getID());
+					logController.addLog(logVO);
+					//
+					cbs.deleteCategory(categoryVO);
+					categoryTable.getItems().remove(selectedIndex);
+					if(categoryData.isEmpty()){
+						if(parentid!=-1){
+							returnFather();
+						}
 					}
+					categoryVO=null;
+				}else{
+					Alert alert = new Alert(AlertType.WARNING);
+					alert.initOwner(MainApp.getPrimaryStage());
+					alert.setTitle("Warning");
+					alert.setHeaderText("This category already has commodities");
+					alert.setContentText("Please select another category in the table.");
+					alert.showAndWait();
 				}
-				categoryVO=null;
 			} else { 
 				Alert alert = new Alert(AlertType.WARNING);
 				alert.initOwner(MainApp.getPrimaryStage());
