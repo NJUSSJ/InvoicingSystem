@@ -113,7 +113,7 @@ public class SaleReturnBill{
 				}
 			}
 		}
-		return bills;
+		return result;
 	}
 	public ArrayList<SaleReturnBillVO> findSaleReturnBillsByState(int state){
 		ArrayList<SaleReturnBillVO> result=new ArrayList<SaleReturnBillVO>();

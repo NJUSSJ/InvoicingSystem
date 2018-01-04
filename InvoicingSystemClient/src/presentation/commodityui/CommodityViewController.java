@@ -174,6 +174,7 @@ public class CommodityViewController implements Initializable{
 			commodityStage.initOwner(MainApp.getPrimaryStage());
 			commodityStage.setScene(scene);
 	        SimpleCommodityController controller=loader.getController();
+	        controller.style=1;
 	        controller.setStage(commodityStage);
 	        controller.setItem(commodityTable.getSelectionModel().getSelectedItem());
 	        controller.setList(commodityData);

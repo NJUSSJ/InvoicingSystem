@@ -125,7 +125,7 @@ public class ImportBill{
 				}
 			}
 		}
-		return bills;
+		return result;
 	}
 	public ArrayList<ImportBillVO> findImportBillsByField(Date begin,Date end,String memberName,String userName){
 		ArrayList<ImportBillVO> result=new ArrayList<ImportBillVO>();

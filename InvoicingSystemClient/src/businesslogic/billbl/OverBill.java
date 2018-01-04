@@ -92,7 +92,7 @@ public class OverBill{
 				}
 			}
 		}
-		return bills;
+		return result;
 	}
 	public ArrayList<OverBillVO> findOverBillsByField(Date begin,Date end,String userName){
 		if(userName==null||userName.length()<=0){

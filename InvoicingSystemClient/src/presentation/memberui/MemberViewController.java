@@ -129,13 +129,9 @@ public class MemberViewController implements Initializable {
 	@FXML
 	public void search(){
 		String findName=search.getText();
+		
 		if(findName==null||findName.length()<=0){
-			 Alert alert = new Alert(AlertType.WARNING);
-	   	        alert.initOwner(MainApp.getPrimaryStage());
-	   	        alert.setTitle("No Input");
-	   	        alert.setHeaderText("No Input");
-	   	        alert.setContentText("Please input first.");
-	            alert.showAndWait();
+			 MainApp.showMemberUI();
 	            return;
 		}
 		if(findName.charAt(0)>='0'&&findName.charAt(0)<='9'){
@@ -216,6 +212,14 @@ public class MemberViewController implements Initializable {
 	}
 	@FXML
 	public void update(){
+		if(me==null) {
+			Alert alert = new Alert(AlertType.WARNING);
+   	        alert.initOwner(MainApp.getPrimaryStage());
+   	        alert.setTitle("No Selection");
+   	        alert.setHeaderText("No Member Selected");
+   	        alert.setContentText("Please select a mmember in the table.");
+            alert.showAndWait();
+		}
 		try {
 			FXMLLoader loader=new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("/presentation/memberui/SimpleMember.fxml"));
