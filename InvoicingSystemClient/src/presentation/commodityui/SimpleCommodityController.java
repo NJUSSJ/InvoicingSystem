@@ -75,6 +75,7 @@ public class SimpleCommodityController {
 			        alert.showAndWait();
 			        return;
 				}
+				try{
 				commodityVO=new CommodityVO(name.getText(),id,model.getText(),
 						Integer.parseInt(num.getText()),Double.parseDouble(importprice.getText()),
 						Double.parseDouble(saleprice.getText()),Double.parseDouble(importprice.getText())
@@ -88,6 +89,14 @@ public class SimpleCommodityController {
     	        logController.addLog(logVO);
     	        //
 				list.add(new CommodityData(commodityVO));
+				}catch(NumberFormatException e){
+					Alert alert = new Alert(AlertType.WARNING);
+			        alert.initOwner(MainApp.getPrimaryStage());
+			        alert.setTitle("Error");
+			        alert.setHeaderText("Error");
+			        alert.setContentText("Please check your input");
+			        alert.showAndWait();
+				}
 			}else{
 				Alert alert = new Alert(AlertType.WARNING);
 		        alert.initOwner(MainApp.getPrimaryStage());
@@ -97,6 +106,7 @@ public class SimpleCommodityController {
 		        alert.showAndWait();
 			}
 		}else{
+			try{
 			commodityVO=new CommodityVO(name.getText(),Long.parseLong(data.getId().get()),model.getText(),
 					Integer.parseInt(num.getText()),Double.parseDouble(importprice.getText()),
 					Double.parseDouble(saleprice.getText()),Double.parseDouble(importprice.getText()),
@@ -109,6 +119,14 @@ public class SimpleCommodityController {
 	        logController.addLog(logVO);
 	        //
 			data.setVO(commodityVO);
+			}catch(NumberFormatException e){
+				Alert alert = new Alert(AlertType.WARNING);
+		        alert.initOwner(MainApp.getPrimaryStage());
+		        alert.setTitle("Error");
+		        alert.setHeaderText("Error");
+		        alert.setContentText("Please check your input");
+		        alert.showAndWait();
+			}
 		}
 		stage.close();
 	}

@@ -160,7 +160,7 @@ public class ImportReturnBill {
 				}
 			}
 		}
-		return bills;
+		return result;
 	}
 	public ArrayList<ImportReturnBillVO> findImportReturnBillsByField(Date begin,Date end,String memberName,String userName){
 		ArrayList<ImportReturnBillVO> result=new ArrayList<ImportReturnBillVO>();

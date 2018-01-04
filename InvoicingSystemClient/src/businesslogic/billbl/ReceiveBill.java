@@ -114,7 +114,7 @@ public class ReceiveBill{
 				}
 			}
 		}
-		return bills;
+		return result;
 	}
 	public ArrayList<ReceiveBillVO> findReceiveBillsByState(int state){
 		ArrayList<ReceiveBillVO> result=new ArrayList<ReceiveBillVO>();
