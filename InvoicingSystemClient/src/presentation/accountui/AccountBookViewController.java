@@ -201,7 +201,9 @@ public class AccountBookViewController implements Initializable {
 			AccountBookMemberData tmpData=new AccountBookMemberData(item[0], item[1], item[2], item[3], item[4]);
 			list.add(tmpData);
 			
-			try {
+			
+		}
+		try {
 				FXMLLoader loader=new FXMLLoader();
 				loader.setLocation(MainApp.class.getResource("/presentation/accountui/AccountBookMemberUI.fxml"));
 				AnchorPane accountUI=loader.load();
@@ -218,7 +220,6 @@ public class AccountBookViewController implements Initializable {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		}
 		
 	}
 }
