@@ -169,6 +169,17 @@ public class CategoryViewController implements Initializable{
 	}
 	@FXML
 	public void deleteCategory(){
+		if(categoryVO==null){
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.initOwner(MainApp.getPrimaryStage());
+			alert.setTitle("No Selection");
+			alert.setHeaderText("No Category Selected");
+			alert.setContentText("Please select a category again");
+			alert.showAndWait();
+			categoryTable.getSelectionModel().select(0);
+			categoryVO=categoryTable.getSelectionModel().getSelectedItem().getVO();
+			return;
+		}
 		volist=cbs.findDownCategory(categoryVO);
 		if(volist==null||volist.size()==0){
 			ArrayList<CommodityVO> comlist=cbs.findDownCommodity(categoryVO);
@@ -189,21 +200,20 @@ public class CategoryViewController implements Initializable{
 							returnFather();
 						}
 					}
-					categoryVO=null;
 				}else{
 					Alert alert = new Alert(AlertType.WARNING);
 					alert.initOwner(MainApp.getPrimaryStage());
-					alert.setTitle("Warning");
-					alert.setHeaderText("This category already has commodities");
-					alert.setContentText("Please select another category in the table.");
+					alert.setTitle("No Selection");
+					alert.setHeaderText("No Category Selected");
+					alert.setContentText("Please select a category in the table.");
 					alert.showAndWait();
 				}
 			} else { 
 				Alert alert = new Alert(AlertType.WARNING);
 				alert.initOwner(MainApp.getPrimaryStage());
-				alert.setTitle("No Selection");
-				alert.setHeaderText("No Category Selected");
-				alert.setContentText("Please select a category in the table.");
+				alert.setTitle("Warning");
+				alert.setHeaderText("This category already has commodity");
+				alert.setContentText("Please select another category in the table.");
 				alert.showAndWait();
 			}
 		}else{
@@ -262,8 +272,9 @@ public class CategoryViewController implements Initializable{
 			for(CategoryVO s:volist){
 			categoryData.add(new CategoryData(s));
 			categoryTable.setItems(categoryData);
+			}
+			categoryTable.getSelectionModel().select(0);//tableView默认选中第一行
 		}
-	}
 	}
 	@FXML
 	public void returnFather(){

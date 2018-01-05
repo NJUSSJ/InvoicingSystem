@@ -122,7 +122,7 @@ public class PayBill {
 				}
 			}
 		}
-		return bills;
+		return result;
 	}
 	public ArrayList<PayBillVO> findPayBillsByField(Date begin,Date end,String memberName,String userName){
 		ArrayList<PayBillVO> result=new ArrayList<PayBillVO>();

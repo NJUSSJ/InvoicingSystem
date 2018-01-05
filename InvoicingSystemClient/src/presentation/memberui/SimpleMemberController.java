@@ -13,6 +13,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -94,20 +96,26 @@ public class SimpleMemberController implements Initializable{
     }
 	public void set(){
 		if(style==1){
-			memberVO=new MemberVO(memberVO.getID(),Integer.parseInt(rankField.getText()),
-				Integer.parseInt(postcodeField.getText()),Integer.parseInt(categoryField.getText()),
-				nameField.getText(),Long.parseLong(telephoneField.getText()),addressField.getText(),
-				emailField.getText(),Double.parseDouble(shouldpay.getText()),Double.parseDouble(shouldget.getText()),
-				Double.parseDouble(quota.getText()),MainApp.getID());
-			mbs.updateMember(memberVO);
-			memberData.setMemberVO(memberVO);
-			//记录日志
-			LogController logController=new LogController();
-			long logID=logController.findLargestID()+1;
-	        LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"updateMember:"+memberVO.getID(),MainApp.getID());
-	        logController.addLog(logVO);
-	        //
-			stage.close();
+			try {
+				memberVO=new MemberVO(memberVO.getID(),Integer.parseInt(rankField.getText()),
+						Integer.parseInt(postcodeField.getText()),Integer.parseInt(categoryField.getText()),
+						nameField.getText(),Long.parseLong(telephoneField.getText()),addressField.getText(),
+						emailField.getText(),Double.parseDouble(shouldpay.getText()),Double.parseDouble(shouldget.getText()),
+						Double.parseDouble(quota.getText()),MainApp.getID());
+					mbs.updateMember(memberVO);
+					memberData.setMemberVO(memberVO);
+					//记录日志
+					LogController logController=new LogController();
+					long logID=logController.findLargestID()+1;
+			        LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"updateMember:"+memberVO.getID(),MainApp.getID());
+			        logController.addLog(logVO);
+			        //
+					stage.close();
+			} catch (NumberFormatException e) {
+				Alert alert=new Alert(AlertType.WARNING);
+				alert.setContentText("Please check your input!");
+				alert.showAndWait();
+			}
 		}else{
 			long largest=-1;
 			for(int i=0;i<list.size();i++) {
@@ -118,7 +126,8 @@ public class SimpleMemberController implements Initializable{
 			while(id.length()<5) {
 				id="0"+id;
 			}
-			memberVO=new MemberVO(Long.parseLong(id),Integer.parseInt(rankField.getText()),
+			try {
+				memberVO=new MemberVO(Long.parseLong(id),Integer.parseInt(rankField.getText()),
 					Integer.parseInt(postcodeField.getText()),Integer.parseInt(categoryField.getText()),
 					nameField.getText(),Long.parseLong(telephoneField.getText()),
 					addressField.getText(),emailField.getText(),0.0,0.0,0.0,MainApp.getID());
@@ -131,6 +140,12 @@ public class SimpleMemberController implements Initializable{
 	        logController.addLog(logVO);
 	        //
 			stage.close();
+			} catch (NumberFormatException e) {
+				Alert alert=new Alert(AlertType.WARNING);
+				alert.setContentText("Please check your input!");
+				alert.showAndWait();
+			}
+			
 		}
 		
 	}

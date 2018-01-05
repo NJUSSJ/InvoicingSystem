@@ -39,7 +39,7 @@ public class CategoryDataImpl implements CategoryDataService{
 	 */
 	@Override
 	public boolean update(CategoryPO po) throws RemoteException {
-		String sql="update categories set id='"+po.getID()+"',name='"+po.getName()+"',parentid='"+po.getParentID()+"'";
+		String sql="update categories set name='"+po.getName()+"',parentid='"+po.getParentID()+"' where id='"+po.getID()+"'";
 		
 		try {
 			if(DataFactory.statement.executeUpdate(sql)>0) {

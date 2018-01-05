@@ -87,11 +87,12 @@ public class LossBill{
 		for(LossBillVO each:bills){
 			if(each.getTime().after(begin)&&each.getTime().before(end)){
 				if(each.getState()==1||each.getState()==3){
+					System.out.println(each.getState());
 					result.add(each);
 				}
 			}
 		}
-		return bills;
+		return result;
 	}
 	public ArrayList<LossBillVO> findLossBillsByField(Date begin,Date end,String userName){
 		ArrayList<LossBillVO> result=new ArrayList<LossBillVO>();
