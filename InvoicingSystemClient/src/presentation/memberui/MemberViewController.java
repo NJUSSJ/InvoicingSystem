@@ -193,6 +193,17 @@ public class MemberViewController implements Initializable {
 
    	 	if (selectedIndex >= 0) {
    	 	//¼ÇÂ¼ÈÕÖ¾
+   	 		if(me.getShouldGet()!=0||me.getShouldPay()!=0) {
+   	 			Alert alert = new Alert(AlertType.WARNING);
+   	 			alert.initOwner(MainApp.getPrimaryStage());
+   	 			alert.setTitle("Member delete error");
+   	 			alert.setHeaderText("Member delete error");
+   	 			alert.setContentText("Member still has trade on process!");
+   	 			alert.showAndWait();
+   	 			return;
+   	 		}
+   	 		
+   	 		
 			LogController logController=new LogController();
 			long logID=logController.findLargestID()+1;
 	        LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"deleteMember:"+me.getID(),MainApp.getID());

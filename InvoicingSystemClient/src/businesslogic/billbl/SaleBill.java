@@ -94,10 +94,12 @@ public class SaleBill{
 				}
 				//修改销售单里进货商的应付
 				MemberVO member=memberCon.findMemberByID(vo.getMemberID());
-				double money=vo.getUltimate()+member.getShouldPay();
-				member.setShouldPay(money);
-				member.setQuota(member.getShouldGet()-member.getShouldPay());
-				memberCon.updateMember(member);
+				if(vo.getCoupon()<vo.getUltimate()) {
+					double money=vo.getUltimate()+member.getShouldPay()-vo.getCoupon();
+					member.setShouldPay(money);
+					member.setQuota(member.getShouldGet()-member.getShouldPay());
+					memberCon.updateMember(member);
+				}
 				//根据通过的销售单生成一份库存赠送单
 				ArrayList<MemberPromotionVO> memberPros=pcon.findMemberPromotionByRank(member.getRank());
 				CommodityList giftList=new CommodityList();

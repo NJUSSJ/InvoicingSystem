@@ -38,6 +38,7 @@ public class SimplePackagePromotionController {
 	}	
 	@FXML
 	public void add(){
+		try {
 		String discountText=discountField.getText();
 		if((discountText!=null&&discountText.length()>0)){
 			long id=Utility.creatID();
@@ -59,6 +60,15 @@ public class SimplePackagePromotionController {
 	        alert.setHeaderText("Information lack");
 	        alert.setContentText("Please input information completely.");
 	        alert.showAndWait();
+		}
+		}catch(NumberFormatException e){
+			Alert alert = new Alert(AlertType.WARNING);
+	        alert.initOwner(MainApp.getPrimaryStage());
+	        alert.setTitle("Input error");
+	        alert.setHeaderText("Input error");
+	        alert.setContentText("Please check input");
+	        alert.showAndWait();
+
 		}
 	}
 	@FXML

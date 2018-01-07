@@ -184,8 +184,12 @@ public class ExamineViewController implements Initializable {
 				}else if(style.equals("销售退货单")){
 					srbbs.checkSaleReturnBill(true, id);
 				}else if(style.equals("进货退货单")){
-					irbbs.checkImportReturnBill(true, id);
-				}else if(style.equals("进货单")){
+					boolean success=irbbs.checkImportReturnBill(true, id);
+					if(!success){
+						Alert warning=new Alert(AlertType.WARNING);
+						warning.setContentText("进货退货单通过失败！请检查是否存在商品数量不足");
+						warning.showAndWait();
+					}				}else if(style.equals("进货单")){
 					ibbs.checkImportBill(true, id);
 				}
 			}

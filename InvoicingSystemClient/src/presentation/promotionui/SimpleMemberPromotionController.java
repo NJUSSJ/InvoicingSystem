@@ -40,6 +40,7 @@ public class SimpleMemberPromotionController {
 	ObservableList<MemberPromotionData> promotioonList;
 	@FXML
 	public void add(){
+		try {
 		String rankText=rank.getText();
 		String couponText=coupon.getText();
 		String discountText=discount.getText();
@@ -80,6 +81,15 @@ public class SimpleMemberPromotionController {
 	        alert.setHeaderText("Information lack");
 	        alert.setContentText("Please input information completely.");
 	        alert.showAndWait();
+		}
+		}catch(NumberFormatException e){
+			Alert alert = new Alert(AlertType.WARNING);
+	        alert.initOwner(MainApp.getPrimaryStage());
+	        alert.setTitle("Input error");
+	        alert.setHeaderText("Input error");
+	        alert.setContentText("Please check input");
+	        alert.showAndWait();
+
 		}
 	}
 	@FXML
