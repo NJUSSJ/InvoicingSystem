@@ -73,6 +73,7 @@ public class SimplePricePromotionController {
 	}
 	@FXML
 	public void addGift(){
+		try {
 		String name=giftNameField.getText();
 		int num=Integer.parseInt(numField.getText());
 		if(ccon.findCommodityByName(name)!=null){
@@ -97,7 +98,15 @@ public class SimplePricePromotionController {
 	        alert.setContentText("Can't find the gift");
 	        alert.showAndWait();
 		}
-		
+		}catch(NumberFormatException e){
+			Alert alert = new Alert(AlertType.WARNING);
+	        alert.initOwner(MainApp.getPrimaryStage());
+	        alert.setTitle("Input error");
+	        alert.setHeaderText("Input error");
+	        alert.setContentText("Please check input");
+	        alert.showAndWait();
+
+		}
 	}
 	@FXML
 	public void back(){

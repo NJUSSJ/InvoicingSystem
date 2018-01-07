@@ -170,6 +170,13 @@ public class ManageCourseViewController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 		long idLong=MainApp.getID();
+		
+		int rank=MainApp.getRank();
+		if(rank==1) {
+			reverse.setVisible(false);
+			reverseAndCopy.setVisible(false);
+		}
+		
 		String idString=idLong+"";
 		while(idString.length()<5) {
 			idString="0"+idString;

@@ -2,6 +2,7 @@ package presentation.commodityui;
 
 import java.net.URL;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import MainApp.MainApp;
@@ -13,11 +14,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import vo.CategoryVO;
+import vo.CommodityVO;
 import vo.LogVO;
 
 public class SimpleCategoryController implements Initializable{
@@ -68,6 +72,19 @@ public class SimpleCategoryController implements Initializable{
 		String nameText=name.getText();
 		String parentidText=parentid.getText();
 		if(style==1){
+			CategoryVO parentCate=cbs.findCategoryByID(Long.parseLong(parentidText));
+			ArrayList<CommodityVO> child=cbs.findDownCommodity(parentCate);
+			if(child!=null&&child.size()>0) {
+				Alert alert = new Alert(AlertType.WARNING);
+		        alert.initOwner(MainApp.getPrimaryStage());
+		        alert.setTitle("Parent has commodity");
+		        alert.setHeaderText("Parent has commodity");
+		        alert.setContentText("Parent has commodity:"+parentidText);
+		        alert.showAndWait();
+		        return;
+			}
+			
+			
 			long idNum=cbs.findLargestIDofCategory()+1;
 			/*String id=idNum+"";
 			while(id.length()<5) {
