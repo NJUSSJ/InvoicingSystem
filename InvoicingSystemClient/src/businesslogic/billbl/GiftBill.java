@@ -4,8 +4,10 @@ import java.rmi.RemoteException;
 import java.sql.Date;
 import java.util.ArrayList;
 
+import businesslogic.commoditybl.CommodityController;
 import po.GiftBillPO;
 import rmi.RemoteHelper;
+import vo.CommodityVO;
 import vo.GiftBillVO;
 
 public class GiftBill {
@@ -34,6 +36,10 @@ public class GiftBill {
 			vo = toGiftBillVO(RemoteHelper.getInstance().getGiftBillDataService().findGiftBillbyID(id));
 			if(pass){
 				vo.setState(1);
+				CommodityController ccon=new CommodityController();
+				CommodityVO commodityVO=ccon.findCommodityByID(vo.getCommodityList().get(0).getCommodityID());
+				commodityVO.setStockNum(commodityVO.getStockNum()-vo.getCommodityList().get(0).getNum());
+				ccon.updateCommodity(commodityVO);
 			}else{
 				vo.setState(2);
 			}
