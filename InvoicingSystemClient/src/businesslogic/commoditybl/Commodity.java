@@ -6,15 +6,24 @@ import java.util.ArrayList;
 
 import businesslogic.billbl.CommodityLineItem;
 import businesslogic.billbl.CommodityList;
+import businesslogic.billbl.GiftBillController;
 import businesslogic.billbl.ImportBillController;
 import businesslogic.billbl.ImportReturnBillController;
+import businesslogic.billbl.LossBillController;
+import businesslogic.billbl.OverBillController;
 import businesslogic.billbl.SaleBillController;
 import businesslogic.billbl.SaleReturnBillController;
+import businesslogic.promotionbl.PromotionController;
 import po.CommodityPO;
 import rmi.RemoteHelper;
 import vo.CommodityVO;
+import vo.GiftBillVO;
 import vo.ImportBillVO;
 import vo.ImportReturnBillVO;
+import vo.LossBillVO;
+import vo.OverBillVO;
+import vo.PackagePromotionVO;
+import vo.PricePromotionVO;
 import vo.SaleBillVO;
 import vo.SaleReturnBillVO;
 import vo.StockCheckInfoVO;
@@ -42,6 +51,86 @@ public class Commodity{
 	 */
 	public boolean deleteCommodity(CommodityVO commodityVO){
 		try {
+			long id=commodityVO.getID();
+			String name=commodityVO.getName();
+			ArrayList<SaleBillVO> saleBills=new SaleBillController().findSaleBillsByState(0);
+			if(saleBills!=null&&saleBills.size()>0) {
+				for(SaleBillVO vo:saleBills) {
+					if(vo.getList().hasCommodity(id)) {
+						return false;
+					}
+				}
+			}
+			ArrayList<SaleReturnBillVO> saleReturnBills=new SaleReturnBillController().findSaleReturnBillsByState(0);
+			if(saleReturnBills!=null&&saleReturnBills.size()>0) {
+				for(SaleReturnBillVO vo:saleReturnBills) {
+					if(vo.getList().hasCommodity(id)) {
+						return false;
+					}
+				}
+			}
+			ArrayList<ImportBillVO> importBills=new ImportBillController().findImportBillsByState(0);
+			if(importBills!=null&&importBills.size()>0) {
+				for(ImportBillVO vo:importBills) {
+					if(vo.getCommodityList().hasCommodity(id)) {
+						return false;
+					}
+				}
+			}
+			
+			ArrayList<ImportReturnBillVO> importReturnBills=new ImportReturnBillController().findImportReturnBillsByState(0);
+			if(importReturnBills!=null&&importReturnBills.size()>0) {
+				for(ImportReturnBillVO vo:importReturnBills) {
+					if(vo.getList().hasCommodity(id)) {
+						return false;
+					}
+				}
+			}
+			
+			ArrayList<OverBillVO> overBills=new OverBillController().findOverBillsByState(0);
+			if(overBills!=null&&overBills.size()>0) {
+				for(OverBillVO vo:overBills) {
+					if(vo.getCommodityName().equals(name)) {
+						return false;
+					}
+				}
+			}
+			
+			ArrayList<LossBillVO> lossBills=new LossBillController().findLossBillsByState(0);
+			if(lossBills!=null&&lossBills.size()>0) {
+				for(LossBillVO vo:lossBills) {
+					if(vo.getCommodityName().equals(name)) {
+						return false;
+					}
+				}
+			}
+			
+			ArrayList<GiftBillVO> giftBills=new GiftBillController().findGiftBillsByState(0);
+			if(giftBills!=null&&giftBills.size()>0) {
+				for(GiftBillVO vo:giftBills) {
+					if(vo.getCommodityList().hasCommodity(id)) {
+						return false;
+					}
+				}
+			}
+			
+			ArrayList<PricePromotionVO> pricePromotions=new PromotionController().findPricePromotions();
+			if(pricePromotions!=null&&pricePromotions.size()>0) {
+				for(PricePromotionVO vo:pricePromotions) {
+					if(vo.getGifts().hasCommodity(id)) {
+						return false;
+					}
+				}
+			}
+			
+			ArrayList<PackagePromotionVO> packagePromotions=new PromotionController().findPackagePromotions();
+			if(packagePromotions!=null&&packagePromotions.size()>0) {
+				for(PackagePromotionVO vo:packagePromotions) {
+					if(vo.getList().hasCommodity(id)) {
+						return false;
+					}
+				}
+			}
 			return RemoteHelper.getInstance().getCommodityDataService().delete(commodityVO.toCommodityPO());
 		} catch (RemoteException e) {
 			e.printStackTrace();
