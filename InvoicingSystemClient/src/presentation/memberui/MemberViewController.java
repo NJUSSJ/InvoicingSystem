@@ -203,14 +203,23 @@ public class MemberViewController implements Initializable {
    	 			return;
    	 		}
    	 		
-   	 		
+   	 		if(mbs.deleteMember(me)){
+   	 		//
 			LogController logController=new LogController();
 			long logID=logController.findLargestID()+1;
 	        LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"deleteMember:"+me.getID(),MainApp.getID());
 	        logController.addLog(logVO);
 	        //
-   	 		mbs.deleteMember(me);
    	 		memberTable.getItems().remove(selectedIndex);
+   	 		}else{
+   	 			Alert alert = new Alert(AlertType.WARNING);
+	 			alert.initOwner(MainApp.getPrimaryStage());
+	 			alert.setTitle("Member delete error");
+	 			alert.setHeaderText("Member delete error");
+	 			alert.setContentText("Member has unchecked bill£¡");
+	 			alert.showAndWait();
+	 			return;
+   	 		}
    	    } else {
    	        // Nothing selected.
    	        Alert alert = new Alert(AlertType.WARNING);

@@ -144,14 +144,23 @@ public class CommodityViewController implements Initializable{
    public void delete(){
 		int selectedIndex = commodityTable.getSelectionModel().getSelectedIndex();
 	   	 	if (selectedIndex >= 0) {
-	   	 	//记录日志
-				LogController logController=new LogController();
-				long logID=logController.findLargestID()+1;
-    	        LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"deleteCommodity:"+commodityVO.getID(),MainApp.getID());
-    	        logController.addLog(logVO);
-    	        //
-	   	 		cbs.deleteCommodity(commodityVO);
-	   	 		commodityTable.getItems().remove(selectedIndex);
+	   	 		
+	   	 		if(cbs.deleteCommodity(commodityVO)){
+	   	 			commodityTable.getItems().remove(selectedIndex);
+	   	 			//记录日志
+					LogController logController=new LogController();
+					long logID=logController.findLargestID()+1;
+	    	        LogVO logVO=new LogVO(logID,new Date(Utility.getNow().getTime()),"deleteCommodity:"+commodityVO.getID(),MainApp.getID());
+	    	        logController.addLog(logVO);
+	    	        //
+	   	 		}else{
+	   	 			Alert alert = new Alert(AlertType.WARNING);
+	   	 			alert.initOwner(MainApp.getPrimaryStage());
+	   	 			alert.setTitle("Commodity delete error");
+	   	 			alert.setHeaderText("Commodity delete error");
+	   	 			alert.setContentText("Commodity still has business:"+commodityVO.getName());
+	   	 			alert.showAndWait();
+	   	 		}
 	   	    } else { 
 	   	    	Alert alert = new Alert(AlertType.WARNING);
 	   	    	alert.initOwner(MainApp.getPrimaryStage());
