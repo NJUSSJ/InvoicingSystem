@@ -392,7 +392,6 @@ public class ManageCourseViewController implements Initializable {
 	@FXML
 	public void reverse() {
 				String style=data.getstyle();
-				String id=data.getid();
 				if(style.equals("œ˙ €µ•")){
 					SaleBillVO sb=data.getSaleBillVO();
 					java.util.Date utiltime=new java.util.Date();

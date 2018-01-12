@@ -11,7 +11,6 @@ import MainApp.MainApp;
 import businesslogic.accountbl.AccountController;
 import businesslogic.billbl.AccountLineItem;
 import businesslogic.billbl.AccountList;
-import businesslogic.billbl.ReceiveBill;
 import businesslogic.billbl.ReceiveBillController;
 import businesslogic.logbl.LogController;
 import businesslogic.memberbl.MemberController;

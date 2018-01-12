@@ -10,7 +10,6 @@ import po.PayBillPO;
 import rmi.RemoteHelper;
 import vo.AccountVO;
 import vo.MemberVO;
-import vo.OverBillVO;
 import vo.PayBillVO;
 
 public class PayBill {

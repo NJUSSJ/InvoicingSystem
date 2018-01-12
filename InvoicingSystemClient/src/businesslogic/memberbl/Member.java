@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import businesslogic.billbl.GiftBillController;
 import businesslogic.billbl.ImportBillController;
 import businesslogic.billbl.ImportReturnBillController;
-import businesslogic.billbl.LossBillController;
-import businesslogic.billbl.OverBillController;
 import businesslogic.billbl.PayBillController;
 import businesslogic.billbl.ReceiveBillController;
 import businesslogic.billbl.SaleBillController;
@@ -17,9 +15,7 @@ import rmi.RemoteHelper;
 import vo.GiftBillVO;
 import vo.ImportBillVO;
 import vo.ImportReturnBillVO;
-import vo.LossBillVO;
 import vo.MemberVO;
-import vo.OverBillVO;
 import vo.PayBillVO;
 import vo.ReceiveBillVO;
 import vo.SaleBillVO;
@@ -41,7 +37,6 @@ public class Member{
 		MemberPO tmpUserPO=a.toPO();
 		try {
 			long id=a.getID();
-			String name=a.getName();
 			ArrayList<SaleBillVO> saleBills=new SaleBillController().findSaleBillsByState(0);
 			if(saleBills!=null&&saleBills.size()>0) {
 				for(SaleBillVO vo:saleBills) {

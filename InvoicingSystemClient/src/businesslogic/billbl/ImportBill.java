@@ -8,7 +8,6 @@ import businesslogic.commoditybl.CommodityController;
 import businesslogic.memberbl.MemberController;
 import po.ImportBillPO;
 import rmi.RemoteHelper;
-import vo.CashBillVO;
 import vo.CommodityVO;
 import vo.ImportBillVO;
 import vo.MemberVO;

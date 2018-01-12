@@ -1,7 +1,5 @@
 package presentation.logui;
 
-import java.sql.Date;
-
 import businesslogic.userbl.UserController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;

@@ -6,7 +6,6 @@ import businesslogic.billbl.CommodityList;
 import businesslogic.commoditybl.CommodityController;
 import businesslogic.promotionbl.PromotionController;
 import businesslogic.utilitybl.Utility;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;

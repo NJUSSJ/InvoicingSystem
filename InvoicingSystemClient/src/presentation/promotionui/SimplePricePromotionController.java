@@ -1,22 +1,18 @@
 package presentation.promotionui;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import MainApp.MainApp;
 import businesslogic.billbl.CommodityLineItem;
 import businesslogic.billbl.CommodityList;
 import businesslogic.commoditybl.CommodityController;
 import businesslogic.promotionbl.PromotionController;
 import businesslogic.utilitybl.Utility;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.scene.control.Alert.AlertType;
 import vo.CommodityVO;
 import vo.PricePromotionVO;
 

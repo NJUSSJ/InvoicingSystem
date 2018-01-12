@@ -10,7 +10,6 @@ import businesslogic.userbl.UserController;
 import businesslogic.utilitybl.Utility;
 import po.ImportReturnBillPO;
 import rmi.RemoteHelper;
-import vo.CashBillVO;
 import vo.CommodityVO;
 import vo.ImportReturnBillVO;
 import vo.MemberVO;
@@ -58,7 +57,7 @@ public class ImportReturnBill {
 						stockUsers.add(uvo);
 					}
 				}
-				int index=(int)(Math.random()*(stockUsers.size()));
+			
 				
 				//修改库存数量,如果少于警戒量则生成报警单
 				CommodityList list=vo.getList();

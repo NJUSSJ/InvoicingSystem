@@ -11,7 +11,6 @@ import MainApp.MainApp;
 import businesslogic.billbl.CommodityLineItem;
 import businesslogic.billbl.CommodityList;
 import businesslogic.billbl.ImportReturnBillController;
-import businesslogic.billbl.SaleReturnBillController;
 import businesslogic.commoditybl.CommodityController;
 import businesslogic.logbl.LogController;
 import businesslogic.memberbl.MemberController;
@@ -36,7 +35,6 @@ import vo.CommodityVO;
 import vo.ImportReturnBillVO;
 import vo.LogVO;
 import vo.MemberVO;
-import vo.SaleReturnBillVO;
 
 public class Import_ReturnViewController implements Initializable {
 	@FXML

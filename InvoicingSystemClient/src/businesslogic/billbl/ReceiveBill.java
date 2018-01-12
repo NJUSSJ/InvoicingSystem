@@ -10,7 +10,6 @@ import po.ReceiveBillPO;
 import rmi.RemoteHelper;
 import vo.AccountVO;
 import vo.MemberVO;
-import vo.OverBillVO;
 import vo.ReceiveBillVO;
 
 public class ReceiveBill{

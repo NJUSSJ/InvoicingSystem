@@ -11,7 +11,6 @@ import org.junit.Test;
 
 import Utility.DateUtil;
 import runner.ClientRunner;
-import vo.LossBillVO;
 import vo.PayBillVO;
 
 public class PayBillControllerTest {

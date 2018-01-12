@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 import po.LossBillPO;
 import rmi.RemoteHelper;
-import vo.CashBillVO;
 import vo.LossBillVO;
 
 public class LossBill{

@@ -8,24 +8,21 @@ import java.util.ResourceBundle;
 import MainApp.MainApp;
 import Utility.DateUtil;
 import businesslogic.tablebl.OperateConditionTableController;
-import businesslogic.tablebl.OperateCourseTableController;
 import businesslogicservice.tableblservice.ManageConditionTableBLService;
-import businesslogicservice.tableblservice.ManageCourseTableBLService;
 import javafx.collections.FXCollections;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import vo.OperateConditionTableVO;
-import vo.OperateCourseTableVO;
 
 public class ManageSituationViewController implements Initializable {
 	@FXML

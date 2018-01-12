@@ -7,18 +7,15 @@ import java.util.ResourceBundle;
 
 import MainApp.MainApp;
 import Utility.DateUtil;
-import businesslogic.billbl.LossBillController;
 import businesslogic.billbl.OverBillController;
-import businesslogicservice.billblservice.LossBillBLService;
 import businesslogicservice.billblservice.OverBillBLService;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
-import vo.LossBillVO;
 import vo.OverBillVO;
 
 public class OverInfoController implements Initializable{

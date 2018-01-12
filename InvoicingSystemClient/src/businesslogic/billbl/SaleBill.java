@@ -15,7 +15,6 @@ import vo.CommodityVO;
 import vo.GiftBillVO;
 import vo.MemberPromotionVO;
 import vo.MemberVO;
-import vo.OverBillVO;
 import vo.PackagePromotionVO;
 import vo.PricePromotionVO;
 import vo.SaleBillVO;

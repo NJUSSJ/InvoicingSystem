@@ -23,7 +23,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import vo.MemberPromotionVO;
-import vo.PricePromotionVO;
 
 public class MemberPromotionViewController implements Initializable{
 	@FXML
