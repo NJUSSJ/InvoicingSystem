@@ -150,7 +150,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 		noteColumn.setCellValueFactory(cellData ->cellData.getValue().getNote());
 		totalmoneyColumn.setCellValueFactory(cellData ->cellData.getValue().getSaleTotalPrice());
 		modelColumn.setCellValueFactory(cellData ->cellData.getValue().getModel());
-		moneyColumn.setCellValueFactory(cellData ->cellData.getValue().getImportPrice());
+		moneyColumn.setCellValueFactory(cellData ->cellData.getValue().getSalePrice());
 	    altogether.setText("0");
 	    reviseB.setVisible(false);
 	    commodityTable.setItems(commodityData);
@@ -211,23 +211,40 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 	}
 	@FXML
 	public void confirm(){
+		memberl=mbs.findMemberByName(member.getText());
+		
+		if(memberl==null) {
+			Alert warning =new Alert(AlertType.WARNING);
+			warning.setContentText("该客户不存在！");
+			warning .showAndWait();
+			return ;
+		}
+	
 		if(ishas==0){
-			itemdata=new CommodityItemData(0,a,Integer.parseInt(num.getText()),Double.parseDouble(lastprice.getText()),notea.getText());
+		itemdata=new CommodityItemData(1,a,Integer.parseInt(num.getText()),Double.parseDouble(lastprice.getText()),notea.getText());
+	    item=new CommodityLineItem(Integer.parseInt(num.getText()),a.getID(),Double.parseDouble(lastprice.getText()),a.getImportPrice(),notea.getText());
+	    comlist.addCommodity(item);
+		commodityData.add(itemdata);
+		
+		}else{
+			ishas=0;
+			commodityData.remove(itemdata);
+			comlist.deleteCommodity(item);
+			itemdata=new CommodityItemData(1,a,Integer.parseInt(num.getText()),Double.parseDouble(lastprice.getText()),notea.getText());
 		    item=new CommodityLineItem(Integer.parseInt(num.getText()),a.getID(),Double.parseDouble(lastprice.getText()),a.getImportPrice(),notea.getText());
-		    comlist.addCommodity(item);
-			commodityData.add(itemdata);
-			}else{
-				ishas=0;
-				itemdata.setNum(num.getText());
-				comlist.deleteCommodity(item);
-				comlist.addCommodity(itemdata.getItem());
-			}
-	    altogether.setText(""+comlist.getSaleTotal());
-	    
-	    name.setText("");
-	    lastprice.setText("");
-	    num.setText("");
-	    notea.setText("");
+			
+		    commodityData.add(itemdata);
+			
+			comlist.addCommodity(item);
+		}
+		altogether.setText(comlist.getSaleTotal()+"");
+		
+		 name.setText("");
+		 lastprice.setText("");
+		 num.setText("");
+		 notea.setText("");
+		    
+	   
 	}
 	@FXML
 	public void logout(){
@@ -277,7 +294,7 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 			warning.showAndWait();
 			return ;
 		}
-		SaleReturnBillVO sale_returnbill=new SaleReturnBillVO(billid.getText(),MainApp.getID(),memberl.getID(),comlist,comlist.getImportTotal(),0,time,note.getText());
+		SaleReturnBillVO sale_returnbill=new SaleReturnBillVO(billid.getText(),MainApp.getID(),memberl.getID(),comlist,comlist.getSaleTotal(),0,time,note.getText());
 		 String isSubmit="fail Submit";
 		 if(srbbs.submitSaleReturnBill(sale_returnbill)){
 			 //记录日志

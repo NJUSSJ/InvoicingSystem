@@ -149,9 +149,9 @@ public class ImportViewController implements Initializable {
 		amountColumn.setCellValueFactory(cellData ->cellData.getValue().getNum());
 		idColumn.setCellValueFactory(cellData ->cellData.getValue().getId());
 		noteColumn.setCellValueFactory(cellData ->cellData.getValue().getNote());
-		totalmoneyColumn.setCellValueFactory(cellData ->cellData.getValue().getImportTotalPrice());
+		totalmoneyColumn.setCellValueFactory(cellData ->cellData.getValue().getSaleTotalPrice());
 		modelColumn.setCellValueFactory(cellData ->cellData.getValue().getModel());
-		moneyColumn.setCellValueFactory(cellData ->cellData.getValue().getImportPrice());
+		moneyColumn.setCellValueFactory(cellData ->cellData.getValue().getSalePrice());
 	    altogether.setText("0");
 	    reviseB.setVisible(false);
 	    commodityTable.setItems(commodityData);
@@ -164,7 +164,7 @@ public class ImportViewController implements Initializable {
 			item=itemdata.getItem();
 			name.setText(newValue.getName().get());
 			num.setText(""+item.getNum());
-			lastprice.setText(""+item.getImportPrice());
+			lastprice.setText(""+item.getSalePrice());
 			notea.setText(item.getRemark());
 			ishas=1;
 		}
@@ -209,22 +209,37 @@ public class ImportViewController implements Initializable {
 	}
 	@FXML
 	public void confirm(){
+		memberl=mbs.findMemberByName(member.getText());
+		
+		if(memberl==null) {
+			Alert warning =new Alert(AlertType.WARNING);
+			warning.setContentText("该客户不存在！");
+			warning .showAndWait();
+			return ;
+		}
+	
 		if(ishas==0){
-			itemdata=new CommodityItemData(0,a,Integer.parseInt(num.getText()),Double.parseDouble(lastprice.getText()),notea.getText());
+		itemdata=new CommodityItemData(1,a,Integer.parseInt(num.getText()),Double.parseDouble(lastprice.getText()),notea.getText());
+	    item=new CommodityLineItem(Integer.parseInt(num.getText()),a.getID(),Double.parseDouble(lastprice.getText()),a.getImportPrice(),notea.getText());
+	    comlist.addCommodity(item);
+		commodityData.add(itemdata);
+		}else{
+			ishas=0;
+			commodityData.remove(itemdata);
+			comlist.deleteCommodity(item);
+			itemdata=new CommodityItemData(1,a,Integer.parseInt(num.getText()),Double.parseDouble(lastprice.getText()),notea.getText());
 		    item=new CommodityLineItem(Integer.parseInt(num.getText()),a.getID(),Double.parseDouble(lastprice.getText()),a.getImportPrice(),notea.getText());
-		    comlist.addCommodity(item);
-			commodityData.add(itemdata);
-			}else{
-				ishas=0;
-				itemdata.setNum(num.getText());
-				comlist.deleteCommodity(item);
-				comlist.addCommodity(itemdata.getItem());
-			}
-	    altogether.setText(""+comlist.getImportTotal());
-	    name.setText("");
-	    lastprice.setText("");
-	    num.setText("");
-	    notea.setText("");
+			
+		    commodityData.add(itemdata);
+			
+			comlist.addCommodity(item);
+		}
+		altogether.setText(comlist.getImportTotal()+"");
+		 name.setText("");
+		 lastprice.setText("");
+		 num.setText("");
+		 notea.setText("");
+		    
 	}
 	@FXML
 	public void logout(){

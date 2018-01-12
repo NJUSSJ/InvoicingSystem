@@ -121,6 +121,9 @@ public class StockCheckViewController implements Initializable {
 	
 		
 	public void Confrim() {
+		if(table.getItems()!=null) {
+			table.getItems().clear();
+		}
 		Date start=DateUtil.toSQL(startYear.getSelectionModel().getSelectedItem(),startMonth.getSelectionModel().getSelectedItem(),startDay.getSelectionModel().getSelectedItem());		
 		Date end=DateUtil.toSQL(endYear.getSelectionModel().getSelectedItem(), endMonth.getSelectionModel().getSelectedItem(), endDay.getSelectionModel().getSelectedItem());
 		
