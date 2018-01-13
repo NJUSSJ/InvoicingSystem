@@ -32,7 +32,10 @@ public class Member{
 		}
 		return false;
 	}
-
+	/**
+	 * 删除客户
+	 * @return 删除结果，如果客户仍有相关业务未处理则返回false
+	 */
 	public boolean deleteMember(MemberVO a) {
 		MemberPO tmpUserPO=a.toPO();
 		try {
@@ -103,7 +106,9 @@ public class Member{
 		}
 		return false;
 	}
-
+	/**
+	 * 根据名称返回客户
+	 */
 	public MemberVO findMemberByName(String name) {
 		try {
 			MemberPO tmpPO=RemoteHelper.getInstance().getMemberDataService().findMemberbyName(name);
@@ -123,7 +128,9 @@ public class Member{
 		}
 		return false;
 	}
-
+	/**
+	 * 根据关键字查找客户
+	 */
 	public ArrayList<MemberVO> findMembersByField(String field) {
 		ArrayList<MemberVO> temp=null;
 		try {
@@ -151,6 +158,9 @@ public class Member{
 				memberPO.getAddress(),memberPO.getEmail(),memberPO.getShouldPay(),
 				memberPO.getShouldGet(),memberPO.getQuota(),memberPO.getDefaultOperatorID());
 	}
+	/**
+	 * 查找所有客户
+	 */
 	public ArrayList<MemberVO> findMembers(){
 		ArrayList<MemberVO> temp=new ArrayList<MemberVO>();
 		try {
@@ -163,6 +173,9 @@ public class Member{
 		} 
 		return temp;
 	}
+	/**
+	 * 根据id查找客户
+	 */
 	public MemberVO findMemberByID(long id){
 		try {
 			return toMemberVO(RemoteHelper.getInstance().getMemberDataService().findMemberbyID(id));

@@ -28,6 +28,9 @@ public class MemberPromotion {
 		}
 		return false;
 	}
+	/**
+	 * 查找所有针对客户促销策略
+	 */
 	public ArrayList<MemberPromotionVO> findMemberPromotions(){
 		ArrayList<MemberPromotionVO> temp = new ArrayList<>();
 		try {
@@ -46,8 +49,7 @@ public class MemberPromotion {
 		
 	}
 	/**
-	 * 
-	 * @return 所有符合该等级的客户促销策略
+	 * 查找所有符合该等级的客户促销策略
 	 */
 	public ArrayList<MemberPromotionVO> findMemberPromotionByRank(int rank){
 		ArrayList<MemberPromotionVO> result=new ArrayList<MemberPromotionVO>();
@@ -57,7 +59,6 @@ public class MemberPromotion {
 				result.add(toMemberPromotionVO(po));
 			}
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		return result;

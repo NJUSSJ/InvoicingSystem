@@ -27,8 +27,9 @@ public class User {
 		}
 		return false;
 	}
-
-	
+	/**
+	 * 根据姓名查找操作员
+	 */
 	public UserVO findUserbyName(String name) {
 		try {
 			UserPO tmpPO=RemoteHelper.getInstance().getUserDataService().findUserbyName(name);
@@ -41,7 +42,9 @@ public class User {
 		}
 		return null;
 	}
-
+	/**
+	 * 根据id查找操作员
+	 */
 	public UserVO findUserByID(long id){
 		try {
 			return toUserVO(RemoteHelper.getInstance().getUserDataService().findUserbyID(id));
@@ -66,6 +69,9 @@ public class User {
 		}
 		return new UserVO(userPO.getID(),userPO.getPassword(),userPO.getRank(),userPO.getUserName());
 	}
+	/**
+	 * 查找所有操作员
+	 */
 	public ArrayList<UserVO> findUsers(){
 		ArrayList<UserVO> temp=new ArrayList<UserVO>();
 		try {
@@ -78,7 +84,9 @@ public class User {
 		}
 		return temp;
 	}
-	
+	/**
+	 * 根据关键字查找操作员
+	 */
 	public ArrayList<UserVO> findUserbyFiled(String field){
 		ArrayList<UserVO> results=new ArrayList<>();
 		try {

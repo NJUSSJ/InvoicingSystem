@@ -111,7 +111,9 @@ public class ImportReturnBill {
 		}
 		return false;
 	}
-
+	/**
+	 * 根据id查找进货退货单
+	 */
 	public ImportReturnBillVO findImportReturnBillByID(String id) {
 		try {
 			return toImportReturnBillVO(RemoteHelper.getInstance().getImportReturnBillDataService().findImportReturnBillbyID(id));
@@ -120,7 +122,9 @@ public class ImportReturnBill {
 		}
 		return null;
 	}
-
+	/**
+	 * 根据时间查找进货退货单
+	 */
 	public ArrayList<ImportReturnBillVO> findImportReturnBillByTime(Date time) {
 		ArrayList<ImportReturnBillVO> temp=new ArrayList<ImportReturnBillVO>();
 		try {
@@ -136,6 +140,9 @@ public class ImportReturnBill {
 		
 		return temp;
 	}
+	/**
+	 * 查找所有进货退货单
+	 */
 	public ArrayList<ImportReturnBillVO> findImportReturnBills(){
 		ArrayList<ImportReturnBillVO> temp=null;
 		try {
@@ -149,6 +156,9 @@ public class ImportReturnBill {
 		}
 		return temp;
 	}
+	/**
+	 * 根据时间区间查找进货退货单 经营历程表
+	 */
 	public ArrayList<ImportReturnBillVO> findImportReturnBillsByInterval(Date begin,Date end){
 		ArrayList<ImportReturnBillVO> bills=findImportReturnBills();
 		ArrayList<ImportReturnBillVO> result=new ArrayList<ImportReturnBillVO>();
@@ -161,6 +171,9 @@ public class ImportReturnBill {
 		}
 		return result;
 	}
+	/**
+	 * 根据时间区间，顾客名，操作员名查找进货退货单
+	 */
 	public ArrayList<ImportReturnBillVO> findImportReturnBillsByField(Date begin,Date end,String memberName,String userName){
 		ArrayList<ImportReturnBillVO> result=new ArrayList<ImportReturnBillVO>();
 		try {
@@ -179,6 +192,9 @@ public class ImportReturnBill {
 		}
 		return result;	
 	}
+	/**
+	 * 根据状态查找进货退货单
+	 */
 	public ArrayList<ImportReturnBillVO> findImportReturnBillsByState(int state){
 		ArrayList<ImportReturnBillVO> result=new ArrayList<ImportReturnBillVO>();
 		ArrayList<ImportReturnBillPO> bills;
@@ -193,6 +209,9 @@ public class ImportReturnBill {
 		
 		return result;
 	}
+	/**
+	 * 根据操作员id查找进货退货单
+	 */
 	public ArrayList<ImportReturnBillVO> findImportReturnBillsByUser(long userid){
 		ArrayList<ImportReturnBillVO> result=new ArrayList<ImportReturnBillVO>();
 		try {
@@ -205,6 +224,9 @@ public class ImportReturnBill {
 		}
 		return result;
 	}
+	/**
+	 * 从邮箱中删除进货退货单
+	 */
 	public boolean fakeDelete(String id){
 		ImportReturnBillVO vo=findImportReturnBillByID(id);
 		vo.setState(vo.getState()+2);

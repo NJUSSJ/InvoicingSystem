@@ -67,6 +67,9 @@ public class SaleReturnBill{
 		}
 		return false;
 	}
+	/**
+	 * 根据id查找销售退货单
+	 */
 	public SaleReturnBillVO findSaleReturnBillByID(String id) {
 		try {
 			return toSaleReturnBillVO(RemoteHelper.getInstance().getSaleReturnBillDataService().findSaleReturnBillbyID(id));
@@ -75,6 +78,9 @@ public class SaleReturnBill{
 		}
 		return null;
 	}
+	/**
+	 * 根据时间查找销售退货单
+	 */
 	public ArrayList<SaleReturnBillVO> findSaleReturnBillByTime(Date time) {
 		ArrayList<SaleReturnBillVO> temp=new ArrayList<SaleReturnBillVO>();
 		try {
@@ -89,6 +95,9 @@ public class SaleReturnBill{
 		
 		return temp;
 	}
+	/**
+	 * 查找所有销售退货单
+	 */
 	public ArrayList<SaleReturnBillVO> findSaleReturnBills(){
 		ArrayList<SaleReturnBillVO> temp=null;
 		try {
@@ -102,6 +111,9 @@ public class SaleReturnBill{
 		}
 		return temp;
 	}
+	/**
+	 * 根据时间区间查找销售退货单 经营历程表
+	 */
 	public ArrayList<SaleReturnBillVO> findSaleReturnBillsByInterval(Date begin,Date end){
 		ArrayList<SaleReturnBillVO> bills=findSaleReturnBills();
 		ArrayList<SaleReturnBillVO> result=new ArrayList<SaleReturnBillVO>();
@@ -114,6 +126,9 @@ public class SaleReturnBill{
 		}
 		return result;
 	}
+	/**
+	 * 根据状态查找销售退货单
+	 */
 	public ArrayList<SaleReturnBillVO> findSaleReturnBillsByState(int state){
 		ArrayList<SaleReturnBillVO> result=new ArrayList<SaleReturnBillVO>();
 		ArrayList<SaleReturnBillPO> bills;
@@ -127,6 +142,10 @@ public class SaleReturnBill{
 		}
 		return result;
 	}
+	/**
+	 * 根据时间区间，客户名，操作员名查找销售退货单
+	 * @return
+	 */
 	public ArrayList<SaleReturnBillVO> findSaleReturnBillsByField(Date begin, Date end, String memberName,
 			String userName) {
 		ArrayList<SaleReturnBillVO> result=new ArrayList<SaleReturnBillVO>();
@@ -144,6 +163,9 @@ public class SaleReturnBill{
 		}
 		return result;
 	}
+	/**
+	 * 根据操作员id查找销售退货单
+	 */
 	public ArrayList<SaleReturnBillVO> findSaleReturnBillsByUser(long userid){
 		ArrayList<SaleReturnBillVO> result=new ArrayList<SaleReturnBillVO>();
 		try {
@@ -156,6 +178,9 @@ public class SaleReturnBill{
 		}
 		return result;
 	}
+	/**
+	 * 从邮箱中删除销售退货单
+	 */
 	public boolean fakeDelete(String id){
 		SaleReturnBillVO vo=findSaleReturnBillByID(id);
 		vo.setState(vo.getState()+2);

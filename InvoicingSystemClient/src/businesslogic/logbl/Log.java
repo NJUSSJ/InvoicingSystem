@@ -16,6 +16,9 @@ public class Log{
 		}
 		return false;
 	}
+	/**
+	 * 查找所有日志
+	 */
 	public ArrayList<LogVO> findLogs() {
 		ArrayList<LogVO> temp=null;
 		ArrayList<LogPO> logs;
@@ -30,6 +33,9 @@ public class Log{
 		}
 		return temp;
 	}
+	/**
+	 * 根据操作员id查找日志
+	 */
 	public ArrayList<LogVO> findLogByUserID(long userid) {
 		ArrayList<LogVO> temp=null;
 		ArrayList<LogPO> logs;
@@ -44,6 +50,9 @@ public class Log{
 		}
 		return temp;
 	}
+	/**
+	 * 根据关键字查找日志
+	 */
 	public ArrayList<LogVO> findLogByType(String field) {
 		ArrayList<LogVO> temp=null;
 		ArrayList<LogPO> logs;
@@ -68,13 +77,15 @@ public class Log{
 		}
 		return new LogVO(logPO.getID(),logPO.getTime(),logPO.getType(),logPO.getUserID());
 	}
+	/**
+	 * 返回日志id的最大值，出错时返回-2
+	 */
 	public long findLargestID(){
 		try {
-			//System.out.println(RemoteHelper.getInstance().getLogDataService().getLargestIDofLog());
 			return RemoteHelper.getInstance().getLogDataService().getLargestIDofLog();
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		return 0;
+		return -2;
 	}
 }

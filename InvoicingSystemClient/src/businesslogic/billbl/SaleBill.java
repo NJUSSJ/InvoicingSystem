@@ -69,7 +69,7 @@ public class SaleBill{
 					CommodityVO commodityVO=ccon.findCommodityByID(commodityid);
 					int rest=commodityVO.getStockNum()-list.get(i).getNum();
 					if(rest<0){
-						vo.setState(2);
+						vo.setState(2);//如果销售了超出库存数量的商品，则销售单自动设为不通过并提示总经理
 						return false;
 					}
 				}
@@ -159,6 +159,9 @@ public class SaleBill{
 		}
 		return false;
 	}
+	/**
+	 * 根据id查找销售单
+	 */
 	public SaleBillVO findSaleBillByID(String id) {
 		try {
 			return toSaleBillVO(RemoteHelper.getInstance().getSaleBillDataService().findSaleBillbyID(id));
@@ -167,6 +170,9 @@ public class SaleBill{
 		}
 		return null;
 	}
+	/**
+	 * 根据时间查找销售单
+	 */
 	public ArrayList<SaleBillVO> findSaleBillsByTime(Date time) {
 		ArrayList<SaleBillVO> temp=new ArrayList<SaleBillVO>();
 		try {
@@ -181,6 +187,9 @@ public class SaleBill{
 		
 		return temp;
 	}
+	/**
+	 * 查找所有销售单
+	 */
 	public ArrayList<SaleBillVO> findSaleBills(){
 		ArrayList<SaleBillVO> temp=null;
 		try {
@@ -195,7 +204,7 @@ public class SaleBill{
 		return temp;
 	}
 	/**
-	 * 
+	 * 处理销售总价
 	 * @param rank 客户的等级
 	 * @param list 销售单中的商品信息列表
 	 * @return 经过促销策略（客户，特价包）以后的折后总价
@@ -246,7 +255,7 @@ public class SaleBill{
 		return min;
 	}
 	/**
-	 * 
+	 * 处理销售产生的总代金券
 	 * @param rank 客户的等级
 	 * @param sum 折后总价
 	 * @return 经过促销策略（客户，总价）以后的代金券总额
@@ -270,6 +279,9 @@ public class SaleBill{
 		}
 		return maxm+maxp;
 	}
+	/**
+	 * 根据时间区间查找销售单 经营历程表
+	 */
 	public ArrayList<SaleBillVO> findSaleBillsByInterval(Date begin,Date end){
 		ArrayList<SaleBillVO> bills=findSaleBills();
 		ArrayList<SaleBillVO> result=new ArrayList<SaleBillVO>();
@@ -285,6 +297,9 @@ public class SaleBill{
 		}
 		return result;	
 	}
+	/**
+	 * 根据状态查找销售单
+	 */
 	public ArrayList<SaleBillVO> findSaleBillsByState(int state){
 		ArrayList<SaleBillVO> result=new ArrayList<SaleBillVO>();
 		ArrayList<SaleBillPO> bills;
@@ -299,6 +314,10 @@ public class SaleBill{
 		
 		return result;
 	}
+	/**
+	 * 根据时间区间，商品名，客户名，操作员名查找销售单 经营历程表，销售情况表
+	 * @return
+	 */
 	public ArrayList<SaleBillVO> findSaleBillsByField(Date begin,Date end,String commodityName,String memberName,String userName){
 		ArrayList<SaleBillVO> result=new ArrayList<SaleBillVO>();
 		try {
@@ -318,6 +337,9 @@ public class SaleBill{
 		}
 		return result;
 	}
+	/**
+	 * 根据操作员id查找销售单
+	 */
 	public ArrayList<SaleBillVO> findSaleBillsByUser(long userid){
 		ArrayList<SaleBillVO> result=new ArrayList<SaleBillVO>();
 		try {
@@ -330,6 +352,9 @@ public class SaleBill{
 		}
 		return result;
 	}
+	/**
+	 * 从邮箱中删除销售单
+	 */
 	public boolean fakeDelete(String id){
 		SaleBillVO vo=findSaleBillByID(id);
 		vo.setState(vo.getState()+2);

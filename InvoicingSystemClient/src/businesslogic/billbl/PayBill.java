@@ -71,7 +71,9 @@ public class PayBill {
 		}
 		return false;
 	}
-
+	/**
+	 * 根据id查找付款单
+	 */
 	public PayBillVO findPayBillByID(String id) {
 		try {
 			return toPayBillVO(RemoteHelper.getInstance().getPayBillDataService().findPayBillbyID(id));
@@ -80,7 +82,9 @@ public class PayBill {
 		}
 		return null;
 	}
-
+	/**
+	 * 根据时间查找付款单
+	 */
 	public ArrayList<PayBillVO> findPayBillByTime(Date time) {
 		ArrayList<PayBillVO> temp=new ArrayList<PayBillVO>();
 		try {
@@ -95,6 +99,9 @@ public class PayBill {
 		
 		return temp;
 	}
+	/**
+	 * 查找所有付款单
+	 */
 	public ArrayList<PayBillVO> findPayBills(){
 		ArrayList<PayBillVO> temp=null;
 		try {
@@ -108,6 +115,9 @@ public class PayBill {
 		}
 		return temp;
 	}
+	/**
+	 * 根据时间区间查找付款单 经营历程表
+	 */
 	public ArrayList<PayBillVO> findPayBillsByInterval(Date begin,Date end){
 		ArrayList<PayBillVO> bills=findPayBills();
 		if(bills==null){
@@ -123,6 +133,9 @@ public class PayBill {
 		}
 		return result;
 	}
+	/**
+	 * 根据时间区间，客户名，操作员名查找付款单 经营历程表
+	 */
 	public ArrayList<PayBillVO> findPayBillsByField(Date begin,Date end,String memberName,String userName){
 		ArrayList<PayBillVO> result=new ArrayList<PayBillVO>();
 		try {
@@ -139,6 +152,9 @@ public class PayBill {
 		}
 		return result;	
 	}
+	/**
+	 * 根据状态查找付款单
+	 */
 	public ArrayList<PayBillVO> findPayBillsByState(int state){
 		ArrayList<PayBillVO> result=new ArrayList<PayBillVO>();
 		ArrayList<PayBillPO> bills;
@@ -153,6 +169,10 @@ public class PayBill {
 		
 		return result;
 	}
+	/**
+	 * 根据操作员id查找付款单
+	 * @return
+	 */
 	public ArrayList<PayBillVO> findPayBillsByUser(long userid){
 		ArrayList<PayBillVO> result=new ArrayList<PayBillVO>();
 		try {
@@ -165,6 +185,10 @@ public class PayBill {
 		}
 		return result;
 	}
+	/**
+	 * 从邮箱中删除付款单
+	 * @return
+	 */
 	public boolean fakeDelete(String id){
 		PayBillVO vo=findPayBillByID(id);
 		vo.setState(vo.getState()+2);
