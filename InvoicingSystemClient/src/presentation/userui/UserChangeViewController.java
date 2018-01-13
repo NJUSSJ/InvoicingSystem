@@ -101,7 +101,7 @@ public class UserChangeViewController implements Initializable {
 			warning.showAndWait();
 			return false;
 		}
-		} catch (Exception e) {
+		} catch (NumberFormatException e) {
 			Alert warning=new Alert(AlertType.WARNING);
 			warning.setTitle("Input Warning!");
 			warning.setContentText("等级信息不正确！");

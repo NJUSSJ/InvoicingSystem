@@ -51,7 +51,16 @@ public class SimpleMemberPromotionController {
 			int rankValue=Integer.parseInt(rankText);
 			int couponValue=Integer.parseInt(couponText);
 			MemberPromotionVO vo=new MemberPromotionVO(id,rankValue,discountValue,list,couponValue);
-			
+			if(discountValue>=1) {
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.initOwner(MainApp.getPrimaryStage());
+				alert.setTitle("Add Failed");
+				alert.setHeaderText("Add Failed");
+				alert.setContentText("Please Check Your Input for Discount!");
+				alert.showAndWait();
+				stage.close();
+				return ;
+			}
 			
 			if(pcon.addMemberPromotion(vo)) {
 				MemberPromotionData tmpData=new MemberPromotionData(vo);
