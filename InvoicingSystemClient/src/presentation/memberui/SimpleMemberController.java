@@ -95,6 +95,35 @@ public class SimpleMemberController implements Initializable{
     	memberData=data;
     }
 	public void set(){
+		try {
+			int rank=Integer.parseInt(rankField.getText());
+			if(rank<=0||rank>=5) {
+				Alert alert=new Alert(AlertType.WARNING);
+				alert.setContentText("Please check your input for rank!");
+				alert.showAndWait();
+				return ;
+			}
+		} catch (NumberFormatException e) {
+			Alert alert=new Alert(AlertType.WARNING);
+			alert.setContentText("Please check your input!");
+			alert.showAndWait();
+			return ;
+		}
+		
+		try {
+			int category=Integer.parseInt(categoryField.getText());
+			if(category!=0&&category!=1) {
+				Alert alert=new Alert(AlertType.WARNING);
+				alert.setContentText("Please check your input for Category!");
+				alert.showAndWait();
+				return ;
+			}
+		} catch (NumberFormatException e) {
+			Alert alert=new Alert(AlertType.WARNING);
+			alert.setContentText("Please check your input!");
+			alert.showAndWait();
+			return ;
+		}
 		if(style==1){
 			try {
 				memberVO=new MemberVO(memberVO.getID(),Integer.parseInt(rankField.getText()),
