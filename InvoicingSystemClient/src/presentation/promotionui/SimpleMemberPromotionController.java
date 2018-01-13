@@ -37,7 +37,7 @@ public class SimpleMemberPromotionController {
 	CommodityList list=new CommodityList();
 	PromotionController pcon=new PromotionController();
 	CommodityController ccon=new CommodityController();
-	ObservableList<MemberPromotionData> promotioonList;
+	ObservableList<MemberPromotionData> promotionList;
 	@FXML
 	public void add(){
 		try {
@@ -51,21 +51,22 @@ public class SimpleMemberPromotionController {
 			int rankValue=Integer.parseInt(rankText);
 			int couponValue=Integer.parseInt(couponText);
 			MemberPromotionVO vo=new MemberPromotionVO(id,rankValue,discountValue,list,couponValue);
-			if(discountValue>=1) {
-				Alert alert = new Alert(AlertType.WARNING);
+			if(discountValue>=1||discountValue<=0||rankValue<=0||rankValue>5||couponValue<=0) {
+				/*Alert alert = new Alert(AlertType.WARNING);
 				alert.initOwner(MainApp.getPrimaryStage());
 				alert.setTitle("Add Failed");
 				alert.setHeaderText("Add Failed");
 				alert.setContentText("Please Check Your Input for Discount!");
 				alert.showAndWait();
 				stage.close();
-				return ;
+				return ;*/
+				throw new NumberFormatException();
 			}
 			
 			if(pcon.addMemberPromotion(vo)) {
 				MemberPromotionData tmpData=new MemberPromotionData(vo);
 				
-				promotioonList.add(tmpData);
+				promotionList.add(tmpData);
 				Alert alert = new Alert(AlertType.WARNING);
 				alert.initOwner(MainApp.getPrimaryStage());
 				alert.setTitle("Add success");
@@ -80,9 +81,7 @@ public class SimpleMemberPromotionController {
 				alert.setHeaderText("Add Failed");
 				alert.setContentText("Add Failed");
 				alert.showAndWait();
-			}
-			
-			
+			}		
 		}else{
 			Alert alert = new Alert(AlertType.WARNING);
 	        alert.initOwner(MainApp.getPrimaryStage());
@@ -98,13 +97,16 @@ public class SimpleMemberPromotionController {
 	        alert.setHeaderText("Input error");
 	        alert.setContentText("Please check input");
 	        alert.showAndWait();
-
 		}
 	}
 	@FXML
 	public void addGift(){
+		try{
 		String name=gift.getText();
 		int num=Integer.parseInt(number.getText());
+		if(num<=0){
+			throw new NumberFormatException();
+		}
 		if(ccon.findCommodityByName(name)!=null){
 			CommodityVO vo=ccon.findCommodityByName(name);
 			if(list.hasCommodity(vo.getID())){
@@ -129,6 +131,14 @@ public class SimpleMemberPromotionController {
 		}
 		gift.setText("");
 		number.setText("");
+		}catch(NumberFormatException e){
+			Alert alert = new Alert(AlertType.WARNING);
+	        alert.initOwner(MainApp.getPrimaryStage());
+	        alert.setTitle("Input error");
+	        alert.setHeaderText("Input error");
+	        alert.setContentText("Please check input");
+	        alert.showAndWait();
+		}
 	}
 	@FXML
 	public void back(){
@@ -138,6 +148,6 @@ public class SimpleMemberPromotionController {
 		this.stage=stage;
 	}
 	public void setList(ObservableList<MemberPromotionData> list) {
-		this.promotioonList=list;
+		this.promotionList=list;
 	}
 }

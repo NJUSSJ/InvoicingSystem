@@ -42,6 +42,9 @@ public class SimplePackagePromotionController {
 		if((discountText!=null&&discountText.length()>0)){
 			long id=Utility.creatID();
 			double discountline=Double.parseDouble(discountText);
+			if(discountline>=1||discountline<=0){
+				throw new NumberFormatException();
+			}
 			PackagePromotionVO vo=new PackagePromotionVO(id,list,discountline);
 			pcon.addPackagePromotion(vo);
 			tableList.add(new PackagePromotionData(vo));

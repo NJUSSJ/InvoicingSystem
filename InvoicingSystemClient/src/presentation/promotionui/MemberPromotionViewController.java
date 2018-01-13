@@ -112,6 +112,8 @@ public class MemberPromotionViewController implements Initializable{
 	}
 	
 	private void getInf(MemberPromotionData newValue) {
+		if(newValue!=null){
 		promotionVO=newValue.getVO();
+		}
 	}
 }

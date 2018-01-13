@@ -76,6 +76,12 @@ public class SimpleCommodityController {
 			        return;
 				}
 				try{
+					int numValue=Integer.parseInt(num.getText());
+					double importPriceValue= Double.parseDouble(importprice.getText());
+					double salePriceValue=Double.parseDouble(saleprice.getText());
+					if(numValue<=0||importPriceValue<=0||salePriceValue<=0){
+						throw new NumberFormatException();
+					}
 				commodityVO=new CommodityVO(name.getText(),id,model.getText(),
 						Integer.parseInt(num.getText()),Double.parseDouble(importprice.getText()),
 						Double.parseDouble(saleprice.getText()),Double.parseDouble(importprice.getText())
@@ -107,10 +113,14 @@ public class SimpleCommodityController {
 			}
 		}else{
 			try{
+			int numValue=Integer.parseInt(num.getText());
+			double importPriceValue= Double.parseDouble(importprice.getText());
+			double salePriceValue=Double.parseDouble(saleprice.getText());
+			if(numValue<=0||importPriceValue<=0||salePriceValue<=0){
+				throw new NumberFormatException();
+			}
 			commodityVO=new CommodityVO(name.getText(),Long.parseLong(data.getId().get()),model.getText(),
-					Integer.parseInt(num.getText()),Double.parseDouble(importprice.getText()),
-					Double.parseDouble(saleprice.getText()),Double.parseDouble(importprice.getText()),
-					Double.parseDouble(saleprice.getText()),Long.parseLong(parent.getText()),Integer.parseInt(warning.getText()));
+			numValue,importPriceValue,salePriceValue,importPriceValue,salePriceValue,Long.parseLong(parent.getText()),Integer.parseInt(warning.getText()));
 			cbs.updateCommodity(commodityVO);
 			//¼ÇÂ¼ÈÕÖ¾
 			LogController logController=new LogController();

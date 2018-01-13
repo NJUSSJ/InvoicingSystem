@@ -42,12 +42,16 @@ public class SimplePricePromotionController {
 	
 	@FXML
 	public void add(){
+		try{
 		String priceText=pricelineField.getText();
 		String couponText=couponField.getText();
 		if((priceText!=null&&priceText.length()>0)&&(couponText!=null&&couponText.length()>0)){
 			long id=Utility.creatID();
 			double priceline=Double.parseDouble(priceText);
 			int coupon=Integer.parseInt(couponText);
+			if(priceline<=0||coupon<=0){
+				throw new NumberFormatException();
+			}
 			PricePromotionVO vo=new PricePromotionVO(id,priceline,list,coupon);
 			pcon.addPricePromotion(vo);
 			tableList.add(new PricePromotionData(vo));
@@ -66,12 +70,25 @@ public class SimplePricePromotionController {
 	        alert.setContentText("Please input information completely.");
 	        alert.showAndWait();
 		}
+		}catch(NumberFormatException e){
+			Alert alert = new Alert(AlertType.WARNING);
+	        alert.initOwner(MainApp.getPrimaryStage());
+	        alert.setTitle("Input error");
+	        alert.setHeaderText("Input error");
+	        alert.setContentText("Please check input");
+	        alert.showAndWait();
+
+		}
 	}
 	@FXML
 	public void addGift(){
 		try {
 		String name=giftNameField.getText();
 		int num=Integer.parseInt(numField.getText());
+		
+		if(num<=0){
+			throw new NumberFormatException();
+		}
 		if(ccon.findCommodityByName(name)!=null){
 			CommodityVO vo=ccon.findCommodityByName(name);
 			if(list.hasCommodity(vo.getID())){
