@@ -47,6 +47,9 @@ public class OverBill{
 		}
 		return false;
 	}
+	/**
+	 * 根据id查找报溢单
+	 */
 	public OverBillVO findOverBillByID(long id) {
 		try {
 			return toOverBillVO(RemoteHelper.getInstance().getOverBillDataService().findOverBillbyID(id));
@@ -55,6 +58,9 @@ public class OverBill{
 		}
 		return null;
 	}
+	/**
+	 * 根据时间查找报溢单
+	 */
 	public ArrayList<OverBillVO> findOverBillByTime(Date time) {
 		ArrayList<OverBillVO> temp=new ArrayList<OverBillVO>();
 		try {
@@ -67,6 +73,9 @@ public class OverBill{
 		}
 		return temp;
 	}
+	/**
+	 * 查找所有报溢单
+	 */
 	public ArrayList<OverBillVO> findOverBills(){
 		ArrayList<OverBillVO> temp=null;
 		try {
@@ -80,6 +89,9 @@ public class OverBill{
 		}
 		return temp;
 	}
+	/**
+	 * 根据时间区间查找报溢单 经营历程表
+	 */
 	public ArrayList<OverBillVO> findOverBillsByInterval(Date begin,Date end){
 		ArrayList<OverBillVO> bills=findOverBills();
 		if(bills==null)return null;
@@ -93,6 +105,9 @@ public class OverBill{
 		}
 		return result;
 	}
+	/**
+	 * 根据时间区间，客户名查找报溢单 经营历程表
+	 */
 	public ArrayList<OverBillVO> findOverBillsByField(Date begin,Date end,String userName){
 		if(userName==null||userName.length()<=0){
 			return findOverBillsByInterval(begin,end);
@@ -114,6 +129,9 @@ public class OverBill{
 		}
 		return result;
 	}
+	/**
+	 * 根据状态查找报溢单
+	 */
 	public ArrayList<OverBillVO> findOverBillsByState(int state){
 		ArrayList<OverBillVO> result=new ArrayList<OverBillVO>();
 		ArrayList<OverBillPO> bills;
@@ -127,6 +145,9 @@ public class OverBill{
 		}
 		return result;
 	}
+	/**
+	 * 根据操作员id查找报溢单
+	 */
 	public ArrayList<OverBillVO> findOverBillsByUser(long userid){
 		ArrayList<OverBillVO> result=new ArrayList<OverBillVO>();
 		try {
@@ -139,6 +160,9 @@ public class OverBill{
 		}
 		return result;
 	}
+	/**
+	 * 从邮箱中删除报溢单
+	 */
 	public boolean fakeDelete(long id){
 		OverBillVO vo=findOverBillByID(id);
 		vo.setState(vo.getState()+2);

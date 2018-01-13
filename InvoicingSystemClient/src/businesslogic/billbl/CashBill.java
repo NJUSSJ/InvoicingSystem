@@ -60,6 +60,11 @@ public class CashBill{
 		}
 		return false;
 	}
+	/**
+	 * 根据时间查找现金费用单
+	 * @param time 时间
+	 * @return 包含该时间的现金费用单
+	 */
 	public ArrayList<CashBillVO> findCashBillByTime(Date time) {
 		ArrayList<CashBillVO> temp=null;
 		try {
@@ -75,6 +80,10 @@ public class CashBill{
 		return temp;
 		
 	}
+	/**
+	 * 查找所有现金费用单
+	 * @return 包含所有现金费用单的list
+	 */
 	public ArrayList<CashBillVO> findCashBills(){
 		ArrayList<CashBillVO> temp=null;
 		try {
@@ -88,6 +97,10 @@ public class CashBill{
 		}
 		return temp;
 	}
+	/**
+	 * 根据时间区间查找现金费用单 经营历程表
+	 * @return 时间在begin和end之间的现金费用单list
+	 */
 	public ArrayList<CashBillVO> findCashBillsByInterval(Date begin,Date end){
 		ArrayList<CashBillVO> bills=findCashBills();
 		if(bills==null)return null;
@@ -101,6 +114,10 @@ public class CashBill{
 		}
 		return result;
 	}
+	/**
+	 * 根据时间区间和操作员名查找现金费用单 经营历程表
+	 * @return 满足条件的现金费用单
+	 */
 	public ArrayList<CashBillVO> findCashBillsByField(Date begin,Date end,String userName){
 		ArrayList<CashBillVO> result=new ArrayList<CashBillVO>();
 		if(userName==null||userName.length()<=0) {
@@ -121,6 +138,9 @@ public class CashBill{
 		}
 		return result;	
 	}
+	/**
+	 * 根据状态查找现金费用单
+	 */
 	public ArrayList<CashBillVO> findCashBillsByState(int state){
 		ArrayList<CashBillVO> result=new ArrayList<CashBillVO>();
 		ArrayList<CashBillPO> bills;
@@ -134,6 +154,9 @@ public class CashBill{
 		}
 		return result;
 	}
+	/**
+	 * 根据操作员id查找现金费用单
+	 */
 	public ArrayList<CashBillVO> findCashBillsByUser(long userid){
 		ArrayList<CashBillVO> result=new ArrayList<CashBillVO>();
 		try {
@@ -146,6 +169,9 @@ public class CashBill{
 		}
 		return result;
 	}
+	/**
+	 * 根据id查找现金费用单
+	 */
 	public CashBillVO findCashBillByID(String id){
 		try {
 			return toCashBillVO(RemoteHelper.getInstance().getCashBillDataService().findCashBillbyID(id));
@@ -154,6 +180,9 @@ public class CashBill{
 		}
 		return null;
 	}
+	/**
+	 * 从邮箱中删除现金费用单
+	 */
 	public boolean fakeDelete(String id){
 		CashBillVO vo=findCashBillByID(id);
 		vo.setState(vo.getState()+2);

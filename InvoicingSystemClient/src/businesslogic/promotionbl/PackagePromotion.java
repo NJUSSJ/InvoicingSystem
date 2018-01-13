@@ -28,6 +28,9 @@ public class PackagePromotion {
 		return false;
 		
 	}
+	/**
+	 * 查找所有商品组合促销策略
+	 */
 	public ArrayList<PackagePromotionVO> findPackagePromotions(){
 		ArrayList<PackagePromotionVO> temp=null;
 		try {
@@ -40,8 +43,7 @@ public class PackagePromotion {
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		return temp;
-		
+		return temp;	
 	}
 	public PackagePromotionVO toPackagePromotionVO(PackagePromotionPO packagePromotionPO){
 		if(packagePromotionPO==null){

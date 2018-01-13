@@ -133,6 +133,9 @@ public class Category {
 		}
 		return temp;
 	}
+	/**
+	 * 查找商品分类下面的所有商品
+	 */
 	public ArrayList<CommodityVO> findDownCommodity(CategoryVO vo) {
 		ArrayList<CommodityVO> temp=null;
 		if(vo==null){
@@ -154,6 +157,9 @@ public class Category {
 		
 		return temp;
 	}
+	/**
+	 * 返回数据库中商品分类的最大id，出错时返回-2
+	 */
 	public long findLargestIDofCategory(){
 		try {
 			return RemoteHelper.getInstance().getCategoryDataService().getLargestIDofCategory();

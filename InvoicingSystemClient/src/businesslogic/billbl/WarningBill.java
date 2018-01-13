@@ -46,6 +46,9 @@ public class WarningBill{
 		}
 		return false;
 	}
+	/**
+	 * 根据id查找报警单
+	 */
 	public WarningBillVO findWarningBillByID(long id) {
 		try {
 			return toWarningBillVO(RemoteHelper.getInstance().getWarningBillDataService().findWarningBillbyID(id));
@@ -54,6 +57,9 @@ public class WarningBill{
 		}
 		return null;
 	}
+	/**
+	 * 根据时间查找报警单
+	 */
 	public ArrayList<WarningBillVO> findWarningBillByTime(Date time) {
 		ArrayList<WarningBillVO> temp=new ArrayList<WarningBillVO>();
 		try {
@@ -67,6 +73,9 @@ public class WarningBill{
 		
 		return temp;
 	}
+	/**
+	 * 查找所有报警单
+	 */
 	public ArrayList<WarningBillVO> findWarningBills(){
 		ArrayList<WarningBillVO> temp=null;
 		try {
@@ -80,6 +89,9 @@ public class WarningBill{
 		}
 		return temp;
 	}
+	/**
+	 * 根据状态查找报警单
+	 */
 	public ArrayList<WarningBillVO> findWarningBillsByState(int state){
 		ArrayList<WarningBillVO> result=new ArrayList<WarningBillVO>();
 		try {
@@ -93,6 +105,9 @@ public class WarningBill{
 		}
 		return result;
 	}
+	/**
+	 * 根据操作员id查找报警单
+	 */
 	public ArrayList<WarningBillVO> findWarningBillsByUser(long userid){
 		ArrayList<WarningBillVO> result=new ArrayList<WarningBillVO>();
 		try {
@@ -105,6 +120,9 @@ public class WarningBill{
 		}
 		return result;
 	}
+	/**
+	 * 从邮箱中删除报警单
+	 */
 	public boolean fakeDelete(long id){
 		WarningBillVO vo=findWarningBillByID(id);
 		vo.setState(vo.getState()+2);

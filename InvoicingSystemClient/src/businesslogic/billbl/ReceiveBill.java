@@ -66,6 +66,9 @@ public class ReceiveBill{
 		}
 		return false;
 	}
+	/**
+	 * 根据id查找收款单
+	 */
 	public ReceiveBillVO findReceiveBillByID(String id) {
 		try {
 			return toReceiveBillVO(RemoteHelper.getInstance().getReceiveBillDataService().findReceiveBillbyID(id));
@@ -74,6 +77,9 @@ public class ReceiveBill{
 		}
 		return null;
 	}
+	/**
+	 * 根据时间查找收款单
+	 */
 	public ArrayList<ReceiveBillVO> findReceiveBillByTime(Date time) {
 		ArrayList<ReceiveBillVO> temp=new ArrayList<ReceiveBillVO>();
 		try {
@@ -87,6 +93,9 @@ public class ReceiveBill{
 		}
 		return temp;
 	}
+	/**
+	 * 查找所有收款单
+	 */
 	public ArrayList<ReceiveBillVO> findReceiveBills(){
 		ArrayList<ReceiveBillVO> temp=null;
 		try {
@@ -100,6 +109,9 @@ public class ReceiveBill{
 		} 
 		return temp;
 	}
+	/**
+	 * 根据时间区间查找收款单 经营历程表
+	 */
 	public ArrayList<ReceiveBillVO> findReceiveBillsByInterval(Date begin,Date end){
 		ArrayList<ReceiveBillVO> bills=findReceiveBills();
 		if(bills==null){
@@ -115,6 +127,9 @@ public class ReceiveBill{
 		}
 		return result;
 	}
+	/**
+	 * 根据状态查找收款单
+	 */
 	public ArrayList<ReceiveBillVO> findReceiveBillsByState(int state){
 		ArrayList<ReceiveBillVO> result=new ArrayList<ReceiveBillVO>();
 		ArrayList<ReceiveBillPO> bills;
@@ -132,6 +147,9 @@ public class ReceiveBill{
 		
 		return result;
 	}
+	/**
+	 * 根据时间区间，客户名，操作员名查找收款单
+	 */
 	public ArrayList<ReceiveBillVO> findReceiveBillsByField(Date begin, Date end, String memberName, String userName) {
 		ArrayList<ReceiveBillVO> result=new ArrayList<ReceiveBillVO>();
 		try {
@@ -151,6 +169,10 @@ public class ReceiveBill{
 		}
 		return result;
 	}
+	/**
+	 * 根据操作员id查找收款单
+	 * @return
+	 */
 	public ArrayList<ReceiveBillVO> findReceiveBillsByUser(long userid){
 		ArrayList<ReceiveBillVO> result=new ArrayList<ReceiveBillVO>();
 		try {
@@ -166,6 +188,9 @@ public class ReceiveBill{
 		}
 		return result;
 	}
+	/**
+	 * 从邮箱中删除收款单
+	 */
 	public boolean fakeDelete(String id){
 		ReceiveBillVO vo=findReceiveBillByID(id);
 		vo.setState(vo.getState()+2);

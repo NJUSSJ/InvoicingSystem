@@ -59,7 +59,9 @@ public class GiftBill {
 		}
 		return false;
 	}
-
+	/**
+	 * 根据时间查找赠送单
+	 */
 	public ArrayList<GiftBillVO> findGiftBillByTime(Date time) {
 		ArrayList<GiftBillVO> temp=new ArrayList<GiftBillVO>();
 		ArrayList<GiftBillPO> giftBills;
@@ -73,6 +75,10 @@ public class GiftBill {
 		}
 		return temp;
 	}
+	/**
+	 * 查找所有赠送单
+	 * @return 包含所有赠送单的list
+	 */
 	public ArrayList<GiftBillVO> findGiftBills(){
 		ArrayList<GiftBillVO> temp=null;
 		try {
@@ -86,6 +92,9 @@ public class GiftBill {
 		}
 		return temp;
 	}
+	/**
+	 * 根据时间区间查找库存赠送单 经营历程表
+	 */
 	public ArrayList<GiftBillVO> findGiftBillByInterval(Date begin,Date end){
 		ArrayList<GiftBillVO> bills=findGiftBills();
 		if(bills==null)return null;
@@ -99,6 +108,10 @@ public class GiftBill {
 		}
 		return result;
 	}
+	/**
+	 * 根据时间区间，客户名，操作员名查找赠送单 经营历程表
+	 * @return
+	 */
 	public ArrayList<GiftBillVO> findGiftBillsByField(Date begin,Date end,String memberName,String userName){
 		ArrayList<GiftBillVO> result=new ArrayList<GiftBillVO>();
 		try {
@@ -117,6 +130,9 @@ public class GiftBill {
 		}
 		return result;
 	}
+	/**
+	 * 根据状态查找赠送单
+	 */
 	public ArrayList<GiftBillVO> findGiftBillsByState(int state){
 		ArrayList<GiftBillVO> result=new ArrayList<GiftBillVO>();
 		ArrayList<GiftBillPO> bills;
@@ -130,6 +146,9 @@ public class GiftBill {
 		}
 		return result;
 	}
+	/**
+	 * 根据操作员id查找赠送单
+	 */
 	public ArrayList<GiftBillVO> findGiftBillsByUser(long userid){
 		ArrayList<GiftBillVO> result=new ArrayList<GiftBillVO>();
 		try {
@@ -142,6 +161,9 @@ public class GiftBill {
 		}
 		return result;
 	}
+	/**
+	 * 根据id查找赠送单
+	 */
 	public GiftBillVO findGiftBillByID(long id){
 		try {
 			return toGiftBillVO(RemoteHelper.getInstance().getGiftBillDataService().findGiftBillbyID(id));
@@ -150,6 +172,9 @@ public class GiftBill {
 		}
 		return null;
 	}
+	/**
+	 * 从邮箱中删除赠送单
+	 */
 	public boolean fakeDelete(long id){
 		GiftBillVO vo=findGiftBillByID(id);
 		vo.setState(vo.getState()+2);

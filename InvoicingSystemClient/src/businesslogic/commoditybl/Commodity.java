@@ -47,7 +47,7 @@ public class Commodity{
 	/**
 	 * 删除商品
 	 * @param commodityVO 商品vo
-	 * @return 删除结果
+	 * @return 删除结果，如果商品仍有相关业务未处理则返回false
 	 */
 	public boolean deleteCommodity(CommodityVO commodityVO){
 		try {

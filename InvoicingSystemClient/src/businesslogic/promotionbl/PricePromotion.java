@@ -29,6 +29,9 @@ public class PricePromotion {
 		return false;
 		
 	}
+	/**
+	 * 查找所有针对总价促销策略
+	 */
 	public ArrayList<PricePromotionVO> findPricePromotions(){
 		ArrayList<PricePromotionVO> temp=null;
 		try {
@@ -41,8 +44,7 @@ public class PricePromotion {
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		return temp;
-		
+		return temp;	
 	}
 	public PricePromotionVO toPricePromotionVO(PricePromotionPO pricePromotionPO){
 		if(pricePromotionPO==null){

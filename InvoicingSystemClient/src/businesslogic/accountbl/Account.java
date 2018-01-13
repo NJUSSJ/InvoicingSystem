@@ -11,7 +11,11 @@ import rmi.RemoteHelper;
 import vo.AccountVO;
 
 public class Account{
-
+	/**
+	 * 根据id查询账户
+	 * @param id  账户id
+	 * @return 查询到的账户，如果未查到返回null
+	 */
 	public AccountVO findAccountByID(long id) {
 		try {
 			return toAccountVO(RemoteHelper.getInstance().getAccountDataService().findAccountbyID(id));
@@ -55,7 +59,11 @@ public class Account{
 		}
 		return new AccountVO(accountPO.getID(),accountPO.getDeposit(),accountPO.getName());
 	}
-
+	/**
+	 * 根据关键字模糊查找账户
+	 * @param field 关键字
+	 * @return 包含关键字的账户list
+	 */
 	public ArrayList<AccountVO> findAccountByField(String field) {
 		ArrayList<AccountVO> temp=new ArrayList<AccountVO>();
 		try {
@@ -70,7 +78,10 @@ public class Account{
 		}
 		return temp;
 	}
-	
+	/**
+	 * 查询所有账户
+	 * @return 包含所有账户的list
+	 */
 	public ArrayList<AccountVO> findAccounts(){
 		ArrayList<AccountVO> temp=new ArrayList<>();
 		try {

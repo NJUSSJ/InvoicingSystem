@@ -73,7 +73,9 @@ public class ImportBill{
 		}
 		return false;
 	}
-
+	/**
+	 * 根据id查找进货单
+	 */
 	public ImportBillVO findImportBillByID(String id) {
 		try {
 			return toImportBillVO(RemoteHelper.getInstance().getImportBillDataService().findImportBillbyID(id));
@@ -82,7 +84,9 @@ public class ImportBill{
 		}
 		return null;
 	}
-
+	/**
+	 * 根据时间查找进货单
+	 */
 	public ArrayList<ImportBillVO> findImportBillByTime(Date time) {
 		ArrayList<ImportBillVO> temp=new ArrayList<ImportBillVO>();
 		try {
@@ -99,6 +103,9 @@ public class ImportBill{
 		
 		return temp;
 	}
+	/**
+	 * 查找所有进货单
+	 */
 	public ArrayList<ImportBillVO> findImportBills(){
 		ArrayList<ImportBillVO> temp=null;
 		try {
@@ -113,6 +120,9 @@ public class ImportBill{
 		}
 		return temp;
 	}
+	/**
+	 * 根据时间区间查找进货单 经营历程表
+	 */
 	public ArrayList<ImportBillVO> findImportBillsByInterval(Date begin,Date end){
 		ArrayList<ImportBillVO> bills=findImportBills();
 		if(bills==null)return null;
@@ -126,6 +136,9 @@ public class ImportBill{
 		}
 		return result;
 	}
+	/**
+	 * 根据时间区间，顾客名，操作员名查找进货单 经营历程表
+	 */
 	public ArrayList<ImportBillVO> findImportBillsByField(Date begin,Date end,String memberName,String userName){
 		ArrayList<ImportBillVO> result=new ArrayList<ImportBillVO>();
 		try {
@@ -144,6 +157,9 @@ public class ImportBill{
 		}
 		return result;
 	}
+	/**
+	 * 根据状态查找进货单
+	 */
 	public ArrayList<ImportBillVO> findImportBillsByState(int state){
 		ArrayList<ImportBillVO> result=new ArrayList<ImportBillVO>();
 		ArrayList<ImportBillPO> bills;
@@ -158,6 +174,9 @@ public class ImportBill{
 		
 		return result;
 	}
+	/**
+	 * 根据操作员id查找进货单
+	 */
 	public ArrayList<ImportBillVO> findImportBillsByUser(long userid){
 		ArrayList<ImportBillVO> result=new ArrayList<ImportBillVO>();
 		try {
@@ -170,6 +189,9 @@ public class ImportBill{
 		}
 		return result;
 	}
+	/**
+	 * 从邮箱中删除进货单
+	 */
 	public boolean fakeDelete(String id){
 		ImportBillVO vo=findImportBillByID(id);
 		vo.setState(vo.getState()+2);
