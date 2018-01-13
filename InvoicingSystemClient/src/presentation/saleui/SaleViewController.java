@@ -245,6 +245,40 @@ private ObservableList<CommodityItemData> commodityData =FXCollections.observabl
 			warning .showAndWait();
 			return ;
 		}
+		
+		try {
+			double price=Double.parseDouble(lastprice.getText());
+			if(price<=0) {
+				Alert alert = new Alert(AlertType.WARNING);
+		        alert.setTitle("Information");
+		        alert.setContentText("Price Shoule Not be Minus!");
+		        alert.showAndWait();
+		        return ;
+			}
+		} catch (NumberFormatException e) {
+			Alert alert = new Alert(AlertType.WARNING);
+	        alert.setTitle("Information");
+	        alert.setContentText("Please Check Your Input!");
+	        alert.showAndWait();
+	        return ;
+		}
+		
+		try {
+			double numValue=Double.parseDouble(num.getText());
+			if(numValue<=0) {
+				Alert alert = new Alert(AlertType.WARNING);
+		        alert.setTitle("Information");
+		        alert.setContentText("Number Shoule Not be Minus!");
+		        alert.showAndWait();
+		        return ;
+			}
+		} catch (NumberFormatException e) {
+			Alert alert = new Alert(AlertType.WARNING);
+	        alert.setTitle("Information");
+	        alert.setContentText("Please Check Your Input!");
+	        alert.showAndWait();
+	        return ;
+		}
 	
 		if(ishas==0){
 		itemdata=new CommodityItemData(1,a,Integer.parseInt(num.getText()),Double.parseDouble(lastprice.getText()),notea.getText());
